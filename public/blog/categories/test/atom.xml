@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Test | Yet Another Kinopyo Blog]]></title>
+  <link href="http://yoursite.com/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2012-06-29T17:36:06+09:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Explicitly specify table name in scope definition]]></title>
+    <link href="http://yoursite.com/blog/2012/06/29/someone-is-leaving/"/>
+    <updated>2012-06-29T15:56:00+09:00</updated>
+    <id>http://yoursite.com/blog/2012/06/29/someone-is-leaving</id>
+    <content type="html"><![CDATA[<p>I was wondering why people explicitly specify table name in such a scope definition...</p>
+
+<p><code>ruby
+class Answer &lt; ActiveRecord::Base
+  scope :recent, order('answers.created_at DESC')
+end
+</code></p>
+
+<p>Until I got this error today.</p>
+
+<p><code>sql
+Mysql2::Error: Column 'created_at' in order clause is ambiguous: SELECT  COUNT(DISTINCT `answers`.`id`) AS count_id, question_id AS question_id FROM `answers` LEFT OUTER JOIN `questions` ON `questions`.`id` = `answers`.`question_id` WHERE (`answers`.user_id = 87) GROUP BY question_id ORDER BY created_at DESC LIMIT 10
+</code></p>
+
+<p>I have a <code>recent</code> scope defined in both <code>Question</code> and <code>Answer</code> model. And when you chain those two models, rails don't know the <code>recent</code> is associated to which one.</p>
+
+<p><code>ruby
+@answers = @user.answers.recent.group(:question_id).includes(:question).limit(10)
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

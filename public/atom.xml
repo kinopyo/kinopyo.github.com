@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2012-06-29T15:46:43+09:00</updated>
+  <updated>2012-06-29T17:36:06+09:00</updated>
   <id>http://yoursite.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,5 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Explicitly specify table name in scope definition]]></title>
+    <link href="http://yoursite.com/blog/2012/06/29/someone-is-leaving/"/>
+    <updated>2012-06-29T15:56:00+09:00</updated>
+    <id>http://yoursite.com/blog/2012/06/29/someone-is-leaving</id>
+    <content type="html"><![CDATA[<p>I was wondering why people explicitly specify table name in such a scope definition&#8230;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Answer</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">scope</span> <span class="ss">:recent</span><span class="p">,</span> <span class="n">order</span><span class="p">(</span><span class="s1">&#39;answers.created_at DESC&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Until I got this error today.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">Mysql2</span><span class="p">::</span><span class="n">Error</span><span class="p">:</span> <span class="k">Column</span> <span class="s1">&#39;created_at&#39;</span> <span class="k">in</span> <span class="k">order</span> <span class="n">clause</span> <span class="k">is</span> <span class="n">ambiguous</span><span class="p">:</span> <span class="k">SELECT</span>  <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">AS</span> <span class="n">count_id</span><span class="p">,</span> <span class="n">question_id</span> <span class="k">AS</span> <span class="n">question_id</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="o">`</span><span class="n">questions</span><span class="o">`</span> <span class="k">ON</span> <span class="o">`</span><span class="n">questions</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="o">=</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">question_id</span><span class="o">`</span> <span class="k">WHERE</span> <span class="p">(</span><span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="mi">87</span><span class="p">)</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">question_id</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">created_at</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I have a <code>recent</code> scope defined in both <code>Question</code> and <code>Answer</code> model. And when you chain those two models, rails don&#8217;t know the <code>recent</code> is associated to which one.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@answers</span> <span class="o">=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">answers</span><span class="o">.</span><span class="n">recent</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">:question_id</span><span class="p">)</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:question</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
 </feed>
