@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bootstrap | Yet Another Kinopyo Blog]]></title>
   <link href="http://yoursite.com/blog/categories/bootstrap/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2012-07-08T17:09:59+09:00</updated>
+  <updated>2012-07-08T17:44:00+09:00</updated>
   <id>http://yoursite.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Bootswatch - A simple solution to customize Bootstrap color]]></title>
-    <link href="http://yoursite.com/blog/2012/07/03/bootswatch-simple-solution-to-custimze-bootstrap-color/"/>
+    <link href="http://yoursite.com/blog/bootswatch-simple-solution-to-custimze-bootstrap-color/"/>
     <updated>2012-07-03T18:17:00+09:00</updated>
-    <id>http://yoursite.com/blog/2012/07/03/bootswatch-simple-solution-to-custimze-bootstrap-color</id>
+    <id>http://yoursite.com/blog/bootswatch-simple-solution-to-custimze-bootstrap-color</id>
     <content type="html"><![CDATA[<p>Recently I found this website called <strong><a href="http://bootswatch.com/">Bootswatch</a></strong>, which is really helpful when you want to add color(or say different theme) to your bootstrap project. There is also a <a href="https://wrapbootstrap.com/">marketplace</a> for you to buy/sell themes.</p>
 
 <p>I'll definetly try one next time I use bootstrap.</p>
