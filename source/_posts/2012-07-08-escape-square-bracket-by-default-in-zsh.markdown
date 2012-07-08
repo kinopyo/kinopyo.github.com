@@ -25,5 +25,5 @@ Creating new post: source/_posts/2012-07-08-escape-square-bracket-by-default-in-
 Just setup this alias in your `.zshrc`.
 
 ```bash
-noglob rake
+alias rake='noglob rake'
 ```
