@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: script | Yet Another Kinopyo Blog]]></title>
-  <link href="http://yoursite.com/blog/categories/script/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2012-07-08T17:44:00+09:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://kinopyo.github.com/blog/categories/script/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-07-08T17:49:48+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Run Ruby Script in Rails Environment]]></title>
-    <link href="http://yoursite.com/blog/run-ruby-script-in-rails-environment/"/>
+    <link href="http://kinopyo.github.com/blog/run-ruby-script-in-rails-environment/"/>
     <updated>2012-06-29T18:04:00+09:00</updated>
-    <id>http://yoursite.com/blog/run-ruby-script-in-rails-environment</id>
+    <id>http://kinopyo.github.com/blog/run-ruby-script-in-rails-environment</id>
     <content type="html"><![CDATA[<h2>Overview</h2>
 
 <p>If you wanna execute some ruby code in rails environment, say manipulate w/ model or something, you can always try <code>rake task</code> first. But there're circumstances you don't want to use it, maybe it's just a one-time script that you don't want to save it to git, or whatever.</p>
