@@ -26,6 +26,8 @@ alias git=’nocorrect heroku’
 
 I didn't test out this one :)
 
-References:
+
+### References:
+
 - [Issue #534: auto-correcting sucks hard · robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/issues/534)
 - [Issue #949: Disable autocorrect lg to log · robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/issues/949)

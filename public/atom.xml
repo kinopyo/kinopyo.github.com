@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-07-20T20:44:34+09:00</updated>
+  <updated>2012-07-20T20:45:29+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -44,9 +44,13 @@
 
 <p>I didn&#8217;t test out this one :)</p>
 
-<p>References:
-- <a href="https://github.com/robbyrussell/oh-my-zsh/issues/534">Issue #534: auto-correcting sucks hard · robbyrussell/oh-my-zsh</a>
-- <a href="https://github.com/robbyrussell/oh-my-zsh/issues/949">Issue #949: Disable autocorrect lg to log · robbyrussell/oh-my-zsh</a></p>
+<h3>References:</h3>
+
+<ul>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/issues/534">Issue #534: auto-correcting sucks hard · robbyrussell/oh-my-zsh</a></li>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/issues/949">Issue #949: Disable autocorrect lg to log · robbyrussell/oh-my-zsh</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
