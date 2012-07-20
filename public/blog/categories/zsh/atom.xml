@@ -4,7 +4,7 @@
   <title><![CDATA[Category: zsh | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/zsh/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-07-20T20:25:53+09:00</updated>
+  <updated>2012-07-20T20:44:34+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to disable auto correct in oh-my-zsh]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh/"/>
+    <updated>2012-07-20T20:35:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is very handy and I've been using it for almost a year. But I found the auto correct is kind of annoying and barely helped me.</p>
+
+<h2>Disable it globally</h2>
+
+<p>Add this <code>unsetopt</code> to your ~/.zshrc</p>
+
+<p>```bash
+source $ZSH/oh-my-zsh.sh</p>
+
+<p>unsetopt correct_all
+```</p>
+
+<h2>Disable it per command base</h2>
+
+<p>Say if you just want to disable it for <code>git</code> command, you can setup an alias.</p>
+
+<p><code>
+alias git=’nocorrect heroku’
+</code></p>
+
+<p>I didn't test out this one :)</p>
+
+<p>References:
+- <a href="https://github.com/robbyrussell/oh-my-zsh/issues/534">Issue #534: auto-correcting sucks hard · robbyrussell/oh-my-zsh</a>
+- <a href="https://github.com/robbyrussell/oh-my-zsh/issues/949">Issue #949: Disable autocorrect lg to log · robbyrussell/oh-my-zsh</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Escape square brackets by default in zsh]]></title>

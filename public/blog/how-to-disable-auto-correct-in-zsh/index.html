@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Category: script - Yet Another Kinopyo Blog</title>
+	<title>How to disable auto correct in oh-my-zsh - Yet Another Kinopyo Blog</title>
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Category: script">
+	<meta name="description" content="oh-my-zsh is very handy and I&#8217;ve been using it for almost a year. But I found the auto correct is kind of annoying and barely helped me. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -70,118 +70,83 @@
 </nav>
 
 </header>
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">How to Disable Auto Correct in Oh-my-zsh</h1>
+	<div class="entry-content"><p><a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is very handy and I&#8217;ve been using it for almost a year. But I found the auto correct is kind of annoying and barely helped me.</p>
+
+<h2>Disable it globally</h2>
+
+<p>Add this <code>unsetopt</code> to your ~/.zshrc</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">source</span> <span class="nv">$ZSH</span>/oh-my-zsh.sh
+</span><span class='line'>
+</span><span class='line'>unsetopt correct_all
+</span></code></pre></td></tr></table></div></figure>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2012</h1>
+<h2>Disable it per command base</h2>
 
-<article>
-	<h1 class="title"><a href="/blog/how-to-disable-auto-correct-in-zsh/">How to disable auto correct in oh-my-zsh</a></h1>
-	<div class="meta">
-		<span class="date">Jul 20</span>
-		<span class="tags">
+<p>Say if you just want to disable it for <code>git</code> command, you can setup an alias.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">git</span><span class="o">=</span>’nocorrect heroku’
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I didn&#8217;t test out this one :)</p>
+
+<p>References:
+- <a href="https://github.com/robbyrussell/oh-my-zsh/issues/534">Issue #534: auto-correcting sucks hard · robbyrussell/oh-my-zsh</a>
+- <a href="https://github.com/robbyrussell/oh-my-zsh/issues/949">Issue #949: Disable autocorrect lg to log · robbyrussell/oh-my-zsh</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-20T20:35:00+09:00" pubdate data-updated="true">2012-07-20</time></div>
+	<div class="tags">
 
 
 	<a class='category' href='/blog/categories/zsh/'>zsh</a>
 
 
-</span>
-	    
-	</div>
-</article>
-
+</div>
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/">Machinist 1.0: How to generate an object without saving it to the database</a></h1>
-	<div class="meta">
-		<span class="date">Jul 20</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/machinist/'>machinist</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/test/'>test</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
+</div></article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/escape-square-bracket-by-default-in-zsh/">Escape square brackets by default in zsh</a></h1>
-	<div class="meta">
-		<span class="date">Jul  8</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/zsh/'>zsh</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/bootswatch-simple-solution-to-custimze-bootstrap-color/">Bootswatch - A simple solution to customize Bootstrap color</a></h1>
-	<div class="meta">
-		<span class="date">Jul  3</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/bootstrap/'>bootstrap</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/run-ruby-script-in-rails-environment/">Run Ruby Script in Rails Environment</a></h1>
-	<div class="meta">
-		<span class="date">Jun 29</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/script/'>script</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
+	<a class="addthis_button_tweet"></a>
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/someone-is-leaving/">Explicitly specify table name in scope definition</a></h1>
-	<div class="meta">
-		<span class="date">Jun 29</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/test/'>Test</a>
-
-
-</span>
-	    
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2012
 
@@ -201,7 +166,10 @@
       var disqus_shortname = 'kinopyo';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh/';
+        var disqus_url = 'http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
