@@ -4,7 +4,7 @@
   <title><![CDATA[Category: machinist | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/machinist/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-07-20T20:19:50+09:00</updated>
+  <updated>2012-07-20T20:25:53+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,6 +19,8 @@
     <updated>2012-07-20T20:12:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database</id>
     <content type="html"><![CDATA[<p><strong>CAUTION</strong> It's specific machinist 1.0-maintenance.</p>
+
+<p>Machinist is an alternative for Fixtures or FactoryGirl.</p>
 
 <h2>make_unsaved</h2>
 

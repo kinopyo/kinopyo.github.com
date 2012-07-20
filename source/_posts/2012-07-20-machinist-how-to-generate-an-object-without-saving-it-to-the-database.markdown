@@ -8,6 +8,8 @@ categories: machinist rspec test
 
 **CAUTION** It's specific machinist 1.0-maintenance.
 
+Machinist is an alternative for Fixtures or FactoryGirl.
+
 ## make_unsaved
 > If you want to generate an object without saving it to the database, replace `make` with `make_unsaved`
 
