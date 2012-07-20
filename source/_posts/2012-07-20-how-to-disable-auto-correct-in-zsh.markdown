@@ -6,7 +6,9 @@ comments: true
 categories: zsh
 ---
 
-[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is very handy and I've been using it for almost a year. But I found the auto correct is kind of annoying and barely helped me.
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is very handy and I've been using it for almost a year.
+
+But I found the auto correct is kind of annoying and barely helped me. So I decided to turn if off!
 
 ## Disable it globally
 Add this `unsetopt` to your ~/.zshrc
