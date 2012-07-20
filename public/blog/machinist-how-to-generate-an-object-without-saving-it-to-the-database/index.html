@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Category: script - Yet Another Kinopyo Blog</title>
+	<title>Machinist 1.0: How to generate an object without saving it to the database - Yet Another Kinopyo Blog</title>
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Category: script">
+	<meta name="description" content="CAUTION It&#8217;s specific machinist 1.0-maintenance. make_unsaved If you want to generate an object without saving it to the database, replace make &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -70,100 +70,79 @@
 </nav>
 
 </header>
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Machinist 1.0: How to Generate an Object Without Saving It to the Database</h1>
+	<div class="entry-content"><p><strong>CAUTION</strong> It&#8217;s specific machinist 1.0-maintenance.</p>
+
+<h2>make_unsaved</h2>
+
+<blockquote><p>If you want to generate an object without saving it to the database, replace <code>make</code> with <code>make_unsaved</code></p></blockquote>
+
+<p><a href="https://github.com/notahat/machinist/tree/1.0-maintenance#blueprints---generating-objects">reference</a></p>
+
+<p>So remember to use <code>make_unsaved</code>.</p>
+
+<h3>More</h3>
+
+<p>If you&#8217;re interested, here is the source code.</p>
+
+<ul>
+<li><a href="https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist/active_record.rb#L61">https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist/active_record.rb#L61</a></li>
+<li><a href="https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist.rb#L107">https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist.rb#L107</a></li>
+</ul>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2012</h1>
+<h2>Under latest version</h2>
 
-<article>
-	<h1 class="title"><a href="/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/">Machinist 1.0: How to generate an object without saving it to the database</a></h1>
-	<div class="meta">
-		<span class="date">Jul 20</span>
-		<span class="tags">
+<p>Well if you&#8217;re using latest machinist, which is 2.0 at this point, it&#8217;s much simpler and cleaner.</p>
+
+<p><code>make</code> for generating but not saving an object, <code>make!</code> for saving it to database.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-20T20:12:00+09:00" pubdate data-updated="true">2012-07-20</time></div>
+	<div class="tags">
 
 
 	<a class='category' href='/blog/categories/machinist/'>machinist</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/test/'>test</a>
 
 
-</span>
-	    
-	</div>
-</article>
-
+</div>
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/escape-square-bracket-by-default-in-zsh/">Escape square brackets by default in zsh</a></h1>
-	<div class="meta">
-		<span class="date">Jul  8</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/zsh/'>zsh</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
+</div></article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/bootswatch-simple-solution-to-custimze-bootstrap-color/">Bootswatch - A simple solution to customize Bootstrap color</a></h1>
-	<div class="meta">
-		<span class="date">Jul  3</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/bootstrap/'>bootstrap</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/run-ruby-script-in-rails-environment/">Run Ruby Script in Rails Environment</a></h1>
-	<div class="meta">
-		<span class="date">Jun 29</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/script/'>script</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
 	
-
-
-<article>
-	<h1 class="title"><a href="/blog/someone-is-leaving/">Explicitly specify table name in scope definition</a></h1>
-	<div class="meta">
-		<span class="date">Jun 29</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/test/'>Test</a>
-
-
-</span>
-	    
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2012
 
@@ -183,7 +162,10 @@
       var disqus_shortname = 'kinopyo';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/';
+        var disqus_url = 'http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

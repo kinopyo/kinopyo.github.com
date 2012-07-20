@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-07-08T20:16:36+09:00</updated>
+  <updated>2012-07-20T20:19:50+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Machinist 1.0: How to generate an object without saving it to the database]]></title>
+    <link href="http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/"/>
+    <updated>2012-07-20T20:12:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database</id>
+    <content type="html"><![CDATA[<p><strong>CAUTION</strong> It&#8217;s specific machinist 1.0-maintenance.</p>
+
+<h2>make_unsaved</h2>
+
+<blockquote><p>If you want to generate an object without saving it to the database, replace <code>make</code> with <code>make_unsaved</code></p></blockquote>
+
+<p><a href="https://github.com/notahat/machinist/tree/1.0-maintenance#blueprints---generating-objects">reference</a></p>
+
+<p>So remember to use <code>make_unsaved</code>.</p>
+
+<h3>More</h3>
+
+<p>If you&#8217;re interested, here is the source code.</p>
+
+<ul>
+<li><a href="https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist/active_record.rb#L61">https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist/active_record.rb#L61</a></li>
+<li><a href="https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist.rb#L107">https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist.rb#L107</a></li>
+</ul>
+
+
+<h2>Under latest version</h2>
+
+<p>Well if you&#8217;re using latest machinist, which is 2.0 at this point, it&#8217;s much simpler and cleaner.</p>
+
+<p><code>make</code> for generating but not saving an object, <code>make!</code> for saving it to database.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Escape square brackets by default in zsh]]></title>

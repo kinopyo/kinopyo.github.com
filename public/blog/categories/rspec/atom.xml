@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: test | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/test/atom.xml" rel="self"/>
+  <title><![CDATA[Category: rspec | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
   <updated>2012-07-20T20:19:50+09:00</updated>
   <id>http://kinopyo.github.com/</id>
