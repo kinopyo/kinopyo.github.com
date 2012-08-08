@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Chrome | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/chrome/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-08T13:23:17+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to reset zoom in chrome]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-reset-zoom-in-chrome/"/>
+    <updated>2012-08-03T14:49:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-reset-zoom-in-chrome</id>
+    <content type="html"><![CDATA[<p><code>cmd + 0</code> in mac :)</p>
+
+<p>If you click the tool icon on the right of the address bar, you can also check the current zoom rate.</p>
+
+<p><img src="https://img.skitch.com/20120803-1ew92g41qdw65n6iecywgwun6u.jpg" title="'Google Chrome Check Zoom Rate'" ></p>
+]]></content>
+  </entry>
+  
+</feed>
