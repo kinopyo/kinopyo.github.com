@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-08T13:23:17+09:00</updated>
+  <updated>2012-08-14T15:15:54+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Finding an array of ids while keeping the order with Rails]]></title>
+    <link href="http://kinopyo.github.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/"/>
+    <updated>2012-08-14T15:13:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails</id>
+    <content type="html"><![CDATA[<h2>The order may different</h2>
+
+<p>Suppose you're retrieving records using array of <code>ids</code>.</p>
+
+<p>```ruby
+ids = [100, 1, 6]
+User.where(:id => ids).map(&amp;:id)</p>
+
+<h1>=> [1, 6, 100]</h1>
+
+<p>```</p>
+
+<p>The order of the data may different from <code>ids</code> array, <strong>what if you want to keep its order</strong>?</p>
+
+<h2>for MySQL</h2>
+
+<p>There is a function in mysql called <a href="http://dev.mysql.com/doc/refman/5.0/en/string-functions.html#function%5Ffield">FIELD()</a></p>
+
+<blockquote><p> FIELD(str,str1,str2,str3,...)
+Returns the index (position) of str in the str1, str2, str3, ... list. Returns 0 if str is not found.</p></blockquote>
+
+<p>So by combing this <code>FIELD()</code> function, here is the code.</p>
+
+<p>```ruby
+ids = [100, 1, 6]
+User.where(:id => ids).order("field(id, #{ids.join(',')})").map(&amp;:id)</p>
+
+<h1>=> [100, 1, 6]</h1>
+
+<p>```</p>
+
+<p>This will generate SQL below:
+<code>sql
+SELECT `users`.* FROM `users` WHERE `users`.`id` IN (100, 1, 6) ORDER BY field(id, 100, 1, 6)
+</code></p>
+
+<h2>for other databases</h2>
+
+<p>I didn't dig too much but most of google results suggest just sort it manually using ruby.
+Here is just an example:</p>
+
+<p>```ruby
+ids = [100, 1, 6]
+users = User.where(:id => ids)
+users = ids.map {|id| users.detect {|user| user.id == id } }
+users.map(&amp;:id)</p>
+
+<h1>=> [100, 1, 6]</h1>
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Run Ruby Script in Rails Environment]]></title>

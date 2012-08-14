@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-08T13:23:17+09:00</updated>
+  <updated>2012-08-14T15:15:54+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Finding an array of ids while keeping the order with Rails]]></title>
+    <link href="http://kinopyo.github.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/"/>
+    <updated>2012-08-14T15:13:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails</id>
+    <content type="html"><![CDATA[<h2>The order may different</h2>
+
+<p>Suppose you&#8217;re retrieving records using array of <code>ids</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; [1, 6, 100]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The order of the data may different from <code>ids</code> array, <strong>what if you want to keep its order</strong>?</p>
+
+<h2>for MySQL</h2>
+
+<p>There is a function in mysql called <a href="http://dev.mysql.com/doc/refman/5.0/en/string-functions.html#function%5Ffield">FIELD()</a></p>
+
+<blockquote><p> FIELD(str,str1,str2,str3,&#8230;)
+Returns the index (position) of str in the str1, str2, str3, &#8230; list. Returns 0 if str is not found.</p></blockquote>
+
+<p>So by combing this <code>FIELD()</code> function, here is the code.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;field(id, </span><span class="si">#{</span><span class="n">ids</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; [100, 1, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will generate SQL below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span> <span class="k">WHERE</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">field</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>for other databases</h2>
+
+<p>I didn&#8217;t dig too much but most of google results suggest just sort it manually using ruby.
+Here is just an example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="n">users</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'><span class="n">users</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; [100, 1, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to reset zoom in chrome]]></title>
