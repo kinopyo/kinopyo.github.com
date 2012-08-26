@@ -4,7 +4,7 @@
   <title><![CDATA[Category: editor | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/editor/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -87,15 +87,14 @@ Below is a sample for Safari.
     <content type="html"><![CDATA[<p>ビープ音を消す。</p>
 
 <p>vi ~/.inputrc
-{% codeblock %}
-set bell-style none
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set bell-style none</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>vi ~/.vimrc
-{% codeblock %}
-set noerrorbells
-set vb t_vb=
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set noerrorbells
+</span><span class='line'>set vb t_vb=</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

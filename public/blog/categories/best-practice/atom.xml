@@ -4,7 +4,7 @@
   <title><![CDATA[Category: best_practice | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/best-practice/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,14 +18,76 @@
     <link href="http://kinopyo.github.com/blog/rspec-shared_context-sample-code"/>
     <updated>2011-10-13T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rspec-shared_context-sample-code</id>
-    <content type="html"><![CDATA[<p>{% gist 1283896 %}</p>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/1283896.js?file='></script>
+<noscript><pre><code>shared_context &quot;shared stuff&quot; do
+  before { @some_var = :some_value }
+  def shared_method
+    &quot;it works&quot;
+  end
+  let(:shared_let) { {'arbitrary' =&gt; 'object'} }
+  subject do
+    'this is the subject'
+  end
+end
+
+describe &quot;group that includes a shared context using 'include_context'&quot; do
+  include_context &quot;shared stuff&quot;
+
+  it &quot;has access to methods defined in shared context&quot; do
+    shared_method.should eq(&quot;it works&quot;)
+  end
+
+  it &quot;has access to methods defined with let in shared context&quot; do
+    shared_let['arbitrary'].should eq('object')
+  end
+
+  it &quot;runs the before hooks defined in the shared context&quot; do
+    @some_var.should be(:some_value)
+  end
+
+  it &quot;accesses the subject defined in the shared context&quot; do
+    subject.should eq('this is the subject')
+  end
+end</code></pre></noscript></div>
+</p>
 
 <h1>日本語</h1>
 
 <p>shared_context はその名前の通りコンテキスト (テストを行なうときの状況) を共有するための機能です。
 shared_context を使うことで複数箇所にちらばる同一処理をまとめることができます。shared_context は shared_context が書かれたファイルを require することでも使えるようになるので別のスペックファイルでも使うことができます。</p>
 
-<p>{% gist 1283896 %}</p>
+<p><div><script src='https://gist.github.com/1283896.js?file='></script>
+<noscript><pre><code>shared_context &quot;shared stuff&quot; do
+  before { @some_var = :some_value }
+  def shared_method
+    &quot;it works&quot;
+  end
+  let(:shared_let) { {'arbitrary' =&gt; 'object'} }
+  subject do
+    'this is the subject'
+  end
+end
+
+describe &quot;group that includes a shared context using 'include_context'&quot; do
+  include_context &quot;shared stuff&quot;
+
+  it &quot;has access to methods defined in shared context&quot; do
+    shared_method.should eq(&quot;it works&quot;)
+  end
+
+  it &quot;has access to methods defined with let in shared context&quot; do
+    shared_let['arbitrary'].should eq('object')
+  end
+
+  it &quot;runs the before hooks defined in the shared context&quot; do
+    @some_var.should be(:some_value)
+  end
+
+  it &quot;accesses the subject defined in the shared context&quot; do
+    subject.should eq('this is the subject')
+  end
+end</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

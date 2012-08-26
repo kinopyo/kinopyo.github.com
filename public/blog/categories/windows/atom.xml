@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Windows | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,10 +24,10 @@
 
 <p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
 CentOSなのでyumを使ってインストールすれば解決です。
-{% codeblock %}
-sudo yum install php-gd
-sudo service httpd restart
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo yum install php-gd
+</span><span class='line'>sudo service httpd restart</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

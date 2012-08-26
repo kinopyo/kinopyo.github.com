@@ -4,7 +4,7 @@
   <title><![CDATA[Category: webservice | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/webservice/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,9 +20,7 @@
     <id>http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution</id>
     <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
 
-<p>{% blockquote  %}
-PayPal Here is the world's first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.
-{% endblockquote %}</p>
+<p><blockquote><p>PayPal Here is the world's first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote></p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/x5woIGSOLGk" frameborder="0" allowfullscreen></iframe>
 
@@ -44,10 +42,10 @@ PayPal Here is the world's first global mobile payments solution that allows sma
     <updated>2011-07-29T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/reply-to-all-always-in-gmail</id>
     <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_reply_to_all.png Gmail_reply_to_all %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
 
 <p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png Gmail_setting_reply_to_all %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
 ]]></content>
   </entry>
   
@@ -56,14 +54,10 @@ PayPal Here is the world's first global mobile payments solution that allows sma
     <link href="http://kinopyo.github.com/blog/inkstagram-show-photos-you-have-liked-on-instagram"/>
     <updated>2011-05-30T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/inkstagram-show-photos-you-have-liked-on-instagram</id>
-    <content type="html"><![CDATA[<p>{% blockquote  %}
-Inkstagram is also a web app for browsing Instagram photos. You can view photos in small, medium or full sizes while browsing your feed, popular photos or your own photos.</p>
-
-<p>We especially appreciate the "My Likes" view which showcases all of the photos that you've liked on Instagram.
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>Inkstagram is also a web app for browsing Instagram photos. You can view photos in small, medium or full sizes while browsing your feed, popular photos or your own photos.</p></p><p><p>We especially appreciate the "My Likes" view which showcases all of the photos that you've liked on Instagram.</p></blockquote></p>
 
 <p>目玉機能というえばこの"My Likes"ですね！自分が"Like"した画像が一覧で見れます！ちょっとこういうの欲しかったー！
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-30-at-19.01.59.png Inkstagram &quot;My Likes&quot; %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-30-at-19.01.59.png" title="Inkstagram &quot;My Likes&quot;" ></p>
 
 <p>他にも写真へのコメントや、Like、Popular Feedの表示など、写真アップロードを除いて全部できます。</p>
 
@@ -95,7 +89,7 @@ Inkstagram is also a web app for browsing Instagram photos. You can view photos 
 <p>一回登録し、アバターをアップロードしてください。
 複数のアバターをアップロードした場合はどのアバターを使うか選択できます。</p>
 
-<p>{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/Gravatar.jpg Gravatar %}</p>
+<p><img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/Gravatar.jpg" title="Gravatar" ></p>
 
 <p>良かったらGravatarに登録し、ここにコメントを入れてみてください。
 メールアドレスが同じであればGravatarに登録したアバターが表示されるはずです。</p>

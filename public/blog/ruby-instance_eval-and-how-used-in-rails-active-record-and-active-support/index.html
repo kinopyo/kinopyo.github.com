@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="下記ソースコードに英語コメントで書いてますが、日本語で解釈してみます。 gist id=d5eef13c647570612621 file=instance_eval.rb 定義 まずinstance_evalはObjectのインスタンスメソッドです。 &hellip;">
+	<meta name="description" content="下記ソースコードに英語コメントで書いてますが、日本語で解釈してみます。 {% gist d5eef13c647570612621 instance_eval.rb %} 定義 まずinstance_evalはObjectのインスタンスメソッドです。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,7 +74,7 @@
 	<h1 class="title">Ruby instance_eval()の解説、Rails ActiveRecordとActiveSupportでの応用例</h1>
 	<div class="entry-content"><p>下記ソースコードに英語コメントで書いてますが、日本語で解釈してみます。</p>
 
-<p><em>gist id=d5eef13c647570612621 file=instance_eval.rb</em></p>
+<p>{% gist d5eef13c647570612621 instance_eval.rb %}</p>
 
 <h2>定義</h2>
 
@@ -99,17 +99,17 @@ someoneはPersonのインスタンスで、someoneからinstance_evalをコー�
 <h3>in ActiveRecord</h3>
 
 <p>まずマイグレーションでまあよく使うchange_columnメソッドのソースコードです。
-<em>gist id=d5eef13c647570612621 file=instance_eval_in_rails_active_record.rb</em></p>
+{% gist d5eef13c647570612621 instance_eval_in_rails_active_record.rb %}</p>
 
 <p><strong>definition<em>column_name]</strong>がinstance_evalを呼び出したのですが、definition[column_name</em>はActiveRecord::ConnectionAdapters::ColumnDefinitionクラスのオブジェクトで、ColumnDefinitionの実態はStructを継承し、カラムの名前、種類、limit、precision、デフォルト値などの情報が格納されているオブジェクトです。
-<em>gist id=d5eef13c647570612621 file=column_definition.rb</em></p>
+{% gist d5eef13c647570612621 column_definition.rb %}</p>
 
 <p>definition<em>column_name</em>.instance_evalを使うことで、そのオブジェクト(テーブルカラム)の種類、limit、default値とnull可否を変更することが分かりましたね。
 optionsはinstance_evalブロックの外の変数ですが、普通にアクセスできます。</p>
 
 <h3>in ActiveSupport</h3>
 
-<p><em>gist id=d5eef13c647570612621 file=instance_eval_in_rails_active_support.rb</em>
+<p>{% gist d5eef13c647570612621 instance_eval_in_rails_active_support.rb %}
 上記ActiveRecordのコードが分かればここは分かりやすいと思います。
 実際の意味はさておき、instance_evalを利用して@marshal_with_utc_coercionというインスタンス変数が定義されていれば、それを削除する使い方ですね。</p>
 

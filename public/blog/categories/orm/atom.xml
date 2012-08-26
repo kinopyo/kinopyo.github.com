@@ -4,7 +4,7 @@
   <title><![CDATA[Category: orm | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/orm/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -29,9 +29,7 @@ $this->Ingredient->category;    // NG</p>
 
 <p>登録/更新には関係なく。
 公式マニュアルでは：
-{% blockquote http://book.cakephp.org/ja/view/75/データを保存する %}
-一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。
-{% endblockquote %}
+<blockquote><p>一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。</p></blockquote>
 と書いてありますが、id以外のフィールド情報は持ってないようです。
 欲しければ$this->dataから取れます。</p>
 ]]></content>

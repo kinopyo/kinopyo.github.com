@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git-reset | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/git-reset/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -23,9 +23,7 @@
 +   </em>git reset --hard HEAD@{1}*で番号指定でもう一回git reset（ここでは例として1番にしてる）</p>
 
 <p>reflogの定義は
-{% blockquote  %}
-a log of where your HEAD and branch references have been for the last few months.
-{% endblockquote %}
+<blockquote><p>a log of where your HEAD and branch references have been for the last few months.</p></blockquote>
 いわば自分のローカルリポジトリのHEADが指していた情報を全部保存したログです。ブランチの切り替えやpull、コミットなどの情報が<em>ローカルで</em>保存されるんです。</p>
 
 <ul>

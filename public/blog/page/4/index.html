@@ -484,8 +484,19 @@ http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html</code>
 <h2>javascriptのテストを書く</h2>
 
 <p><em>:js => true</em>でrspecのintegration testでjavascriptを有効に設定できます。
-例：
-<em>gist id=1342538 file=example_spec_with_javascript_enalbed.rb</em></p>
+例：</p>
+
+<div><script src='https://gist.github.com/1342538.js?file=example_spec_with_javascript_enalbed.rb'></script>
+<noscript><pre><code># in your view erb file
+&lt;%= link_to_function &quot;test js&quot;, '$(this).html(&quot;js works&quot;)' %&gt;
+
+# in test spec
+it &quot;supports js&quot;, :js =&gt; true do
+  visit tasks_path
+  click_link &quot;test js&quot;
+  page.should have_content(&quot;js works&quot;)
+end</code></pre></noscript></div>
+
 
 <p>ただデフォルトではjavascriptをサポートしないので、このspecは失敗します。解決の鍵は<em>capybara driver</em>というものです。</p>
 
@@ -500,22 +511,82 @@ http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html</code>
 
 <h2>capybara_webkit driverをインストール</h2>
 
-<p>Gemfileにcapybara_webkitを追記、bundle installします。webkitはQTが必要なので、もしそれがないとbundle installで失敗(エラー)します。後はspec_helper.rbにdefault driverをwebkitに設定します。
-<em>gist id=1342538 file= install_capybara_webkit.rb</em></p>
+<p>Gemfileにcapybara_webkitを追記、bundle installします。webkitはQTが必要なので、もしそれがないとbundle installで失敗(エラー)します。後はspec_helper.rbにdefault driverをwebkitに設定します。</p>
+
+<div><script src='https://gist.github.com/1342538.js?file=install_capybara_webkit.rb'></script>
+<noscript><pre><code># webkit-dependency
+# if you don't have homebrew installed
+/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731)&quot;
+# if you don't have QT installed
+brew install qt
+
+# Gemfile, add capybara-webkit
+group :test, :development do
+  ...
+  gem &quot;capybara-webkit&quot;
+end
+
+# in Terminal
+bundle install
+
+# set default capybara driver to webkit.
+# I put this into spec_helper.rb
+Capybara.javascript_driver = :webkit
+
+# In RSpec, use the :js =&gt; true flag
+it &quot;supports js&quot;, :js =&gt; true do
+  ...
+end</code></pre></noscript></div>
+
 
 <p>これで最初のサンプルspecは通るはずです。</p>
 
 <h2>データベースと絡んだテスト</h2>
 
 <p>上記のままだとデータベースと絡んだテストはまた失敗します。
-例：
-<em>gist id=1342538 file=js_test_combined_with_database.rb</em></p>
+例：</p>
+
+<div><script src='https://gist.github.com/1342538.js?file=js_test_combined_with_database.rb'></script>
+<noscript><pre><code>it &quot;displays tasks&quot;, :js =&gt; true do
+  Task.create!(:name =&gt; &quot;foo&quot;)
+  visit tasks_path
+  click_link 'some link'
+  page.should have_content(&quot;some text&quot;)
+end</code></pre></noscript></div>
+
 
 <p>自分で確認してみたら、テスト時に作成したデータはjavascriptのテストで使えないっぽいです。Railscastsの記事によりますと<strong>rspecのテストではデータベーストランザクションを使うが、それがselenium或いはwebkitでは使えない</strong>そうです。そのために<em>database_cleaner</em>というgemを使います。</p>
 
 <h2>database_cleanerを使う</h2>
 
-<p><em>gist id=1342538 file=use_database_cleaner_gem.rb</em></p>
+<div><script src='https://gist.github.com/1342538.js?file=use_database_cleaner_gem.rb'></script>
+<noscript><pre><code># in Gemfiile
+group :test, :development do
+  ...
+  gem &quot;database_cleaner&quot;
+end
+
+# in Terminal
+bundle install
+
+# in spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.use_transactional_fixtures = false
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end</code></pre></noscript></div>
+
 
 <p><em>config.use_transactional_fixtures</em>をfalseにした時点でもうテスト自体は通るはずですが、データはずっとそのまま残ってしまうんです。database_cleanerは名の通りデータベースをテスト前後で綺麗な状態に保つことができます。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: movie | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/movie/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,7 +19,7 @@
     <updated>2009-12-24T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/movie-avatar-the-inside-story-and-games</id>
     <content type="html"><![CDATA[<p>映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg アバターポスタ %}</p>
+<img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg" title="アバターポスタ" ></p>
 
 <p>映画館でアバターを見ました。最高です。
 ストリー、3Dの表現力、監督が創った世界：パンドラ。

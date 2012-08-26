@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,13 +20,18 @@
     <id>http://kinopyo.github.com/blog/zshrc-tab-to-autocomplete-case-insensitive</id>
     <content type="html"><![CDATA[<p>下記を.zshrcに記述すればtabで大文字を無視して補完ができるようになります。</p>
 
-<p>{% codeblock %}</p>
-
-<h2>Case-insensitive completion</h2>
-
-<p>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:# ' menu select=1
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h2>Case-insensitive completion&lt;/h2>
+</span><span class='line'>
+</span><span class='line'>&lt;p>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
+</span><span class='line'>zstyle ':completion:# ' menu select=1</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: TextMate | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/textmate/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -99,7 +99,7 @@ Below is a sample for Safari.
 あるいは
 Navigationのメニューからクリック</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/Go_to_Last_Edit.jpg Go_to_Last_Edit %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/Go_to_Last_Edit.jpg" title="Go_to_Last_Edit" ></p>
 ]]></content>
   </entry>
   
@@ -123,8 +123,10 @@ Navigationのメニューからクリック</p>
 
 <h2>インストール</h2>
 
-<p>{% codeblock %}cd ~/Library/Application\ Support/TextMate/Bundles/
-git clone git://github.com/stevenchanin/gotofile.tmbundle.git GoToFile.tmbundle{% endcodeblock %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/Library/Application\ Support/TextMate/Bundles/
+</span><span class='line'>git clone git://github.com/stevenchanin/gotofile.tmbundle.git GoToFile.tmbundle</span></code></pre></td></tr></table></div></figure></notextile></div>
 で、textmateを再起動</p>
 
 <h2>使い方</h2>
@@ -159,7 +161,7 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 <p>```</p>
 
 <p>これが完成図！
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/textmate_fullscreen.jpg textmate_fullscreen %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/textmate_fullscreen.jpg" title="textmate_fullscreen" ></p>
 ]]></content>
   </entry>
   

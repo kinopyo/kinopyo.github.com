@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jQuery | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -26,9 +26,7 @@
 
 <p><em>change event</em>も監視はできるが、取れる値は遅延されるみたいです。</p>
 
-<p>{% blockquote http://api.jquery.com/change/ %}
-The change event is sent to an element when its value changes. This event is limited to input elements, textarea boxes and select elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse, but for the other element types the event is deferred until the element loses focus.
-{% endblockquote %}</p>
+<p><blockquote><p>The change event is sent to an element when its value changes. This event is limited to input elements, textarea boxes and select elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse, but for the other element types the event is deferred until the element loses focus.</p></blockquote></p>
 
 <p>参考：<a href="http://forum.jquery.com/topic/jquery-checkbox-checked-event">http://forum.jquery.com/topic/jquery-checkbox-checked-event</a></p>
 ]]></content>
@@ -45,7 +43,9 @@ The change event is sent to an element when its value changes. This event is lim
 
 <h2>Keydown event</h2>
 
-<p>{% gist 54b7a48e69b60e33e96b %}</p>
+<p><div><script src='https://gist.github.com/.js?file='></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
 
 <p><em>13</em>という数字がreturnキーのkeydown時のコードです。実はJavascript経験がある方ならすぐ分かると思いますが、<em>13</em>は<em>Enterキー</em>のコードでもあります。</p>
 
@@ -62,7 +62,13 @@ The change event is sent to an element when its value changes. This event is lim
     <id>http://kinopyo.github.com/blog/coffeescript-jquery-document-ready</id>
     <content type="html"><![CDATA[<p>下記どちらもOKです。明示的に書きたいときはjQueryで。</p>
 
-<p><em>gist id=1073555 file=coffee-script-jquery-document-ready</em></p>
+<p><div><script src='https://gist.github.com/1073555.js?file=coffee-script-jquery-document-ready'></script>
+<noscript><pre><code>jQuery -&gt;
+  alert &quot;hello&quot;
+
+$ -&gt;
+  alert &quot;hello&quot;</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   
@@ -80,18 +86,7 @@ $("#wrapper").find("div:first")</p>
 <p>```</p>
 
 <p>この:xxxがBasic Filter(基本フィルタ)と読んで、他にもいろいろあります。
-{% blockquote  %}
-:first 先頭の要素を選択する。
-:last 末尾の要素を選択する。
-:not(selector) 指定したセレクターを除外した要素を選択する。
-:even 偶数番の要素を選択する。
-:odd 奇数番の要素を選択する。
-:eq(index) インデックス指定した要素を選択する。
-:gt(index) 指定したインデックスより後の要素を選択する。
-:lt(index) 指定したインデックスより前の要素を選択する。
-:header h1,h2などのヘッダ要素を選択する。
-:animated アニメーション中の要素を選択する。
-{% endblockquote %}
+<blockquote><p>:first 先頭の要素を選択する。<br/>:last 末尾の要素を選択する。<br/>:not(selector) 指定したセレクターを除外した要素を選択する。<br/>:even 偶数番の要素を選択する。<br/>:odd 奇数番の要素を選択する。<br/>:eq(index) インデックス指定した要素を選択する。<br/>:gt(index) 指定したインデックスより後の要素を選択する。<br/>:lt(index) 指定したインデックスより前の要素を選択する。<br/>:header h1,h2などのヘッダ要素を選択する。<br/>:animated アニメーション中の要素を選択する。</p></blockquote>
 <a href="http://api.jquery.com/category/selectors/basic-filter-selectors/">英語API</a>
 <a href="http://semooh.jp/jquery/api/selectors/">日本語API</a></p>
 ]]></content>

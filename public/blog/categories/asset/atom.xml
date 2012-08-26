@@ -4,7 +4,7 @@
   <title><![CDATA[Category: asset | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/asset/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,7 +24,78 @@
 
 <p>orz....<a href="https://gist.github.com/1350279">https://gist.github.com/1350279</a>で見たほうがいいかも知れません。</p>
 
-<p>{% gist 1350279 %}</p>
+<p><div><script src='https://gist.github.com/1350279.js?file='></script>
+<noscript><pre><code>## asset hostを指定
+image_tag(&quot;rails.png&quot;)のhelper methodで生成するリンクはデフォルトでは同じホストのpublicフォルダを指しています。それを変更したい場合は`config/environments/production.rb`の`ActionController::Base.asset_host`をいじります。
+
+```ruby
+ActionController::Base.asset_host = &quot;assets.example.com&quot;
+```
+
+```erb
+image_tag(&quot;rails.png&quot;)
+# =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets.example.com/images/rails.png?1230601161&quot; /&gt;
+```
+
+## asset hostを複数指定
+ブラウザが一度に同一サーバには２つのコネクションしかできないそう（これは初めて知りました）で、asset同士のダウンロード完了するのを待たなければなりません。もし複数台のassetサーバがある場合は`assets%d.example.com`を使ってそれをコネクション数を増やせることができます。`%d`が指定されればRailsは0~3の４つの番号を付けて、並行して８つのコネクションができます。
+
+```ruby
+ActionController::Base.asset_host = &quot;assets%d.example.com&quot;
+```
+
+```erb
+image_tag(&quot;rails.png&quot;)
+# =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets.example.com/images/rails.png?1230601161&quot; /&gt;
+stylesheet_link_tag(&quot;application&quot;)
+# =&gt; &lt;link href=&quot;http://assets2.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+```
+
+### カスタマイズ
+もっと自分でカスタマイズしたい場合は`source`のprocパラメータを使えます。
+
+```ruby
+ActionController::Base.asset_host = Proc.new { |source|
+  &quot;http://assets#{Digest::MD5.hexdigest(source).to_i(16) % 2 + 1}.example.com&quot;
+}
+image_tag(&quot;rails.png&quot;)
+# =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets1.example.com/images/rails.png?1230601161&quot; /&gt;
+stylesheet_link_tag(&quot;application&quot;)
+# =&gt; &lt;link href=&quot;http://assets2.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+```
+
+特定のパスで始まるassetを特定のホストに指定する例：
+```ruby
+ActionController::Base.asset_host = Proc.new { |source|
+   if source.starts_with?('/images')
+     &quot;http://images.example.com&quot;
+   else
+     &quot;http://assets.example.com&quot;
+   end
+ }
+```
+
+```erb
+image_tag(&quot;rails.png&quot;)
+# =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://images.example.com/images/rails.png?1230601161&quot; /&gt;
+stylesheet_link_tag(&quot;application&quot;)
+# =&gt; &lt;link href=&quot;http://assets.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+```
+さらに`request`の第二パラメータもあります。これでHTTPSの動作も制御できます。
+
+```ruby
+ActionController::Base.asset_host = Proc.new { |source, request|
+  if request.ssl?
+    &quot;#{request.protocol}#{request.host_with_port}&quot;
+  else
+    &quot;#{request.protocol}assets.example.com&quot;
+  end
+}
+```
+
+## Resources
+http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

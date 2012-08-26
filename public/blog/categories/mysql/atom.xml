@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MySQL | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -38,22 +38,20 @@
     <updated>2011-08-17T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/mysql-oracle-group-by-date</id>
     <content type="html"><![CDATA[<p>これが既存データで、同じ日に複数のデータがある。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/table_data.png table_data %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/table_data.png" title="table_data" ></p>
 
 <p>期望結果はこれ、つまり日付別で集計したい場合
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/expected-result.png expected-result %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/expected-result.png" title="expected-result" ></p>
 
 <h2>MySQLではDATE関数を使う</h2>
 
-<p>{% codeblock %}
-mysql> SELECT DATE(create_datetime), COUNT(# ) FROM user_m GROUP BY DATE(create_datetime);
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(# ) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>Oracleではto_char関数を使う</h2>
 
-<p>{% codeblock %}
-SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(# ) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(# ) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>参考</h2>
 
@@ -84,19 +82,9 @@ http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
     <id>http://kinopyo.github.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication</id>
     <content type="html"><![CDATA[<h2>問題</h2>
 
-<p>{% blockquote http://www.php.net/manual/ja/migration53.incompatible.php %}
-新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”
-{% endblockquote %}</p>
+<p><blockquote><p>新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”</p></blockquote></p>
 
-<p>{% blockquote http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html %}
-MacPortでインストールしたPHP5.3では、</p>
-
-<p>mysqlnd(php5.3のmysql native client)が適用される。
-しかし、CentOSなどのyumでインストールできるMySQLサーバーとの相性がよろしくない。
-PHP Warning:  mysql_connect(): mysqlnd cannot connect to MySQL 4.1+ using old authentication
-というエラーが現れ、接続することができません。
-mysqlndを利用しないよう再コンパイルが必要となる。
-{% endblockquote %}</p>
+<p><blockquote><p>MacPortでインストールしたPHP5.3では、</p></p><p><p>mysqlnd(php5.3のmysql native client)が適用される。<br/>しかし、CentOSなどのyumでインストールできるMySQLサーバーとの相性がよろしくない。<br/>PHP Warning:  mysql_connect(): mysqlnd cannot connect to MySQL 4.1+ using old authentication<br/>というエラーが現れ、接続することができません。<br/>mysqlndを利用しないよう再コンパイルが必要となる。</p></blockquote></p>
 
 <h2>解決方法</h2>
 

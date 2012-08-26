@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Performance | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/performance/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -38,19 +38,32 @@
 
 <p><a href="httpd.conf">httpd.conf</a>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
 
-<p>{% codeblock %}</p>
-
-<p><IfModule prefork.c>
-StartServers       5
-MinSpareServers    5
-MaxSpareServers   10
-ServerLimit      64
-MaxClients       64
-MaxRequestsPerChild  50
-MaxMemFree 2000
-</IfModule></p>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;IfModule prefork.c>
+</span><span class='line'>StartServers       5
+</span><span class='line'>MinSpareServers    5
+</span><span class='line'>MaxSpareServers   10
+</span><span class='line'>ServerLimit      64
+</span><span class='line'>MaxClients       64
+</span><span class='line'>MaxRequestsPerChild  50
+</span><span class='line'>MaxMemFree 2000
+</span><span class='line'>&lt;/IfModule>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>PHP</h2>
 

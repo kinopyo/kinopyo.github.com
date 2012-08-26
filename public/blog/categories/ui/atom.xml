@@ -4,7 +4,7 @@
   <title><![CDATA[Category: UI | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/ui/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -21,13 +21,11 @@
     <content type="html"><![CDATA[<p>仕事の事情であるPSDファイルにある画像の座標の情報が必要になって調べました。詳しく説明すると例えば背景が100x100のサイズで、その上に張り付いた違うレイヤーの画像の座標のことです。</p>
 
 <p>ショットカットキーはCTRL+Tです。
-{% blockquote  %}
-メニューで「編集」->「自由変形」にすれば、レイヤーの４隅と中心座標の取得、数値入力による座標移動等ができます。
-{% endblockquote %}</p>
+<blockquote><p>メニューで「編集」->「自由変形」にすれば、レイヤーの４隅と中心座標の取得、数値入力による座標移動等ができます。</p></blockquote></p>
 
 <p>こんな感じです。メニューバーに表示してます。</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/11/coordinate.jpg coordinate %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/11/coordinate.jpg" title="coordinate" ></p>
 
 <p>参考サイト：
 <a href="http://questionbox.jp.msn.com/qa5718320.html">http://questionbox.jp.msn.com/qa5718320.html</a></p>

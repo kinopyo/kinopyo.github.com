@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Evernote | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/evernote/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,7 +20,7 @@
     <id>http://kinopyo.github.com/blog/evernote-add-tags-for-multiple-notes</id>
     <content type="html"><![CDATA[<p>複数のノートに一気にタグをつける方法です。今まで知らなかったことにちょっとショックくらいです。。</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Evernote-add-tags-for-multiple-notes.jpg Evernote-add-tags-for-multiple-notes %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Evernote-add-tags-for-multiple-notes.jpg" title="Evernote-add-tags-for-multiple-notes" ></p>
 
 <p>+先にCommandキーを押しながらノートを複数選択する
 +付けたいタグを上記で選択したノートにドラッグする</p>

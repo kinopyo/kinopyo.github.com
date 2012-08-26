@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,11 +20,7 @@
     <id>http://kinopyo.github.com/blog/what-does-caret-character-mean-in-git</id>
     <content type="html"><![CDATA[<h2>HEAD^</h2>
 
-<p>{% blockquote http://progit.org/book/ch6-1.html#ancestry_references %}
-If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.</p>
-
-<p>HEAD<sup>,</sup> which means “the parent of HEAD”:
-{% endblockquote %}</p>
+<p><blockquote><p>If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.</p></p><p><p>HEAD<sup>,</sup> which means “the parent of HEAD”:</p></blockquote></p>
 
 <p>通常ケースで言うと*HEAD<sup></em>は一個前のコミット、<em>HEAD<sup>^</em>は2つ前のコミットってことですね。他の書き方は<em>HEAD~2</em>、<em>HEAD~5*があります。</sup></sup></p>
 
@@ -44,9 +40,7 @@ If you place a ^ at the end of a reference, Git resolves it to mean the parent o
 +   </em>git reset --hard HEAD@{1}*で番号指定でもう一回git reset（ここでは例として1番にしてる）</p>
 
 <p>reflogの定義は
-{% blockquote  %}
-a log of where your HEAD and branch references have been for the last few months.
-{% endblockquote %}
+<blockquote><p>a log of where your HEAD and branch references have been for the last few months.</p></blockquote>
 いわば自分のローカルリポジトリのHEADが指していた情報を全部保存したログです。ブランチの切り替えやpull、コミットなどの情報が<em>ローカルで</em>保存されるんです。</p>
 
 <ul>
@@ -67,9 +61,8 @@ a log of where your HEAD and branch references have been for the last few months
     <id>http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found</id>
     <content type="html"><![CDATA[<p><a href="http://www.kinopyo.com/blog/what-does-caret-character-mean-in-git">前回の記事：gitの<sup>記号は<em>で</em>HEAD<sup></em>を書いたのですが、<em>zsh</sup></sup></a>でやるとこんなエラーに。。</p>
 
-<p>{% codeblock %}
-zsh: no matches found: HEAD^
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>zsh: no matches found: HEAD^</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>何かzshで*<sup>記号*は特別の意味があるらしいです。</sup>
 参考：<a href="http://stackoverflow.com/questions/6091827/git-show-head-doesnt-seem-to-be-working-is-this-normal">http://stackoverflow.com/questions/6091827/git-show-head-doesnt-seem-to-be-working-is-this-normal</a></p>
@@ -91,13 +84,16 @@ zsh: no matches found: HEAD^
 git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
 ￼
 コミットログはこんな感じです。SVNとは違ってコミットログに残るのが何か慣れないです。
-{% codeblock %}
-$ git log --oneline
-63bc3d1 fixed merge conflict
-bbfdd9e edit in master
-3dcfb2f edit in work
-9eedc58 made a
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git log --oneline
+</span><span class='line'>63bc3d1 fixed merge conflict
+</span><span class='line'>bbfdd9e edit in master
+</span><span class='line'>3dcfb2f edit in work
+</span><span class='line'>9eedc58 made a</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

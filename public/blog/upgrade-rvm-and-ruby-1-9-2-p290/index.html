@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ruby 1.9.2p290へ更新しました。rvmもついでに。 gist id=1073555 file=update_rvm_and_ruby-1.9.2-p290.sh 2011-08-19 Ruby, rvm, 環境構築 ">
+	<meta name="description" content="ruby 1.9.2p290へ更新しました。rvmもついでに。 # update rvm $ rvm get head # or older versions such as 1.0.0 $ rvm update --head # you need to run reload to reflect &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,7 +74,36 @@
 	<h1 class="title">RVMの更新、Ruby 1.9.2p290の更新</h1>
 	<div class="entry-content"><p>ruby 1.9.2p290へ更新しました。rvmもついでに。</p>
 
-<p><em>gist id=1073555 file=update_rvm_and_ruby-1.9.2-p290.sh</em></p>
+<div><script src='https://gist.github.com/1073555.js?file=update_rvm_and_ruby-1.9.2-p290.sh'></script>
+<noscript><pre><code># update rvm  
+$ rvm get head  
+# or older versions such as 1.0.0  
+$ rvm update --head  
+# you need to run reload to reflect the update  
+$ rvm reload         
+$ rvm -v
+  rvm 1.7.2 by Wayne E. Seguin (wayneeseguin@gmail.com) [https://rvm.beginrescueend.com/]
+
+# install ruby 1.9.2.p290  
+$ rvm install 1.9.2-p290
+  ...  
+$ rvm list
+  ruby-1.9.2-p0
+  ruby-1.9.2-p180  
+# you need to replace the p0 based on your environment  
+$ rvm upgrade ruby-1.9.2-p0 ruby-1.9.2-p290
+yes  
+yes  
+yes  ...  
+Upgrade complete!  
+$ rvm list
+  ruby-1.9.2-p290 [ x86_64 ]  
+$ rvm --default use 1.9.2
+$ ruby -v
+  ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-darwin10.8.0]</code></pre></noscript></div>
+
+
+
 </div>
 
 

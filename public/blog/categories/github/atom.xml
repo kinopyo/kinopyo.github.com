@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -38,7 +38,7 @@ Embed GitHub Gistはgistから内容を取得して本文に出力するためRS
 実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
 <a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png bumblebee rm -rf :usr %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png" title="bumblebee rm -rf :usr" ></p>
 
 <p>一個スペースが多かったですね。。</p>
 

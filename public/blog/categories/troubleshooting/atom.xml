@@ -4,7 +4,7 @@
   <title><![CDATA[Category: troubleshooting | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/troubleshooting/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,15 +19,31 @@
     <updated>2012-03-23T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails-test-quietrack-warning</id>
     <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。
-{% codeblock %}
-gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string</span></code></pre></td></tr></table></div></figure></notextile></div>
 このうるさい警告を消す方法を紹介します。</p>
 
 <h2>解決方法</h2>
 
 <p>rspecを使う場合はspec/spec_helper.rbに下記コードを最後に追記してください。
-{% gist 2168152 %}</p>
+<div><script src='https://gist.github.com/2168152.js?file='></script>
+<noscript><pre><code>
+RSpec.configure do |config|
+  # ...
+end
+
+# quick hack to get Rack to be quiet about &quot;warning: regexp match /.../n against to UTF-8 string&quot; until we upgrade to Rails 3.1 with Rack 1.3
+module Rack
+  module Utils
+    def escape(s)
+      CGI.escape(s.to_s)
+    end
+    def unescape(s)
+      CGI.unescape(s)
+    end
+  end
+end</code></pre></noscript></div>
+</p>
 
 <h2>原因</h2>
 
@@ -42,38 +58,7 @@ gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UT
     <updated>2011-09-25T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts</id>
     <content type="html"><![CDATA[<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。
-{% blockquote http://d.hatena.ne.jp/yuum3/20110912 %}
-  #  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p>
-
-<pre><code>servers: *"176.32.95.168"*
-*176.32.95.168* executing command
-</code></pre>
-
-<h3><em>err :: 176.32.95.168</em> find:</h3>
-
-<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3>
-
-<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
-
-<h3><em>err :: 176.32.95.168</em></h3>
-
-<h3><em>err :: 176.32.95.168</em> find:</h3>
-
-<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3>
-
-<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
-
-<h3><em>err :: 176.32.95.168</em></h3>
-
-<h3><em>err :: 176.32.95.168</em> find:</h3>
-
-<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3>
-
-<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
-
-<h3><em>err :: 176.32.95.168</em></h3>
-
-<p>{% endblockquote %}</p>
+<blockquote><p>#  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p></p><p><pre><code>servers: *"176.32.95.168"*<br/>*176.32.95.168* executing command<br/></code></pre></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><p></p></blockquote></p>
 
 <p><a href="https://github.com/capistrano/capistrano/issues/79#issuecomment-1767135" title="Githubにも載ってました。" target="_blank">Githubにも載ってました</a>エラーは無視しても大丈夫そうですが、下記の一行をdeploy.rbに追記すればエラー出なくなります。</p>
 
@@ -125,9 +110,8 @@ gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UT
     <updated>2011-09-21T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails3-1rc-please-install-the-mysql-adapter-error</id>
     <content type="html"><![CDATA[<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
-{% codeblock %}
-Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>解決策</h2>
 
@@ -145,9 +129,8 @@ Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</
 <h1>中文</h1>
 
 <p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
-{% codeblock %}
-Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>解決策</h2>
 
@@ -162,9 +145,8 @@ Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</
 <h1>English</h1>
 
 <p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
-{% codeblock %}
-Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>解決策</h2>
 
@@ -186,21 +168,10 @@ Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</
     <content type="html"><![CDATA[<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
 So I encountered this problem when I synced my evernote in Mac OS.</p>
 
-<p>{% blockquote  %}
-Can't synchronize error, Content is not valid.
-{% endblockquote %}</p>
+<p><blockquote><p>Can't synchronize error, Content is not valid.</p></blockquote></p>
 
 <p>I googled and found this in the evernote support forum.
-{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&amp;t=23986 %}
-One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p>
-
-<p>On my 10.6.6 box, that command is 65072 bytes:</p>
-
-<p>~ $ ls -al <code>which tidy</code>
- rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
-
-<p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.
-{% endblockquote %}</p>
+<blockquote><p>One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p></p><p><p>On my 10.6.6 box, that command is 65072 bytes:</p></p><p><p>~ $ ls -al <code>which tidy</code><br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p></p><p><p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote></p>
 
 <p>It seems like that ruby gems in mac did a mess that replaced the /usr/bin/tidy command unintentionally.
 So if your <code>tidy</code> file size does not match 65072 bytes, just copy on from other Mac OS, and chmod it.</p>
@@ -210,16 +181,7 @@ So if your <code>tidy</code> file size does not match 65072 bytes, just copy on 
 <p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。</p>
 
 <p>公式サイトのサポートでこんな回答を見つかったので共有します。
-{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&amp;t=23986 %}
-One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p>
-
-<p>On my 10.6.6 box, that command is 65072 bytes:</p>
-
-<p>~ $ ls -al <code>which tidy</code>
- rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
-
-<p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.
-{% endblockquote %}</p>
+<blockquote><p>One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p></p><p><p>On my 10.6.6 box, that command is 65072 bytes:</p></p><p><p>~ $ ls -al <code>which tidy</code><br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p></p><p><p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote></p>
 
 <p>MacのRuby gemsが勝手に<code>/usr/bin/tidy</code>コマンドをリプレースしてしまったそうです。</p>
 

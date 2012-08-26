@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iphone4s | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/iphone4s/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<h2>SMSと電話ができなくなる故障？</h2>
 
 <p>iPhone 4Sになってからは「3Gオフ」のオプションはなくなり、代わりに「モバイルデータ通信」をずっとオフにしたのですが、ある日からたまたま<strong>電話やSMSができなくなりました</strong>。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20111015-11syiqan1e8ijfhiiu1rtp3frx.jpg 20111015-11syiqan1e8ijfhiiu1rtp3frx %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20111015-11syiqan1e8ijfhiiu1rtp3frx.jpg" width="20111015"></p>
 
 <p>詳しくは：
 +  SMS送信しても成功とならない(プログレスバーがずっと送信状態)
@@ -52,10 +52,10 @@
     <updated>2011-10-31T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/iphone4s-how-to-know-the-difference-between-imessage-and-normal-sms</id>
     <content type="html"><![CDATA[<p>iMessageの場合はダイアログやボタンが青色になります。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/E1319641321511_2.jpeg iMessage %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/E1319641321511_2.jpeg" title="iMessage" ></p>
 
 <p>普通のSMSの場合は緑色のボタンになります。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/E1319641321511_1.jpeg normal-message %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/E1319641321511_1.jpeg" title="normal-message" ></p>
 
 <p>相手がiMessageで送信出来る場合は優先的にiMessageになるようです。
 またインターネットに繋がらないとiMessageは使えないようです。</p>

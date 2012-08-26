@@ -7,7 +7,7 @@ permalink: /blog/how-to-set-server-date-with-ntp
 comments: true
 categories: ["date", "Linux", "server"]
 ---
-*gist id=1073555 file=set_server_time_with_ntpd.sh*
+{% gist 1073555 set_server_time_with_ntpd.sh %}
 
 ## NPTについて
 {% blockquote http://linux.kororo.jp/cont/server/ntp.php %}

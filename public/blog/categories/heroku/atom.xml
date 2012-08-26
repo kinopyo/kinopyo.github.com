@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Heroku | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/heroku/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,13 +18,25 @@
     <link href="http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars"/>
     <updated>2012-01-24T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars</id>
-    <content type="html"><![CDATA[<p>{% gist 1667607 %}</p>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/1667607.js?file='></script>
+<noscript><pre><code># check all your ENV vars.
+heroku config -long
+     
+# add ENV vars
+heroku config:add S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre></noscript></div>
+</p>
 
 <h1>日本語</h1>
 
 <p>Herokuで環境変数を追加＆チェックするコードです。</p>
 
-<p>{% gist 1667607 %}</p>
+<p><div><script src='https://gist.github.com/1667607.js?file='></script>
+<noscript><pre><code># check all your ENV vars.
+heroku config -long
+     
+# add ENV vars
+heroku config:add S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

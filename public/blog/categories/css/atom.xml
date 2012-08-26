@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CSS | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/css/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -22,25 +22,44 @@
 
 <h2>CSS</h2>
 
-<p>{% codeblock %}</p>
-
-<p>em {</p>
-
-<pre><code>font-weight: normal;
-font-style: normal;
-white-space: nowrap;
-border: 1px solid #ccc;
-padding: 0.1em 0.6em;
-background: #f9f9f9;
-
-border-radius: 3px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-</code></pre>
-
-<p>}</p>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>em {&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>font-weight: normal;
+</span><span class='line'>font-style: normal;
+</span><span class='line'>white-space: nowrap;
+</span><span class='line'>border: 1px solid #ccc;
+</span><span class='line'>padding: 0.1em 0.6em;
+</span><span class='line'>background: #f9f9f9;
+</span><span class='line'>
+</span><span class='line'>border-radius: 3px;
+</span><span class='line'>-webkit-border-radius: 3px;
+</span><span class='line'>-moz-border-radius: 3px;
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>}&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>DEMO</h2>
 
@@ -57,7 +76,11 @@ border-radius: 3px;
 
 <p>普通のcheckboxはiphoneのようなスマートフォンで見るときとても小さいです。checkboxはcssでheightやwidthを指定しても効かないため、ちょっとしたトリックが必要です。</p>
 
-<p>{% gist 1252946 %}</p>
+<p><div><script src='https://gist.github.com/1252946.js?file='></script>
+<noscript><pre><code>input[type=checkbox] {
+  -webkit-transform: scale(2,2);
+}</code></pre></noscript></div>
+</p>
 
 <p>実機ではこんなふうになります。2.0, 1.5, 1.0の3つのサンプルです。
 <a href="http://www.kinopyo.com/blog/wp-content/uploads/2011/09/scale-checkbox-in-iphone-safari.jpg"><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/09/scale-checkbox-in-iphone-safari.jpg" style="border: 10px solid #CCC;" alt="" title="scale-checkbox-in-iphone-safari" width="320" height="480" class="alignnone size-full wp-image-2290" /></a></p>

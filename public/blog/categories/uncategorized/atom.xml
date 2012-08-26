@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -35,34 +35,18 @@
     <id>http://kinopyo.github.com/blog/new-to-me-this-week-1025-1031</id>
     <content type="html"><![CDATA[<h1>Compass</h1>
 
-<p>{% blockquote  %}
-A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:</p>
-
-<p>Compass Core
-Blueprint
-960
-Susy
-YUI</p>
-
-<p>New frameworks and extensions are tracked on the wiki as they are created.
-Other frameworks can be added relatively easily. Create your own!
-{% endblockquote %}
+<p><blockquote><p>A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:</p></p><p><p>Compass Core<br/>Blueprint<br/>960<br/>Susy<br/>YUI</p></p><p><p>New frameworks and extensions are tracked on the wiki as they are created.<br/>Other frameworks can be added relatively easily. Create your own!</p></blockquote>
 <a href="http://github.com/chriseppstein/compass/tree#readme">http://github.com/chriseppstein/compass/tree#readme</a>
 <a href="http://compass-style.org/docs/">http://compass-style.org/docs/</a></p>
 
 <h1>Rails Rumble</h1>
 
-<p>{% blockquote  %}
-The Rails Rumble is an annual 48 hour web application development competition in which teams of skilled web application developers get one weekend to design, develop, and deploy the best web property that they can, using the power of Ruby and Rails.
-{% endblockquote %}
+<p><blockquote><p>The Rails Rumble is an annual 48 hour web application development competition in which teams of skilled web application developers get one weekend to design, develop, and deploy the best web property that they can, using the power of Ruby and Rails.</p></blockquote>
 <a href="http://railsrumble.com/">http://railsrumble.com/</a></p>
 
 <h1>Monospaced font</h1>
 
-<p>{% blockquote  %}
-A monospaced font, also called a fixed-pitch or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space.<em>1</em> This contrasts to variable-width fonts, where the letters differ in size to one another.
-The first monospaced typefaces were designed for typewriters, which could only move the same distance forward with each letter typed. This also meant that monospaced fonts need not be typeset like variable width fonts and were, arguably, easier to deal with.
-{% endblockquote %}
+<p><blockquote><p>A monospaced font, also called a fixed-pitch or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space.<em>1</em> This contrasts to variable-width fonts, where the letters differ in size to one another.<br/>The first monospaced typefaces were designed for typewriters, which could only move the same distance forward with each letter typed. This also meant that monospaced fonts need not be typeset like variable width fonts and were, arguably, easier to deal with.</p></blockquote>
 <a href="http://en.wikipedia.org/wiki/Monospaced_font">http://en.wikipedia.org/wiki/Monospaced_font</a></p>
 ]]></content>
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: paypal | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/paypal/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,9 +20,7 @@
     <id>http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution</id>
     <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
 
-<p>{% blockquote  %}
-PayPal Here is the world's first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.
-{% endblockquote %}</p>
+<p><blockquote><p>PayPal Here is the world's first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote></p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/x5woIGSOLGk" frameborder="0" allowfullscreen></iframe>
 

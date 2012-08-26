@@ -12,4 +12,4 @@ categories: ["Facebook", "PHP"]
 Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントは[こちら](http://developers.facebook.com/docs/reference/fql/link_stat/)にあります。
 
 下記はPHPでのサンプルコードです。
-*gist id=1073555 file=get_facebook_like_counts_of_multiple_urls.php*
+{% gist 1073555 get_facebook_like_counts_of_multiple_urls.php %}

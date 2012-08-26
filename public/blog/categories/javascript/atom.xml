@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,7 +24,9 @@
 
 <h2>Keydown event</h2>
 
-<p>{% gist 54b7a48e69b60e33e96b %}</p>
+<p><div><script src='https://gist.github.com/.js?file='></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
 
 <p><em>13</em>という数字がreturnキーのkeydown時のコードです。実はJavascript経験がある方ならすぐ分かると思いますが、<em>13</em>は<em>Enterキー</em>のコードでもあります。</p>
 
@@ -43,7 +45,45 @@
 注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
 またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
 
-<p>{% gist 1062397 %}</p>
+<p><div><script src='https://gist.github.com/1062397.js?file='></script>
+<noscript><pre><code># don't forget to update your port tree first
+sudo port selfupdate
+
+# install coffee script using macport
+sudo port install nodejs
+node -v
+
+# install npm - the Node Package Manager
+git clone http://github.com/isaacs/npm.git
+cd npm
+sudo make install
+npm -v
+
+# now install coffee-script!
+sudo npm install -g coffee-script
+coffee -v
+
+# because TextMate doesn't inherit your regular PATH
+# you need to set a symbol link to /usr/bin
+# so that you can run coffee in your textmate
+
+which node
+/opt/local/bin/node
+
+which coffee
+/opt/local/bin/coffee
+
+cd /usr/bin
+sudo ln -s /opt/local/bin/node
+sudo ln -s /opt/local/bin/coffee
+
+# install textmate coffee-script bundle
+mkdir -p ~/Library/Application\ Support/TextMate/Bundles
+cd ~/Library/Application\ Support/TextMate/Bundles
+git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript.tmbundle
+
+# now you can use command + B to compile and display javascript in your textmate!</code></pre></noscript></div>
+</p>
 
 <p>これでtextmateでcommand + Bでコンパイル後のJavascriptが表示できるようになります！</p>
 ]]></content>

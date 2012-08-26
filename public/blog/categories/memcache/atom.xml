@@ -4,7 +4,7 @@
   <title><![CDATA[Category: memcache | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/memcache/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -46,27 +46,24 @@
 <li><a href="http://code.jellycan.com/memcached/">http://code.jellycan.com/memcached/</a>より<strong>memcached 1.2.6 => win32 binary</strong>バージョンのファイルをダウンロード
 +zipファイルを適当な場所(例えばc:\memcached)に解凍
 +コマンドプロンプトから下記コマンドを叩く、Windowsサービスとしてインストール。これで今度Windowsが起動すると自動でmemcacheサーバが起動してくれる。
-{% codeblock %}
-c:\memcached.exe -d install
-{% endcodeblock %}</li>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached.exe -d install</span></code></pre></td></tr></table></div></figure></notextile></div></li>
 </ul>
 
 
 <h3>memcacheの起動(初回のみ)</h3>
 
 <p>コマンドプロンプト
-{% codeblock %}
-c:\memcached\memcached.exe -d start
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached\memcached.exe -d start</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>php側</h2>
 
 <h3>php.iniの設定</h3>
 
 <p>XAMPPのパス/php/php.iniを編集：下記コードを追加
-{% codeblock %}
-extension = php_memcache.dll
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>extension = php_memcache.dll</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>ここはLinux環境と違い拡張子が.soではなく.dll。</p>
 
@@ -111,11 +108,7 @@ print_r(unserialize($memcache-&gt;get("key")));
 
 <h2>おまけ：memcacheメモリの調整</h2>
 
-<p>{% blockquote  %}
-Memcached, by default, loads with 64mb of memory for it’s use which is low for most applications. To change this to something else, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server in your registry, find the ImagePath entry and change it to look something like this:</p>
-
-<p>“C:\memcached\memcached.exe” -d runservice -m 512
-{% endblockquote %}</p>
+<p><blockquote><p>Memcached, by default, loads with 64mb of memory for it’s use which is low for most applications. To change this to something else, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server in your registry, find the ImagePath entry and change it to look something like this:</p></p><p><p>“C:\memcached\memcached.exe” -d runservice -m 512</p></blockquote></p>
 
 <h2>参考</h2>
 
@@ -139,7 +132,7 @@ Memcached, by default, loads with 64mb of memory for it’s use which is low for
 <h3>1. application/bootstrap.phpを編集</h3>
 
 <p>Kohana::modulesのcacheのコメントを外します。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/kohana-bootstrap-module-cache.jpg Kohana active cache in bootstrap.php %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/09/kohana-bootstrap-module-cache.jpg" title="Kohana active cache in bootstrap.php" ></p>
 
 <h3>2. 下記の内容でconfig/cache.phpを作成</h3>
 
@@ -214,39 +207,43 @@ string(5) "world"</p>
 <h3>2. XAMPP Developer Packageをインストール</h3>
 
 <p><a href="http://www.apachefriends.org/en/xampp-macosx.html">http://www.apachefriends.org/en/xampp-macosx.html</a>より下記赤線のリンクをダウンロードします。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/xampp-developer-package-for-mac.jpg xampp develop package for mac %}
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/09/xampp-developer-package-for-mac.jpg" title="xampp develop package for mac" >
 参考リンク：<a href="http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/">http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/</a>
 ダウンロードしたdmgファイルを開いてDevel-Package.mpkgをダブルクリックでインストールします。</p>
 
 <h3>3. ターミナルを開いて(/Applications/Utilities/Terminal)下記コマンドを実行</h3>
 
-<p>{% codeblock %}
-cd /tmp
-pecl download memcache
-tar xzf memcache-2.2.5.tgz
-cd memcache-2.2.5
-/Applications/XAMPP/xamppfiles/bin/phpize-5.3.1
-MACOSX_DEPLOYMENT_TARGET=10.6 CFLAGS='-O3 -fno-common -arch i386 -arch x86_64' LDFLAGS='-O3 -arch i386 -arch x86_64' CXXFLAGS='-O3 -fno-common -arch i386 -arch x86_64' ./configure --with-php-config=/Applications/XAMPP/xamppfiles/bin/php-config-5.3.1
-make
-sudo make install
-{% endcodeblock %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /tmp
+</span><span class='line'>pecl download memcache
+</span><span class='line'>tar xzf memcache-2.2.5.tgz
+</span><span class='line'>cd memcache-2.2.5
+</span><span class='line'>/Applications/XAMPP/xamppfiles/bin/phpize-5.3.1
+</span><span class='line'>MACOSX_DEPLOYMENT_TARGET=10.6 CFLAGS='-O3 -fno-common -arch i386 -arch x86_64' LDFLAGS='-O3 -arch i386 -arch x86_64' CXXFLAGS='-O3 -fno-common -arch i386 -arch x86_64' ./configure --with-php-config=/Applications/XAMPP/xamppfiles/bin/php-config-5.3.1
+</span><span class='line'>make
+</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure></notextile></div>
 成功したら/Applications/XAMPP/xamppfiles/lib/php/php-5.3.1/extensions/no-debug-non-zts-xxxxのフォルダ(xxは20090626みたいな日付)に<strong>memcache.so</strong>というファイルが生成されます。</p>
 
 <h3>4. php.iniファイルの編集</h3>
 
 <p>/Applications/XAMPP/xamppfiles/etc/php.iniファイルを開いて"Dynamic Extensions"のブロックを検索し、下記内容を追記します。私の環境では538行くらいでした。
-{% codeblock %}
-extension=memcache.so
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>extension=memcache.so</span></code></pre></td></tr></table></div></figure></notextile></div>
 こんあ感じです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/php-ini-memcache-extension.jpg Add memcache extention to php.ini %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/09/php-ini-memcache-extension.jpg" title="Add memcache extention to php.ini" ></p>
 
 <h3>5.memcacheを立ち上がる</h3>
 
 <p>ターミナルで下記コマンドを実行します。
-{% codeblock %}
-memcached -m 8 -l 127.0.0.1 -p 11211 -d
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>memcached -m 8 -l 127.0.0.1 -p 11211 -d</span></code></pre></td></tr></table></div></figure></notextile></div>
 これは自分の環境でmemcacheをIP:127.0.0.1、ポート:11211、8MBのRAMスペースで立ち上がる意味です。</p>
 
 <h3>6. phpで動作確認</h3>
@@ -288,12 +285,11 @@ else {</p>
 
 <p>これを/Applications/XAMPP/xamppfiles/htdocsに置いて、ブラウザでhttp://localhost/memcache.php(あるいはhttp://127.0.0.1/memcache.php)を開きます。
 下記のようなページが表示されればOKです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/memcache-test-in-php.jpg memcache test in php %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/09/memcache-test-in-php.jpg" title="memcache test in php" ></p>
 
 <p>ちなみにmemcacheを停止するコマンドは：
-{% codeblock %}
-killall memcached
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>killall memcached</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

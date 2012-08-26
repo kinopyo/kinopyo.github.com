@@ -4,7 +4,7 @@
   <title><![CDATA[Category: keydown | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/keydown/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,7 +24,9 @@
 
 <h2>Keydown event</h2>
 
-<p>{% gist 54b7a48e69b60e33e96b %}</p>
+<p><div><script src='https://gist.github.com/.js?file='></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
 
 <p><em>13</em>という数字がreturnキーのkeydown時のコードです。実はJavascript経験がある方ならすぐ分かると思いますが、<em>13</em>は<em>Enterキー</em>のコードでもあります。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: WordPress | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,13 +20,7 @@
     <id>http://kinopyo.github.com/blog/wordpress-page-links-to-plugin</id>
     <content type="html"><![CDATA[<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the "about" page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
 
-<p>{% blockquote  %}
-This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p>
-
-<p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p>
-
-<p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.
-{% endblockquote %}</p>
+<p><blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p></p><p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p></p><p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote></p>
 
 <p>Reference:
 <a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
@@ -36,13 +30,7 @@ This plugin allows you to make a WordPress page or post link to a URL of your ch
 <p><a href="http://wordpress.org/extend/plugins/page-links-to/">Page Links To</a>プラグインでブログにWordpressの"Page"を追加し、指定のurlを開くように設定できます。
 例えば自分の場合は"About"ページを<a href="http://about.me/kinopyo">http://about.me/kinopyo</a>にリダイレクトしています。</p>
 
-<p>{% blockquote  %}
-This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p>
-
-<p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p>
-
-<p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.
-{% endblockquote %}</p>
+<p><blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p></p><p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p></p><p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote></p>
 
 <p>参考サイト：
 <a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
@@ -74,19 +62,32 @@ This plugin allows you to make a WordPress page or post link to a URL of your ch
 
 <p><a href="httpd.conf">httpd.conf</a>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
 
-<p>{% codeblock %}</p>
-
-<p><IfModule prefork.c>
-StartServers       5
-MinSpareServers    5
-MaxSpareServers   10
-ServerLimit      64
-MaxClients       64
-MaxRequestsPerChild  50
-MaxMemFree 2000
-</IfModule></p>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;IfModule prefork.c>
+</span><span class='line'>StartServers       5
+</span><span class='line'>MinSpareServers    5
+</span><span class='line'>MaxSpareServers   10
+</span><span class='line'>ServerLimit      64
+</span><span class='line'>MaxClients       64
+</span><span class='line'>MaxRequestsPerChild  50
+</span><span class='line'>MaxMemFree 2000
+</span><span class='line'>&lt;/IfModule>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>PHP</h2>
 
@@ -106,25 +107,44 @@ pecl install APC</p>
 
 <h2>CSS</h2>
 
-<p>{% codeblock %}</p>
-
-<p>em {</p>
-
-<pre><code>font-weight: normal;
-font-style: normal;
-white-space: nowrap;
-border: 1px solid #ccc;
-padding: 0.1em 0.6em;
-background: #f9f9f9;
-
-border-radius: 3px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-</code></pre>
-
-<p>}</p>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>em {&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>font-weight: normal;
+</span><span class='line'>font-style: normal;
+</span><span class='line'>white-space: nowrap;
+</span><span class='line'>border: 1px solid #ccc;
+</span><span class='line'>padding: 0.1em 0.6em;
+</span><span class='line'>background: #f9f9f9;
+</span><span class='line'>
+</span><span class='line'>border-radius: 3px;
+</span><span class='line'>-webkit-border-radius: 3px;
+</span><span class='line'>-moz-border-radius: 3px;
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>}&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>DEMO</h2>
 
@@ -143,10 +163,10 @@ border-radius: 3px;
 
 <p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
 CentOSなのでyumを使ってインストールすれば解決です。
-{% codeblock %}
-sudo yum install php-gd
-sudo service httpd restart
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo yum install php-gd
+</span><span class='line'>sudo service httpd restart</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
@@ -155,9 +175,7 @@ sudo service httpd restart
     <link href="http://kinopyo.github.com/blog/wordpress-plugin-social-metrics-for-japanese"/>
     <updated>2011-09-20T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/wordpress-plugin-social-metrics-for-japanese</id>
-    <content type="html"><![CDATA[<p>{% blockquote http://kachibito.net/wordpress/social-metrics-for-japanese.html %}
-今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる</p></blockquote></p>
 
 <h2>インストール</h2>
 
@@ -168,7 +186,7 @@ sudo service httpd restart
 <p>インストールするとDashboardとPluginsのサイドバーに<strong>Social Metrics</strong>のリンクが表示され、記事がTwtter、いいね、はてブされた数が月別、カテゴリ別で見れます！
 ただしlinkedinはなぜか常に1になってます。</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/09/Social-Metrics-for-Japanese.jpg Social Metrics for Japanese %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/09/Social-Metrics-for-Japanese.jpg" title="Social Metrics for Japanese" ></p>
 
 <p>最後に。うちの小さいブログにとってはソーシャルなど意識すぎの課題があると思います。Google Analyticsで一ヶ月で各ソーシャルプラットフォーム（Facebook, Twitter, Google+1, はてな）からのアクセスは10も行かない場合があって、90%以上がGoogle検索でやってきています。この状況を踏まえて今まで導入したソーシャルボタンとか、効果対コストは極めて低い！と感じました。</p>
 ]]></content>

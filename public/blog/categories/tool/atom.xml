@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tool | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/tool/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -35,10 +35,10 @@
     <updated>2011-07-29T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/reply-to-all-always-in-gmail</id>
     <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_reply_to_all.png Gmail_reply_to_all %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
 
 <p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png Gmail_setting_reply_to_all %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
 ]]></content>
   </entry>
   
@@ -69,14 +69,14 @@
     <content type="html"><![CDATA[<h2>Disqusの概要</h2>
 
 <p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png Disqus Login with Twitter, Facebook, etc. %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png" title="Disqus Login with Twitter, Facebook, etc." ></p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png Disqus Comment system %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png" title="Disqus Comment system" ></p>
 
 <h2>導入手順</h2>
 
 <p>実際の導入フローはとても簡単なので、流れだけ書きます。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png Disqus comment system site %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png" title="Disqus comment system site" ></p>
 
 <p>+<a href="http://disqus.com/">http://disqus.com/</a>でアカウント登録
 +ブログサイトの情報、メインライター、導入ブログタイプ（ここはWordpress）などの設定
@@ -91,10 +91,10 @@
 
 <p>既存コメントのエクスポートは時間がかかりそうで、すぐには反映しないようです。
 Disqusの管理画面で確認したらステータスが"Queued for import"になってます。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg DISQUS Admin page - tools - Import/export %}</p>
+<img class="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg DISQUS Admin page - tools -" src="Import/export"></p>
 
 <p>すると翌日にインポートできましたよというメールがきました。管理画面でチェック：
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png Disqus-comment-import-complete %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png" title="Disqus-comment-import-complete" ></p>
 ]]></content>
   </entry>
   
@@ -106,21 +106,10 @@ Disqusの管理画面で確認したらステータスが"Queued for import"に�
     <content type="html"><![CDATA[<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
 So I encountered this problem when I synced my evernote in Mac OS.</p>
 
-<p>{% blockquote  %}
-Can't synchronize error, Content is not valid.
-{% endblockquote %}</p>
+<p><blockquote><p>Can't synchronize error, Content is not valid.</p></blockquote></p>
 
 <p>I googled and found this in the evernote support forum.
-{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&amp;t=23986 %}
-One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p>
-
-<p>On my 10.6.6 box, that command is 65072 bytes:</p>
-
-<p>~ $ ls -al <code>which tidy</code>
- rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
-
-<p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.
-{% endblockquote %}</p>
+<blockquote><p>One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p></p><p><p>On my 10.6.6 box, that command is 65072 bytes:</p></p><p><p>~ $ ls -al <code>which tidy</code><br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p></p><p><p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote></p>
 
 <p>It seems like that ruby gems in mac did a mess that replaced the /usr/bin/tidy command unintentionally.
 So if your <code>tidy</code> file size does not match 65072 bytes, just copy on from other Mac OS, and chmod it.</p>
@@ -130,16 +119,7 @@ So if your <code>tidy</code> file size does not match 65072 bytes, just copy on 
 <p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。</p>
 
 <p>公式サイトのサポートでこんな回答を見つかったので共有します。
-{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&amp;t=23986 %}
-One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p>
-
-<p>On my 10.6.6 box, that command is 65072 bytes:</p>
-
-<p>~ $ ls -al <code>which tidy</code>
- rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
-
-<p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.
-{% endblockquote %}</p>
+<blockquote><p>One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p></p><p><p>On my 10.6.6 box, that command is 65072 bytes:</p></p><p><p>~ $ ls -al <code>which tidy</code><br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p></p><p><p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote></p>
 
 <p>MacのRuby gemsが勝手に<code>/usr/bin/tidy</code>コマンドをリプレースしてしまったそうです。</p>
 

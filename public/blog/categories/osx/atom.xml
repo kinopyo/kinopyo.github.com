@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osx | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,11 +20,11 @@
     <id>http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu</id>
     <content type="html"><![CDATA[<p>MacのTweet公式アプリをインストール後、テキストを選択状態で右クリックするとメニューに「Tweet」が出てきますね。個人的には使わないのでそれを消す方法をシェアします。</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/11/Tweet-in-right-click-menu.jpg Tweet in right click menu %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/11/Tweet-in-right-click-menu.jpg" title="Tweet in right click menu" ></p>
 
 <p>これはOS Xの<em>Services</em>として登録されます。どのServicesをON/OFFにするかはSystem PreferencesのKeyboardで設定できます。今回の話だと<em>File and Folders</em>で<em>Tweet</em>のチェックボックスを外せばOKです。</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/11/uncheck-tweet-services.jpg uncheck tweet services %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/11/uncheck-tweet-services.jpg" title="uncheck tweet services" ></p>
 
 <p>UPDATE:
 <em>Open as Twitter Username</em>も消すべきでした。</p>

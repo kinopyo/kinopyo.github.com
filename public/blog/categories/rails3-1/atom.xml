@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails3.1 | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/rails3-1/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,38 +19,7 @@
     <updated>2011-09-25T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts</id>
     <content type="html"><![CDATA[<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。
-{% blockquote http://d.hatena.ne.jp/yuum3/20110912 %}
-  #  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p>
-
-<pre><code>servers: *"176.32.95.168"*
-*176.32.95.168* executing command
-</code></pre>
-
-<h3><em>err :: 176.32.95.168</em> find:</h3>
-
-<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3>
-
-<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
-
-<h3><em>err :: 176.32.95.168</em></h3>
-
-<h3><em>err :: 176.32.95.168</em> find:</h3>
-
-<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3>
-
-<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
-
-<h3><em>err :: 176.32.95.168</em></h3>
-
-<h3><em>err :: 176.32.95.168</em> find:</h3>
-
-<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3>
-
-<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
-
-<h3><em>err :: 176.32.95.168</em></h3>
-
-<p>{% endblockquote %}</p>
+<blockquote><p>#  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p></p><p><pre><code>servers: *"176.32.95.168"*<br/>*176.32.95.168* executing command<br/></code></pre></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><p></p></blockquote></p>
 
 <p><a href="https://github.com/capistrano/capistrano/issues/79#issuecomment-1767135" title="Githubにも載ってました。" target="_blank">Githubにも載ってました</a>エラーは無視しても大丈夫そうですが、下記の一行をdeploy.rbに追記すればエラー出なくなります。</p>
 
@@ -102,9 +71,8 @@
     <updated>2011-09-21T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails3-1rc-please-install-the-mysql-adapter-error</id>
     <content type="html"><![CDATA[<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
-{% codeblock %}
-Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>解決策</h2>
 
@@ -122,9 +90,8 @@ Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</
 <h1>中文</h1>
 
 <p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
-{% codeblock %}
-Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>解決策</h2>
 
@@ -139,9 +106,8 @@ Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</
 <h1>English</h1>
 
 <p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
-{% codeblock %}
-Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>解決策</h2>
 
@@ -198,7 +164,7 @@ rails s</p>
 <h2>トラブル</h2>
 
 <p>ここまで順調でしたが、http://127.0.0.1:3000にアクセスしたときにundefined method `context' for #&lt;Sprockets::Environment:>のトラブルに会いました。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png Sprockets trouble %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png" title="Sprockets trouble" ></p>
 
 <br/>
 
@@ -206,9 +172,7 @@ rails s</p>
 <p>どうやらこのSprocketsというのがポイントのようです。
 ぐぐってみたらgithubでこのようなコメントがありました。</p>
 
-<p>{% blockquote https://github.com/rails/rails/issues/453 %}
-Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem 'sprockets', '2.0.0.beta.2' in your Gemfile.
-{% endblockquote %}</p>
+<p><blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem 'sprockets', '2.0.0.beta.2' in your Gemfile.</p></blockquote></p>
 
 <p>のようでGemfileに下記を追記し再度bundle update。</p>
 
@@ -218,7 +182,7 @@ gem 'sprockets', '2.0.0.beta.2'</p>
 <p>```</p>
 
 <p>解決〜
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png rails server running %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
 ]]></content>
   </entry>
   

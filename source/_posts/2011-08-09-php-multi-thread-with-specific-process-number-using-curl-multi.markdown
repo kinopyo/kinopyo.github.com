@@ -13,6 +13,6 @@ urlは配列で受け取って、もし指定したプロセス数より多い�
 
 このサンプルコードではこのブログの幾つかのurlに対してtitleを取得しました。
 
-*gist id=1073555 file=multi-process-exec.php*
+{% gist 1073555 multi-process-exec.php %}
 
 参考：[PHPでマルチスレッド(バックグラウンド処理)を実現する方法](http://techblog.ecstudio.jp/tech-tips/php-multi.html)

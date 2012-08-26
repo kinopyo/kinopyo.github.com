@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Chrome | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/chrome/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -22,7 +22,7 @@
 
 <p>If you click the tool icon on the right of the address bar, you can also check the current zoom rate.</p>
 
-<p>{% img https://img.skitch.com/20120803-1ew92g41qdw65n6iecywgwun6u.jpg 'Google Chrome Check Zoom Rate' %}</p>
+<p><img src="https://img.skitch.com/20120803-1ew92g41qdw65n6iecywgwun6u.jpg" title="'Google Chrome Check Zoom Rate'" ></p>
 ]]></content>
   </entry>
   
@@ -37,32 +37,13 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 <p>上記のリンクからダウンロードしインストールすれば完了です。Safariの再起動は必要になります。</p>
 
 <p>再起動すればSafariのタブにFaviconが表示されます！こんな感じになります〜♪
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/03/Screen-Shot-2012-03-21-at-12.29.46.png Safari Display Tab Favicon %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2012/03/Screen-Shot-2012-03-21-at-12.29.46.png" title="Safari Display Tab Favicon" ></p>
 
 <p>その他にもいろいろ機能があって、例えばGoogleやYahooの検索結果にサムネールを表示したり最後に閉じたタブを表示したり…
 日本語版もあるみたいですよ〜
 機能一覧：</p>
 
-<p>{% blockquote  %}
-Adds thumbnails to Google/Yahoo/Bing search results
-Adds search engines to the default Safari's search tab
-Adds Favicons to tab labels
-Adds keyword search from address bar
-Adds new tab position option (right/left/leftmost/rightmost)
-Adds tab closing using middle mouse button (or CMD-Click)
-Focus last selected tab
-Type-ahead support (auto cmd-f)
-Sets the focus on the search field when opening a new window
-Adds Amazon's information banner on Google/Yahoo/Bing search results
-Adds a "Max Window Size" menu item to resize the Safari window
-Autocomplete search phrase
-Adds bookmark separator
-Adds bookmark actions
-Dated download folders
-Auto-Closes download window
-Undo "Close Tab" (cmd-z)
-Localized to Japanese, French, Polish, German, Spanish, Italian, and Korean
-{% endblockquote %}</p>
+<p><blockquote><p>Adds thumbnails to Google/Yahoo/Bing search results<br/>Adds search engines to the default Safari's search tab<br/>Adds Favicons to tab labels<br/>Adds keyword search from address bar<br/>Adds new tab position option (right/left/leftmost/rightmost)<br/>Adds tab closing using middle mouse button (or CMD-Click)<br/>Focus last selected tab<br/>Type-ahead support (auto cmd-f)<br/>Sets the focus on the search field when opening a new window<br/>Adds Amazon's information banner on Google/Yahoo/Bing search results<br/>Adds a "Max Window Size" menu item to resize the Safari window<br/>Autocomplete search phrase<br/>Adds bookmark separator<br/>Adds bookmark actions<br/>Dated download folders<br/>Auto-Closes download window<br/>Undo "Close Tab" (cmd-z)<br/>Localized to Japanese, French, Polish, German, Spanish, Italian, and Korean</p></blockquote></p>
 ]]></content>
   </entry>
   
@@ -102,7 +83,7 @@ Localized to Japanese, French, Polish, German, Spanish, Italian, and Korean
 
 <p><a href="https://chrome.google.com/webstore/detail/nhgblejfncijjppnbfgaljgdifaokine?hc=search&amp;hcp=main">My First Chrome Extension Youku Opener</a></p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Screen-Shot-2011-10-21-at-15.15.07.png My First Google Chrome Extension: Youku Opener %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Screen-Shot-2011-10-21-at-15.15.07.png" title="My First Google Chrome Extension: Youku Opener" ></p>
 
 <p>公開3日で14weekly usersの数字でした。意外と使おうとするユーザがいますね、unexpected、予想外でした。</p>
 ]]></content>

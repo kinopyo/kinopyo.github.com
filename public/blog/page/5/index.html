@@ -526,11 +526,32 @@
 
 <h2>解決方法</h2>
 
-<p><em>gist id=1303281 file= sinatra_render_html.rb</em>
-<em>File.read</em>でファイルとして読み込むことですね。Sinatraはデフォルトの設定だと<em>public</em>フォルダ内のものをassetsとするそうです。</p>
+<div><script src='https://gist.github.com/1303281.js?file=sinatra_render_html.rb'></script>
+<noscript><pre><code>require 'sinatra'
 
-<p>でちょっとリファクタリングして<em>html :index</em>のシンタックスでいけるようにしました。
-<em>gist id=1303281 file=sinatra_render_html_refactor.rb</em></p>
+get '/' do
+  File.read(File.join('public', 'index.html'))
+  # or
+  # send_file File.join(settings.public, 'index.html')
+end</code></pre></noscript></div>
+
+
+<p><em>File.read</em>でファイルとして読み込むことですね。Sinatraはデフォルトの設定だと<em>public</em>フォルダ内のものをassetsとするそうです。</p>
+
+<p>でちょっとリファクタリングして<em>html :index</em>のシンタックスでいけるようにしました。</p>
+
+<div><script src='https://gist.github.com/1303281.js?file=sinatra_render_html_refactor.rb'></script>
+<noscript><pre><code>require &quot;sinatra&quot;
+
+get '/' do
+  # File.read(File.join('public', 'index.html'))
+  html :index
+end
+
+def html(view)
+  File.read(File.join('public', &quot;#{view.to_s}.html&quot;))
+end</code></pre></noscript></div>
+
 
 <h2>参考</h2>
 

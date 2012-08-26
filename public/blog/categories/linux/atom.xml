@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -38,7 +38,7 @@ sudo service httpd restart
     <id>http://kinopyo.github.com/blog/how-to-create-user-and-grant-root-privilege-in-linux</id>
     <content type="html"><![CDATA[<p>コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。</p>
 
-<p>*gist id=1073555 file= linux_create_user_modify_group.sh *</p>
+<p>{% gist 1073555  linux_create_user_modify_group.sh  %}</p>
 ]]></content>
   </entry>
   
@@ -47,7 +47,7 @@ sudo service httpd restart
     <link href="http://kinopyo.github.com/blog/how-to-set-server-date-with-ntp"/>
     <updated>2011-08-19T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/how-to-set-server-date-with-ntp</id>
-    <content type="html"><![CDATA[<p><em>gist id=1073555 file=set_server_time_with_ntpd.sh</em></p>
+    <content type="html"><![CDATA[<p>{% gist 1073555 set_server_time_with_ntpd.sh %}</p>
 
 <h2>NPTについて</h2>
 

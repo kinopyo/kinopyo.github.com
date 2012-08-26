@@ -9,4 +9,4 @@ categories: ["CoffeeScript", "jQuery"]
 ---
 下記どちらもOKです。明示的に書きたいときはjQueryで。
 
-*gist id=1073555 file=coffee-script-jquery-document-ready*
+{% gist 1073555 coffee-script-jquery-document-ready %}

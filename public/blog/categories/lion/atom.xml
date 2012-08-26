@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Lion | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/lion/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>今までの全画面とは違い、Chrome14ではLionのフルスクリーンに対応しました。これは全画面対応アプリとして1枚の仮想スクリーンを占有することになり、左右の四本指スワイプで他の全画面アプリやデスクトップと楽に切り替えられます。</p>
 
 <p>また上にマウスオーバーするとPIN固定できるボタンがあります。クリックするとアドレスバーやタブバーなどが表示するように固定されます。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/09/chrome-full-screen-in-lion.jpg chrome-full-screen-in-lion %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/09/chrome-full-screen-in-lion.jpg" title="chrome-full-screen-in-lion" ></p>
 ]]></content>
   </entry>
   
@@ -31,12 +31,12 @@
     <updated>2011-07-25T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/lion-fullscreen-shortcut-key-conflict-with-evernote-client</id>
     <content type="html"><![CDATA[<p>Lionにはフルスクリーンという機能がありますね。Safari、MailとかPreviewといったMacネーティブなアプリではView->Enter Full Screenでフルスクリーンモードに入れます。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Lion_Fullscreen.jpg Lion_Fullscreen %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Lion_Fullscreen.jpg" title="Lion_Fullscreen" ></p>
 
 <p>そのショットカットキーは control + shift + fですが、自分の環境だとこれはEvernoteクライアントの検索ショットカットキーと衝突します。正確にはEvernoteのほうが優先で占めて、Lionフルスクリーンが効かなくなります。</p>
 
 <p>解決方法はEvernoteクライアントの検索ショットカットキーを他に設定するか、キャンセルして<strong>Lionを再起動</strong>することです。再起動しないとショットカットキーの変更は有効にならないからです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Evernote_Preferences_shortcuts.jpg Evernote_Preferences_shortcuts %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Evernote_Preferences_shortcuts.jpg" title="Evernote_Preferences_shortcuts" ></p>
 ]]></content>
   </entry>
   
@@ -58,17 +58,17 @@
 
 <p>このThree finger dragは自分は大好きですが、もしこれを使わない方でしたら解決は速いです。
 システム設定のトラックパッドを開き、More Gestureタブの<strong>Swipe between pages</strong>のジェスチャーを3本指或いは2本/3本指に設定。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/swipe_between_pages.jpg swipe_between_pages %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/swipe_between_pages.jpg" title="swipe_between_pages" ></p>
 
 <p>これでChromeで3本指左右スワイプが効きます。2本指はまだ認識できないっぽいですが、Safariではどっちでもうまく対応できてしかもアニメーションでページ遷移ができます。</p>
 
 <p>こうすればThree finger dragは自動でオフになります。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Three_finger_drag_off.jpg Three_finger_drag_off %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Three_finger_drag_off.jpg" title="Three_finger_drag_off" ></p>
 
 <h2>2. Three finger dragも使いたいならBetterTouchToolを使う</h2>
 
 <p>BetterTouchToolでこのようにChrome専用のジェスチャーを設定します。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/BetterTouchTool.jpg BetterTouchTool %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/BetterTouchTool.jpg" title="BetterTouchTool" ></p>
 
 <p>2本指のスワイプのアクションを⌘(Command) + {と⌘(Command) + }に設定します。これはChromeでのページ遷移のショットカットキーです。実際使ってみたら使い心地はあまりよくないですが。。</p>
 

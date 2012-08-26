@@ -4,7 +4,7 @@
   <title><![CDATA[Category: partial | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/partial/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,17 +19,47 @@
     <updated>2011-11-07T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails-passing-optional-local-variables-to-partial-view</id>
     <content type="html"><![CDATA[<p>例えば省略可能なフラグみたいなローカル変数をpartial viewに渡した時、そのデフォルト動作をpartial viewでハンドリングしたいですね。
-{% gist 1344066 use_case_sample.erb %}</p>
+<div><script src='https://gist.github.com/1344066.js?file=use_case_sample.erb'></script>
+<noscript><pre><code>&lt;%= render 'article', :show_author =&gt; false %&gt;
+&lt;%= render 'article' %&gt;
+</code></pre></noscript></div>
+</p>
 
 <p>調べてみたら<em>defined?</em>と<em>local_assigns.has_key?</em>が見つかりましたが、前者のほうはオススメできなさそうです。
-{% blockquote http://api.rubyonrails.org/classes/ActionView/Base.html %}
-Testing using defined? headline will not work. This is an implementation restriction.
-{% endblockquote %}</p>
+<blockquote><p>Testing using defined? headline will not work. This is an implementation restriction.</p></blockquote></p>
 
-<p>{% gist 1344066 solution.erb %}
+<p><div><script src='https://gist.github.com/1344066.js?file=solution.erb'></script>
+<noscript><pre><code># http://api.rubyonrails.org/classes/ActionView/Base.html
+
+# If you need to find out whether a certain local variable
+# has been assigned a value in a particular render call, 
+# you need to use the following pattern:
+
+&lt;% unless local_assigns.has_key? :show_author %&gt;
+  &lt;% show_author = true %&gt;
+&lt;% end %&gt;
+
+&lt;% if show_author %&gt;
+  Author: &lt;%= @article.author %&gt;
+&lt;% end %&gt;
+
+# Testing using defined? headline will not work. This is an implementation restriction.
+</code></pre></noscript></div>
+
 実際やってみて、defined?でも動けるパターンはありますが、if/unless文で一行にしたらバグりました。なのでやはり<em> local_assigns.has_key?</em>を使いましょう。</p>
 
-<p>{% gist 1344066 compared_to_defined_method_with_oneline_condition.erb %}</p>
+<p><div><script src='https://gist.github.com/1344066.js?file=compared_to_defined_method_with_oneline_condition.erb'></script>
+<noscript><pre><code># this will work
+&lt;% unless defined?(:show_author) %&gt;
+  &lt;% show_author = true %&gt;
+&lt;% end %&gt;
+
+# NOT work
+&lt;% show_author = true unless defined?(:show_author) %&gt;
+
+# this will work
+&lt;% show_author = true unless local_assigns.has_key? :show_author %&gt;</code></pre></noscript></div>
+</p>
 
 <h2>Resources</h2>
 

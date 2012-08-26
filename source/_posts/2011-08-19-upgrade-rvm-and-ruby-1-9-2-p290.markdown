@@ -9,4 +9,4 @@ categories: ["Ruby", "rvm", "環境構築"]
 ---
 ruby 1.9.2p290へ更新しました。rvmもついでに。
 
-*gist id=1073555 file=update_rvm_and_ruby-1.9.2-p290.sh*
+{% gist 1073555 update_rvm_and_ruby-1.9.2-p290.sh %}

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: conflict | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/conflict/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -22,13 +22,16 @@
 git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
 ￼
 コミットログはこんな感じです。SVNとは違ってコミットログに残るのが何か慣れないです。
-{% codeblock %}
-$ git log --oneline
-63bc3d1 fixed merge conflict
-bbfdd9e edit in master
-3dcfb2f edit in work
-9eedc58 made a
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git log --oneline
+</span><span class='line'>63bc3d1 fixed merge conflict
+</span><span class='line'>bbfdd9e edit in master
+</span><span class='line'>3dcfb2f edit in work
+</span><span class='line'>9eedc58 made a</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

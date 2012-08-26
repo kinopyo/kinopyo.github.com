@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sinatra | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/sinatra/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T12:20:36+09:00</updated>
+  <updated>2012-08-26T14:08:13+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -30,11 +30,30 @@
 
 <h2>解決方法</h2>
 
-<p><em>gist id=1303281 file= sinatra_render_html.rb</em>
+<p><div><script src='https://gist.github.com/1303281.js?file=sinatra_render_html.rb'></script>
+<noscript><pre><code>require 'sinatra'
+
+get '/' do
+  File.read(File.join('public', 'index.html'))
+  # or
+  # send_file File.join(settings.public, 'index.html')
+end</code></pre></noscript></div>
+
 <em>File.read</em>でファイルとして読み込むことですね。Sinatraはデフォルトの設定だと<em>public</em>フォルダ内のものをassetsとするそうです。</p>
 
 <p>でちょっとリファクタリングして<em>html :index</em>のシンタックスでいけるようにしました。
-<em>gist id=1303281 file=sinatra_render_html_refactor.rb</em></p>
+<div><script src='https://gist.github.com/1303281.js?file=sinatra_render_html_refactor.rb'></script>
+<noscript><pre><code>require &quot;sinatra&quot;
+
+get '/' do
+  # File.read(File.join('public', 'index.html'))
+  html :index
+end
+
+def html(view)
+  File.read(File.join('public', &quot;#{view.to_s}.html&quot;))
+end</code></pre></noscript></div>
+</p>
 
 <h2>参考</h2>
 
@@ -51,7 +70,49 @@
 
 <p>インストールと使い方をGistで公開しています。</p>
 
-<p>{% gist 1039656 %}</p>
+<p><div><script src='https://gist.github.com/1039656.js?file='></script>
+<noscript><pre><code># Herodu Dev Center Doc:
+# http://devcenter.heroku.com/articles/memcache
+# Dalli gem heroku url:
+# https://github.com/mperham/dalli
+
+#######################
+# Local Setup memcached
+#######################
+
+sudo port install memcached
+
+# run the memcached daemon:
+memcached -vv
+
+#######################
+#Using Memcache with Sinatra
+#######################
+
+# add gem to .gems (or Gemfile)
+dalli
+
+# install the gem
+sudo gem install dalli
+
+# require it first
+require &quot;dalli&quot;
+
+# add cache setting to yourapp.rb
+# eg.cache for 10 min here. deault options is never expire
+cache = Dalli::Client.new(nil, {:expires_in =&gt; 60*10})
+set :cache, cache
+
+# how to use
+settings.cache.set('color', 'blue')
+settings.cache.get('color')  # =&gt; 'blue'
+
+#######################
+# Deploy to Heroku
+#######################
+
+heroku addons:add memcache</code></pre></noscript></div>
+</p>
 
 <p>参考サイト：
 <a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a>
@@ -70,7 +131,7 @@
 実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
 <a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png bumblebee rm -rf :usr %}</p>
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png" title="bumblebee rm -rf :usr" ></p>
 
 <p>一個スペースが多かったですね。。</p>
 
