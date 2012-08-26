@@ -9,11 +9,11 @@ categories: ["MySQL", "Ruby", "tutorial"]
 ---
 結果セットを操作するためにはeachとeach_hashがあります。
 
-*gist id=1205708*
+{% gist 1205708 %}
 
 # 中文
-*gist id=1205708*
+{% gist 1205708 %}
 
 # English
 
-*gist id=1205708*
+{% gist 1205708 %}

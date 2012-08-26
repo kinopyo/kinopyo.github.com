@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。 {% gist 1073555 linux_create_user_modify_group.sh %} 2011-09-01 &hellip;">
+	<meta name="description" content="コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。 # HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE ## PART1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,7 +74,73 @@
 	<h1 class="title">Linuxで新規ユーザ作成＆root権限付与のメモ書き</h1>
 	<div class="entry-content"><p>コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。</p>
 
-<p>{% gist 1073555  linux_create_user_modify_group.sh  %}</p>
+<div><script src='https://gist.github.com/1073555.js?file=linux_create_user_modify_group.sh'></script>
+<noscript><pre><code># HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE
+
+## PART1 CREATE USER
+# assume user1,user2,user3 is already created
+# and they are in wheel group, which can execute as root
+# and here we're creating a new user named:new_user
+
+# create new user
+useradd new_user
+# set password for it, in the prompt
+passwd new_user
+
+
+# you can now login as new_user
+# but when you run sudo you may get this error
+new_user is not in the sudoers file.  This incident will be reported.
+# so you need to set the privilege to new_user
+
+## PART2 GRANT SUDO PRIVILEGE
+## 1. BY CHANGE USER GROUP
+$ visudo
+############ in visudo ############
+## Allows people in group wheel to run all commands
+# %wheel        ALL=(ALL)       ALL
+## Same thing without a password
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+############ in visudo ############
+# It means people in wheel group can run all commands, without password
+# Below we're adding the new user called new_user to the wheel group.
+
+# list users and user id, group id, home directory, login shell, etc.
+$ cat /etc/passwd
+...
+wheel:x:10:root,user1,user2,user3
+...
+
+$ id -a [user name]
+uid=503(user3) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
+$ usermod -g init_group -G init_group,wheel new_user
+$ id -a new_user
+uid=506(new_user) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
+
+## 2. BY ADD USER TO sudoers FILE.
+$ visudo
+############ in visudo ############
+new_user          ALL=(ALL) NOPASSWD: ALL
+############ in visudo ############
+
+## some handy commands
+# show user list
+$ cut -d: -f1 /etc/passwd
+root
+bin
+daemon
+adm
+...
+
+# TODO
+# what is the difference between -g(initial_group) and -G(group)
+
+# Reference
+# (ENG) http://superuser.com/questions/120340/user-not-in-the-sudoers-file-this-incident-will-be-reported
+# (JPN) http://kazmax.zpp.jp/linux_beginner/usermod.html</code></pre></noscript></div>
+
+
+
 </div>
 
 

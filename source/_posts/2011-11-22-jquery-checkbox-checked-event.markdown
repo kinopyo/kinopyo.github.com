@@ -11,7 +11,7 @@ jQueryでチェックボックスの状態を監視するイベントは*click e
 チェックされたかを判断するには*$("#some_checkbox").is(':checked')*がいい。
 
 CoffeeScriptでのサンプルコード：
-*gist id=1385217*
+{% gist 1385217 %}
 
 *change event*も監視はできるが、取れる値は遅延されるみたいです。
 

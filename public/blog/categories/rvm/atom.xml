@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rvm | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/rvm/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T14:08:13+09:00</updated>
+  <updated>2012-08-27T01:26:44+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,7 +20,12 @@
     <id>http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
     <content type="html"><![CDATA[<h2>インストール</h2>
 
-<p><em>gist id=1333112</em></p>
+<p><div><script src='https://gist.github.com/1333112.js?file='></script>
+<noscript><pre><code>rvm get head
+rvm reload
+rvm install 1.9.3-p0
+rvm use 1.9.3</code></pre></noscript></div>
+</p>
 
 <h2>リリースノート</h2>
 

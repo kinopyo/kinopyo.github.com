@@ -8,8 +8,7 @@
 
 	
 	<meta name="description" content="jQueryでチェックボックスの状態を監視するイベントはclick eventを使う。
-チェックされたかを判断するには$(&#8220;#some_checkbox&#8221;).is(&#8216;:checked&#8217;)がいい。 CoffeeScriptでのサンプルコード：
-gist &hellip;">
+チェックされたかを判断するには$(&#8220;#some_checkbox&#8221;).is(&#8216;:checked&#8217;)がいい。 CoffeeScriptでのサンプルコード： $(& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -77,8 +76,15 @@ gist &hellip;">
 	<div class="entry-content"><p>jQueryでチェックボックスの状態を監視するイベントは<em>click event</em>を使う。
 チェックされたかを判断するには<em>$(&#8220;#some_checkbox&#8221;).is(&#8216;:checked&#8217;)</em>がいい。</p>
 
-<p>CoffeeScriptでのサンプルコード：
-<em>gist id=1385217</em></p>
+<p>CoffeeScriptでのサンプルコード：</p>
+
+<div><script src='https://gist.github.com/1385217.js?file='></script>
+<noscript><pre><code>$(&quot;#some_checkbox&quot;).click (e) -&gt;
+  if $(this).is(':checked')
+    # actions when checked
+  else
+    # actions when not checked</code></pre></noscript></div>
+
 
 <p><em>change event</em>も監視はできるが、取れる値は遅延されるみたいです。</p>
 

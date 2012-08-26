@@ -10,5 +10,5 @@ categories: ["heroku", "rails", "rails3.1", "Ruby"]
 この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。
 
 
-*gist id=1014428*
+{% gist 1014428 %}
 上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。

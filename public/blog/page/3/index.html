@@ -437,11 +437,19 @@ You can get the notification of grow after it&#8217;s done.</p>
     <article class="post">
 	<h1 class="title"><a href="/blog/ruby-url-encode">Ruby How to Encode Url</a></h1>
 	<div class="entry-content">
-		<p><em>gist id=1445867</em></p>
+		<div><script src='https://gist.github.com/1445867.js?file='></script>
+<noscript><pre><code>require 'cgi'
+CGI.escape(url)</code></pre></noscript></div>
+
 
 <h1>日本語</h1>
 
-<p><em>gist id=1445867</em></p>
+<div><script src='https://gist.github.com/1445867.js?file='></script>
+<noscript><pre><code>require 'cgi'
+CGI.escape(url)</code></pre></noscript></div>
+
+
+
 
 		
 		
@@ -530,8 +538,15 @@ HAMLである条件がtrueの時だけあるclassをタグに追加したい場�
 		<p>jQueryでチェックボックスの状態を監視するイベントは<em>click event</em>を使う。
 チェックされたかを判断するには<em>$(&#8220;#some_checkbox&#8221;).is(&#8216;:checked&#8217;)</em>がいい。</p>
 
-<p>CoffeeScriptでのサンプルコード：
-<em>gist id=1385217</em></p>
+<p>CoffeeScriptでのサンプルコード：</p>
+
+<div><script src='https://gist.github.com/1385217.js?file='></script>
+<noscript><pre><code>$(&quot;#some_checkbox&quot;).click (e) -&gt;
+  if $(this).is(':checked')
+    # actions when checked
+  else
+    # actions when not checked</code></pre></noscript></div>
+
 
 <p><em>change event</em>も監視はできるが、取れる値は遅延されるみたいです。</p>
 

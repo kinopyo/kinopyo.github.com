@@ -87,7 +87,30 @@ doc = Nokogiri::HTML(open(&#39;http://example.com/&#39;)) しかし接続先の�
 <p>しかし接続先のプロトコールがhttpsの場合はNo such file or directoryのエラーとなります。
 一旦net/httpsで取ってからそれをnokogiriでparseするような工夫が必要です。</p>
 
-<p><em>gist id=1037492</em></p>
+<div><script src='https://gist.github.com/1037492.js?file='></script>
+<noscript><pre><code>require 'net/https'
+require 'nokogiri'
+
+url = &quot;https://example.com&quot;
+url = URI.parse( url )
+http = Net::HTTP.new( url.host, url.port )
+http.use_ssl = true if url.port == 443
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE if url.port == 443
+path = url.path
+path += &quot;?&quot; + url.query unless url.query.nil?
+res, data = http.get( path )
+
+case res
+  when Net::HTTPSuccess, Net::HTTPRedirection
+    # parse link
+    doc = Nokogiri::HTML(data)
+     # do what you want ...
+  else
+    return &quot;failed&quot; + res.to_s
+end</code></pre></noscript></div>
+
+
+
 
 		
 		
@@ -331,8 +354,50 @@ heroku addons:add memcache</code></pre></noscript></div>
 	<div class="entry-content">
 		<p>この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。</p>
 
-<p><em>gist id=1014428</em>
-上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。</p>
+<div><script src='https://gist.github.com/1014428.js?file='></script>
+<noscript><pre><code>### in Terminal
+# create rails app
+rails new test_app
+
+############ start: edit Gemfile ##############
+#wrap sqlite3 in 
+group :test, :development do
+gem 'sqlite3'
+end
+
+# add thin server
+gem 'thin'
+
+#add the rubyracer for heroku
+group :production do 
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+  gem 'pg'
+end
+
+############ end: edit Gemfile ##############
+
+### in Terminal
+# bundle install
+bundle
+
+# git initialize 
+git init .
+
+# add files 
+git commit -am &quot;initial commit&quot;
+
+#create app on heroku 
+heroku create --stack cedar
+
+# push app to heroku
+git push heroku master
+
+# test it 
+heroku open
+</code></pre></noscript></div>
+
+
+<p>上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。</p>
 
 		
 		

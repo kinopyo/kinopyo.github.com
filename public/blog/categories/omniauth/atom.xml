@@ -4,7 +4,7 @@
   <title><![CDATA[Category: omniauth | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/omniauth/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T14:08:13+09:00</updated>
+  <updated>2012-08-27T01:26:44+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,7 +24,15 @@
 
 <h2>方法</h2>
 
-<p><em>gist id=819806</em></p>
+<p><div><script src='https://gist.github.com/819806.js?file='></script>
+<noscript><pre><code># config/application.rb
+
+config.middleware.use 'StoreRedirectTo'
+
+# and make sure you autoload the contents of /lib
+
+</code></pre></noscript></div>
+</p>
 
 <p>libディレクトリのautoloadは<a href="http://www.kinopyo.com/blog/rails-autoload-lib-directory-file">Rails libディレクトリのファイルをautoload</a>を参考してください。</p>
 

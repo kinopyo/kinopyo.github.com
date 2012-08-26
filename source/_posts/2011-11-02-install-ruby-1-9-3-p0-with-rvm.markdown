@@ -8,7 +8,7 @@ comments: true
 categories: ["Ruby", "rvm", "環境構築"]
 ---
 ## インストール
-*gist id=1333112*
+{% gist 1333112 %}
 
 ## リリースノート
 [http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/](http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/)

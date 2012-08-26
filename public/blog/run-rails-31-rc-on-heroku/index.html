@@ -7,8 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。 gist id=1014428
-上記snippetはgistで保管しJavaScriptで表示しています。 &hellip;">
+	<meta name="description" content="この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。 ### in Terminal
+# create rails app
+rails new test_app &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,8 +76,50 @@
 	<h1 class="title">Rails3.1rcをHerokuで動かす</h1>
 	<div class="entry-content"><p>この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。</p>
 
-<p><em>gist id=1014428</em>
-上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。</p>
+<div><script src='https://gist.github.com/1014428.js?file='></script>
+<noscript><pre><code>### in Terminal
+# create rails app
+rails new test_app
+
+############ start: edit Gemfile ##############
+#wrap sqlite3 in 
+group :test, :development do
+gem 'sqlite3'
+end
+
+# add thin server
+gem 'thin'
+
+#add the rubyracer for heroku
+group :production do 
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+  gem 'pg'
+end
+
+############ end: edit Gemfile ##############
+
+### in Terminal
+# bundle install
+bundle
+
+# git initialize 
+git init .
+
+# add files 
+git commit -am &quot;initial commit&quot;
+
+#create app on heroku 
+heroku create --stack cedar
+
+# push app to heroku
+git push heroku master
+
+# test it 
+heroku open
+</code></pre></noscript></div>
+
+
+<p>上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。</p>
 </div>
 
 

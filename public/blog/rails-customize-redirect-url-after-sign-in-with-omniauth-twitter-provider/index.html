@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="目的 OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい 方法 gist id=819806 libディレクトリのautoloadはRails libディレクトリのファイルをautoloadを参考してください。 解説 &hellip;">
+	<meta name="description" content="目的 OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい 方法 # config/application.rb config.middleware.use 'StoreRedirectTo' # and make sure you autoload the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -78,7 +78,15 @@
 
 <h2>方法</h2>
 
-<p><em>gist id=819806</em></p>
+<div><script src='https://gist.github.com/819806.js?file='></script>
+<noscript><pre><code># config/application.rb
+
+config.middleware.use 'StoreRedirectTo'
+
+# and make sure you autoload the contents of /lib
+
+</code></pre></noscript></div>
+
 
 <p>libディレクトリのautoloadは<a href="http://www.kinopyo.com/blog/rails-autoload-lib-directory-file">Rails libディレクトリのファイルをautoload</a>を参考してください。</p>
 

@@ -11,7 +11,7 @@ categories: ["omniauth", "rails", "redirect", "Ruby", "twitter"]
 OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい
 
 ## 方法
-*gist id=819806*
+{% gist 819806 %}
 
 libディレクトリのautoloadは[Rails libディレクトリのファイルをautoload](http://www.kinopyo.com/blog/rails-autoload-lib-directory-file)を参考してください。
 

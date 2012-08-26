@@ -24,6 +24,6 @@ assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部�
 ## おまけ
 Asset Pipelineの周りの設定ファイルを一応貼っておきます。
 
-*gist id=1239153*
+{% gist 1239153 %}
 
 Githubでのスレ：[https://gist.github.com/rails/rails/issues/2299](https://gist.github.com/rails/rails/issues/2299)

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: autoload | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/autoload/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T14:08:13+09:00</updated>
+  <updated>2012-08-27T01:26:44+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,7 +18,14 @@
     <link href="http://kinopyo.github.com/blog/rails-autoload-lib-directory-file"/>
     <updated>2011-11-05T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/rails-autoload-lib-directory-file</id>
-    <content type="html"><![CDATA[<p><em>gist id=591837</em>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/591837.js?file='></script>
+<noscript><pre><code># application.rb
+
+# Custom directories with classes and modules you want to be autoloadable.
+# config.autoload_paths += %W(#{config.root}/extras)
+config.autoload_paths += %W(#{config.root}/lib)
+config.autoload_paths += Dir[&quot;#{config.root}/lib/**/&quot;]</code></pre></noscript></div>
+
 サブディスプレイのautoloadが必要ない場合は一行目だけでOK.</p>
 ]]></content>
   </entry>

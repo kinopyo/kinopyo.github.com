@@ -4,7 +4,7 @@
   <title><![CDATA[Category: log | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/log/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T14:08:13+09:00</updated>
+  <updated>2012-08-27T01:26:44+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,7 +24,18 @@
 
 <h2>ソースコード</h2>
 
-<p><em>gist id=1278448</em></p>
+<p><div><script src='https://gist.github.com/1278448.js?file='></script>
+<noscript><pre><code># lib/custom_logger.rb
+class CustomLogger &lt; Logger
+  def format_message(severity, timestamp, progname, msg)
+    &quot;#{timestamp.to_formatted_s(:db)} #{severity} #{msg}\n&quot;
+  end
+end
+
+logfile = File.open(&quot;#{Rails.root}/log/custom.log&quot;, 'a')  # create log file
+logfile.sync = true  # automatically flushes data to file
+CUSTOM_LOGGER = CustomLogger.new(logfile)  # constant accessible anywhere</code></pre></noscript></div>
+</p>
 
 <h2>参考</h2>
 

@@ -281,7 +281,28 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 		<p>FactoryGirlで既に定義した値を使おうとする時の方法です。
 例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。</p>
 
-<p><em>gist id=1680766</em></p>
+<div><script src='https://gist.github.com/1680766.js?file='></script>
+<noscript><pre><code># Say you have two columns: start_at, end_at
+# When start_at is defined, you want end_at's value based on the start_at
+# Here is the solution, passing a block to get the object of the context.
+
+start_at Random.new.rand(14..45).days.from_now
+end_at { |l| l.start_at + 2.hours }
+
+# Full example
+FactoryGirl.define do
+  factory :lesson do
+    sequence(:title) { |n| &quot;lesson title#{n}&quot; }
+    sequence(:description) { |n| &quot;lesson description#{n}&quot; }
+    capacity 6
+    start_at Random.new.rand(14..45).days.from_now
+    end_at { |l| l.start_at + 2.hours }
+    price [5000, 5100, 5200, 5300, 5500, 6000].sample
+  end
+end</code></pre></noscript></div>
+
+
+
 
 		
 		

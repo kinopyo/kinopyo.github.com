@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="結果セットを操作するためにはeachとeach_hashがあります。 gist id=1205708 中文 gist id=1205708 English gist id=1205708 2011-09-09 MySQL, Ruby, tutorial ">
+	<meta name="description" content="結果セットを操作するためにはeachとeach_hashがあります。 require &quot;mysql&quot; # more examples: # http://www.kitebird.com/articles/ruby-mysql.html hostname = ' &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,15 +74,143 @@
 	<h1 class="title">Ruby MySQL Tutorial</h1>
 	<div class="entry-content"><p>結果セットを操作するためにはeachとeach_hashがあります。</p>
 
-<p><em>gist id=1205708</em></p>
+<div><script src='https://gist.github.com/1205708.js?file='></script>
+<noscript><pre><code>require &quot;mysql&quot;
+
+# more examples: 
+# http://www.kitebird.com/articles/ruby-mysql.html
+
+hostname = 'localhost'
+username = 'yourname'
+password = 'password'
+database = 'mysql'
+port = 3306
+
+begin
+  # connect
+  db = Mysql::connect(hostname, username, password, database, port)
+
+  sql = &quot;select id, nickname from users limit 10&quot;
+  res = db.query(sql);
+  # each hash approch
+  res.each_hash do |h|
+    p &quot;#{h['id']}, #{h['nickname']}&quot;
+  end
+  
+  # each approach
+  res2 = db.query(sql);
+  res2.each do |row|
+    p row.join(&quot;,&quot;)
+    p row[0]
+  end
+  
+  # Mysql::Result
+  p res.class
+  
+  # Number of rows
+  p &quot;Number of rows: #{res.num_rows}&quot;
+  
+rescue Mysql::Error =&gt; e
+  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
+ensure
+  # disconnect from server
+  db.close if db
+end</code></pre></noscript></div>
+
 
 <h1>中文</h1>
 
-<p><em>gist id=1205708</em></p>
+<div><script src='https://gist.github.com/1205708.js?file='></script>
+<noscript><pre><code>require &quot;mysql&quot;
+
+# more examples: 
+# http://www.kitebird.com/articles/ruby-mysql.html
+
+hostname = 'localhost'
+username = 'yourname'
+password = 'password'
+database = 'mysql'
+port = 3306
+
+begin
+  # connect
+  db = Mysql::connect(hostname, username, password, database, port)
+
+  sql = &quot;select id, nickname from users limit 10&quot;
+  res = db.query(sql);
+  # each hash approch
+  res.each_hash do |h|
+    p &quot;#{h['id']}, #{h['nickname']}&quot;
+  end
+  
+  # each approach
+  res2 = db.query(sql);
+  res2.each do |row|
+    p row.join(&quot;,&quot;)
+    p row[0]
+  end
+  
+  # Mysql::Result
+  p res.class
+  
+  # Number of rows
+  p &quot;Number of rows: #{res.num_rows}&quot;
+  
+rescue Mysql::Error =&gt; e
+  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
+ensure
+  # disconnect from server
+  db.close if db
+end</code></pre></noscript></div>
+
 
 <h1>English</h1>
 
-<p><em>gist id=1205708</em></p>
+<div><script src='https://gist.github.com/1205708.js?file='></script>
+<noscript><pre><code>require &quot;mysql&quot;
+
+# more examples: 
+# http://www.kitebird.com/articles/ruby-mysql.html
+
+hostname = 'localhost'
+username = 'yourname'
+password = 'password'
+database = 'mysql'
+port = 3306
+
+begin
+  # connect
+  db = Mysql::connect(hostname, username, password, database, port)
+
+  sql = &quot;select id, nickname from users limit 10&quot;
+  res = db.query(sql);
+  # each hash approch
+  res.each_hash do |h|
+    p &quot;#{h['id']}, #{h['nickname']}&quot;
+  end
+  
+  # each approach
+  res2 = db.query(sql);
+  res2.each do |row|
+    p row.join(&quot;,&quot;)
+    p row[0]
+  end
+  
+  # Mysql::Result
+  p res.class
+  
+  # Number of rows
+  p &quot;Number of rows: #{res.num_rows}&quot;
+  
+rescue Mysql::Error =&gt; e
+  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
+ensure
+  # disconnect from server
+  db.close if db
+end</code></pre></noscript></div>
+
+
+
 </div>
 
 

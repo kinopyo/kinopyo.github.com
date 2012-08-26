@@ -7,8 +7,8 @@ permalink: /blog/ruby-url-encode
 comments: true
 categories: ["Ruby", "urlencode"]
 ---
-*gist id=1445867*
+{% gist 1445867 %}
 
 # 日本語
 
-*gist id=1445867*
+{% gist 1445867 %}

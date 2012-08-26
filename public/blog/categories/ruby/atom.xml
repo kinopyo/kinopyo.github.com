@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T14:08:13+09:00</updated>
+  <updated>2012-08-27T01:26:44+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -62,7 +62,7 @@ gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UT
     <content type="html"><![CDATA[<p>FactoryGirlで既に定義した値を使おうとする時の方法です。
 例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。</p>
 
-<p><em>gist id=1680766</em></p>
+<p>{% gist 1680766 %}</p>
 ]]></content>
   </entry>
   
@@ -71,11 +71,11 @@ gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UT
     <link href="http://kinopyo.github.com/blog/ruby-url-encode"/>
     <updated>2011-12-08T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/ruby-url-encode</id>
-    <content type="html"><![CDATA[<p><em>gist id=1445867</em></p>
+    <content type="html"><![CDATA[<p>{% gist 1445867 %}</p>
 
 <h1>日本語</h1>
 
-<p><em>gist id=1445867</em></p>
+<p>{% gist 1445867 %}</p>
 ]]></content>
   </entry>
   

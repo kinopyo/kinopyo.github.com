@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。 {% gist 1205255 solution_1.rb %}
-solution_1.rbはOpen Classというテクニックです。classキーワードで既存クラスを定義するときは上書きするのではなく、 &hellip;">
+	<meta name="description" content="Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。 class String def sex_code if [&quot;male&quot;, &quot;男&quot;].include? self 0 elsif self == &quot;女&quot; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,14 +74,56 @@ solution_1.rbはOpen Classというテクニックです。classキーワード�
 	<h1 class="title">Ruby: 既存クラスにメソッドを追加、class_evalとsingleton Method</h1>
 	<div class="entry-content"><p>Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。</p>
 
-<p>{% gist 1205255 solution_1.rb %}
-solution_1.rbはOpen Classというテクニックです。classキーワードで既存クラスを定義するときは上書きするのではなく、拡張した感じで、他のStringメソッドに影響がないです。</p>
+<div><script src='https://gist.github.com/1205255.js?file=solution_1.rb'></script>
+<noscript><pre><code>class String
+  def sex_code
+    if [&quot;male&quot;, &quot;男&quot;].include? self
+      0
+    elsif self == &quot;女&quot;
+      1
+    else
+      self
+    end
+  end  
+end
 
-<p>{% gist 1205255 solution_2.rb %}
-solution_2.rbはただ<strong>class_eval</strong>の理論を試したかっただけです。<strong>class_eval</strong>はスコープ内の<strong>self</strong>と<strong>current class</strong>をreceiverのStringクラスに変更するんです。だからclass_evalのブロック内に定義したメソッドはStringのinstance methodになります。</p>
+p String.instance_methods.grep(/^sex/) # =&gt; [:sex_code]
 
-<p>{% gist 1205255 solution_mistake.rb %}
-solution_mistake.rbはStringのクラスメソッド(Singleton methods)を定義したもので、instance methodではないです。</p>
+p &quot;male&quot;.sex_code  # =&gt; 0
+p &quot;女&quot;.sex_code  # =&gt; 1
+p &quot;other&quot;.sex_code # =&gt; &quot;other&quot;</code></pre></noscript></div>
+
+
+<p>solution_1.rbはOpen Classというテクニックです。classキーワードで既存クラスを定義するときは上書きするのではなく、拡張した感じで、他のStringメソッドに影響がないです。</p>
+
+<div><script src='https://gist.github.com/1205255.js?file=solution_2.rb'></script>
+<noscript><pre><code>String.class_eval do
+  def sex_code
+    if [&quot;male&quot;, &quot;男&quot;].include? self
+      0
+    elsif self == &quot;女&quot;
+      1
+    else
+      self
+    end
+  end  
+end
+
+p String.instance_methods.grep(/^sex/) # =&gt; [:sex_code]</code></pre></noscript></div>
+
+
+<p>solution_2.rbはただ<strong>class_eval</strong>の理論を試したかっただけです。<strong>class_eval</strong>はスコープ内の<strong>self</strong>と<strong>current class</strong>をreceiverのStringクラスに変更するんです。だからclass_evalのブロック内に定義したメソッドはStringのinstance methodになります。</p>
+
+<div><script src='https://gist.github.com/1205255.js?file=solution_mistake.rb'></script>
+<noscript><pre><code>def String.hello
+  &quot;hello from String class methods&quot;
+end
+
+p String.singleton_methods.grep(/hello/)
+p String.hello  # =&gt; &quot;hello from String class methods&quot;</code></pre></noscript></div>
+
+
+<p>solution_mistake.rbはStringのクラスメソッド(Singleton methods)を定義したもので、instance methodではないです。</p>
 
 <p>最近「Metaprogramming Ruby」という本を読んでます。よくわからなかったこととか、曖昧だっだことがすっきりした感じです。お勧めです！</p>
 </div>

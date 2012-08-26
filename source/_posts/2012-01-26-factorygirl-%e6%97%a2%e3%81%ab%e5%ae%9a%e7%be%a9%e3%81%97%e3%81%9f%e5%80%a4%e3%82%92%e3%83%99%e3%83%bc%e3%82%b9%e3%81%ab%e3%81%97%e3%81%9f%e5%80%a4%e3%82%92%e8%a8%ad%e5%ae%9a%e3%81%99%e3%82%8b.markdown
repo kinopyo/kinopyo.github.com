@@ -10,4 +10,4 @@ categories: ["factory_girl", "rails", "Ruby", "test"]
 FactoryGirlで既に定義した値を使おうとする時の方法です。
 例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。
 
-*gist id=1680766*
+{% gist 1680766 %}

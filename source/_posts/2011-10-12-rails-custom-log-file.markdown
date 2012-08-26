@@ -11,7 +11,7 @@ categories: ["log", "rails", "Ruby"]
 rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます
 
 ## ソースコード
-*gist id=1278448*
+{% gist 1278448 %}
 
 
 ## 参考

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jQuery | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-26T14:08:13+09:00</updated>
+  <updated>2012-08-27T01:26:44+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -22,7 +22,13 @@
 チェックされたかを判断するには<em>$("#some_checkbox").is(':checked')</em>がいい。</p>
 
 <p>CoffeeScriptでのサンプルコード：
-<em>gist id=1385217</em></p>
+<div><script src='https://gist.github.com/1385217.js?file='></script>
+<noscript><pre><code>$(&quot;#some_checkbox&quot;).click (e) -&gt;
+  if $(this).is(':checked')
+    # actions when checked
+  else
+    # actions when not checked</code></pre></noscript></div>
+</p>
 
 <p><em>change event</em>も監視はできるが、取れる値は遅延されるみたいです。</p>
 

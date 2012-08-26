@@ -480,7 +480,18 @@ Below is a sample for Safari.
 
 <h2>ソースコード</h2>
 
-<p><em>gist id=1278448</em></p>
+<div><script src='https://gist.github.com/1278448.js?file='></script>
+<noscript><pre><code># lib/custom_logger.rb
+class CustomLogger &lt; Logger
+  def format_message(severity, timestamp, progname, msg)
+    &quot;#{timestamp.to_formatted_s(:db)} #{severity} #{msg}\n&quot;
+  end
+end
+
+logfile = File.open(&quot;#{Rails.root}/log/custom.log&quot;, 'a')  # create log file
+logfile.sync = true  # automatically flushes data to file
+CUSTOM_LOGGER = CustomLogger.new(logfile)  # constant accessible anywhere</code></pre></noscript></div>
+
 
 <h2>参考</h2>
 

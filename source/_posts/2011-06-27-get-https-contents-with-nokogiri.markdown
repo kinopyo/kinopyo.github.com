@@ -17,4 +17,4 @@ doc = Nokogiri::HTML(open('http://example.com/'))
 しかし接続先のプロトコールがhttpsの場合はNo such file or directoryのエラーとなります。
 一旦net/httpsで取ってからそれをnokogiriでparseするような工夫が必要です。
 
-*gist id=1037492*
+{% gist 1037492 %}
