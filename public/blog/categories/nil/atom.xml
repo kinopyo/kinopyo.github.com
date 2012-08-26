@@ -4,7 +4,7 @@
   <title><![CDATA[Category: nil | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/nil/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-27T01:43:16+09:00</updated>
+  <updated>2012-08-27T02:30:27+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -409,7 +409,7 @@ end</p>
 手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。</p>
 
 <p>できたらこんな感じです。なぜか画像が暗くなっちゃいました。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg hatena-bookmark-entry %}</p>
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg" title="hatena-bookmark-entry" ></p>
 ]]></content>
   </entry>
   
