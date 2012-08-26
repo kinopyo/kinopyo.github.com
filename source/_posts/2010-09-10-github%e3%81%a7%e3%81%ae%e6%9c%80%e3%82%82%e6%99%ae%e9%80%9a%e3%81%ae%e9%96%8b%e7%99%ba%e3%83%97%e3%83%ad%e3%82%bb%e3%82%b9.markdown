@@ -1,0 +1,31 @@
+---
+layout: post
+title: 'githubでの最も普通の開発プロセス'
+date: 2010-9-10
+wordpress_id: 1304
+permalink: /blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9
+comments: true
+categories: ["Github"]
+---
+プロジェクトに検索機能を追加しようとする。
+
+```plain
+git checkout -b add-search
+=> ブランチ'add-search'を作成し、それに乗換
+
+// ファイル修正
+
+git add .
+git commit -am "Done"
+=> 修正ファイルをコミット、コミットメッセージは"Done"
+
+git checkout master
+=> masterブランチに乗換
+
+git merge add-search
+=> add-searchでの修正内容をマージ
+
+git push
+=> サーバにpush
+
+```

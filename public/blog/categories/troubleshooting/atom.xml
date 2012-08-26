@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: troubleshooting | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/troubleshooting/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsテスト時のrack警告"warning: regexp match /.../n against to UTF-8 string"を消す方法]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-test-quietrack-warning"/>
+    <updated>2012-03-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-test-quietrack-warning</id>
+    <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。
+{% codeblock %}
+gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string
+{% endcodeblock %}
+このうるさい警告を消す方法を紹介します。</p>
+
+<h2>解決方法</h2>
+
+<p>rspecを使う場合はspec/spec_helper.rbに下記コードを最後に追記してください。
+{% gist 2168152 %}</p>
+
+<h2>原因</h2>
+
+<p>Rack1.3からは解決できたらしいですが、Rails 3.1以前を使うならとりあえずこの方法で回避してもいいかと。
+詳しくは：<a href="https://github.com/rack/rack/issues/41">https://github.com/rack/rack/issues/41</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails3.1 Capistranoでデプロイする時にpublic/images, stylesheets, javascriptsのNo such file or directoryエラー]]></title>
+    <link href="http://kinopyo.github.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts"/>
+    <updated>2011-09-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts</id>
+    <content type="html"><![CDATA[<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。
+{% blockquote http://d.hatena.ne.jp/yuum3/20110912 %}
+  #  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p>
+
+<pre><code>servers: *"176.32.95.168"*
+*176.32.95.168* executing command
+</code></pre>
+
+<h3><em>err :: 176.32.95.168</em> find:</h3>
+
+<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3>
+
+<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
+
+<h3><em>err :: 176.32.95.168</em></h3>
+
+<h3><em>err :: 176.32.95.168</em> find:</h3>
+
+<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3>
+
+<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
+
+<h3><em>err :: 176.32.95.168</em></h3>
+
+<h3><em>err :: 176.32.95.168</em> find:</h3>
+
+<h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3>
+
+<h3><em>err :: 176.32.95.168</em> : No such file or directory</h3>
+
+<h3><em>err :: 176.32.95.168</em></h3>
+
+<p>{% endblockquote %}</p>
+
+<p><a href="https://github.com/capistrano/capistrano/issues/79#issuecomment-1767135" title="Githubにも載ってました。" target="_blank">Githubにも載ってました</a>エラーは無視しても大丈夫そうですが、下記の一行をdeploy.rbに追記すればエラー出なくなります。</p>
+
+<p>```ruby</p>
+
+<h1>in config/deploy.rb</h1>
+
+<p>set :normalize_asset_timestamps, false</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに]]></title>
+    <link href="http://kinopyo.github.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200"/>
+    <updated>2011-09-24T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200</id>
+    <content type="html"><![CDATA[<h2>現象</h2>
+
+<p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
+発生バージョンはRails 3.1。</p>
+
+<h2>解決策</h2>
+
+<p>app/tmp/cacheを削除し、rake assets:precompileをもう一回実行。
+ブラウザキャッシュを消してリロード。</p>
+
+<h2>調査経緯</h2>
+
+<p>assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部チェックしましたが、全然ダメでした。
+最後はgithubの<a href="https://gist.github.com/rails/rails/issues/2299" title="このスレ" target="_blank">このスレ</a>の方法で解決になりました。</p>
+
+<p>問題となったrails applicationはRails 3.1.rc1から作っていたもので、そのままrc4, rc5, stableに更新してきました。githubで議論されたのはrc4からrc5になったときにこのような現象があったようです。恐らくtmp/cacheが変な動きをして手動で削除しない限り古いバージョンのものがずっと残されたかもしれません。</p>
+
+<h2>おまけ</h2>
+
+<p>Asset Pipelineの周りの設定ファイルを一応貼っておきます。</p>
+
+<p><em>gist id=1239153</em></p>
+
+<p>Githubでのスレ：<a href="https://gist.github.com/rails/rails/issues/2299">https://gist.github.com/rails/rails/issues/2299</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails3.1rc(?)でPlease install the mysql adapterというエラー]]></title>
+    <link href="http://kinopyo.github.com/blog/rails3-1rc-please-install-the-mysql-adapter-error"/>
+    <updated>2011-09-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails3-1rc-please-install-the-mysql-adapter-error</id>
+    <content type="html"><![CDATA[<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
+{% codeblock %}
+Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
+{% endcodeblock %}</p>
+
+<h2>解決策</h2>
+
+<ul>
+<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
+<li>Gemfileにmysql2を追加しbundle installを実行</li>
+</ul>
+
+
+<h2>参考</h2>
+
+<p><a href="http://stackoverflow.com/questions/6141276/rails-3-1-0-rc1-mysql-adapter-error">http://stackoverflow.com/questions/6141276/rails-3-1-0-rc1-mysql-adapter-error</a>
+<a href="http://stackoverflow.com/questions/3467054/problem-with-mysql2-and-rails3-bundler">http://stackoverflow.com/questions/3467054/problem-with-mysql2-and-rails3-bundler</a></p>
+
+<h1>中文</h1>
+
+<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
+{% codeblock %}
+Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
+{% endcodeblock %}</p>
+
+<h2>解決策</h2>
+
+<ul>
+<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
+<li>Gemfileにmysql2を追加しbundle installを実行</li>
+</ul>
+
+
+<h2>参考</h2>
+
+<h1>English</h1>
+
+<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
+{% codeblock %}
+Please install the mysql adapter: <code>gem install activerecord-mysql-adapter</code> (mysql is not part of the bundle. Add it to Gemfile.)
+{% endcodeblock %}</p>
+
+<h2>解決策</h2>
+
+<ul>
+<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
+<li>Gemfileにmysql2を追加しbundle installを実行</li>
+</ul>
+
+
+<h2>参考</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Evernote x Mac: Cant synchronize error, Content is not valid.]]></title>
+    <link href="http://kinopyo.github.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid"/>
+    <updated>2011-04-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid</id>
+    <content type="html"><![CDATA[<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
+So I encountered this problem when I synced my evernote in Mac OS.</p>
+
+<p>{% blockquote  %}
+Can't synchronize error, Content is not valid.
+{% endblockquote %}</p>
+
+<p>I googled and found this in the evernote support forum.
+{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&amp;t=23986 %}
+One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p>
+
+<p>On my 10.6.6 box, that command is 65072 bytes:</p>
+
+<p>~ $ ls -al <code>which tidy</code>
+ rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
+
+<p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.
+{% endblockquote %}</p>
+
+<p>It seems like that ruby gems in mac did a mess that replaced the /usr/bin/tidy command unintentionally.
+So if your <code>tidy</code> file size does not match 65072 bytes, just copy on from other Mac OS, and chmod it.</p>
+
+<h1>日本語</h1>
+
+<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。</p>
+
+<p>公式サイトのサポートでこんな回答を見つかったので共有します。
+{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&amp;t=23986 %}
+One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p>
+
+<p>On my 10.6.6 box, that command is 65072 bytes:</p>
+
+<p>~ $ ls -al <code>which tidy</code>
+ rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
+
+<p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.
+{% endblockquote %}</p>
+
+<p>MacのRuby gemsが勝手に<code>/usr/bin/tidy</code>コマンドをリプレースしてしまったそうです。</p>
+
+<p><code>``
+~ $ ls -al</code>which tidy`
++  rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
+
+<p>```
+上記の65072バイトサイズが正しいです。
+もしサイズが異なるなら他のMacでそのファイルをコピーしてきて、
+chmodで他のファイルと同じ権限にしなければいけませんよ。</p>
+]]></content>
+  </entry>
+  
+</feed>

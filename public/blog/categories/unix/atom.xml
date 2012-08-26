@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: unix | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/unix/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sudo without password on Ubuntu]]></title>
+    <link href="http://kinopyo.github.com/blog/sudo%e3%81%a7%e3%83%91%e3%82%b9%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%aa%e3%81%84%e6%96%b9%e6%b3%95"/>
+    <updated>2011-04-15T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/sudo%e3%81%a7%e3%83%91%e3%82%b9%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%aa%e3%81%84%e6%96%b9%e6%b3%95</id>
+    <content type="html"><![CDATA[<p>ターミナルで
+sudo visudo</p>
+
+<p>そして次のラインを追加。("kinopyo"は自分のユーザ名に変更してください)</p>
+
+<p>```
+kinopyo ALL=(ALL) NOPASSWD: ALL</p>
+
+<p>```</p>
+
+<h1>中文</h1>
+
+<p>先在Terminal输入
+sudo visudo</p>
+
+<p>接着插入下面的代码。("kinopyo"是你的用户名)</p>
+
+<p>```
+kinopyo ALL=(ALL) NOPASSWD: ALL</p>
+
+<p>```</p>
+
+<h1>English</h1>
+
+<p>Type this command first.
+sudo visudo</p>
+
+<p>Then add this line at the end (change “kinopyo” to your username):</p>
+
+<p>```
+kinopyo ALL=(ALL) NOPASSWD: ALL</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

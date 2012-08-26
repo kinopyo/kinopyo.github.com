@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Oracle | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/oracle/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Oracle SQL*Plusで出力したファイルをExcelで文字化けの解決策]]></title>
+    <link href="http://kinopyo.github.com/blog/oracle-sqlplus-output-file-garbled-when-open-in-excel"/>
+    <updated>2011-09-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/oracle-sqlplus-output-file-garbled-when-open-in-excel</id>
+    <content type="html"><![CDATA[<h2>現象</h2>
+
+<p>SQL# Plusで出力したcsvファイルなどをExcelで開いたら日本語の部分が全部文字化けになっちゃいました。</p>
+
+<h2>原因</h2>
+
+<p>出力ファイルはUTF8ですが、ExcelではShiftJisじゃないと文字化けするらしいです。</p>
+
+<h2>解決策</h2>
+
+<p>秀丸などのエディターで出力ファイルを開き、エンコードUTF8で名前をつけて保存。
+そうすればExcelで開くときに文字化けは治る。</p>
+]]></content>
+  </entry>
+  
+</feed>

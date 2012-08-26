@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Github | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[gistのソースコードをRSSにも出力できるWordpress Plugin]]></title>
+    <link href="http://kinopyo.github.com/blog/gist-wordpress-plugin-to-display-source-code-in-rss"/>
+    <updated>2011-07-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/gist-wordpress-plugin-to-display-source-code-in-rss</id>
+    <content type="html"><![CDATA[<p>gistでソースをjavascriptタグで表示したらRSSには出力できません。また毎回githubから呼びこむのはパフォーマンスも悪いですね。</p>
+
+<p>これらの問題を解消してくれるプラグインが<a href="http://wordpress.org/extend/plugins/embed-github-gist/">Embed GitHub Gist</a>です。
+Embed GitHub Gistはgistから内容を取得して本文に出力するためRSSでも表示できるようになります。
+記述ルールはとても簡単で**にgist id=12345のように書けば終わりです。詳細は上記のリンクで確認してください。
+デフォルトのキャッシュは一日です。今のバージョン0.8ではまだ他の値に設定できませんが、簡単で十分だと思います。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた]]></title>
+    <link href="http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
+    <updated>2011-06-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
+    <content type="html"><![CDATA[<h2>スレット経緯</h2>
+
+<p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
+実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
+<a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png bumblebee rm -rf :usr %}</p>
+
+<p>一個スペースが多かったですね。。</p>
+
+<p>でコメントに上がっている画像がとても面白かったので、それをNokogiriを使って拾うrubyコードを書きました。プログラマのヒューモア満載の画像ですね。</p>
+
+<p>Sinatra + Nokogiri + Herokuで作りました、キャッシュは<a href="https://github.com/mperham/dalli">dalli</a>というgemを使いました。</p>
+
+<h2>成果</h2>
+
+<p>下記iframeで表示しています。urlは<a href="http://kinopyo-omgmyusr.heroku.com">http://kinopyo-omgmyusr.heroku.com</a></p>
+
+<iframe src="http://kinopyo-omgmyusr.heroku.com/" scrolling="yes" width="480" height="720" >
+</iframe>
+
+
+<h2>ソースコード</h2>
+
+<p>githubに上げています。
+<a href="https://github.com/kinopyo/Funny-Images-in-bumblebee-rm--rf--usr-thread">https://github.com/kinopyo/Funny-Images-in-bumblebee-rm--rf--usr-thread</a></p>
+
+<p>参考になったリンク：
+<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[githubでの最も普通の開発プロセス]]></title>
+    <link href="http://kinopyo.github.com/blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9"/>
+    <updated>2010-09-10T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9</id>
+    <content type="html"><![CDATA[<p>プロジェクトに検索機能を追加しようとする。</p>
+
+<p>```plain
+git checkout -b add-search
+=> ブランチ'add-search'を作成し、それに乗換</p>
+
+<p>// ファイル修正</p>
+
+<p>git add .
+git commit -am "Done"
+=> 修正ファイルをコミット、コミットメッセージは"Done"</p>
+
+<p>git checkout master
+=> masterブランチに乗換</p>
+
+<p>git merge add-search
+=> add-searchでの修正内容をマージ</p>
+
+<p>git push
+=> サーバにpush</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

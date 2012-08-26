@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: svn | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/svn/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Subversion Client: SCPlugin]]></title>
+    <link href="http://kinopyo.github.com/blog/mac-subversion-client-scplugin"/>
+    <updated>2010-09-20T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mac-subversion-client-scplugin</id>
+    <content type="html"><![CDATA[<p><img src="http://scplugin.tigris.org/images/contextual_menu-thumb.png" alt="The command contextual menu" />
+The command contextual menu.
+<img src="http://scplugin.tigris.org/images/checkout-thumb.png" alt="Repository checkout" />
+Repository checkout.
+<a href="http://scplugin.tigris.org/servlets/ProjectProcess?pageID=ihKl6V">For more screenshots</a>
+<a href="http://scplugin.tigris.org/servlets/ProjectDocumentList">Download</a></p>
+
+<p>After download, drag the application to the Finder toolbar.</p>
+
+<h1>日本語</h1>
+
+<p><img src="http://scplugin.tigris.org/images/contextual_menu-thumb.png" alt="The command contextual menu" />
+コンテキストメニューであらゆるコマンドが実行できる。
+<img src="http://scplugin.tigris.org/images/checkout-thumb.png" alt="Repository checkout" />
+リポジトリチェックアウト.
+<a href="http://scplugin.tigris.org/servlets/ProjectProcess?pageID=ihKl6V">For more screenshots</a>
+<a href="http://scplugin.tigris.org/servlets/ProjectDocumentList">Download</a></p>
+
+<p>ダウンロードしたらApplicationフォルダからアイコンをFinderのツールバーにドラッグしてね。</p>
+
+<p>参考サイト：
+<a href="http://blog.creamu.com/mt/2009/04/macsvn2.html">http://blog.creamu.com/mt/2009/04/macsvn2.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

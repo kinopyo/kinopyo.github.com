@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
+    <updated>2011-09-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
+    <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
+
+<p><img src="http://hsuzuki.ddo.jp/weblog/wp-content/uploads/2008/12/radio_f.bmp" /></p>
+
+<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
+CentOSなのでyumを使ってインストールすれば解決です。
+{% codeblock %}
+sudo yum install php-gd
+sudo service httpd restart
+{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linuxで新規ユーザ作成＆root権限付与のメモ書き]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-create-user-and-grant-root-privilege-in-linux"/>
+    <updated>2011-09-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-create-user-and-grant-root-privilege-in-linux</id>
+    <content type="html"><![CDATA[<p>コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。</p>
+
+<p>*gist id=1073555 file= linux_create_user_modify_group.sh *</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[サーバの時刻確認と設定（NTPで時刻補正）]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-set-server-date-with-ntp"/>
+    <updated>2011-08-19T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-set-server-date-with-ntp</id>
+    <content type="html"><![CDATA[<p><em>gist id=1073555 file=set_server_time_with_ntpd.sh</em></p>
+
+<h2>NPTについて</h2>
+
+<p>{% blockquote http://linux.kororo.jp/cont/server/ntp.php %}
+ここでは、ネットワーク上のサーバー及びクライアントマシンの時刻同期をとるためのプロトコルであるNTP（Network Time Protocol ）について解説していきます。PCの時刻はマザーボード上のリアルタイムクロック（RTC)によって時間が表示されていますが、この時間はあまり正確ではなく、毎日少しづつ時間が狂っていきます（電池の消耗度にもよりますが、年間約10分程度）。NTPサーバーは、タイムサーバーに接続されたラジオ・クロックや原子時計から時刻を取得し、UTC (協定世界時)に同期させることができます。PCの時刻が狂っていると、メールの送受信時刻が狂ったり、こまめにとっているログの取得時間なども狂ってくることになります。Linuxでは標準でNTPサーバーが付属しているので是非、活用して時刻同期を行いましょう。
+&lt;&lt;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[zshrc Tabで大文字を無視して自動補完できるように]]></title>
+    <link href="http://kinopyo.github.com/blog/zshrc-tab-to-autocomplete-case-insensitive"/>
+    <updated>2011-07-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/zshrc-tab-to-autocomplete-case-insensitive</id>
+    <content type="html"><![CDATA[<p>下記を.zshrcに記述すればtabで大文字を無視して補完ができるようになります。</p>
+
+<p>{% codeblock %}</p>
+
+<h2>Case-insensitive completion</h2>
+
+<p>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:# ' menu select=1
+{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sudo without password on Ubuntu]]></title>
+    <link href="http://kinopyo.github.com/blog/sudo%e3%81%a7%e3%83%91%e3%82%b9%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%aa%e3%81%84%e6%96%b9%e6%b3%95"/>
+    <updated>2011-04-15T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/sudo%e3%81%a7%e3%83%91%e3%82%b9%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%aa%e3%81%84%e6%96%b9%e6%b3%95</id>
+    <content type="html"><![CDATA[<p>ターミナルで
+sudo visudo</p>
+
+<p>そして次のラインを追加。("kinopyo"は自分のユーザ名に変更してください)</p>
+
+<p>```
+kinopyo ALL=(ALL) NOPASSWD: ALL</p>
+
+<p>```</p>
+
+<h1>中文</h1>
+
+<p>先在Terminal输入
+sudo visudo</p>
+
+<p>接着插入下面的代码。("kinopyo"是你的用户名)</p>
+
+<p>```
+kinopyo ALL=(ALL) NOPASSWD: ALL</p>
+
+<p>```</p>
+
+<h1>English</h1>
+
+<p>Type this command first.
+sudo visudo</p>
+
+<p>Then add this line at the end (change “kinopyo” to your username):</p>
+
+<p>```
+kinopyo ALL=(ALL) NOPASSWD: ALL</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

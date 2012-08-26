@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: gadget | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/gadget/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[初めてのgadget.xml with iGoogle]]></title>
+    <link href="http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle"/>
+    <updated>2011-02-28T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle</id>
+    <content type="html"><![CDATA[<p>Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。<a href="http://code.google.com/apis/gadgets/docs/gs.html">http://code.google.com/apis/gadgets/docs/gs.html</a>を参照してください。</p>
+
+<h2>ソースを用意</h2>
+
+<p>```xml
+&lt;?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Hello World!" />
+  <Content type="html"></p>
+
+<pre><code>&lt;![CDATA[
+  Hello, world!
+]]
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

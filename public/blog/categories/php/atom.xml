@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PHP | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSのパフォーマンスチューニング]]></title>
+    <link href="http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
+    <updated>2011-11-11T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
+    <content type="html"><![CDATA[<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
+
+<p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
+
+<p>チューニングしてから結構時間が経ったのでだいぶ忘れました。Evernoteでのメモを貼ります。</p>
+
+<p>効果が高い順で。</p>
+
+<h2>Wordpress</h2>
+
+<ul>
+<li>W3 Total Cache *プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
+ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</li>
+</ul>
+
+
+<h2>Apache</h2>
+
+<p><a href="httpd.conf">httpd.conf</a>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
+
+<p>{% codeblock %}</p>
+
+<p><IfModule prefork.c>
+StartServers       5
+MinSpareServers    5
+MaxSpareServers   10
+ServerLimit      64
+MaxClients       64
+MaxRequestsPerChild  50
+MaxMemFree 2000
+</IfModule></p>
+
+<p>{% endcodeblock %}</p>
+
+<h2>PHP</h2>
+
+<p><em>/etc/php.ini  *
+zlib.output_compression = On
+</em>APC*
+pecl install APC</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
+    <updated>2011-09-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
+    <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
+
+<p><img src="http://hsuzuki.ddo.jp/weblog/wp-content/uploads/2008/12/radio_f.bmp" /></p>
+
+<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
+CentOSなのでyumを使ってインストールすれば解決です。
+{% codeblock %}
+sudo yum install php-gd
+sudo service httpd restart
+{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP プロセス数を指定して実行するマルチスレッド処理(curl_multi)]]></title>
+    <link href="http://kinopyo.github.com/blog/php-multi-thread-with-specific-process-number-using-curl-multi"/>
+    <updated>2011-08-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/php-multi-thread-with-specific-process-number-using-curl-multi</id>
+    <content type="html"><![CDATA[<p>curl_multi系を使って、プロセス数を指定して実行するマルチスレッド処理です。</p>
+
+<p>urlは配列で受け取って、もし指定したプロセス数より多い場合は分割して実行するようになってます。</p>
+
+<p>このサンプルコードではこのブログの幾つかのurlに対してtitleを取得しました。</p>
+
+<p><em>gist id=1073555 file=multi-process-exec.php</em></p>
+
+<p>参考：<a href="http://techblog.ecstudio.jp/tech-tips/php-multi.html">PHPでマルチスレッド(バックグラウンド処理)を実現する方法</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP:必要桁数まで0埋めする]]></title>
+    <link href="http://kinopyo.github.com/blog/php-pad-a-number-to-certain-length-with-0"/>
+    <updated>2011-07-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/php-pad-a-number-to-certain-length-with-0</id>
+    <content type="html"><![CDATA[<p>```php
+// 47 -> 047
+sprintf("%03d", 47);</p>
+
+<p>// or</p>
+
+<p>// parameter: string $input , int $pad_length,
+str_pad(47, 3, '0', STR_PAD_LEFT);</p>
+
+<p>```</p>
+
+<p>str-padについては：<a href="http://php.net/manual/en/function.str-pad.php">http://php.net/manual/en/function.str-pad.php</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[複数URLのFacebookいいね(Like)された数を取得する方法]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-get-facebook-like-counts-for-multiple-urls"/>
+    <updated>2011-07-20T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-get-facebook-like-counts-for-multiple-urls</id>
+    <content type="html"><![CDATA[<p>今はほとんどのサイトがLike(いいね！)ボタンを置いてますが、Likeボタンがどれだけクリックされたか、その数は気になりますね。</p>
+
+<p>Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントは<a href="http://developers.facebook.com/docs/reference/fql/link_stat/">こちら</a>にあります。</p>
+
+<p>下記はPHPでのサンプルコードです。
+<em>gist id=1073555 file=get_facebook_like_counts_of_multiple_urls.php</em></p>
+]]></content>
+  </entry>
+  
+</feed>

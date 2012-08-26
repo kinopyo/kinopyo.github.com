@@ -4,7 +4,7 @@
   <title><![CDATA[Category: zsh | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/zsh/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-23T13:43:26+09:00</updated>
+  <updated>2012-08-26T12:20:36+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -79,6 +79,28 @@ Creating new post: source/</em>posts/2012-07-08-escape-square-bracket-by-default
 <p><code>bash
 alias rake='noglob rake'
 </code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[zshでgitの^caretは使えないっぽい: zsh: no matches found: HEAD^]]></title>
+    <link href="http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found"/>
+    <updated>2011-10-26T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found</id>
+    <content type="html"><![CDATA[<p><a href="http://www.kinopyo.com/blog/what-does-caret-character-mean-in-git">前回の記事：gitの<sup>記号は<em>で</em>HEAD<sup></em>を書いたのですが、<em>zsh</sup></sup></a>でやるとこんなエラーに。。</p>
+
+<p>{% codeblock %}
+zsh: no matches found: HEAD^
+{% endcodeblock %}</p>
+
+<p>何かzshで*<sup>記号*は特別の意味があるらしいです。</sup>
+参考：<a href="http://stackoverflow.com/questions/6091827/git-show-head-doesnt-seem-to-be-working-is-this-normal">http://stackoverflow.com/questions/6091827/git-show-head-doesnt-seem-to-be-working-is-this-normal</a></p>
+
+<h2>回避方法</h2>
+
+<p>2つあります。一つは同じ効果の<em>HEAD~1</em>を使う、もう一つはエスケープする方法です。
++  <em>HEAD~1</em>
++  *HEAD/<sup>*</sup></p>
 ]]></content>
   </entry>
   

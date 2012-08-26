@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: profiles | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/profiles/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome（Chromium）でマルチプロファイルを使う]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium"/>
+    <updated>2011-10-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium</id>
+    <content type="html"><![CDATA[<h2>メリット</h2>
+
+<p>マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。</p>
+
+<p>実際はChromeではなく、Chromeが恩恵を受けているオープンソースプロジェクトのChromiumを使います。Chromeでもできるっちゃできるんですが、手順が面倒くさいし使い勝手が悪いです。</p>
+
+<p><a href="http://blog.av-jyo.com/2011-09/usefully-chromium-setting-for-web-development.html">http://blog.av-jyo.com/2011-09/usefully-chromium-setting-for-web-development.html</a>を参考にしました。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><a href="http://mrgeckosmedia.com/applications/info/Chromatic">http://mrgeckosmedia.com/applications/info/Chromatic</a>でStableなChromiumをインストール</li>
+<li><em>about:flags</em>で<em>Multiple Profiles</em>をEnable</li>
+<li>再起動して右上に人の画像をクリックしてプロファイルを管理</li>
+<li>メインプロファイルに切り替え、ブックマーク、エクステンションなどの同期を行う</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

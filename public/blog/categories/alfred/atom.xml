@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: alfred | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/alfred/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create reminder to your iOS device from Mac]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-create-reminder-to-iphone-from-mac"/>
+    <updated>2011-12-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-create-reminder-to-iphone-from-mac</id>
+    <content type="html"><![CDATA[<p>You need to install <a href="http://www.alfredapp.com/]%20and%20buy%20the%20[http://www.alfredapp.com/purchase/">Powerpack</a>.</p>
+
+<p>You can download Alfred extension here: <a href="http://www.dirtdon.com/?p=1261">http://www.dirtdon.com/?p=1261</a>
+Then launch your alfred, and type <em>r foo, bar</em> to create the reminder.
+You can get the notification of grow after it's done.</p>
+
+<p><img alt="" src="https://img.skitch.com/20111216-e8gbqugwh5ech951n82s6f44t7.jpg" title="Create iOS 5 Reminders Tasks from Alfred" class="alignnone" width="457" height="942" /></p>
+
+<h1>日本語</h1>
+
+<h2>前提</h2>
+
+<p><a href="http://www.alfredapp.com/">Alfred</a>およびその<a href="http://www.alfredapp.com/purchase/">Powerpack</a>のインストールが必要になります。</p>
+
+<h2>方法</h2>
+
+<p><a href="http://www.dirtdon.com/?p=1261">http://www.dirtdon.com/?p=1261</a>でAlfred用のExtensionをダウンロードしインストールします。
+そうしますと、Alfred呼び出して<em>r hogehoge</em>でリマインダーが作成できます。
+作成完了後はGrowlで通知もしてくれますー</p>
+
+<p><img alt="" src="https://img.skitch.com/20111216-e8gbqugwh5ech951n82s6f44t7.jpg" title="Create iOS 5 Reminders Tasks from Alfred" class="alignnone" width="457" height="942" /></p>
+
+<h2>Alfredについて</h2>
+
+<p>超オススメです。試してみてくださいー　特にPowerpack購入後は一気にパワーアップですよ！</p>
+]]></content>
+  </entry>
+  
+</feed>

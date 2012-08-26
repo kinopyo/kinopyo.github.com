@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: https | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/https/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Nokogiriでhttpsプロトコールのコンテンツを取得]]></title>
+    <link href="http://kinopyo.github.com/blog/get-https-contents-with-nokogiri"/>
+    <updated>2011-06-27T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/get-https-contents-with-nokogiri</id>
+    <content type="html"><![CDATA[<p>Nokogiriでurlをparseするときは普通こんなコードになります。</p>
+
+<p>```ruby
+doc = Nokogiri::HTML(open('http://example.com/'))</p>
+
+<p>```</p>
+
+<p>しかし接続先のプロトコールがhttpsの場合はNo such file or directoryのエラーとなります。
+一旦net/httpsで取ってからそれをnokogiriでparseするような工夫が必要です。</p>
+
+<p><em>gist id=1037492</em></p>
+]]></content>
+  </entry>
+  
+</feed>

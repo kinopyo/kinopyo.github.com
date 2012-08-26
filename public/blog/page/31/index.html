@@ -1,0 +1,1220 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="前記：
+この記事では多数のAJAX通信が発生した際、
+「非同期」の処理順番を保障する方法を検討します。
+すべては私個人の経験なので、もしこれよりもっどいい方法があれば
+ぜひ教えてください。
+実際この問題にぶつかった際の考えの流れで書いています。
+使えない案や、懸念がある案も全部述べたので、 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-ajax-get-order-guranteed-async-transfer">jQueryでajax：非同期通信時、実行順番を保障する方法</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>前記：</h4>
+<p>この記事では多数のAJAX通信が発生した際、</p>
+<p>「非同期」の処理順番を保障する方法を検討します。</p>
+<p>すべては私個人の経験なので、もしこれよりもっどいい方法があれば</p>
+<p>ぜひ教えてください。</p>
+<p>実際この問題にぶつかった際の考えの流れで書いています。</p>
+<p>使えない案や、懸念がある案も全部述べたので、文章が長くなってしまいました。</p>
+<p>開発する当時はまだインターネットにつながらないので、</p>
+<p>何の情報も取得できず、考えたんです。</p>
+<p>後でネットで調べたら<a href="http://plugins.jquery.com/project/ajaxqueue" target="_blank">Ajax Queue</a>のプラグインが</p>
+<p>同じことをしてくれます。</p>
+<p>このプラグインを使った後に所感を書く予定です。</p>
+<a name="seemore"></a>
+<br/>
+<br/>
+<h4>本題</h4>
+<br/>
+<p>AJAXはご存知だと思います。非同期通信でページをリフレッシュせずに動的に通信ができる、</p>
+<p>リッチなウェブアプリケーションを構築する上で不欠けんな存在であります。</p>
+<br/>
+<p>一方、この「非同期」というのは特徴であり、たまには厄介なことになります。</p>
+<p>例えばajaxの処理と普通の処理の実行順序を気にするとき、</p>
+<p>コードの書いた順番とおり実行する保障はありません。</p>
+<br/>
+<h5>jQueryでコードを書くと、こんな感じです。</h5>
+<br/>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
+<span class='line-number'>169</span>
+<span class='line-number'>170</span>
+<span class='line-number'>171</span>
+<span class='line-number'>172</span>
+<span class='line-number'>173</span>
+<span class='line-number'>174</span>
+<span class='line-number'>175</span>
+<span class='line-number'>176</span>
+<span class='line-number'>177</span>
+<span class='line-number'>178</span>
+<span class='line-number'>179</span>
+<span class='line-number'>180</span>
+<span class='line-number'>181</span>
+<span class='line-number'>182</span>
+<span class='line-number'>183</span>
+<span class='line-number'>184</span>
+<span class='line-number'>185</span>
+<span class='line-number'>186</span>
+<span class='line-number'>187</span>
+<span class='line-number'>188</span>
+<span class='line-number'>189</span>
+<span class='line-number'>190</span>
+<span class='line-number'>191</span>
+<span class='line-number'>192</span>
+<span class='line-number'>193</span>
+<span class='line-number'>194</span>
+<span class='line-number'>195</span>
+<span class='line-number'>196</span>
+<span class='line-number'>197</span>
+<span class='line-number'>198</span>
+<span class='line-number'>199</span>
+<span class='line-number'>200</span>
+<span class='line-number'>201</span>
+<span class='line-number'>202</span>
+<span class='line-number'>203</span>
+<span class='line-number'>204</span>
+<span class='line-number'>205</span>
+<span class='line-number'>206</span>
+<span class='line-number'>207</span>
+<span class='line-number'>208</span>
+<span class='line-number'>209</span>
+<span class='line-number'>210</span>
+<span class='line-number'>211</span>
+<span class='line-number'>212</span>
+<span class='line-number'>213</span>
+<span class='line-number'>214</span>
+<span class='line-number'>215</span>
+<span class='line-number'>216</span>
+<span class='line-number'>217</span>
+<span class='line-number'>218</span>
+<span class='line-number'>219</span>
+<span class='line-number'>220</span>
+<span class='line-number'>221</span>
+<span class='line-number'>222</span>
+<span class='line-number'>223</span>
+<span class='line-number'>224</span>
+<span class='line-number'>225</span>
+<span class='line-number'>226</span>
+<span class='line-number'>227</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option</span><span class="p">);</span>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax done&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ここで</span><span class="nx">ajax</span><span class="err">通信が終わってから</span><span class="nx">alert</span><span class="err">が出るように見えますがそうとは言い切れないです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">ajax</span><span class="err">通信が終わってない段階で</span><span class="nx">alert</span><span class="err">が出るかもです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ならばどうしたらいいんですか？</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">一番簡単なのは</span><span class="nx">jQuery</span><span class="err">が用意したコールバック関数です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">codeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">])</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">],[</span><span class="nx">returnType</span><span class="p">])</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">])</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">などがあります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">data</span><span class="p">]</span><span class="err">がなければ、コールバックの関数を二番目のパラメータで書いても</span><span class="nx">OK</span><span class="err">です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">jQuery</span><span class="err">は内部的に判断してくれます。</span><span class="nx">data</span><span class="err">なのか、コールバックかを。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">そして</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="err">には</span><span class="nx">option</span><span class="err">で</span><span class="nx">success</span><span class="err">や</span><span class="nx">complete</span><span class="err">にコールバックを設定できます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これらを用いて上記のコードを以下のように改善できます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span><span class="err">の場合</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">])</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">],[</span><span class="nx">returnType</span><span class="p">])</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">])</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">h5</span><span class="o">&gt;</span><span class="err">ここで問題</span><span class="mi">2</span><span class="err">に入ります。</span><span class="o">&lt;</span><span class="err">/h5&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">もし必要な</span><span class="nx">ajax</span><span class="err">通信が一つ以上で、すべての</span><span class="nx">ajax</span><span class="err">通信が完了した後に何かの処理が実行したい場合は</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">どうすればいいでしょうか。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">コードで書くと、こんな感じです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option1</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option2</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option3</span><span class="p">);</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;all ajax done&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">案</span><span class="mi">1</span><span class="o">:</span><span class="nx">ajax</span><span class="err">のグローバル関数</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">jQuery</span><span class="err">では</span><span class="nx">ajax</span><span class="err">のグローバル関数と呼ばれるいくつかの関数を提供してくれました。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">それらは以下のようなものです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="p">.</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+</span><span class='line'><span class="p">.</span><span class="nx">ajaxSuccess</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これらは</span><span class="nx">DOM</span><span class="err">上のどの要素にも設定でき、</span><span class="nx">AJAX</span><span class="err">通信が行われる際に呼び出されます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">例えば以下のようなコードがあります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax complete&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これは</span><span class="nb">document</span><span class="err">要素において、何かの</span><span class="nx">ajax</span><span class="err">通信が完了したらパラメータのコールバックを実行する意味です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">selector</span><span class="err">にはもっと範囲を縮むことができます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">例えば</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">の</span><span class="nx">HTML</span><span class="err">があるとします。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#content&#39;</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;content ajax complete&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これなら</span><span class="nx">id</span><span class="err">が</span><span class="nx">content</span><span class="err">の</span><span class="nx">div</span><span class="err">に</span><span class="nx">ajax</span><span class="err">通信が完了する際のコールバックを示しています。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">しかしこれだけではまだ問題</span><span class="mi">2</span><span class="err">を解決できません。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option1</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option2</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option3</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax complete&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">こう書くと、任意の通信が完了したらこの</span><span class="nx">ajaxComplete</span><span class="err">が呼ばれ、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ほかの二つの処理がどうなってるかはまったくわからないです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ここで</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span><span class="err">の</span><span class="nx">option</span><span class="err">に注目しましょう。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">option</span><span class="err">には</span><span class="nx">global</span><span class="err">というフラグがあり、デフォルトは</span><span class="kc">true</span><span class="err">になってます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">その役割はグローバル関数の監視対象にするかしないかです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">このフラグを</span><span class="kc">false</span><span class="err">に設定すれば、該当の</span><span class="nx">ajax</span><span class="err">通信がどうなってもグローバル関数はトリガーしません。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">なので、通信処理</span><span class="mi">1</span><span class="err">と</span><span class="mi">2</span><span class="err">の</span><span class="nx">global</span><span class="err">フラグを</span><span class="kc">false</span><span class="err">に設定し、最後の処理</span><span class="mi">3</span><span class="err">を</span><span class="kc">true</span><span class="err">に設定すれば、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">3</span><span class="err">が実行完了した際、グローバルの</span><span class="nx">ajaxComplete</span><span class="err">が実行されます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">改善したコードは以下になります。一部省略しました。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">option1</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">global</span> <span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="c1">// ほかのurlなどの設定</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">option2</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">global</span> <span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="c1">// ほかのurlなどの設定</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">option3</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">global</span> <span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'>  <span class="c1">// ほかのurlなどの設定</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option1</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option2</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option3</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax complete&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">しかし、ここで懸念事項があります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">ajax</span><span class="err">処理の間の順番はどうなるか断言できません。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">つまりこういった順番で実行されたかもです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">1</span><span class="err">実行</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">1</span><span class="err">完了</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">2</span><span class="err">実行</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">3</span><span class="err">実行</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">3</span><span class="err">完了</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">グローバルの関すを呼び出す</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">処理</span><span class="mi">2</span><span class="err">完了</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">軽く動作確認ではちゃんと思ったとおり</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="err">で動いていますが、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">やはりその辺が気になって、やめました。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">案</span><span class="mi">2</span><span class="err">：</span><span class="nx">ajax</span><span class="err">をラッパーした関すを作る</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span><span class="err">の</span><span class="nx">option</span><span class="err">には</span><span class="nx">complete</span><span class="err">というのがあります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">success</span><span class="err">と使い方は同じで、</span><span class="nx">success</span><span class="err">は通信が成功した際実行するコールバックで、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">complete</span><span class="err">は完了した際のコールバックです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">なので今回思い出したのアイディアはこの</span><span class="nx">complete</span><span class="err">に次の</span><span class="nx">ajax</span><span class="err">処理を指定して、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">さらにその次の</span><span class="nx">ajax</span><span class="err">の</span><span class="nx">complete</span> <span class="nx">option</span><span class="err">にも後の</span><span class="nx">ajax</span><span class="err">処理を指定したらどうでしょうか。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">尻尾をどんどん噛んでいく蛇のイメージです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">(</span><span class="err">抜粋</span><span class="p">)</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">option1</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">option2</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option3</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">option3</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>              <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax all complete&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option1</span><span class="p">);</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">動作確認で</span><span class="nx">OK</span><span class="err">でした。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">complete</span><span class="err">オプションで前の</span><span class="nx">ajax</span><span class="err">通信が必ず完了した後に次の</span><span class="nx">ajax</span><span class="err">通信を始まることを</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">保障しています。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これで</span><span class="nx">ajax</span><span class="err">のチェインができました。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これをちょっと綺麗にラッパーした関数を作りました。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ご覧ください。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">doOrderGuaranteedAjax</span><span class="p">(</span><span class="nx">ajaxOptionArray</span><span class="p">,</span> <span class="nx">allCompleteHandler</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">type</span> <span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">dataType</span> <span class="o">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// 最初の要素を削除</span>
+</span><span class='line'>  <span class="nx">ajaxOptionArray</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+</span><span class='line'>  <span class="c1">// すべての通信が完了した場合</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">ajaxOptionArray</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// コールバックが設定された場合</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">allCompleteHandler</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">allCompleteHandler</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// 通信配列にまだ通信が残っている場合</span>
+</span><span class='line'>      <span class="nx">option</span> <span class="o">=</span> <span class="nx">ajaxOptionArray</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>      <span class="c1">// ajaxのオプションを次の通信に切り替え</span>
+</span><span class='line'>      <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">defaults</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
+</span><span class='line'>      <span class="c1">// 通信を開始</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">opts</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// 初期指定</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="nx">ajaxOptionArray</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">defaults</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// 一回のみ実行</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">opts</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">まず</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span><span class="err">の</span><span class="nx">option</span><span class="err">を順番で</span><span class="nx">push</span><span class="err">した配列が第一パラメータで渡されます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="mi">2</span><span class="err">～</span><span class="mi">23</span><span class="err">行まではデフォルトの</span><span class="nx">option</span><span class="err">を構築し、一回目の処理は</span><span class="mi">29</span><span class="err">行から走ります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">そしてデフォルトの</span><span class="nx">option</span><span class="err">では</span><span class="nx">complete</span><span class="err">で実行完了した処理を配列から削除</span><span class="p">(</span><span class="mi">7</span><span class="err">行</span><span class="p">)</span><span class="err">します。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">配列にまだ待ち状態の処理があるならオプションを次の通信に切り替えます</span><span class="p">(</span><span class="mi">14</span><span class="err">～</span><span class="mi">20</span><span class="err">行</span><span class="p">)</span><span class="err">。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">もし配列にある処理が全部実行完了したら、コールバックを呼びます</span><span class="p">(</span><span class="mi">9</span><span class="err">～</span><span class="mi">13</span><span class="err">行</span><span class="p">)</span><span class="err">。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">使い方はまずオプションを一つの配列に</span><span class="nx">push</span><span class="err">し、その配列を一番目のパラメータで、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">コールバックを二番目のコールバックで渡します。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">optionArray</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="nx">optionArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">option1</span><span class="p">);</span>
+</span><span class='line'><span class="nx">optionArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">option2</span><span class="p">);</span>
+</span><span class='line'><span class="nx">optionArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">option3</span><span class="p">);</span>
+</span><span class='line'><span class="nx">doOrderGuaranteedAjax</span><span class="p">(</span><span class="nx">optionArray</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;all complete&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+<p>arrayのpushとshiftを利用し、スタック構造を真似してます。</p>
+<p>push() は array の最後に配列要素を加えます。</p>
+<p>shift() は array の最初の要素を削除します。</p>
+<br/>
+<p>これでファーストイン、ファーストアウトFIFOが実現し、</p>
+<p>処理の順番が保ちます。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-31T00:00:00+09:00" pubdate data-updated="true">2009-10-31</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mozilla-version-google-wave-raindrop">MozillaのGoogle Wave : Raindrop</a></h1>
+	<div class="entry-content">
+		<p><img width="200px" alt="Raindrop Logo" src="http://labs.mozilla.com/wp-content/blogs.dir/12/files/2009/10/raindrop-header.png" style="float: left;"></p>
+
+
+<p>Mozilla Foundationで「Raindrop」という実験を始めたとの記事がありました。オープンなWeb技術を利用して、電子メール、SNS、「Twitter」、友人のブログなどのメッセージを管理するものです。</p>
+
+
+<p>コミュニケーションを容易にするという、Google Waveとよく似てる意味で、Googleに対抗する存在とも言われてます。</p>
+
+
+<p><blockquote><p>Raindrop は、小規模の Web サーバーを使って異なるソース (Eメール、Twitter、RSS フィード) からユーザーのメッセージを取り込み、インテリジェンス処理で重要な部分を抜き出し、ユーザーが自分の好きな近代的な Web ブラウザでメッセージ操作を行なえるようにする。</p></blockquote></p>
+
+
+<p>こんな興味深い内容で、私はRaindropの公式サイトを訪ねることになりました。</p>
+
+
+<p>英語の資料だけなんですが、Vimeoでの動画があるので、</p>
+
+
+<p>一応それで直感的にRaindropが何か少しはわかるでしょう。</p>
+
+
+<p><a href="http://vimeo.com/7048662">Raindrop: Design iteration #1</a></p>
+
+
+<p>この動画で紹介したのはRaindropのデザイン・イテレーション1です。</p>
+
+
+<p>画面の左側がメッセージの表示で、</p>
+
+
+<p>右側がメニューみたいな感じです。</p>
+
+
+<p>このレイアウトはまだ確定してなく、正式リリース時の変更はあり得るといってました。</p>
+
+
+<br/>
+
+
+<p>便利な操作性がこの動画で表現されました。</p>
+
+
+<p>上下のキーボードでメッセージの切り替えと、</p>
+
+
+<p>左右のキーボードで返信や取り消しが自由にできます。</p>
+
+
+<br/>
+
+
+<p>続いてデザイン・イテレーション2を見てみましょう。</p>
+
+
+<br/>
+
+
+<p><a href="http://vimeo.com/7047724">Raindrop: Design iteration #2</a></p>
+
+
+<br/>
+
+
+<p>デザイン1ではメッセージが1カラムになってることに対し、</p>
+
+
+<p>デザイン2では最初3カラムで表示されてます。</p>
+
+
+<p>それと幅の調整でメッセージのレイアウトもかわってきます。</p>
+
+
+<br/>
+
+
+<p>もっと詳しい情報はRaindropの<a target="_blank" href="http://blogs.mozillamessaging.com/raindropdesign/" title="公式サイト">公式サイト</a>をお訪ねください。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-30T00:00:00+09:00" pubdate data-updated="true">2009-10-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-version-google-wave-fancy">iPhone版Google Wave(妄想)</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><object height="364" width="445"><param value="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1" name="movie" ></param><param value="true" name="allowFullScreen" ></param><param value="always" name="allowscriptaccess" ></param><embed height="364" width="445" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1"></embed></object></p>
+<p>Google Waveはみんなご存知だと思います。</p>
+<p>5月発表以来今だテストの最中です。</p>
+<p><a target="_blank" href="http://wave.google.com" title="wave.google.com">wave.google.com</a>でテストの申請を出しているのですが、</p>
+<p>全然返事がこないです。。。</p>
+<br/>
+<p>さて、Google WaveはiPhoneでも使えるのを期待する人はたくさんいるでしょう。</p>
+<p>最近そのような記事も増えてきた一方</p>
+<p>Googleからは特に詳しい情報はあまりないですね。</p>
+<p>私も妄想してる最中、このYoutubeの動画を見つかりました。</p>
+<p>なんとこれはMacのKeynote(WindowsにおいてはPowerPoint見たいなソフト)で作ったらしい。</p>
+<p>iPhoneにどんなwaveが登場するかお楽しみですね。</p>
+<br/>
+<p><img alt="Google Wave" src="http://blog-imgs-34.fc2.com/k/i/n/kinopyo/Google-Wave-iphone-app.jpg"></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-29T00:00:00+09:00" pubdate data-updated="true">2009-10-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/record-manage-your-books">読書を記録、管理：読書メーター</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>今回紹介するのは<a target="_blank" href="http://book.akahoshitakuya.com/" title="読書メーター">読書メーター</a>です。<br/>簡単にいうと、読書を記録、管理するサイトです。<br/></p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091026235301" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091026/20091026235301.jpg" alt="f:id:kinopyo:20091026235301j:image" title="f:id:kinopyo:20091026235301j:image" class="hatena-fotolife"></a></p>
+<p><br/><br/>FC2のブログアプリケーションにも似た感じの<a target="_blank" href="http://book.orfeon.jp/" title="読書カレンダー">読書カレンダー</a>がありますが、<br/>比較してみて、やはり<a target="_blank" href="http://book.akahoshitakuya.com/" title="読書メーター">読書メーター</a>のほうが機能も充実し、面白いと思います。<br/><br/>まずユーザ登録はFC2や、はてな、そしてmixiのIDでそのままログインできます。<br/>そして自分が読んだ本をどんどん登録すると、面白いグラフができてますよ。<br/><br/>本の追加は以下の4種類あり、自分が今までの「実績」がすぐわかります。<br/><br/></p>
+<p><ul>
+<li>読んだ本に追加</li>
+<li>読んでる本に追加</li>
+<li>積読本に追加 ※持っているけど読んでいない本など</li>
+<li>読みたい本に追加 ※持っていない読みたい本など</li>
+</ul></p>
+<p>コメントはもちろん入力でき、さらに本を読んでる、読んだ人の人数まで数えてくれます。<br/>本の追加、コメントする時は自動でTwitterにも投稿できます。<br/><br/>本はページ数まで把握して、グラフで自分がどれほどのページを読み終わったかも見れます。<br/>私はログインしてから一気に全部の本を追加しました。<br/><br/>ほかにも読友、相性、職本、お気に入り、コミュニティ、ブログパーツなどの<br/>機能が充実してます。<br/>相性や職本などのジャンルはなかなかアイディアのいい機能じゃないですか。<br/>ぜひ試してみてください。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-28T00:00:00+09:00" pubdate data-updated="true">2009-10-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/windows7-fast-easy-to-use">Windows7 : 速い、使いやすい</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>インストール先のCドライブをあっさりフォーマットしてから</p>
+<p>Windows 7をインストールしました。</p>
+<p>さすがVistaの失敗からやりなおしたマイクロソフト、</p>
+<p>今回の新作は何年ぶりの傑作だと思います。</p>
+<br/>
+<p>インストールは特に問題なし、そのまま進みました。</p>
+<p>完了したら、まずタスクバーの変更に目がつきました。</p>
+<p>スクリーンショットをご覧ください。</p>
+<br/>
+<p><span style="font-size: large;"><strong>進化1</strong></span></p>
+<p>一つのアプリケーションが一つのアイコンになる。</p>
+<p>一つのアプリケーションでいくつかのウィンドウを開いても</p>
+<p>タスクバーではやはり一つのアイコンに所属され、</p>
+<p>表示が何枚か重なるようになる。</p>
+<br/>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091031200524" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091031/20091031200524.jpg" alt="f:id:kinopyo:20091031200524j:image" title="f:id:kinopyo:20091031200524j:image" class="hatena-fotolife"></a></p>
+<p>この例で言うと、フォルダーが二つ、Firefoxのウィンドウが三つ開いてます。</p>
+<br/>
+<p><span style="font-size: large;"><strong>進化2</strong></span></p>
+<p>アイコンにマウスオーバーすると、 そのアプリケーションで開かれているウィンドウの数分の略図が表示される&#60;</p>
+<br/>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091025230509" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091025/20091025230509.jpg" alt="f:id:kinopyo:20091025230509j:image" title="f:id:kinopyo:20091025230509j:image" class="hatena-fotolife"></a></p>
+<br/>
+<p><span style="font-size: large;"><strong><span style="font-size: large; font-weight: bold;">進化3</span></strong></span></p>
+<br/>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091025233902" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091025/20091025233902.jpg" alt="f:id:kinopyo:20091025233902j:image" title="f:id:kinopyo:20091025233902j:image" class="hatena-fotolife"></a></p>
+<p>さらにその略図にマウスオーバーすると、その実ウィンドウが表示される</p>
+<br/>
+<p>まだインストールして2時間もたってませんけれど、</p>
+<p>Windows7の使いやすさを感じました。</p>
+<p>Vistaは一回仕事で触ったことがありますが、</p>
+<p>ひどいもんですよね。</p>
+<p>なのでずっとXPを使ってきました。</p>
+<p>今日Windows7にアップグレードして驚きました。</p>
+<p>皆さんもぜひ触ってみてください。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-27T00:00:00+09:00" pubdate data-updated="true">2009-10-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/most-ppl-just-buy-one-juice-once">多くのユーザーは 一度に1本しかジュースを買わない</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>たまたまこういうテーマの<a target="_blank" href="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/01.html" title="記事">記事</a>を読みました。</p>
+<p>とても感動しました。</p>
+<p>3年前の記事ですが、未だ見ても全く言う通りです。</p>
+<p>ウェブアプリケーションのインターアクションをどのように設計すべきかを議論する記事で、</p>
+<p>今ウェブ上存在するユーザにとって「不親切」な例をどんどんあげて説明してくれました。</p>
+<p>以下抜粋した内容です。</p>
+<p><blockquote><p>インタラクションデザイナーはコモンケースを重視すべきなのです。起こりそうもない場合を考慮し過ぎて、起こるべきことの利便性を低下させてはいけません。</p></blockquote></p>
+<p><blockquote><p>例えば、多くのジュースの自動販売機では、1000円札を入れた場合に、ボタンを押して商品を1つ購入すると「続けて購入モード」に入ってしまうので、いちいち釣り銭レバーを押さないといけません。しかし（おそらく）ほとんどのケースでは、ユーザーは一度に1本しかジュースを購入しないのです。つまり釣り銭レバーを押すという余計な操作が膨大な回数行われていることになります。</p></blockquote></p>
+<p><blockquote><p>プログラマーはエッジケースを重視しますが、インタラクションデザイナーはコモンケースを重視すべきなのです。起こりそうもない場合を考慮し過ぎて、起こるべきことの利便性を低下させてはいけません。</p></blockquote></p>
+<p>こういうケースはウェブ上にたくさん存在していると思います。</p>
+<p>自販機の例では本当に身のまわりの話で、誰もが想像できるんだろう。</p>
+<p>私の場合、今までは全部1本購入してきました。</p>
+<p>1000円札入れる旅、釣り銭レバーを押さなければなりませんのは面倒の中の面倒です。</p>
+<p><hr style="width: 100%; height: 2px;"></p>
+<p>さらにもう一つの事例として、ユーザ登録時のメールアドレス入力についても指摘がありました。</p>
+<p><img alt="" src="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/usability_tips01_01.gif"></p>
+<p><blockquote><p>これはEメールアドレスを正確に入力させることを目的としていますが、ユーザーの行動を観察すると、非常に多くの場合、ユーザーは1つ目に入力した内容をコピーして2つ目にペーストしています。これでは単に手間が増えているだけ。</p>
+<p>　また、ほとんどの場合システムは、2つの値が一致しているかどうかをバリデートするだけで、そのアドレスが有効かどうかを調べているわけではありません。もし1つ目のフィールドに正しく入力できても、2つ目のフィールドで間違えればエラーになってしまいますし、逆の場合もエラーになります。人は正確な作業を繰り返すことが苦手ですから、かえってエラーを増やしていることになります。仮にユーザーが90％の確率で自分のアドレスを正しく入力できるとした場合、</p>
+<p>・フィールドが1つの場合、90％の確率で正しく登録できる</p>
+<p>・フィールドが2つの場合、81％の確率で正しく登録できる</p>
+<p>という計算ができ、フィールドを増やすことでかえって「登録する」という目的を達成するハードルが高くなってしまうといえるのです。</p></blockquote></p>
+<p>私の場合はいつも最初の一個目が絶対100%正しく登録してます。</p>
+<p>(いつも保存された記録があり、Tabキーで選択するのがほとんどでした)</p>
+<p>しかし、二つ目で誤って入力したケースは何回かありました。</p>
+<p>確かに確率が下がってると思います。</p>
+<p>ユーザインタフェース設計する時は、ぜひこの<a target="_blank" href="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/01.html" title="記事">記事</a>をご覧ください。</p>
+<p>絶対役に立ちます。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-26T00:00:00+09:00" pubdate data-updated="true">2009-10-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/movie-butta-saitan">映画レビュー：　仏陀再誕</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><object height="290" width="470"><param name="movie" value="http://www.youtube.com/v/0aaJY_KeOsw&#38;hl=ja&#38;fs=1&#38;border=1" ></param><param name="allowFullScreen" value="true" ></param><param name="allowscriptaccess" value="always" ></param><embed height="290" width="470" src="http://www.youtube.com/v/0aaJY_KeOsw&#38;hl=ja&#38;fs=1&#38;border=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><ul><li>日時：　09年10月24日</li><li>場所：　シネマサンシャイン池袋</li><li>おすすめ度：　ゼロ、<span style="color: rgb(255, 0, 0);">絶対見ないでください</span></li><li>コメント：</li></ul></p>
+<p>こんなに気持ち悪い映画は生まれて初めて。</p>
+<p>神、あの世などのテーマのアニメや漫画、映画も今までたくさん見てきましたが、</p>
+<p>これほどひどいのはないだろう。</p>
+<p>ちゃんと科学を信じて、考えてる人に対して今までの人生が無駄だと言うのは何様のつもり？</p>
+<p>あの世のことを知らなければ成功できないとか、</p>
+<p>何が幸せ、何を求めてるとか、今から反省するほど俺らの人生はそんなに失敗していない！</p>
+<p>お説教はやめてほしい。見苦しいです。</p>
+<p><span style="color: rgb(0, 0, 255);">実際は1分間の予告編ほどすばらしくないです</span>。</p>
+<p>映画の途中でも次々と退場した人がたくさんいました。</p>
+<p>「これは何なんだ」、「これはないでしょう」との声もありました。</p>
+<p>人生最も無駄の2時間でした。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-25T00:00:00+09:00" pubdate data-updated="true">2009-10-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-there-is-no-overload">JavaScriptにオーバーロードはない</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>javaをやってからJavaScriptにかえると、</p>
+<p>なかなかなれませんね。</p>
+<br/>
+<p>例えばJavaではオーバーロードができるが、</p>
+<p>JavaScriptには通用しない。</p>
+<br/>
+<p>すごく簡単に言うと、オーバーロードは多重定義の意味で、</p>
+<p>同じメソッド名で違う型、数のパラメータがある時、それぞれ一つのメソッドとして認められる。</p>
+<p>一方、JavaScriptでは後勝ちです。</p>
+<p>先に定義したものが無効になります。</p>
+{% codeblock %}
+
+<span class="synIdentifier">function</span> func(param) <span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(param);
+<span class="synIdentifier">}</span>
+<span class="synIdentifier">function</span> func() <span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(1);
+<span class="synIdentifier">}</span>;
+func(<span class="synConstant">&#34;test&#34;</span>);
+func();
+{% endcodeblock %}
+<p>同じfuncの名前で作られた関数で、一個目はparamというパラメータがついてる。</p>
+<p>二番目はパラメータがない。</p>
+<p>すると結果は： 1 1 になります。</p>
+<p>常に後で定義したものが勝ちます。</p>
+<br/>
+<pre class="syntax-highlight">
+<span class="synIdentifier">function</span> func()<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(1);
+<span class="synIdentifier">}</span>;
+<span class="synIdentifier">function</span> func(param)<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(param);
+<span class="synIdentifier">}</span>
+
+{% endcodeblock %}
+<p>これは「test undefined」になります。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-24T00:00:00+09:00" pubdate data-updated="true">2009-10-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-create-your-ringtones">iPhoneの着信音(Ringtones)の作成</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>iTunes Storeより購入した曲はiTunesで右クリックして、<br/>着信音が作成できるようですが、<br/>それ以外の曲については残念ながら右クリックのメニューじゃ効かないです。<br/><br/>なので、以下の手順で自作することができます。<span style="color: rgb(255, 0, 204);"><br/></span><hr style="width: 100%; height: 2px;"></p>
+<p><ol>
+<li>ライブラリから好きな曲を右クリックして、「Get Info」を選択。</li>
+<li>「Option」タグで開始と終了の時間を設定し(必ず30秒以内に設定してください)、OKボタンを押す。</li>
+<li>曲を右クリックし、「Convert Selection to AAC」を選択(曲の長さは最大30秒ののため、転換はすぐ終わるはず)。</li>
+<li>iTunesライブラリで<span style="color: rgb(255, 0, 0);">新規作成した曲</span>を右クリックし、「Show in Finder」を選択。</li>
+<li>開いたFinder画面で曲の拡張子を「m4a」から「<span style="color: rgb(255, 0, 0);">m4r</span>」に変更。</li>
+<li>iTunesライブラリに戻って、新規作成した曲を削除し、「Keep File」を選択。</li>
+<li>最後に、Finderでさっき拡張し変更したファイルをダブルクリック。<br/></li>
+</ol></p>
+<p><hr style="width: 100%; height: 2px;">これで自動的にRingtonesカラムに分配されるはず。<br/><br/>結構手間かかるように見えますが、<br/>熟練すればまあまあ簡単です。<br/><br/>明日は自動変換してくれるソフトを探して紹介しましょう。<br/><br/><span style="color: rgb(0, 0, 0);"></span></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-23T00:00:00+09:00" pubdate data-updated="true">2009-10-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-where-is-the-note-synchronized-to">iPhoneメモ帳はパソコンのどこに同期されているか</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>結果から言います。</p>
+<br/>
+<p>メールアプリケーション（Mac OS Xの「メール」や「Microsoft Outlook」など）と同期されます。</p>
+<br/>
+<p>iTunesではメモ帳を同期するように設定したのですが、</p>
+<p>どこを探せばいいかわからなかったので、調べました。</p>
+<br/>
+<p>言うまでもないことかもしれませんが、</p>
+<p>私のように知らない人もいると思って、一応書きました。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-18T00:00:00+09:00" pubdate data-updated="true">2009-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/30/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/32/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

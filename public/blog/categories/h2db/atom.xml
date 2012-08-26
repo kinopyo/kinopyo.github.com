@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: h2db | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/h2db/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SpringでH2 Databaseを使う(HSQL、Derby)]]></title>
+    <link href="http://kinopyo.github.com/blog/using-spring-with-h2-database"/>
+    <updated>2010-11-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/using-spring-with-h2-database</id>
+    <content type="html"><![CDATA[<p>Springのコンテキストファイルにjdbc:embedded-databaseタグで
+type="H2"でbeanを登録します。</p>
+
+<p>jdbc:scriptタグで初期化時に実行したいSQLファイルを指定できます。
+Sprintって、本当に便利ですね。</p>
+
+<p>```xml
+&lt;jdbc:embedded-database id="dataSource" type="H2"></p>
+
+<pre><code>&lt;jdbc:script location="classpath:schema.sql"/&gt;
+&lt;jdbc:script location="classpath:test-data.sql"/&gt;
+</code></pre>
+
+<p>&lt;/jdbc:embedded-database></p>
+
+<p>```</p>
+
+<p>ちなみにjdbcのnamespaceの登録も忘れずに。</p>
+
+<p>```xml
+xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+xsi:schemaLocation="http://www.springframework.org/schema/jdbc</p>
+
+<pre><code>    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd"&gt;
+</code></pre>
+
+<p>```</p>
+
+<p>H2以外でもHSQL、Derbyがサポートされています。</p>
+]]></content>
+  </entry>
+  
+</feed>

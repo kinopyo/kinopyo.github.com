@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: omniauth | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/omniauth/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails OmniauthでTwitter認証ログイン後のcallback urlをカスタマイズ]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-customize-redirect-url-after-sign-in-with-omniauth-twitter-provider"/>
+    <updated>2011-11-05T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-customize-redirect-url-after-sign-in-with-omniauth-twitter-provider</id>
+    <content type="html"><![CDATA[<h2>目的</h2>
+
+<p>OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい</p>
+
+<h2>方法</h2>
+
+<p><em>gist id=819806</em></p>
+
+<p>libディレクトリのautoloadは<a href="http://www.kinopyo.com/blog/rails-autoload-lib-directory-file">Rails libディレクトリのファイルをautoload</a>を参考してください。</p>
+
+<h2>解説</h2>
+
+<p><em>redirect_to</em>パラメータ或いはrefererをログイン直前のリクエストから取ってセッションに保存するRack middwareの手法です。そしてsessions_controllerではセッション内に保存されたurlにリダイレクトし、セッションクリアしています。</p>
+
+<p>もちろんTwitter以外のproviderでの認証＆ログイン処理にも対応できます。</p>
+]]></content>
+  </entry>
+  
+</feed>

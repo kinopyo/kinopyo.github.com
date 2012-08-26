@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: WordPress | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress plugin to redirect "Page" to other url：Page Links To]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-page-links-to-plugin"/>
+    <updated>2012-01-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-page-links-to-plugin</id>
+    <content type="html"><![CDATA[<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the "about" page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
+
+<p>{% blockquote  %}
+This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p>
+
+<p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p>
+
+<p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.
+{% endblockquote %}</p>
+
+<p>Reference:
+<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
+
+<h1>日本語</h1>
+
+<p><a href="http://wordpress.org/extend/plugins/page-links-to/">Page Links To</a>プラグインでブログにWordpressの"Page"を追加し、指定のurlを開くように設定できます。
+例えば自分の場合は"About"ページを<a href="http://about.me/kinopyo">http://about.me/kinopyo</a>にリダイレクトしています。</p>
+
+<p>{% blockquote  %}
+This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p>
+
+<p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p>
+
+<p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.
+{% endblockquote %}</p>
+
+<p>参考サイト：
+<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSのパフォーマンスチューニング]]></title>
+    <link href="http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
+    <updated>2011-11-11T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
+    <content type="html"><![CDATA[<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
+
+<p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
+
+<p>チューニングしてから結構時間が経ったのでだいぶ忘れました。Evernoteでのメモを貼ります。</p>
+
+<p>効果が高い順で。</p>
+
+<h2>Wordpress</h2>
+
+<ul>
+<li>W3 Total Cache *プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
+ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</li>
+</ul>
+
+
+<h2>Apache</h2>
+
+<p><a href="httpd.conf">httpd.conf</a>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
+
+<p>{% codeblock %}</p>
+
+<p><IfModule prefork.c>
+StartServers       5
+MinSpareServers    5
+MaxSpareServers   10
+ServerLimit      64
+MaxClients       64
+MaxRequestsPerChild  50
+MaxMemFree 2000
+</IfModule></p>
+
+<p>{% endcodeblock %}</p>
+
+<h2>PHP</h2>
+
+<p><em>/etc/php.ini  *
+zlib.output_compression = On
+</em>APC*
+pecl install APC</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[開発者ブログに便利なキーワードや言語シンタックスなどを強調するCSS]]></title>
+    <link href="http://kinopyo.github.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo"/>
+    <updated>2011-10-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo</id>
+    <content type="html"><![CDATA[<p>開発者のブログではよく各言語に関する変数名やメソッド名などのようなキーワードを強調して表示する必要がありますね。「AV女優.com 開発者ブログ」を見るとき「これだっ！」と思ったCSSをから借りました、@sunomaruさんに感謝です！</p>
+
+<h2>CSS</h2>
+
+<p>{% codeblock %}</p>
+
+<p>em {</p>
+
+<pre><code>font-weight: normal;
+font-style: normal;
+white-space: nowrap;
+border: 1px solid #ccc;
+padding: 0.1em 0.6em;
+background: #f9f9f9;
+
+border-radius: 3px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+</code></pre>
+
+<p>}</p>
+
+<p>{% endcodeblock %}</p>
+
+<h2>DEMO</h2>
+
+<p><em>emタグ</em>で囲めばいいですよ〜どうでしょう〜！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
+    <updated>2011-09-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
+    <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
+
+<p><img src="http://hsuzuki.ddo.jp/weblog/wp-content/uploads/2008/12/radio_f.bmp" /></p>
+
+<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
+CentOSなのでyumを使ってインストールすれば解決です。
+{% codeblock %}
+sudo yum install php-gd
+sudo service httpd restart
+{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WordpressにSocial Metrics for Japaneseを入れてみた、記事のTwitter、Facebook Like 、はてぶされた数を管理画面に一覧表示]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-plugin-social-metrics-for-japanese"/>
+    <updated>2011-09-20T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-plugin-social-metrics-for-japanese</id>
+    <content type="html"><![CDATA[<p>{% blockquote http://kachibito.net/wordpress/social-metrics-for-japanese.html %}
+今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる
+{% endblockquote %}</p>
+
+<h2>インストール</h2>
+
+<p>20110920現在はWordpress管理画面で検索しても出てこなかったので、手動でpluginフォルダにアップしてインストールしました。</p>
+
+<h2>利用</h2>
+
+<p>インストールするとDashboardとPluginsのサイドバーに<strong>Social Metrics</strong>のリンクが表示され、記事がTwtter、いいね、はてブされた数が月別、カテゴリ別で見れます！
+ただしlinkedinはなぜか常に1になってます。</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/09/Social-Metrics-for-Japanese.jpg Social Metrics for Japanese %}</p>
+
+<p>最後に。うちの小さいブログにとってはソーシャルなど意識すぎの課題があると思います。Google Analyticsで一ヶ月で各ソーシャルプラットフォーム（Facebook, Twitter, Google+1, はてな）からのアクセスは10も行かない場合があって、90%以上がGoogle検索でやってきています。この状況を踏まえて今まで導入したソーシャルボタンとか、効果対コストは極めて低い！と感じました。</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: merge | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/merge/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git コンフリクトになった場合の対処]]></title>
+    <link href="http://kinopyo.github.com/blog/git-what-to-do-when-merge-conflict"/>
+    <updated>2011-10-12T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/git-what-to-do-when-merge-conflict</id>
+    <content type="html"><![CDATA[<p>git pullとかgit mergeでコンフリクトとなったファイルを編集して、git add、git commitすればいいです。コミットメッセージも必要です。
+git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
+￼
+コミットログはこんな感じです。SVNとは違ってコミットログに残るのが何か慣れないです。
+{% codeblock %}
+$ git log --oneline
+63bc3d1 fixed merge conflict
+bbfdd9e edit in master
+3dcfb2f edit in work
+9eedc58 made a
+{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+</feed>

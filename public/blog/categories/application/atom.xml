@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: application | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/application/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mouse Locator for Mac、マウスがスクリーンのどこにあるかを知りたい時]]></title>
+    <link href="http://kinopyo.github.com/blog/mouse-locator-for-mac"/>
+    <updated>2011-11-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mouse-locator-for-mac</id>
+    <content type="html"><![CDATA[<p><img src="http://www.2point5fish.com/img/MLLogo.png" alt="Mouse Locator for Mac" /></p>
+
+<p>自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
+ホットキーを押せば大きい緑色の圓でマウスポインタを示しので、すぐに分かります。</p>
+
+<p><a href="http://www.2point5fish.com/">http://www.2point5fish.com/</a></p>
+
+<p>さらに素晴らしいことはパソコンロック解除されたときに自動でアクティブになるんです！ユーザエクスペリエンス！</p>
+]]></content>
+  </entry>
+  
+</feed>

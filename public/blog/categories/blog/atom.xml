@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blog | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress plugin to redirect "Page" to other url：Page Links To]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-page-links-to-plugin"/>
+    <updated>2012-01-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-page-links-to-plugin</id>
+    <content type="html"><![CDATA[<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the "about" page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
+
+<p>{% blockquote  %}
+This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p>
+
+<p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p>
+
+<p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.
+{% endblockquote %}</p>
+
+<p>Reference:
+<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
+
+<h1>日本語</h1>
+
+<p><a href="http://wordpress.org/extend/plugins/page-links-to/">Page Links To</a>プラグインでブログにWordpressの"Page"を追加し、指定のurlを開くように設定できます。
+例えば自分の場合は"About"ページを<a href="http://about.me/kinopyo">http://about.me/kinopyo</a>にリダイレクトしています。</p>
+
+<p>{% blockquote  %}
+This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p>
+
+<p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p>
+
+<p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.
+{% endblockquote %}</p>
+
+<p>参考サイト：
+<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
+    <link href="http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
+    <updated>2012-01-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
+    <content type="html"><![CDATA[<p>この間仕事の関係でたくさんの技術者のブログを見たことがあって、自見ですが、採用の観点から見たときにどういうブログがよかったのか、正確に言うと採用に欲しい情報が探しやすいのかを整理したいと思いいます。</p>
+
+<p>私自身はエンジニアで採用関連の仕事はほとんど未経験なので、プロの意見ではなく、あくまで自分が仕事の中で感じたことを書いただけです。ご参考までに。</p>
+
+<h1>レイアウト</h1>
+
+<p>ブログにアクセスしたときは私はまず「About」ページを見つけようとしました。実際の記事とかサイドバーの内容とかよりも、一般的には「About」ページでより詳しい、採用観点からの欲しい情報が得られるからです。なのでこの「自己紹介」のページへのリンクが見やすいかどうかが重要だと思います。</p>
+
+<p>下にスクロールせずに見られる場所、例えばトップのタブバーとかにあれば助かります。</p>
+
+<h1>Aboutページ</h1>
+
+<p>多分ブロガーは誰もがこのAboutページを持っていると思いますが、「誰に向けて発信しているか？」が明確でないとなかなかいい文章にはならないと思います。</p>
+
+<p>私も今まで自分のAboutページを本当適当に書いていて、「どうせ誰も見てないだろう」と思ってずっと更新すらしなかったですが、今回の仕事でわかったのが「採用/転職のチャンスを見逃したかも」ってことです。準備すらしなければ、実際チャンスにめぐり合った時もそのまま捕まえることができないです。</p>
+
+<p>自分のAboutページは実際Google Analyticsで見たときはちょこちょこクリック率があることはわかってますが、本当に手抜き状態にしたまま。。too lazyですね！</p>
+
+<h2>Aboutページで必要な情報</h2>
+
+<p>ではこのAboutページで一体どんな情報があればいいのか？
++  簡単な自己紹介
++  言語（できれば英語版のも欲しい）
++  今の居場所（意外と重要）
++  スキル
++  今までの作品や成果、オープンソースへの貢献など
++  どういうことに興味があるか？どんなものが作りたいのか？
++  ソーシャルアカウント(Linkedin, Twitter, Github)
++  連絡先（メールアドレス）</p>
+
+<p>自分の母国語以外に英語バージョンのも用意して欲しいですね。グローバル採用の流れで、本人も世界を目指すならばできれば絶対英語をオススメします。記事はまだ母国語でもいいですが。
+Linkedinへのリンクがあれば一番助かります。
+Githubでは持っているリポジトリ（Forkしたのも大丈夫）でどんな分野の技術に興味が有るのかをチェックして、フォローされた数も参考にしました。
+Facebookは逆にあっても全然チェックする気がないです。
+今の居場所は実際にFace to Faceで話したい時に会える距離であるかの参考になります。</p>
+
+<h1>ブログ記事については</h1>
+
+<p>ブログ記事は一個一個チェックしないですが、あまりにも更新がない（年に3〜4回とか）ブログは「あれ？放棄状態？」な心配がありそこの情報が信用できるかが疑われます。</p>
+
+<h1>オススメトール</h1>
+
+<p><a href="http://about.me">http://about.me</a>のサイトがありますが、ブログのAboutページをこれにしてもいいと思います。見た目が綺麗ですし、ソーシャルアカウントへのリンクも簡単に付けられて書く側も見る側も楽です。</p>
+
+<p>さて、この記事を読んで自分のブログを見直したい方はいらっしゃるのかな？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WP Social Bookmarking Lightでブログのソーシャルブックマークボタン]]></title>
+    <link href="http://kinopyo.github.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button"/>
+    <updated>2011-05-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button</id>
+    <content type="html"><![CDATA[<p>もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
+<a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">http://www.lastday.jp/2011/05/16/increase-number-of-rss</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
+FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDeliciousなどまで対応してて便利ですよ。</p>
+
+<p>Wordpressプラグイン：WP Social Bookmarking Light
+<a href="http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/">http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/</a></p>
+
+<h2>設定</h2>
+
+<p>設定方法はとても簡単です。WPの設定画面でWP Social Bookmarking Lightを選択肢
+下記のように必要なサービスを左にドラッグ＆ドロップすればOKです。
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png WP Social Bookmarking Light Settings %}</p>
+
+<h3>General Settingタブ</h3>
+
+<p>「Singular」がDisabledにすれば記事の一覧ページにもボタンが反映するようになりますが、そうすると画面の読み込みが結構重くなるようでデフォルトのEnableのままにしています。</p>
+
+<h3>Facebookタブ</h3>
+
+<p>LikeボタンのVersionはデフォルトは「XFBML」となっていますが、XFBMLはもう廃止予定なのでiFrameに変更します。
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg WP Social Bookmarking Light Facebook Setting %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Evernote,Twitterとブログ]]></title>
+    <link href="http://kinopyo.github.com/blog/evernote-twitter-and-blog"/>
+    <updated>2011-04-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/evernote-twitter-and-blog</id>
+    <content type="html"><![CDATA[<p>Evernote使い始めたのは結構前ですが、ちゃんとノートブックを整理してライフログ始めたのはまだこの二ヶ月の話です。
+それからなかなかブログ更新するきっかけが少なくなりましたね。ただ教訓としてメモするのは基本Evernoteに蓄積してるし、普段思いついたものやストレス、情報共有とかは随時Twitterにつぶやくようになりました。</p>
+
+<p>まあ、Evernote書いたメモって共有する価値はあるといえばありますが、何だかんだ重複作業になるような気がして抑えてはいます。またEvernoteって、基本自分向けなので気軽に書けるメリットもありますし、仕事が忙しくなったら本当にEvernoteに書くのも精一杯になりますからね。
+と言ってもブログ書かないのは、それなりのインプットがないことと思いますよ。この業界で働いているなら、絶対これだけたみんなに伝えたいくらいの出来事はあるでしょうと思います。自分と同じような誤りや遠回しは避けて欲しいぐらい。
+そういう意味ではちゃんと反省しないといけないと思いますよ、ここ最近の仕事とプライベートを。ただ疲れたを言い訳にしてないか、あるいは勉強不足でインプットが足りないかって。</p>
+
+<p>酒飲んで調子に乗っていろいろ書いたけど、本当反省&amp;改善したい。</p>
+
+<p>最後に、
+この記事もiPhone FastEverって書いてます。いや〜本当に便利！チェックなしで発信！</p>
+]]></content>
+  </entry>
+  
+</feed>

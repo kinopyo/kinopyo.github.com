@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-23T13:43:26+09:00</updated>
+  <updated>2012-08-26T12:12:11+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -357,6 +357,320 @@ Here is just an example:</p>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@answers</span> <span class="o">=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">answers</span><span class="o">.</span><span class="n">recent</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">:question_id</span><span class="p">)</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:question</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
+    <updated>2012-03-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
+    <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
+
+<blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence &#8220;peroperos_id_seq&#8221; for serial column &#8220;peroperos.id&#8221;<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index &#8220;peroperos_pkey&#8221; for table &#8220;peroperos&#8221;<br/>～略～</p></blockquote>
+
+
+<p>の警告をシャットダウンする方法です。</p>
+
+<div><script src='https://gist.github.com/2232851.js?file='></script>
+<noscript><pre><code># add min_messages to test env
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: homu_test
+  pool: 5
+  username: postgres
+  password:
+  min_messages: warning</code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Railsテスト時のrack警告"warning: regexp match /.../n against to UTF-8 string"を消す方法]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-test-quietrack-warning"/>
+    <updated>2012-03-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-test-quietrack-warning</id>
+    <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このうるさい警告を消す方法を紹介します。</p>
+
+<h2>解決方法</h2>
+
+<p>rspecを使う場合はspec/spec_helper.rbに下記コードを最後に追記してください。</p>
+
+<div><script src='https://gist.github.com/2168152.js?file='></script>
+<noscript><pre><code>
+RSpec.configure do |config|
+  # ...
+end
+
+# quick hack to get Rack to be quiet about &quot;warning: regexp match /.../n against to UTF-8 string&quot; until we upgrade to Rails 3.1 with Rack 1.3
+module Rack
+  module Utils
+    def escape(s)
+      CGI.escape(s.to_s)
+    end
+    def unescape(s)
+      CGI.unescape(s)
+    end
+  end
+end</code></pre></noscript></div>
+
+
+<h2>原因</h2>
+
+<p>Rack1.3からは解決できたらしいですが、Rails 3.1以前を使うならとりあえずこの方法で回避してもいいかと。
+詳しくは：<a href="https://github.com/rack/rack/issues/41">https://github.com/rack/rack/issues/41</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SafariのTabにFaviconを表示する]]></title>
+    <link href="http://kinopyo.github.com/blog/safari-display-favicon-to-tab"/>
+    <updated>2012-03-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/safari-display-favicon-to-tab</id>
+    <content type="html"><![CDATA[<p>Safariは開いたタブが多くなるとFaviconがなく文字だけのため、ちょっと見にくいと思います。
+Chromeと同じようにタブにFaviconを表示する方法を紹介します。<a href="http://www.machangout.com">glims</a>というプラグインです！</p>
+
+<p>上記のリンクからダウンロードしインストールすれば完了です。Safariの再起動は必要になります。</p>
+
+<p>再起動すればSafariのタブにFaviconが表示されます！こんな感じになります〜♪
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2012/03/Screen-Shot-2012-03-21-at-12.29.46.png" title="Safari Display Tab Favicon" ></p>
+
+<p>その他にもいろいろ機能があって、例えばGoogleやYahooの検索結果にサムネールを表示したり最後に閉じたタブを表示したり…
+日本語版もあるみたいですよ〜
+機能一覧：</p>
+
+<blockquote><p>Adds thumbnails to Google/Yahoo/Bing search results<br/>Adds search engines to the default Safari&#8217;s search tab<br/>Adds Favicons to tab labels<br/>Adds keyword search from address bar<br/>Adds new tab position option (right/left/leftmost/rightmost)<br/>Adds tab closing using middle mouse button (or CMD-Click)<br/>Focus last selected tab<br/>Type-ahead support (auto cmd-f)<br/>Sets the focus on the search field when opening a new window<br/>Adds Amazon&#8217;s information banner on Google/Yahoo/Bing search results<br/>Adds a &#8220;Max Window Size&#8221; menu item to resize the Safari window<br/>Autocomplete search phrase<br/>Adds bookmark separator<br/>Adds bookmark actions<br/>Dated download folders<br/>Auto-Closes download window<br/>Undo &#8220;Close Tab&#8221; (cmd-z)<br/>Localized to Japanese, French, Polish, German, Spanish, Italian, and Korean</p></blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PayPal Here: スマーフォンでクレジットカードを読み込んで支払い]]></title>
+    <link href="http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution"/>
+    <updated>2012-03-19T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution</id>
+    <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
+
+<blockquote><p>PayPal Here is the world&#8217;s first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote>
+
+
+
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/x5woIGSOLGk" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Mystery: Why Cant We Walk Straight?]]></title>
+    <link href="http://kinopyo.github.com/blog/a-mystery-why-can-not-we-walk-straight"/>
+    <updated>2012-01-30T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/a-mystery-why-can-not-we-walk-straight</id>
+    <content type="html"><![CDATA[<p>面白かったのでブログに載せました。目を閉じて歩けば直線だと本人は思うが、実はぐるぐる回ってるって実験が80年前から行われていて、未だにその原因がわからないそうです。</p>
+
+<iframe src="http://player.vimeo.com/video/17083789?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p><a href="http://vimeo.com/17083789">A Mystery: Why  Can&#8217;t We Walk Straight?</a> from <a href="http://vimeo.com/npr">NPR</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FactoryGirl: How to define a value based on an already defined one]]></title>
+    <link href="http://kinopyo.github.com/blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one"/>
+    <updated>2012-01-26T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/factorygirl-%e6%97%a2%e3%81%ab%e5%ae%9a%e7%be%a9%e3%81%97%e3%81%9f%e5%80%a4%e3%82%92%e3%83%99%e3%83%bc%e3%82%b9%e3%81%ab%e3%81%97%e3%81%9f%e5%80%a4%e3%82%92%e8%a8%ad%e5%ae%9a%e3%81%99%e3%82%8b</id>
+    <content type="html"><![CDATA[<p>FactoryGirlで既に定義した値を使おうとする時の方法です。
+例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。</p>
+
+<p><em>gist id=1680766</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku, how to check and add ENV vars]]></title>
+    <link href="http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars"/>
+    <updated>2012-01-24T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars</id>
+    <content type="html"><![CDATA[<div><script src='https://gist.github.com/1667607.js?file='></script>
+<noscript><pre><code># check all your ENV vars.
+heroku config -long
+     
+# add ENV vars
+heroku config:add S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre></noscript></div>
+
+
+<h1>日本語</h1>
+
+<p>Herokuで環境変数を追加＆チェックするコードです。</p>
+
+<div><script src='https://gist.github.com/1667607.js?file='></script>
+<noscript><pre><code># check all your ENV vars.
+heroku config -long
+     
+# add ENV vars
+heroku config:add S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone 4Sのモバイルデータ通信(3G)をオフにしたらたまたま電話機能が使えなくなる件]]></title>
+    <link href="http://kinopyo.github.com/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data"/>
+    <updated>2012-01-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data</id>
+    <content type="html"><![CDATA[<h2>SMSと電話ができなくなる故障？</h2>
+
+<p>iPhone 4Sになってからは「3Gオフ」のオプションはなくなり、代わりに「モバイルデータ通信」をずっとオフにしたのですが、ある日からたまたま<strong>電話やSMSができなくなりました</strong>。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20111015-11syiqan1e8ijfhiiu1rtp3frx.jpg" width="20111015"></p>
+
+<p>詳しくは：
++  SMS送信しても成功とならない(プログレスバーがずっと送信状態)
++  電話かけても何も聞こえない＆話せないが、相手は受話できる(相手にとっては通話状態になっているのにこっちが何も喋ってない感じになる)
++  そして電話のアプリがしんでしまう</p>
+
+<h2>原因</h2>
+
+<p>Appleジーニアスバーに行きましたが、答えとしては<strong>「iPhone4Sはモバイルデータ通信、つまり3Gオフにするのは電話がそもそも使えなくなる、そのように設計されたんです。」</strong>
+「え、、？でも3GSの時はずっとオフにして使いましたが。。。」
+「残念ながら4Sからはそれはできなくなるんです」</p>
+
+<h2>しょうがない解決策</h2>
+
+<p>「設定 → 一般 → ネットワーク → モバイルデータ通信モバイルデータ通信」をONにするしかないですね。</p>
+
+<p>今までオフにしても一日で大体80%のバッテリー消費になったのが、ONにしたらもう。。。「iOS 5.1を待つしかないですね」これがジーニアスバーのスタッフの回答です。</p>
+
+<h2>なぜ3Gオフのオプションはなくなったのか</h2>
+
+<p>Googleで検索してもAppleからの正式回答はなかったのです。>_&lt;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iPad2とソフトバンクWi-Fiスポット(2years)]]></title>
+    <link href="http://kinopyo.github.com/blog/ipad2-softbank-wifi-spot-2-year"/>
+    <updated>2012-01-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/ipad2-softbank-wifi-spot-2-year</id>
+    <content type="html"><![CDATA[<p>iPad2でたまに駅とかでソフトバンクのWifiスポットへのアクセス画面が出てきて、気になって使えるかを調べたんです。</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20100606_softbankWifi.gif %}</p>
+
+<h2>利用するには</h2>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg }</p>
+
+<p>{% blockquote http://mb.softbank.jp/mb/ipad/service/wi-fi/ %}
+iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi-Fiスポットを無料で提供します。
+{% endblockquote %}</p>
+
+<p>自分場合当時アップルストアで購入したのですが、iPad2の個装底面にはシールがありませんでした。上記の説明の「一部の量販店」の部分が曖昧だっだので、ソフトバンクのスタッフに聞いたら、とりあえず<strong>ソフトバンクのショップで買わないとほとんどはwifiスポットを提供しない</strong>らしいです。また<strong>iPadのモデルがそもそも違うので他にWifi加入とかの申し込みも全然できない</strong>です。</p>
+
+<p>そこの説明文は全然嘘ということでした。</p>
+
+<p>関連リンク：<a href="http://mb.softbank.jp/mb/ipad/service/wi-fi/">http://mb.softbank.jp/mb/ipad/service/wi-fi/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What you can do with Facebook Comments Social Plugin]]></title>
+    <link href="http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin"/>
+    <updated>2012-01-05T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin</id>
+    <content type="html"><![CDATA[<h1>Goal</h1>
+
+<p>To use facebook comments integrated to your own site.</p>
+
+<h2>Requirements</h2>
+
+<p>Need a facebook application for your site(domain).</p>
+
+<p>For example:</p>
+
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2012/01/Screen-Shot-2012-01-05-at-14.21.25.png"></p>
+
+<h2>How to get it</h2>
+
+<p>Fill in the blank and click get code from <a href="https://developers.facebook.com/docs/reference/plugins/comments/">https://developers.facebook.com/docs/reference/plugins/comments/</a></p>
+
+<p>Then just paste that code to your site(page).</p>
+
+<h2>Functions</h2>
+
+<ul>
+<li><p>People who want to comment can choose if post to Facebook, there&#8217;s a checkbox.</p></li>
+<li><p>Comments posted to facebook are bidirectional. Threads stay synced across Facebook and on the Comments Box on your site regardless of where the comment was made.</p></li>
+<li><p>Sort comments by Social Ranking, Chronological(Time) order</p></li>
+<li><p>Boosting comments: Moderators can now ensure that high-quality comments appear at the top of the Comments Box</p></li>
+</ul>
+
+
+<p>&nbsp;</p>
+
+<p>Facebook doesn&#8217;t explain how the Social Ranking works, but I checked some real-world examples and I guess basically we can consider it sort by like counts.</p>
+
+<h2>Moderation Tools</h2>
+
+<p>Put this meta tag in the html.</p>
+
+<p><span style="color: #008080;"> &lt;meta property=&#8221;fb:admins&#8221; content=&#8221;{YOUR_FACEBOOK_USER_ID}&#8221;/&gt;</span></p>
+
+<p>Then if you log in with the owner of the application, you can access this url to control comments:</p>
+
+<p><a href="http://developers.facebook.com/tools/comments">http://developers.facebook.com/tools/comments</a></p>
+
+<p>or you can do it inside the Comments Box directly.</p>
+
+<p>There&#8217;re Moderate dropdown to Hide comment, Ban User or Boost comment. In the Settings page you have other options like add moderators or set blacklisted words, etc.</p>
+
+<p>Remember to check all the FAQ on the reference docs, very useful. I wonder why those go to the FAQ though.</p>
+
+<h2>Demo</h2>
+
+<p><a href="http://www.kinopyo.com/demo/facebook_comments.html">http://www.kinopyo.com/demo/facebook_comments.html</a></p>
+
+<h1>Reference</h1>
+
+<p><a href="https://developers.facebook.com/docs/reference/plugins/comments/">https://developers.facebook.com/docs/reference/plugins/comments/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress plugin to redirect "Page" to other url：Page Links To]]></title>
+    <link href="http://kinopyo.github.com/blog/wordpress-page-links-to-plugin"/>
+    <updated>2012-01-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/wordpress-page-links-to-plugin</id>
+    <content type="html"><![CDATA[<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the &#8220;about&#8221; page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
+
+<blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or &#8220;normal&#8221;) URL to the new one you&#8217;ve chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote>
+
+
+<p>Reference:
+<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
+
+<h1>日本語</h1>
+
+<p><a href="http://wordpress.org/extend/plugins/page-links-to/">Page Links To</a>プラグインでブログにWordpressの&#8221;Page&#8221;を追加し、指定のurlを開くように設定できます。
+例えば自分の場合は&#8221;About&#8221;ページを<a href="http://about.me/kinopyo">http://about.me/kinopyo</a>にリダイレクトしています。</p>
+
+<blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or &#8220;normal&#8221;) URL to the new one you&#8217;ve chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote>
+
+
+<p>参考サイト：
+<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
 ]]></content>
   </entry>
   

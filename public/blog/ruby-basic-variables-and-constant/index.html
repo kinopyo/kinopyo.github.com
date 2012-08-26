@@ -1,0 +1,355 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ruby Variables and Constants - Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="変数 例1 1
+2
+temperature = 34
+puts temperature Rubyの変数名 Rubyではキャメルケースより、アンダースコアが好みだそうです。
+例えば変数名page_transfer_managerはOKだけど、pageTransferManagerはNG。 予約語 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Ruby Variables and Constants</h1>
+	<div class="entry-content"><h2>変数</h2>
+
+<h3>例1</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Rubyの変数名</h3>
+
+<p>Rubyではキャメルケースより、アンダースコアが好みだそうです。
+例えば変数名page_transfer_managerはOKだけど、pageTransferManagerはNG。</p>
+
+<h3>予約語</h3>
+
+<p>{% blockquote >
+<strong>FILE</strong>    def in  self
+<strong>LINE</strong>    defined?    module  super
+BEGIN   do  next    then
+END else    nil true
+alias   elsif   not undef
+and end or  unless
+begin   ensure  redo    until
+break   false   rescue  when
+case    for retry   while
+class   if  return  yield
+&lt;&lt;</p>
+
+<h3>Example2</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>整数を文字列に変換することに注意してください。
+ダブルクォーテーション内であれば任意の式を#{ }に入れることができます。</p>
+
+<h2>Constants</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>コンスタントは大文字でスタートします。
+これでRubyはコンスタントと認識してくれます。</p>
+
+<h1>中文</h1>
+
+<h2>变量</h2>
+
+<h3>声明例子1</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Ruby变量名</h3>
+
+<p>Ruby更常用下划线而非骆驼拼写法。
+比如page_transfer_manager，但pageTransferManager却不常用。</p>
+
+<h3>Reserved Word</h3>
+
+<p>以下变量名为Ruby所使用，无法用来定义自己的变量。</p>
+
+<blockquote><blockquote><p><strong>FILE</strong>    def in  self
+<strong>LINE</strong>    defined?    module  super
+BEGIN   do  next    then
+END else    nil true
+alias   elsif   not undef
+and end or  unless
+begin   ensure  redo    until
+break   false   rescue  when
+case    for retry   while
+class   if  return  yield
+&lt;&lt;</p></blockquote></blockquote>
+
+<h3>Example2</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意要将integer转换为string.
+在双引号&#8221;&#8220;内，可以在#{和}之间放置任何表达式，
+表达式的值会被转换为string显示。</p>
+
+<h2>常量</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>常量在Ruby里以大写字母开头。
+通常习惯上常量的所有字符都是大写，
+但只要开头是大写，Ruby便认为这是常量。</p>
+
+<h1>English</h1>
+
+<h2>Variable</h2>
+
+<h3>Example1</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Ruby convention</h3>
+
+<p>To use underscores rather than &#8220;camel case&#8221; for multiple-word names.</p>
+
+<p>page_transfer_manager is good, for example, but pageTransferManager is not.</p>
+
+<h3>Reserved words</h3>
+
+<blockquote><p>}</p></blockquote>
+
+<p><strong>FILE</strong>    def in  self
+<strong>LINE</strong>    defined?    module  super
+BEGIN   do  next    then
+END else    nil true
+alias   elsif   not undef
+and end or  unless
+begin   ensure  redo    until
+break   false   rescue  when
+case    for retry   while
+class   if  return  yield</p>
+
+<p>{% endblockquote %}</p>
+
+<h3>Example2</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that you need to convert the integer variable to string.
+You can place any expression inside #{ and } in a double-quoted string
+and have it interpolated into the text.</p>
+
+<h2>Constants</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Constants in Ruby start with an uppercase letter—that’s how Ruby
+knows they are constants. In fact, the entire name of a constant is usually in uppercase. But it’s that first
+letter that is crucial—it must be uppercase so that Ruby knows that you intend to create a constant.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T00:00:00+09:00" pubdate data-updated="true">2010-06-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.github.com/blog/ruby-basic-variables-and-constant';
+        var disqus_url = 'http://kinopyo.github.com/blog/ruby-basic-variables-and-constant';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

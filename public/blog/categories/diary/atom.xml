@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: diary | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/diary/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
+    <link href="http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
+    <updated>2012-01-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
+    <content type="html"><![CDATA[<p>この間仕事の関係でたくさんの技術者のブログを見たことがあって、自見ですが、採用の観点から見たときにどういうブログがよかったのか、正確に言うと採用に欲しい情報が探しやすいのかを整理したいと思いいます。</p>
+
+<p>私自身はエンジニアで採用関連の仕事はほとんど未経験なので、プロの意見ではなく、あくまで自分が仕事の中で感じたことを書いただけです。ご参考までに。</p>
+
+<h1>レイアウト</h1>
+
+<p>ブログにアクセスしたときは私はまず「About」ページを見つけようとしました。実際の記事とかサイドバーの内容とかよりも、一般的には「About」ページでより詳しい、採用観点からの欲しい情報が得られるからです。なのでこの「自己紹介」のページへのリンクが見やすいかどうかが重要だと思います。</p>
+
+<p>下にスクロールせずに見られる場所、例えばトップのタブバーとかにあれば助かります。</p>
+
+<h1>Aboutページ</h1>
+
+<p>多分ブロガーは誰もがこのAboutページを持っていると思いますが、「誰に向けて発信しているか？」が明確でないとなかなかいい文章にはならないと思います。</p>
+
+<p>私も今まで自分のAboutページを本当適当に書いていて、「どうせ誰も見てないだろう」と思ってずっと更新すらしなかったですが、今回の仕事でわかったのが「採用/転職のチャンスを見逃したかも」ってことです。準備すらしなければ、実際チャンスにめぐり合った時もそのまま捕まえることができないです。</p>
+
+<p>自分のAboutページは実際Google Analyticsで見たときはちょこちょこクリック率があることはわかってますが、本当に手抜き状態にしたまま。。too lazyですね！</p>
+
+<h2>Aboutページで必要な情報</h2>
+
+<p>ではこのAboutページで一体どんな情報があればいいのか？
++  簡単な自己紹介
++  言語（できれば英語版のも欲しい）
++  今の居場所（意外と重要）
++  スキル
++  今までの作品や成果、オープンソースへの貢献など
++  どういうことに興味があるか？どんなものが作りたいのか？
++  ソーシャルアカウント(Linkedin, Twitter, Github)
++  連絡先（メールアドレス）</p>
+
+<p>自分の母国語以外に英語バージョンのも用意して欲しいですね。グローバル採用の流れで、本人も世界を目指すならばできれば絶対英語をオススメします。記事はまだ母国語でもいいですが。
+Linkedinへのリンクがあれば一番助かります。
+Githubでは持っているリポジトリ（Forkしたのも大丈夫）でどんな分野の技術に興味が有るのかをチェックして、フォローされた数も参考にしました。
+Facebookは逆にあっても全然チェックする気がないです。
+今の居場所は実際にFace to Faceで話したい時に会える距離であるかの参考になります。</p>
+
+<h1>ブログ記事については</h1>
+
+<p>ブログ記事は一個一個チェックしないですが、あまりにも更新がない（年に3〜4回とか）ブログは「あれ？放棄状態？」な心配がありそこの情報が信用できるかが疑われます。</p>
+
+<h1>オススメトール</h1>
+
+<p><a href="http://about.me">http://about.me</a>のサイトがありますが、ブログのAboutページをこれにしてもいいと思います。見た目が綺麗ですし、ソーシャルアカウントへのリンクも簡単に付けられて書く側も見る側も楽です。</p>
+
+<p>さて、この記事を読んで自分のブログを見直したい方はいらっしゃるのかな？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2012年の目標]]></title>
+    <link href="http://kinopyo.github.com/blog/goal-for-2012"/>
+    <updated>2012-01-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/goal-for-2012</id>
+    <content type="html"><![CDATA[<p>Nettus+の記事:<a href="http://net.tutsplus.com/articles/general/ten-new-years-resolutions-every-web-developer-should-make/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+nettuts+%28Nettuts%2B%29">10 New Year’s Resolutions Every Web Developer Should Make</a>がとても素晴らしかったので、それに乗って2012の目標をできるだけ数字化で評価しやすいように設定しようと思います。</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/photo-2.jpg Goal for 2012 %}</p>
+
+<h1>1 - Learn a New Language, Framework, Or Methodology</h1>
+
+<p><strong>Node.jsとNode.jsで何の問題を解決するのが一番得意なのか？を知りたい。</strong></p>
+
+<p>「Node.jsは何の問題を解決したの」ってNode.jsを勉強した友達に聞いたら、「front-endのエンジニアは昔client sideのことしか出来なかったのを、今はserver sideの実装もできるようになった、と転職活動でもっと有利になった」みたいなジョークで返しました。。。</p>
+
+<p>今まで言語を学ぶプロセスとは違う手法で、文法などを勉強する前に先にこれを一番知りたいです。
+言語自体はRubyがもっと好きですし、今まで簡単なプロトタイプなどはSinatraでも十分対応できました。もしNode.jsの使い道が自分の趣味などに合わなければ途中、あるいは真っ先に捨てるのも全然あり。</p>
+
+<h1>2 - Get Better At What You Know</h1>
+
+<p>下記のスキルの熟練度をあげて、普段の仕事の中でもう<strong>apiなど参照しなくてもできるくらい</strong>！
++   Ruby(Metaprogrammingあたり)
++   Rails
++   Sinatra
++   Heroku
++   MongoDB(MongoMapper)
++   TextMate 2</p>
+
+<p>仕事でも環境が整った上、これくらい出来なくちゃ！
+全部頭で覚えられるはベストですが、DRYの観点からTextMate(2)を工夫してSnippet作ったりして効率にするのもありです。</p>
+
+<h1>3 - Explore a New Field</h1>
+
+<p><strong>iOS Developmentで簡単なアプリをひとつ公開する</strong></p>
+
+<p>昔作ってた経験もあるし、このまま放棄するのは悔しいというかもったいないかなと思います。iOS 4からはほとんど触ってないのでキャッチアップしたいです！</p>
+
+<p>いつも同じことをやるのにRubyだと一行でできるのがiOSでは数行の見苦しいコードになっちゃうことに抵抗があって、なかなかモチベーションが湧いてこないですが、会社の人が2時間で相当完成度の高いプロトタイプが作れたことにびっくりしてやっぱ熟練度を上げればそこまでWeb開発と差はないでしょうね。</p>
+
+<h1>4 - Engage the Community</h1>
+
+<p><strong>あえて目標は設定しません。</strong></p>
+
+<p>オープンソースへの貢献という話に私見ですが、「貢献するために貢献する」ことには抵抗があります。私は自分が使ってるうちに気づいたことは自分で改善しそれを作者さんにフィードバックしたいのですが、それを数字化で「10件のPull Requestを送る」とかはあまり意味ないと思います。「今年は恋をする！」ではなく、「縁で知り合って気に入った子と深く付き合いたい、その気持ちを伝えたい」マインドセットで進みます。</p>
+
+<h1>5 - Teach Others</h1>
+
+<p>人に何を教えるかまだ半信半疑ですが、以下の2つはチャンスがあればもっと人に伝えたいです。
++  <strong>料理は社会問題、料理で世界を変える</strong>
++  <strong>Lean Startupの手法で、自分/人類の無駄なエナージーを減らす</strong></p>
+
+<h1>6 - Take Better Care Of Yourself</h1>
+
+<p>数年前より体がだいぶ鈍くなったし、あんまり働いてないのに、いっぱい寝たのに疲れが回復しないのがどうも気に入らないです。そのためにちゃんと体を鍛えたいです！</p>
+
+<ul>
+<li><strong>10時以降に起きるのを年間休日の10回以内に</strong></li>
+<li><strong>夜1時以降寝るのを週一回のペースに、3ヶ月実施して問題なければ12時前に寝ることに。</strong></li>
+<li><strong>トータルで144 km走る(2週間で3回走る x 1回で2km = 1ヶ月で 12km, 12 x 12 = 144km)</strong></li>
+<li><strong>一回くらい10km走る</strong></li>
+<li>自転車通勤(Optional)</li>
+</ul>
+
+
+<h1>7 - Manage Your Time Better</h1>
+
+<p>まだどう実施するかノープランですが、とりあえずは：</p>
+
+<ul>
+<li><strong>朝の時間をもっと利用したい</strong></li>
+<li><strong>家での集中時間を増やしたい</strong></li>
+</ul>
+
+
+<p>どう実施するかはまた後で考えます。</p>
+
+<h1>8 - Use Better Programming Practices</h1>
+
+<p>これは言うまでもないものなのでpass</p>
+
+<h1>9 - Generate Passive Income</h1>
+
+<ul>
+<li><strong>2ヶ月で一つのプロダクトをリリースし検証する</strong>
+{% blockquote  %}
+Start-ups Don't Starve, They Drown.
+{% endblockquote %}
+のようにideaは今までもうものたくさんある中、作りっぱなしにしたか、放棄状態にしたのはもったいない！2ヶ月のスパンではいろいろ試せると思って、年に6つのideaを試せるからね！</li>
+</ul>
+
+
+<p>2011年はブログのAdSenseで何とか給料以外の収入は得たものの、金額が少なすぎてまだ言えるほどのものではないです。でも儲かるのは目的ではなくて、それなりの価値を提供すればそれなりのフィードバックはあるはずなので、まだ価値があるものを作れていないことです。</p>
+
+<p>またドメインとかサーバ、Herokuなどにもっと大胆に投資してもいいよって自分に言いたいです。</p>
+
+<h1>10 - Take a Break</h1>
+
+<ul>
+<li><strong>週に3回は料理する、週末は豪華なやつを作る！</strong>(cook.kinopyo.comの料理専用ブログを作る！)</li>
+<li><strong>StarCraft2でMaster Leagueを目標に進出！</strong></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How COOKPAD changed me]]></title>
+    <link href="http://kinopyo.github.com/blog/how-cookpad-changed-me"/>
+    <updated>2011-12-20T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-cookpad-changed-me</id>
+    <content type="html"><![CDATA[<h2>Presentation</h2>
+
+<div style="width:425px" id="__ss_10645457"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fantasyday/how-cookpad-changed-me" title="How COOKPAD changed me" target="_blank">How COOKPAD changed me</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/10645457" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/fantasyday" target="_blank">Qihuan Piao</a> </div> </div>
+
+
+<h2>Resources（おすすめの本とプレゼン）</h2>
+
+<ul>
+<li><a href="http://www.amazon.com/Cooking-Solves-Everything-Kitchen-ebook/dp/B005OKGVT0/ref=sr_1_8?ie=UTF8&amp;qid=1323817673&amp;sr=8-8">Cooking Solves Everything</a></li>
+<li><a href="http://www.ted.com/talks/lang/en/jamie_oliver.html">TED - Teach every child about food</a></li>
+<li><a href="http://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898">The Lean Startup</a></li>
+</ul>
+
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[楽天、アマゾン、Yahooなどを一括検索できるサイト]]></title>
+    <link href="http://kinopyo.github.com/blog/search-for-rakuten-amazon-yahoo"/>
+    <updated>2011-11-14T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/search-for-rakuten-amazon-yahoo</id>
+    <content type="html"><![CDATA[<p>使ったことはないけど、とりあえずリストアップ。</p>
+
+<ul>
+<li><a href="http://all-search.biz/index.php">http://all-search.biz/index.php</a></li>
+<li><a href="http://www.tsukaerusite.com/">http://www.tsukaerusite.com/</a></li>
+<li><a href="http://www.shopping-tool.com/">http://www.shopping-tool.com/</a></li>
+<li><a href="http://aucfan.com/">http://aucfan.com/</a></li>
+<li><a href="http://psearch.yahoo.co.jp/search/advanced">http://psearch.yahoo.co.jp/search/advanced</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone水没記、液晶交換で復活]]></title>
+    <link href="http://kinopyo.github.com/blog/iphone-dropped-in-water"/>
+    <updated>2011-06-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/iphone-dropped-in-water</id>
+    <content type="html"><![CDATA[<p>一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。</p>
+
+<p>液晶が点灯しなかったものの、まだ生きてます。
+急いで電源を切りました。スワイプのジェスチャーがなかなか効かないので何回かやったんです。</p>
+
+<p>そこでググってみてこんな措置をとりました。
++  本体は振ってはいけない
++  ドライヤーで乾かす
++  米に埋める(乾燥剤がなかった)
++  乾燥剤とiPhoneをジップロックに入れて待つ！
++  毎晩一回起動して様子を観察</p>
+
+<p>それで、ほぼ4-5日経って特に変わりがなかったです。
+(まだ液晶が点灯しない、バッテリとかその他は問題ない)
+画面が暗いまま1週間使い続けてもう待てないと思って
+ソフトバンクの店舗にいって正直に言いました。
+思ったとおり検査で水没のセンサは反応あり、
+修理はできず22,800¥で交換するしかないと言われました。</p>
+
+<p>そんな時にTwitter<a href="https://twitter.com/#!/spdshinjuku">スマートフォンドクター新宿店</a>から連絡がきましたので、
+お店にいって液晶だけ交換することにしました。
+その場でTwitterでつぶやけばツイッター割があります。
+合わせて8,800¥でした。ありがとうございました。</p>
+
+<p>今まで問題なく使いました。大事にしないと。。</p>
+]]></content>
+  </entry>
+  
+</feed>

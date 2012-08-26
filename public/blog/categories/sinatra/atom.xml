@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sinatra | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/sinatra/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SinatraでStaticなHTMLファイルをrenderするには]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-render-static-html-in-sinatra"/>
+    <updated>2011-10-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-render-static-html-in-sinatra</id>
+    <content type="html"><![CDATA[<h2>目的</h2>
+
+<p>Sinatraで静的なhtmlファイルをrenderする方法です。</p>
+
+<h2>現状</h2>
+
+<p>Sinatraでは色々なビューテンプレートをレンダリングできます。Haml、Erb、Sass、Markdown、CoffeeScript…が対応されていますが、HTMLは対応してないようです。<em>html :index</em>で書いてもダメですね。</p>
+
+<p><a href="http://www.sinatrarb.com/intro-jp.html#%E3%83%93%E3%83%A5%E3%83%BC%20/%20%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88">Sinatraのビューテンプレート</a></p>
+
+<h2>解決方法</h2>
+
+<p><em>gist id=1303281 file= sinatra_render_html.rb</em>
+<em>File.read</em>でファイルとして読み込むことですね。Sinatraはデフォルトの設定だと<em>public</em>フォルダ内のものをassetsとするそうです。</p>
+
+<p>でちょっとリファクタリングして<em>html :index</em>のシンタックスでいけるようにしました。
+<em>gist id=1303281 file=sinatra_render_html_refactor.rb</em></p>
+
+<h2>参考</h2>
+
+<p><a href="http://stackoverflow.com/questions/2437390/serving-static-files-with-sinatra">http://stackoverflow.com/questions/2437390/serving-static-files-with-sinatra</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HerokuとRails,Sinatraで使えるMemcached Gem Dalli]]></title>
+    <link href="http://kinopyo.github.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra"/>
+    <updated>2011-06-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra</id>
+    <content type="html"><![CDATA[<p>昨日の記事<a href="http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread">http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</a>にも簡単に述べましたが、DalliはHerokuでお勧められているMemcachedのGemです。正確にはpure ruby memcache-clientです。</p>
+
+<p>インストールと使い方をGistで公開しています。</p>
+
+<p>{% gist 1039656 %}</p>
+
+<p>参考サイト：
+<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a>
+<a href="https://github.com/mperham/dalli">https://github.com/mperham/dalli</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた]]></title>
+    <link href="http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
+    <updated>2011-06-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
+    <content type="html"><![CDATA[<h2>スレット経緯</h2>
+
+<p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
+実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
+<a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png bumblebee rm -rf :usr %}</p>
+
+<p>一個スペースが多かったですね。。</p>
+
+<p>でコメントに上がっている画像がとても面白かったので、それをNokogiriを使って拾うrubyコードを書きました。プログラマのヒューモア満載の画像ですね。</p>
+
+<p>Sinatra + Nokogiri + Herokuで作りました、キャッシュは<a href="https://github.com/mperham/dalli">dalli</a>というgemを使いました。</p>
+
+<h2>成果</h2>
+
+<p>下記iframeで表示しています。urlは<a href="http://kinopyo-omgmyusr.heroku.com">http://kinopyo-omgmyusr.heroku.com</a></p>
+
+<iframe src="http://kinopyo-omgmyusr.heroku.com/" scrolling="yes" width="480" height="720" >
+</iframe>
+
+
+<h2>ソースコード</h2>
+
+<p>githubに上げています。
+<a href="https://github.com/kinopyo/Funny-Images-in-bumblebee-rm--rf--usr-thread">https://github.com/kinopyo/Funny-Images-in-bumblebee-rm--rf--usr-thread</a></p>
+
+<p>参考になったリンク：
+<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sinatraサーバ起動せずに修正したソースを反映する方法(ホットデプロイ)]]></title>
+    <link href="http://kinopyo.github.com/blog/sinatra-hot-deploy-without-restart-server"/>
+    <updated>2011-05-24T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/sinatra-hot-deploy-without-restart-server</id>
+    <content type="html"><![CDATA[<p>Sinatra使って二日目ですが、サーバーを再起動しないと修正したコードが反映されないことに気づきました。これは不便なので、改善する方法を紹介します。</p>
+
+<p>shotgunというgemを使えばOKです。インストールし、ruby -rubygemsではなくshotgunでサーバを起動します。</p>
+
+<p>```
+$ sudo gem install shotgun
+$ shotgun myapp.rb
+== Shotgun/WEBrick on http://127.0.0.1:9393/
+...</p>
+
+<p>```</p>
+
+<p>これでサーバを再起動せずにホットデプロイができるようになります。</p>
+
+<p>他にも<a href="https://github.com/rack/rack/blob/master/lib/rack/reloader.rb">Sinatra::Reloader</a>や<a href="https://github.com/rkh/sinatra-reloader">Sinatra::Reloader</a>が公式サイトで紹介されていますが、shotgunは一番簡単だそうです。</p>
+
+<p>参考サイト：
+<a href="http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server">http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server</a>
+<a href="http://www.sinatrarb.com/faq.html#reloading"> What happened to reloading in Sinatra</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Macのrubyで、no such file to load -- ubygems (LoadError)]]></title>
+    <link href="http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror"/>
+    <updated>2011-05-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror</id>
+    <content type="html"><![CDATA[<p><a href="http://www.sinatrarb.com/intro">Sinatra</a>を試したところこのようなエラーになりました。</p>
+
+<p>```
+ruby -rubygems myapp.rb
+no such file to load -- ubygems (LoadError)</p>
+
+<p>```</p>
+
+<p>ググッてみたらやはりPATHが間違ったっぽいです。
+Macportでrubygemsをインストールすることで解決できるそうです。
+その後はgemを再度インストールする必要があるらしいです。
+操作の流れ：</p>
+
+<p>```</p>
+
+<h1>パスの確認</h1>
+
+<p>which gem
+/usr/bin/gem</p>
+
+<p>sudo port install rb-rubygems
+...</p>
+
+<h1>Terminal再起動</h1>
+
+<h1>パスの確認</h1>
+
+<p>which gem
+/opt/local/bin/gem</p>
+
+<p>sudo gem install sinatra</p>
+
+<p>```</p>
+
+<p>一旦はこれで解決です。</p>
+
+<p>参考になったサイト：
+<a href="http://d.hatena.ne.jp/holypp/20110319/1300556202">http://d.hatena.ne.jp/holypp/20110319/1300556202</a>
+<a href="http://d.hatena.ne.jp/Kuna/20090315/1237121262">http://d.hatena.ne.jp/Kuna/20090315/1237121262</a></p>
+]]></content>
+  </entry>
+  
+</feed>

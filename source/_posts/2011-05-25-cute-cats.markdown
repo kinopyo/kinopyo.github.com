@@ -1,0 +1,10 @@
+---
+layout: post
+title: '会社近くの公園の子猫'
+date: 2011-5-25
+wordpress_id: 1793
+permalink: /blog/cute-cats
+comments: true
+categories: ["diary"]
+---
+*gallery link="file"*

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: model | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/model/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CakePHP: $model->save()後、$model->id以外のフィールド情報は持ってない]]></title>
+    <link href="http://kinopyo.github.com/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields"/>
+    <updated>2011-02-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields</id>
+    <content type="html"><![CDATA[<p>```php
+$this->Ingredient->save($newData);
+$newIngredientId = $this->Ingredient->id;    // OK
+// id以外のフィールドはダメ
+$this->Ingredient->name;    // NG
+$this->Ingredient->category;    // NG</p>
+
+<p>```</p>
+
+<p>登録/更新には関係なく。
+公式マニュアルでは：
+{% blockquote http://book.cakephp.org/ja/view/75/データを保存する %}
+一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。
+{% endblockquote %}
+と書いてありますが、id以外のフィールド情報は持ってないようです。
+欲しければ$this->dataから取れます。</p>
+]]></content>
+  </entry>
+  
+</feed>

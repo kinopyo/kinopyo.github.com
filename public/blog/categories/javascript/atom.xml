@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JavaScript | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone Safariキーボードの"Return"のkeydownイベントをキャッチ]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-catch-return-keydown-event-of-iphone-safari"/>
+    <updated>2011-10-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-catch-return-keydown-event-of-iphone-safari</id>
+    <content type="html"><![CDATA[<h2>Situation</h2>
+
+<p>iPhone Safariを使うときにあるInput boxで何か入力後"return"キーのkeydownイベントをキャッチして、何かしらのアクションを行いたい、のが目的です。よくあるのがreturnキーでformをsubmitしたり、ボタンクリックのアクションを行ったり、キーボードを隠したりするところですかね。</p>
+
+<h2>Keydown event</h2>
+
+<p>{% gist 54b7a48e69b60e33e96b %}</p>
+
+<p><em>13</em>という数字がreturnキーのkeydown時のコードです。実はJavascript経験がある方ならすぐ分かると思いますが、<em>13</em>は<em>Enterキー</em>のコードでもあります。</p>
+
+<p>もう一つのTipはキーボードを隠したいときはjQueryの<em>blur()</em>を使えばOKです。</p>
+
+<p>参考：<a href="http://stackoverflow.com/questions/5932317/how-to-capture-the-keyboard-return-event-on-iphone-browser">http://stackoverflow.com/questions/5932317/how-to-capture-the-keyboard-return-event-on-iphone-browser</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <updated>2011-07-04T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
+注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
+またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
+
+<p>{% gist 1062397 %}</p>
+
+<p>これでtextmateでcommand + Bでコンパイル後のJavascriptが表示できるようになります！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[メモ：PHPでJSONPを返すサンプルコード]]></title>
+    <link href="http://kinopyo.github.com/blog/memo-php-return-json"/>
+    <updated>2010-12-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/memo-php-return-json</id>
+    <content type="html"><![CDATA[<h2>PHP側で</h2>
+
+<p>```php
+echo $_GET<em>'callback'</em> . '(' . json_encode($object) . ');';</p>
+
+<p>```</p>
+
+<h2>JS側で</h2>
+
+<p>```javascript</p>
+
+<pre><code>$(function(){
+     $.getJSON('foo.php?callback=?',
+                {},  // No additional parameters sent
+                function (data) {
+                     // data is now JSON object instantiated from retrieved info
+                     alert(data*'key'*);
+     });
+});
+</code></pre>
+
+<p>```</p>
+
+<p>参考：
+<a href="http://www.carolinamantis.com/wordpress/?p=29">http://www.carolinamantis.com/wordpress/?p=29</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[jQuery: append(prepend,appendTo,prependTo)とafter(before,insertAfter,insertBefore)の違い]]></title>
+    <link href="http://kinopyo.github.com/blog/jquery-difference-between-append-and-after"/>
+    <updated>2010-12-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/jquery-difference-between-append-and-after</id>
+    <content type="html"><![CDATA[<p>jQueryのappendやafterは全部DOM Manipulation、つまりDOM操作のメソッドであります。どう違うかは下記ソースコードを見るのが一番速いでしょう。</p>
+
+<h2>append(prepend,appendTo,prependTo)は要素内に、子供要素として貼り付ける</h2>
+
+<p>```javascript
+$('<span>span text</span>').appendTo(".chapter");</p>
+
+<p>```</p>
+
+<p>```html</p>
+
+<div class="chapter"> ... </div>
+
+
+<p>```</p>
+
+<p>組み立てた結果：</p>
+
+<p>```html</p>
+
+<div class="chapter">
+    ...
+    <span>span text</span>
+</div>
+
+
+<p>```</p>
+
+<p>append、appendToは最後の子供要素として、prepend、prependToは最初の子供要素として挿入する感じです。</p>
+
+<h2>after(before,insertAfter,insertBefore)は要素の外、つまり同一のレベルで兄弟要素として貼り付ける</h2>
+
+<p>```javascript
+$('<span>span text</span>').insertAfter(".chapter");</p>
+
+<p>```
+組み立てた結果：</p>
+
+<p>```html</p>
+
+<div class="chapter">
+    ...
+    <span>span text</span>
+</div>
+
+
+<p>```</p>
+
+<h2>htmlタグがなければ無効</h2>
+
+<p>```javascript
+$('some text').appendTo(".chapter");</p>
+
+<p>```</p>
+
+<p>htmlに何の変更もないです。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript: カンマ区切りで数値をフォーマットする]]></title>
+    <link href="http://kinopyo.github.com/blog/javascript-format-number-to-japanese-currency"/>
+    <updated>2010-11-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/javascript-format-number-to-japanese-currency</id>
+    <content type="html"><![CDATA[<p>```javascript</p>
+
+<p>/##
+ #  数値を日本円表現にフォーマット。
+ #  例：12345 -> 12,345
+ #
+ # /
+num2Currency = function(obj){</p>
+
+<pre><code>// 画面項目の値
+var str=obj.value;
+var num = new String(str).replace(/,/g/"");
+while(num != (num =num.replace(/^(-?\d+)(\d{3})/,"$1,$2")));
+obj.value = num;
+</code></pre>
+
+<p>}</p>
+
+<p>/##
+ #  日本円表現を数値にフォーマット。
+ #  例：123,45 -> 12345
+ #
+ # /
+currency2Num = function(obj){</p>
+
+<pre><code>var str=obj.value;
+var num = str.replace(/,/g,"");
+obj.value = num;
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,916 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。 1
+2
+3
+4
+5
+The Maven Integration required that Eclipse be running in a JDK,
+because a &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required">EclipseにMavenプラグインインストール後のエラー: &#8220;Eclipse Is Running in a JRE, but a JDK Is Required&#8221;</a></h1>
+	<div class="entry-content">
+		<p>EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。</p>
+
+<p><a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/blog/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/blog/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The Maven Integration required that Eclipse be running in a JDK,
+</span><span class='line'>because a number of Maven core plugins are using jars from the JDK.
+</span><span class='line'>
+</span><span class='line'>Please make sure the -vm option in eclipse.ini is pointing to a JDK and
+</span><span class='line'>verify that Installed JREs are also using JDK installs.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使ってた環境は確かにJREのみがあってJDKはなかったんです。
+回避策としては
++  JDKをインストール
++  eclipse.iniに-vmオプションでインストールしたJDKと関連付ける</p>
+
+<h3>JDKのインストール</h3>
+
+<p>JDKのダウンロードはこちら:<a href="http://java.sun.com">Sun Java</a>
+インストール後JAVA_HOMEとPATH環境変数もあわせて編集
+エクスプローラ→マイコンピュータ→右クリック→プロパティ→詳細設定タブ→環境変数ボタン</p>
+
+<h3>eclipse.iniの編集</h3>
+
+<p>jdkのパスはインストール先に合わせて下記内容を追記
+vmの後に<strong>改行が必要</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> -vm
+</span><span class='line'>C:\Java\jdk1.6.0_18\bin\javaw.exe
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで再起動したらエラーメッセージは出なくなりました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-20T00:00:00+09:00" pubdate data-updated="true">2010-01-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-decompiler-see-source-from-class-file">Javaの.classファイルからソースを見れるツール：Java Decompiler</a></h1>
+	<div class="entry-content">
+		<p>Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
+ずいぶん前一度使ったことがあります。
+スタンドアロンのJD-GUIツールと、
+Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
+スタンドアロンはJRE環境が必要とせずインストールだけで使えます。
+jarファイルもサポートされているようです。</p>
+
+<p><img src="http://kinopyo.com/blog/wp-content/uploads/2010/01/java-decompiler.png" title="java-decompiler" ></p>
+
+<p>公式サイト：<a href="http://java.decompiler.free.fr/">JD | Java Decompiler</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-18T00:00:00+09:00" pubdate data-updated="true">2010-01-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/add-left-sidebar-to-wptheme-glowing-amber">WPテーマGlowing Amberに二番目のサイドバーを追加</a></h1>
+	<div class="entry-content">
+		<p>本文はWPテーマGlowing Amberに二番目のサイドバーを追加する方法を紹介します。</p>
+
+<p>Glowing Amberは今現在このブログで使われているテーマです。
+見た目がいいデザインがいいのですぐインストールしましたが、
+簡単にカスタマイズするメニューがなくて少し不便を感じました。
+マニュアルもなく、作者が提示したURLにも無効となっています。。。</p>
+
+<h2>二番目のサイドバーを追加する方法</h2>
+
+<ul>
+<li><p>Main Index Templateのindex.phpかSingle Postのsingle.phpを編集します。
+それぞれブログのトップページ、個々の記事ページのファイルです。</p></li>
+<li><p>サイドバーを追加したい場所で下記コードを挿入します。</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>div id=&quot;left&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>?php if (!function_exists(&#39;dynamic_sidebar&#39;) || !dynamic_sidebar(&#39;Sidebar Left&#39;)) : ?<span class="ni">&amp;gt;&amp;lt;</span>?php endif; ?<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>例えば左に追加したい場合は
+&lt;div id=&#8221;mainbody-l&#8221;&gt;の前に上記コードを挿入します。</p>
+
+<ul>
+<li><p>&lt;div id=&#8221;mainbody-l&#8221;&gt;を&lt;div id=&#8221;mainbody-lr&#8221;&gt;に変更
+これはid=mainbody-lrにwidthが適切に設定されているからです。</p></li>
+<li><p>Stylesheet (style.css)で幅を編集
+104行目近くにある#mainbody-lr と#left, #rightのwidth値を編集すればOKです。</p></li>
+</ul>
+
+
+<p>これでWidgetsメニューでSidebar Leftが使えるようになります。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-17T00:00:00+09:00" pubdate data-updated="true">2010-01-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-be-careful-lf-inarray-function-return-value">jQuery $.inArray()関数の戻り値に注意を</a></h1>
+	<div class="entry-content">
+		<h2>$.inArray(value, array)</h2>
+
+<p>指定した値が配列中にあれば、そのインデックスを返します。
+配列に存在しなければ戻り値は&#8221;-1&#8221;になりますので注意してください。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="o">*</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="o">*</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// d is not in array</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>下記のコードは間違いですよ。。。
+<code>if ($.inArray("d", array)) {}</code></p>
+
+<h2>$.isArray(obj)</h2>
+
+<p>パラメータで渡された値が配列であるかどうかを判別します。
+戻り値はtrueかfalseです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/difference-between-service-and-component-annotation-in-sprin">Spring: @Serviceと@Componentの区別は？</a></h1>
+	<div class="entry-content">
+		<p>@ComponentアノテーションはJavaのクラスにつけるもので
+このクラスをコンテナが管理するBeanとして登録する機能です。
+@Serviceアノテーションも現状では@Componentと違いはありませんが、
+通常<strong>サービス層</strong>のコンポネントは@Serviceアノテーションをつけます。
+その理由は主に以下の二つです。
++  コンポーネントがサービス層のコンポーネントを明確にする意味で
++  今後@Serviceアノテーションを付与したBeanには自動的にトランザクション管理の機能が付与されるなどの機能拡張も期待される</p>
+
+<br/>
+
+
+<p>Spring3.0のリリースノートを見たところ特に@Serviceに関する変更はないみたいです。
+なのでサービス層のクラスに対して@Componentか@Serviceか悩んでるんだっだら
+@Serviceをつけた方がいいでしょう。</p>
+
+<br/>
+
+
+<p>参考サイト：
+<a href="http://www.infoq.com/jp/articles/spring2.5-1">Spring 2.5の新機能を使ってアプリケーションを作る(その1)</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-chrome-extension-available">MacのChromeエクステンションついに登場！</a></h1>
+	<div class="entry-content">
+		<p>本日Mac ChromeのDev版が更新されエクステンションが使えるようになりました。
+<a href="http://dev.chromium.org/getting-involved/dev-channel">Chrome Dev版をダウンロード</a>
+不安定とは言ってるものの、やはり使いたいです！</p>
+
+<br/>
+
+
+<p>早速ですが、以下のエクステンションを入れました。
+Chromeの再起動が必要なく、インストールするだけで使えます。</p>
+
+<h3>とりあえずこんなエクステンションを入れた</h3>
+
+<ul>
+<li><p><a href="https://chrome.google.com/extensions/detail/jaikcnhlohebodlpkmjepipngegjbfpg">Drag and Go</a>
+Drag and Go</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/jpkfjicglakibpenojifdiepckckakgk"> Chrome Gestures</a>
+Chrome Mouse Gestures</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/ajpgkpeckebdhofmmjfgcjjiiejpodla">Xmarks Bookmarks Sync</a>
+Backup and sync your bookmarks across computers and browsers. Xmarks is also available for Firefox, Safari and IE.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/mihcahmgecmbnbcchbopgniflfhgnkff">Google Mail Checker</a>
+Displays the number of unread messages in your Google Mail inbox. You can also click the button to open your inbox.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/pgphcomnlaojlmmcjmiddhdapjpbgeoc"> Send from Gmail (by Google) </a>
+Makes Gmail your default email application and provides a button to compose a Gmail message to quickly share a link via email</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/anlkjppofaicbdanhhpbbogknfodfhfm"> Chromium Delicious plugin</a>
+Extension to work with delicious.com</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/kbmipnjdeifmobkhgogdnomkihhgojep"> Shareaholic for Google Chrome</a>
+Share, save or email any web page with your friends right from the page you are on using Twitter, Facebook, GMail, and many more!</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/galfofdpepkcahkfobimileafiobdplb"> Tab Menu</a>
+Select, close, rearrange, and search your tabs in a vertical menu! Extras: merge windows, keyboard shortcut, and tab counter!</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/nlbjncdgjeocebhnmkbbbdekmmmcbfjd">RSS Subscription Extension (by Google)</a>
+Adds one-click subscription to your toolbar.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/ggkljdkflooidjlkahdnfgodflkelkai"> Fast YouTube Search</a>
+Fast YouTube Search - Search in YouTube with a single click.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/pbadgdglepgngpoeijdgicjccomadekm"> TwitterBar</a>
+Post to Twitter from the Google Chrome toolbar.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/leekjckogogidfhpejjmaaekecplpdcg"> MegaUpload DownloadHelper</a>
+No More Countdowns - Automatic Downloads.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/afpbkpjjkfakdcakapanjoeijlphieei"> RapidShare DownloadHelper</a>:No More Countdowns - Automatic Downloads.</p></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-09T00:00:00+09:00" pubdate data-updated="true">2010-01-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-block">Rubyブロック</a></h1>
+	<div class="entry-content">
+		<h2>ブロックとは？</h2>
+
+<p>Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
+メソッドに渡された処理はブロックといいます。</p>
+
+<h2>ブロックを渡すには？</h2>
+
+<p>ブロックを渡すには、二つの方法があります。
++  ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">+  ②メソッドの最後にdo..endで囲んだコードを渡す。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">{% codeblock %}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="k">do</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">## ブロックの使い方？</span>
+</span><span class='line'><span class="sx">ブロックは使ってもらわないと、意味がありません。</span>
+</span><span class='line'><span class="sx">使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。</span>
+</span><span class='line'><span class="sx">メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block</span>
+</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
+</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
+</span><span class='line'><span class="sx">yield</span>
+</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
+</span><span class='line'><span class="c1">#ブロックを渡す</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">実行結果：</span>
+</span><span class='line'><span class="sx">Start of method</span>
+</span><span class='line'><span class="sx">In the block</span>
+</span><span class='line'><span class="sx">End of method</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">## ブロックにはパラメータを渡す？</span>
+</span><span class='line'><span class="sx">ブロックにはパラメータを渡せますか？もちろんです。</span>
+</span><span class='line'><span class="sx">パラメータの定義はブロックで、</span>
+</span><span class='line'><span class="sx">yieldでブロックを実行する際には、パラメータを渡します。</span>
+</span><span class='line'><span class="sx">ブロックは渡されたパラメータを受け取って、処理します。</span>
+</span><span class='line'><span class="sx">文字の説明だけで、わからないかもしれません。</span>
+</span><span class='line'><span class="sx">実はメソッドの定義とほとんど変わらないです。</span>
+</span><span class='line'><span class="sx">サンプルを見てみましょう。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block_pramater</span>
+</span><span class='line'><span class="sx">yield(&#39;helloworld&#39;)</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'><span class="sx">call_block {|str, num| puts &#39;Ruby sample:&#39;+str }</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'><span class="sx">※注意点：ブロックでは、||でパラメータを受け取っています。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">## 渡されたブロックをさらに別のメソッドを渡すには？</span>
+</span><span class='line'><span class="sx">渡されたブロックをさらに内部で使っているメソッドに渡すことができます。</span>
+</span><span class='line'><span class="sx">引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block(&amp;block)</span>
+</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
+</span><span class='line'><span class="sx">puts &#39;Start of test_block&#39;</span>
+</span><span class='line'><span class="sx">test_block_paramater(&amp;block)</span>
+</span><span class='line'><span class="sx">puts &#39;End of test_block&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">def test_block_paramater(&amp;block)</span>
+</span><span class='line'><span class="sx">puts &#39;Start of test_block_paramater&#39;</span>
+</span><span class='line'><span class="sx">yield</span>
+</span><span class='line'><span class="sx">puts&#39;End of test_block_paramater&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">実行結果：</span>
+</span><span class='line'><span class="sx">Start of test_block</span>
+</span><span class='line'><span class="sx">Start of test_block_paramater</span>
+</span><span class='line'><span class="sx">In the block</span>
+</span><span class='line'><span class="sx">End of test_block_paramater</span>
+</span><span class='line'><span class="sx">End of test_block</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'><span class="sx">※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'><span class="sx">## ブロックが渡されたか調べるには？</span>
+</span><span class='line'><span class="sx">yieldを実行する時、ブロックが渡されるかどうかを確認することができます。</span>
+</span><span class='line'><span class="sx">block_given?を使って、ブロックがあるかどうかを確認できます。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block</span>
+</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
+</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
+</span><span class='line'><span class="sx">yield if block_given?</span>
+</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
+</span><span class='line'><span class="c1">#ブロックを渡す</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-disable-right-click">jQueryで右クリックを無効にする方法</a></h1>
+	<div class="entry-content">
+		<p>jQueryでマウス右クリックを無効にする方法です。
+&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
+それのハンドラでreturn falseすることで簡単に実現できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;contextmenu&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wp-plugin-iphone-theme-wptouch">iPhoneで閲覧に最適にしてくれるWPプラグイン - WPTouch</a></h1>
+	<div class="entry-content">
+		<p>iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
+12月で1.68%でした。
+僅かな割合なんですが、それでもうれしいです。
+<img src="http://kinopyo.com/blog/wp-content/uploads/2010/01/Blog-Browsers-and-OS.jpg" title="Blog-Browsers-and-OS" ></p>
+
+<h2>WPTouch</h2>
+
+<p>WPTouchはiPhone閲覧に最適にしてくれるWPプラグインです。
+インストールするだけでもうOKです。
+設定メニューも簡単で、とても使い易いです。</p>
+
+<br/>
+
+
+<p>以下iPhoneでこのブログを見る際のスクリーンショットです。
+今のところFollow Meのプラグインがうまく表示されませんが、
+これはFlashがiPhoneではサポートされてないからです。</p>
+
+<p><img src="http://kinopyo.com/blog/wp-content/uploads/2010/01/初期画面、記事一覧.jpg" title="初期画面：記事一覧" >
+<img src="http://kinopyo.com/blog/wp-content/uploads/2010/01/記事概要.jpg" title="記事概要" >
+<img src="http://kinopyo.com/blog/wp-content/uploads/2010/01/記事詳細.jpg" title="記事詳細" >
+<img src="http://kinopyo.com/blog/wp-content/uploads/2010/01/カテゴリ、タグ、コメント.jpg" title="カテゴリ、タグ、コメント" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-02T00:00:00+09:00" pubdate data-updated="true">2010-01-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-tomcat-install">MacでTomcatをインストール</a></h1>
+	<div class="entry-content">
+		<h3>ダウンロード</h3>
+
+<p><img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/tomcat-download.jpg" title="tomcat-download" >
+<a href="http://tomcat.apache.org/download-60.cgi">Tomcat公式サイトダウンロードページ</a>で上記ファイルをダウンロード</p>
+
+<h3>インストール</h3>
+
+<p>ただ適当な場所に解凍するだけです。</p>
+
+<h3>起動/終了</h3>
+
+<p>ターミナルを起動しTOMCAT/binに移動する
++  起動  ./startup.shを実行
++  終了  ./shutdown.sh
+<strong>&#8221;./&#8221;は必須です。</strong>
+ターミナルで使われるUNIXコマンドはイマイチなので、もっと便利な使い方はあると思います。</p>
+
+<h3>検証</h3>
+
+<p><a href="http://localhost:8080">http://localhost:8080</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/22/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/24/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

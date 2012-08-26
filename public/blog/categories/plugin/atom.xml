@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: plugin | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/plugin/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[10分でWordPressにコメントシステムDisqusを導入]]></title>
+    <link href="http://kinopyo.github.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues"/>
+    <updated>2011-05-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues</id>
+    <content type="html"><![CDATA[<h2>Disqusの概要</h2>
+
+<p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png Disqus Login with Twitter, Facebook, etc. %}</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png Disqus Comment system %}</p>
+
+<h2>導入手順</h2>
+
+<p>実際の導入フローはとても簡単なので、流れだけ書きます。
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png Disqus comment system site %}</p>
+
+<p>+<a href="http://disqus.com/">http://disqus.com/</a>でアカウント登録
++ブログサイトの情報、メインライター、導入ブログタイプ（ここはWordpress）などの設定
++自分のWordpressブログの管理画面でプラグインをインストール：Disqus Comment System
++Disqusプラグインの設定画面でさっき<a href="http://disqus.com/">http://disqus.com/</a>で登録したアカウントでログイン
++必要でなれば今までのコメントをエクスポートすることもできる</p>
+
+<br/>
+
+
+<h2>既存コメントのエクスポート</h2>
+
+<p>既存コメントのエクスポートは時間がかかりそうで、すぐには反映しないようです。
+Disqusの管理画面で確認したらステータスが"Queued for import"になってます。
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg DISQUS Admin page - tools - Import/export %}</p>
+
+<p>すると翌日にインポートできましたよというメールがきました。管理画面でチェック：
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png Disqus-comment-import-complete %}</p>
+]]></content>
+  </entry>
+  
+</feed>

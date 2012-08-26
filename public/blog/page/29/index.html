@@ -1,0 +1,958 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="argumentsは配列じゃないため、配列のメソッドは
+使えません。ということは本を読んだとき当たり前だと思ったんですが、
+実際コードに落としたときは
+自然とargument.slice()を書いちゃいました。
+argumentsで配列のメソッドを使うには
+Array.prototype.&# &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: Argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>argumentsは配列じゃないため、配列のメソッドは</p>
+<p>使えません。ということは本を読んだとき当たり前だと思ったんですが、</p>
+<p>実際コードに落としたときは</p>
+<p>自然とargument.slice()を書いちゃいました。</p>
+<h4>argumentsで配列のメソッドを使うには</h4>
+<p><span style="color:#0000FF;">Array.prototype.&#60;配列のメソッド&#62;.call(arguments,&#60;パラメータ&#62;)</span></p>
+{% codeblock %}
+
+<span class="synType">Array</span>.prototype.slice.call(<span class="synIdentifier">arguments</span>,2)
+{% endcodeblock %}
+<p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
+<h4>argumentsはarray-likeオブジェクト</h4>
+<p>ここでちょっとargumentsの基本知識を復習します。</p>
+<p>length属性もあるし、[]でindex指定のオブジェクトを参照できますけど、</p>
+<p>argumentsは配列に似ているオブジェクトだけです。</p>
+<h5>予約語</h5>
+<p>Technically, argumentsは予約語ではないですが、</p>
+<p>予約語として認識してよいです。</p>
+<p>つまりargumentsという変数は作成しないでってことです。</p>
+<br/>
+<pre class="syntax-highlight">
+<span class="synIdentifier">function</span> foo(x)<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(x);
+<span class="synIdentifier">var</span> <span class="synIdentifier">arguments</span>;
+<span class="synIdentifier">arguments[</span>0<span class="synIdentifier">]</span> = <span class="synStatement">null</span>;    <span class="synComment">//xの値が変更されちゃう</span>
+<span class="synStatement">alert</span>(x); <span class="synComment">// null が出力される</span>
+<span class="synIdentifier">}</span>
+{% endcodeblock %}
+<h5>callee Property</h5>
+<p>Refers to the function that is currently being executed.</p>
+<p>今実行中のファクションを参照しています。</p>
+<pre class="syntax-highlight">
+<span class="synIdentifier">function</span>(x) <span class="synIdentifier">{</span>
+<span class="synStatement">if</span> (x &#60;= 1) <span class="synStatement">return</span> 1;
+<span class="synStatement">return</span> x * <span class="synIdentifier">arguments</span>.callee(x-1);
+<span class="synIdentifier">}</span>
+
+{% endcodeblock %}
+<br/>
+<p>　</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/something-come-to-mind-when-writing-blog">ブログを書いて気づいた｢嫌い or 好き｣の方向性</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><a href="http://d.hatena.ne.jp/gothedistance/20090928/1254140260" target="_blank">ブログをキャリアの礎にしようと思っている方へ - GoTheDistance</a>こういうすてきな記事を見つかりました。</p>
+<blockquote>
+<p>自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣の方向性が見えてくるようになります。</p>
+</blockquote>
+<br/>
+<p>特にこの言葉に感じたことが多かったのです。</p>
+<p>最近仕事の関係で、よくIE6~IE8とFirefoxでのJavaScript、CSSの不具合を調査したり、悩んだりしました。</p>
+<p>特定のブラウザで画面が崩れるのは本当に嫌だなと</p>
+<p>痛感しました。</p>
+<p>これがウェブ開発の現状なんですかと？</p>
+<p>なぜ自分はもっと立派なプログラムの問題と戦うのではなく、</p>
+<p>ブラウザと戦わなきゃならないのか？</p>
+<p>なぜActiveXの無効を前提とするユーザがいるのか？</p>
+<p>なぜIEがアップグレードするたびに新たな不具合を招くのか？</p>
+<p>なぜマイクロソフトはもっと強制的にユーザにIEのバージョンをアップグレードさせないのか？</p>
+<p>もしChrome、Opera、Safariなどの市場シェアが大きくなったら、それらも対応するとの要求が出てくるのか？</p>
+<p>なぜお客さんは低いバージョンのIEを未だも使っているのか？Firefoxに切り替えるのはそんなに不現実の話なのか？</p>
+<br/>
+<p>こんなのは嫌です。</p>
+<p>そもそもFlexを勉強しよと思ったきっかけは</p>
+<p>会社の先輩のサイトを見て、</p>
+<p>デザインやアニメーションがすごいきれで聞いたら、</p>
+<p>「Flexならこんなの簡単に作れるよ、ブラウザと関係ないし」の言葉でした。</p>
+<p>自分の好きの方向性というのはこんなことでしょう。</p>
+<p>ブラウザのわがままを避けたい、</p>
+<p>純粋なプログラミングがしたいです。</p>
+<br/>
+<p>　</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-to-check-is-activex-enabled-in-client">クライアント側のActiveXが有効か無効かを検出するJavaScript</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>知っておくべきこと</h4>
+<ul>
+<li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
+<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される
+<ul>
+<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：</li>
+<li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP&#8221;</li>
+</ul>
+</li>
+<li>もし生成できればActiveXコントロールは有効になっている</li>
+</ul>
+<br/>
+<h4>検出ソースコード</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synComment">// ブラウザがIEの場合&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">if&lt;/span> (&lt;span class="synStatement">window&lt;/span>.ActiveXObject) &lt;span class="synIdentifier">{&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">try&lt;/span> &lt;span class="synIdentifier">{&lt;/span>
+</span><span class='line'>&lt;span class="synComment">//IEのXMLHttpRequestオブジェクトを試しに生成&lt;/span>
+</span><span class='line'>&lt;span class="synIdentifier">var&lt;/span> xhr = &lt;span class="synStatement">new&lt;/span> ActiveXObject(&lt;span class="synConstant">&#34;Microsoft.XMLHTTP&#34;&lt;/span>);
+</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span> &lt;span class="synStatement">catch&lt;/span> (e) &lt;span class="synIdentifier">{&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">alert&lt;/span>(&lt;span class="synConstant">'ActiveXコントロールは無効になっています'&lt;/span>);
+</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span>
+</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span></span></code></pre></td></tr></table></div></figure>
+
+<br/>
+<h4>参考サイト</h4>
+<p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/add-mycomputer-zone-to-ie-security">IEセキュリティにマイコンピュータゾーンを追加する方法</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>概要</h4>
+<p>ローカルのファイルを参照する際のセキュリティを変更したとします。</p>
+<p>IEの[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブでは</p>
+<p>ローカルのマイコンピュータのセキュリティゾーンがデフォルトでは非表示になっています。</p>
+<p>それを表示させるにはレジストリを編集する必要があります。</p>
+<h4>動作環境</h4>
+<p>以下の環境で動作確認済みです。</p>
+<p>その他の環境についてはマイクロソフトのサポートヘルプを参照してください。</p>
+<ul>
+<li>OS: Win XP</li>
+<li>IE: IE8</li>
+</ul>
+<h4>方法</h4>
+<blockquote title="http://support.microsoft.com/kb/315933" cite="http://support.microsoft.com/kb/315933">
+<p>警告 : レジストリ エディタの使い方を誤ると、深刻な問題が発生することがあります。</p>
+<br/>
+<p>[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブにマイ コンピュータのセキュリティ ゾーンを表示するかどうかは、次のレジストリ キー内にある Flags 値によって設定できます。</p>
+<p>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0</p>
+<p>Flags 値は DWORD 値です。Flags 値のデータ値を 47 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが表示されるようになります。Flags 値のデータ値を 21 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが非表示になります。 </p>
+<cite><a href="http://support.microsoft.com/kb/315933" target="_blank">http://support.microsoft.com/kb/315933</a></cite></blockquote>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-16T00:00:00+09:00" pubdate data-updated="true">2009-11-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-reverse-lookup-reference-of-selector">jQuery逆引きレファレンス、セレクタ編(@ITより)</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>@IT新しい連載:jQuery逆引きリファレンスが始まりました。</p>
+<p>既に一ヶ月前になりますが、</p>
+<p>自己テスト用でもいいともいます。</p>
+<p>私は自信がない項目が結構ありました。</p>
+<br/>
+<p>jQueryで使ったシンタックス英単語は</p>
+<p>ほとんど簡単な単語で</p>
+<p>ぱっと見たら分かるような気がするけど、</p>
+<p>本気で使おうとしたらまたいろいろ調べないと</p>
+<p>と感じました。</p>
+<p>例えば:containのフィルタにはテキスト(case-sensitive)</p>
+<p>しか入りません。</p>
+<p>逆に:hasにはセレクタ分が使えるなど</p>
+<p>意味合い的には似てますが、</p>
+<p>使い方がまったく違うところが</p>
+<p>落とし穴だと思います。</p>
+<br/>
+<p>以下がセレクタ編のタイトルです。</p>
+<p>自信があるのは何項目ですか？</p>
+<blockquote title="指定されたページは存在しません" cite="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html">
+<p>    * id値で要素を特定するには？</p>
+<p>    * タグ名で要素を特定するには？</p>
+<p>    * スタイル・クラスで要素を特定するには？</p>
+<p>    * 複数のセレクタをまとめて指定するには？</p>
+<p>    * すべての要素を取得するには？</p>
+<p>    * ある要素の配下にある要素だけを取得するには？</p>
+<p>    * ある要素の直下にある要素だけを取得するには？</p>
+<p>    * 指定した要素の次要素を取得するには？</p>
+<p>    * 指定した要素以降の兄弟要素を取得するには？</p>
+<p>    * 先頭／末尾の要素だけを取得するには？</p>
+<p>    * 指定された親要素の先頭／末尾の子要素を取得するには？</p>
+<p>    * 偶数／奇数番目の要素だけを取得するには？</p>
+<p>    * 指定したインデックス番号（より大きい／未満）の要素を取得するには？</p>
+<p>    * 指定された要素直下から特定の子要素だけを取得するには？</p>
+<p>    * 指定したセレクタ以外の要素を取得するには？</p>
+<p>    * 配下に特定のテキストを含んだ要素を取得するには？</p>
+<p>    * 空要素だけを取得するには？</p>
+<p>    * 何らかの子要素を持つ要素を取得するには？</p>
+<p>    * 指定した子要素を持つ要素を取得するには？</p>
+<p>    * 子要素が1つだけである要素を取得するには？</p>
+<p>    * 属性の値によって取得要素を絞り込むには？</p>
+<p>    * 複数の属性フィルタを組み合わせるには？</p>
+<p>    * フォーム要素やヘッダ要素を取得するには？</p>
+<p>    * 特定の状態にある要素のみを取得するには？</p>
+<cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html" target="_blank">第1回 セレクタ編 － ＠IT</a></cite></blockquote>
+<p>これをきっかけに曖昧なところをいったん全部整理しようと思います。</p>
+<p>後の記事でまた詳しく書きます。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-15T00:00:00+09:00" pubdate data-updated="true">2009-11-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/what-did-you-do-this-weekend">週末の過ごし方？</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>プログラマ、あるいはIT技術者の週末はどう過ごしていますか？</p>
+<p>技術の記事をメインとした私のブログは</p>
+<p>週末になるとアクセス数が普段の60%しかありません。。。</p>
+<p>多分平日はみんな仕事でいろいろと検索していると思います。</p>
+<p>週末はやはり余裕を持ってリラックスしていますよね。</p>
+<br/>
+<p>やはり週末の直前はエンターテーメントの記事を書こうと思ってます。</p>
+<p>自分もリラックスが必要だし、</p>
+<p>それにあわせた気持ちを記事の形で残してもいいですよね。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-14T00:00:00+09:00" pubdate data-updated="true">2009-11-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex3-in-eclipse3-5-windows7-ok-mac-osx-failure">Flex3 in Eclipse3.5( Windows7 OK, Mac OSX 失敗)</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。</p>
+<p>しかしFlex Builder 3.0.2 Professional Plug-Inは Eclipse3.2.2、3.3、3.4しか対応していません。</p>
+<p>Eclipse3.5に載せる場合はFlexのインストール完了後</p>
+<p>以下のように設定してください。</p>
+<br/>
+<ul>
+<li>Eclipseルートディレクトリ\linksフォルダにあるcom.adobe.flexbuilder.feature.core.linkファイルを開く</li>
+<li>path=&#60;Flex Builder 3 Plug-inのディレクトリ&#62;　に編集
+<ul>
+<li>デフォルトではpath=以降のディレクトリが書いてあるはずなので、&#8221;path=&#8221;だけを追加すればOK</li>
+</ul>
+</li>
+<li>Eclipseを再起動し、パースペクティブにはFlex開発を選択</li>
+</ul>
+<br/>
+<p>Windows7でOKでした。MacOS Xで同じやり方ではダメでした。</p>
+<p>ネットでもいろいろ検索しましたが、</p>
+<p>やはりMacではうまく動作してくれないみたいで、</p>
+<p>しょうがなくスタンドアロンをインストールしました。</p>
+<br/>
+<p>参考サイト：<a href="http://tpfields.xrea.jp/tips/develop-air-with-flex-builder-3-plugin-and-eclipse-35-galileo.html" target="_blank">  Flex Builder 3 Plug-in: &#8220;Eclipse 3.5 Galileo&#8221;でFlex開発 | t.p.fields - web+tech info</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/basic-of-ajax-xmlhttprequest">今更のAjax基本：XMLHttpRequestについて</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>前記</h4>
+<p>恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、</p>
+<p>実際はただjQueryの便利なAPIを使っただけで</p>
+<p>Ajaxそのものの仕組みも分かっていません。</p>
+<br/>
+<p>今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように</p>
+<p>自分が理解したことをメモとして残したいです。</p>
+<br/>
+<h4>XMLHttpRequestとは</h4>
+<blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
+<p>JavaScriptなどのウェブブラウザ搭載のスクリプト言語で、サーバとのHTTP通信を行うための組み込みオブジェクト（API）である。</p>
+<p>すでに読み込んだページからさらにHTTPリクエストを発することができ、ページ遷移することなしにデータを送受信できるAjaxの基幹技術である。</p>
+<cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+<p>なるほど、これがAjaxを支える基幹ですね。</p>
+<p>JavaScriptのオブジェクトです。</p>
+<p>名前にXMLがついていますが、XML以外のデータも扱うことができます。</p>
+<h4>XMLHttpRequestの歴史</h4>
+<blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
+<p>XMLHttpRequestは、マイクロソフトがOutlook Web Access 2000のダイナミックHTMLによるウェブインターフェースに活用するため、1999年公開のInternet Explorer 5においてActiveXオブジェクトとして実装したのが始まりである[1]。その後、2001年にMozillaプロジェクトがこれと互換性のある組み込みオブジェクトをMozilla 0.9.7およびNetscape 7で実装し、アップルも2004年にSafari 1.2でMozillaと同様の組み込みオブジェクトを実装し始めた[2]。</p>
+<p>このように徐々にInternet Explorer以外のブラウザにも実装されていったXMLHttpRequestは、2005年にAjaxによって一躍有名になった。</p>
+<cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+<p>ようは各ブラウザが先にXMLHttpRequestオブジェクトを実装した、</p>
+<p>そして偉い人がAjaxを提唱してから一気に有名になった訳ですよね。</p>
+<br/>
+<h4>XMLHttpRequestの仕組み</h4>
+<p>AllAboutの記事に載ってた仕組みを自分で書きました。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091114023141" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091114/20091114023141.jpg" alt="f:id:kinopyo:20091114023141j:image" title="f:id:kinopyo:20091114023141j:image" class="hatena-fotolife"></a></p>
+<p>XMLHttpRequestのメソッドやプロパティは多分これからも使うことはありませんが、</p>
+<p>一応図で見て大体把握しておきましょう。</p>
+<p>openメソッドはイニシャライズみたいな感じで、GETかPOSTか、URLなどのパラメータを受け取ります。</p>
+<p>そしてsendメソッドによるサーバに送信する前に、onreadystatechangeイベントのコールバックでステータスを判断しresponseTextやresponseXML プロパティのデータを返す流れですね。</p>
+<blockquote>
+<p>拡張機能から XMLHttpRequest を使いたい場合は、非同期でロードするようにすべきです。</p>
+<p>非同期の使用法では、データを受け取ったときにコールバックを受け取ります。</p>
+<p>そのため、リクエストが発生している間はブラウザは通常どおりに動き続けます。 </p>
+</blockquote>
+<h4>XMLHttpRequestの宣言</h4>
+<blockquote title="http://ponpon-village.net/ajax/xmlhttp.htm" cite="http://ponpon-village.net/ajax/xmlhttp.htm">
+<p>ブラウザにより異なる。</p>
+<p>IE では、ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;) を使用。</p>
+<p>IE のバージョンによっては、ActiveXObject(&#8220;Msxml2.XMLHTTP.5.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP.4.0&#8221;) ,</p>
+<p>ActiveXObject(&#8220;Msxml2.XMLHTTP.3.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP&#8221;) なども使用出来る。</p>
+<p>Mozilla 系ブラウザでは、XMLHttpRequest() を使用。</p>
+<cite><a href="http://ponpon-village.net/ajax/xmlhttp.htm" target="_blank">http://ponpon-village.net/ajax/xmlhttp.htm</a></cite></blockquote>
+<h4>非同期通信のサンプルコード</h4>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="kd">var</span> <span class="nx">req</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;MSXML2.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.example.com/contents.txt&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+<p>req.statusはHTTPレスポンスコードで200はOK、404はよく見るNot Foundです。</p>
+<br/>
+<h4>注意点</h4>
+<ul>
+<li>file:/// および ftp:// は HTTP ステータスを返しません。そのため、status についてはゼロが、statusText については空文字列を返されます。</li>
+<li>XMLHttpRequestは、セキュリティを考慮して、リクエストを送信できるのは同一ドメイン内に制限されています。</li>
+</ul>
+<br/>
+<p>とりあえず自分が気になった点を書きました。</p>
+<p>肝心なところはonreadystatechangeでのコールバックだと思います。</p>
+<h4>次回</h4>
+<p>XMLHttpRequestは同一ドメイン内に制限されていますね。</p>
+<p>別のドメインとのやり取りはどう行うのかを次のテーマにします。</p>
+<p>なんかJSONPとかクロスドメインなどのキーワードがよく見えますが、</p>
+<p>その辺をはっきりしようと思います。</p>
+<h4>参考サイト：</h4>
+<p><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></p>
+<p><a href="https://developer.mozilla.org/Ja/XMLHttpRequest" target="_blank">XMLHttpRequest - MDC</a></p>
+<p><a href="http://allabout.co.jp/internet/javascript/closeup/CU20050515A" target="_blank">Ajaxはじめの一歩　XMLHttpRequest - ［JavaScript］All About</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder">Flex3: trace()ログ出力の設定、Windowsの隠しフォルダに注意</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>Flexのtrace()はログ出力の機能です。</p>
+<p>Javaに慣れましたので、trace()もてっきりコンソールにも</p>
+<p>出力すると思っちゃいましたが、</p>
+<p>実はそうではありません。</p>
+<p>trace()を使うにはまず設定が必要です。</p>
+<h4>バージョン情報</h4>
+<ul>
+<li>Flex3 Builder: Version 3.0 (build 3.0.2.214193)</li>
+<li>Flash Player: 9,0,124,0</li>
+</ul>
+<h4>デバッガ版のFlash Player</h4>
+<p>Flex3 Builderをダウンロードしそこに含んだ</p>
+<p>for IE, FirefoxなどのFlash Playerを全部インストールしてください。</p>
+<p>そのほうが万全で楽です。</p>
+<p>既にFlash Playerがインストールされたとしても、</p>
+<p>それがデバッガ版じゃないとダメですよ。</p>
+<h4>設定ファイルの作成</h4>
+<ul>
+<li><span style="color:#0000FF;">mm.cfg</span>という設定ファイルを下記場所に作成</li>
+</ul>
+<table>
+<tr><th>オペレーティングシステム</th><th>ファイルの作成場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Library/Application Support/Macromedia </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f1" name="fn1" title="AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み">*1</a></span></td><td>C:\Users\username </td></tr>
+<tr><td>Windows 2000/XP</td><td>C:\Documents and Settings\username </td></tr>
+<tr><td>Windows 95/98/ME</td><td>%HOMEDRIVE%\%HOMEPATH% </td></tr>
+<tr><td>Linux</td><td>/home/username </td></tr>
+</table>
+<h4>設定ファイルの編集</h4>
+<p>作成したmm.cfgファイルを下記のように編集すれば、エラーのレポートとトレースログが有効になります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorReportingEnable=1
+</span><span class='line'>TraceOutputFileEnable=1</span></code></pre></td></tr></table></div></figure>
+
+<p>TraceOutputFileNameというログファイルの名前と出力先を指定するプロパティもありますが、</p>
+<blockquote title="Adobe Flex3 ヘルプ" cite="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337">
+<p>Flash Player 9 Update 以降では、TraceOutputFileName プロパティは無視され、</p>
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+<cite><a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex3 ヘルプ</a></cite></blockquote>
+<p>との懸念もあり、各自の環境を確認した上でお使いください。</p>
+<p>私のFLex3 Builder, Flash 9では無効でした。</p>
+<h4>ログファイルの場所</h4>
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+<table>
+<tr><th>オペレーティングシステム</th><th>ログファイルの場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Users/username/Library/Preferences/Macromedia/Flash Player/Logs/  </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f2" name="fn2" title="AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み">*2</a></span></td><td>C:\Users\username\AppData\Roaming\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Windows 95/98/ME/2000/XP</td><td>C:\Documents and Settings\username\Application Data\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Linux</td><td>/home/username/.macromedia/Flash_Player/Logs/ </td></tr>
+</table>
+<p>Windowsの方は特に隠しフォルダに注意してください。</p>
+<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
+<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
+<h4>テストコード</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>?xml version&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;1.0&#34;&lt;/span> encoding&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;utf-8&#34;&lt;/span>?&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Application xmlns:mx&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;http://www.adobe.com/2006/mxml&#34;&lt;/span>
+</span><span class='line'>layout&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;absolute&#34;&lt;/span> creationComplete&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;init()&#34;&lt;/span>&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>![CDATA[
+</span><span class='line'>&lt;span class="synType">private&lt;/span> &lt;span class="synStatement">function&lt;/span> init():void{
+</span><span class='line'>trace(&lt;span class="synConstant">&#34;Hello World&#34;&lt;/span>);
+</span><span class='line'>}
+</span><span class='line'>]]&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Application&lt;span class="synStatement">&#62;&lt;/span></span></code></pre></td></tr></table></div></figure>
+
+<p>これでログファイルには「Hello World」と出力されるはずです。</p>
+<h4>特記事項</h4>
+<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
+<p>自分でもう一回書こうと全然思わなかったのですが、</p>
+<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
+<p>私が最初見つかった幾つかのサイトでの書き方では</p>
+<p>どう設定してもまったくログが出力されなかったのです。</p>
+<p>アンインストールしたり、設定ファイルのエンコードまで</p>
+<p>神経質になってしまいました。</p>
+<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
+<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
+<p>私もこれからは注意します。</p>
+<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
+</div>
+
+
+<div class="footnote">
+<p class="footnote"><a href="/kinopyo/#fn1" name="f1">*1</a>：AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み</p>
+<p class="footnote"><a href="/kinopyo/#fn2" name="f2">*2</a>：AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00+09:00" pubdate data-updated="true">2009-11-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-pass-data-to-bind-function">jQuery Bindバインド時にデータを渡す</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>誤った使い方</h4>
+<p>例えばbind時にname変数に格納された情報を渡したい</p>
+{% codeblock %}
+
+<span class="synIdentifier">var</span> name = <span class="synConstant">&#34;kinopyo&#34;</span>;
+$(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConstant">&#34;click&#34;</span>,<span class="synIdentifier">function</span>(name)<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(name);
+<span class="synIdentifier">}</span>);
+{% endcodeblock %}
+<p>これは誤った使い方です。</p>
+<a name="seemore"></a>
+<p>alertでは望まれた「kinopyo」の文字列は表示されません。</p>
+<p>私は最初jQueryに触れたときはこんな書き方をしたんです。</p>
+<br/>
+<p>もちろんname変数とbindのコールバックは同じスコープなのでfunctionから直接name変数を参照できますが、</p>
+<p>ここではあえて誤った使い方にしました。</p>
+<br/>
+<p>実際alertでは[object Object]と表示されました。</p>
+<p>firebugで中身をのぞいてみるとこんな感じのオブジェクトです。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091111222209" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091111/20091111222209.jpg" alt="f:id:kinopyo:20091111222209j:image" title="f:id:kinopyo:20091111222209j:image" class="hatena-fotolife"></a></p>
+<p>このnameは一体何のか、答えはjQueryのEventオブジェクトです。</p>
+<p>Eventオブジェクトについてはこの記事<a href="http://d.hatena.ne.jp/kinopyo/20091111/1257946561">「jQuery Eventオブジェクトの詳細、バブリングの仕組み」</a>を参照してください。</p>
+<h4>bindのAPI</h4>
+<p><span style="font-weight:bold;font-size:x-large;">bind(type, [data], fn)</span></p>
+<ul>
+<li>type：click, dbclick,mousedown&#8230;などトリガーとなるイベントタイプ</li>
+<li>[data]：<span style="color:#0000FF;">第三パラメータのハンドラにデータを渡す。括弧は配列の意味ではなく、省略可の意味</li>
+<li>fn：イベントハンドラ</span>
+<ul>
+<li>パラメータ：jQueryのEventオブジェクト、event.dataで第二引数の[data]を参照できる</li>
+</ul>
+</li>
+</ul>
+<p>jQueryは第二パラメータに対してdataかfunctionか自動判断してます。</p>
+<p>普段使い慣れたのはdataを省略したものでしょう。</p>
+<p>さっきの例を修正すると、正しく「kinopyo」が表示されます。</p>
+<pre class="syntax-highlight">
+<span class="synIdentifier">var</span> name = <span class="synConstant">&#34;kinopyo&#34;</span>;
+$(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConstant">&#34;click&#34;</span>,name,<span class="synIdentifier">function</span>(<span class="synStatement">event</span>)<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(<span class="synStatement">event</span>.data);
+<span class="synIdentifier">}</span>);
+
+{% endcodeblock %}
+<p><span style="color:#0033FF;">渡されるのはJavaScriptのオブジェクトです。</span>。</p>
+<p>つまり配列も、キー値ペアのオブジェクトも全部渡されます</p>
+<br/>
+<h4>参考サイト</h4>
+<p><a href="http://docs.jquery.com/Events/bind">公式サイトのbindドキュメント</a></p>
+<p><a href="http://stacktrace.jp/jquery/api/events/bind.html">StackTraceサイト</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-11T00:00:00+09:00" pubdate data-updated="true">2009-11-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/28/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/30/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

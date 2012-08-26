@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: haml | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/haml/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Append class if condition is true in Haml ]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-append-class-if-condition-is-true-in-haml"/>
+    <updated>2011-11-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-append-class-if-condition-is-true-in-haml</id>
+    <content type="html"><![CDATA[<p><em>blackbirdpie url="http://twitter.com/#!/fantasyday/status/138923631433625600"</em></p>
+
+<pre class=''>
+.post{:class => ("gray" unless post.published?)}
+
+{% endcodeblock %}
+
+# 日本語
+
+*blackbirdpie url="http://twitter.com/#!/fantasyday/status/138923631433625600"*
+
+HAMLである条件がtrueの時だけあるclassをタグに追加したい場合
+{% codeblock %}
+
+.post{:class => ("gray" unless post.published?)}
+{% endcodeblock %}
+
+]]></content>
+  </entry>
+  
+</feed>

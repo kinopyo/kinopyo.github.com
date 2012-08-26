@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: extension | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/extension/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome（Chromium）でマルチプロファイルを使う]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium"/>
+    <updated>2011-10-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium</id>
+    <content type="html"><![CDATA[<h2>メリット</h2>
+
+<p>マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。</p>
+
+<p>実際はChromeではなく、Chromeが恩恵を受けているオープンソースプロジェクトのChromiumを使います。Chromeでもできるっちゃできるんですが、手順が面倒くさいし使い勝手が悪いです。</p>
+
+<p><a href="http://blog.av-jyo.com/2011-09/usefully-chromium-setting-for-web-development.html">http://blog.av-jyo.com/2011-09/usefully-chromium-setting-for-web-development.html</a>を参考にしました。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><a href="http://mrgeckosmedia.com/applications/info/Chromatic">http://mrgeckosmedia.com/applications/info/Chromatic</a>でStableなChromiumをインストール</li>
+<li><em>about:flags</em>で<em>Multiple Profiles</em>をEnable</li>
+<li>再起動して右上に人の画像をクリックしてプロファイルを管理</li>
+<li>メインプロファイルに切り替え、ブックマーク、エクステンションなどの同期を行う</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google Chrome Extension: Youku Opener作りました]]></title>
+    <link href="http://kinopyo.github.com/blog/my-first-google-chrome-extension-youku-opener"/>
+    <updated>2011-10-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/my-first-google-chrome-extension-youku-opener</id>
+    <content type="html"><![CDATA[<p>すごく簡単なGoogle Chrome Extensionを作りました。</p>
+
+<p>実装自体は結構前にできたんですが、公開するまでもないかと思って自分で使いました。でもせっかく作ったしひょっとしたら使いたいユーザもあるんじゃない？の気持ちで公開しました。詳細はまた時間があったら整理してソースコードと一緒に公開します。</p>
+
+<p><a href="https://chrome.google.com/webstore/detail/nhgblejfncijjppnbfgaljgdifaokine?hc=search&amp;hcp=main">My First Chrome Extension Youku Opener</a></p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Screen-Shot-2011-10-21-at-15.15.07.png My First Google Chrome Extension: Youku Opener %}</p>
+
+<p>公開3日で14weekly usersの数字でした。意外と使おうとするユーザがいますね、unexpected、予想外でした。</p>
+]]></content>
+  </entry>
+  
+</feed>

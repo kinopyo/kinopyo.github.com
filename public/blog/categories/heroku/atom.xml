@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Heroku | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/heroku/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku, how to check and add ENV vars]]></title>
+    <link href="http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars"/>
+    <updated>2012-01-24T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars</id>
+    <content type="html"><![CDATA[<p>{% gist 1667607 %}</p>
+
+<h1>日本語</h1>
+
+<p>Herokuで環境変数を追加＆チェックするコードです。</p>
+
+<p>{% gist 1667607 %}</p>
+]]></content>
+  </entry>
+  
+</feed>

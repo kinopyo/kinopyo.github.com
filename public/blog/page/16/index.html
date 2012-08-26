@@ -1,0 +1,876 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content=" Webページの画像を右クリックで簡単にFlickrにアップロードできるChromeエクステンションです。
+もしタイトルやタグなども編集できればもっどいいですけどね。 Flickr Upload Extensionをダウンロード 2010-11-29 Chrome ">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/chrome-extension-flickr-upload">Chrome Extension: Flickr Upload右クリックで画像をアップロード</a></h1>
+	<div class="entry-content">
+		<p>Webページの画像を右クリックで簡単にFlickrにアップロードできるChromeエクステンションです。
+もしタイトルやタグなども編集できればもっどいいですけどね。</p>
+
+<p><a href="https://chrome.google.com/extensions/detail/nacmiiefmonpjkmcfhkajdhcgdnglaje">Flickr Upload Extensionをダウンロード</a></p>
+
+<p><img src="https://chrome.google.com/extensions/img/nacmiiefmonpjkmcfhkajdhcgdnglaje/1284778713.67/screenshot/6001" alt="Chrome extension:Flickr Upload" />
+<img src="https://chrome.google.com/extensions/img/nacmiiefmonpjkmcfhkajdhcgdnglaje/1284778713.67/screenshot/2001" alt="Chrome extension: Flickr Upload" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-memcache-in-windows-setup-php">Windowsにmemcacheをインストール、PHPの設定</a></h1>
+	<div class="entry-content">
+		<h2>My環境</h2>
+
+<p>XAMPP1.7.3 + WinXP
+ダウンロードは<a href="http://www.apachefriends.org/en/xampp-windows.html">こちら</a></p>
+
+<h2>memcache側の設定</h2>
+
+<h3>memcacheのインストール手順</h3>
+
+<ul>
+<li><a href="http://code.jellycan.com/memcached/">http://code.jellycan.com/memcached/</a>より<strong>memcached 1.2.6 => win32 binary</strong>バージョンのファイルをダウンロード
++zipファイルを適当な場所(例えばc:\memcached)に解凍
++コマンドプロンプトから下記コマンドを叩く、Windowsサービスとしてインストール。これで今度Windowsが起動すると自動でmemcacheサーバが起動してくれる。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached.exe -d install</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>memcacheの起動(初回のみ)</h3>
+
+<p>コマンドプロンプト</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached\memcached.exe -d start</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>php側</h2>
+
+<h3>php.iniの設定</h3>
+
+<p>XAMPPのパス/php/php.iniを編集：下記コードを追加</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>extension = php_memcache.dll</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここはLinux環境と違い拡張子が.soではなく.dll。</p>
+
+<h3>php_memcache.dllのダウンロード</h3>
+
+<p><a href="http://downloads.php.net/pierre/">http://downloads.php.net/pierre/</a>から&#8217;memcache&#8217;を検索して正しいバージョンのファイルをダウンロード。
+そしてxampp/php/extに入れる。</p>
+
+<br/>
+
+
+<p>ここで問題！正しいバージョンはなんなのか？間違ってダウンロードすると後でApacheサーバを立ち上がるときエラーが出るよ。私の環境だと<b>php_memcache-cvs-20090703-5.3-VC6-x86.zip</b>のファイルが正しいけど、今時点で上記URLには載せていない。結構ググって見ても結局古い結果で、しょうがなく友人からそのファイル貰った。。。ここにアップしたので、必要な方はダウンロードしてください。ウイルススキャンしてね。。
+<a href='http://www.kinopyo.com/blog/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a></p>
+
+<h2>動作確認</h2>
+
+<p>xamppでapacheサーバを起動、下記内容をphpファイルと保存してサーバのDocumentパス(デフォルトではXAMPP/htdocs)に置く。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>    <span class="nv">$memcache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memcache</span><span class="p">;</span> <span class="c1">// instantiating memcache extension class</span>
+</span><span class='line'>    <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="mi">11211</span><span class="p">);</span> <span class="c1">// try 127.0.0.1 instead of localhost</span>
+</span><span class='line'>                                           <span class="c1">// if it is not working</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">echo</span> <span class="s2">&quot;Server&#39;s version: &quot;</span> <span class="o">.</span> <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">getVersion</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// we will create an array which will be stored in cache serialized</span>
+</span><span class='line'>    <span class="nv">$testArray</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$tmp</span>       <span class="o">=</span> <span class="nb">serialize</span><span class="p">(</span><span class="nv">$testArray</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="nv">$tmp</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">echo</span> <span class="s2">&quot;Data from the cache:&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">print_r</span><span class="p">(</span><span class="nb">unserialize</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)));</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>おまけ：memcacheメモリの調整</h2>
+
+<blockquote><p>Memcached, by default, loads with 64mb of memory for it’s use which is low for most applications. To change this to something else, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server in your registry, find the ImagePath entry and change it to look something like this:</p><p>“C:\memcached\memcached.exe” -d runservice -m 512</p></blockquote>
+
+
+<h2>参考</h2>
+
+<p><a href="http://www.codeforest.net/how-to-install-memcached-on-windows-machine">http://www.codeforest.net/how-to-install-memcached-on-windows-machine</a>
+<a href="http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/">http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-26T00:00:00+09:00" pubdate data-updated="true">2010-11-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/new-to-me-this-week-1025-1031">今週（10/25～10/31）新たに知ったもの</a></h1>
+	<div class="entry-content">
+		<h1>Compass</h1>
+
+<blockquote><p>A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:</p><p>Compass Core<br/>Blueprint<br/>960<br/>Susy<br/>YUI</p><p>New frameworks and extensions are tracked on the wiki as they are created.<br/>Other frameworks can be added relatively easily. Create your own!</p></blockquote>
+
+
+<p><a href="http://github.com/chriseppstein/compass/tree#readme">http://github.com/chriseppstein/compass/tree#readme</a>
+<a href="http://compass-style.org/docs/">http://compass-style.org/docs/</a></p>
+
+<h1>Rails Rumble</h1>
+
+<blockquote><p>The Rails Rumble is an annual 48 hour web application development competition in which teams of skilled web application developers get one weekend to design, develop, and deploy the best web property that they can, using the power of Ruby and Rails.</p></blockquote>
+
+
+<p><a href="http://railsrumble.com/">http://railsrumble.com/</a></p>
+
+<h1>Monospaced font</h1>
+
+<blockquote><p>A monospaced font, also called a fixed-pitch or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space.*1* This contrasts to variable-width fonts, where the letters differ in size to one another.<br/>The first monospaced typefaces were designed for typewriters, which could only move the same distance forward with each letter typed. This also meant that monospaced fonts need not be typeset like variable width fonts and were, arguably, easier to deal with.</p></blockquote>
+
+
+<p><a href="http://en.wikipedia.org/wiki/Monospaced_font">http://en.wikipedia.org/wiki/Monospaced_font</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-01T00:00:00+09:00" pubdate data-updated="true">2010-11-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uncategorized/'>Uncategorized</a>, <a class='category' href='/blog/categories/font/'>font</a>, <a class='category' href='/blog/categories/new/'>new</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/new-to-me-this-week-1018-1024">今週（10/18～10/24）新たに知ったもの</a></h1>
+	<div class="entry-content">
+		<h1>終電検索</h1>
+
+<p>いつもYahooで終電を検索するんですが、それがアテにならないことが分かりました。
+終電検索で深夜1時とか出発でただ乗換が多かったのを見てとりあえず帰れるって安心したんですが、あとで見ると実は二日目の朝4～5時の電車となってしまいました。時間を全部チェックしてなかったのが自分のミスでしたが、、、検索アルゴリズムを改善する必要があると思います。</p>
+
+<h1>ブレスト</h1>
+
+<p>ブレインストーミングのこと。</p>
+
+<blockquote><p>ブレインストーミング（Brainstorming）とはアレックス・F・オズボーンによって考案された会議方式のひとつ。集団思考とも訳される。集団発想法、ブレインストーミング法（BS法）、ブレスト、課題抽出ともいう。1941年に良いアイデアを生み出す状態の解析が行われた後、1953年に発行した著書「Applied Imagination」の中で会議方式の名称として使用された。</p></blockquote>
+
+
+<h1>rsync</h1>
+
+<blockquote><p>rsync is a file transfer program for Unix systems. rsync uses the &#8220;rsync algorithm&#8221; which provides a very fast method for bringing remote files into sync. It does this by sending just the differences in the files across the link, without requiring that both sets of files are present at one of the ends of the link beforehand.</p><p>Some features of rsync include</p><p>+  can update whole directory trees and filesystems<br/>+  optionally preserves symbolic links, hard links, file ownership, permissions, devices and times<br/>+  requires no special privileges to install<br/>+  internal pipelining reduces latency for multiple files<br/>+  can use rsh, ssh or direct sockets as the transport<br/>+  supports anonymous rsync which is ideal for mirroring</p></blockquote>
+
+
+<p><a href="http://www.samba.org/rsync/">http://www.samba.org/rsync/</a></p>
+
+<h1>cron</h1>
+
+<blockquote><p>Cron is a time-based job scheduler in Unix-like computer operating systems. The name cron comes from the word &#8220;chronos&#8221;, Greek for &#8220;time&#8221;. Cron enables users to schedule jobs (commands or shell scripts) to run periodically at certain times or dates. It is commonly used to automate system maintenance or administration, though its general-purpose nature means that it can be used for other purposes, such as connecting to the Internet and downloading email.*1*</p></blockquote>
+
+
+<p><a href="http://en.wikipedia.org/wiki/Cron">http://en.wikipedia.org/wiki/Cron</a></p>
+
+<h1>redcar</h1>
+
+<p>結構使えそう。</p>
+
+<blockquote><p>+  Cross platform: OS X, Linux, Windows.<br/>+  Syntax highlighting for many languages<br/>+  Snippets for many languages<br/>+  TextMate Theme support<br/>+  Split panes<br/>+  Block typing<br/>+  Soft tabs<br/>+  Optional line numbers<br/>+  Bracket and quote matching<br/>+  Automatic indentation for many languages<br/>+  Directory tree pane (not yet a full project view)<br/>+  Extend with Ruby<br/>+  My Plugin – example plugin to start playing with editing for yourself<br/>+  Bulk Rename files and directories<br/>+  Source Control integration for Subversion and Git<br/>+  Build System support via Runnables</p></blockquote>
+
+
+<p><a href="http://redcareditor.com/">http://redcareditor.com/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-25T00:00:00+09:00" pubdate data-updated="true">2010-10-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/new/'>new</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/set-vim-beep-alarm-off">Vimビープ音を消す</a></h1>
+	<div class="entry-content">
+		<p>ビープ音を消す。</p>
+
+<p>vi ~/.inputrc</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set bell-style none</span></code></pre></td></tr></table></div></figure>
+
+
+<p>vi ~/.vimrc</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set noerrorbells
+</span><span class='line'>set vb t_vb=</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-16T00:00:00+09:00" pubdate data-updated="true">2010-10-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ide/'>IDE</a>, <a class='category' href='/blog/categories/editor/'>editor</a>, <a class='category' href='/blog/categories/vim/'>vim</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-sqlite3-ruby-gem-in-linux">Linuxにsqlite3-ruby Gemをインストール</a></h1>
+	<div class="entry-content">
+		<h2>経緯</h2>
+
+<p>何も考えずにGemfileにsqlite3を定義してbundleを流したらこんなエラーが出ました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install sqlite3-ruby
+</span><span class='line'>Building native extensions.  This could take a while...
+</span><span class='line'>ERROR:  Error installing sqlite3-ruby:
+</span><span class='line'>        ERROR: Failed to build gem native extension.
+</span><span class='line'>
+</span><span class='line'>/home/user/.rvm/rubies/ruby-head/bin/ruby extconf.rb
+</span><span class='line'>checking for sqlite3.h... no
+</span><span class='line'>sqlite3.h is missing. Try 'port install sqlite3 +universal' or 'yum install sqlite3-devel'
+</span><span class='line'>###  extconf.rb failed ###
+</span><span class='line'>Could not create Makefile due to some reason, probably lack of
+</span><span class='line'>necessary libraries and/or headers.  Check the mkmf.log file for more
+</span><span class='line'>details.  You may need configuration options.
+</span><span class='line'>
+</span><span class='line'>Provided configuration options:
+</span><span class='line'>        --with-opt-dir
+</span><span class='line'>        --without-opt-dir
+</span><span class='line'>        --with-opt-include
+</span><span class='line'>        --without-opt-include=${opt-dir}/include
+</span><span class='line'>        --with-opt-lib
+</span><span class='line'>        --without-opt-lib=${opt-dir}/lib
+</span><span class='line'>        --with-make-prog
+</span><span class='line'>        --without-make-prog
+</span><span class='line'>        --srcdir=.
+</span><span class='line'>        --curdir
+</span><span class='line'>        --ruby=/home/user/.rvm/rubies/ruby-head/bin/ruby
+</span><span class='line'>        --with-sqlite3-dir
+</span><span class='line'>        --without-sqlite3-dir
+</span><span class='line'>        --with-sqlite3-include
+</span><span class='line'>        --without-sqlite3-include=${sqlite3-dir}/include
+</span><span class='line'>        --with-sqlite3-lib
+</span><span class='line'>        --without-sqlite3-lib=${sqlite3-dir}/lib
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /home/user/.rvm/gems/ruby-head/gems/sqlite3-ruby-1.3.0 for inspection.
+</span><span class='line'>Results logged to /home/user/.rvm/gems/ruby-head/gems/sqlite3-ruby-1.3.0/ext/sqlite3/gem_make.out</span></code></pre></td></tr></table></div></figure>
+
+
+<p>キーのメッセージは「sqlite3.h is missing. Try &#8216;port install sqlite3 +universal&#8217; or &#8216;yum install sqlite3-devel&#8217;」なのでそのとおりコマンドを流しましたが、portはそのコマンドがないと、yumはsqlite3-develを見つからないと返事したんです。。。</p>
+
+<p>なのでsqlite本家でソースをダウンロードしビルドしてインストールする必要があります。</p>
+
+<h2>sqlite3のインストール</h2>
+
+<p><a href="http://www.sqlite.org/download.html">http://www.sqlite.org/download.html</a>からsqlite-amalgamation-x.x.x.tar.gz(この記事を書いてる時点では3.7.3)のTarballバージョンのファイルをダウンロードします。上から二番目のリンクです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://www.sqlite.org/sqlite-amalgamation-3.7.3.tar.gz
+</span><span class='line'>$ tar vxzf sqlite-amalgamation-3.7.3.tar.gz
+</span><span class='line'>$ cd sqlite-amalgamation-3.7.3
+</span><span class='line'>$ ./configure --prefix=/usr/local
+</span><span class='line'>$ make
+</span><span class='line'>$ sudo make install</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>sqlite-ruby gemのインストール</h2>
+
+<p>後は普通にgem installでもいいしbundle installでもOKです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install sqlite3-ruby</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-15T00:00:00+09:00" pubdate data-updated="true">2010-10-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/sqlite/'>sqlite</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-disable-beep-alarm-in-linux">Linuxビープ音消去の手順</a></h1>
+	<div class="entry-content">
+		<p>ターミナルの自動補完でTabキーを使ってますが、よくビープ音が鳴ってうるさいです。。それを消去する方法です。</p>
+
+<p>「効果音の設定」ダイアログが表示されるので「ビープ音」タブをクリックし「システムビープ音を有効にする(E)」のチェックを無効にし、「閉じる(C)」ボタンを押下。</p>
+
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/10/Menu-sound.jpg" title="Menu-sound" ></p>
+
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2010/10/Disable-beep.jpg" title="Disable-beep" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-04T00:00:00+09:00" pubdate data-updated="true">2010-10-04</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/share-clipboard-in-guest-os-with-vmware">VMwareでゲストOSとクリップボードの共有</a></h1>
+	<div class="entry-content">
+		<p>VMware Player/ WorkstationでゲストOS(ここではCentOS)をインストールした後、ホストOSとクリップボードを共有するためにはVMware Toolsをインストールする必要があります。</p>
+
+<h2>インストール</h2>
+
+<p>VMware ToolsはゲストOS、つまり仮想マシン上のOSにインストールします。
+VMware Player/Workstationのメニューから VM-> VMware Toolsのインストールを選択します。
+出てくるダイアログに従ってファイルをダウンロード、解凍、インストールファイルの実行でやればいいです。インストールが成功すればクリップボードの共有は自動的に有効になるはずです。</p>
+
+<h2>おまけに</h2>
+
+<p>VMware Toolsをインストールするときディスプレイの解像度を設定できます。インストール後も自由に変更できるようになります。
+もう一つはVMwareのウィンドウから透明切り替えができるようになります。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-03T00:00:00+09:00" pubdate data-updated="true">2010-10-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/vmware/'>VMware</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/restarting-x-session-with-keyboard-combination">Restarting X Session With Keyboard Combination</a></h1>
+	<div class="entry-content">
+		<p>If you ever need to restart your X session (your work will be lost if not previously saved.</p>
+
+<p>Press this keys
+alt+ctrl+back_space</p>
+
+<h1>日本語</h1>
+
+<p>alt+ctrl+back_space
+です。。</p>
+
+<p>事前に修正したファイルなどを保存してくださいね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-03T00:00:00+09:00" pubdate data-updated="true">2010-10-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/kohana3-smarty-sample">Kohana3にSmartyを利用するサンプル</a></h1>
+	<div class="entry-content">
+		<h2>Smarty templateの作成</h2>
+
+<p>application/viewsにhello.tplというファイルを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>{$title}<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  hello, {$name}
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Controllerの作成</h2>
+
+<p>hello.phpというControllerを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Controller_Hello</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="k">function</span> <span class="nf">action_index</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="nv">$view</span> <span class="o">=</span> <span class="nx">View</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s2">&quot;smarty:hello&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;kinopyo!&quot;</span><span class="p">;</span>
+</span><span class='line'>      <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s2">&quot;Smarty &amp; Kohana Sample&quot;</span><span class="p">;</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">response</span> <span class="o">=</span> <span class="nv">$view</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>View::factoryに&#8221;smarty:&#8221;というプリフィックスを書くことでSmartyテンプレートとして認識してくれます。</p>
+
+<h2>動作確認</h2>
+
+<p><a href="http://127.0.0.1/myapp/hello">http://127.0.0.1/myapp/hello</a>にアクセスし、&#8221;hello, kinopyo!&#8221;が表示されれば成功です。</p>
+
+<h2>Controller_Templateの場合</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Controller_Hello</span> <span class="k">extends</span> <span class="nx">Controller_Template</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="nv">$template</span> <span class="o">=</span> <span class="s1">&#39;smarty:hello&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="k">function</span> <span class="nf">action_index</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;kinopyo!&#39;</span><span class="p">;</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s2">&quot;Hello Title&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-25T00:00:00+09:00" pubdate data-updated="true">2010-09-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/15/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/17/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

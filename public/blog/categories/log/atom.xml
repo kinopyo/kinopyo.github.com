@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: log | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/log/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsでcustom log(file)の作り方]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-custom-log-file"/>
+    <updated>2011-10-12T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-custom-log-file</id>
+    <content type="html"><![CDATA[<h2>Overview</h2>
+
+<p>rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます</p>
+
+<h2>ソースコード</h2>
+
+<p><em>gist id=1278448</em></p>
+
+<h2>参考</h2>
+
+<p><a href="http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/">http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/</a>
+<a href="http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/">http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/</a></p>
+]]></content>
+  </entry>
+  
+</feed>

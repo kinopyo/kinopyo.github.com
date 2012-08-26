@@ -646,7 +646,62 @@ Here is just an example:</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/test/'>Test</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice">Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た</a></h1>
+	<div class="entry-content">
+		<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
+
+<blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence &#8220;peroperos_id_seq&#8221; for serial column &#8220;peroperos.id&#8221;<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index &#8220;peroperos_pkey&#8221; for table &#8220;peroperos&#8221;<br/>～略～</p></blockquote>
+
+
+<p>の警告をシャットダウンする方法です。</p>
+
+<div><script src='https://gist.github.com/2232851.js?file='></script>
+<noscript><pre><code># add min_messages to test env
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: homu_test
+  pool: 5
+  username: postgres
+  password:
+  min_messages: warning</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T00:00:00+09:00" pubdate data-updated="true">2012-03-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/postgresql/'>postgresql</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>
 
 
 </div>
@@ -655,6 +710,8 @@ Here is just an example:</p>
 
 <nav id="pagenavi">
     
+    
+        <a href="/blog/page/2/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>

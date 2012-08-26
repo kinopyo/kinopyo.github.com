@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JSONP | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/jsonp/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[メモ：PHPでJSONPを返すサンプルコード]]></title>
+    <link href="http://kinopyo.github.com/blog/memo-php-return-json"/>
+    <updated>2010-12-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/memo-php-return-json</id>
+    <content type="html"><![CDATA[<h2>PHP側で</h2>
+
+<p>```php
+echo $_GET<em>'callback'</em> . '(' . json_encode($object) . ');';</p>
+
+<p>```</p>
+
+<h2>JS側で</h2>
+
+<p>```javascript</p>
+
+<pre><code>$(function(){
+     $.getJSON('foo.php?callback=?',
+                {},  // No additional parameters sent
+                function (data) {
+                     // data is now JSON object instantiated from retrieved info
+                     alert(data*'key'*);
+     });
+});
+</code></pre>
+
+<p>```</p>
+
+<p>参考：
+<a href="http://www.carolinamantis.com/wordpress/?p=29">http://www.carolinamantis.com/wordpress/?p=29</a></p>
+]]></content>
+  </entry>
+  
+</feed>

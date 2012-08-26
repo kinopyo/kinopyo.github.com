@@ -1,0 +1,37 @@
+---
+layout: post
+title: '今週（10/25～10/31）新たに知ったもの'
+date: 2010-11-1
+wordpress_id: 1498
+permalink: /blog/new-to-me-this-week-1025-1031
+comments: true
+categories: ["font", "new", "rails", "Uncategorized"]
+---
+# Compass
+{% blockquote  %}
+A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:
+
+Compass Core
+Blueprint
+960
+Susy
+YUI
+
+New frameworks and extensions are tracked on the wiki as they are created.
+Other frameworks can be added relatively easily. Create your own!
+{% endblockquote %}
+[http://github.com/chriseppstein/compass/tree#readme](http://github.com/chriseppstein/compass/tree#readme)
+[http://compass-style.org/docs/](http://compass-style.org/docs/)
+
+# Rails Rumble
+{% blockquote  %}
+The Rails Rumble is an annual 48 hour web application development competition in which teams of skilled web application developers get one weekend to design, develop, and deploy the best web property that they can, using the power of Ruby and Rails.
+{% endblockquote %}
+[http://railsrumble.com/](http://railsrumble.com/)
+
+# Monospaced font
+{% blockquote  %}
+A monospaced font, also called a fixed-pitch or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space.*1* This contrasts to variable-width fonts, where the letters differ in size to one another.
+The first monospaced typefaces were designed for typewriters, which could only move the same distance forward with each letter typed. This also meant that monospaced fonts need not be typeset like variable width fonts and were, arguably, easier to deal with.
+{% endblockquote %}
+[http://en.wikipedia.org/wiki/Monospaced_font](http://en.wikipedia.org/wiki/Monospaced_font)

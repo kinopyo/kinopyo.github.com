@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tutorial | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/tutorial/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby MySQL Tutorial]]></title>
+    <link href="http://kinopyo.github.com/blog/ruby-mysql-tutorial"/>
+    <updated>2011-09-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/ruby-mysql-tutorial</id>
+    <content type="html"><![CDATA[<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
+
+<p><em>gist id=1205708</em></p>
+
+<h1>中文</h1>
+
+<p><em>gist id=1205708</em></p>
+
+<h1>English</h1>
+
+<p><em>gist id=1205708</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[初めてのgadget.xml with iGoogle]]></title>
+    <link href="http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle"/>
+    <updated>2011-02-28T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle</id>
+    <content type="html"><![CDATA[<p>Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。<a href="http://code.google.com/apis/gadgets/docs/gs.html">http://code.google.com/apis/gadgets/docs/gs.html</a>を参照してください。</p>
+
+<h2>ソースを用意</h2>
+
+<p>```xml
+&lt;?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Hello World!" />
+  <Content type="html"></p>
+
+<pre><code>&lt;![CDATA[
+  Hello, world!
+]]
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spring DataSource beanのメモ]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-define-spring-datasource-bean"/>
+    <updated>2010-12-06T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-define-spring-datasource-bean</id>
+    <content type="html"><![CDATA[<p>DataSource Beanを定義する際applicationContext.xmlの書き方と、Javaで呼び出すコードのメモです。ずいぶん昔のメモです。。</p>
+
+<p>こんなjdbc.propertiesファイルがクラスパスにあるとします。</p>
+
+<p>```
+jdbc.driverClassName=org.h2.Driver
+jdbc.url=jdbc:h2:~/test
+jdbc.username=sa
+jdbc.password=</p>
+
+<p>```</p>
+
+<p>そしてSpringのapplicationContext.xmlにはこう書きます。</p>
+
+<p>```xml
+&lt;context:property-placeholder location="jdbc.properties"/></p>
+
+<p>&lt;bean id="dataSource"</p>
+
+<pre><code>class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;
+&lt;property name="driverClassName" value="${jdbc.driverClassName}" /&gt;
+&lt;property name="url" value="${jdbc.url}" /&gt;
+&lt;property name="username" value="${jdbc.username}" /&gt;
+&lt;property name="password" value="${jdbc.password}" /&gt;
+</code></pre>
+
+<p></bean></p>
+
+<p><bean id="accountDao" class="test.dao.AccountDao"></p>
+
+<pre><code>&lt;property name="dataSource" ref="dataSource" /&gt;
+</code></pre>
+
+<p></bean></p>
+
+<p>```</p>
+
+<p>Javaでの呼び出し：</p>
+
+<p>```java
+ApplicationContext context = new ClassPathXmlApplicationContext(</p>
+
+<pre><code>    "applicationContext.xml");
+</code></pre>
+
+<p>AccountDao accountDao = (AccountDao) context.getBean("accountDao");</p>
+
+<p>// other code...</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hibernate：複数項目のPKに対応するアノテーションの記述方法]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate"/>
+    <updated>2010-12-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate</id>
+    <content type="html"><![CDATA[<p>一つ以上の項目がPKとなったケースでHibernateはどう設定すればいいのかを説明します。
+ずいぶん昔のメモになります。</p>
+
+<p>こんなテーブルがあるとします。</p>
+
+<p>```sql
+create table Account (</p>
+
+<pre><code>code varchar(255) not null,
+number integer not null,
+description varchar(255),
+primary key (code, number)
+</code></pre>
+
+<p>);</p>
+
+<p>```</p>
+
+<p>PKは'code'と'number'です。</p>
+
+<h2>方法は三つあります</h2>
+
+<p>まずPKを表すクラスを作ります。PKクラスは以下の条件を満足しなければなりません。
++publicクラス
++デフォルトのコンストラクタ
++シリアライズを実装
++hashCode()とequals()を実装</p>
+
+<p>そしてエンティティクラスは以下の三つの方法のうちどれかで実装します。
++  PKクラスを@Embeddableアノテーションで記述し、エンティティクラスのプロパティとして書いて@Idとマーク
++  PKクラスをエンティティクラスにプロパティとして書いて@EmbeddableIdとマーク
++  PKを表す全ての項目をエンティティクラスのプロパティとして登録し@Idとマーク</p>
+
+<p>それぞれのソースコードをリストします。</p>
+
+<h2>一番目@Embeddable</h2>
+
+<p>ここはAccountとそのPKを表すクラスAccountPkを作成しました。
+メリットはPKクラスを再利用できるところです。
+もっとも自然的なアプローチだそうです。</p>
+
+<p>```java</p>
+
+<p>package sample.annotations;</p>
+
+<p>import java.io.Serializable;</p>
+
+<p>import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.Id;</p>
+
+<p>@Entity
+public class Account {</p>
+
+<pre><code>private String description;
+private AccountPk id;
+
+public Account(String description) {
+    this.description = description;
+}
+
+protected Account() {
+}
+
+@Id
+public AccountPk getId() {
+    return this.id;
+}
+
+public String getDescription() {
+    return this.description;
+}
+
+public void setId(AccountPk id) {
+    this.id = id;
+}
+
+public void setDescription(String description) {
+    this.description = description;
+}
+
+@Embeddable
+public static class AccountPk implements Serializable{
+    private String code;
+    private Integer number;
+
+    public AccountPk() {
+    }
+
+    public String getCode() {
+        return this.code;
+    }
+
+    public Integer getNumber() {
+        return this.number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int hashCode() {
+        int hashCode = 0;
+        if (code != null)
+            hashCode ^= code.hashCode();
+        if (number != null)
+            hashCode ^= number.hashCode();
+        return hashCode;
+    }
+
+    public boolean equals(Object obj) {
+        if (!(obj instanceof AccountPk))
+            return false;
+        AccountPk target = (AccountPk) obj;
+        return ((this.code == null) ? (target.code == null) : this.code
+                .equals(target.code))
+                &amp;&amp; ((this.number == null) ? (target.number == null)
+                        : this.number.equals(target.number));
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<p>検証するクラスを作成しました。</p>
+
+<p>```java
+package sample.annotations;</p>
+
+<p>import java.util.Iterator;
+import java.util.List;</p>
+
+<p>import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;</p>
+
+<p>import sample.annotations.Account.AccountPk;</p>
+
+<p>public class TestAccount {</p>
+
+<pre><code>public static void main(String** args) {
+    SessionFactory sessionFactory = new AnnotationConfiguration()
+            .configure().buildSessionFactory();
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+
+    Account account = new Account("This is the first type.");
+
+    // construct pk value
+    AccountPk accountPk = new AccountPk();
+    accountPk.setCode("kinopyo001");
+    accountPk.setNumber(12345);
+    // set pk
+    account.setId(accountPk);
+
+    // save
+    session.save(account);
+    session.getTransaction().commit();
+    System.out.println("Commit");
+
+    // load
+    List list = session.createQuery("from Account").list();
+    Iterator i = list.iterator();
+    while (i.hasNext()) {
+        Account a = (Account) i.next();
+        System.out.println("code: " + a.getId().getCode() + ", number: "
+                + a.getId().getNumber() + "  Description: "
+                + a.getDescription());
+    }
+    session.close();
+
+}
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<p>設定が正しければこんなログが出るはずです。</p>
+
+<p>```
+Commit
+code: kinopyo001, number: 12345  Description: This is the first type.</p>
+
+<p>```</p>
+
+<h2>二番目@EmbeddableId(抜粋)</h2>
+
+<p>```java
+@EmbeddedId
+public AccountPk getId() {</p>
+
+<pre><code>return this.id;
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<h2>三番目@IdClass(抜粋)</h2>
+
+<p>```java
+@Entity
+@IdClass(Account.AccountPk.class)
+public class Account {</p>
+
+<pre><code>private String description;
+private String code;
+private Integer number;
+
+public Account(String description) {
+    this.description = description;
+}
+
+protected Account() {
+}
+
+@Id
+public String getCode() {
+    return this.code;
+}
+
+@Id
+public Integer getNumber() {
+    return this.number;
+}
+
+public String getDescription() {
+    return this.description;
+}
+
+public void setDescription(String description) {
+    this.description = description;
+}
+
+public void setNumber(Integer number) {
+    this.number = number;
+}
+
+public void setCode(String code) {
+    this.code = code;
+}
+
+public static class AccountPk {
+// ...
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'FactoryGirl: How to define a value based on an already defined one'
+date: 2012-1-26
+wordpress_id: 2631
+permalink: /blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one
+comments: true
+categories: ["factory_girl", "rails", "Ruby", "test"]
+---
+FactoryGirlで既に定義した値を使おうとする時の方法です。
+例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。
+
+*gist id=1680766*

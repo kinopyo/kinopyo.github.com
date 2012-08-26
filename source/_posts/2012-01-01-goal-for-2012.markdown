@@ -1,0 +1,90 @@
+---
+layout: post
+title: '2012年の目標'
+date: 2012-1-1
+wordpress_id: 2569
+permalink: /blog/goal-for-2012
+comments: true
+categories: ["diary"]
+---
+Nettus+の記事:[10 New Year’s Resolutions Every Web Developer Should Make](http://net.tutsplus.com/articles/general/ten-new-years-resolutions-every-web-developer-should-make/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+nettuts+%28Nettuts%2B%29)がとても素晴らしかったので、それに乗って2012の目標をできるだけ数字化で評価しやすいように設定しようと思います。
+
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/photo-2.jpg Goal for 2012 %}
+
+# 1 - Learn a New Language, Framework, Or Methodology
+
+<strong>Node.jsとNode.jsで何の問題を解決するのが一番得意なのか？を知りたい。</strong>
+
+「Node.jsは何の問題を解決したの」ってNode.jsを勉強した友達に聞いたら、「front-endのエンジニアは昔client sideのことしか出来なかったのを、今はserver sideの実装もできるようになった、と転職活動でもっと有利になった」みたいなジョークで返しました。。。
+
+今まで言語を学ぶプロセスとは違う手法で、文法などを勉強する前に先にこれを一番知りたいです。
+言語自体はRubyがもっと好きですし、今まで簡単なプロトタイプなどはSinatraでも十分対応できました。もしNode.jsの使い道が自分の趣味などに合わなければ途中、あるいは真っ先に捨てるのも全然あり。
+
+# 2 - Get Better At What You Know
+
+下記のスキルの熟練度をあげて、普段の仕事の中でもう<strong>apiなど参照しなくてもできるくらい</strong>！
++   Ruby(Metaprogrammingあたり)
++   Rails
++   Sinatra
++   Heroku
++   MongoDB(MongoMapper)
++   TextMate 2
+
+仕事でも環境が整った上、これくらい出来なくちゃ！
+全部頭で覚えられるはベストですが、DRYの観点からTextMate(2)を工夫してSnippet作ったりして効率にするのもありです。
+
+# 3 - Explore a New Field
+
+<strong>iOS Developmentで簡単なアプリをひとつ公開する</strong>
+
+昔作ってた経験もあるし、このまま放棄するのは悔しいというかもったいないかなと思います。iOS 4からはほとんど触ってないのでキャッチアップしたいです！
+
+いつも同じことをやるのにRubyだと一行でできるのがiOSでは数行の見苦しいコードになっちゃうことに抵抗があって、なかなかモチベーションが湧いてこないですが、会社の人が2時間で相当完成度の高いプロトタイプが作れたことにびっくりしてやっぱ熟練度を上げればそこまでWeb開発と差はないでしょうね。
+
+# 4 - Engage the Community
+
+<strong>あえて目標は設定しません。</strong>
+
+オープンソースへの貢献という話に私見ですが、「貢献するために貢献する」ことには抵抗があります。私は自分が使ってるうちに気づいたことは自分で改善しそれを作者さんにフィードバックしたいのですが、それを数字化で「10件のPull Requestを送る」とかはあまり意味ないと思います。「今年は恋をする！」ではなく、「縁で知り合って気に入った子と深く付き合いたい、その気持ちを伝えたい」マインドセットで進みます。
+
+# 5 - Teach Others
+
+人に何を教えるかまだ半信半疑ですが、以下の2つはチャンスがあればもっと人に伝えたいです。
++  <strong>料理は社会問題、料理で世界を変える</strong>
++  <strong>Lean Startupの手法で、自分/人類の無駄なエナージーを減らす</strong>
+
+# 6 - Take Better Care Of Yourself
+
+数年前より体がだいぶ鈍くなったし、あんまり働いてないのに、いっぱい寝たのに疲れが回復しないのがどうも気に入らないです。そのためにちゃんと体を鍛えたいです！
+
++  <strong>10時以降に起きるのを年間休日の10回以内に</strong>
++  <strong>夜1時以降寝るのを週一回のペースに、3ヶ月実施して問題なければ12時前に寝ることに。</strong>
++  <strong>トータルで144 km走る(2週間で3回走る x 1回で2km = 1ヶ月で 12km, 12 x 12 = 144km)</strong>
++  <strong>一回くらい10km走る</strong>
++  自転車通勤(Optional)
+
+# 7 - Manage Your Time Better
+まだどう実施するかノープランですが、とりあえずは：
+
++  <strong>朝の時間をもっと利用したい</strong>
++  <strong>家での集中時間を増やしたい</strong>
+
+どう実施するかはまた後で考えます。
+
+# 8 - Use Better Programming Practices
+これは言うまでもないものなのでpass
+
+# 9 - Generate Passive Income
++  <strong>2ヶ月で一つのプロダクトをリリースし検証する</strong>
+{% blockquote  %}
+Start-ups Don't Starve, They Drown.
+{% endblockquote %}
+のようにideaは今までもうものたくさんある中、作りっぱなしにしたか、放棄状態にしたのはもったいない！2ヶ月のスパンではいろいろ試せると思って、年に6つのideaを試せるからね！
+
+2011年はブログのAdSenseで何とか給料以外の収入は得たものの、金額が少なすぎてまだ言えるほどのものではないです。でも儲かるのは目的ではなくて、それなりの価値を提供すればそれなりのフィードバックはあるはずなので、まだ価値があるものを作れていないことです。
+
+またドメインとかサーバ、Herokuなどにもっと大胆に投資してもいいよって自分に言いたいです。
+
+# 10 - Take a Break
++  <strong>週に3回は料理する、週末は豪華なやつを作る！</strong>(cook.kinopyo.comの料理専用ブログを作る！)
++  <strong>StarCraft2でMaster Leagueを目標に進出！</strong>

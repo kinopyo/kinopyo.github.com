@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CoffeeScript | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/coffeescript/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CoffeeScript勉強する上で役に立つebook3冊(無料)]]></title>
+    <link href="http://kinopyo.github.com/blog/3-free-ebooks-for-study-coffeescript"/>
+    <updated>2011-07-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/3-free-ebooks-for-study-coffeescript</id>
+    <content type="html"><![CDATA[<p><a href="http://autotelicum.github.com/Smooth-CoffeeScript/">Smooth CoffeeScript</a>
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/SmoothCoverWithSolutions1.jpg SmoothCoverWithSolutions %}
+200ページを超え、35の練習問題があります。基本文法からオブジェクト指向、モジュラリティ、そしてHTML5のCanvasとWebSocketsまで紹介されています。PDFは答えがついてあるバージョンと付いてないバージョンがあり、さらにソースコードまで。</p>
+
+<p><a href="http://coffeescriptcookbook.com/">CoffeeScript Cookbook</a>
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/CoffeeScript-Cookbook.png CoffeeScript Cookbook %}
+リファレンス参照が一目瞭然で、ebookよりは気軽く読めると思います。メタプログラミングまで書いてあります。ちなみにこれは複数の人が協力して作ったもので、githubにあるのでforkしてpullリクエストも出せます。</p>
+
+<p><a href="http://arcturo.github.com/library/coffeescript/index.html">The Little Book on CoffeeScript</a>
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/The-Little-Book-on-CoffeeScript.png The Little Book on CoffeeScript %}</p>
+
+<p>5章しかないですが、CoffeeScriptがベストプライスが書かれています。少なくとも4章のIdiomsは読んどいたほうがいいと思います。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CoffeeScriptでjQueryのdocument.readyの書き方]]></title>
+    <link href="http://kinopyo.github.com/blog/coffeescript-jquery-document-ready"/>
+    <updated>2011-07-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/coffeescript-jquery-document-ready</id>
+    <content type="html"><![CDATA[<p>下記どちらもOKです。明示的に書きたいときはjQueryで。</p>
+
+<p><em>gist id=1073555 file=coffee-script-jquery-document-ready</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <updated>2011-07-04T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
+注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
+またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
+
+<p>{% gist 1062397 %}</p>
+
+<p>これでtextmateでcommand + Bでコンパイル後のJavascriptが表示できるようになります！</p>
+]]></content>
+  </entry>
+  
+</feed>

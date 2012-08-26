@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rvm | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/rvm/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby 1.9.3-p0 をRVMでインストール]]></title>
+    <link href="http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm"/>
+    <updated>2011-11-02T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
+    <content type="html"><![CDATA[<h2>インストール</h2>
+
+<p><em>gist id=1333112</em></p>
+
+<h2>リリースノート</h2>
+
+<p><a href="http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/">http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/</a></p>
+
+<h2>速度</h2>
+
+<p>結構速くなったらしいです。
+この記事を参考：<a href="http://stjhimy.com/posts/24-ruby-1-9-3-freaking-fast-bro">http://stjhimy.com/posts/24-ruby-1-9-3-freaking-fast-bro</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[REEとはRuby Enterprise Edition]]></title>
+    <link href="http://kinopyo.github.com/blog/ree-is-ruby-enterprise-edition"/>
+    <updated>2011-09-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/ree-is-ruby-enterprise-edition</id>
+    <content type="html"><![CDATA[<p>Rubyのエンタープライズ版のこと。Phusion Passengerと相性がよく、メモリ消費がだいぶ下がる利点があるそうです。
+rvmでの紹介を引用しますと：
+{% blockquote  %}
+Ruby Enterprise Edition, MRI Ruby with several custom
+patches for performance, stability, and memory.
+{% endblockquote %}</p>
+
+<p><a href="http://www.rubyenterpriseedition.com/documentation.html">ガイドのドキュメント</a>
+<a href="http://www.rubyenterpriseedition.com/">公式サイト</a></p>
+
+<p>現在は1.8.7が最新のようでrvmでインストールする場合は：
+{% codeblock %}
+rvm list known
+rvm install ree
+{% endcodeblock %}
+<a href="http://beginrescueend.com/interpreters/ree/">Install REE with RVM</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RVMの更新、Ruby 1.9.2p290の更新]]></title>
+    <link href="http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290"/>
+    <updated>2011-08-19T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290</id>
+    <content type="html"><![CDATA[<p>ruby 1.9.2p290へ更新しました。rvmもついでに。</p>
+
+<p><em>gist id=1073555 file=update_rvm_and_ruby-1.9.2-p290.sh</em></p>
+]]></content>
+  </entry>
+  
+</feed>

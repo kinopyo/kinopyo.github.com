@@ -1,0 +1,63 @@
+---
+layout: post
+title: '今週（10/18～10/24）新たに知ったもの'
+date: 2010-10-25
+wordpress_id: 1488
+permalink: /blog/new-to-me-this-week-1018-1024
+comments: true
+categories: ["Linux", "new", "Ruby", "diary"]
+---
+# 終電検索
+いつもYahooで終電を検索するんですが、それがアテにならないことが分かりました。
+終電検索で深夜1時とか出発でただ乗換が多かったのを見てとりあえず帰れるって安心したんですが、あとで見ると実は二日目の朝4～5時の電車となってしまいました。時間を全部チェックしてなかったのが自分のミスでしたが、、、検索アルゴリズムを改善する必要があると思います。
+
+# ブレスト
+ブレインストーミングのこと。
+{% blockquote  %}
+ブレインストーミング（Brainstorming）とはアレックス・F・オズボーンによって考案された会議方式のひとつ。集団思考とも訳される。集団発想法、ブレインストーミング法（BS法）、ブレスト、課題抽出ともいう。1941年に良いアイデアを生み出す状態の解析が行われた後、1953年に発行した著書「Applied Imagination」の中で会議方式の名称として使用された。
+{% endblockquote %}
+
+# rsync
+{% blockquote  %}
+rsync is a file transfer program for Unix systems. rsync uses the "rsync algorithm" which provides a very fast method for bringing remote files into sync. It does this by sending just the differences in the files across the link, without requiring that both sets of files are present at one of the ends of the link beforehand.
+
+Some features of rsync include
+
++  can update whole directory trees and filesystems
++  optionally preserves symbolic links, hard links, file ownership, permissions, devices and times
++  requires no special privileges to install
++  internal pipelining reduces latency for multiple files
++  can use rsh, ssh or direct sockets as the transport
++  supports anonymous rsync which is ideal for mirroring
+{% endblockquote %}
+[http://www.samba.org/rsync/](http://www.samba.org/rsync/)
+
+# cron
+{% blockquote  %}
+Cron is a time-based job scheduler in Unix-like computer operating systems. The name cron comes from the word "chronos", Greek for "time". Cron enables users to schedule jobs (commands or shell scripts) to run periodically at certain times or dates. It is commonly used to automate system maintenance or administration, though its general-purpose nature means that it can be used for other purposes, such as connecting to the Internet and downloading email.*1*
+{% endblockquote %}
+
+[http://en.wikipedia.org/wiki/Cron](http://en.wikipedia.org/wiki/Cron)
+
+# redcar
+結構使えそう。
+{% blockquote  %}
++  Cross platform: OS X, Linux, Windows.
++  Syntax highlighting for many languages
++  Snippets for many languages
++  TextMate Theme support
++  Split panes
++  Block typing
++  Soft tabs
++  Optional line numbers
++  Bracket and quote matching
++  Automatic indentation for many languages
++  Directory tree pane (not yet a full project view)
++  Extend with Ruby
++  My Plugin – example plugin to start playing with editing for yourself
++  Bulk Rename files and directories
++  Source Control integration for Subversion and Git
++  Build System support via Runnables
+{% endblockquote %}
+
+[http://redcareditor.com/](http://redcareditor.com/)

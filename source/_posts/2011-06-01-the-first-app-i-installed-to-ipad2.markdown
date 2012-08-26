@@ -1,0 +1,40 @@
+---
+layout: post
+title: 'iPad2最初に買ったアプリはやはりこれ！Reeder for iPad'
+date: 2011-6-1
+wordpress_id: 1834
+permalink: /blog/the-first-app-i-installed-to-ipad2
+comments: true
+categories: ["iPad", "ipad", "ipad2", "iPhone", "rss"]
+---
+iPhoneでの定番RSSリーダーのReederをいつも愛用していますが、iPad2では予め買う必要があります。600円は少し高いですが、iPhone版と同じ優れたUIと操作性、多数のWebサービスに対応している点を考えて購入しました。やはり大きなスクリーンで読むのは気持ちいいっ！
+
+## iPhone版
+<a href="http://click.linksynergy.com/fs-bin/click?id=a7biMX2sGzA&subid=0&offerid=94348.1&type=10&tmpid=3910&RD_PARM1=http%3A%2F%2Fitunes.apple.com%2Fjp%2Fapp%2Freeder%2Fid325502379%3Fmt%3D8%2526uo%3D4" rel="nofollow" target="_blank"><img align="left" hspace="6" src="http://a5.mzstatic.com/us/r1000/043/Purple/b2/41/fc/mzi.owiznxzi.png" width="75" style="margin-right: 6px;" /><b>Reeder</b> <img alt="App" src="http://ax.phobos.apple.com.edgesuite.net/images/web/linkmaker/badge_appstore-sm.gif" style="vertical-align: text-bottom;" /></b><br />
+</a>カテゴリ: ニュース<br />
+価格: &#65509;350<br clear="all" />
+
+
+## Reeder for iPad
+<table border="0" style="line-height: 1.2em;">
+<tr><td rowspan="6" width="75px" style="padding: 0; vertical-align: top; border:0px;"><a href="http://click.linksynergy.com/fs-bin/click?id=a7biMX2sGzA&subid=0&offerid=94348.1&type=10&tmpid=3910&RD_PARM1=http%3A%2F%2Fitunes.apple.com%2Fjp%2Fapp%2Freeder-for-ipad%2Fid375661689%3Fmt%3D8%2526uo%3D4" rel="nofollow" target="_blank"><img src="http://a5.mzstatic.com/us/r1000/007/Purple/3b/0b/d0/mzi.mkzykzrk.png" width="75" /></a></td><td colspan="2"><a href="http://click.linksynergy.com/fs-bin/click?id=a7biMX2sGzA&subid=0&offerid=94348.1&type=10&tmpid=3910&RD_PARM1=http%3A%2F%2Fitunes.apple.com%2Fjp%2Fapp%2Freeder-for-ipad%2Fid375661689%3Fmt%3D8%2526uo%3D4" rel="nofollow" target="_blank"><strong>Reeder for iPad</strong> <small>(Version 1.4.1)</small> <img alt="App" src="http://ax.phobos.apple.com.edgesuite.net/images/web/linkmaker/badge_appstore-sm.gif" style="vertical-align: text-bottom;" /></a></td></tr>
+<tr><td width="100px">カテゴリ:</td><td>ニュース</td></tr>
+<tr><td>価格:</td><td>&#65509;600</td></tr>
+<tr><td>デベロッパ名:</td><td>Silvio Rizzi</td></tr>
+<tr><td>リリース日:</td><td>2010/06/11</td></tr>
+<tr><td>対応デバイス:</td><td>iPadWifi / iPad2Wifi / iPad3G / iPad23G</td></tr>
+</table>
+<div></div>
+
+<div align="center" style="margin: 5px;"><a href="http://click.linksynergy.com/fs-bin/click?id=a7biMX2sGzA&subid=0&offerid=94348.1&type=10&tmpid=3910&RD_PARM1=http%3A%2F%2Fitunes.apple.com%2Fjp%2Fapp%2Freeder-for-ipad%2Fid375661689%3Fmt%3D8%2526uo%3D4" rel="nofollow" target="_blank"><img src="http://a3.mzstatic.com/us/r1000/059/Purple/d6/d5/f4/mzl.oxolfbhz.480x480-75.jpg" alt="iPhone" class="portrait" width="235" /></a>　<a href="http://click.linksynergy.com/fs-bin/click?id=a7biMX2sGzA&subid=0&offerid=94348.1&type=10&tmpid=3910&RD_PARM1=http%3A%2F%2Fitunes.apple.com%2Fjp%2Fapp%2Freeder-for-ipad%2Fid375661689%3Fmt%3D8%2526uo%3D4" rel="nofollow" target="_blank"><img src="http://a3.mzstatic.com/us/r1000/028/Purple/7e/1f/cc/mzl.yardpimb.480x480-75.jpg" alt="iPhone" class="portrait" width="235" /></a></div>
+
+## 操作性
+リストビューで左スワイプがstar/unstart、右スワイプがread/unreadです。これはiPhone版と一緒です。
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/IMG_0011.jpg right swipe %}
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/IMG_0013.jpg swipe left %}
+左スワイプの処理は設定画面でReadItLaterやInstapaperに変更できます。
+
+<br />
+そして記事ビューでは、右スワイプはリストビューに戻ります。
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/IMG_0009.jpg reeder for ipad right swipe to go back to list view %}
+

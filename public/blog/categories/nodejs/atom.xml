@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nodejs | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/nodejs/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <updated>2011-07-04T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
+注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
+またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
+
+<p>{% gist 1062397 %}</p>
+
+<p>これでtextmateでcommand + Bでコンパイル後のJavascriptが表示できるようになります！</p>
+]]></content>
+  </entry>
+  
+</feed>

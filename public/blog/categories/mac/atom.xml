@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create reminder to your iOS device from Mac]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-create-reminder-to-iphone-from-mac"/>
+    <updated>2011-12-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-create-reminder-to-iphone-from-mac</id>
+    <content type="html"><![CDATA[<p>You need to install <a href="http://www.alfredapp.com/]%20and%20buy%20the%20[http://www.alfredapp.com/purchase/">Powerpack</a>.</p>
+
+<p>You can download Alfred extension here: <a href="http://www.dirtdon.com/?p=1261">http://www.dirtdon.com/?p=1261</a>
+Then launch your alfred, and type <em>r foo, bar</em> to create the reminder.
+You can get the notification of grow after it's done.</p>
+
+<p><img alt="" src="https://img.skitch.com/20111216-e8gbqugwh5ech951n82s6f44t7.jpg" title="Create iOS 5 Reminders Tasks from Alfred" class="alignnone" width="457" height="942" /></p>
+
+<h1>日本語</h1>
+
+<h2>前提</h2>
+
+<p><a href="http://www.alfredapp.com/">Alfred</a>およびその<a href="http://www.alfredapp.com/purchase/">Powerpack</a>のインストールが必要になります。</p>
+
+<h2>方法</h2>
+
+<p><a href="http://www.dirtdon.com/?p=1261">http://www.dirtdon.com/?p=1261</a>でAlfred用のExtensionをダウンロードしインストールします。
+そうしますと、Alfred呼び出して<em>r hogehoge</em>でリマインダーが作成できます。
+作成完了後はGrowlで通知もしてくれますー</p>
+
+<p><img alt="" src="https://img.skitch.com/20111216-e8gbqugwh5ech951n82s6f44t7.jpg" title="Create iOS 5 Reminders Tasks from Alfred" class="alignnone" width="457" height="942" /></p>
+
+<h2>Alfredについて</h2>
+
+<p>超オススメです。試してみてくださいー　特にPowerpack購入後は一気にパワーアップですよ！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Tweetアプリインストール後右クリックメニューの「Tweet」を消す方法]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu"/>
+    <updated>2011-11-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu</id>
+    <content type="html"><![CDATA[<p>MacのTweet公式アプリをインストール後、テキストを選択状態で右クリックするとメニューに「Tweet」が出てきますね。個人的には使わないのでそれを消す方法をシェアします。</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/11/Tweet-in-right-click-menu.jpg Tweet in right click menu %}</p>
+
+<p>これはOS Xの<em>Services</em>として登録されます。どのServicesをON/OFFにするかはSystem PreferencesのKeyboardで設定できます。今回の話だと<em>File and Folders</em>で<em>Tweet</em>のチェックボックスを外せばOKです。</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/11/uncheck-tweet-services.jpg uncheck tweet services %}</p>
+
+<p>UPDATE:
+<em>Open as Twitter Username</em>も消すべきでした。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mouse Locator for Mac、マウスがスクリーンのどこにあるかを知りたい時]]></title>
+    <link href="http://kinopyo.github.com/blog/mouse-locator-for-mac"/>
+    <updated>2011-11-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mouse-locator-for-mac</id>
+    <content type="html"><![CDATA[<p><img src="http://www.2point5fish.com/img/MLLogo.png" alt="Mouse Locator for Mac" /></p>
+
+<p>自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
+ホットキーを押せば大きい緑色の圓でマウスポインタを示しので、すぐに分かります。</p>
+
+<p><a href="http://www.2point5fish.com/">http://www.2point5fish.com/</a></p>
+
+<p>さらに素晴らしいことはパソコンロック解除されたときに自動でアクティブになるんです！ユーザエクスペリエンス！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Tabであらゆるダイアログのフォーカスを移動]]></title>
+    <link href="http://kinopyo.github.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs"/>
+    <updated>2011-10-12T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs</id>
+    <content type="html"><![CDATA[<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don't Save, Cancel, Save...」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
+
+<p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Keyboard-All-controls.jpg Keyboard All controls %}</p>
+
+<p>そこでの説明文の通り「In windows and dialogs, press Tab to move keyboard focus between All controls」、Tabであらゆるウィンドウやダイアログのキーボードフォーカスを移動することができます。</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Control-using-tab-focus.jpg Control using tab focus %}</p>
+
+<p>上記のようなダイアログが出るとしたら、Tab(Shift + Tab)で薄青色のフォーカスを移動して、スペースキーで該当の操作を実行できます。通常の青色はフォーカスの位置と関係なくreturnキーで操作を実行できます。</p>
+
+<p>これでマウスなしでらくらく。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remembering Steve Jobs]]></title>
+    <link href="http://kinopyo.github.com/blog/remembering-steve-jobs"/>
+    <updated>2011-10-06T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/remembering-steve-jobs</id>
+    <content type="html"><![CDATA[<p>Let's remember the day Steve Jobs passed away.</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Apple-Steve-Jobs.jpg Apple Steve Jobs %}</p>
+
+<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-11.03.50.png Steve Jobs passed away %}</p>
+
+<p>I do write a mail to rememberingsteve@apple.com, did you?</p>
+]]></content>
+  </entry>
+  
+</feed>

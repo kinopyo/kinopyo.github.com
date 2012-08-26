@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 環境構築 | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/環境構築/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby 1.9.3-p0 をRVMでインストール]]></title>
+    <link href="http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm"/>
+    <updated>2011-11-02T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
+    <content type="html"><![CDATA[<h2>インストール</h2>
+
+<p><em>gist id=1333112</em></p>
+
+<h2>リリースノート</h2>
+
+<p><a href="http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/">http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/</a></p>
+
+<h2>速度</h2>
+
+<p>結構速くなったらしいです。
+この記事を参考：<a href="http://stjhimy.com/posts/24-ruby-1-9-3-freaking-fast-bro">http://stjhimy.com/posts/24-ruby-1-9-3-freaking-fast-bro</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RVMの更新、Ruby 1.9.2p290の更新]]></title>
+    <link href="http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290"/>
+    <updated>2011-08-19T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290</id>
+    <content type="html"><![CDATA[<p>ruby 1.9.2p290へ更新しました。rvmもついでに。</p>
+
+<p><em>gist id=1073555 file=update_rvm_and_ruby-1.9.2-p290.sh</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TextMateをLionのフルスクリーンに]]></title>
+    <link href="http://kinopyo.github.com/blog/turn-textmate-to-lion-full-screen"/>
+    <updated>2011-08-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/turn-textmate-to-lion-full-screen</id>
+    <content type="html"><![CDATA[<p>```
+git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen</p>
+
+<p>xcodebuild -project /tmp/EGOTextMateFullScreen/EGOTextMateFullScreen.xcodeproj -target EGOTextMateFullScreen</p>
+
+<p>cp -R /tmp/EGOTextMateFullScreen/build/Release/EGOTextMateFullScreen.tmplugin ~/Library/Application\ Support/TextMate/PlugIns</p>
+
+<h1>after installed</h1>
+
+<p>rm -rf /tmp/EGOTextMateFullScreen/</p>
+
+<p>```</p>
+
+<p>これが完成図！
+{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/textmate_fullscreen.jpg textmate_fullscreen %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <updated>2011-07-04T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
+注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
+またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
+
+<p>{% gist 1062397 %}</p>
+
+<p>これでtextmateでcommand + Bでコンパイル後のJavascriptが表示できるようになります！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Macのrubyで、no such file to load -- ubygems (LoadError)]]></title>
+    <link href="http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror"/>
+    <updated>2011-05-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror</id>
+    <content type="html"><![CDATA[<p><a href="http://www.sinatrarb.com/intro">Sinatra</a>を試したところこのようなエラーになりました。</p>
+
+<p>```
+ruby -rubygems myapp.rb
+no such file to load -- ubygems (LoadError)</p>
+
+<p>```</p>
+
+<p>ググッてみたらやはりPATHが間違ったっぽいです。
+Macportでrubygemsをインストールすることで解決できるそうです。
+その後はgemを再度インストールする必要があるらしいです。
+操作の流れ：</p>
+
+<p>```</p>
+
+<h1>パスの確認</h1>
+
+<p>which gem
+/usr/bin/gem</p>
+
+<p>sudo port install rb-rubygems
+...</p>
+
+<h1>Terminal再起動</h1>
+
+<h1>パスの確認</h1>
+
+<p>which gem
+/opt/local/bin/gem</p>
+
+<p>sudo gem install sinatra</p>
+
+<p>```</p>
+
+<p>一旦はこれで解決です。</p>
+
+<p>参考になったサイト：
+<a href="http://d.hatena.ne.jp/holypp/20110319/1300556202">http://d.hatena.ne.jp/holypp/20110319/1300556202</a>
+<a href="http://d.hatena.ne.jp/Kuna/20090315/1237121262">http://d.hatena.ne.jp/Kuna/20090315/1237121262</a></p>
+]]></content>
+  </entry>
+  
+</feed>

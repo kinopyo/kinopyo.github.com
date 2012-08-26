@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-23T13:43:26+09:00</updated>
+  <updated>2012-08-26T12:20:36+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -154,6 +154,47 @@ rails runner -h
 <blockquote><p>You can also use the alias “r” to invoke the runner: <code>rails r</code>.</p></blockquote>
 
 <p>I failed to call <code>rails r</code> on Rails 3.0.10, maybe it's above 3.1+.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
+    <updated>2012-03-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
+    <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
+
+<p>{% blockquote  %}
+NOTICE:  CREATE TABLE will create implicit sequence "peroperos_id_seq" for serial column "peroperos.id"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "peroperos_pkey" for table "peroperos"
+～略～
+{% endblockquote %}
+の警告をシャットダウンする方法です。</p>
+
+<p>{% gist 2232851 %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Railsテスト時のrack警告"warning: regexp match /.../n against to UTF-8 string"を消す方法]]></title>
+    <link href="http://kinopyo.github.com/blog/rails-test-quietrack-warning"/>
+    <updated>2012-03-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rails-test-quietrack-warning</id>
+    <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。
+{% codeblock %}
+gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string
+{% endcodeblock %}
+このうるさい警告を消す方法を紹介します。</p>
+
+<h2>解決方法</h2>
+
+<p>rspecを使う場合はspec/spec_helper.rbに下記コードを最後に追記してください。
+{% gist 2168152 %}</p>
+
+<h2>原因</h2>
+
+<p>Rack1.3からは解決できたらしいですが、Rails 3.1以前を使うならとりあえずこの方法で回避してもいいかと。
+詳しくは：<a href="https://github.com/rack/rack/issues/41">https://github.com/rack/rack/issues/41</a></p>
 ]]></content>
   </entry>
   

@@ -1,0 +1,805 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="Disqusの概要 Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように： 導入手順 実際の導入フローはとても簡単なので、流れだけ書きます。 +http://disqus.com/でアカウント登録
++ &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-disqus-comment-system-to-wordpress-in-10-minitues">10分でWordPressにコメントシステムDisqusを導入</a></h1>
+	<div class="entry-content">
+		<h2>Disqusの概要</h2>
+
+<p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png" title="Disqus Login with Twitter, Facebook, etc." ></p>
+
+<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png" title="Disqus Comment system" ></p>
+
+<h2>導入手順</h2>
+
+<p>実際の導入フローはとても簡単なので、流れだけ書きます。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png" title="Disqus comment system site" ></p>
+
+<p>+<a href="http://disqus.com/">http://disqus.com/</a>でアカウント登録
++ブログサイトの情報、メインライター、導入ブログタイプ（ここはWordpress）などの設定
++自分のWordpressブログの管理画面でプラグインをインストール：Disqus Comment System
++Disqusプラグインの設定画面でさっき<a href="http://disqus.com/">http://disqus.com/</a>で登録したアカウントでログイン
++必要でなれば今までのコメントをエクスポートすることもできる</p>
+
+<br/>
+
+
+<h2>既存コメントのエクスポート</h2>
+
+<p>既存コメントのエクスポートは時間がかかりそうで、すぐには反映しないようです。
+Disqusの管理画面で確認したらステータスが&#8221;Queued for import&#8221;になってます。
+<img class="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg DISQUS Admin page - tools -" src="Import/export"></p>
+
+<p>すると翌日にインポートできましたよというメールがきました。管理画面でチェック：
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png" title="Disqus-comment-import-complete" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-25T00:00:00+09:00" pubdate data-updated="true">2011-05-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/plugin/'>plugin</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cute-cats">会社近くの公園の子猫</a></h1>
+	<div class="entry-content">
+		<p><em>gallery link=&#8221;file&#8221;</em></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-25T00:00:00+09:00" pubdate data-updated="true">2011-05-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sinatra-hot-deploy-without-restart-server">Sinatraサーバ起動せずに修正したソースを反映する方法(ホットデプロイ)</a></h1>
+	<div class="entry-content">
+		<p>Sinatra使って二日目ですが、サーバーを再起動しないと修正したコードが反映されないことに気づきました。これは不便なので、改善する方法を紹介します。</p>
+
+<p>shotgunというgemを使えばOKです。インストールし、ruby -rubygemsではなくshotgunでサーバを起動します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo gem install shotgun
+</span><span class='line'>$ shotgun myapp.rb
+</span><span class='line'>== Shotgun/WEBrick on http://127.0.0.1:9393/
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これでサーバを再起動せずにホットデプロイができるようになります。</p>
+
+<p>他にも<a href="https://github.com/rack/rack/blob/master/lib/rack/reloader.rb">Sinatra::Reloader</a>や<a href="https://github.com/rkh/sinatra-reloader">Sinatra::Reloader</a>が公式サイトで紹介されていますが、shotgunは一番簡単だそうです。</p>
+
+<p>参考サイト：
+<a href="http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server">http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server</a>
+<a href="http://www.sinatrarb.com/faq.html#reloading"> What happened to reloading in Sinatra</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T00:00:00+09:00" pubdate data-updated="true">2011-05-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror">Macのrubyで、no Such File to Load &#8211; Ubygems (LoadError)</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.sinatrarb.com/intro">Sinatra</a>を試したところこのようなエラーになりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -rubygems myapp.rb
+</span><span class='line'>no such file to load -- ubygems (LoadError)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ググッてみたらやはりPATHが間違ったっぽいです。
+Macportでrubygemsをインストールすることで解決できるそうです。
+その後はgemを再度インストールする必要があるらしいです。
+操作の流れ：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#パスの確認
+</span><span class='line'>which gem
+</span><span class='line'>/usr/bin/gem
+</span><span class='line'>
+</span><span class='line'>sudo port install rb-rubygems
+</span><span class='line'>...
+</span><span class='line'># Terminal再起動
+</span><span class='line'># パスの確認
+</span><span class='line'>which gem
+</span><span class='line'>/opt/local/bin/gem
+</span><span class='line'>
+</span><span class='line'>sudo gem install sinatra
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一旦はこれで解決です。</p>
+
+<p>参考になったサイト：
+<a href="http://d.hatena.ne.jp/holypp/20110319/1300556202">http://d.hatena.ne.jp/holypp/20110319/1300556202</a>
+<a href="http://d.hatena.ne.jp/Kuna/20090315/1237121262">http://d.hatena.ne.jp/Kuna/20090315/1237121262</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-23T00:00:00+09:00" pubdate data-updated="true">2011-05-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties">Facebookからのメール：you May Be Allowing Authentication Data to Be Passed to 3rd Parties</a></h1>
+	<div class="entry-content">
+		<p>Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties.</p>
+
+<p>ここ最近Facebookから”認証情報をサードパーティに渡している可能性がある、48時間内に修正しろ”みたいなメールが届いた人が多いと思います。
+メール本文です：</p>
+
+<blockquote>
+Dear Developer of xxxxxx {your app name} xxxxx,
+
+Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties. Allowing user ids and access tokens to be passed to 3rd parties, even inadvertently, could allow these 3rd parties to access the data the user made available to your site. This violates our policies and undermines user trust in your site and Facebook Platform.
+
+In every case that we have examined, this information is passed via the HTTP Referer Header by the user’s browser. This can happen when using our legacy authentication system and including &lt;iframe&gt;, &lt;img&gt; or &lt;script&gt; content from 3rd parties in the page that receives authentication data from Facebook. Our legacy mechanism passes authentication information in the URL query string which, if handled incorrectly, can be passed to 3rd parties by the browser. Our current OAuth 2.0 authentication system, released over a year ago, passes this information in the URL fragment, which is not passed to 3rd parties by the browser.
+
+Please ensure that you are not allowing this data to be passed immediately. Accessing your site as a test user while running a HTTP proxy/monitor like Charles or Fiddler is the best way to determine if you are allowing this information to be passed. If you discover the issue, you can do one of two things:
+
+1. Migrate your site to use our OAuth 2.0 authentication system. We are requiring all apps and sites to update to this mechanism by Sept. 1, 2011. Migrating now will address this issue and ensure that you are one of the first to meet the deadline. For more details, please see our Authentication Guide.
+
+2. Create and use an interstitial page to remove the authentication data before redirecting to your page with 3rd party content. This approach is used by many of our largest developers today (although they are all migrating to OAuth 2.0 shortly). This is a simple and straightforwardchange that should have minimal impact on your site. For more details on this approach, see our Legacy Connect Auth doc.
+
+Because of the importance of ensuring user trust and privacy, we are asking you to complete one of the above steps in the next 48 hours. If you fail to do so, your site may be subject to one of the enforcement actions outlined in our policies.
+
+If you have any questions or believe you have received this message in error, please contact us.
+
+Facebook Developer Relations
+</blockquote>
+
+
+<p>多分認証システムが古い（OAuth 2.0を使ってない）かつ、該当のページに&lt;iframe&gt;などのタグがあるのを条件としてFacebook側が検知してたと思います、別にサードパーティにどうこうした訳ではなく。</p>
+
+<h2>ソースの確認</h2>
+
+<p>まずユーザ認証のところのソースを確認しましょう。
+古い認証システムを使う場合これに似てるはずです。
+ソースはFacebookの<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>より。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> $api_key = &quot;YOUR_API_KEY&quot;;</span>
+</span><span class='line'><span class="x"> $interstitial_page = &quot;YOUR_SECURE_URL&quot;; //URL with no 3rd party apps</span>
+</span><span class='line'>
+</span><span class='line'><span class="x"> $url=&#39;http://www.facebook.com/login.php?api_key=&#39; . $app_id</span>
+</span><span class='line'><span class="x">   . &#39;&amp;session_version=3&amp;next=&#39; . urlencode($interstitial_page)</span>
+</span><span class='line'><span class="x">   . &#39;&amp;v=1.0&amp;return_session=1&amp;fbconnect=1&#39;</span>
+</span><span class='line'><span class="x">   . &#39;&amp;cancel_url=&#39; . urlencode($interstitial_page);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x"> echo &quot;Welcome to the Old Auth flow&quot;;</span>
+</span><span class='line'><span class="x"> echo &quot;&lt;p&gt;&quot;;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x"> echo(&quot;&lt;a href=&#39;&quot; . $url . &quot;&#39;&gt;&quot;</span>
+</span><span class='line'><span class="x">   . &quot;&lt;img src=&#39;http://static.ak.facebook.com/images/&quot;</span>
+</span><span class='line'><span class="x">   . &quot;devsite/facebook_login.gif&#39;&gt;&lt;/a&gt;&quot;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この場合nextパラメータで指定したページに行く時、URLパラメータでuidとかaccess_tokenが渡されますので、危ないと。</p>
+
+<p><a href="http://developers.facebook.com/attachment/request_img.png"><img alt="" src="http://developers.facebook.com/attachment/request_img.png" title="古い認証システムでは情報をパラメータ文字列で返す" class="alignnone" width="480" height="100" /></a></p>
+
+<p>OAuth 2.0を使ったログインURLはこうです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_URL&scope=email,read_stream
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>改修</h2>
+
+<p>メールで書かれた通り一つはOAuth2.0に移行する、一つは「中間ページ」挟んでユーザ情報をセッションに保持して隠蔽する。</p>
+
+<p>OAuthについては<a href="https://developers.facebook.com/docs/authentication/">https://developers.facebook.com/docs/authentication/</a>で詳しく説明しています。</p>
+
+<p>後者の場合は<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>の最後でサンプルコードがあるので参考できます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-20T00:00:00+09:00" pubdate data-updated="true">2011-05-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-rails3-1-0-beta1-and-problem-undefined-method-context-for-sprockets">Rails3.1.0 Beta1のインストールと、undefined Method Context for #Sprockets::Environment:のトラブル</a></h1>
+	<div class="entry-content">
+		<p>Rails3.1.0 beta1をインストールするときにあったトラブルです。</p>
+
+<h2>インストール</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// 3.1.0 betaに更新
+</span><span class='line'>sudo gem install rails --pre
+</span><span class='line'>
+</span><span class='line'>// バージョン確認
+</span><span class='line'>rails -v
+</span><span class='line'>
+</span><span class='line'>// ダミープロジェクト作成
+</span><span class='line'>rails new railsfoo
+</span><span class='line'>
+</span><span class='line'>// 必要なGemをインストール
+</span><span class='line'>cd railsfoo
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'>// サーバ起動
+</span><span class='line'>rails s
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>トラブル</h2>
+
+<p>ここまで順調でしたが、http://127.0.0.1:3000にアクセスしたときにundefined method `context&#8217; for #&lt;Sprockets::Environment:>のトラブルに会いました。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png" title="Sprockets trouble" ></p>
+
+<br/>
+
+
+<p>どうやらこのSprocketsというのがポイントのようです。
+ぐぐってみたらgithubでこのようなコメントがありました。</p>
+
+<blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem &#8216;sprockets&#8217;, &#8216;2.0.0.beta.2&#8217; in your Gemfile.</p></blockquote>
+
+
+<p>のようでGemfileに下記を追記し再度bundle update。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'sprockets', '2.0.0.beta.2'
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>解決〜
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-19T00:00:00+09:00" pubdate data-updated="true">2011-05-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/simple-timer-app-for-mac-timeringfocus">とてもシンプルなタイマーアプリTimeRingFocus(Mac)</a></h1>
+	<div class="entry-content">
+		<p>とてもシンプルで使いやすいタイマーアプリ<a href="http://www.topoftree.jp/timeringfocus/">TimeRingFocus</a>
+を発見しましたので紹介させていただきます。
+Mac専用になります。</p>
+
+<br/>
+
+
+<p>時間の設定にはマウスクリックするか、キーボードのTabキーでhh:mm:ss間で切り替えられます。
+そして時間を入力してreturnキー(Enterキー)を押せば設定完了です。とてもシンプルです。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/TimeRingFocus.png" title="TimeRingFocus" ></p>
+
+<br/>
+
+
+<p>例えば15分と設定したい場合の操作手順は：
++option + space（MacアプリAlfredのホットキー）
++&#8221;ti&#8221;を入力（よく使うのでtiだけで起動できる）し、returnキー
++tabキーを一回、&#8221;15&#8221;と入力、returnキー
+慣れたら5秒以内で設定できます〜</p>
+
+<br/>
+
+
+<p><em>Setup</em>ボタンで設定画面に行きますが、こちらのsoundを「Glass」に設定しています。
+全部試しましたが、これが一番いいかと思います。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/TimeRingFocus-Setting.png" title="TimeRingFocus Setting" ></p>
+
+<br/>
+
+
+<p>普段の仕事では結構こまめに8分とか15分とかを設定して、
+その間は集中することに決めてSkypeなども見ないようにしています。
+結構効率アップにつながると思います。</p>
+
+<h2>注意点</h2>
+
+<p>command + Wで閉じたらアプリは終了
+command + Mで最小化した場合は、<em>Bring to Front</em>が無効となる
+command + Hで隠すのは正常動作</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-17T00:00:00+09:00" pubdate data-updated="true">2011-05-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/app/'>app</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/using-wordpress-plugin-fo-my-social-bookmark-button">WP Social Bookmarking Lightでブログのソーシャルブックマークボタン</a></h1>
+	<div class="entry-content">
+		<p>もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
+<a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">http://www.lastday.jp/2011/05/16/increase-number-of-rss</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
+FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDeliciousなどまで対応してて便利ですよ。</p>
+
+<p>Wordpressプラグイン：WP Social Bookmarking Light
+<a href="http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/">http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/</a></p>
+
+<h2>設定</h2>
+
+<p>設定方法はとても簡単です。WPの設定画面でWP Social Bookmarking Lightを選択肢
+下記のように必要なサービスを左にドラッグ＆ドロップすればOKです。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png" title="WP Social Bookmarking Light Settings" ></p>
+
+<h3>General Settingタブ</h3>
+
+<p>「Singular」がDisabledにすれば記事の一覧ページにもボタンが反映するようになりますが、そうすると画面の読み込みが結構重くなるようでデフォルトのEnableのままにしています。</p>
+
+<h3>Facebookタブ</h3>
+
+<p>LikeボタンのVersionはデフォルトは「XFBML」となっていますが、XFBMLはもう廃止予定なのでiFrameに変更します。
+<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg" title="WP Social Bookmarking Light Facebook Setting" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-16T00:00:00+09:00" pubdate data-updated="true">2011-05-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/hatena/'>hatena</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cakephp-xml-to-array">Cakephp XML to Array</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">uses(&#39;Xml&#39;);</span>
+</span><span class='line'><span class="x">$xml = new Xml(&quot;/path/to/xml&quot;);</span>
+</span><span class='line'><span class="x">$xml_array = Set::reverse($xml);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>日本語</h1>
+
+<p>CakephpでXMLを配列に変換するのはとても簡単です。
+下記のファンクションを使えば一発でできます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">uses(&#39;Xml&#39;);</span>
+</span><span class='line'><span class="x">$xml = new Xml(&quot;/path/to/xml&quot;);</span>
+</span><span class='line'><span class="x">$xml_array = Set::reverse($xml);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-15T00:00:00+09:00" pubdate data-updated="true">2011-05-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/xml/'>xml</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/smarty-concat-string">Smartyで文字列を連結</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">{&quot;`$foo` plain text `$bar`&quot;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>日本語</h1>
+
+<p>こんな感じです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">{&quot;`$foo` plain text `$bar`&quot;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-11T00:00:00+09:00" pubdate data-updated="true">2011-05-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/smarty/'>Smarty</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/11/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/13/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

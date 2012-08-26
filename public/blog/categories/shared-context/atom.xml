@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: shared_context | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/shared-context/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[rspec shared context sample code]]></title>
+    <link href="http://kinopyo.github.com/blog/rspec-shared_context-sample-code"/>
+    <updated>2011-10-13T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/rspec-shared_context-sample-code</id>
+    <content type="html"><![CDATA[<p>{% gist 1283896 %}</p>
+
+<h1>日本語</h1>
+
+<p>shared_context はその名前の通りコンテキスト (テストを行なうときの状況) を共有するための機能です。
+shared_context を使うことで複数箇所にちらばる同一処理をまとめることができます。shared_context は shared_context が書かれたファイルを require することでも使えるようになるので別のスペックファイルでも使うことができます。</p>
+
+<p>{% gist 1283896 %}</p>
+]]></content>
+  </entry>
+  
+</feed>

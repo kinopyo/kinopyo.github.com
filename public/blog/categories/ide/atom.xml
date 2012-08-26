@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: IDE | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/ide/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TextMate Error: Exception raised during posting of notification]]></title>
+    <link href="http://kinopyo.github.com/blog/textmate-error-exception-raised-during-posting-of-notification"/>
+    <updated>2011-06-04T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/textmate-error-exception-raised-during-posting-of-notification</id>
+    <content type="html"><![CDATA[<h2>現象</h2>
+
+<p>Railscastsで紹介した<a href="https://github.com/jezdez/textmate-missingdrawer">https://github.com/jezdez/textmate-missingdrawer</a>Project Drawerのプラグインをインストールした後に、ターミナルやTextMateのGUIでフォルダを開くときに画面が真っ白になる。ファイル一つ一つは開ける。</p>
+
+<p>ターミナルで開いた時はこんなエラーを吐き出される：
+{% codeblock %}
+mate<em>19082:903] Exception raised during posting of notification.  Ignored.  exception: '[NOTE: this exception originated in the server.</em>
+ -<em>NSCFArray objectAtIndex:]: index (1) beyond bounds (1)'  invoked observer method: '-[OakLaunchHelper didLaunchTextMate:</em>'  observer: 0x1128a0  notification name: 'NSWorkspaceDidLaunchApplicationNotification'
+{% endcodeblock %}</p>
+
+<h2>原因</h2>
+
+<p>昔ProjectPlusというProject Drawerをインストールしたことがあり、どうやらその二つが衝突しているよう。</p>
+
+<h2>対策</h2>
+
+<p>~/Library/Application Support/TextMate/Plugins/ProjectPlus.tmpluginを削除</p>
+
+<p>参考：<a href="http://ticket.macromates.com/show?ticket_id=188F672C">http://ticket.macromates.com/show?ticket_id=188F672C</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vimビープ音を消す]]></title>
+    <link href="http://kinopyo.github.com/blog/set-vim-beep-alarm-off"/>
+    <updated>2010-10-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/set-vim-beep-alarm-off</id>
+    <content type="html"><![CDATA[<p>ビープ音を消す。</p>
+
+<p>vi ~/.inputrc
+{% codeblock %}
+set bell-style none
+{% endcodeblock %}</p>
+
+<p>vi ~/.vimrc
+{% codeblock %}
+set noerrorbells
+set vb t_vb=
+{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+</feed>

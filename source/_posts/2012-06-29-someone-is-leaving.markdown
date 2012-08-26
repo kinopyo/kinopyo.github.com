@@ -3,7 +3,7 @@ layout: post
 title: "Explicitly specify table name in scope definition"
 date: 2012-06-29 15:56
 comments: true
-categories: [Test]
+categories: [Rails]
 ---
 I was wondering why people explicitly specify table name in such a scope definition...
 

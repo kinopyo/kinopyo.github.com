@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: form | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/form/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mixiモバイルアプリ：フォームPost時のOAuth Signature検証失敗について]]></title>
+    <link href="http://kinopyo.github.com/blog/mixi-mobile-oauth-signature-failure-when-posting-form"/>
+    <updated>2011-08-10T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/mixi-mobile-oauth-signature-failure-when-posting-form</id>
+    <content type="html"><![CDATA[<h2>現象</h2>
+
+<p>MixiモバイルアプリのフォームからPOSTするとOAuth Signatureが不一致で検証が通らない。</p>
+
+<h2>デバッグ</h2>
+
+<p>フォームをPOSTするときはフォーム内のデータがOAuthのBase StringのNormalize Request Parametersに含まれます。
+これはOAuthに仕様に準じてます（<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a>）が、
+なぜかMixiだと通れないです。</p>
+
+<p>```html
+<form action="?guid=ON&url=http%3A%2F%2Fexample.com%2Ffoo%2F" method="post">
+  <input name="field1" type="text" value="value1" />
+  <input type="submit" value="送信" />
+</form></p>
+
+<p>```</p>
+
+<p>こんなフォームがあるとして、中のfield1がNormalize Request Parametersに存在するとダメだってことが検証でわかりました。</p>
+
+<h2>回避方法</h2>
+
+<p>フォームPOSTする箇所を特定して、その場合はOAuth Signatureを検証しないようにしました。</p>
+
+<h2>参考リンク</h2>
+
+<p>同じ現象にあった方がいました: <a href="http://d.hatena.ne.jp/phantasmist/20110224">http://d.hatena.ne.jp/phantasmist/20110224</a>
+<a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/</a>
+<a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">http://developer.mixi.co.jp/appli/spec/mob/pages_api/</a>
+<a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">http://oauth.net/core/1.0/#rfc.section.A.5.1</a>
+<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a></p>
+]]></content>
+  </entry>
+  
+</feed>

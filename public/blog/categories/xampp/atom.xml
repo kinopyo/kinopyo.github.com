@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: XAMPP | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/xampp/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Windows XAMPPにOracle Instantclientをインストール]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-install-oracle-instant-client-on-xampp-for-windows"/>
+    <updated>2011-02-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-install-oracle-instant-client-on-xampp-for-windows</id>
+    <content type="html"><![CDATA[<p>Oracle Instantclientをインストールすることで、PHPからOracleデータベースへの接続が可能になります。</p>
+
+<p>XAMPPのデフォルトインストールではそれが無効となっています。確認方法はphpinfoのページから'oci8'を検索して何もなかったらつまり接続できてないことです。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li>php.ini(XAMPP/phpのパスにある)の中から;extension=php_oci8.dllを検索して、セミコロン(;)を削除。</li>
+<li>Oracleから“Instant Client Package – Basic” for Windowsをダウンロードし、任意の場所に解凍。ここではc:\instantclient_11_1とする。</li>
+<li>Windowsの環境変数pathに上記instantclientが解凍されたパスを追加(c:\instantclient_11_1)</li>
+<li>そしてWindowsを再起動！</li>
+<li>Apacheを再起動</li>
+</ul>
+
+
+<br/>
+
+
+<h2>確認</h2>
+
+<p>phpinfoのページからoci8を検索してあれば成功！</p>
+
+<br/>
+
+
+<h2>その他</h2>
+
+<ul>
+<li>ORACLE_HOMEやORACLE_SIDなどの環境変数はInstant Clientでは必要ないから設定しなくても大丈夫だそう。</li>
+<li>パス設定後Windowsを再起動しないと、"unable to load dynamic library php_oci8.dll"のようなエラーが出た。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

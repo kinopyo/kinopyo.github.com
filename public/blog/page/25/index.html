@@ -1,0 +1,777 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="Wordpressブログにはてな記法を適用するプラグインを紹介します。
+はてな記法に慣れたら結構手軽にブログを書けます。
+Wordpressにそのはてな記法のプラグインがあります。 インストール +WordPressにはてな記法を導入するプラグインにてダウンロード
++サーバにアップロード( &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-plugin-hatena-notation">WordPressにはてな記法を適用するプラグイン</a></h1>
+	<div class="entry-content">
+		<p>Wordpressブログにはてな記法を適用するプラグインを紹介します。
+はてな記法に慣れたら結構手軽にブログを書けます。
+Wordpressにそのはてな記法のプラグインがあります。</p>
+
+<h2>インストール</h2>
+
+<p>+<a href="http://rewish.org/wp/hatena_notation_plugin">WordPressにはてな記法を導入するプラグイン</a>にてダウンロード
++サーバにアップロード(blog/wp-content/pluginsフォルダに)
++ダッシュボード→プラグイン→インストール済みでアクティブすればOK
++設定画面の「Posts -> WP HatenaNotation」で適用する時間範囲を決める、するとその時間以降の記事に対して有効になる
+<img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/hatena-notation-plugin.jpg" title="hatena-notation-plugin" >
+この例で言うと、2009年11月30日以前のはてな記法で書かれて記事は対象外となる意味です。</p>
+
+<h2>まだ対応してない機能</h2>
+
+<p>http記法の<em>[http://～～]</em>は現時点まだ対応予定の状態です。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/firebug-enhancements-for-jquery">FirefoxでjQueryを開発するならFireQueryを使ってみよう</a></h1>
+	<div class="entry-content">
+		<p>FireQueryはFirebugを拡張したアドオンで、jQueryをよりよくサポートできるんです。
+jQueryのオブジェクトをコンソールで確認したり、マウスオーバーで画面上のレーヤーで表示されたりして
+大変便利になります。
+これ以外でもjQuerifyというやつがあって、
+jQueryが適用されてないhtmlにもfirebugのコンソールで直接jQueryのコードを書いてそのまま動作確認ができます。</p>
+
+<h2>主な機能</h2>
+
+<ul>
+<li>jQuery expressions are intelligently presented in Firebug Console and DOM inspector</li>
+<li>attached jQuery data are first class citizens</li>
+<li>elements in jQuery collections are highlighted on hover</li>
+<li>jQuerify: enables you to inject jQuery into any page</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/FireQuery.png" title="FireQuery" >
+<img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/FireQuery2.png" title="FireQuery2" ></p>
+
+<h2>jQuerifyを使おう！</h2>
+
+<ul>
+<li><p>まずfirebugのconsoleのjQuerifyをクリックします。するとjqueryが適用されたと表示されます。
+<img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/jquerify.jpg" title="jquerify" ></p></li>
+<li><p>次は「>>>」のところでjquery文を書けばOKです。
+<img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/Picture-61.jpg" title="fireQuery" ></p></li>
+<li><p>複数行のjqueryコードが書きたい場合は、右下にある「↑」ボタンをクリックし、コンソールの右フレームで書けます。
+<img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/jquery-runed.jpg" title="jquery-runed" ></p></li>
+</ul>
+
+
+<h2>ダウンロード</h2>
+
+<p><a href="https://addons.mozilla.org/ja/firefox/addon/12632">FireQuery Download</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-flexible-upload-plugin%e3%81%aewarning-call_user_func_array-function-call-user-func-array">WordPress Flexible Upload pluginのWarning: Call_user_func_array() [function.call-user-func-array]</a></h1>
+	<div class="entry-content">
+		<h2>エラー詳細</h2>
+
+<p>Flexible uploadのプラグインを使うときに出たエラー内容です。</p>
+
+<blockquote><p>|
+Warning: call_user_func_array() <em>function.call-user-func-array</em>: First argument is expected to be a valid callback, &#8216;feed_links_extra&#8217; was given in ### /### /wp-includes/plugin.php on line 339
+|&lt;</p></blockquote>
+
+<h2>回避方法</h2>
+
+<p>blog/wp-content/plugins/flexible-upload/flexible-upload-wp25.phpに以下のコードを追加</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">function media_admin_css() {</span>
+</span><span class='line'><span class="x">  wp_admin_css(&#39;css/media&#39;);</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>バージョン情報</h2>
+
+<ul>
+<li>WordPress : 2.8.6</li>
+<li>Flexible upload: 1.1.3</li>
+</ul>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://wb.corekuuma.com/archives/83">WordPress2.6のFlexible upload 1.13不具合解消</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-11T00:00:00+09:00" pubdate data-updated="true">2009-12-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/firerainbow-syntax-highlight-in-firebug">FireRainbow - FirebugのJavaScriptをシンタクスハイライト</a></h1>
+	<div class="entry-content">
+		<p>FirebugのJavaScript、HTML、CSSをシンタクスハイライトするアドオンです。</p>
+
+<br/>
+
+
+<p>{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/firerainbow-mainshot-full1.png firewindow %}</p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/9603">FireRainbow Download</a></p>
+
+<h2>機能概要</h2>
+
+<p>{% blockquote }</p>
+
+<ul>
+<li>Mixed syntax highlighting powered by CodeMirror
+ -Javascript
+ -HTML
+ -CSS</li>
+<li>Advanced features:
+ -Color theme can be modified using Firebug&#8217;s CSS panel
+ -Highlighting is applied incrementally (good performance)
+ -Color themes available on GitHub</li>
+</ul>
+
+
+<p>{% endblockquote %}</p>
+
+<h2>追記</h2>
+
+<p>今まで使ったところブレークポイントが付けない不具合がありました。
+不具合発生時、firebug内のソースがハイライトしてないので疑いがあると判断し、
+いったんマウスホイルを一回回すとソースはハイライトされブレークポイントもつけるようになりました。
+これで一応回避できます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-11T00:00:00+09:00" pubdate data-updated="true">2009-12-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-live-pass-data-will-be-implemented-in-1-3-3">jQuery liveにデータを渡すのは1.3.3で実現</a></h1>
+	<div class="entry-content">
+		<p>今のlive関数は二番目の引数にデータを渡すことができません。
+bindとliveのシグネチャーは以下になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">bind</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="o">*</span><span class="nx">data</span><span class="o">*</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
+</span><span class='line'><span class="nx">live</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>いざ使おうと思って単純にbindをliveに変換したところアプリは動かなくなっちゃいました。
+回避方法はいろいろありますが、以下の記事によりますと
+jQuery 1.3.3ではliveにもdataを渡すことができるそうです。
+作者はjQueryのコアコントリビュートだそうです。
+<a href="http://brandonaaron.net/blog/2009/05/8/jquery-edge-live-events-now-with-data">jQuery Edge: Live Events now with Data</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-expr-context-parameter">jQueryの$(expr, Context)、今まで気づいてなかったcontextパラメータ</a></h1>
+	<div class="entry-content">
+		<p>今まで平気に$(expression)を使ってきましたが、
+この二番目のcontextパラメータでセレクタの範囲を決まることができます。</p>
+
+<br/>
+
+
+<p>この関数はjQueryのコア関数で幅広く使われ、
+もっとも一般的な使い方はcontextを省略したものでしょう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">##</span> <span class="nx">context</span><span class="err">パラメータ</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">blockquote</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">context</span><span class="err">が何も指定されなければ、</span><span class="nx">$</span><span class="p">()</span><span class="err">関数は現在の</span><span class="nx">HTML</span><span class="err">の</span><span class="nx">DOM</span><span class="err">エレメントを検索する。</span>
+</span><span class='line'><span class="err">逆に</span><span class="nx">DOM</span><span class="err">エレメントや</span><span class="nx">jQuery</span><span class="err">オブジェクトなどの</span><span class="nx">context</span><span class="err">が指定されれば、</span><span class="nx">expression</span><span class="err">はその</span><span class="nx">context</span><span class="err">に対して合致するものを捜します。</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endblockquote</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="err">簡単にいうと</span><span class="nx">find</span><span class="p">()</span><span class="err">関数と似ています。</span>
+</span><span class='line'><span class="err">実践でいうと以下の二つは同じ機能をしています。</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush: javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div,body&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://semooh.jp/jquery/api/core/jQuery/expression,+context/">jQuery(expression, context) - jQuery 1.3.2 日本語リファレンス</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ie-issue-when-open-jsp-file-promptdownload-dialog">IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る</a></h1>
+	<div class="entry-content">
+		<p>秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。</p>
+
+<h2>回避方法</h2>
+
+<p>関連付けを決断！
++  エクスプローラの「ツール→フォルダ オプション→ファイルの種類→拡張子」にJSPを捜し、「詳細設定」を開いてopenアクションを削除。
++  あるいはファイルの種類のタブの中の「削除」ボタンで削除</p>
+
+<p style="text-align: center;"><img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/file_associate.JPG" title="JSPファイルの関連付け" ></p>
+
+
+<p>秀丸が悪いのか、何が悪いのかは調べてないです。
+とにかくこれで一応解決。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-select-and-deselec-text-of-an-input-box">テキストボックスの文字列を選択(色逆転)、取り消すには</a></h1>
+	<div class="entry-content">
+		<p>テキストボックスの文字を選択された状態にする方法とその解除方法です。
+IEの場合selectボックスにselect()関数を使うとJavaScriptエラーになります。
+Firefoxは大丈夫です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">selectFocusText</span><span class="p">(</span><span class="nx">element</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// for IE</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">nodeName</span> <span class="o">==</span> <span class="s2">&quot;SELECT&quot;</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">element</span><span class="p">.</span><span class="nx">select</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">unselectFocusText</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// for IE</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">.</span><span class="nx">empty</span><span class="p">();</span>
+</span><span class='line'>  <span class="c1">// for Firefox</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">removeAllRanges</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/hidemaru-convert-multiple-files-encode">秀丸で複数ファイルのエンコードを一括変換</a></h1>
+	<div class="entry-content">
+		<p>便利な秀丸マクロです。</p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="http://hide.maruo.co.jp/lib/macro/encode_change.html">秀まるおのホームページ(サイトー企画)－ファイルエンコードバッチ変換</a></p>
+
+<h2>利用方法</h2>
+
+<p>秀丸のマクロに登録した後に実行すれば
+プロンプトのウィザードで手軽に操作できます。
+ただし変換元ファイルのエンコードは正しく入力しなければなりません。</p>
+
+<h2>特徴</h2>
+
+<ul>
+<li>サブフォルダにも効く</li>
+<li>ファイルパスと拡張子指定にワイルドカードが有効</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/google-chrome-for-mac">Google Chrome for Mac Released</a></h1>
+	<div class="entry-content">
+		<br/>
+
+
+<p>Google ChromeついにMacに登場しました。
+早速使ってみました。
+「速い、速い、速すぎる」のがすべてです。
+そしてMacらしきのアニメーションで「綺麗」に動作してます。
+タブを開いたり閉じたり、フォーム入力中の画面を閉じる際の確認プロンプトなど
+とても使い易いです。</p>
+
+<h2>インストール</h2>
+
+<p><a href="http://www.google.com/chrome">http://www.google.com/chrome</a>
+Macを使うなら普通にインストールされます。
+Firefoxのブックマークや履歴など簡単にインポートされました。</p>
+
+<h2>Gmailからメールが来た</h2>
+
+<p>深夜の2時41分、Mac版Chromeリリースのメールがきました。
+このメールにはChrome for Macチームがどれだけ頑張ったかの内容も載っていたので、
+一緒に見てみたいと思います。
+{% blockquote }</p>
+
+<p>73,804 lines of Mac-specific code written
+29 developer builds
+1,177 Mac-specific bugs fixed
+12 external committers and bug editors to the Google Chrome for Mac code base, 48 external code contributors
+64 Mac Minis doing continuous builds and tests
+8,760 cups of soft drinks and coffee consumed
+4,380 frosted mini-wheats eaten</p>
+
+<p>{% endblockquote %}</p>
+
+<p>印象的なのは8760カップのコーヒと4380のfrosted mini-wheatsです。
+このfrosted mini-wheatsはこんなもののアメリカンフードです。
+{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/frostedminiwheats.jpg frosted mini-wheats %}
+Googleらしき風土ですね。どれくらいお菓子食ったのも統計されてます。</p>
+
+<h2>不具合が。。</h2>
+
+<p>WordPressで書きながら、いきなりWPが動かなくなりました。
+いったん閉じて再開すると改善できたので、
+相性がわるいか、早速のバグかまだ分かりません。</p>
+
+<h2>スクリーンショット</h2>
+
+<p>{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/Picture-6.jpg Mac版Chromeダウンロード %}</p>
+
+<p>{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/Picture-8.jpg Chromeインターフェース %}
+{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/Picture-7.jpg 設定画面 %}</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-09T00:00:00+09:00" pubdate data-updated="true">2009-12-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/24/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/26/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

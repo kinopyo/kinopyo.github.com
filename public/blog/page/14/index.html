@@ -1,0 +1,697 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yet Another Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。http://code.google.com/apis/gadgets/docs/gs.htmlを参照してください。 ソースを用意 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yet Another Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Yet Another Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.github.com">
+	</form>
+</nav>
+
+</header>
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/first-gadget-xml-with-igoogle">初めてのgadget.xml With iGoogle</a></h1>
+	<div class="entry-content">
+		<p>Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。<a href="http://code.google.com/apis/gadgets/docs/gs.html">http://code.google.com/apis/gadgets/docs/gs.html</a>を参照してください。</p>
+
+<h2>ソースを用意</h2>
+
+<p>&#8220;`xml
+&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;UTF-8&#8221; ?>
+<Module>
+  <ModulePrefs title="Hello World!" />
+  <Content type="html"></p>
+
+<pre><code>&lt;![CDATA[
+  Hello, world!
+]]
+</code></pre>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-28T00:00:00+09:00" pubdate data-updated="true">2011-02-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/web/'>Web</a>, <a class='category' href='/blog/categories/gadget/'>gadget</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ajax-and-pageview">Ajaxとアクセス解析PVの関係</a></h1>
+	<div class="entry-content">
+		<p>AJAXでのアクセスはPVにカウントされない、というのをこの間にミーティングで知りました。考えてみりゃ当たり前のことですが、考えたことはなかったです。。でどうするか、とのことでちょっとぐぐってみました。</p>
+
+<p>結論からいうと<strong>ダミーのページを指定するようにJavascript側で書く</strong>（Google Analytics前提）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">urchinTracker</span><span class="p">();</span> <span class="c1">// デフォルト</span>
+</span><span class='line'><span class="nx">urchinTracker</span><span class="p">(</span><span class="s2">&quot;/hogehoge&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">urchinTracker</span><span class="p">(</span><span class="s2">&quot;/hogehoge/hege&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>みたいな感じです。urchinTrackerはGoogle Analyticsが提供してくれるファンクションです。
+ダミーページに階層式にするのは後で統計しやすいような工夫だそうです。</p>
+
+<p>原理はこちらを参照してください：<a href="http://markezine.jp/article/detail/1243">http://markezine.jp/article/detail/1243</a>
+ちょっと長いですが、細かく解説した文章です。</p>
+
+<p>こちらも役に立つかと思います。<a href="http://creazy.net/2007/06/ajax_access_analyze.html">http://creazy.net/2007/06/ajax_access_analyze.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-23T00:00:00+09:00" pubdate data-updated="true">2011-02-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/ajax/'>ajax</a>, <a class='category' href='/blog/categories/pageview/'>pageview</a>, <a class='category' href='/blog/categories/アクセス解析/'>アクセス解析</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-install-oracle-instant-client-on-xampp-for-windows">Windows XAMPPにOracle Instantclientをインストール</a></h1>
+	<div class="entry-content">
+		<p>Oracle Instantclientをインストールすることで、PHPからOracleデータベースへの接続が可能になります。</p>
+
+<p>XAMPPのデフォルトインストールではそれが無効となっています。確認方法はphpinfoのページから&#8217;oci8&#8217;を検索して何もなかったらつまり接続できてないことです。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li>php.ini(XAMPP/phpのパスにある)の中から;extension=php_oci8.dllを検索して、セミコロン(;)を削除。</li>
+<li>Oracleから“Instant Client Package – Basic” for Windowsをダウンロードし、任意の場所に解凍。ここではc:\instantclient_11_1とする。</li>
+<li>Windowsの環境変数pathに上記instantclientが解凍されたパスを追加(c:\instantclient_11_1)</li>
+<li>そしてWindowsを再起動！</li>
+<li>Apacheを再起動</li>
+</ul>
+
+
+<br/>
+
+
+<h2>確認</h2>
+
+<p>phpinfoのページからoci8を検索してあれば成功！</p>
+
+<br/>
+
+
+<h2>その他</h2>
+
+<ul>
+<li>ORACLE_HOMEやORACLE_SIDなどの環境変数はInstant Clientでは必要ないから設定しなくても大丈夫だそう。</li>
+<li>パス設定後Windowsを再起動しないと、&#8221;unable to load dynamic library php_oci8.dll&#8221;のようなエラーが出た。</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-18T00:00:00+09:00" pubdate data-updated="true">2011-02-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/xampp/'>XAMPP</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/about-cucumber-delay-the-solution">Cucumberのいいところをこう語った：Delay the Solution</a></h1>
+	<div class="entry-content">
+		<p>全文：
+<a href="http://iain.nl/2011/01/cucumber-vs-steak">http://iain.nl/2011/01/cucumber-vs-steak</a></p>
+
+<blockquote><p>Also, the natural language is closer to your understanding of the problem you’re trying to solve. When I write in code, my programmer side becomes active. My programmer side is focussed on solutions. But I want to <strong>delay the solution </strong>as long as I can, until we have a decent understanding of the problem. So by not writing in code, you can focus more on the problem, rather than on the solution.</p></blockquote>
+
+
+<p>ここの「ソリューションをディレー」するところに共感しました。
+Cucumberでは自然言語で書けるため、実装から離れた視点でいろんな「Problem」にぶつかりやすい！というのが最もの魅力ですね。
+時には本当に実装から離れてプロデューサの目でやりたいことをを考えたいです。そうできないと、いつも「ソリューション」だけに力入れて考えて、もっと重要な「目的」を失うかもしれませんと思います。
+もしSteakのような実装の観点から書いたテストコードだとnullとかblankとか、書いてるうちに視野がどんどん狭くなりがちかなと。もちろんそういうテストも重要ですが、「そもそもこんな仕様で大丈夫？ここで何をすべきか？」のような問題にぶつかるためには、やはりCucumberのような自然言語が有利ですね。</p>
+
+<p>あ～いつRoRの仕事ができるかなー</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-04T00:00:00+09:00" pubdate data-updated="true">2011-02-04</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>, <a class='category' href='/blog/categories/mind/'>mind</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/sense/'>sense</a>, <a class='category' href='/blog/categories/steak/'>steak</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields">CakePHP: $model->save()後、$model->id以外のフィールド情報は持ってない</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$this-&gt;Ingredient-&gt;save($newData);</span>
+</span><span class='line'><span class="x">$newIngredientId = $this-&gt;Ingredient-&gt;id;    // OK</span>
+</span><span class='line'><span class="x">// id以外のフィールドはダメ</span>
+</span><span class='line'><span class="x">$this-&gt;Ingredient-&gt;name;    // NG</span>
+</span><span class='line'><span class="x">$this-&gt;Ingredient-&gt;category;    // NG</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>登録/更新には関係なく。
+公式マニュアルでは：</p>
+
+<blockquote><p>一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。</p></blockquote>
+
+
+<p>と書いてありますが、id以外のフィールド情報は持ってないようです。
+欲しければ$this->dataから取れます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-03T00:00:00+09:00" pubdate data-updated="true">2011-02-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/model/'>model</a>, <a class='category' href='/blog/categories/orm/'>orm</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/convert_string_to_hankaku">PHP:文字列を全て半角に</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">/## </span>
+</span><span class='line'><span class="x"> #  文字列を全て半角に</span>
+</span><span class='line'><span class="x"> #  @param  string $str 文字列</span>
+</span><span class='line'><span class="x"> #  @return string $str 半角の文字列</span>
+</span><span class='line'><span class="x"> # /</span>
+</span><span class='line'><span class="x">function toHankaku($str) {</span>
+</span><span class='line'><span class="x">    $str= mb_convert_kana($str,&quot;rnask&quot;);</span>
+</span><span class='line'><span class="x">    return $str;</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-01T00:00:00+09:00" pubdate data-updated="true">2011-02-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/string/'>string</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/what-is-the-difference-between-_request-_get-and-_post">PHP: $_REQUESTと$_GET、$_POSTはどこが違うか</a></h1>
+	<div class="entry-content">
+		<blockquote><p>$_GET、 $_POST そして $_COOKIE の内容をまとめた連想配列です。</p></blockquote>
+
+
+<p>もう少し説明を加えると、</p>
+
+<blockquote><p>In the beginning of execution, $_REQUEST is a clone of $_GET. $_POST is then merged into the array, overwriting keys if they exist in both $_GET and $_POST. Finally, $_COOKIE is merged into the array, again overwriting old values.</p></blockquote>
+
+
+<p>まずは$<em>GETのクローンでそこに$</em>POSTをマージする感じで、同じキーのものがあれば上書きされます。同じくその後$<em>COOKIEもマージします。
+なので本当にPOSTで受取るものは$</em>REQUESTに書き換えてはいけないと思いますね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-27T00:00:00+09:00" pubdate data-updated="true">2010-12-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/memo-php-return-json">メモ：PHPでJSONPを返すサンプルコード</a></h1>
+	<div class="entry-content">
+		<h2>PHP側で</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo $_GET*&#39;callback&#39;* . &#39;(&#39; . json_encode($object) . &#39;);&#39;;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>JS側で</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>     <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;foo.php?callback=?&#39;</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">{},</span>  <span class="c1">// No additional parameters sent</span>
+</span><span class='line'>                <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                     <span class="c1">// data is now JSON object instantiated from retrieved info</span>
+</span><span class='line'>                     <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="o">*</span><span class="s1">&#39;key&#39;</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考：
+<a href="http://www.carolinamantis.com/wordpress/?p=29">http://www.carolinamantis.com/wordpress/?p=29</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-21T00:00:00+09:00" pubdate data-updated="true">2010-12-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jsonp/'>JSONP</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mysql-using-autocommit-to-control-transaction">MySQL Autocommitでトランザクションを制御する</a></h1>
+	<div class="entry-content">
+		<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを無効に</span>
+</span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="o">-</span><span class="err">トランザクション開始</span>
+</span><span class='line'><span class="k">BEGIN</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="k">SQL</span><span class="err">文をながす</span>
+</span><span class='line'><span class="k">UPDATE</span><span class="p">...</span>
+</span><span class='line'><span class="k">INSERT</span><span class="p">...</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="err">コミット</span>
+</span><span class='line'><span class="k">COMMIT</span><span class="p">;</span>
+</span><span class='line'><span class="o">-</span><span class="err">あるいはロールバック</span>
+</span><span class='line'><span class="k">ROLLBACK</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを有効に</span>
+</span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットのステータスを確認</span>
+</span><span class='line'><span class="k">SELECT</span> <span class="o">@@</span><span class="n">AUTOCOMMIT</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-07T00:00:00+09:00" pubdate data-updated="true">2010-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sqlite/'>sqlite</a>, <a class='category' href='/blog/categories/transaction/'>transaction</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mysql-sql%e6%96%87%e3%81%ae%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e5%ae%9f%e8%a1%8c%e3%81%99%e3%82%8b%e3%81%ab%e3%81%af">MySQL: SQL文のテキストファイルを実行するには</a></h1>
+	<div class="entry-content">
+		<p>1000件くらいのinsert文を用意して、それをコピって一気にmysqlのコマンドラインに貼りつけたらうまく行かなかったんです。sql文に文法的間違いがなくてもエラーとなったり、表示が崩れたりしました。数件なら多分まだいいんですけど、さすが1000件だと(コマンドラインに貼り付けるやり方では)処理が追えない気がします。</p>
+
+<p>それらのsql文をファイルに保存し実行すれば問題なかったので、以下がそのコマンドです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">source</span> <span class="n">file_name</span>
+</span><span class='line'>  <span class="o">-</span><span class="err">あるいは</span>
+</span><span class='line'><span class="n">mysql</span><span class="o">&gt;</span> <span class="err">\</span><span class="p">.</span> <span class="n">file_name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>また下記文を書けば進捗情報が見れるとMySQLのレファレンスで書かれてますが、時間の関係上今回は試してませんでした。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="s1">&#39;&lt;info_to_display&gt;&#39;</span> <span class="k">AS</span> <span class="s1">&#39; &#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考：
+<a href="http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html">http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-07T00:00:00+09:00" pubdate data-updated="true">2010-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/13/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/15/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

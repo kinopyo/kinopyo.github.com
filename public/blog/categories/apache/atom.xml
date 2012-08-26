@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Apache | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/apache/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-26T12:20:36+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSのパフォーマンスチューニング]]></title>
+    <link href="http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
+    <updated>2011-11-11T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
+    <content type="html"><![CDATA[<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
+
+<p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
+
+<p>チューニングしてから結構時間が経ったのでだいぶ忘れました。Evernoteでのメモを貼ります。</p>
+
+<p>効果が高い順で。</p>
+
+<h2>Wordpress</h2>
+
+<ul>
+<li>W3 Total Cache *プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
+ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</li>
+</ul>
+
+
+<h2>Apache</h2>
+
+<p><a href="httpd.conf">httpd.conf</a>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
+
+<p>{% codeblock %}</p>
+
+<p><IfModule prefork.c>
+StartServers       5
+MinSpareServers    5
+MaxSpareServers   10
+ServerLimit      64
+MaxClients       64
+MaxRequestsPerChild  50
+MaxMemFree 2000
+</IfModule></p>
+
+<p>{% endcodeblock %}</p>
+
+<h2>PHP</h2>
+
+<p><em>/etc/php.ini  *
+zlib.output_compression = On
+</em>APC*
+pecl install APC</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Windowsにmemcacheをインストール、PHPの設定]]></title>
+    <link href="http://kinopyo.github.com/blog/install-memcache-in-windows-setup-php"/>
+    <updated>2010-11-26T00:00:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/install-memcache-in-windows-setup-php</id>
+    <content type="html"><![CDATA[<h2>My環境</h2>
+
+<p>XAMPP1.7.3 + WinXP
+ダウンロードは<a href="http://www.apachefriends.org/en/xampp-windows.html">こちら</a></p>
+
+<h2>memcache側の設定</h2>
+
+<h3>memcacheのインストール手順</h3>
+
+<ul>
+<li><a href="http://code.jellycan.com/memcached/">http://code.jellycan.com/memcached/</a>より<strong>memcached 1.2.6 => win32 binary</strong>バージョンのファイルをダウンロード
++zipファイルを適当な場所(例えばc:\memcached)に解凍
++コマンドプロンプトから下記コマンドを叩く、Windowsサービスとしてインストール。これで今度Windowsが起動すると自動でmemcacheサーバが起動してくれる。
+{% codeblock %}
+c:\memcached.exe -d install
+{% endcodeblock %}</li>
+</ul>
+
+
+<h3>memcacheの起動(初回のみ)</h3>
+
+<p>コマンドプロンプト
+{% codeblock %}
+c:\memcached\memcached.exe -d start
+{% endcodeblock %}</p>
+
+<h2>php側</h2>
+
+<h3>php.iniの設定</h3>
+
+<p>XAMPPのパス/php/php.iniを編集：下記コードを追加
+{% codeblock %}
+extension = php_memcache.dll
+{% endcodeblock %}</p>
+
+<p>ここはLinux環境と違い拡張子が.soではなく.dll。</p>
+
+<h3>php_memcache.dllのダウンロード</h3>
+
+<p><a href="http://downloads.php.net/pierre/">http://downloads.php.net/pierre/</a>から'memcache'を検索して正しいバージョンのファイルをダウンロード。
+そしてxampp/php/extに入れる。</p>
+
+<br/>
+
+
+<p>ここで問題！正しいバージョンはなんなのか？間違ってダウンロードすると後でApacheサーバを立ち上がるときエラーが出るよ。私の環境だと<b>php_memcache-cvs-20090703-5.3-VC6-x86.zip</b>のファイルが正しいけど、今時点で上記URLには載せていない。結構ググって見ても結局古い結果で、しょうがなく友人からそのファイル貰った。。。ここにアップしたので、必要な方はダウンロードしてください。ウイルススキャンしてね。。
+<a href='http://www.kinopyo.com/blog/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a></p>
+
+<h2>動作確認</h2>
+
+<p>xamppでapacheサーバを起動、下記内容をphpファイルと保存してサーバのDocumentパス(デフォルトではXAMPP/htdocs)に置く。</p>
+
+<p>```php</p>
+
+<p>&lt;?php</p>
+
+<pre><code>$memcache = new Memcache; // instantiating memcache extension class
+$memcache-&gt;connect("localhost",11211); // try 127.0.0.1 instead of localhost
+                                       // if it is not working
+
+echo "Server's version: " . $memcache-&gt;getVersion() . "&lt;br /&gt;\n";
+
+// we will create an array which will be stored in cache serialized
+$testArray = array('horse', 'cow', 'pig');
+$tmp       = serialize($testArray);
+
+$memcache-&gt;add("key", $tmp, 30);
+
+echo "Data from the cache:&lt;br /&gt;\n";
+print_r(unserialize($memcache-&gt;get("key")));
+</code></pre>
+
+<p>?></p>
+
+<p>```</p>
+
+<h2>おまけ：memcacheメモリの調整</h2>
+
+<p>{% blockquote  %}
+Memcached, by default, loads with 64mb of memory for it’s use which is low for most applications. To change this to something else, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server in your registry, find the ImagePath entry and change it to look something like this:</p>
+
+<p>“C:\memcached\memcached.exe” -d runservice -m 512
+{% endblockquote %}</p>
+
+<h2>参考</h2>
+
+<p><a href="http://www.codeforest.net/how-to-install-memcached-on-windows-machine">http://www.codeforest.net/how-to-install-memcached-on-windows-machine</a>
+<a href="http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/">http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/</a></p>
+]]></content>
+  </entry>
+  
+</feed>

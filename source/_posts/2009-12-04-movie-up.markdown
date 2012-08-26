@@ -1,0 +1,34 @@
+---
+layout: post
+title: '映画レビュー：カールじいさんの空飛ぶ家'
+date: 2009-12-4
+wordpress_id: 336
+permalink: /blog/movie-up
+comments: true
+categories: ["movie"]
+---
+<div class="section">
+<p>大人になって、年をとってから気づいた昔の自分を失ったあなたに、</p>
+<p>幸せな恋と結婚を求めているあなたに、</p>
+<p>この映画をおすすめします、</p>
+<br/>
+<p><object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/hUuM5IGWgoE&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/hUuM5IGWgoE&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
+<br/>
+<p>映画は本当に良く出来てます。</p>
+<p>宣伝よりも優れたものです。</p>
+<p>幼なじみの二人が恋人になって、結婚して、年をとって、</p>
+<p>子ともができなくて悲しくなっても、お互い支えて生きて、やがて離れを迎えた。。。</p>
+<p>わずか数分で幸せの二人の一生の生活を描きましたが、</p>
+<p>とても印象的です。</p>
+<p>特に妻が夫にネクタイをつけるシンは男にとって最高の幸せじゃないかなと思います。</p>
+<br/>
+<p>妻を失ってから段々社会と離れてゆくカールじいさん、</p>
+<p>他の人からはただの頑固爺にしか見えないだろう。</p>
+<p>それは妻との思い出がいっぱいの家を守るためです。</p>
+<p>それだけで必死でしたカールじいさんは</p>
+<p>映画の最後でもっと大切な何かに気づき、その家を諦めました。</p>
+<p>それはなんだろう？それが人生の一番重要なことではないでしょうか。</p>
+<br/>
+<p>明日から公開です。</p>
+<p><a href="http://movie.goo.ne.jp/contents/movies/MOVCSTD14480/index.html" target="_blank">カールじいさんの空飛ぶ家 - goo 映画</a></p>
+</div>
