@@ -7,13 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。 1
-2
-3
-4
-5
-The Maven Integration required that Eclipse be running in a JDK,
-because a &hellip;">
+	<meta name="description" content="セッションを使って、データを保存する時、
+以下のエラーが表示されました。 {% codeblock %}
+Status: 500 Internal Server Error
+ActionController::Session::CookieStore::CookieOverflow
+{% &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,7 +78,88 @@ because a &hellip;">
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required">EclipseにMavenプラグインインストール後のエラー: &#8220;Eclipse Is Running in a JRE, but a JDK Is Required&#8221;</a></h1>
+	<h1 class="title"><a href="/blog/ruby-actioncontroller-session-cookiestore-cookieoverflow-error">Ruby - ActionController::Session::CookieStore::CookieOverflowエラー</a></h1>
+	<div class="entry-content">
+		<p>セッションを使って、データを保存する時、
+以下のエラーが表示されました。</p>
+
+<p>{% codeblock %}
+Status: 500 Internal Server Error
+ActionController::Session::CookieStore::CookieOverflow
+{% endcodeblock %}</p>
+
+<h3>原因：Railsのセッションに保存できるデータの長さは４KBしかないです。</h3>
+
+<p>保存するデータは4KBをオーバーした場合、CookieOverflowエラーが表示されてしまいます。</p>
+
+<h3>解決方法：</h3>
+
+<p>セッションデータをDBに保存します。</p>
+
+<ul>
+<li>セッションデータを保存用テーブルを作成します。
+以下のコマンドを実行します。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>rake db:sessions:create
+</span><span class='line'>rake db:migrate
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'>
+</span><span class='line'>+  config/environment.rbで以下の行をコメントアウトします。
+</span><span class='line'>&lt;pre class="brush:plain"&gt;
+</span><span class='line'>  config.action_controller.session_store = :active_record_store
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>サーバーを再起動します。</li>
+</ul>
+
+
+<p>これで、解決です。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-21T00:00:00+09:00" pubdate data-updated="true">2010-01-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required">EclipseにMavenプラグインインストール後のエラー: &#8220;Eclipse is running in a JRE, but a JDK is required&#8221;</a></h1>
 	<div class="entry-content">
 		<p>EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。</p>
 
@@ -796,60 +875,6 @@ No More Countdowns - Automatic Downloads.</p></li>
 
 
 <time datetime="2010-01-02T00:00:00+09:00" pubdate data-updated="true">2010-01-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mac-tomcat-install">MacでTomcatをインストール</a></h1>
-	<div class="entry-content">
-		<h3>ダウンロード</h3>
-
-<p><img src="http://kinopyo.com/blog/wp-content/uploads/2009/12/tomcat-download.jpg" title="tomcat-download" >
-<a href="http://tomcat.apache.org/download-60.cgi">Tomcat公式サイトダウンロードページ</a>で上記ファイルをダウンロード</p>
-
-<h3>インストール</h3>
-
-<p>ただ適当な場所に解凍するだけです。</p>
-
-<h3>起動/終了</h3>
-
-<p>ターミナルを起動しTOMCAT/binに移動する
-+  起動  ./startup.shを実行
-+  終了  ./shutdown.sh
-<strong>&#8221;./&#8221;は必須です。</strong>
-ターミナルで使われるUNIXコマンドはイマイチなので、もっと便利な使い方はあると思います。</p>
-
-<h3>検証</h3>
-
-<p><a href="http://localhost:8080">http://localhost:8080</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
 	<div class="tags">
 
 

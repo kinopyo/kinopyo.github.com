@@ -7,12 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="argumentsは配列じゃないため、配列のメソッドは
-使えません。ということは本を読んだとき当たり前だと思ったんですが、
-実際コードに落としたときは
-自然とargument.slice()を書いちゃいました。
-argumentsで配列のメソッドを使うには
-Array.prototype.&# &hellip;">
+	<meta name="description" content="開発においてローカルでいろいろテストすることが多いでしょう。
+その時ブラウザを開くと「セキュリティ保護のため、このコンピューターにアクセスする可能性のあるスクリプトやActiveXコントロールを実行しないよう、IEで制限されています。オプションを表示するには、ここをクリックしてください」 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,7 +75,69 @@ Array.prototype.&# &hellip;">
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: Argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
+	<h1 class="title"><a href="/blog/turn-off-warnings-of-activex-in-ie">IEのActiveXコントロールに関する警告を非表示にするには</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>開発においてローカルでいろいろテストすることが多いでしょう。</p>
+<p>その時ブラウザを開くと「セキュリティ保護のため、このコンピューターにアクセスする可能性のあるスクリプトやActiveXコントロールを実行しないよう、IEで制限されています。オプションを表示するには、ここをクリックしてください」という警告がそのたびに出て、気分が悪くなっちゃいます。IEの[セキュリティ]タブをいじってもファイルはローカルなので、効きません。</p>
+<br/>
+<h4>解決方法</h4>
+<ul>
+<li>[マイコンピュータ内のファイルでのアクティブコンテンツの実行を許可する*]をチェックしIEを再起動(<span style="font-weight:bold;">*がついてるので再起動は絶対必要とされている</span>)</li>
+</ul>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012539" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012539.jpg" alt="f:id:kinopyo:20091117012539j:image:right" title="f:id:kinopyo:20091117012539j:image:right" class="hatena-fotolife hatena-image-right"></a></p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/kinopyo/20091116/1258379152" target="_blank">IEセキュリティにマイコンピュータゾーンを追加する方法 - kinopyoの日記 </a>で紹介する方法でセキュリティにマイコンピュータのゾーンを追加</li>
+<li>IEの[ツール] → [インターネット オプション] → [セキュリティ] タブをクリックし、[レベルのカスタマイズ] をクリックします。</li>
+<li>「ActiveXコントロールとプラグインの実行」をチェック</li>
+</ul>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012540" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012540.jpg" alt="f:id:kinopyo:20091117012540j:image" title="f:id:kinopyo:20091117012540j:image" class="hatena-fotolife"></a></p>
+<ul>
+<li>「スクリプトを実行しても安全とマークされているActiveXコントロールのスクリプトの許可」をチェック</li>
+</ul>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012541" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012541.jpg" alt="f:id:kinopyo:20091117012541j:image" title="f:id:kinopyo:20091117012541j:image" class="hatena-fotolife"></a></p>
+<h4>バージョン情報</h4>
+<ul>
+<li>OS: Windows XP</li>
+<li>IE: IE8</li>
+</ul>
+<br/>
+<p>参考サイト：<a href="http://stackoverflow.com/questions/394298/how-to-disable-activex-control-may-be-unsafe-popup" target="_blank">How to disable &#34;ActiveX Control May Be Unsafe&#34; popup - Stack Overflow</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
 	<div class="entry-content">
 		<div class="section">
 <p>argumentsは配列じゃないため、配列のメソッドは</p>
@@ -806,92 +864,6 @@ Array.prototype.&# &hellip;">
 
 
 <time datetime="2009-11-12T00:00:00+09:00" pubdate data-updated="true">2009-11-12</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-pass-data-to-bind-function">jQuery Bindバインド時にデータを渡す</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<h4>誤った使い方</h4>
-<p>例えばbind時にname変数に格納された情報を渡したい</p>
-{% codeblock %}
-
-<span class="synIdentifier">var</span> name = <span class="synConstant">&#34;kinopyo&#34;</span>;
-$(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConstant">&#34;click&#34;</span>,<span class="synIdentifier">function</span>(name)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(name);
-<span class="synIdentifier">}</span>);
-{% endcodeblock %}
-<p>これは誤った使い方です。</p>
-<a name="seemore"></a>
-<p>alertでは望まれた「kinopyo」の文字列は表示されません。</p>
-<p>私は最初jQueryに触れたときはこんな書き方をしたんです。</p>
-<br/>
-<p>もちろんname変数とbindのコールバックは同じスコープなのでfunctionから直接name変数を参照できますが、</p>
-<p>ここではあえて誤った使い方にしました。</p>
-<br/>
-<p>実際alertでは[object Object]と表示されました。</p>
-<p>firebugで中身をのぞいてみるとこんな感じのオブジェクトです。</p>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091111222209" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091111/20091111222209.jpg" alt="f:id:kinopyo:20091111222209j:image" title="f:id:kinopyo:20091111222209j:image" class="hatena-fotolife"></a></p>
-<p>このnameは一体何のか、答えはjQueryのEventオブジェクトです。</p>
-<p>Eventオブジェクトについてはこの記事<a href="http://d.hatena.ne.jp/kinopyo/20091111/1257946561">「jQuery Eventオブジェクトの詳細、バブリングの仕組み」</a>を参照してください。</p>
-<h4>bindのAPI</h4>
-<p><span style="font-weight:bold;font-size:x-large;">bind(type, [data], fn)</span></p>
-<ul>
-<li>type：click, dbclick,mousedown&#8230;などトリガーとなるイベントタイプ</li>
-<li>[data]：<span style="color:#0000FF;">第三パラメータのハンドラにデータを渡す。括弧は配列の意味ではなく、省略可の意味</li>
-<li>fn：イベントハンドラ</span>
-<ul>
-<li>パラメータ：jQueryのEventオブジェクト、event.dataで第二引数の[data]を参照できる</li>
-</ul>
-</li>
-</ul>
-<p>jQueryは第二パラメータに対してdataかfunctionか自動判断してます。</p>
-<p>普段使い慣れたのはdataを省略したものでしょう。</p>
-<p>さっきの例を修正すると、正しく「kinopyo」が表示されます。</p>
-<pre class="syntax-highlight">
-<span class="synIdentifier">var</span> name = <span class="synConstant">&#34;kinopyo&#34;</span>;
-$(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConstant">&#34;click&#34;</span>,name,<span class="synIdentifier">function</span>(<span class="synStatement">event</span>)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(<span class="synStatement">event</span>.data);
-<span class="synIdentifier">}</span>);
-
-{% endcodeblock %}
-<p><span style="color:#0033FF;">渡されるのはJavaScriptのオブジェクトです。</span>。</p>
-<p>つまり配列も、キー値ペアのオブジェクトも全部渡されます</p>
-<br/>
-<h4>参考サイト</h4>
-<p><a href="http://docs.jquery.com/Events/bind">公式サイトのbindドキュメント</a></p>
-<p><a href="http://stacktrace.jp/jquery/api/events/bind.html">StackTraceサイト</a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-11T00:00:00+09:00" pubdate data-updated="true">2009-11-11</time></div>
 	<div class="tags">
 
 

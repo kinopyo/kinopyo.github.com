@@ -7,8 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iMessageの場合はダイアログやボタンが青色になります。 普通のSMSの場合は緑色のボタンになります。 相手がiMessageで送信出来る場合は優先的にiMessageになるようです。
-またインターネットに繋がらないとiMessageは使えないようです。 2011-10-31 &hellip;">
+	<meta name="description" content="インストール rvm get head
+rvm reload
+rvm install 1.9.3-p0
+rvm use 1.9.3 リリースノート http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/ 速度 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,6 +74,57 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-ruby-1-9-3-p0-with-rvm">Ruby 1.9.3-p0 をRVMでインストール</a></h1>
+	<div class="entry-content">
+		<h2>インストール</h2>
+
+<div><script src='https://gist.github.com/1333112.js?file='></script>
+<noscript><pre><code>rvm get head
+rvm reload
+rvm install 1.9.3-p0
+rvm use 1.9.3</code></pre></noscript></div>
+
+
+<h2>リリースノート</h2>
+
+<p><a href="http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/">http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/</a></p>
+
+<h2>速度</h2>
+
+<p>結構速くなったらしいです。
+この記事を参考：<a href="http://stjhimy.com/posts/24-ruby-1-9-3-freaking-fast-bro">http://stjhimy.com/posts/24-ruby-1-9-3-freaking-fast-bro</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-02T00:00:00+09:00" pubdate data-updated="true">2011-11-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -224,7 +277,7 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/what-does-caret-character-mean-in-git">Gitの^記号は</a></h1>
+	<h1 class="title"><a href="/blog/what-does-caret-character-mean-in-git">gitの^記号は</a></h1>
 	<div class="entry-content">
 		<h2>HEAD^</h2>
 
@@ -268,7 +321,7 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/how-to-revert-git-reset-hard-miss-with-git-reflog">Git Reset &#8211;hardでミスった内容を取戻したいときはgit Reflog</a></h1>
+	<h1 class="title"><a href="/blog/how-to-revert-git-reset-hard-miss-with-git-reflog">git reset &#8211;hardでミスった内容を取戻したいときはgit reflog</a></h1>
 	<div class="entry-content">
 		<p>例えば<em>git reset &#8211;hard HEAD<sup>*で誤操作して内容を消してしまった、それを取戻したいときは</sup>
 +   </em>git reflog<em>で取戻したいHEAD@{x}の番号を確認
@@ -321,7 +374,7 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/git-caret-does-not-work-in-zsh-no-matches-found">Zshでgitの^caretは使えないっぽい: Zsh: No Matches Found: HEAD^</a></h1>
+	<h1 class="title"><a href="/blog/git-caret-does-not-work-in-zsh-no-matches-found">zshでgitの^caretは使えないっぽい: zsh: no matches found: HEAD^</a></h1>
 	<div class="entry-content">
 		<p><a href="http://www.kinopyo.com/blog/what-does-caret-character-mean-in-git">前回の記事：gitの<sup>記号は<em>で</em>HEAD<sup></em>を書いたのですが、<em>zsh</sup></sup></a>でやるとこんなエラーに。。</p>
 
@@ -504,82 +557,6 @@
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/extension/'>extension</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-render-static-html-in-sinatra">SinatraでStaticなHTMLファイルをrenderするには</a></h1>
-	<div class="entry-content">
-		<h2>目的</h2>
-
-<p>Sinatraで静的なhtmlファイルをrenderする方法です。</p>
-
-<h2>現状</h2>
-
-<p>Sinatraでは色々なビューテンプレートをレンダリングできます。Haml、Erb、Sass、Markdown、CoffeeScript…が対応されていますが、HTMLは対応してないようです。<em>html :index</em>で書いてもダメですね。</p>
-
-<p><a href="http://www.sinatrarb.com/intro-jp.html#%E3%83%93%E3%83%A5%E3%83%BC%20/%20%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88">Sinatraのビューテンプレート</a></p>
-
-<h2>解決方法</h2>
-
-<div><script src='https://gist.github.com/1303281.js?file=sinatra_render_html.rb'></script>
-<noscript><pre><code>require 'sinatra'
-
-get '/' do
-  File.read(File.join('public', 'index.html'))
-  # or
-  # send_file File.join(settings.public, 'index.html')
-end</code></pre></noscript></div>
-
-
-<p><em>File.read</em>でファイルとして読み込むことですね。Sinatraはデフォルトの設定だと<em>public</em>フォルダ内のものをassetsとするそうです。</p>
-
-<p>でちょっとリファクタリングして<em>html :index</em>のシンタックスでいけるようにしました。</p>
-
-<div><script src='https://gist.github.com/1303281.js?file=sinatra_render_html_refactor.rb'></script>
-<noscript><pre><code>require &quot;sinatra&quot;
-
-get '/' do
-  # File.read(File.join('public', 'index.html'))
-  html :index
-end
-
-def html(view)
-  File.read(File.join('public', &quot;#{view.to_s}.html&quot;))
-end</code></pre></noscript></div>
-
-
-<h2>参考</h2>
-
-<p><a href="http://stackoverflow.com/questions/2437390/serving-static-files-with-sinatra">http://stackoverflow.com/questions/2437390/serving-static-files-with-sinatra</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-21T00:00:00+09:00" pubdate data-updated="true">2011-10-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
 
 
 </div>

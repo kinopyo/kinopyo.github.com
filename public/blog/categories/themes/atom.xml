@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: themes | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.github.com/blog/categories/themes/atom.xml" rel="self"/>
+  <link href="http://kinopyo.github.com/"/>
+  <updated>2012-08-29T01:21:26+09:00</updated>
+  <id>http://kinopyo.github.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[an iterm theme - SOLARIZED]]></title>
+    <link href="http://kinopyo.github.com/blog/an-iterm-theme-solarized/"/>
+    <updated>2012-08-29T00:34:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/an-iterm-theme-solarized</id>
+    <content type="html"><![CDATA[<p>Just found out a theme called - <a href="http://ethanschoonover.com/solarized">SOLARIZED</a>.</p>
+
+<p>And actually it supports a lot of Editors and terminals, just go to its website.</p>
+
+<p>Now my iTerm looks like this:</p>
+
+<p><img src="https://img.skitch.com/20120828-qkrd1dek95wjsh8m197jb1qj8h.jpg" title="iTerm with SOLARIZED theme" ></p>
+
+<p>I don't say it's fancy but if you're a little bit tired of default theme, you may want to try out something new. And changing themes or wallpapers regulary usually makes me feel better :)</p>
+]]></content>
+  </entry>
+  
+</feed>

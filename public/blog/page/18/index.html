@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。 まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、 &hellip;">
+	<meta name="description" content="This is about how to customize the url to the form like &#8220;id + post.title&#8221;, which can be simply overriding the to_param method in your &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,7 +74,120 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/rails-a-helper-method-shows-the-required-mark">Rails: A Helper Method Shows the Required Mark</a></h1>
+	<h1 class="title"><a href="/blog/rails-id-slug-name-in-url">ID + Slug name in URL in Rails</a></h1>
+	<div class="entry-content">
+		<p>This is about how to customize the url to the form like &#8220;id + post.title&#8221;, which can be simply overriding the<em> to_param</em> method in your model class.</p>
+
+<p>Here is the example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">to_param</span>
+</span><span class='line'>      <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="nb">name</span><span class="o">.</span><span class="n">parameterize</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># =&gt; #&lt;Person id: 1, name: &quot;Donald E. Knuth&quot;&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to(@person.name, person_path(@person)) %&gt;</span>
+</span><span class='line'><span class="sx">  # =</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/person/1-donald-e-knuth&quot;</span><span class="o">&gt;</span><span class="no">Donald</span> <span class="n">E</span><span class="o">.</span> <span class="no">Knuth</span><span class="o">&lt;</span><span class="sr">/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <em>parameterize</em> is a method that replaces special characters in a string so that it may be used as part of a ‘pretty’ URL.
+Rails is smart enough to extract this back into the plain id when you access your controller action.
+You can access the url &#8216;/person/1-kinopyo&#8217; or &#8216;/person/1&#8217;, both ok.</p>
+
+<p>If you want to know more, here is a good article: <a href="http://augustl.heroku.com/blog/styling-rails-urls">http://augustl.heroku.com/blog/styling-rails-urls</a>.</p>
+
+<h1>日本語</h1>
+
+<p>slugはurlをより綺麗に表示するためのものです。例えばこの記事のpermanent urlは&#8221;rails-id-slug-name-in-url&#8221;にしています。英語世界になるんですが、これのようにurlを見ただけでそのurl先の内容が大体わかるようにするのがslugです。</p>
+
+<p>この記事ではRailsで&#8221;id + post.title&#8221;のような形のURLを作る方法を紹介します。</p>
+
+<h2>方法</h2>
+
+<p>モデルクラス内に<em>to_param</em>メソッドをオーバーライドするだけです。
+例として</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">to_param</span>
+</span><span class='line'>      <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="nb">name</span><span class="o">.</span><span class="n">parameterize</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">#controller</span>
+</span><span class='line'>  <span class="vi">@person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># =&gt; #&lt;Person id: 1, name: &quot;Donald E. Knuth&quot;&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">#view</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to(@person.name, person_path(@person)) %&gt;</span>
+</span><span class='line'><span class="sx">  # =</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/person/1-donald-e-knuth&quot;</span><span class="o">&gt;</span><span class="no">Donald</span> <span class="n">E</span><span class="o">.</span> <span class="no">Knuth</span><span class="o">&lt;</span><span class="sr">/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記のようにmodelクラスを修正するだけで、他の影響はないです。URL: &#8216;/person/1-kinopyo&#8217;と&#8217;/person/1&#8217;はどっちでも使えます。
+<em>parameterize</em>はRailsのビルトインのメソッドでurlに使う文字列に変換してくれるんです。<strong>しかし日本語などは完全にブランクに変換するので要注意です。</strong></p>
+
+<p>もしurlを&#8221;/person/kinopyo&#8221;のようにperson.nameにカスタムしたい場合はこれより少し複雑になります。興味のある方は下記リンク(英語)を参照してください。 <a href="http://augustl.heroku.com/blog/styling-rails-urls">http://augustl.heroku.com/blog/styling-rails-urls</a>.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-29T00:00:00+09:00" pubdate data-updated="true">2010-07-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-a-helper-method-shows-the-required-mark">Rails: a helper method shows the required mark</a></h1>
 	<div class="entry-content">
 		<p>一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。</p>
 
@@ -236,7 +349,7 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/rails-how-to-create-a-custom-validate-method">Rails: How to Create a Custom Validate Method</a></h1>
+	<h1 class="title"><a href="/blog/rails-how-to-create-a-custom-validate-method">Rails: How to create a custom validate method</a></h1>
 	<div class="entry-content">
 		<p><a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>で学んだ技です。
 Rails 3.0 beta4を利用しています。</p>
@@ -598,7 +711,7 @@ BTW, I&#8217;m using Rails 3.0 beta4.</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/sqlite-common-comman">SQLite Common Command</a></h1>
+	<h1 class="title"><a href="/blog/sqlite-common-comman">SQLite common command</a></h1>
 	<div class="entry-content">
 		<h2>SQLiteの起動、データベースの選択/作成</h2>
 
@@ -716,7 +829,7 @@ sqlite db/development.sqlite3</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/view-hidden-files-on-mac">Viewing Hidden Files on a Mac</a></h1>
+	<h1 class="title"><a href="/blog/view-hidden-files-on-mac">Viewing hidden files on a Mac</a></h1>
 	<div class="entry-content">
 		<p>Macではドット&#8221;.&#8221;で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
 Finderで表示する方法を紹介します。
@@ -851,7 +964,7 @@ Finderで表示する方法を紹介します。
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/sync-iphone-apps-to-itunes">Sync iPhone Apps to iTunes</a></h1>
+	<h1 class="title"><a href="/blog/sync-iphone-apps-to-itunes">Sync iPhone Apps To iTunes</a></h1>
 	<div class="entry-content">
 		<p>iPhoneでアプリケーションを購入して普通はそのままiTunesに同期できるはずですが、時々iTunesがやってくれないです。
 あるいはiPhoneで一杯アプリを購入したり削除したりして、パソコンのiTunesとの差分が紛らわしくなったこともあります。その場合はiTunesのアプリを一旦全部削除して下記の方法で一気に同期すればOKです。</p>
@@ -1015,222 +1128,6 @@ Finderで表示する方法を紹介します。
 
 
 <p><embed src="http://v.wordpress.com/wp-content/plugins/video/flvplayer.swf?ver=1.21" type="application/x-shockwave-flash" width="640" height="360" wmode="transparent" seamlesstabbing="true" allowfullscreen="true" allowscriptaccess="always" overstretch="true" flashvars="guid=BQtfIEY1&amp;width=640&amp;height=360&amp;locksize=no&amp;dynamicseek=false&amp;qc_publisherId=p-18-mFEk4J448M" title="Introducing WordPress 3.0 &quot;Thelonious&quot;"></embed></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-23T00:00:00+09:00" pubdate data-updated="true">2010-06-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-basic-variables-and-constant">Ruby Variables and Constants</a></h1>
-	<div class="entry-content">
-		<h2>変数</h2>
-
-<h3>例1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Rubyの変数名</h3>
-
-<p>Rubyではキャメルケースより、アンダースコアが好みだそうです。
-例えば変数名page_transfer_managerはOKだけど、pageTransferManagerはNG。</p>
-
-<h3>予約語</h3>
-
-<p>{% blockquote >
-<strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield
-&lt;&lt;</p>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>整数を文字列に変換することに注意してください。
-ダブルクォーテーション内であれば任意の式を#{ }に入れることができます。</p>
-
-<h2>Constants</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>コンスタントは大文字でスタートします。
-これでRubyはコンスタントと認識してくれます。</p>
-
-<h1>中文</h1>
-
-<h2>变量</h2>
-
-<h3>声明例子1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Ruby变量名</h3>
-
-<p>Ruby更常用下划线而非骆驼拼写法。
-比如page_transfer_manager，但pageTransferManager却不常用。</p>
-
-<h3>Reserved Word</h3>
-
-<p>以下变量名为Ruby所使用，无法用来定义自己的变量。</p>
-
-<blockquote><blockquote><p><strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield
-&lt;&lt;</p></blockquote></blockquote>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注意要将integer转换为string.
-在双引号&#8221;&#8220;内，可以在#{和}之间放置任何表达式，
-表达式的值会被转换为string显示。</p>
-
-<h2>常量</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>常量在Ruby里以大写字母开头。
-通常习惯上常量的所有字符都是大写，
-但只要开头是大写，Ruby便认为这是常量。</p>
-
-<h1>English</h1>
-
-<h2>Variable</h2>
-
-<h3>Example1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Ruby convention</h3>
-
-<p>To use underscores rather than &#8220;camel case&#8221; for multiple-word names.</p>
-
-<p>page_transfer_manager is good, for example, but pageTransferManager is not.</p>
-
-<h3>Reserved words</h3>
-
-<blockquote><p>}</p></blockquote>
-
-<p><strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield</p>
-
-<p>{% endblockquote %}</p>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Note that you need to convert the integer variable to string.
-You can place any expression inside #{ and } in a double-quoted string
-and have it interpolated into the text.</p>
-
-<h2>Constants</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Constants in Ruby start with an uppercase letter—that’s how Ruby
-knows they are constants. In fact, the entire name of a constant is usually in uppercase. But it’s that first
-letter that is crucial—it must be uppercase so that Ruby knows that you intend to create a constant.</p>
 
 		
 		

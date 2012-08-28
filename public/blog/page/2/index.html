@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。 1
-gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string &hellip;">
+	<meta name="description" content="PostgresSQLでrake specするとNOTICEがいっぱいでるが大変参考になった。 NOTICE: CREATE TABLE will create implicit sequence &#8220;peroperos_id_seq&#8221; for serial column &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,7 +74,62 @@ gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UT
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/rails-test-quietrack-warning">Railsテスト時のrack警告&#8221;warning: Regexp Match /&#8230;/n Against to UTF-8 String&#8221;を消す方法</a></h1>
+	<h1 class="title"><a href="/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice">Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た</a></h1>
+	<div class="entry-content">
+		<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
+
+<blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence &#8220;peroperos_id_seq&#8221; for serial column &#8220;peroperos.id&#8221;<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index &#8220;peroperos_pkey&#8221; for table &#8220;peroperos&#8221;<br/>～略～</p></blockquote>
+
+
+<p>の警告をシャットダウンする方法です。</p>
+
+<div><script src='https://gist.github.com/2232851.js?file='></script>
+<noscript><pre><code># add min_messages to test env
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: homu_test
+  pool: 5
+  username: postgres
+  password:
+  min_messages: warning</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T00:00:00+09:00" pubdate data-updated="true">2012-03-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/postgresql/'>postgresql</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-test-quietrack-warning">Railsテスト時のrack警告&#8221;warning: regexp match /&#8230;/n against to UTF-8 string&#8221;を消す方法</a></h1>
 	<div class="entry-content">
 		<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。</p>
 
@@ -276,7 +330,7 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one">FactoryGirl: How to Define a Value Based on an Already Defined One</a></h1>
+	<h1 class="title"><a href="/blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one">FactoryGirl: How to define a value based on an already defined one</a></h1>
 	<div class="entry-content">
 		<p>FactoryGirlで既に定義した値を使おうとする時の方法です。
 例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。</p>
@@ -335,7 +389,7 @@ end</code></pre></noscript></div>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/heroku-how-to-check-and-add-env-vars">Heroku, How to Check and Add ENV Vars</a></h1>
+	<h1 class="title"><a href="/blog/heroku-how-to-check-and-add-env-vars">Heroku, how to check and add ENV vars</a></h1>
 	<div class="entry-content">
 		<div><script src='https://gist.github.com/1667607.js?file='></script>
 <noscript><pre><code># check all your ENV vars.
@@ -500,7 +554,7 @@ iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア�
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/english-what-you-can-do-with-facebook-comments-social-plugin">What You Can Do With Facebook Comments Social Plugin</a></h1>
+	<h1 class="title"><a href="/blog/english-what-you-can-do-with-facebook-comments-social-plugin">What you can do with Facebook Comments Social Plugin</a></h1>
 	<div class="entry-content">
 		<h1>Goal</h1>
 
@@ -581,58 +635,6 @@ iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア�
 
 
 	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/comments/'>comments</a>, <a class='category' href='/blog/categories/social-plugin/'>social plugin</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-page-links-to-plugin">Wordpress Plugin to Redirect &#8220;Page&#8221; to Other url：Page Links To</a></h1>
-	<div class="entry-content">
-		<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the &#8220;about&#8221; page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
-
-<blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or &#8220;normal&#8221;) URL to the new one you&#8217;ve chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote>
-
-
-<p>Reference:
-<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
-
-<h1>日本語</h1>
-
-<p><a href="http://wordpress.org/extend/plugins/page-links-to/">Page Links To</a>プラグインでブログにWordpressの&#8221;Page&#8221;を追加し、指定のurlを開くように設定できます。
-例えば自分の場合は&#8221;About&#8221;ページを<a href="http://about.me/kinopyo">http://about.me/kinopyo</a>にリダイレクトしています。</p>
-
-<blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or &#8220;normal&#8221;) URL to the new one you&#8217;ve chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote>
-
-
-<p>参考サイト：
-<a href="http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/">http://www.kreci.net/web-development/how-to-make-wordpress-page-link-to-any-url/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-03T00:00:00+09:00" pubdate data-updated="true">2012-01-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/blog/'>blog</a>
 
 
 </div>

@@ -71,7 +71,7 @@
 
 </header>
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Rails3.1 Capistranoでデプロイする時にpublic/images, Stylesheets, javascriptsのNo Such File or Directoryエラー</h1>
+	<h1 class="title">Rails3.1 Capistranoでデプロイする時にpublic/images, stylesheets, javascriptsのNo such file or directoryエラー</h1>
 	<div class="entry-content"><p>自分のログは無くしたので@yuum3のログを引用させて頂きます。</p>
 
 <blockquote><p>#  executing &#8220;find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} &#8216;;&#8217;; true&#8221;<br/>    servers: *&#8221;176.32.95.168&#8221;*<br/>    *176.32.95.168* executing command<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/images&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/javascripts&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*</p></blockquote>

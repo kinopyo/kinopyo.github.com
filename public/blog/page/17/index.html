@@ -7,7 +7,17 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Smartyのインストールはphp.iniにインクルードパスを書く方法と書かない方法があります。ここではphpのインクルードパスに書く方法を紹介します。 1 Smartyをダウンロード http://www.smarty.net/download.phpからダウンロードします。今回は3. &hellip;">
+	<meta name="description" content="Smarty templateの作成 application/viewsにhello.tplというファイルを作成します。 1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;html&gt;
+&lt;head&gt; &lt;meta http-equiv=&quot;Content-Type&quot &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +81,132 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/kohana3-smarty-sample">Kohana3にSmartyを利用するサンプル</a></h1>
+	<div class="entry-content">
+		<h2>Smarty templateの作成</h2>
+
+<p>application/viewsにhello.tplというファイルを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>{$title}<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  hello, {$name}
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Controllerの作成</h2>
+
+<p>hello.phpというControllerを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Controller_Hello</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="k">function</span> <span class="nf">action_index</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="nv">$view</span> <span class="o">=</span> <span class="nx">View</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s2">&quot;smarty:hello&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;kinopyo!&quot;</span><span class="p">;</span>
+</span><span class='line'>      <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s2">&quot;Smarty &amp; Kohana Sample&quot;</span><span class="p">;</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">response</span> <span class="o">=</span> <span class="nv">$view</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>View::factoryに&#8221;smarty:&#8221;というプリフィックスを書くことでSmartyテンプレートとして認識してくれます。</p>
+
+<h2>動作確認</h2>
+
+<p><a href="http://127.0.0.1/myapp/hello">http://127.0.0.1/myapp/hello</a>にアクセスし、&#8221;hello, kinopyo!&#8221;が表示されれば成功です。</p>
+
+<h2>Controller_Templateの場合</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Controller_Hello</span> <span class="k">extends</span> <span class="nx">Controller_Template</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="nv">$template</span> <span class="o">=</span> <span class="s1">&#39;smarty:hello&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="k">function</span> <span class="nf">action_index</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;kinopyo!&#39;</span><span class="p">;</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s2">&quot;Hello Title&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-25T00:00:00+09:00" pubdate data-updated="true">2010-09-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -206,7 +342,7 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/install-smarty-module-to-kohan">Kohana3にSmarty Moduleをインストール</a></h1>
+	<h1 class="title"><a href="/blog/install-smarty-module-to-kohan">Kohana3にSmarty moduleをインストール</a></h1>
 	<div class="entry-content">
 		<h2>ダウンロード</h2>
 
@@ -373,7 +509,7 @@ string(5) &#8220;world&#8221;</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/install-memcache-and-php-extension-in-mac-xampp">Mac XAMPP環境でmemcacheとPHP Extensionのインストール</a></h1>
+	<h1 class="title"><a href="/blog/install-memcache-and-php-extension-in-mac-xampp">Mac XAMPP環境でmemcacheとPHP extensionのインストール</a></h1>
 	<div class="entry-content">
 		<h2>環境情報</h2>
 
@@ -638,7 +774,7 @@ Repository checkout.
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/kohana-use-userguide-modul">Kohana Userguideモジュールを利用する</a></h1>
+	<h1 class="title"><a href="/blog/kohana-use-userguide-modul">kohana userguideモジュールを利用する</a></h1>
 	<div class="entry-content">
 		<p>kohanaというphpフレームワークを触り始めました。MVCパターンなのでいろんなところで結構Railsと似ていますが、コード量が明らかにRailsより多くてまだ慣れてません。さすがにRailsやってから他の言語やフレームワークを触るとキツイです。</p>
 
@@ -687,7 +823,7 @@ http://localhost/myapp/userguide/docs
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9">Githubでの最も普通の開発プロセス</a></h1>
+	<h1 class="title"><a href="/blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9">githubでの最も普通の開発プロセス</a></h1>
 	<div class="entry-content">
 		<p>プロジェクトに検索機能を追加しようとする。</p>
 
@@ -802,119 +938,6 @@ HAMLでRubyコードを書いても入力補完も、リファレンスも出ま
 
 
 <time datetime="2010-07-30T00:00:00+09:00" pubdate data-updated="true">2010-07-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-id-slug-name-in-url">ID + Slug Name in URL in Rails</a></h1>
-	<div class="entry-content">
-		<p>This is about how to customize the url to the form like &#8220;id + post.title&#8221;, which can be simply overriding the<em> to_param</em> method in your model class.</p>
-
-<p>Here is the example.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">class</span> <span class="nc">Person</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">to_param</span>
-</span><span class='line'>      <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="nb">name</span><span class="o">.</span><span class="n">parameterize</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="c1"># =&gt; #&lt;Person id: 1, name: &quot;Donald E. Knuth&quot;&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to(@person.name, person_path(@person)) %&gt;</span>
-</span><span class='line'><span class="sx">  # =</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/person/1-donald-e-knuth&quot;</span><span class="o">&gt;</span><span class="no">Donald</span> <span class="n">E</span><span class="o">.</span> <span class="no">Knuth</span><span class="o">&lt;</span><span class="sr">/a&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The <em>parameterize</em> is a method that replaces special characters in a string so that it may be used as part of a ‘pretty’ URL.
-Rails is smart enough to extract this back into the plain id when you access your controller action.
-You can access the url &#8216;/person/1-kinopyo&#8217; or &#8216;/person/1&#8217;, both ok.</p>
-
-<p>If you want to know more, here is a good article: <a href="http://augustl.heroku.com/blog/styling-rails-urls">http://augustl.heroku.com/blog/styling-rails-urls</a>.</p>
-
-<h1>日本語</h1>
-
-<p>slugはurlをより綺麗に表示するためのものです。例えばこの記事のpermanent urlは&#8221;rails-id-slug-name-in-url&#8221;にしています。英語世界になるんですが、これのようにurlを見ただけでそのurl先の内容が大体わかるようにするのがslugです。</p>
-
-<p>この記事ではRailsで&#8221;id + post.title&#8221;のような形のURLを作る方法を紹介します。</p>
-
-<h2>方法</h2>
-
-<p>モデルクラス内に<em>to_param</em>メソッドをオーバーライドするだけです。
-例として</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">class</span> <span class="nc">Person</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">to_param</span>
-</span><span class='line'>      <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="nb">name</span><span class="o">.</span><span class="n">parameterize</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">#controller</span>
-</span><span class='line'>  <span class="vi">@person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="c1"># =&gt; #&lt;Person id: 1, name: &quot;Donald E. Knuth&quot;&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">#view</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to(@person.name, person_path(@person)) %&gt;</span>
-</span><span class='line'><span class="sx">  # =</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/person/1-donald-e-knuth&quot;</span><span class="o">&gt;</span><span class="no">Donald</span> <span class="n">E</span><span class="o">.</span> <span class="no">Knuth</span><span class="o">&lt;</span><span class="sr">/a&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記のようにmodelクラスを修正するだけで、他の影響はないです。URL: &#8216;/person/1-kinopyo&#8217;と&#8217;/person/1&#8217;はどっちでも使えます。
-<em>parameterize</em>はRailsのビルトインのメソッドでurlに使う文字列に変換してくれるんです。<strong>しかし日本語などは完全にブランクに変換するので要注意です。</strong></p>
-
-<p>もしurlを&#8221;/person/kinopyo&#8221;のようにperson.nameにカスタムしたい場合はこれより少し複雑になります。興味のある方は下記リンク(英語)を参照してください。 <a href="http://augustl.heroku.com/blog/styling-rails-urls">http://augustl.heroku.com/blog/styling-rails-urls</a>.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-29T00:00:00+09:00" pubdate data-updated="true">2010-07-29</time></div>
 	<div class="tags">
 
 

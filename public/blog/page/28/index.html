@@ -7,11 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Apache
-ダウンロード＆インストール Welcome! - The Apache HTTP Server Projectから最新版を入手
-インストールファイルを実行、下記2点注意すればOK
-[Network Domain]と[Server Name]のところはlocalhostと記入
-[ &hellip;">
+	<meta name="description" content="gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の第4回：「Flash，JSONでのクロスドメインアクセス」の勉強メモです。
+Flashのクロスドメインアクセス
+動作原理
+データ提供側で認証のファイルを設置するだけです。
+ファイル名は「crossdomain.xml」で、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +75,94 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/memo-of-flash-json-cross-domain">Flash，JSONでのクロスドメインアクセス勉強メモ</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の<a href="http://gihyo.jp/dev/serial/01/web20sec/0004" target="_blank">第4回：「Flash，JSONでのクロスドメインアクセス」の</a>勉強メモです。</p>
+<h4>Flashのクロスドメインアクセス</h4>
+<h5>動作原理</h5>
+<p>データ提供側で認証のファイルを設置するだけです。</p>
+<p>ファイル名は「crossdomain.xml」で、これが例なのかこう書かなければならないのかは明確に書いてません。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;cross-domain-policy&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;allow-access-from</span> <span class="na">domain=</span><span class="s">&quot;www.securesky-tech.com&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/cross-domain-policy&gt;</span>
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'><span class="nt">&lt;h4&gt;</span>JSONでも実はクロスドメインアクセスが可能<span class="nt">&lt;/h4&gt;</span>
+</span><span class='line'><span class="nt">&lt;h5&gt;</span>動作原理<span class="nt">&lt;/h5&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>eval()関数でデータを評価するだけで使用可能になる<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>{% codeblock %}
+</span><span class='line'>
+</span><span class='line'>var obj = eval(&quot;(&quot;+req.responseText+&quot;)&quot;);
+</span><span class='line'>
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'><span class="nt">&lt;h5&gt;</span>クロスドメインの実現<span class="nt">&lt;/h5&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>setterメソッドをサポートしているブラウザ（FirefoxやSafari 3等）では，setterメソッドを再定義することによって，JSONもSCRIPTタグで呼び出して使うことが可能になる。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:html&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;script&gt;</span>
+</span><span class='line'>      Object.prototype.__defineSetter__(&#39;name&#39;, function(x){sendtoAttacker(x);});
+</span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;http://www.securesky-tech.com/object.dat&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+<p>　</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -309,7 +397,7 @@ $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/jquery-tips-live-not-support-all-event">jQuery Tips: Live関数はすべてのイベントに有効じゃない、その他...</a></h1>
+	<h1 class="title"><a href="/blog/jquery-tips-live-not-support-all-event">jQuery Tips: live関数はすべてのイベントに有効じゃない、その他...</a></h1>
 	<div class="entry-content">
 		<div class="section">
 <p>今までjQueryを使ってきたtipsをメモします。</p>
@@ -750,7 +838,7 @@ callback( <span class="synIdentifier">{</span> <span class="synConstant">&#34;na
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/man-watch-this-movie-hang-over">Man ! Watch This Movie! [Hang Over]</a></h1>
+	<h1 class="title"><a href="/blog/man-watch-this-movie-hang-over">Man ! Watch this movie! [Hang Over]</a></h1>
 	<div class="entry-content">
 		<div class="section">
 <p><object width="425" height="336"><param name="movie" value="http://www.youtube.com/v/vhFVZsk3XEs"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/vhFVZsk3XEs" type="application/x-shockwave-flash" wmode="transparent" width="425" height="336" FlashVars="movie_url=http://d.hatena.ne.jp/video/youtube/vhFVZsk3XEs"></embed></object>
@@ -876,68 +964,6 @@ obj.aProperty
 
 
 <time datetime="2009-11-19T00:00:00+09:00" pubdate data-updated="true">2009-11-19</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/turn-off-warnings-of-activex-in-ie">IEのActiveXコントロールに関する警告を非表示にするには</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>開発においてローカルでいろいろテストすることが多いでしょう。</p>
-<p>その時ブラウザを開くと「セキュリティ保護のため、このコンピューターにアクセスする可能性のあるスクリプトやActiveXコントロールを実行しないよう、IEで制限されています。オプションを表示するには、ここをクリックしてください」という警告がそのたびに出て、気分が悪くなっちゃいます。IEの[セキュリティ]タブをいじってもファイルはローカルなので、効きません。</p>
-<br/>
-<h4>解決方法</h4>
-<ul>
-<li>[マイコンピュータ内のファイルでのアクティブコンテンツの実行を許可する*]をチェックしIEを再起動(<span style="font-weight:bold;">*がついてるので再起動は絶対必要とされている</span>)</li>
-</ul>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012539" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012539.jpg" alt="f:id:kinopyo:20091117012539j:image:right" title="f:id:kinopyo:20091117012539j:image:right" class="hatena-fotolife hatena-image-right"></a></p>
-<ul>
-<li><a href="http://d.hatena.ne.jp/kinopyo/20091116/1258379152" target="_blank">IEセキュリティにマイコンピュータゾーンを追加する方法 - kinopyoの日記 </a>で紹介する方法でセキュリティにマイコンピュータのゾーンを追加</li>
-<li>IEの[ツール] → [インターネット オプション] → [セキュリティ] タブをクリックし、[レベルのカスタマイズ] をクリックします。</li>
-<li>「ActiveXコントロールとプラグインの実行」をチェック</li>
-</ul>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012540" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012540.jpg" alt="f:id:kinopyo:20091117012540j:image" title="f:id:kinopyo:20091117012540j:image" class="hatena-fotolife"></a></p>
-<ul>
-<li>「スクリプトを実行しても安全とマークされているActiveXコントロールのスクリプトの許可」をチェック</li>
-</ul>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012541" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012541.jpg" alt="f:id:kinopyo:20091117012541j:image" title="f:id:kinopyo:20091117012541j:image" class="hatena-fotolife"></a></p>
-<h4>バージョン情報</h4>
-<ul>
-<li>OS: Windows XP</li>
-<li>IE: IE8</li>
-</ul>
-<br/>
-<p>参考サイト：<a href="http://stackoverflow.com/questions/394298/how-to-disable-activex-control-may-be-unsafe-popup" target="_blank">How to disable &#34;ActiveX Control May Be Unsafe&#34; popup - Stack Overflow</a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
 	<div class="tags">
 
 

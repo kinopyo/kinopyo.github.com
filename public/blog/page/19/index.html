@@ -7,11 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="http://wiki.eclipse.org/Helios_Simultaneous_Release RC1 Friday, May 21
-RC2 Friday, May 28
-RC3 Friday, June 4
-RC4 Friday, June 11
-Final Builds Friday &hellip;">
+	<meta name="description" content="変数 例1 1
+2
+temperature = 34
+puts temperature Rubyの変数名 Rubyではキャメルケースより、アンダースコアが好みだそうです。
+例えば変数名page_transfer_managerはOKだけど、pageTransferManagerはNG。 予約語 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -78,7 +78,223 @@ Final Builds Friday &hellip;">
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/eclipse-3-6-helios-6-23-releas">Eclipse 3.6 Helios 23/6 Release</a></h1>
+	<h1 class="title"><a href="/blog/ruby-basic-variables-and-constant">Ruby Variables and Constants</a></h1>
+	<div class="entry-content">
+		<h2>変数</h2>
+
+<h3>例1</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Rubyの変数名</h3>
+
+<p>Rubyではキャメルケースより、アンダースコアが好みだそうです。
+例えば変数名page_transfer_managerはOKだけど、pageTransferManagerはNG。</p>
+
+<h3>予約語</h3>
+
+<p>{% blockquote >
+<strong>FILE</strong>    def in  self
+<strong>LINE</strong>    defined?    module  super
+BEGIN   do  next    then
+END else    nil true
+alias   elsif   not undef
+and end or  unless
+begin   ensure  redo    until
+break   false   rescue  when
+case    for retry   while
+class   if  return  yield
+&lt;&lt;</p>
+
+<h3>Example2</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>整数を文字列に変換することに注意してください。
+ダブルクォーテーション内であれば任意の式を#{ }に入れることができます。</p>
+
+<h2>Constants</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>コンスタントは大文字でスタートします。
+これでRubyはコンスタントと認識してくれます。</p>
+
+<h1>中文</h1>
+
+<h2>变量</h2>
+
+<h3>声明例子1</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Ruby变量名</h3>
+
+<p>Ruby更常用下划线而非骆驼拼写法。
+比如page_transfer_manager，但pageTransferManager却不常用。</p>
+
+<h3>Reserved Word</h3>
+
+<p>以下变量名为Ruby所使用，无法用来定义自己的变量。</p>
+
+<blockquote><blockquote><p><strong>FILE</strong>    def in  self
+<strong>LINE</strong>    defined?    module  super
+BEGIN   do  next    then
+END else    nil true
+alias   elsif   not undef
+and end or  unless
+begin   ensure  redo    until
+break   false   rescue  when
+case    for retry   while
+class   if  return  yield
+&lt;&lt;</p></blockquote></blockquote>
+
+<h3>Example2</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意要将integer转换为string.
+在双引号&#8221;&#8220;内，可以在#{和}之间放置任何表达式，
+表达式的值会被转换为string显示。</p>
+
+<h2>常量</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>常量在Ruby里以大写字母开头。
+通常习惯上常量的所有字符都是大写，
+但只要开头是大写，Ruby便认为这是常量。</p>
+
+<h1>English</h1>
+
+<h2>Variable</h2>
+
+<h3>Example1</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Ruby convention</h3>
+
+<p>To use underscores rather than &#8220;camel case&#8221; for multiple-word names.</p>
+
+<p>page_transfer_manager is good, for example, but pageTransferManager is not.</p>
+
+<h3>Reserved words</h3>
+
+<blockquote><p>}</p></blockquote>
+
+<p><strong>FILE</strong>    def in  self
+<strong>LINE</strong>    defined?    module  super
+BEGIN   do  next    then
+END else    nil true
+alias   elsif   not undef
+and end or  unless
+begin   ensure  redo    until
+break   false   rescue  when
+case    for retry   while
+class   if  return  yield</p>
+
+<p>{% endblockquote %}</p>
+
+<h3>Example2</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that you need to convert the integer variable to string.
+You can place any expression inside #{ and } in a double-quoted string
+and have it interpolated into the text.</p>
+
+<h2>Constants</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Constants in Ruby start with an uppercase letter—that’s how Ruby
+knows they are constants. In fact, the entire name of a constant is usually in uppercase. But it’s that first
+letter that is crucial—it must be uppercase so that Ruby knows that you intend to create a constant.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T00:00:00+09:00" pubdate data-updated="true">2010-06-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/eclipse-3-6-helios-6-23-releas">Eclipse 3.6 Helios 23/6 release</a></h1>
 	<div class="entry-content">
 		<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
 <a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
@@ -333,7 +549,7 @@ Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/jquery-selector-performance-elem-vs-i">jQueryセレクタのパフォーマンス：elem vs Id</a></h1>
+	<h1 class="title"><a href="/blog/jquery-selector-performance-elem-vs-i">jQueryセレクタのパフォーマンス：elem vs id</a></h1>
 	<div class="entry-content">
 		<p>elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
 <strong>&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;</strong>
@@ -605,59 +821,6 @@ vs
 
 
 <p><a href="http://blog.flexexamples.com/2008/01/30/copying-text-to-the-operating-system-clipboard-in-flex/">ここにいいDEMOがあります。</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-06T00:00:00+09:00" pubdate data-updated="true">2010-05-06</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/define-method-in-js">Jspにメソッドを定義するには</a></h1>
-	<div class="entry-content">
-		<p><strong>&lt;&amp;!～&amp;></strong>宣言部でメソッドを定義することができます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;%!</span>
-</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="nf">myMethod</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="c1">// some code</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s">&quot;ok&quot;</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'><span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考サイトはこちら：
-<a href="http://www.site-cooler.com/java/j2ee/04_02.htm#3">http://www.site-cooler.com/java/j2ee/04_02.htm#3</a></p>
 
 		
 		
