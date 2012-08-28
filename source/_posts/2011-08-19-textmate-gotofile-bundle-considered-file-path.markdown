@@ -24,7 +24,7 @@ git clone git://github.com/stevenchanin/gotofile.tmbundle.git GoToFile.tmbundle{
 
 ## 使い方
 <strong>⇧⌘K ( Command + Shift + K )</strong>で新しいGo To Fileダイアログを開いて"ar/in"を叩くことでarticles/index.htmlが選択されます！
-<a href="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/Go-To-File-Textmate-Bundle.png"><img class="alignnone size-medium wp-image-2126" title="Go To File Textmate Bundle" src="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/Go-To-File-Textmate-Bundle-300x273.png" alt="" width="300" height="273" /></a>
+<a href="http://www.kinopyo.com/wp-content/uploads/2011/08/Go-To-File-Textmate-Bundle.png"><img class="alignnone size-medium wp-image-2126" title="Go To File Textmate Bundle" src="http://www.kinopyo.com/wp-content/uploads/2011/08/Go-To-File-Textmate-Bundle-300x273.png" alt="" width="300" height="273" /></a>
 
 他にもspaceキーでQuickLookモードでファイルを見たり、⌥(option)キーでデフォルトのアプリでファイルを開いたり、⇧(shift)キーでフォーカスに選択したファイルのパスを入力することができます。
 

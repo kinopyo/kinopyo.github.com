@@ -10,7 +10,7 @@ categories: [nil]
 FirebugのJavaScript、HTML、CSSをシンタクスハイライトするアドオンです。
 <br/>
 
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/firerainbow-mainshot-full1.png firewindow %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/firerainbow-mainshot-full1.png firewindow %}
 ## ダウンロード
 [FireRainbow Download](https://addons.mozilla.org/en-US/firefox/addon/9603)
 

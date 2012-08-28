@@ -11,4 +11,4 @@ categories: [nil]
 手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。
 
 できたらこんな感じです。なぜか画像が暗くなっちゃいました。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg hatena-bookmark-entry %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg hatena-bookmark-entry %}

@@ -15,14 +15,16 @@ This is a tip to auto refresh your browser(s) when you hit Command + S(means sav
 Open Bundle Editor, look for HTML, there will be a snippet called 'Refresh Running Browser(s)'.
 
 The code in the right side is very easy to understand. First it checks if one browser is opened, if yes, refresh it. By default it supports all the major browsers.
-<a href="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers.jpg"><img class="alignnone size-medium wp-image-2328" title="Bundle Editor Refresh Running Browsers" src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" alt="" width="450" height="325" /></a>
 
-<strong>Set the Activation Key Equivalent to Command + S, and delete those file type in Scope Selector.</strong>
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg Bundle Editor Refresh Running Browsers %}
+
+**Set the Activation Key Equivalent to Command + S, and delete those file type in Scope Selector.**
 This way when you hit Command + S, text mate will save the file first and refresh all your opened browser.
 
 If you want to just refresh a specific browser, like Safari, you can copy the snippet related to your browser.
 Below is a sample for Safari.
-<a href="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Textmate-auto-refresh-safari.png"><img class="alignnone size-medium wp-image-2334" title="Textmate auto refresh safari" src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" alt="" width="450" height="334" /></a>
+
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png Textmate auto refresh safari %}
 
 # 日本語
 
@@ -33,10 +35,12 @@ Textmateでファイルを保存（Command + S）したら自動でブラウザ�
 Bundle Editorを開いて、HTMLのセクションの中の「Refresh Running Browser(s)」をクリックします。
 
 右側のコードはわかりやすいです。まずそのブラウザが起動しているかをチェックして、リフレッシュします。デフォルトではFirefox、ChromeやSafariなど全部対応しています。
-<a href="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers.jpg"><img class="alignnone size-medium wp-image-2328" title="Bundle Editor Refresh Running Browsers" src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" alt="" width="450" height="325" /></a>
 
-<strong>Activation Key EquivalentをCommand + Sに変更して下のScope Selectorを空にします</strong>
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg Bundle Editor Refresh Running Browsers %}
+
+**Activation Key EquivalentをCommand + Sに変更して下のScope Selectorを空にします**
 これでCommand + Sでファイルを保存した場合起動中のブラウザは全部リフレッシュされるはずです。
 
 もし特定のブラウザだけリフレッシュしたい場合は、コピペーで新規にSnippetを作成し、該当のブラウザのコードだけを貼ればいいです。以下はSafariの例です。
-<a href="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Textmate-auto-refresh-safari.png"><img class="alignnone size-medium wp-image-2334" title="Textmate auto refresh safari" src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" alt="" width="450" height="334" /></a>
+
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png Textmate auto refresh safari %}

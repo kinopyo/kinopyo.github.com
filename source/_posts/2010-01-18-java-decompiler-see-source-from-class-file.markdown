@@ -14,6 +14,6 @@ Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
 スタンドアロンはJRE環境が必要とせずインストールだけで使えます。
 jarファイルもサポートされているようです。
 
-{% img http://kinopyo.com/blog/wp-content/uploads/2010/01/java-decompiler.png java-decompiler %}
+{% img http://kinopyo.com/wp-content/uploads/2010/01/java-decompiler.png java-decompiler %}
 
 公式サイト：[JD | Java Decompiler](http://java.decompiler.free.fr/)

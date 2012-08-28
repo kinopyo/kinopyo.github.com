@@ -17,7 +17,7 @@ Need a facebook application for your site(domain).
 
 For example:
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/Screen-Shot-2012-01-05-at-14.21.25.png %}
+{% img http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-05-at-14.21.25.png %}
 
 ## How to get it
 

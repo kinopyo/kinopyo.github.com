@@ -17,11 +17,11 @@ Wordpressプラグイン：WP Social Bookmarking Light
 ## 設定
 設定方法はとても簡単です。WPの設定画面でWP Social Bookmarking Lightを選択肢
 下記のように必要なサービスを左にドラッグ＆ドロップすればOKです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png WP Social Bookmarking Light Settings %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png WP Social Bookmarking Light Settings %}
 
 ### General Settingタブ
 「Singular」がDisabledにすれば記事の一覧ページにもボタンが反映するようになりますが、そうすると画面の読み込みが結構重くなるようでデフォルトのEnableのままにしています。
 
 ### Facebookタブ
 LikeボタンのVersionはデフォルトは「XFBML」となっていますが、XFBMLはもう廃止予定なのでiFrameに変更します。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg WP Social Bookmarking Light Facebook Setting %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg WP Social Bookmarking Light Facebook Setting %}

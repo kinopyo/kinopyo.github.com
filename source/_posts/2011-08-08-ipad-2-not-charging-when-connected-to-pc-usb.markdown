@@ -7,7 +7,7 @@ permalink: /blog/ipad-2-not-charging-when-connected-to-pc-usb
 comments: true
 categories: ["charging", "iPad", "ipad", "pc"]
 ---
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/ipad2-not-charged.jpg ipad2-not-charged %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/08/ipad2-not-charged.jpg ipad2-not-charged %}
 
 iPad2をPCのUSBに繋ぐと「充電していません」(Not Charging)のメッセージが右上に出ます。Macbook Proは問題なかったです。
 

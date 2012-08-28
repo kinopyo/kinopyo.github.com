@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Apache | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/apache/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -122,7 +122,7 @@ pecl install APC</p>
 
 
 <p>ここで問題！正しいバージョンはなんなのか？間違ってダウンロードすると後でApacheサーバを立ち上がるときエラーが出るよ。私の環境だと<b>php_memcache-cvs-20090703-5.3-VC6-x86.zip</b>のファイルが正しいけど、今時点で上記URLには載せていない。結構ググって見ても結局古い結果で、しょうがなく友人からそのファイル貰った。。。ここにアップしたので、必要な方はダウンロードしてください。ウイルススキャンしてね。。
-<a href='http://www.kinopyo.com/blog/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a></p>
+<a href='http://www.kinopyo.com/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a></p>
 
 <h2>動作確認</h2>
 

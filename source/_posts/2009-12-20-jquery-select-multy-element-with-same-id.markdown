@@ -30,4 +30,4 @@ $("*id=bar*").css("background-color","green");
 
 ```
 
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/jQuerySelectorByID.jpg jQuerySelectorByID %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/jQuerySelectorByID.jpg jQuerySelectorByID %}

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: plugin | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/plugin/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -21,14 +21,14 @@
     <content type="html"><![CDATA[<h2>Disqusの概要</h2>
 
 <p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png" title="Disqus Login with Twitter, Facebook, etc." ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png" title="Disqus Login with Twitter, Facebook, etc." ></p>
 
-<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png" title="Disqus Comment system" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png" title="Disqus Comment system" ></p>
 
 <h2>導入手順</h2>
 
 <p>実際の導入フローはとても簡単なので、流れだけ書きます。
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png" title="Disqus comment system site" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png" title="Disqus comment system site" ></p>
 
 <p>+<a href="http://disqus.com/">http://disqus.com/</a>でアカウント登録
 +ブログサイトの情報、メインライター、導入ブログタイプ（ここはWordpress）などの設定
@@ -43,10 +43,10 @@
 
 <p>既存コメントのエクスポートは時間がかかりそうで、すぐには反映しないようです。
 Disqusの管理画面で確認したらステータスが"Queued for import"になってます。
-<img class="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg DISQUS Admin page - tools -" src="Import/export"></p>
+<img class="http://www.kinopyo.com/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg DISQUS Admin page - tools -" src="Import/export"></p>
 
 <p>すると翌日にインポートできましたよというメールがきました。管理画面でチェック：
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png" title="Disqus-comment-import-complete" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png" title="Disqus-comment-import-complete" ></p>
 ]]></content>
   </entry>
   

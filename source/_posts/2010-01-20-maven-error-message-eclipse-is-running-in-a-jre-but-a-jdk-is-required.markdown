@@ -9,7 +9,7 @@ categories: [nil]
 ---
 EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。
 
-<a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/blog/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/blog/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a>
+<a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a>
 {% codeblock %}The Maven Integration required that Eclipse be running in a JDK,
 because a number of Maven core plugins are using jars from the JDK.
 

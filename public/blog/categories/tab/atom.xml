@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tab | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/tab/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -21,11 +21,11 @@
     <content type="html"><![CDATA[<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don't Save, Cancel, Save...」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
 
 <p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Keyboard-All-controls.jpg" title="Keyboard All controls" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Keyboard-All-controls.jpg" title="Keyboard All controls" ></p>
 
 <p>そこでの説明文の通り「In windows and dialogs, press Tab to move keyboard focus between All controls」、Tabであらゆるウィンドウやダイアログのキーボードフォーカスを移動することができます。</p>
 
-<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Control-using-tab-focus.jpg" title="Control using tab focus" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Control-using-tab-focus.jpg" title="Control using tab focus" ></p>
 
 <p>上記のようなダイアログが出るとしたら、Tab(Shift + Tab)で薄青色のフォーカスを移動して、スペースキーで該当の操作を実行できます。通常の青色はフォーカスの位置と関係なくreturnキーで操作を実行できます。</p>
 

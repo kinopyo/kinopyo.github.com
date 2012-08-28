@@ -9,8 +9,8 @@ categories: ["apple", "Mac", "steve jobs"]
 ---
 Let's remember the day Steve Jobs passed away.
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Apple-Steve-Jobs.jpg Apple Steve Jobs %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Apple-Steve-Jobs.jpg Apple Steve Jobs %}
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-11.03.50.png Steve Jobs passed away %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-11.03.50.png Steve Jobs passed away %}
 
 I do write a mail to rememberingsteve@apple.com, did you?

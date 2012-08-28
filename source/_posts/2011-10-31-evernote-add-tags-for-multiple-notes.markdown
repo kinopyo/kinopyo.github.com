@@ -9,7 +9,7 @@ categories: ["evernote", "Evernote", "Tips"]
 ---
 複数のノートに一気にタグをつける方法です。今まで知らなかったことにちょっとショックくらいです。。
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Evernote-add-tags-for-multiple-notes.jpg Evernote-add-tags-for-multiple-notes %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Evernote-add-tags-for-multiple-notes.jpg Evernote-add-tags-for-multiple-notes %}
 
 +先にCommandキーを押しながらノートを複数選択する
 +付けたいタグを上記で選択したノートにドラッグする

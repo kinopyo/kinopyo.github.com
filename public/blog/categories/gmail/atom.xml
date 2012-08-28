@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gmail | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/gmail/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,10 +19,10 @@
     <updated>2011-07-29T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/reply-to-all-always-in-gmail</id>
     <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
 
 <p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
 ]]></content>
   </entry>
   

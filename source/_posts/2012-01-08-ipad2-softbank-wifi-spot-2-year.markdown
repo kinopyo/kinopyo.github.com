@@ -9,11 +9,11 @@ categories: ["iPad", "ipad", "wifi"]
 ---
 iPad2でたまに駅とかでソフトバンクのWifiスポットへのアクセス画面が出てきて、気になって使えるかを調べたんです。
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20100606_softbankWifi.gif %}
+{% img http://www.kinopyo.com/wp-content/uploads/2012/01/20100606_softbankWifi.gif %}
 
 ## 利用するには
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg }
+{% img http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg }
 
 {% blockquote http://mb.softbank.jp/mb/ipad/service/wi-fi/ %}
 iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi-Fiスポットを無料で提供します。

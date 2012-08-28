@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails3.1 | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/rails3-1/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -222,7 +222,7 @@ rails s</p>
 <h2>トラブル</h2>
 
 <p>ここまで順調でしたが、http://127.0.0.1:3000にアクセスしたときにundefined method `context' for #&lt;Sprockets::Environment:>のトラブルに会いました。
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png" title="Sprockets trouble" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png" title="Sprockets trouble" ></p>
 
 <br/>
 
@@ -240,7 +240,7 @@ gem 'sprockets', '2.0.0.beta.2'</p>
 <p>```</p>
 
 <p>解決〜
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
 ]]></content>
   </entry>
   

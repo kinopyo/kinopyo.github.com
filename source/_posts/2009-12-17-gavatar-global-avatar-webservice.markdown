@@ -22,7 +22,7 @@ Gravatarはメールアドレスをキーとしたアバター管理Webサービ
 一回登録し、アバターをアップロードしてください。
 複数のアバターをアップロードした場合はどのアバターを使うか選択できます。
 
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/Gravatar.jpg Gravatar %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/Gravatar.jpg Gravatar %}
 
 良かったらGravatarに登録し、ここにコメントを入れてみてください。
 メールアドレスが同じであればGravatarに登録したアバターが表示されるはずです。

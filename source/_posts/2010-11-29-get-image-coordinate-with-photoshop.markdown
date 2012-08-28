@@ -16,7 +16,7 @@ categories: ["design", "photoshop", "UI"]
 
 こんな感じです。メニューバーに表示してます。
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/11/coordinate.jpg coordinate %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/11/coordinate.jpg coordinate %}
 
 参考サイト：
 [http://questionbox.jp.msn.com/qa5718320.html](http://questionbox.jp.msn.com/qa5718320.html)

@@ -9,7 +9,7 @@ categories: ["iPhone", "iphone4s"]
 ---
 ## SMSと電話ができなくなる故障？
 iPhone 4Sになってからは「3Gオフ」のオプションはなくなり、代わりに「モバイルデータ通信」をずっとオフにしたのですが、ある日からたまたま<strong>電話やSMSができなくなりました</strong>。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20111015-11syiqan1e8ijfhiiu1rtp3frx.jpg 20111015-11syiqan1e8ijfhiiu1rtp3frx %}
+{% img http://www.kinopyo.com/wp-content/uploads/2012/01/20111015-11syiqan1e8ijfhiiu1rtp3frx.jpg 20111015-11syiqan1e8ijfhiiu1rtp3frx %}
 
 詳しくは：
 +  SMS送信しても成功とならない(プログレスバーがずっと送信状態)

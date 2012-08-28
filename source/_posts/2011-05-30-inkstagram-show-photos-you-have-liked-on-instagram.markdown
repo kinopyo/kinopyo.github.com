@@ -14,7 +14,7 @@ We especially appreciate the "My Likes" view which showcases all of the photos t
 {% endblockquote %}
 
 目玉機能というえばこの"My Likes"ですね！自分が"Like"した画像が一覧で見れます！ちょっとこういうの欲しかったー！
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/Screen-shot-2011-05-30-at-19.01.59.png Inkstagram &quot;My Likes&quot; %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-30-at-19.01.59.png Inkstagram &quot;My Likes&quot; %}
 
 他にも写真へのコメントや、Like、Popular Feedの表示など、写真アップロードを除いて全部できます。
 

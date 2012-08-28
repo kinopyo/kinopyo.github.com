@@ -20,4 +20,4 @@ rm -rf /tmp/EGOTextMateFullScreen/
 ```
 
 これが完成図！
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/textmate_fullscreen.jpg textmate_fullscreen %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg textmate_fullscreen %}

@@ -13,10 +13,10 @@ Wordpressにそのはてな記法のプラグインがあります。
 
 ## インストール
 +[WordPressにはてな記法を導入するプラグイン](http://rewish.org/wp/hatena_notation_plugin)にてダウンロード
-+サーバにアップロード(blog/wp-content/pluginsフォルダに)
++サーバにアップロード(wp-content/pluginsフォルダに)
 +ダッシュボード→プラグイン→インストール済みでアクティブすればOK
 +設定画面の「Posts -> WP HatenaNotation」で適用する時間範囲を決める、するとその時間以降の記事に対して有効になる
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/hatena-notation-plugin.jpg hatena-notation-plugin %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/hatena-notation-plugin.jpg hatena-notation-plugin %}
 この例で言うと、2009年11月30日以前のはてな記法で書かれて記事は対象外となる意味です。
 
 ## まだ対応してない機能

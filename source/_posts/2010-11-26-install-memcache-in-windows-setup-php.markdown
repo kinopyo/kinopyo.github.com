@@ -41,7 +41,7 @@ extension = php_memcache.dll
 
 <br/>
 ここで問題！正しいバージョンはなんなのか？間違ってダウンロードすると後でApacheサーバを立ち上がるときエラーが出るよ。私の環境だと<b>php_memcache-cvs-20090703-5.3-VC6-x86.zip</b>のファイルが正しいけど、今時点で上記URLには載せていない。結構ググって見ても結局古い結果で、しょうがなく友人からそのファイル貰った。。。ここにアップしたので、必要な方はダウンロードしてください。ウイルススキャンしてね。。
-<a href='http://www.kinopyo.com/blog/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a>
+<a href='http://www.kinopyo.com/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a>
 
 ## 動作確認
 xamppでapacheサーバを起動、下記内容をphpファイルと保存してサーバのDocumentパス(デフォルトではXAMPP/htdocs)に置く。

@@ -11,7 +11,7 @@ categories: [nil]
 IE6を使ってSSL(https)経由で接続する時に以下の警告が出るなら
 iframeのsrc属性をまずチェックしてください。
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/04/security-info.png security-info %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/04/security-info.png security-info %}
 
 {% codeblock %}
 このページにはセキュリティで保護されている項目と保護されていない項目が含まれています。

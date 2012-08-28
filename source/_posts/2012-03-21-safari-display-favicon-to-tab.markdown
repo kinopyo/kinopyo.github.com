@@ -13,7 +13,7 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 上記のリンクからダウンロードしインストールすれば完了です。Safariの再起動は必要になります。
 
 再起動すればSafariのタブにFaviconが表示されます！こんな感じになります〜♪
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/03/Screen-Shot-2012-03-21-at-12.29.46.png Safari Display Tab Favicon %}
+{% img http://www.kinopyo.com/wp-content/uploads/2012/03/Screen-Shot-2012-03-21-at-12.29.46.png Safari Display Tab Favicon %}
 
 その他にもいろいろ機能があって、例えばGoogleやYahooの検索結果にサムネールを表示したり最後に閉じたタブを表示したり…
 日本語版もあるみたいですよ〜

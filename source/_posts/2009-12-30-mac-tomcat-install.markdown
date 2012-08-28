@@ -8,7 +8,7 @@ comments: true
 categories: [nil]
 ---
 ### ダウンロード
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/tomcat-download.jpg tomcat-download %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/tomcat-download.jpg tomcat-download %}
 [Tomcat公式サイトダウンロードページ](http://tomcat.apache.org/download-60.cgi)で上記ファイルをダウンロード
 
 ### インストール

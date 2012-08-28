@@ -12,7 +12,7 @@ bumblebeeというgithubのプロジェクトにinstall.shというファイル�
 実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
 [githubのスレット](https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac)
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png bumblebee rm -rf :usr %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png bumblebee rm -rf :usr %}
 
 一個スペースが多かったですね。。
 

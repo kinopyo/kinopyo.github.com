@@ -57,14 +57,14 @@ Googleウェブマスターツールは自分のサイトとGoogle検索の関�
 
 +  Googleウェブマスターツール使うにはまずサイトを登録
 サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/01/Googleウェブマスターツール.jpg Googleウェブマスターツール %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/01/Googleウェブマスターツール.jpg Googleウェブマスターツール %}
 Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
 (具体的な認証方法はGoogleのヘルプを見てください)
 
 +  使用するドメイン
 登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
 利用するドメイン、つまりwww有りなしを指定してください。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/01/ウェブマスター-ツール-設定.jpg Googleウェブマスターツール %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/01/ウェブマスター-ツール-設定.jpg Googleウェブマスターツール %}
 
 ## Wordpressお使いの方は注意を
 Wordpressの「設定→一般」でサイトURLが正しく設定されるか確認してください。

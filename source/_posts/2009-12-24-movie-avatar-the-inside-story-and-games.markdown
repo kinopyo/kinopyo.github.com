@@ -8,7 +8,7 @@ comments: true
 categories: ["movie"]
 ---
 映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg アバターポスタ %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg アバターポスタ %}
 
 映画館でアバターを見ました。最高です。
 ストリー、3Dの表現力、監督が創った世界：パンドラ。

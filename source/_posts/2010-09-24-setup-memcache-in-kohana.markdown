@@ -14,7 +14,7 @@ memcacheとphp_memcache extensionがインストールされたこと。
 ## 手順
 ### 1. application/bootstrap.phpを編集
 Kohana::modulesのcacheのコメントを外します。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/kohana-bootstrap-module-cache.jpg Kohana active cache in bootstrap.php %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/09/kohana-bootstrap-module-cache.jpg Kohana active cache in bootstrap.php %}
 
 ### 2. 下記の内容でconfig/cache.phpを作成
 場所はapplication/configでもいいしsystem/config、modules/configでもいいです。

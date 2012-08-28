@@ -15,7 +15,7 @@ categories: ["Mac", "memcache", "PHP", "php", "環境構築"]
 ### 1. Apple Developer Tools (Xcode)の最新版をインストール
 ### 2. XAMPP Developer Packageをインストール
 [http://www.apachefriends.org/en/xampp-macosx.html](http://www.apachefriends.org/en/xampp-macosx.html)より下記赤線のリンクをダウンロードします。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/xampp-developer-package-for-mac.jpg xampp develop package for mac %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/09/xampp-developer-package-for-mac.jpg xampp develop package for mac %}
 参考リンク：[http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/](http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/)
 ダウンロードしたdmgファイルを開いてDevel-Package.mpkgをダブルクリックでインストールします。
 
@@ -38,7 +38,7 @@ sudo make install
 extension=memcache.so
 {% endcodeblock %}
 こんあ感じです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/php-ini-memcache-extension.jpg Add memcache extention to php.ini %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/09/php-ini-memcache-extension.jpg Add memcache extention to php.ini %}
 
 ### 5.memcacheを立ち上がる
 ターミナルで下記コマンドを実行します。
@@ -79,7 +79,7 @@ else {
 
 これを/Applications/XAMPP/xamppfiles/htdocsに置いて、ブラウザでhttp://localhost/memcache.php(あるいはhttp://127.0.0.1/memcache.php)を開きます。
 下記のようなページが表示されればOKです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/09/memcache-test-in-php.jpg memcache test in php %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/09/memcache-test-in-php.jpg memcache test in php %}
 
 ちなみにmemcacheを停止するコマンドは：
 {% codeblock %}

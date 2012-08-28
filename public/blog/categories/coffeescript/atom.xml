@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CoffeeScript | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/coffeescript/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,15 +19,15 @@
     <updated>2011-07-22T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/3-free-ebooks-for-study-coffeescript</id>
     <content type="html"><![CDATA[<p><a href="http://autotelicum.github.com/Smooth-CoffeeScript/">Smooth CoffeeScript</a>
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/SmoothCoverWithSolutions1.jpg" title="SmoothCoverWithSolutions" >
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/SmoothCoverWithSolutions1.jpg" title="SmoothCoverWithSolutions" >
 200ページを超え、35の練習問題があります。基本文法からオブジェクト指向、モジュラリティ、そしてHTML5のCanvasとWebSocketsまで紹介されています。PDFは答えがついてあるバージョンと付いてないバージョンがあり、さらにソースコードまで。</p>
 
 <p><a href="http://coffeescriptcookbook.com/">CoffeeScript Cookbook</a>
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/CoffeeScript-Cookbook.png" title="CoffeeScript Cookbook" >
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/CoffeeScript-Cookbook.png" title="CoffeeScript Cookbook" >
 リファレンス参照が一目瞭然で、ebookよりは気軽く読めると思います。メタプログラミングまで書いてあります。ちなみにこれは複数の人が協力して作ったもので、githubにあるのでforkしてpullリクエストも出せます。</p>
 
 <p><a href="http://arcturo.github.com/library/coffeescript/index.html">The Little Book on CoffeeScript</a>
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/07/The-Little-Book-on-CoffeeScript.png" title="The Little Book on CoffeeScript" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/The-Little-Book-on-CoffeeScript.png" title="The Little Book on CoffeeScript" ></p>
 
 <p>5章しかないですが、CoffeeScriptがベストプライスが書かれています。少なくとも4章のIdiomsは読んどいたほうがいいと思います。</p>
 ]]></content>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Firefox | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/firefox/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,7 +19,7 @@
     <updated>2011-08-16T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line</id>
     <content type="html"><![CDATA[<p>表題の通りFirefoxのTab BarとNavigation Barを一行にしてくれるアドオンです。by Mozilla Labsのアドオンで<a href="http://www.lifehacker.jp/2011/08/110807_oneliner.html">http://www.lifehacker.jp/2011/08/110807_oneliner.html</a>でも紹介しています。早速入れてみました、結構ツールバーのスペースが増えたように感じますね。
-<img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/08/Firefox_addon_oneliner.jpg" title="Firefox_addon_oneliner" ></p>
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/Firefox_addon_oneliner.jpg" title="Firefox_addon_oneliner" ></p>
 
 <p><a href="https://addons.mozilla.org/en-US/firefox/addon/prospector-oneLiner/">oneLiner</a>でインストール!</p>
 

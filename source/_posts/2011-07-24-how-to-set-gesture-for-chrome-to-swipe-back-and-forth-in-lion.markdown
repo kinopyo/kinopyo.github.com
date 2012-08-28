@@ -16,16 +16,16 @@ Lionにアップグレードして、新しいジェスチャーをONにした�
 ## 1. Three finger dragを使わない前提
 このThree finger dragは自分は大好きですが、もしこれを使わない方でしたら解決は速いです。
 システム設定のトラックパッドを開き、More Gestureタブの<strong>Swipe between pages</strong>のジェスチャーを3本指或いは2本/3本指に設定。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/swipe_between_pages.jpg swipe_between_pages %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/07/swipe_between_pages.jpg swipe_between_pages %}
 
 これでChromeで3本指左右スワイプが効きます。2本指はまだ認識できないっぽいですが、Safariではどっちでもうまく対応できてしかもアニメーションでページ遷移ができます。
 
 こうすればThree finger dragは自動でオフになります。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Three_finger_drag_off.jpg Three_finger_drag_off %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/07/Three_finger_drag_off.jpg Three_finger_drag_off %}
 
 ## 2. Three finger dragも使いたいならBetterTouchToolを使う
 BetterTouchToolでこのようにChrome専用のジェスチャーを設定します。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/BetterTouchTool.jpg BetterTouchTool %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/07/BetterTouchTool.jpg BetterTouchTool %}
 
 2本指のスワイプのアクションを⌘(Command) + {と⌘(Command) + }に設定します。これはChromeでのページ遷移のショットカットキーです。実際使ってみたら使い心地はあまりよくないですが。。
 

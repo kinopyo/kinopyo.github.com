@@ -19,4 +19,4 @@ categories: ["textmate", "TextMate", "Tips"]
 あるいは
 Navigationのメニューからクリック
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/Go_to_Last_Edit.jpg Go_to_Last_Edit %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/08/Go_to_Last_Edit.jpg Go_to_Last_Edit %}

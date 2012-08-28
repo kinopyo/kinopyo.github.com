@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sinatra | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/sinatra/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -131,7 +131,7 @@ heroku addons:add memcache</code></pre></noscript></div>
 実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
 <a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
 
-<p><img src="http://www.kinopyo.com/blog/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png" title="bumblebee rm -rf :usr" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png" title="bumblebee rm -rf :usr" ></p>
 
 <p>一個スペースが多かったですね。。</p>
 

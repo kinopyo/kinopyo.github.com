@@ -8,10 +8,10 @@ comments: true
 categories: ["MySQL", "oracle", "sql"]
 ---
 これが既存データで、同じ日に複数のデータがある。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/table_data.png table_data %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png table_data %}
 
 期望結果はこれ、つまり日付別で集計したい場合
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/expected-result.png expected-result %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png expected-result %}
 
 ## MySQLではDATE関数を使う
 {% codeblock %}

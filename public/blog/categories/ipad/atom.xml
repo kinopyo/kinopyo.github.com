@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ipad | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/ipad/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:21:26+09:00</updated>
+  <updated>2012-08-29T01:53:12+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,11 +20,11 @@
     <id>http://kinopyo.github.com/blog/ipad2-softbank-wifi-spot-2-year</id>
     <content type="html"><![CDATA[<p>iPad2でたまに駅とかでソフトバンクのWifiスポットへのアクセス画面が出てきて、気になって使えるかを調べたんです。</p>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/20100606_softbankWifi.gif %}</p>
+<p>{% img http://www.kinopyo.com/wp-content/uploads/2012/01/20100606_softbankWifi.gif %}</p>
 
 <h2>利用するには</h2>
 
-<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg }</p>
+<p>{% img http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg }</p>
 
 <p>{% blockquote http://mb.softbank.jp/mb/ipad/service/wi-fi/ %}
 iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi-Fiスポットを無料で提供します。
@@ -76,7 +76,7 @@ iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア�
     <link href="http://kinopyo.github.com/blog/ipad-2-not-charging-when-connected-to-pc-usb"/>
     <updated>2011-08-08T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/ipad-2-not-charging-when-connected-to-pc-usb</id>
-    <content type="html"><![CDATA[<p>{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/08/ipad2-not-charged.jpg ipad2-not-charged %}</p>
+    <content type="html"><![CDATA[<p>{% img http://www.kinopyo.com/wp-content/uploads/2011/08/ipad2-not-charged.jpg ipad2-not-charged %}</p>
 
 <p>iPad2をPCのUSBに繋ぐと「充電していません」(Not Charging)のメッセージが右上に出ます。Macbook Proは問題なかったです。</p>
 
@@ -124,15 +124,15 @@ iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア�
 <h2>操作性</h2>
 
 <p>リストビューで左スワイプがstar/unstart、右スワイプがread/unreadです。これはiPhone版と一緒です。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/IMG_0011.jpg right swipe %}
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/06/IMG_0013.jpg swipe left %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/06/IMG_0011.jpg right swipe %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/06/IMG_0013.jpg swipe left %}
 左スワイプの処理は設定画面でReadItLaterやInstapaperに変更できます。</p>
 
 <br />
 
 
 <p>そして記事ビューでは、右スワイプはリストビューに戻ります。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/05/IMG_0009.jpg reeder for ipad right swipe to go back to list view %}</p>
+{% img http://www.kinopyo.com/wp-content/uploads/2011/05/IMG_0009.jpg reeder for ipad right swipe to go back to list view %}</p>
 ]]></content>
   </entry>
   

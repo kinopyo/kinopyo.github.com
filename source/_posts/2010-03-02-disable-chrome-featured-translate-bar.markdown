@@ -14,7 +14,7 @@ categories: [nil]
 +  「Preferences」ってファイルがあります。
 
 +  「translate」で検索すると、最後あたりでこのような文字列があるはずです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/03/chrome_preference.jpg chrome_preference %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/03/chrome_preference.jpg chrome_preference %}
 
 +  translate_language_blacklistを、以下コードに書き換える。
 
@@ -24,5 +24,5 @@ categories: [nil]
 ```
 
 +  修正完了
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/03/chrome_preference_modified.jpg chrome_preference_modified %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/03/chrome_preference_modified.jpg chrome_preference_modified %}
 

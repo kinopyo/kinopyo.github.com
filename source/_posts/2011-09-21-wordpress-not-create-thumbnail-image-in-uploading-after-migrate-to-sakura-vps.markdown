@@ -9,7 +9,7 @@ categories: ["centos", "Linux", "PHP", "vps", "Windows", "WordPress"]
 ---
 Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。
 
-<img src="http://hsuzuki.ddo.jp/weblog/wp-content/uploads/2008/12/radio_f.bmp" />
+<img src="http://hsuzuki.ddo.jp/wewp-content/uploads/2008/12/radio_f.bmp" />
 
 調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
 CentOSなのでyumを使ってインストールすれば解決です。

@@ -13,7 +13,7 @@ categories: ["Chrome", "extension"]
 
 [My First Chrome Extension Youku Opener](https://chrome.google.com/webstore/detail/nhgblejfncijjppnbfgaljgdifaokine?hc=search&hcp=main)
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/10/Screen-Shot-2011-10-21-at-15.15.07.png My First Google Chrome Extension: Youku Opener %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/10/Screen-Shot-2011-10-21-at-15.15.07.png My First Google Chrome Extension: Youku Opener %}
 
 公開3日で14weekly usersの数字でした。意外と使おうとするユーザがいますね、unexpected、予想外でした。
 

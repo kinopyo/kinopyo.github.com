@@ -14,7 +14,7 @@ Warning: call_user_func_array() *function.call-user-func-array*: First argument 
 |<
 
 ## 回避方法
-blog/wp-content/plugins/flexible-upload/flexible-upload-wp25.phpに以下のコードを追加
+wp-content/plugins/flexible-upload/flexible-upload-wp25.phpに以下のコードを追加
 
 ```php
 

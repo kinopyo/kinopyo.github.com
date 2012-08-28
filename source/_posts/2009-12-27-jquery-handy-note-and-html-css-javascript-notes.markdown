@@ -11,7 +11,7 @@ jQueryのAPIを一枚の紙にまとめたものです。
 ノートはPDFファイルで、ダウンロードすることができます。
 [jQuery APIノート](http://www.javascripttoolbox.com/jquery/cheatsheet/JQueryCheatSheet-1.3.2.pdf)
 
-{% img http://kinopyo.com/blog/wp-content/uploads/2009/12/jQuery-api-note.jpg jQuery-api-note %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/jQuery-api-note.jpg jQuery-api-note %}
 <br/>
 作者はMattさんです。ありがとうございました。
 <br/>

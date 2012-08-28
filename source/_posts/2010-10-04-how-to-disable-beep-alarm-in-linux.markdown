@@ -11,6 +11,6 @@ categories: ["Linux"]
 
 「効果音の設定」ダイアログが表示されるので「ビープ音」タブをクリックし「システムビープ音を有効にする(E)」のチェックを無効にし、「閉じる(C)」ボタンを押下。
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/10/Menu-sound.jpg Menu-sound %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/10/Menu-sound.jpg Menu-sound %}
 
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2010/10/Disable-beep.jpg Disable-beep %}
+{% img http://www.kinopyo.com/wp-content/uploads/2010/10/Disable-beep.jpg Disable-beep %}

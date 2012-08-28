@@ -11,6 +11,6 @@ MacでGoogle Chromeを使う時、誤操作でcommand+wを押したかったの�
 
 # 方法
 Chromeのアプリケーションをアクティブにし、一番上のトップバーからChrome -> <strong>Warn Before Quitting (⌘Q)</strong>をチェックすればOKです。
-{% img http://www.kinopyo.com/blog/wp-content/uploads/2011/07/Chrome_wanr_before_quitting.png Chrome_wanr_before_quitting %}
+{% img http://www.kinopyo.com/wp-content/uploads/2011/07/Chrome_wanr_before_quitting.png Chrome_wanr_before_quitting %}
 
 こうすればCommand + Qは警告のメッセージが出て、長押しで終了するようになります。
