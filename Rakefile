@@ -49,10 +49,12 @@ end
 
 desc "Generate jekyll site"
 task :generate do
+  start = Time.now
   raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
   puts "## Generating Site with Jekyll"
   system "compass compile --css-dir #{source_dir}/stylesheets"
   system "jekyll"
+  puts "Running time: #{Time.now - start}"
 end
 
 desc "Watch the site and regenerate when it changes"
