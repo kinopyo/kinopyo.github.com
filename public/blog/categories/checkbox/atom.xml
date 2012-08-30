@@ -4,7 +4,7 @@
   <title><![CDATA[Category: checkbox | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/checkbox/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-30T20:05:19+09:00</updated>
+  <updated>2012-08-31T01:34:05+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,8 +18,9 @@
     <link href="http://kinopyo.github.com/blog/jquery-checkbox-checked-event"/>
     <updated>2011-11-22T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/jquery-checkbox-checked-event</id>
-    <content type="html"><![CDATA[<p>jQueryでチェックボックスの状態を監視するイベントは<em>click event</em>を使う。
-チェックされたかを判断するには<em>$("#some_checkbox").is(':checked')</em>がいい。</p>
+    <content type="html"><![CDATA[<p>jQueryでチェックボックスの状態を監視するイベントは<strong>click event</strong>を使う。</p>
+
+<p>チェックされたかを判断するには<code>$("#some_checkbox").is(':checked')</code>がいい。</p>
 
 <p>CoffeeScriptでのサンプルコード：
 <div><script src='https://gist.github.com/1385217.js?file='></script>
@@ -30,7 +31,7 @@
     # actions when not checked</code></pre></noscript></div>
 </p>
 
-<p><em>change event</em>も監視はできるが、取れる値は遅延されるみたいです。</p>
+<p><strong>change event</strong>も監視はできるが、取れる値は遅延されるみたいです。</p>
 
 <p><blockquote><p>The change event is sent to an element when its value changes. This event is limited to input elements, textarea boxes and select elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse, but for the other element types the event is deferred until the element loses focus.</p></blockquote></p>
 

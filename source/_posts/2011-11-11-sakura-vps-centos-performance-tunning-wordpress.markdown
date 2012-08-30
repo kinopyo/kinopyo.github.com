@@ -16,11 +16,11 @@ categories: ["Apache", "centos", "Performance", "PHP", "WordPress"]
 効果が高い順で。
 
 ## Wordpress
-* W3 Total Cache *プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
+**W3 Total Cache**プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
 ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。
 
 ## Apache
-[httpd.conf](httpd.conf)を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。
+`httpd.conf`を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。
 
 {% codeblock %}
 
@@ -36,8 +36,9 @@ MaxMemFree 2000
 
 {% endcodeblock %}
 
-## PHP
-*/etc/php.ini  *
+## PHP ##
+### /etc/php.ini
 zlib.output_compression = On
-*APC*
+
+### APC
 pecl install APC

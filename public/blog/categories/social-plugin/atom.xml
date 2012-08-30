@@ -4,7 +4,7 @@
   <title><![CDATA[Category: social plugin | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/social-plugin/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-30T20:05:19+09:00</updated>
+  <updated>2012-08-31T01:34:05+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -15,7 +15,7 @@
   
   <entry>
     <title type="html"><![CDATA[What you can do with Facebook Comments Social Plugin]]></title>
-    <link href="http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin"/>
+    <link href="http://kinopyo.github.com/blog/what-you-can-do-with-facebook-comments-social-plugin"/>
     <updated>2012-01-05T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin</id>
     <content type="html"><![CDATA[<h1>Goal</h1>
@@ -65,10 +65,6 @@
 <p>There're Moderate dropdown to Hide comment, Ban User or Boost comment. In the Settings page you have other options like add moderators or set blacklisted words, etc.</p>
 
 <p>Remember to check all the FAQ on the reference docs, very useful. I wonder why those go to the FAQ though.</p>
-
-<h2>Demo</h2>
-
-<p><a href="http://www.kinopyo.com/demo/facebook_comments.html">http://www.kinopyo.com/demo/facebook_comments.html</a></p>
 
 <h1>Reference</h1>
 

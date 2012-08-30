@@ -3,7 +3,7 @@ layout: post
 title: 'What you can do with Facebook Comments Social Plugin'
 date: 2012-1-5
 wordpress_id: 2598
-permalink: /blog/english-what-you-can-do-with-facebook-comments-social-plugin
+permalink: /blog/what-you-can-do-with-facebook-comments-social-plugin
 comments: true
 categories: ["comments", "Facebook", "social plugin"]
 ---
@@ -53,10 +53,6 @@ or you can do it inside the Comments Box directly.
 There're Moderate dropdown to Hide comment, Ban User or Boost comment. In the Settings page you have other options like add moderators or set blacklisted words, etc.
 
 Remember to check all the FAQ on the reference docs, very useful. I wonder why those go to the FAQ though.
-
-## Demo
-
-<a href="http://www.kinopyo.com/demo/facebook_comments.html">http://www.kinopyo.com/demo/facebook_comments.html</a>
 
 # Reference
 

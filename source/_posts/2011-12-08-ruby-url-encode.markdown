@@ -8,7 +8,3 @@ comments: true
 categories: ["Ruby", "urlencode"]
 ---
 {% gist 1445867 %}
-
-# 日本語
-
-{% gist 1445867 %}

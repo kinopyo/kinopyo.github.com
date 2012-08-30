@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bookmark | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/bookmark/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-30T20:05:19+09:00</updated>
+  <updated>2012-08-31T01:34:05+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[d.me メール送るだけでDeliciousにブックマークできるようになった]]></title>
-    <link href="http://kinopyo.github.com/blog/mail-to-delicious-to-bookmart-a-page"/>
-    <updated>2011-11-14T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mail-to-delicious-to-bookmart-a-page</id>
-    <content type="html"><![CDATA[<p><em>blackbirdpie url="http://twitter.com/#!/fantasyday/status/135953105501175811"</em></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chrome（Chromium）でマルチプロファイルを使う]]></title>

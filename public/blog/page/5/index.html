@@ -326,11 +326,13 @@ rvm use 1.9.3</code></pre></noscript></div>
 <blockquote><p>If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.</p><p>HEAD^, which means “the parent of HEAD”:</p></blockquote>
 
 
-<p>通常ケースで言うと*HEAD<sup></em>は一個前のコミット、<em>HEAD<sup>^</em>は2つ前のコミットってことですね。他の書き方は<em>HEAD~2</em>、<em>HEAD~5*があります。</sup></sup></p>
+<p>通常ケースで言うと*HEAD<sup><em>は一個前のコミット、</em>HEAD<sup>^<em>は2つ前のコミットってことですね。他の書き方は</em>HEAD~2<em>、</em>HEAD~5*があります。</sup></sup></p>
 
 <h2>HEAD<sup>1、HEAD<sup>2</sup></sup></h2>
 
-<p>これは上記と若干違って*merge</em>のコミットに対してのみ有効です。マージの場合はparentが2つあるので、<em>HEAD<sup>1</em>は今のブランチでのparent、<em>HEAD<sup>2*は取得先のparentを差してます。</sup></sup></p>
+<p>これは上記と若干違ってmergeのコミットに対してのみ有効です。</p>
+
+<p>マージの場合はparentが2つあるので、HEAD\<sup>1は今のブランチでのparent、HEAD\<sup>2は取得先のparentを差してます。</sup></sup></p>
 
 		
 		

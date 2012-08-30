@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-30T20:05:19+09:00</updated>
+  <updated>2012-08-31T01:34:05+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -28,15 +28,12 @@
 
 <h2>Wordpress</h2>
 
-<ul>
-<li>W3 Total Cache *プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
-ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</li>
-</ul>
-
+<p><strong>W3 Total Cache</strong>プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
+ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</p>
 
 <h2>Apache</h2>
 
-<p><a href="httpd.conf">httpd.conf</a>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
+<p><code>httpd.conf</code>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -67,10 +64,13 @@
 
 <h2>PHP</h2>
 
-<p><em>/etc/php.ini  *
-zlib.output_compression = On
-</em>APC*
-pecl install APC</p>
+<h3>/etc/php.ini</h3>
+
+<p>zlib.output_compression = On</p>
+
+<h3>APC</h3>
+
+<p>pecl install APC</p>
 ]]></content>
   </entry>
   

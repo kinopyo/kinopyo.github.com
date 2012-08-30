@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Rails Append class if condition is true in Haml  - Yet Another Kinopyo Blog</title>
+	<title>Rails Append class if condition is true in Haml - Yet Another Kinopyo Blog</title>
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="blackbirdpie url=&#8221;http://twitter.com/#!/fantasyday/status/138923631433625600&#8221; .post{:class => ("gray" unless post.published?)} {% &hellip;">
+	<meta name="description" content="Append class if condition is true in Haml (with Rails) - Stack Overflow stackoverflow.com/questions/3453…&mdash; kinopyoさん (@fantasyday) 11月 22, 2011 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,24 +71,19 @@
 
 </header>
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Rails Append class if condition is true in Haml </h1>
-	<div class="entry-content"><p><em>blackbirdpie url=&#8221;http://twitter.com/#!/fantasyday/status/138923631433625600&#8221;</em></p>
+	<h1 class="title">Rails Append class if condition is true in Haml</h1>
+	<div class="entry-content"><div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Append class if condition is true in Haml (with Rails) - Stack Overflow <a href="http://t.co/7pyL7pNn" title="http://stackoverflow.com/questions/3453560/append-class-if-condition-is-true-in-haml-with-rails">stackoverflow.com/questions/3453…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/138923631433625600" data-datetime="2011-11-22T10:15:49+00:00">11月 22, 2011</a></blockquote>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 
-<pre class=''>
-.post{:class => ("gray" unless post.published?)}
 
-{% endcodeblock %}
 
-# 日本語
 
-*blackbirdpie url="http://twitter.com/#!/fantasyday/status/138923631433625600"*
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">post</span><span class="p">{</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="s1">&#39;gray&#39;</span> <span class="k">unless</span> <span class="n">post</span><span class="o">.</span><span class="n">published?</span><span class="p">)</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-HAMLである条件がtrueの時だけあるclassをタグに追加したい場合
-{% codeblock %}
 
-.post{:class => ("gray" unless post.published?)}
-{% endcodeblock %}
-
+<p>HAMLである条件がtrueの時だけあるclassをタグに追加したい場合。</p>
 </div>
 
 
@@ -109,7 +104,7 @@ HAMLである条件がtrueの時だけあるclassをタグに追加したい場�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/haml/'>haml</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+	<a class='category' href='/blog/categories/haml/'>haml</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>
