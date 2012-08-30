@@ -7,8 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="開発においてローカルでいろいろテストすることが多いでしょう。
-その時ブラウザを開くと「セキュリティ保護のため、このコンピューターにアクセスする可能性のあるスクリプトやActiveXコントロールを実行しないよう、IEで制限されています。オプションを表示するには、ここをクリックしてください」 &hellip;">
+	<meta name="description" content="経緯
+iframeで動的に画面を読み込む際URL不正などによる通信エラーが起こした場合の
+エラーハンドラを追加したかったので判断するロジックが必要でした。
+わざと誤ったURLを渡して検証しましたが、以下のコードはだめでした。 {% codeblock %} // &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,6 +74,83 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-message-of-access-denied-in-ie">IE JavaScript実行した際の「アクセスが拒否されました」メッセージ</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>経緯</h4>
+<p>iframeで動的に画面を読み込む際URL不正などによる通信エラーが起こした場合の</p>
+<p>エラーハンドラを追加したかったので判断するロジックが必要でした。</p>
+<p>わざと誤ったURLを渡して検証しましたが、以下のコードはだめでした。</p>
+<br/>
+{% codeblock %}
+
+<span class="synComment">// documentがnullかと思ってそれで判断しようとしたんです。</span>
+<span class="synStatement">if</span> (<span class="synIdentifier">this</span>.contentWindow.<span class="synStatement">document</span>) <span class="synIdentifier">{}</span>
+{% endcodeblock %}
+<h4>現象</h4>
+<p>あるプロパティは存在しているのに、アクセスができない。コードで書くと</p>
+<pre class="syntax-highlight">
+<span class="synComment">// プロパティがオブジェクトに存在するかを判断</span>
+<span class="synComment">// ここはアラーとが出した、つまり存在したってこと</span>
+<span class="synStatement">if</span> (<span class="synConstant">&#34;aProperty&#34;</span> <span class="synStatement">in</span> obj) <span class="synStatement">alert</span>(<span class="synConstant">'obj has aProperty'</span>);
+<span class="synComment">// 次にそのオブジェクトにアクセスしようとすると</span>
+<span class="synComment">// エラーになった</span>
+obj.aProperty
+{% endcodeblock %}
+<p>IE8の開発ツールで見たら「アクセスが拒否されました」と書いてある。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091119133655" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091119/20091119133655.jpg" alt="f:id:kinopyo:20091119133655j:image" title="f:id:kinopyo:20091119133655j:image" class="hatena-fotolife"></a></p>
+<br/>
+<h4>エラーをcatch</h4>
+<p>判断のロジックをtry-catch文に書けばいいです。</p>
+<pre class="syntax-highlight">
+<span class="synStatement">try</span> <span class="synIdentifier">{</span>
+<span class="synIdentifier">this</span>.contentWindow.<span class="synStatement">document</span>;
+<span class="synIdentifier">}</span> <span class="synStatement">catch</span> (e) <span class="synIdentifier">{</span>
+<span class="synStatement">if</span> (e.<span class="synType">number</span> == -2147024891) <span class="synIdentifier">{</span>
+<span class="synComment">//アクセスが拒否されました。</span>
+<span class="synStatement">alert</span>(e.message);
+<span class="synIdentifier">}</span> <span class="synStatement">else</span> <span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(<span class="synConstant">&#34;別のメッセージ&#34;</span>);
+<span class="synIdentifier">}</span>
+<span class="synIdentifier">}</span>
+
+{% endcodeblock %}
+<br/>
+<p>参考サイト：<a href="http://sei.qee.jp/docs/freetalk/2009/02.html" target="_blank">http://sei.qee.jp/docs/freetalk/2009/02.html</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-19T00:00:00+09:00" pubdate data-updated="true">2009-11-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -728,142 +807,6 @@
 
 
 <time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder">Flex3: trace()ログ出力の設定、Windowsの隠しフォルダに注意</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>Flexのtrace()はログ出力の機能です。</p>
-<p>Javaに慣れましたので、trace()もてっきりコンソールにも</p>
-<p>出力すると思っちゃいましたが、</p>
-<p>実はそうではありません。</p>
-<p>trace()を使うにはまず設定が必要です。</p>
-<h4>バージョン情報</h4>
-<ul>
-<li>Flex3 Builder: Version 3.0 (build 3.0.2.214193)</li>
-<li>Flash Player: 9,0,124,0</li>
-</ul>
-<h4>デバッガ版のFlash Player</h4>
-<p>Flex3 Builderをダウンロードしそこに含んだ</p>
-<p>for IE, FirefoxなどのFlash Playerを全部インストールしてください。</p>
-<p>そのほうが万全で楽です。</p>
-<p>既にFlash Playerがインストールされたとしても、</p>
-<p>それがデバッガ版じゃないとダメですよ。</p>
-<h4>設定ファイルの作成</h4>
-<ul>
-<li><span style="color:#0000FF;">mm.cfg</span>という設定ファイルを下記場所に作成</li>
-</ul>
-<table>
-<tr><th>オペレーティングシステム</th><th>ファイルの作成場所</th></tr>
-<tr><td>Macintosh OS X</td><td>/Library/Application Support/Macromedia </td></tr>
-<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f1" name="fn1" title="AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み">*1</a></span></td><td>C:\Users\username </td></tr>
-<tr><td>Windows 2000/XP</td><td>C:\Documents and Settings\username </td></tr>
-<tr><td>Windows 95/98/ME</td><td>%HOMEDRIVE%\%HOMEPATH% </td></tr>
-<tr><td>Linux</td><td>/home/username </td></tr>
-</table>
-<h4>設定ファイルの編集</h4>
-<p>作成したmm.cfgファイルを下記のように編集すれば、エラーのレポートとトレースログが有効になります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorReportingEnable=1
-</span><span class='line'>TraceOutputFileEnable=1</span></code></pre></td></tr></table></div></figure>
-
-<p>TraceOutputFileNameというログファイルの名前と出力先を指定するプロパティもありますが、</p>
-<blockquote title="Adobe Flex3 ヘルプ" cite="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337">
-<p>Flash Player 9 Update 以降では、TraceOutputFileName プロパティは無視され、</p>
-<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
-<cite><a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex3 ヘルプ</a></cite></blockquote>
-<p>との懸念もあり、各自の環境を確認した上でお使いください。</p>
-<p>私のFLex3 Builder, Flash 9では無効でした。</p>
-<h4>ログファイルの場所</h4>
-<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
-<table>
-<tr><th>オペレーティングシステム</th><th>ログファイルの場所</th></tr>
-<tr><td>Macintosh OS X</td><td>/Users/username/Library/Preferences/Macromedia/Flash Player/Logs/  </td></tr>
-<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f2" name="fn2" title="AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み">*2</a></span></td><td>C:\Users\username\AppData\Roaming\Macromedia\Flash Player\Logs </td></tr>
-<tr><td>Windows 95/98/ME/2000/XP</td><td>C:\Documents and Settings\username\Application Data\Macromedia\Flash Player\Logs </td></tr>
-<tr><td>Linux</td><td>/home/username/.macromedia/Flash_Player/Logs/ </td></tr>
-</table>
-<p>Windowsの方は特に隠しフォルダに注意してください。</p>
-<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
-<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
-<h4>テストコード</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>?xml version&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;1.0&#34;&lt;/span> encoding&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;utf-8&#34;&lt;/span>?&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Application xmlns:mx&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;http://www.adobe.com/2006/mxml&#34;&lt;/span>
-</span><span class='line'>layout&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;absolute&#34;&lt;/span> creationComplete&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;init()&#34;&lt;/span>&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>![CDATA[
-</span><span class='line'>&lt;span class="synType">private&lt;/span> &lt;span class="synStatement">function&lt;/span> init():void{
-</span><span class='line'>trace(&lt;span class="synConstant">&#34;Hello World&#34;&lt;/span>);
-</span><span class='line'>}
-</span><span class='line'>]]&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Application&lt;span class="synStatement">&#62;&lt;/span></span></code></pre></td></tr></table></div></figure>
-
-<p>これでログファイルには「Hello World」と出力されるはずです。</p>
-<h4>特記事項</h4>
-<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
-<p>自分でもう一回書こうと全然思わなかったのですが、</p>
-<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
-<p>私が最初見つかった幾つかのサイトでの書き方では</p>
-<p>どう設定してもまったくログが出力されなかったのです。</p>
-<p>アンインストールしたり、設定ファイルのエンコードまで</p>
-<p>神経質になってしまいました。</p>
-<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
-<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
-<p>私もこれからは注意します。</p>
-<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
-</div>
-
-
-<div class="footnote">
-<p class="footnote"><a href="/kinopyo/#fn1" name="f1">*1</a>：AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み</p>
-<p class="footnote"><a href="/kinopyo/#fn2" name="f2">*2</a>：AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-12T00:00:00+09:00" pubdate data-updated="true">2009-11-12</time></div>
 	<div class="tags">
 
 

@@ -7,9 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" 1
-{&quot;`$foo` plain text `$bar`&quot;} 日本語 こんな感じです。 1
-{&quot;`$foo` plain text `$bar`&quot;} 2011-05-11 Smarty ">
+	<meta name="description" content="1
+2
+3
+uses(&#39;Xml&#39;);
+$xml = new Xml(&quot;/path/to/xml&quot;);
+$xml_array = Set::reverse($xml); 日本語 CakephpでXMLを配列に変換するのはとても簡単です。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +76,62 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cakephp-xml-to-array">Cakephp XML to Array</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">uses(&#39;Xml&#39;);</span>
+</span><span class='line'><span class="x">$xml = new Xml(&quot;/path/to/xml&quot;);</span>
+</span><span class='line'><span class="x">$xml_array = Set::reverse($xml);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>日本語</h1>
+
+<p>CakephpでXMLを配列に変換するのはとても簡単です。
+下記のファンクションを使えば一発でできます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">uses(&#39;Xml&#39;);</span>
+</span><span class='line'><span class="x">$xml = new Xml(&quot;/path/to/xml&quot;);</span>
+</span><span class='line'><span class="x">$xml_array = Set::reverse($xml);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-15T00:00:00+09:00" pubdate data-updated="true">2011-05-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/xml/'>xml</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -709,76 +768,6 @@ php.iniを開いて<strong>error_reporting</strong>で検索します。
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/php-call-json-api-sample-code">PHPで他のJSON形式APIをコールするサンプルコード</a></h1>
-	<div class="entry-content">
-		<p>file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// APIコール</span>
-</span><span class='line'><span class="x">$api_url = &#39;http://example.com/api/&#39;;</span>
-</span><span class='line'><span class="x">$api_ret = file_get_contents($api_url);</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">// JSONにデコード</span>
-</span><span class='line'><span class="x">$api_result = json_decode($api_ret,true);</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">// APIエラーチェック: 何かしらの成功フラグでチェック</span>
-</span><span class='line'><span class="x">if(isset($api_result*&#39;success&#39;]) &amp;&amp; $api_result[&#39;success&#39;* == 0)</span>
-</span><span class='line'><span class="x">{</span>
-</span><span class='line'><span class="x">    // 処理</span>
-</span><span class='line'><span class="x">}</span>
-</span><span class='line'><span class="x">else</span>
-</span><span class='line'><span class="x">{</span>
-</span><span class='line'><span class="x">    // handle error</span>
-</span><span class='line'><span class="x">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-07T00:00:00+09:00" pubdate data-updated="true">2011-03-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/api/'>API</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

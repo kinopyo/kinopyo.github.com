@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:53:12+09:00</updated>
+  <updated>2012-08-30T20:05:19+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to I get rid of "WARN Could not determine content-length of response body"]]></title>
+    <link href="http://kinopyo.github.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body/"/>
+    <updated>2012-08-30T19:51:00+09:00</updated>
+    <id>http://kinopyo.github.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body</id>
+    <content type="html"><![CDATA[<p>If you get these warning messages in your rails log, just simply put <code>thin</code> to your Gemfile.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>WARN  Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;thin&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I found this from this stackoverflow <a href="http://stackoverflow.com/questions/7082364/what-does-warn-could-not-determine-content-length-of-response-body-mean-and-h">question</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[an iterm theme - SOLARIZED]]></title>
@@ -620,69 +642,6 @@ iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア�
 <p>そこの説明文は全然嘘ということでした。</p>
 
 <p>関連リンク：<a href="http://mb.softbank.jp/mb/ipad/service/wi-fi/">http://mb.softbank.jp/mb/ipad/service/wi-fi/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What you can do with Facebook Comments Social Plugin]]></title>
-    <link href="http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin"/>
-    <updated>2012-01-05T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin</id>
-    <content type="html"><![CDATA[<h1>Goal</h1>
-
-<p>To use facebook comments integrated to your own site.</p>
-
-<h2>Requirements</h2>
-
-<p>Need a facebook application for your site(domain).</p>
-
-<p>For example:</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-05-at-14.21.25.png"></p>
-
-<h2>How to get it</h2>
-
-<p>Fill in the blank and click get code from <a href="https://developers.facebook.com/docs/reference/plugins/comments/">https://developers.facebook.com/docs/reference/plugins/comments/</a></p>
-
-<p>Then just paste that code to your site(page).</p>
-
-<h2>Functions</h2>
-
-<ul>
-<li><p>People who want to comment can choose if post to Facebook, there&#8217;s a checkbox.</p></li>
-<li><p>Comments posted to facebook are bidirectional. Threads stay synced across Facebook and on the Comments Box on your site regardless of where the comment was made.</p></li>
-<li><p>Sort comments by Social Ranking, Chronological(Time) order</p></li>
-<li><p>Boosting comments: Moderators can now ensure that high-quality comments appear at the top of the Comments Box</p></li>
-</ul>
-
-
-<p>&nbsp;</p>
-
-<p>Facebook doesn&#8217;t explain how the Social Ranking works, but I checked some real-world examples and I guess basically we can consider it sort by like counts.</p>
-
-<h2>Moderation Tools</h2>
-
-<p>Put this meta tag in the html.</p>
-
-<p><span style="color: #008080;"> &lt;meta property=&#8221;fb:admins&#8221; content=&#8221;{YOUR_FACEBOOK_USER_ID}&#8221;/&gt;</span></p>
-
-<p>Then if you log in with the owner of the application, you can access this url to control comments:</p>
-
-<p><a href="http://developers.facebook.com/tools/comments">http://developers.facebook.com/tools/comments</a></p>
-
-<p>or you can do it inside the Comments Box directly.</p>
-
-<p>There&#8217;re Moderate dropdown to Hide comment, Ban User or Boost comment. In the Settings page you have other options like add moderators or set blacklisted words, etc.</p>
-
-<p>Remember to check all the FAQ on the reference docs, very useful. I wonder why those go to the FAQ though.</p>
-
-<h2>Demo</h2>
-
-<p><a href="http://www.kinopyo.com/demo/facebook_comments.html">http://www.kinopyo.com/demo/facebook_comments.html</a></p>
-
-<h1>Reference</h1>
-
-<p><a href="https://developers.facebook.com/docs/reference/plugins/comments/">https://developers.facebook.com/docs/reference/plugins/comments/</a></p>
 ]]></content>
   </entry>
   

@@ -7,7 +7,30 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="1000件くらいのinsert文を用意して、それをコピって一気にmysqlのコマンドラインに貼りつけたらうまく行かなかったんです。sql文に文法的間違いがなくてもエラーとなったり、表示が崩れたりしました。数件なら多分まだいいんですけど、さすが1000件だと(コマンドラインに貼り付けるやり方では) &hellip;">
+	<meta name="description" content="autocommitの値を持ちましてMySQLでのトランザクションを制御できます。 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+-暗黙(自動)コミットを無効に
+SET AUTOCOMMIT = 0;
+-トランザクション開始
+BEGIN &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +94,84 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mysql-using-autocommit-to-control-transaction">MySQL autocommitでトランザクションを制御する</a></h1>
+	<div class="entry-content">
+		<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを無効に</span>
+</span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="o">-</span><span class="err">トランザクション開始</span>
+</span><span class='line'><span class="k">BEGIN</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="k">SQL</span><span class="err">文をながす</span>
+</span><span class='line'><span class="k">UPDATE</span><span class="p">...</span>
+</span><span class='line'><span class="k">INSERT</span><span class="p">...</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="err">コミット</span>
+</span><span class='line'><span class="k">COMMIT</span><span class="p">;</span>
+</span><span class='line'><span class="o">-</span><span class="err">あるいはロールバック</span>
+</span><span class='line'><span class="k">ROLLBACK</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを有効に</span>
+</span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットのステータスを確認</span>
+</span><span class='line'><span class="k">SELECT</span> <span class="o">@@</span><span class="n">AUTOCOMMIT</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-07T00:00:00+09:00" pubdate data-updated="true">2010-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sqlite/'>sqlite</a>, <a class='category' href='/blog/categories/transaction/'>transaction</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1156,94 +1257,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-format-number-to-japanese-currency">JavaScript: カンマ区切りで数値をフォーマットする</a></h1>
-	<div class="entry-content">
-		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="err">/## </span>
-</span><span class='line'> <span class="err">#</span>  <span class="err">数値を日本円表現にフォーマット。</span>
-</span><span class='line'> <span class="err">#</span>  <span class="err">例：</span><span class="mi">12345</span> <span class="o">-&gt;</span> <span class="mi">12</span><span class="p">,</span><span class="mi">345</span>
-</span><span class='line'> <span class="err">#</span>
-</span><span class='line'> <span class="err">#</span> <span class="o">/</span>
-</span><span class='line'><span class="nx">num2Currency</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// 画面項目の値</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">str</span><span class="o">=</span><span class="nx">obj</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="nx">str</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/,/g</span><span class="o">/</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">while</span><span class="p">(</span><span class="nx">num</span> <span class="o">!=</span> <span class="p">(</span><span class="nx">num</span> <span class="o">=</span><span class="nx">num</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^(-?\d+)(\d{3})/</span><span class="p">,</span><span class="s2">&quot;$1,$2&quot;</span><span class="p">)));</span>
-</span><span class='line'>  <span class="nx">obj</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">num</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">/</span><span class="err">##</span>
-</span><span class='line'> <span class="err">#</span>  <span class="err">日本円表現を数値にフォーマット。</span>
-</span><span class='line'> <span class="err">#</span>  <span class="err">例：</span><span class="mi">123</span><span class="p">,</span><span class="mi">45</span> <span class="o">-&gt;</span> <span class="mi">12345</span>
-</span><span class='line'> <span class="err">#</span>
-</span><span class='line'> <span class="err">#</span> <span class="o">/</span>
-</span><span class='line'><span class="nx">currency2Num</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">str</span><span class="o">=</span><span class="nx">obj</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/,/g</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">obj</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">num</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>
 
 
 </div>

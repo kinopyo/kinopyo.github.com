@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="sudo gem install railsでこんなエラーが出ちゃいました。 1
-Error installing rails bundler requires RubyGems version &gt;= 1.3.6 解決策は 1
+	<meta name="description" content="file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。 1
 2
 3
 4
@@ -21,7 +20,11 @@ Error installing rails bundler requires RubyGems version &gt;= 1.3.6 解決策�
 11
 12
 13
-14 &hellip;">
+14
+15
+16
+// APIコール
+$api_url = &#39;http://example.com/api/&#39 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -85,6 +88,76 @@ Error installing rails bundler requires RubyGems version &gt;= 1.3.6 解決策�
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-call-json-api-sample-code">PHPで他のJSON形式APIをコールするサンプルコード</a></h1>
+	<div class="entry-content">
+		<p>file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// APIコール</span>
+</span><span class='line'><span class="x">$api_url = &#39;http://example.com/api/&#39;;</span>
+</span><span class='line'><span class="x">$api_ret = file_get_contents($api_url);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// JSONにデコード</span>
+</span><span class='line'><span class="x">$api_result = json_decode($api_ret,true);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// APIエラーチェック: 何かしらの成功フラグでチェック</span>
+</span><span class='line'><span class="x">if(isset($api_result*&#39;success&#39;]) &amp;&amp; $api_result[&#39;success&#39;* == 0)</span>
+</span><span class='line'><span class="x">{</span>
+</span><span class='line'><span class="x">    // 処理</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">else</span>
+</span><span class='line'><span class="x">{</span>
+</span><span class='line'><span class="x">    // handle error</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-07T00:00:00+09:00" pubdate data-updated="true">2011-03-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/api/'>API</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -612,84 +685,6 @@ Cucumberでは自然言語で書けるため、実装から離れた視点でい
 
 
 	<a class='category' href='/blog/categories/jsonp/'>JSONP</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mysql-using-autocommit-to-control-transaction">MySQL autocommitでトランザクションを制御する</a></h1>
-	<div class="entry-content">
-		<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを無効に</span>
-</span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="o">-</span><span class="err">トランザクション開始</span>
-</span><span class='line'><span class="k">BEGIN</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="k">SQL</span><span class="err">文をながす</span>
-</span><span class='line'><span class="k">UPDATE</span><span class="p">...</span>
-</span><span class='line'><span class="k">INSERT</span><span class="p">...</span>
-</span><span class='line'><span class="p">...</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="err">コミット</span>
-</span><span class='line'><span class="k">COMMIT</span><span class="p">;</span>
-</span><span class='line'><span class="o">-</span><span class="err">あるいはロールバック</span>
-</span><span class='line'><span class="k">ROLLBACK</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを有効に</span>
-</span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットのステータスを確認</span>
-</span><span class='line'><span class="k">SELECT</span> <span class="o">@@</span><span class="n">AUTOCOMMIT</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-07T00:00:00+09:00" pubdate data-updated="true">2010-12-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sqlite/'>sqlite</a>, <a class='category' href='/blog/categories/transaction/'>transaction</a>
 
 
 </div>

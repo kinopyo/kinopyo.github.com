@@ -4,7 +4,7 @@
   <title><![CDATA[Category: editor | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/editor/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-29T01:53:12+09:00</updated>
+  <updated>2012-08-30T20:05:19+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -48,14 +48,16 @@ Below is a sample for Safari.</p>
 
 <p>Bundle Editorを開いて、HTMLのセクションの中の「Refresh Running Browser(s)」をクリックします。</p>
 
-<p>右側のコードはわかりやすいです。まずそのブラウザが起動しているかをチェックして、リフレッシュします。デフォルトではFirefox、ChromeやSafariなど全部対応しています。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" title="Bundle Editor Refresh Running Browsers" ></p>
+<p>右側のコードはわかりやすいです。まずそのブラウザが起動しているかをチェックして、リフレッシュします。デフォルトではFirefox、ChromeやSafariなど全部対応しています。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" title="Bundle Editor Refresh Running Browsers" ></p>
 
 <p><strong>Activation Key EquivalentをCommand + Sに変更して下のScope Selectorを空にします</strong>
 これでCommand + Sでファイルを保存した場合起動中のブラウザは全部リフレッシュされるはずです。</p>
 
-<p>もし特定のブラウザだけリフレッシュしたい場合は、コピペーで新規にSnippetを作成し、該当のブラウザのコードだけを貼ればいいです。以下はSafariの例です。
-<a href="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari.png"><img class="alignnone size-medium wp-image-2334" title="Textmate auto refresh safari" src="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" alt="" width="450" height="334" /></a></p>
+<p>もし特定のブラウザだけリフレッシュしたい場合は、コピペーで新規にSnippetを作成し、該当のブラウザのコードだけを貼ればいいです。以下はSafariの例です。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" title="Textmate auto refresh safari" ></p>
 ]]></content>
   </entry>
   

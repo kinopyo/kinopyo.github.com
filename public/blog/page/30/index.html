@@ -7,11 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="誤った使い方
-例えばbind時にname変数に格納された情報を渡したい
-{% codeblock %} var name = &#34;kinopyo&#34;;
-$(&#34;:button&#34;).bind(&#34;click&#34;,function(name){
-alert( &hellip;">
+	<meta name="description" content="Flexのtrace()はログ出力の機能です。
+Javaに慣れましたので、trace()もてっきりコンソールにも
+出力すると思っちゃいましたが、
+実はそうではありません。
+trace()を使うにはまず設定が必要です。
+バージョン情報 Flex3 Builder: Version 3.0 ( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +76,142 @@ alert( &hellip;">
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder">Flex3: trace()ログ出力の設定、Windowsの隠しフォルダに注意</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>Flexのtrace()はログ出力の機能です。</p>
+<p>Javaに慣れましたので、trace()もてっきりコンソールにも</p>
+<p>出力すると思っちゃいましたが、</p>
+<p>実はそうではありません。</p>
+<p>trace()を使うにはまず設定が必要です。</p>
+<h4>バージョン情報</h4>
+<ul>
+<li>Flex3 Builder: Version 3.0 (build 3.0.2.214193)</li>
+<li>Flash Player: 9,0,124,0</li>
+</ul>
+<h4>デバッガ版のFlash Player</h4>
+<p>Flex3 Builderをダウンロードしそこに含んだ</p>
+<p>for IE, FirefoxなどのFlash Playerを全部インストールしてください。</p>
+<p>そのほうが万全で楽です。</p>
+<p>既にFlash Playerがインストールされたとしても、</p>
+<p>それがデバッガ版じゃないとダメですよ。</p>
+<h4>設定ファイルの作成</h4>
+<ul>
+<li><span style="color:#0000FF;">mm.cfg</span>という設定ファイルを下記場所に作成</li>
+</ul>
+<table>
+<tr><th>オペレーティングシステム</th><th>ファイルの作成場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Library/Application Support/Macromedia </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f1" name="fn1" title="AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み">*1</a></span></td><td>C:\Users\username </td></tr>
+<tr><td>Windows 2000/XP</td><td>C:\Documents and Settings\username </td></tr>
+<tr><td>Windows 95/98/ME</td><td>%HOMEDRIVE%\%HOMEPATH% </td></tr>
+<tr><td>Linux</td><td>/home/username </td></tr>
+</table>
+<h4>設定ファイルの編集</h4>
+<p>作成したmm.cfgファイルを下記のように編集すれば、エラーのレポートとトレースログが有効になります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorReportingEnable=1
+</span><span class='line'>TraceOutputFileEnable=1</span></code></pre></td></tr></table></div></figure>
+
+<p>TraceOutputFileNameというログファイルの名前と出力先を指定するプロパティもありますが、</p>
+<blockquote title="Adobe Flex3 ヘルプ" cite="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337">
+<p>Flash Player 9 Update 以降では、TraceOutputFileName プロパティは無視され、</p>
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+<cite><a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex3 ヘルプ</a></cite></blockquote>
+<p>との懸念もあり、各自の環境を確認した上でお使いください。</p>
+<p>私のFLex3 Builder, Flash 9では無効でした。</p>
+<h4>ログファイルの場所</h4>
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+<table>
+<tr><th>オペレーティングシステム</th><th>ログファイルの場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Users/username/Library/Preferences/Macromedia/Flash Player/Logs/  </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f2" name="fn2" title="AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み">*2</a></span></td><td>C:\Users\username\AppData\Roaming\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Windows 95/98/ME/2000/XP</td><td>C:\Documents and Settings\username\Application Data\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Linux</td><td>/home/username/.macromedia/Flash_Player/Logs/ </td></tr>
+</table>
+<p>Windowsの方は特に隠しフォルダに注意してください。</p>
+<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
+<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
+<h4>テストコード</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>?xml version&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;1.0&#34;&lt;/span> encoding&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;utf-8&#34;&lt;/span>?&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Application xmlns:mx&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;http://www.adobe.com/2006/mxml&#34;&lt;/span>
+</span><span class='line'>layout&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;absolute&#34;&lt;/span> creationComplete&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;init()&#34;&lt;/span>&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>![CDATA[
+</span><span class='line'>&lt;span class="synType">private&lt;/span> &lt;span class="synStatement">function&lt;/span> init():void{
+</span><span class='line'>trace(&lt;span class="synConstant">&#34;Hello World&#34;&lt;/span>);
+</span><span class='line'>}
+</span><span class='line'>]]&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Application&lt;span class="synStatement">&#62;&lt;/span></span></code></pre></td></tr></table></div></figure>
+
+<p>これでログファイルには「Hello World」と出力されるはずです。</p>
+<h4>特記事項</h4>
+<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
+<p>自分でもう一回書こうと全然思わなかったのですが、</p>
+<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
+<p>私が最初見つかった幾つかのサイトでの書き方では</p>
+<p>どう設定してもまったくログが出力されなかったのです。</p>
+<p>アンインストールしたり、設定ファイルのエンコードまで</p>
+<p>神経質になってしまいました。</p>
+<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
+<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
+<p>私もこれからは注意します。</p>
+<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
+</div>
+
+
+<div class="footnote">
+<p class="footnote"><a href="/kinopyo/#fn1" name="f1">*1</a>：AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み</p>
+<p class="footnote"><a href="/kinopyo/#fn2" name="f2">*2</a>：AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00+09:00" pubdate data-updated="true">2009-11-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1329,155 +1466,6 @@ required: <span class="synIdentifier">function</span>(value, element, param) <sp
 
 
 	<a class='category' href='/blog/categories/diary/'>diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-be-careful-when-using-extend">jQueryの$.extendに注意：$.extend({},target,option)と$.extend(target,option)の違い</a></h1>
-	<div class="entry-content">
-		<p>jQueryの$.extendはとても便利な機能です。</p>
-
-
-<p>jQueryのプラグインを作成する場合は以下の二つを利用します。</p>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="c1">//jQueryそのものを拡張する</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="c1">//jQueryエレメントに新しいメソッドを追加する。</span>
-</span><span class='line'><span class="c1">//（典型的なjQueryプラグインの作成方法）</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">今回検討するのは第三の使い方です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">codeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">option</span><span class="p">,...);</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これは第一のパラメータのオブジェクトをどんどん拡張する意味です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">実際のプログラミングではこんな使い方が両方あります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">違いは何でしょうか？</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold;color:#0000FF;&quot;</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これは</span><span class="nx">target</span><span class="err">そのものを拡張する意味です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">実行後</span><span class="nx">target</span><span class="err">オブジェクトは変更</span><span class="p">(</span><span class="err">拡張</span><span class="p">)</span><span class="err">されます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">実例として、例えばプロジェクトにトップレベルの空の</span><span class="nx">Constans</span><span class="err">クラスがあります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">その下で各モジュール要の</span><span class="nx">constants</span><span class="err">が定義されていて、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">それをトップの</span><span class="nx">Constants</span><span class="err">に拡張します。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">constants</span><span class="p">,</span><span class="nx">subConstants1</span><span class="p">,</span><span class="nx">subConstants2</span><span class="p">...);</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">落とし穴：</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">defaults</span><span class="p">,</span><span class="nx">option</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">上記では</span><span class="nx">defaults</span><span class="err">が変更され、わざわざ変数</span><span class="nx">opts</span><span class="err">に代入する意味もなくなります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold;color:#0000FF;&quot;</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/span&gt;&lt;/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これは空のオブジェクトを拡張する意味です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">実行後、</span><span class="nx">target</span><span class="err">も</span><span class="nx">option</span><span class="err">もかわらりません。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">最も多く使われている実例は、</span><span class="nx">jQuery</span><span class="err">のプラグインの開発です。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">あるデフォルトの</span><span class="nx">option</span><span class="err">を定義し、</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ユーザが自分のニーズにあった</span><span class="nx">option</span><span class="err">があればそれを適用する感じです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">ここで大事なのは定義したデフォルトの</span><span class="nx">option</span><span class="err">はかわりたくないのです。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">なので、最初に空のオブジェクトを拡張しそれを何かの変数に</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">リファレンスをアサインします。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span><span class="nx">defaults</span><span class="p">,</span><span class="nx">option</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで変数optsは求めているデフォルトoptionとユーザが定義したoptionをマージ、拡張したものとなります。</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-01T00:00:00+09:00" pubdate data-updated="true">2009-11-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

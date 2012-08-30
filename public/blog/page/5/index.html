@@ -7,10 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="インストール rvm get head
-rvm reload
-rvm install 1.9.3-p0
-rvm use 1.9.3 リリースノート http://www.ruby-lang.org/ja/news/2011/10/31/ruby-1-9-3-p0-is-released/ 速度 &hellip;">
+	<meta name="description" content="# application.rb # Custom directories with classes and modules you want to be autoloadable.
+# config.autoload_paths += %W(#{config.root}/extras) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +72,50 @@ rvm use 1.9.3 リリースノート http://www.ruby-lang.org/ja/news/2011/10/31/
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-autoload-lib-directory-file">Rails libディレクトリのファイルをautoload</a></h1>
+	<div class="entry-content">
+		<div><script src='https://gist.github.com/591837.js?file='></script>
+<noscript><pre><code># application.rb
+
+# Custom directories with classes and modules you want to be autoloadable.
+# config.autoload_paths += %W(#{config.root}/extras)
+config.autoload_paths += %W(#{config.root}/lib)
+config.autoload_paths += Dir[&quot;#{config.root}/lib/**/&quot;]</code></pre></noscript></div>
+
+
+<p>サブディスプレイのautoloadが必要ない場合は一行目だけでOK.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-05T00:00:00+09:00" pubdate data-updated="true">2011-11-05</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/autoload/'>autoload</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -514,49 +556,6 @@ rvm use 1.9.3</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>, <a class='category' href='/blog/categories/keyboard/'>keyboard</a>, <a class='category' href='/blog/categories/keydown/'>keydown</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/my-first-google-chrome-extension-youku-opener">Google Chrome Extension: Youku Opener作りました</a></h1>
-	<div class="entry-content">
-		<p>すごく簡単なGoogle Chrome Extensionを作りました。</p>
-
-<p>実装自体は結構前にできたんですが、公開するまでもないかと思って自分で使いました。でもせっかく作ったしひょっとしたら使いたいユーザもあるんじゃない？の気持ちで公開しました。詳細はまた時間があったら整理してソースコードと一緒に公開します。</p>
-
-<p><a href="https://chrome.google.com/webstore/detail/nhgblejfncijjppnbfgaljgdifaokine?hc=search&amp;hcp=main">My First Chrome Extension Youku Opener</a></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Screen-Shot-2011-10-21-at-15.15.07.png" title="My First Google Chrome Extension: Youku Opener" ></p>
-
-<p>公開3日で14weekly usersの数字でした。意外と使おうとするユーザがいますね、unexpected、予想外でした。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-21T00:00:00+09:00" pubdate data-updated="true">2011-10-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/extension/'>extension</a>
 
 
 </div>
