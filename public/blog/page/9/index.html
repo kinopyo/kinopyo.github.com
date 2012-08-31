@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="従来の⌘T(Command + T)Go to Fileの問題：パスが効かない ⌘TはTextMateで速やかにファイルを開ける機能ですが、例えばこんなファイルがあるとします。 -blogs/index.html.erb
--posts/index.html.erb
--categories/ &hellip;">
+	<meta name="description" content="ruby 1.9.2p290へ更新しました。rvmもついでに。 # update rvm $ rvm get head # or older versions such as 1.0.0 $ rvm update --head # you need to run reload to &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -43,7 +41,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -67,12 +65,78 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/upgrade-rvm-and-ruby-1-9-2-p290">RVMの更新、Ruby 1.9.2p290の更新</a></h1>
+	<div class="entry-content">
+		<p>ruby 1.9.2p290へ更新しました。rvmもついでに。</p>
+
+<div><script src='https://gist.github.com/1073555.js?file=update_rvm_and_ruby-1.9.2-p290.sh'></script>
+<noscript><pre><code># update rvm  
+$ rvm get head  
+# or older versions such as 1.0.0  
+$ rvm update --head  
+# you need to run reload to reflect the update  
+$ rvm reload         
+$ rvm -v
+  rvm 1.7.2 by Wayne E. Seguin (wayneeseguin@gmail.com) [https://rvm.beginrescueend.com/]
+
+# install ruby 1.9.2.p290  
+$ rvm install 1.9.2-p290
+  ...  
+$ rvm list
+  ruby-1.9.2-p0
+  ruby-1.9.2-p180  
+# you need to replace the p0 based on your environment  
+$ rvm upgrade ruby-1.9.2-p0 ruby-1.9.2-p290
+yes  
+yes  
+yes  ...  
+Upgrade complete!  
+$ rvm list
+  ruby-1.9.2-p290 [ x86_64 ]  
+$ rvm --default use 1.9.2
+$ ruby -v
+  ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-darwin10.8.0]</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-19T00:00:00+09:00" pubdate data-updated="true">2011-08-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -662,48 +726,6 @@ print_r($titles);</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/gmail/'>Gmail</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/tool/'>tool</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/chrome-warn-before-quitting-with-command-q-in-mac">Mac Google Chromeの終了をCommand+Qの長押しに簡単変更する</a></h1>
-	<div class="entry-content">
-		<p>MacでGoogle Chromeを使う時、誤操作でcommand+wを押したかったのに間違ってcommand+q押しちゃってChromeアプリケーションを閉じたことはありますか？それを防ぐために既にいろいろ方法が出てますが、いつの間にかChrome自体で簡単に設定できるようになりました！</p>
-
-<h1>方法</h1>
-
-<p>Chromeのアプリケーションをアクティブにし、一番上のトップバーからChrome -> <strong>Warn Before Quitting (⌘Q)</strong>をチェックすればOKです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Chrome_wanr_before_quitting.png" title="Chrome_wanr_before_quitting" ></p>
-
-<p>こうすればCommand + Qは警告のメッセージが出て、長押しで終了するようになります。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-29T00:00:00+09:00" pubdate data-updated="true">2011-07-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>
 
 
 </div>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: WordPress | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wordpress plugin to redirect "Page" to other url：Page Links To]]></title>
-    <link href="http://kinopyo.github.com/blog/wordpress-page-links-to-plugin"/>
+    <link href="http://kinopyo.com/blog/wordpress-page-links-to-plugin"/>
     <updated>2012-01-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/wordpress-page-links-to-plugin</id>
+    <id>http://kinopyo.com/blog/wordpress-page-links-to-plugin</id>
     <content type="html"><![CDATA[<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the "about" page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
 
 <p><blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p></p><p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p></p><p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote></p>
@@ -39,9 +39,9 @@
   
   <entry>
     <title type="html"><![CDATA[さくらVPSのパフォーマンスチューニング]]></title>
-    <link href="http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
+    <link href="http://kinopyo.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
     <updated>2011-11-11T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
+    <id>http://kinopyo.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
     <content type="html"><![CDATA[<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
 
 <p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
@@ -100,9 +100,9 @@
   
   <entry>
     <title type="html"><![CDATA[開発者ブログに便利なキーワードや言語シンタックスなどを強調するCSS]]></title>
-    <link href="http://kinopyo.github.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo"/>
+    <link href="http://kinopyo.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo"/>
     <updated>2011-10-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo</id>
+    <id>http://kinopyo.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo</id>
     <content type="html"><![CDATA[<p>開発者のブログではよく各言語に関する変数名やメソッド名などのようなキーワードを強調して表示する必要がありますね。「AV女優.com 開発者ブログ」を見るとき「これだっ！」と思ったCSSをから借りました、@sunomaruさんに感謝です！</p>
 
 <h2>CSS</h2>
@@ -154,9 +154,9 @@
   
   <entry>
     <title type="html"><![CDATA[さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件]]></title>
-    <link href="http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
+    <link href="http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
     <updated>2011-09-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
+    <id>http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
     <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
 
 <p><img src="http://hsuzuki.ddo.jp/wewp-content/uploads/2008/12/radio_f.bmp" /></p>
@@ -172,9 +172,9 @@ CentOSなのでyumを使ってインストールすれば解決です。
   
   <entry>
     <title type="html"><![CDATA[WordpressにSocial Metrics for Japaneseを入れてみた、記事のTwitter、Facebook Like 、はてぶされた数を管理画面に一覧表示]]></title>
-    <link href="http://kinopyo.github.com/blog/wordpress-plugin-social-metrics-for-japanese"/>
+    <link href="http://kinopyo.com/blog/wordpress-plugin-social-metrics-for-japanese"/>
     <updated>2011-09-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/wordpress-plugin-social-metrics-for-japanese</id>
+    <id>http://kinopyo.com/blog/wordpress-plugin-social-metrics-for-japanese</id>
     <content type="html"><![CDATA[<p><blockquote><p>今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる</p></blockquote></p>
 
 <h2>インストール</h2>

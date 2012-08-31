@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: troubleshooting | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/troubleshooting/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/troubleshooting/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Railsテスト時のrack警告"warning: regexp match /.../n against to UTF-8 string"を消す方法]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-test-quietrack-warning"/>
+    <link href="http://kinopyo.com/blog/rails-test-quietrack-warning"/>
     <updated>2012-03-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-test-quietrack-warning</id>
+    <id>http://kinopyo.com/blog/rails-test-quietrack-warning</id>
     <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string</span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -54,9 +54,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Rails3.1 Capistranoでデプロイする時にpublic/images, stylesheets, javascriptsのNo such file or directoryエラー]]></title>
-    <link href="http://kinopyo.github.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts"/>
+    <link href="http://kinopyo.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts"/>
     <updated>2011-09-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts</id>
+    <id>http://kinopyo.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts</id>
     <content type="html"><![CDATA[<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。
 <blockquote><p>#  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p></p><p><pre><code>servers: *"176.32.95.168"*<br/>*176.32.95.168* executing command<br/></code></pre></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><p></p></blockquote></p>
 
@@ -74,9 +74,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに]]></title>
-    <link href="http://kinopyo.github.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200"/>
+    <link href="http://kinopyo.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200"/>
     <updated>2011-09-24T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200</id>
+    <id>http://kinopyo.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200</id>
     <content type="html"><![CDATA[<h2>現象</h2>
 
 <p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
@@ -123,9 +123,9 @@ config.assets.digest = true
   
   <entry>
     <title type="html"><![CDATA[Rails3.1rc(?)でPlease install the mysql adapterというエラー]]></title>
-    <link href="http://kinopyo.github.com/blog/rails3-1rc-please-install-the-mysql-adapter-error"/>
+    <link href="http://kinopyo.com/blog/rails3-1rc-please-install-the-mysql-adapter-error"/>
     <updated>2011-09-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails3-1rc-please-install-the-mysql-adapter-error</id>
+    <id>http://kinopyo.com/blog/rails3-1rc-please-install-the-mysql-adapter-error</id>
     <content type="html"><![CDATA[<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: &lt;code>gem install activerecord-mysql-adapter&lt;/code> (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
@@ -179,9 +179,9 @@ config.assets.digest = true
   
   <entry>
     <title type="html"><![CDATA[Evernote x Mac: Cant synchronize error, Content is not valid.]]></title>
-    <link href="http://kinopyo.github.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid"/>
+    <link href="http://kinopyo.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid"/>
     <updated>2011-04-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid</id>
+    <id>http://kinopyo.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid</id>
     <content type="html"><![CDATA[<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
 So I encountered this problem when I synced my evernote in Mac OS.</p>
 

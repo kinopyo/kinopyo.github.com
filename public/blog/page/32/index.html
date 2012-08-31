@@ -7,8 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iTunes Storeより購入した曲はiTunesで右クリックして、着信音が作成できるようですが、それ以外の曲については残念ながら右クリックのメニューじゃ効かないです。なので、以下の手順で自作することができます。 ライブラリから好きな曲を右クリックして、「Get Info」を選択。
-「 &hellip;">
+	<meta name="description" content="javaをやってからJavaScriptにかえると、
+なかなかなれませんね。 例えばJavaではオーバーロードができるが、
+JavaScriptには通用しない。 すごく簡単に言うと、オーバーロードは多重定義の意味で、
+同じメソッド名で違う型、数のパラメータがある時、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -42,7 +44,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -66,12 +68,85 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-there-is-no-overload">JavaScriptにオーバーロードはない</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>javaをやってからJavaScriptにかえると、</p>
+<p>なかなかなれませんね。</p>
+<br/>
+<p>例えばJavaではオーバーロードができるが、</p>
+<p>JavaScriptには通用しない。</p>
+<br/>
+<p>すごく簡単に言うと、オーバーロードは多重定義の意味で、</p>
+<p>同じメソッド名で違う型、数のパラメータがある時、それぞれ一つのメソッドとして認められる。</p>
+<p>一方、JavaScriptでは後勝ちです。</p>
+<p>先に定義したものが無効になります。</p>
+{% codeblock %}
+
+<span class="synIdentifier">function</span> func(param) <span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(param);
+<span class="synIdentifier">}</span>
+<span class="synIdentifier">function</span> func() <span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(1);
+<span class="synIdentifier">}</span>;
+func(<span class="synConstant">&#34;test&#34;</span>);
+func();
+{% endcodeblock %}
+<p>同じfuncの名前で作られた関数で、一個目はparamというパラメータがついてる。</p>
+<p>二番目はパラメータがない。</p>
+<p>すると結果は： 1 1 になります。</p>
+<p>常に後で定義したものが勝ちます。</p>
+<br/>
+<pre class="syntax-highlight">
+<span class="synIdentifier">function</span> func()<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(1);
+<span class="synIdentifier">}</span>;
+<span class="synIdentifier">function</span> func(param)<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(param);
+<span class="synIdentifier">}</span>
+
+{% endcodeblock %}
+<p>これは「test undefined」になります。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-24T00:00:00+09:00" pubdate data-updated="true">2009-10-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1052,56 +1127,6 @@
 
 
 	<a class='category' href='/blog/categories/diary/'>diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/toeic-score-795">TOEIC　795点とりました！</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>意外！</p>
-<p>ネットで試験結果を見た時、うれしかった！</p>
-<p>事前準備も特にせずに、ほとんど勘で答えたので、</p>
-<p>とんでもない点数としか思わない。</p>
-<p>一番苦手だっだリスニングがなんと420点、</p>
-<p>自慢だっだリーディングは375、</p>
-<p>これもまた意外だよね。。。</p>
-<p>リーディングがもうちょっとうまくいったら800点までとれたのに。。。</p>
-<p>残念！</p>
-<p>とりあえず800点ということで、しばらくは試験を受けないことにした。</p>
-<p>今回のリスニングはやはり普段見てたアメリカのドラマが役に立ったと思うわ。</p>
-<p>これがコツとでも言いましょう。</p>
-<p>仕事が落ち着いたら次は英会話のクラスに！</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-07T00:00:00+09:00" pubdate data-updated="true">2009-10-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

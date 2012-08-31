@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: japan | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/japan/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/japan/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在日外国人ビザ更新必要書類]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-update-visa-in-japan"/>
+    <link href="http://kinopyo.com/blog/how-to-update-visa-in-japan"/>
     <updated>2011-10-28T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-update-visa-in-japan</id>
+    <id>http://kinopyo.com/blog/how-to-update-visa-in-japan</id>
     <content type="html"><![CDATA[<h2>個人で準備する書類</h2>
 
 <ul>

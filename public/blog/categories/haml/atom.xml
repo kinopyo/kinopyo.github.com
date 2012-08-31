@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: haml | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/haml/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/haml/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rails Append class if condition is true in Haml]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-append-class-if-condition-is-true-in-haml"/>
+    <link href="http://kinopyo.com/blog/rails-append-class-if-condition-is-true-in-haml"/>
     <updated>2011-11-22T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-append-class-if-condition-is-true-in-haml</id>
+    <id>http://kinopyo.com/blog/rails-append-class-if-condition-is-true-in-haml</id>
     <content type="html"><![CDATA[<p><div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Append class if condition is true in Haml (with Rails) - Stack Overflow <a href="http://t.co/7pyL7pNn" title="http://stackoverflow.com/questions/3453560/append-class-if-condition-is-true-in-haml-with-rails">stackoverflow.com/questions/3453…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/138923631433625600" data-datetime="2011-11-22T10:15:49+00:00">11月 22, 2011</a></blockquote>
 <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div></p>
 

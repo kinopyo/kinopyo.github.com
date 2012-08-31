@@ -7,21 +7,13 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="DOM操作を避けてjQueryのパフォーマンスを改善する掟です。
-こんなコードがあるとしましょう。 パフォーマンスの悪い例 1
+	<meta name="description" content="表題の通り、Mapをnewしたときに値を入れて
+初期化するコード方法です。 1
 2
 3
 4
 5
-6
-7
-8
-9
-10
-11
-12
-13
-var list = *....*; // 長さ100の配列とする for (var i in list) { &hellip;">
+Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;() { { put(&quot;one&quot;, 1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -55,7 +47,7 @@ var list = *....*; // 長さ100の配列とする for (var i in list) { &hellip;
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -79,12 +71,61 @@ var list = *....*; // 長さ100の配列とする for (var i in list) { &hellip;
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-init-map-with-data">Java: Mapをnewした時に値を入れて初期化するコード</a></h1>
+	<div class="entry-content">
+		<p>表題の通り、Mapをnewしたときに値を入れて
+初期化するコード方法です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">put</span><span class="o">(</span><span class="s">&quot;one&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-31T00:00:00+09:00" pubdate data-updated="true">2010-03-31</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -889,105 +930,6 @@ idに**が付いてますね。</p>
 
 
 <time datetime="2010-02-22T00:00:00+09:00" pubdate data-updated="true">2010-02-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/comment-in-jsp-should-use-jsp-expression">jsp内のコメントアウトはjsp式の記述で</a></h1>
-	<div class="entry-content">
-		<h2>基本</h2>
-
-<p>多分ほとんどの人は分かっていると思いますが、
-jspファイル内のコメントの記述は以下になります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%-- JSPのコメント --%&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>そしてHTMLのコメントの記述は</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="ni">&amp;lt;</span>!-- HTMLのコメント --&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>問題</h2>
-
-<p>SP内でもHTMLのコメント記述が使えますが、
-コメントアウトした部分にJavaプログラムが埋め込んだ場合
-そのコードは実はコンパイルされてしまいます。
-例えば、</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!-- コメントアウト
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getNotExistMethod() %&gt;&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'> --&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ここでは全く存在しないJavaのメソッドを書きました。
-このままだとJSPがコンパイルエラーになります。
-&#8220;The method getNotExistMethod() is undefined for the type HttpServletRequest&#8221;というメッセージです。</p>
-
-<h2>正しい方法</h2>
-
-<p>Javaプログラムが埋め込んだコードをコメントアウトするには
-JSPのコメント式を記述します。
-上記の例で言うとこうなります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%-- JSPコメントアウト
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getNotExistMethod() %&gt;&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  -%&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>補足</h2>
-
-<p>下記のようなコンパイルが通るJavaコードが書かれた場合は、
-もちろんエラーは出ないし、 HTMLの部分もコメントアウトされたため画面には何も表示されません。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!-- コメントアウト
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getContextPath() %&gt;&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  -&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-17T00:00:00+09:00" pubdate data-updated="true">2010-02-17</time></div>
 	<div class="tags">
 
 

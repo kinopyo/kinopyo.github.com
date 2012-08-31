@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ajax | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/ajax/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/ajax/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ajaxとアクセス解析PVの関係]]></title>
-    <link href="http://kinopyo.github.com/blog/ajax-and-pageview"/>
+    <link href="http://kinopyo.com/blog/ajax-and-pageview"/>
     <updated>2011-02-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ajax-and-pageview</id>
+    <id>http://kinopyo.com/blog/ajax-and-pageview</id>
     <content type="html"><![CDATA[<p>AJAXでのアクセスはPVにカウントされない、というのをこの間にミーティングで知りました。考えてみりゃ当たり前のことですが、考えたことはなかったです。。でどうするか、とのことでちょっとぐぐってみました。</p>
 
 <p>結論からいうと<strong>ダミーのページを指定するようにJavascript側で書く</strong>（Google Analytics前提）</p>

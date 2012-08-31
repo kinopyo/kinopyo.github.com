@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rspec | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/rspec/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/rspec/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Machinist 1.0: How to generate an object without saving it to the database]]></title>
-    <link href="http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/"/>
+    <link href="http://kinopyo.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/"/>
     <updated>2012-07-20T20:12:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database</id>
+    <id>http://kinopyo.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database</id>
     <content type="html"><![CDATA[<p><strong>CAUTION</strong> It's specific machinist 1.0-maintenance.</p>
 
 <p>Machinist is an alternative for Fixtures or FactoryGirl.</p>
@@ -50,9 +50,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
+    <link href="http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
     <updated>2012-03-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
+    <id>http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
     <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
 
 <p><blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence "peroperos_id_seq" for serial column "peroperos.id"<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "peroperos_pkey" for table "peroperos"<br/>～略～</p></blockquote>
@@ -75,9 +75,9 @@ test:
   
   <entry>
     <title type="html"><![CDATA[Rspec Capybara_webkitを使ってjavascriptをテストする]]></title>
-    <link href="http://kinopyo.github.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit"/>
+    <link href="http://kinopyo.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit"/>
     <updated>2011-11-06T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit</id>
+    <id>http://kinopyo.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit</id>
     <content type="html"><![CDATA[<h2>Goal</h2>
 
 <p>ゴールと言うか目標はrspecのrequest(integration) testでjavascriptのテストをしたいです。が、いろいろハマってその問題と解決策を時間軸でメモしておきます。</p>
@@ -206,9 +206,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[rspec shared context sample code]]></title>
-    <link href="http://kinopyo.github.com/blog/rspec-shared_context-sample-code"/>
+    <link href="http://kinopyo.com/blog/rspec-shared_context-sample-code"/>
     <updated>2011-10-13T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rspec-shared_context-sample-code</id>
+    <id>http://kinopyo.com/blog/rspec-shared_context-sample-code</id>
     <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/1283896.js?file='></script>
 <noscript><pre><code>shared_context &quot;shared stuff&quot; do
   before { @some_var = :some_value }

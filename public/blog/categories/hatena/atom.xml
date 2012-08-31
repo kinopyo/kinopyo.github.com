@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: hatena | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/hatena/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/hatena/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[WP Social Bookmarking Lightでブログのソーシャルブックマークボタン]]></title>
-    <link href="http://kinopyo.github.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button"/>
+    <link href="http://kinopyo.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button"/>
     <updated>2011-05-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button</id>
+    <id>http://kinopyo.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button</id>
     <content type="html"><![CDATA[<p>もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
 <a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">http://www.lastday.jp/2011/05/16/increase-number-of-rss</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
 FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDeliciousなどまで対応してて便利ですよ。</p>

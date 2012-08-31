@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: nil | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/nil/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/nil/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[TextMate Bundler, NetBeans Plugin for HAML]]></title>
-    <link href="http://kinopyo.github.com/blog/textmate-bundler-netbeans-plugin-for-haml"/>
+    <link href="http://kinopyo.com/blog/textmate-bundler-netbeans-plugin-for-haml"/>
     <updated>2010-07-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/textmate-bundler-netbeans-plugin-for-haml</id>
+    <id>http://kinopyo.com/blog/textmate-bundler-netbeans-plugin-for-haml</id>
     <content type="html"><![CDATA[<h2>TextMate Bundler：</h2>
 
 <p><a href="http://github.com/handcrafted/handcrafted-haml-textmate-bundle">http://github.com/handcrafted/handcrafted-haml-textmate-bundle</a></p>
@@ -44,9 +44,9 @@ HAMLでRubyコードを書いても入力補完も、リファレンスも出ま
   
   <entry>
     <title type="html"><![CDATA[ID + Slug name in URL in Rails]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-id-slug-name-in-url"/>
+    <link href="http://kinopyo.com/blog/rails-id-slug-name-in-url"/>
     <updated>2010-07-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-id-slug-name-in-url</id>
+    <id>http://kinopyo.com/blog/rails-id-slug-name-in-url</id>
     <content type="html"><![CDATA[<p>This is about how to customize the url to the form like "id + post.title", which can be simply overriding the<em> to_param</em> method in your model class.</p>
 
 <p>Here is the example.</p>
@@ -65,7 +65,7 @@ end
   # => #<Person id: 1, name: "Donald E. Knuth"></p>
 
 <p>  &lt;%= link_to(@person.name, person_path(@person)) %>
-  # => <a href="http://kinopyo.github.com/person/1-donald-e-knuth">Donald E. Knuth</a></p>
+  # => <a href="http://kinopyo.com/person/1-donald-e-knuth">Donald E. Knuth</a></p>
 
 <p>```
 The <em>parameterize</em> is a method that replaces special characters in a string so that it may be used as part of a ‘pretty’ URL.
@@ -101,7 +101,7 @@ end
 
 <p>  #view
   &lt;%= link_to(@person.name, person_path(@person)) %>
-  # => <a href="http://kinopyo.github.com/person/1-donald-e-knuth">Donald E. Knuth</a></p>
+  # => <a href="http://kinopyo.com/person/1-donald-e-knuth">Donald E. Knuth</a></p>
 
 <p>```
 上記のようにmodelクラスを修正するだけで、他の影響はないです。URL: '/person/1-kinopyo'と'/person/1'はどっちでも使えます。
@@ -113,9 +113,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Rails: a helper method shows the required mark]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-a-helper-method-shows-the-required-mark"/>
+    <link href="http://kinopyo.com/blog/rails-a-helper-method-shows-the-required-mark"/>
     <updated>2010-07-27T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-a-helper-method-shows-the-required-mark</id>
+    <id>http://kinopyo.com/blog/rails-a-helper-method-shows-the-required-mark</id>
     <content type="html"><![CDATA[<p>一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの"# "を出力します。</p>
 
 <p>まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、第二引数はそのクラスのプロパティを渡します。</p>
@@ -243,9 +243,9 @@ end</p>
   
   <entry>
     <title type="html"><![CDATA[Rails: How to create a custom validate method]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-how-to-create-a-custom-validate-method"/>
+    <link href="http://kinopyo.com/blog/rails-how-to-create-a-custom-validate-method"/>
     <updated>2010-07-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-how-to-create-a-custom-validate-method</id>
+    <id>http://kinopyo.com/blog/rails-how-to-create-a-custom-validate-method</id>
     <content type="html"><![CDATA[<p><a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>で学んだ技です。
 Rails 3.0 beta4を利用しています。</p>
 
@@ -402,9 +402,9 @@ end</p>
   
   <entry>
     <title type="html"><![CDATA[はてなブックマークエントリをブログに設置]]></title>
-    <link href="http://kinopyo.github.com/blog/setup-blogparts-hatena-bookmark-entry"/>
+    <link href="http://kinopyo.com/blog/setup-blogparts-hatena-bookmark-entry"/>
     <updated>2010-07-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/setup-blogparts-hatena-bookmark-entry</id>
+    <id>http://kinopyo.com/blog/setup-blogparts-hatena-bookmark-entry</id>
     <content type="html"><![CDATA[<p><a href="http://b.hatena.ne.jp/guide/blogparts">http://b.hatena.ne.jp/guide/blogparts</a>にて自分のサイトの人気エントリーをブログパーツとして設置できます。
 手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: osx | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/osx/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/osx/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac Tweetアプリインストール後右クリックメニューの「Tweet」を消す方法]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu"/>
+    <link href="http://kinopyo.com/blog/how-to-disable-tweet-item-in-right-click-menu"/>
     <updated>2011-11-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu</id>
+    <id>http://kinopyo.com/blog/how-to-disable-tweet-item-in-right-click-menu</id>
     <content type="html"><![CDATA[<p>MacのTweet公式アプリをインストール後、テキストを選択状態で右クリックするとメニューに「Tweet」が出てきますね。個人的には使わないのでそれを消す方法をシェアします。</p>
 
 <p><img src="http://www.kinopyo.com/wp-content/uploads/2011/11/Tweet-in-right-click-menu.jpg" title="Tweet in right click menu" ></p>

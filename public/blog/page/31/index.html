@@ -7,38 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="jQueryの$.extendはとても便利な機能です。 jQueryのプラグインを作成する場合は以下の二つを利用します。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32 &hellip;">
+	<meta name="description" content="私服よりスーツ 最初のうちはまだ本社で私服で出勤する同僚がうらやましかったのです。 私はお客さんに常駐し毎日スーツでした。 ある日、先輩の一言で突然目覚めた感じです。 「私服じゃ仕事する気がなくなっちゃう」ってね。 それに、スーツでもかっこいいスーツがあるし、 ファッションもできますよね。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,7 +41,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -96,12 +65,90 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/start-like-these-when-grow-up">大人(社会人)になってから好きになったこと</a></h1>
+	<div class="entry-content">
+		<h4>私服よりスーツ</h4>
+
+
+<p>最初のうちはまだ本社で私服で出勤する同僚がうらやましかったのです。</p>
+
+
+<p>私はお客さんに常駐し毎日スーツでした。</p>
+
+
+<p>ある日、先輩の一言で突然目覚めた感じです。</p>
+
+
+<p>「私服じゃ仕事する気がなくなっちゃう」ってね。</p>
+
+
+<p>それに、スーツでもかっこいいスーツがあるし、</p>
+
+
+<p>ファッションもできますよね。</p>
+
+
+<h4>ブラックコーヒー</h4>
+
+
+<p>これも甘いものが好きだっだのですが、</p>
+
+
+<p>いつの間にか、気づいたらもう毎日ブラックじゃないとだめになっちゃいました。</p>
+
+
+<p>仕事する上で、やはりブラックが一押し！</p>
+
+
+<br/>
+
+
+<h4>酒(特に生ビール)</h4>
+
+
+<p>がんばった一日の最後に生ビール一杯で、</p>
+
+
+<p>本当に「うわぁ～～」って感じ</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-02T00:00:00+09:00" pubdate data-updated="true">2009-11-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1235,79 +1282,6 @@
 
 
 	<a class='category' href='/blog/categories/movie/'>movie</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-there-is-no-overload">JavaScriptにオーバーロードはない</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>javaをやってからJavaScriptにかえると、</p>
-<p>なかなかなれませんね。</p>
-<br/>
-<p>例えばJavaではオーバーロードができるが、</p>
-<p>JavaScriptには通用しない。</p>
-<br/>
-<p>すごく簡単に言うと、オーバーロードは多重定義の意味で、</p>
-<p>同じメソッド名で違う型、数のパラメータがある時、それぞれ一つのメソッドとして認められる。</p>
-<p>一方、JavaScriptでは後勝ちです。</p>
-<p>先に定義したものが無効になります。</p>
-{% codeblock %}
-
-<span class="synIdentifier">function</span> func(param) <span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(param);
-<span class="synIdentifier">}</span>
-<span class="synIdentifier">function</span> func() <span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(1);
-<span class="synIdentifier">}</span>;
-func(<span class="synConstant">&#34;test&#34;</span>);
-func();
-{% endcodeblock %}
-<p>同じfuncの名前で作られた関数で、一個目はparamというパラメータがついてる。</p>
-<p>二番目はパラメータがない。</p>
-<p>すると結果は： 1 1 になります。</p>
-<p>常に後で定義したものが勝ちます。</p>
-<br/>
-<pre class="syntax-highlight">
-<span class="synIdentifier">function</span> func()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(1);
-<span class="synIdentifier">}</span>;
-<span class="synIdentifier">function</span> func(param)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(param);
-<span class="synIdentifier">}</span>
-
-{% endcodeblock %}
-<p>これは「test undefined」になります。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-24T00:00:00+09:00" pubdate data-updated="true">2009-10-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

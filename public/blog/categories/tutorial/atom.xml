@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tutorial | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/tutorial/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/tutorial/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby MySQL Tutorial]]></title>
-    <link href="http://kinopyo.github.com/blog/ruby-mysql-tutorial"/>
+    <link href="http://kinopyo.com/blog/ruby-mysql-tutorial"/>
     <updated>2011-09-09T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ruby-mysql-tutorial</id>
+    <id>http://kinopyo.com/blog/ruby-mysql-tutorial</id>
     <content type="html"><![CDATA[<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
 
 <p><div><script src='https://gist.github.com/1205708.js?file='></script>
@@ -160,9 +160,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[初めてのgadget.xml with iGoogle]]></title>
-    <link href="http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle"/>
+    <link href="http://kinopyo.com/blog/first-gadget-xml-with-igoogle"/>
     <updated>2011-02-28T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle</id>
+    <id>http://kinopyo.com/blog/first-gadget-xml-with-igoogle</id>
     <content type="html"><![CDATA[<p>Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。<a href="http://code.google.com/apis/gadgets/docs/gs.html">http://code.google.com/apis/gadgets/docs/gs.html</a>を参照してください。</p>
 
 <h2>ソースを用意</h2>
@@ -182,9 +182,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Spring DataSource beanのメモ]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-define-spring-datasource-bean"/>
+    <link href="http://kinopyo.com/blog/how-to-define-spring-datasource-bean"/>
     <updated>2010-12-06T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-define-spring-datasource-bean</id>
+    <id>http://kinopyo.com/blog/how-to-define-spring-datasource-bean</id>
     <content type="html"><![CDATA[<p>DataSource Beanを定義する際applicationContext.xmlの書き方と、Javaで呼び出すコードのメモです。ずいぶん昔のメモです。。</p>
 
 <p>こんなjdbc.propertiesファイルがクラスパスにあるとします。</p>
@@ -240,9 +240,9 @@ ApplicationContext context = new ClassPathXmlApplicationContext(</p>
   
   <entry>
     <title type="html"><![CDATA[Hibernate：複数項目のPKに対応するアノテーションの記述方法]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate"/>
+    <link href="http://kinopyo.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate"/>
     <updated>2010-12-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate</id>
+    <id>http://kinopyo.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate</id>
     <content type="html"><![CDATA[<p>一つ以上の項目がPKとなったケースでHibernateはどう設定すればいいのかを説明します。
 ずいぶん昔のメモになります。</p>
 

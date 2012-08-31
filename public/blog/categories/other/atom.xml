@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: other | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/other/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Yahooアドパートナー利用時サイトURLの"wwwあり"と"wwwなし"に注意]]></title>
-    <link href="http://kinopyo.github.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix"/>
+    <link href="http://kinopyo.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix"/>
     <updated>2010-01-22T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix</id>
+    <id>http://kinopyo.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix</id>
     <content type="html"><![CDATA[<p>この間<a href="http://webowner.yahoo.co.jp/siteincome/adpartner/">Yahooアドパートナー</a>を申請しました。
 <a href="http://webowner.yahoo.co.jp/siteincome/adpartner/">Yahooアドパートナー</a>とはあなたのサイトに広告を掲載し、
 閲覧もしくはクリックされたことで報酬がもらえるサービスです。
@@ -50,9 +50,9 @@ Yahooに申請するときは"wwwあり"のwww.kinopyo.comで申請したので�
   
   <entry>
     <title type="html"><![CDATA[CROSS 『iPhone × Android』受講票ゲット！]]></title>
-    <link href="http://kinopyo.github.com/blog/ticket-for-event-cross-iphone-x-android"/>
+    <link href="http://kinopyo.com/blog/ticket-for-event-cross-iphone-x-android"/>
     <updated>2009-10-07T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ticket-for-event-cross-iphone-x-android</id>
+    <id>http://kinopyo.com/blog/ticket-for-event-cross-iphone-x-android</id>
     <content type="html"><![CDATA[<div class="section">
 <p>これが何のイベントかっていうと、下記になります。</p>
 <p>CROSS（クロス）は、CSS Niteからスピンオフした、Webクリエイター向けのイベントです。2つのすばらしいプロダクトを交互に紹介して、その魅力や特長をスピーディに知ることができる場を提供いたします。</p>

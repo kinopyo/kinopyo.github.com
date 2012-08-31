@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: git | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/git/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[gitの^(caret)記号は]]></title>
-    <link href="http://kinopyo.github.com/blog/what-does-caret-character-mean-in-git"/>
+    <link href="http://kinopyo.com/blog/what-does-caret-character-mean-in-git"/>
     <updated>2011-10-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/what-does-caret-character-mean-in-git</id>
+    <id>http://kinopyo.com/blog/what-does-caret-character-mean-in-git</id>
     <content type="html"><![CDATA[<h2>HEAD^</h2>
 
 <p><blockquote><p>If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.</p></p><p><p>HEAD<sup>,</sup> which means “the parent of HEAD”:</p></blockquote></p>
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[git reset --hardでミスった内容を取戻したいときはgit reflog]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog"/>
+    <link href="http://kinopyo.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog"/>
     <updated>2011-10-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog</id>
+    <id>http://kinopyo.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog</id>
     <content type="html"><![CDATA[<p>例えば<em>git reset --hard HEAD<sup>*で誤操作して内容を消してしまった、それを取戻したいときは</sup>
 +   </em>git reflog<em>で取戻したいHEAD@{x}の番号を確認
 +   </em>git reset --hard HEAD@{1}*で番号指定でもう一回git reset（ここでは例として1番にしてる）</p>
@@ -58,9 +58,9 @@
   
   <entry>
     <title type="html"><![CDATA[zshでgitの^caretは使えないっぽい: zsh: no matches found: HEAD^]]></title>
-    <link href="http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found"/>
+    <link href="http://kinopyo.com/blog/git-caret-does-not-work-in-zsh-no-matches-found"/>
     <updated>2011-10-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found</id>
+    <id>http://kinopyo.com/blog/git-caret-does-not-work-in-zsh-no-matches-found</id>
     <content type="html"><![CDATA[<p><a href="http://www.kinopyo.com/blog/what-does-caret-character-mean-in-git">前回の記事：gitの<sup>記号は<em>で</em>HEAD<sup></em>を書いたのですが、<em>zsh</sup></sup></a>でやるとこんなエラーに。。</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -79,9 +79,9 @@
   
   <entry>
     <title type="html"><![CDATA[Git コンフリクトになった場合の対処]]></title>
-    <link href="http://kinopyo.github.com/blog/git-what-to-do-when-merge-conflict"/>
+    <link href="http://kinopyo.com/blog/git-what-to-do-when-merge-conflict"/>
     <updated>2011-10-12T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/git-what-to-do-when-merge-conflict</id>
+    <id>http://kinopyo.com/blog/git-what-to-do-when-merge-conflict</id>
     <content type="html"><![CDATA[<p>git pullとかgit mergeでコンフリクトとなったファイルを編集して、git add、git commitすればいいです。コミットメッセージも必要です。
 git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
 ￼

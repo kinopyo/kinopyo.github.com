@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Asset Pipeline | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/asset-pipeline/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/asset-pipeline/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに]]></title>
-    <link href="http://kinopyo.github.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200"/>
+    <link href="http://kinopyo.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200"/>
     <updated>2011-09-24T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200</id>
+    <id>http://kinopyo.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200</id>
     <content type="html"><![CDATA[<h2>現象</h2>
 
 <p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: CSS | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[開発者ブログに便利なキーワードや言語シンタックスなどを強調するCSS]]></title>
-    <link href="http://kinopyo.github.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo"/>
+    <link href="http://kinopyo.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo"/>
     <updated>2011-10-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo</id>
+    <id>http://kinopyo.com/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo</id>
     <content type="html"><![CDATA[<p>開発者のブログではよく各言語に関する変数名やメソッド名などのようなキーワードを強調して表示する必要がありますね。「AV女優.com 開発者ブログ」を見るとき「これだっ！」と思ったCSSをから借りました、@sunomaruさんに感謝です！</p>
 
 <h2>CSS</h2>
@@ -69,9 +69,9 @@
   
   <entry>
     <title type="html"><![CDATA[iPhone safari(webkit-base browser)のcheckboxのサイズを調整]]></title>
-    <link href="http://kinopyo.github.com/blog/change-checkbox-size-in-iphone-safari"/>
+    <link href="http://kinopyo.com/blog/change-checkbox-size-in-iphone-safari"/>
     <updated>2011-09-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/change-checkbox-size-in-iphone-safari</id>
+    <id>http://kinopyo.com/blog/change-checkbox-size-in-iphone-safari</id>
     <content type="html"><![CDATA[<p>Webkit-baseのブラウザ(Safari, Google Chrome)に適用します。</p>
 
 <p>普通のcheckboxはiphoneのようなスマートフォンで見るときとても小さいです。checkboxはcssでheightやwidthを指定しても効かないため、ちょっとしたトリックが必要です。</p>

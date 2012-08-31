@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sinatra | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/sinatra/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/sinatra/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SinatraでStaticなHTMLファイルをrenderするには]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-render-static-html-in-sinatra"/>
+    <link href="http://kinopyo.com/blog/how-to-render-static-html-in-sinatra"/>
     <updated>2011-10-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-render-static-html-in-sinatra</id>
+    <id>http://kinopyo.com/blog/how-to-render-static-html-in-sinatra</id>
     <content type="html"><![CDATA[<h2>目的</h2>
 
 <p>Sinatraで静的なhtmlファイルをrenderする方法です。</p>
@@ -63,9 +63,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[HerokuとRails,Sinatraで使えるMemcached Gem Dalli]]></title>
-    <link href="http://kinopyo.github.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra"/>
+    <link href="http://kinopyo.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra"/>
     <updated>2011-06-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra</id>
+    <id>http://kinopyo.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra</id>
     <content type="html"><![CDATA[<p>昨日の記事<a href="http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread">http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</a>にも簡単に述べましたが、DalliはHerokuでお勧められているMemcachedのGemです。正確にはpure ruby memcache-clientです。</p>
 
 <p>インストールと使い方をGistで公開しています。</p>
@@ -122,9 +122,9 @@ heroku addons:add memcache</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた]]></title>
-    <link href="http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
+    <link href="http://kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
     <updated>2011-06-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
+    <id>http://kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
     <content type="html"><![CDATA[<h2>スレット経緯</h2>
 
 <p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
@@ -159,9 +159,9 @@ heroku addons:add memcache</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Sinatraサーバ起動せずに修正したソースを反映する方法(ホットデプロイ)]]></title>
-    <link href="http://kinopyo.github.com/blog/sinatra-hot-deploy-without-restart-server"/>
+    <link href="http://kinopyo.com/blog/sinatra-hot-deploy-without-restart-server"/>
     <updated>2011-05-24T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/sinatra-hot-deploy-without-restart-server</id>
+    <id>http://kinopyo.com/blog/sinatra-hot-deploy-without-restart-server</id>
     <content type="html"><![CDATA[<p>Sinatra使って二日目ですが、サーバーを再起動しないと修正したコードが反映されないことに気づきました。これは不便なので、改善する方法を紹介します。</p>
 
 <p>shotgunというgemを使えばOKです。インストールし、ruby -rubygemsではなくshotgunでサーバを起動します。</p>
@@ -186,9 +186,9 @@ $ shotgun myapp.rb
   
   <entry>
     <title type="html"><![CDATA[Macのrubyで、no such file to load -- ubygems (LoadError)]]></title>
-    <link href="http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror"/>
+    <link href="http://kinopyo.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror"/>
     <updated>2011-05-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror</id>
+    <id>http://kinopyo.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror</id>
     <content type="html"><![CDATA[<p><a href="http://www.sinatrarb.com/intro">Sinatra</a>を試したところこのようなエラーになりました。</p>
 
 <p>```

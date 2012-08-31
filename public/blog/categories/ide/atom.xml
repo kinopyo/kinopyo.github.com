@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: IDE | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/ide/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/ide/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[TextMate Error: Exception raised during posting of notification]]></title>
-    <link href="http://kinopyo.github.com/blog/textmate-error-exception-raised-during-posting-of-notification"/>
+    <link href="http://kinopyo.com/blog/textmate-error-exception-raised-during-posting-of-notification"/>
     <updated>2011-06-04T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/textmate-error-exception-raised-during-posting-of-notification</id>
+    <id>http://kinopyo.com/blog/textmate-error-exception-raised-during-posting-of-notification</id>
     <content type="html"><![CDATA[<h2>現象</h2>
 
 <p>Railscastsで紹介した<a href="https://github.com/jezdez/textmate-missingdrawer">https://github.com/jezdez/textmate-missingdrawer</a>Project Drawerのプラグインをインストールした後に、ターミナルやTextMateのGUIでフォルダを開くときに画面が真っ白になる。ファイル一つ一つは開ける。</p>
@@ -42,9 +42,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vimビープ音を消す]]></title>
-    <link href="http://kinopyo.github.com/blog/set-vim-beep-alarm-off"/>
+    <link href="http://kinopyo.com/blog/set-vim-beep-alarm-off"/>
     <updated>2010-10-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/set-vim-beep-alarm-off</id>
+    <id>http://kinopyo.com/blog/set-vim-beep-alarm-off</id>
     <content type="html"><![CDATA[<p>ビープ音を消す。</p>
 
 <p>vi ~/.inputrc

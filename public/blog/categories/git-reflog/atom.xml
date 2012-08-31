@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: git-reflog | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/git-reflog/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/git-reflog/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[git reset --hardでミスった内容を取戻したいときはgit reflog]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog"/>
+    <link href="http://kinopyo.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog"/>
     <updated>2011-10-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog</id>
+    <id>http://kinopyo.com/blog/how-to-revert-git-reset-hard-miss-with-git-reflog</id>
     <content type="html"><![CDATA[<p>例えば<em>git reset --hard HEAD<sup>*で誤操作して内容を消してしまった、それを取戻したいときは</sup>
 +   </em>git reflog<em>で取戻したいHEAD@{x}の番号を確認
 +   </em>git reset --hard HEAD@{1}*で番号指定でもう一回git reset（ここでは例として1番にしてる）</p>

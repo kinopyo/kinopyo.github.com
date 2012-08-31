@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: octopress | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Escape square brackets by default in zsh]]></title>
-    <link href="http://kinopyo.github.com/blog/escape-square-bracket-by-default-in-zsh/"/>
+    <link href="http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh/"/>
     <updated>2012-07-08T18:45:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/escape-square-bracket-by-default-in-zsh</id>
+    <id>http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh</id>
     <content type="html"><![CDATA[<h2>Square brackets in zsh</h2>
 
 <p>Square brackets in zsh have special meanings but in MOST circumstances maybe you just have to escape them by putting <code>\</code>(backslash) before them.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: webservice | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/webservice/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/webservice/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[PayPal Here: スマーフォンでクレジットカードを読み込んで支払い]]></title>
-    <link href="http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution"/>
+    <link href="http://kinopyo.com/blog/paypal-here-mobile-payments-solution"/>
     <updated>2012-03-19T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution</id>
+    <id>http://kinopyo.com/blog/paypal-here-mobile-payments-solution</id>
     <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
 
 <p><blockquote><p>PayPal Here is the world's first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote></p>
@@ -29,9 +29,9 @@
   
   <entry>
     <title type="html"><![CDATA[d.me メール送るだけでDeliciousにブックマークできるようになった]]></title>
-    <link href="http://kinopyo.github.com/blog/mail-to-delicious-to-bookmart-a-page"/>
+    <link href="http://kinopyo.com/blog/mail-to-delicious-to-bookmart-a-page"/>
     <updated>2011-11-14T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mail-to-delicious-to-bookmart-a-page</id>
+    <id>http://kinopyo.com/blog/mail-to-delicious-to-bookmart-a-page</id>
     <content type="html"><![CDATA[<p><div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>d.me メール送るだけでDeliciousにブックマークできるようになった<a href="http://t.co/9xoR5Yp8" title="http://www.avos.com/as-easy-as-d-me/">avos.com/as-easy-as-d-m…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/135953105501175811" data-datetime="2011-11-14T05:32:00+00:00">11月 14, 2011</a></blockquote>
 <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div></p>
 ]]></content>
@@ -39,9 +39,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gmailを常に全員返信に設定]]></title>
-    <link href="http://kinopyo.github.com/blog/reply-to-all-always-in-gmail"/>
+    <link href="http://kinopyo.com/blog/reply-to-all-always-in-gmail"/>
     <updated>2011-07-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/reply-to-all-always-in-gmail</id>
+    <id>http://kinopyo.com/blog/reply-to-all-always-in-gmail</id>
     <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。
 <img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
 
@@ -52,9 +52,9 @@
   
   <entry>
     <title type="html"><![CDATA[自分がLikeした画像が見れるInstagram Web App - Inkstagram]]></title>
-    <link href="http://kinopyo.github.com/blog/inkstagram-show-photos-you-have-liked-on-instagram"/>
+    <link href="http://kinopyo.com/blog/inkstagram-show-photos-you-have-liked-on-instagram"/>
     <updated>2011-05-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/inkstagram-show-photos-you-have-liked-on-instagram</id>
+    <id>http://kinopyo.com/blog/inkstagram-show-photos-you-have-liked-on-instagram</id>
     <content type="html"><![CDATA[<p><blockquote><p>Inkstagram is also a web app for browsing Instagram photos. You can view photos in small, medium or full sizes while browsing your feed, popular photos or your own photos.</p></p><p><p>We especially appreciate the "My Likes" view which showcases all of the photos that you've liked on Instagram.</p></blockquote></p>
 
 <p>目玉機能というえばこの"My Likes"ですね！自分が"Like"した画像が一覧で見れます！ちょっとこういうの欲しかったー！
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gavatar - グローバルなアバターウェブサービス]]></title>
-    <link href="http://kinopyo.github.com/blog/gavatar-global-avatar-webservice"/>
+    <link href="http://kinopyo.com/blog/gavatar-global-avatar-webservice"/>
     <updated>2009-12-17T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/gavatar-global-avatar-webservice</id>
+    <id>http://kinopyo.com/blog/gavatar-global-avatar-webservice</id>
     <content type="html"><![CDATA[<p>Gravatar とは、ブログに投稿したりコメントしたりした時に、
 どのサイトでもあなたの名前の横に表示される画像です。</p>
 

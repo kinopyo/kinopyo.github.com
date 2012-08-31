@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Smarty | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/smarty/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/smarty/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Smartyで文字列を連結]]></title>
-    <link href="http://kinopyo.github.com/blog/smarty-concat-string"/>
+    <link href="http://kinopyo.com/blog/smarty-concat-string"/>
     <updated>2011-05-11T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/smarty-concat-string</id>
+    <id>http://kinopyo.com/blog/smarty-concat-string</id>
     <content type="html"><![CDATA[<p><code>``php
 {"</code>$foo<code>plain text</code>$bar`"}</p>
 
@@ -36,9 +36,9 @@
   
   <entry>
     <title type="html"><![CDATA[Kohana3にSmartyを利用するサンプル]]></title>
-    <link href="http://kinopyo.github.com/blog/kohana3-smarty-sample"/>
+    <link href="http://kinopyo.com/blog/kohana3-smarty-sample"/>
     <updated>2010-09-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/kohana3-smarty-sample</id>
+    <id>http://kinopyo.com/blog/kohana3-smarty-sample</id>
     <content type="html"><![CDATA[<h2>Smarty templateの作成</h2>
 
 <p>application/viewsにhello.tplというファイルを作成します。</p>
@@ -114,9 +114,9 @@ public function action_index()
   
   <entry>
     <title type="html"><![CDATA[SmartyをMac XAMPP環境にインストール]]></title>
-    <link href="http://kinopyo.github.com/blog/install-smarty-to-mac-xampp"/>
+    <link href="http://kinopyo.com/blog/install-smarty-to-mac-xampp"/>
     <updated>2010-09-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-smarty-to-mac-xampp</id>
+    <id>http://kinopyo.com/blog/install-smarty-to-mac-xampp</id>
     <content type="html"><![CDATA[<p>Smartyのインストールはphp.iniにインクルードパスを書く方法と書かない方法があります。ここではphpのインクルードパスに書く方法を紹介します。</p>
 
 <h3>1 Smartyをダウンロード</h3>
@@ -199,9 +199,9 @@ $smarty->compile_dir = '/Users/zolo/Develop/smarty/templates_c';</p>
   
   <entry>
     <title type="html"><![CDATA[Kohana3にSmarty moduleをインストール]]></title>
-    <link href="http://kinopyo.github.com/blog/install-smarty-module-to-kohan"/>
+    <link href="http://kinopyo.com/blog/install-smarty-module-to-kohan"/>
     <updated>2010-09-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-smarty-module-to-kohan</id>
+    <id>http://kinopyo.com/blog/install-smarty-module-to-kohan</id>
     <content type="html"><![CDATA[<h2>ダウンロード</h2>
 
 <p><a href="http://wiki.github.com/MrAnchovy/kohana-module-smarty/">http://wiki.github.com/MrAnchovy/kohana-module-smarty/</a></p>

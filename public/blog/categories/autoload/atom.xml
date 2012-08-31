@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: autoload | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/autoload/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/autoload/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rails libディレクトリのファイルをautoload]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-autoload-lib-directory-file"/>
+    <link href="http://kinopyo.com/blog/rails-autoload-lib-directory-file"/>
     <updated>2011-11-05T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-autoload-lib-directory-file</id>
+    <id>http://kinopyo.com/blog/rails-autoload-lib-directory-file</id>
     <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/591837.js?file='></script>
 <noscript><pre><code># application.rb
 

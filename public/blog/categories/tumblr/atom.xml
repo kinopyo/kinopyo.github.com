@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tumblr | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/tumblr/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/tumblr/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to change "Untitled" title in Tumblr]]></title>
-    <link href="http://kinopyo.github.com/blog/english-how-to-change-untitled-title-in-tumblr"/>
+    <link href="http://kinopyo.com/blog/english-how-to-change-untitled-title-in-tumblr"/>
     <updated>2012-01-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/english-how-to-change-untitled-title-in-tumblr</id>
+    <id>http://kinopyo.com/blog/english-how-to-change-untitled-title-in-tumblr</id>
     <content type="html"><![CDATA[<p>Click on the <strong>Account</strong> link in the top right hand corner of your dashboard.</p>
 
 <p>Then click on <strong>theme</strong>.</p>

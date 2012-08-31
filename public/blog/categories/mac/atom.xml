@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Mac | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/mac/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Create reminder to your iOS device from Mac]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-create-reminder-to-iphone-from-mac"/>
+    <link href="http://kinopyo.com/blog/how-to-create-reminder-to-iphone-from-mac"/>
     <updated>2011-12-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-create-reminder-to-iphone-from-mac</id>
+    <id>http://kinopyo.com/blog/how-to-create-reminder-to-iphone-from-mac</id>
     <content type="html"><![CDATA[<h1>Update</h1>
 
 <p>If you already upgraded to Moutain Lion OSX, you definetly don't need this, there is a navtive Reminder app built in :)</p>
@@ -55,9 +55,9 @@ You can get the notification of Growl after it's done.</p>
   
   <entry>
     <title type="html"><![CDATA[Mac Tweetアプリインストール後右クリックメニューの「Tweet」を消す方法]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu"/>
+    <link href="http://kinopyo.com/blog/how-to-disable-tweet-item-in-right-click-menu"/>
     <updated>2011-11-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-disable-tweet-item-in-right-click-menu</id>
+    <id>http://kinopyo.com/blog/how-to-disable-tweet-item-in-right-click-menu</id>
     <content type="html"><![CDATA[<p>MacのTweet公式アプリをインストール後、テキストを選択状態で右クリックするとメニューに「Tweet」が出てきますね。個人的には使わないのでそれを消す方法をシェアします。</p>
 
 <p><img src="http://www.kinopyo.com/wp-content/uploads/2011/11/Tweet-in-right-click-menu.jpg" title="Tweet in right click menu" ></p>
@@ -73,9 +73,9 @@ You can get the notification of Growl after it's done.</p>
   
   <entry>
     <title type="html"><![CDATA[Mouse Locator for Mac、マウスがスクリーンのどこにあるかを知りたい時]]></title>
-    <link href="http://kinopyo.github.com/blog/mouse-locator-for-mac"/>
+    <link href="http://kinopyo.com/blog/mouse-locator-for-mac"/>
     <updated>2011-11-08T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mouse-locator-for-mac</id>
+    <id>http://kinopyo.com/blog/mouse-locator-for-mac</id>
     <content type="html"><![CDATA[<p><img src="http://www.2point5fish.com/img/MLLogo.png" alt="Mouse Locator for Mac" /></p>
 
 <p>自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
@@ -89,9 +89,9 @@ You can get the notification of Growl after it's done.</p>
   
   <entry>
     <title type="html"><![CDATA[Mac Tabであらゆるダイアログのフォーカスを移動]]></title>
-    <link href="http://kinopyo.github.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs"/>
+    <link href="http://kinopyo.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs"/>
     <updated>2011-10-12T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs</id>
+    <id>http://kinopyo.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs</id>
     <content type="html"><![CDATA[<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don't Save, Cancel, Save...」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
 
 <p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！
@@ -109,9 +109,9 @@ You can get the notification of Growl after it's done.</p>
   
   <entry>
     <title type="html"><![CDATA[Remembering Steve Jobs]]></title>
-    <link href="http://kinopyo.github.com/blog/remembering-steve-jobs"/>
+    <link href="http://kinopyo.com/blog/remembering-steve-jobs"/>
     <updated>2011-10-06T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/remembering-steve-jobs</id>
+    <id>http://kinopyo.com/blog/remembering-steve-jobs</id>
     <content type="html"><![CDATA[<p>Let's remember the day Steve Jobs passed away.</p>
 
 <p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Apple-Steve-Jobs.jpg" title="Apple Steve Jobs" ></p>

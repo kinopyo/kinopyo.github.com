@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: JavaScript | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iPhone Safariキーボードの"Return"のkeydownイベントをキャッチ]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-catch-return-keydown-event-of-iphone-safari"/>
+    <link href="http://kinopyo.com/blog/how-to-catch-return-keydown-event-of-iphone-safari"/>
     <updated>2011-10-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-catch-return-keydown-event-of-iphone-safari</id>
+    <id>http://kinopyo.com/blog/how-to-catch-return-keydown-event-of-iphone-safari</id>
     <content type="html"><![CDATA[<h2>Situation</h2>
 
 <p>iPhone Safariを使うときにあるInput boxで何か入力後"return"キーのkeydownイベントをキャッチして、何かしらのアクションを行いたい、のが目的です。よくあるのがreturnキーでformをsubmitしたり、ボタンクリックのアクションを行ったり、キーボードを隠したりするところですかね。</p>
@@ -38,9 +38,9 @@
   
   <entry>
     <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <link href="http://kinopyo.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
     <updated>2011-07-04T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <id>http://kinopyo.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
     <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
 注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
 またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
@@ -91,9 +91,9 @@ git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript.tmbundl
   
   <entry>
     <title type="html"><![CDATA[メモ：PHPでJSONPを返すサンプルコード]]></title>
-    <link href="http://kinopyo.github.com/blog/memo-php-return-json"/>
+    <link href="http://kinopyo.com/blog/memo-php-return-json"/>
     <updated>2010-12-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/memo-php-return-json</id>
+    <id>http://kinopyo.com/blog/memo-php-return-json</id>
     <content type="html"><![CDATA[<h2>PHP側で</h2>
 
 <p>```php
@@ -124,9 +124,9 @@ echo $_GET<em>'callback'</em> . '(' . json_encode($object) . ');';</p>
   
   <entry>
     <title type="html"><![CDATA[jQuery: append(prepend,appendTo,prependTo)とafter(before,insertAfter,insertBefore)の違い]]></title>
-    <link href="http://kinopyo.github.com/blog/jquery-difference-between-append-and-after"/>
+    <link href="http://kinopyo.com/blog/jquery-difference-between-append-and-after"/>
     <updated>2010-12-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/jquery-difference-between-append-and-after</id>
+    <id>http://kinopyo.com/blog/jquery-difference-between-append-and-after</id>
     <content type="html"><![CDATA[<p>jQueryのappendやafterは全部DOM Manipulation、つまりDOM操作のメソッドであります。どう違うかは下記ソースコードを見るのが一番速いでしょう。</p>
 
 <h2>append(prepend,appendTo,prependTo)は要素内に、子供要素として貼り付ける</h2>
@@ -188,9 +188,9 @@ $('some text').appendTo(".chapter");</p>
   
   <entry>
     <title type="html"><![CDATA[JavaScript: カンマ区切りで数値をフォーマットする]]></title>
-    <link href="http://kinopyo.github.com/blog/javascript-format-number-to-japanese-currency"/>
+    <link href="http://kinopyo.com/blog/javascript-format-number-to-japanese-currency"/>
     <updated>2010-11-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/javascript-format-number-to-japanese-currency</id>
+    <id>http://kinopyo.com/blog/javascript-format-number-to-japanese-currency</id>
     <content type="html"><![CDATA[<p>```javascript</p>
 
 <p>/##

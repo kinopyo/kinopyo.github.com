@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: macport | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/macport/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/macport/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <link href="http://kinopyo.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
     <updated>2011-07-04T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <id>http://kinopyo.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
     <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
 注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
 またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
@@ -68,9 +68,9 @@ git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript.tmbundl
   
   <entry>
     <title type="html"><![CDATA[PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication]]></title>
-    <link href="http://kinopyo.github.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication"/>
+    <link href="http://kinopyo.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication"/>
     <updated>2011-03-17T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication</id>
+    <id>http://kinopyo.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication</id>
     <content type="html"><![CDATA[<h2>問題</h2>
 
 <p><blockquote><p>新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”</p></blockquote></p>
@@ -148,9 +148,9 @@ mysql> select password('aa');</p>
   
   <entry>
     <title type="html"><![CDATA[CakePHP, and Strict Standards]]></title>
-    <link href="http://kinopyo.github.com/blog/cakephp-and-strict-standards"/>
+    <link href="http://kinopyo.com/blog/cakephp-and-strict-standards"/>
     <updated>2011-03-17T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/cakephp-and-strict-standards</id>
+    <id>http://kinopyo.com/blog/cakephp-and-strict-standards</id>
     <content type="html"><![CDATA[<p>MacportでPHPをインストールし、CakePHPを動かしたら「Strict Standards」エラーが出ました。
 当時のエラー本文は残ってませんので、Googleで検索したエラー本文を貼り付けます。パス以外は同じのはずです。</p>
 

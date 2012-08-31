@@ -7,12 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Flexのtrace()はログ出力の機能です。
-Javaに慣れましたので、trace()もてっきりコンソールにも
-出力すると思っちゃいましたが、
-実はそうではありません。
-trace()を使うにはまず設定が必要です。
-バージョン情報 Flex3 Builder: Version 3.0 ( &hellip;">
+	<meta name="description" content="前記
+恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、
+実際はただjQueryの便利なAPIを使っただけで
+Ajaxそのものの仕組みも分かっていません。 今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように
+自分が理解したことをメモとして残したいです。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -46,7 +45,7 @@ trace()を使うにはまず設定が必要です。
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -70,12 +69,152 @@ trace()を使うにはまず設定が必要です。
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/basic-of-ajax-xmlhttprequest">今更のAjax基本：XMLHttpRequestについて</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>前記</h4>
+<p>恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、</p>
+<p>実際はただjQueryの便利なAPIを使っただけで</p>
+<p>Ajaxそのものの仕組みも分かっていません。</p>
+<br/>
+<p>今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように</p>
+<p>自分が理解したことをメモとして残したいです。</p>
+<br/>
+<h4>XMLHttpRequestとは</h4>
+<blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
+<p>JavaScriptなどのウェブブラウザ搭載のスクリプト言語で、サーバとのHTTP通信を行うための組み込みオブジェクト（API）である。</p>
+<p>すでに読み込んだページからさらにHTTPリクエストを発することができ、ページ遷移することなしにデータを送受信できるAjaxの基幹技術である。</p>
+<cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+<p>なるほど、これがAjaxを支える基幹ですね。</p>
+<p>JavaScriptのオブジェクトです。</p>
+<p>名前にXMLがついていますが、XML以外のデータも扱うことができます。</p>
+<h4>XMLHttpRequestの歴史</h4>
+<blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
+<p>XMLHttpRequestは、マイクロソフトがOutlook Web Access 2000のダイナミックHTMLによるウェブインターフェースに活用するため、1999年公開のInternet Explorer 5においてActiveXオブジェクトとして実装したのが始まりである[1]。その後、2001年にMozillaプロジェクトがこれと互換性のある組み込みオブジェクトをMozilla 0.9.7およびNetscape 7で実装し、アップルも2004年にSafari 1.2でMozillaと同様の組み込みオブジェクトを実装し始めた[2]。</p>
+<p>このように徐々にInternet Explorer以外のブラウザにも実装されていったXMLHttpRequestは、2005年にAjaxによって一躍有名になった。</p>
+<cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+<p>ようは各ブラウザが先にXMLHttpRequestオブジェクトを実装した、</p>
+<p>そして偉い人がAjaxを提唱してから一気に有名になった訳ですよね。</p>
+<br/>
+<h4>XMLHttpRequestの仕組み</h4>
+<p>AllAboutの記事に載ってた仕組みを自分で書きました。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091114023141" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091114/20091114023141.jpg" alt="f:id:kinopyo:20091114023141j:image" title="f:id:kinopyo:20091114023141j:image" class="hatena-fotolife"></a></p>
+<p>XMLHttpRequestのメソッドやプロパティは多分これからも使うことはありませんが、</p>
+<p>一応図で見て大体把握しておきましょう。</p>
+<p>openメソッドはイニシャライズみたいな感じで、GETかPOSTか、URLなどのパラメータを受け取ります。</p>
+<p>そしてsendメソッドによるサーバに送信する前に、onreadystatechangeイベントのコールバックでステータスを判断しresponseTextやresponseXML プロパティのデータを返す流れですね。</p>
+<blockquote>
+<p>拡張機能から XMLHttpRequest を使いたい場合は、非同期でロードするようにすべきです。</p>
+<p>非同期の使用法では、データを受け取ったときにコールバックを受け取ります。</p>
+<p>そのため、リクエストが発生している間はブラウザは通常どおりに動き続けます。 </p>
+</blockquote>
+<h4>XMLHttpRequestの宣言</h4>
+<blockquote title="http://ponpon-village.net/ajax/xmlhttp.htm" cite="http://ponpon-village.net/ajax/xmlhttp.htm">
+<p>ブラウザにより異なる。</p>
+<p>IE では、ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;) を使用。</p>
+<p>IE のバージョンによっては、ActiveXObject(&#8220;Msxml2.XMLHTTP.5.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP.4.0&#8221;) ,</p>
+<p>ActiveXObject(&#8220;Msxml2.XMLHTTP.3.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP&#8221;) なども使用出来る。</p>
+<p>Mozilla 系ブラウザでは、XMLHttpRequest() を使用。</p>
+<cite><a href="http://ponpon-village.net/ajax/xmlhttp.htm" target="_blank">http://ponpon-village.net/ajax/xmlhttp.htm</a></cite></blockquote>
+<h4>非同期通信のサンプルコード</h4>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="kd">var</span> <span class="nx">req</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;MSXML2.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.example.com/contents.txt&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+<p>req.statusはHTTPレスポンスコードで200はOK、404はよく見るNot Foundです。</p>
+<br/>
+<h4>注意点</h4>
+<ul>
+<li>file:/// および ftp:// は HTTP ステータスを返しません。そのため、status についてはゼロが、statusText については空文字列を返されます。</li>
+<li>XMLHttpRequestは、セキュリティを考慮して、リクエストを送信できるのは同一ドメイン内に制限されています。</li>
+</ul>
+<br/>
+<p>とりあえず自分が気になった点を書きました。</p>
+<p>肝心なところはonreadystatechangeでのコールバックだと思います。</p>
+<h4>次回</h4>
+<p>XMLHttpRequestは同一ドメイン内に制限されていますね。</p>
+<p>別のドメインとのやり取りはどう行うのかを次のテーマにします。</p>
+<p>なんかJSONPとかクロスドメインなどのキーワードがよく見えますが、</p>
+<p>その辺をはっきりしようと思います。</p>
+<h4>参考サイト：</h4>
+<p><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></p>
+<p><a href="https://developer.mozilla.org/Ja/XMLHttpRequest" target="_blank">XMLHttpRequest - MDC</a></p>
+<p><a href="http://allabout.co.jp/internet/javascript/closeup/CU20050515A" target="_blank">Ajaxはじめの一歩　XMLHttpRequest - ［JavaScript］All About</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1388,84 +1527,6 @@ required: <span class="synIdentifier">function</span>(value, element, param) <sp
 
 
 	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/start-like-these-when-grow-up">大人(社会人)になってから好きになったこと</a></h1>
-	<div class="entry-content">
-		<h4>私服よりスーツ</h4>
-
-
-<p>最初のうちはまだ本社で私服で出勤する同僚がうらやましかったのです。</p>
-
-
-<p>私はお客さんに常駐し毎日スーツでした。</p>
-
-
-<p>ある日、先輩の一言で突然目覚めた感じです。</p>
-
-
-<p>「私服じゃ仕事する気がなくなっちゃう」ってね。</p>
-
-
-<p>それに、スーツでもかっこいいスーツがあるし、</p>
-
-
-<p>ファッションもできますよね。</p>
-
-
-<h4>ブラックコーヒー</h4>
-
-
-<p>これも甘いものが好きだっだのですが、</p>
-
-
-<p>いつの間にか、気づいたらもう毎日ブラックじゃないとだめになっちゃいました。</p>
-
-
-<p>仕事する上で、やはりブラックが一押し！</p>
-
-
-<br/>
-
-
-<h4>酒(特に生ビール)</h4>
-
-
-<p>がんばった一日の最後に生ビール一杯で、</p>
-
-
-<p>本当に「うわぁ～～」って感じ</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-02T00:00:00+09:00" pubdate data-updated="true">2009-11-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>diary</a>
 
 
 </div>

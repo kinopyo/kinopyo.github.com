@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: nokogiri | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/nokogiri/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/nokogiri/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Nokogiriでhttpsプロトコールのコンテンツを取得]]></title>
-    <link href="http://kinopyo.github.com/blog/get-https-contents-with-nokogiri"/>
+    <link href="http://kinopyo.com/blog/get-https-contents-with-nokogiri"/>
     <updated>2011-06-27T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/get-https-contents-with-nokogiri</id>
+    <id>http://kinopyo.com/blog/get-https-contents-with-nokogiri</id>
     <content type="html"><![CDATA[<p>Nokogiriでurlをparseするときは普通こんなコードになります。</p>
 
 <p>```ruby
@@ -55,9 +55,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた]]></title>
-    <link href="http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
+    <link href="http://kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
     <updated>2011-06-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
+    <id>http://kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
     <content type="html"><![CDATA[<h2>スレット経緯</h2>
 
 <p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: profiles | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/profiles/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/profiles/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Chrome（Chromium）でマルチプロファイルを使う]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium"/>
+    <link href="http://kinopyo.com/blog/how-to-enable-multiple-profiles-in-chome-chromium"/>
     <updated>2011-10-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium</id>
+    <id>http://kinopyo.com/blog/how-to-enable-multiple-profiles-in-chome-chromium</id>
     <content type="html"><![CDATA[<h2>メリット</h2>
 
 <p>マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。</p>

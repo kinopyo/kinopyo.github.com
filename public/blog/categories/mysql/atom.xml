@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MySQL | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/mysql/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby MySQL Tutorial]]></title>
-    <link href="http://kinopyo.github.com/blog/ruby-mysql-tutorial"/>
+    <link href="http://kinopyo.com/blog/ruby-mysql-tutorial"/>
     <updated>2011-09-09T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ruby-mysql-tutorial</id>
+    <id>http://kinopyo.com/blog/ruby-mysql-tutorial</id>
     <content type="html"><![CDATA[<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
 
 <p><div><script src='https://gist.github.com/1205708.js?file='></script>
@@ -160,9 +160,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[MySQL, OracleのGroup by date, 日付別で集計]]></title>
-    <link href="http://kinopyo.github.com/blog/mysql-oracle-group-by-date"/>
+    <link href="http://kinopyo.com/blog/mysql-oracle-group-by-date"/>
     <updated>2011-08-17T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mysql-oracle-group-by-date</id>
+    <id>http://kinopyo.com/blog/mysql-oracle-group-by-date</id>
     <content type="html"><![CDATA[<p>これが既存データで、同じ日に複数のデータがある。
 <img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" title="table_data" ></p>
 
@@ -188,9 +188,9 @@ http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
   
   <entry>
     <title type="html"><![CDATA[PHP:環境構築時に使う接続テストコードまとめ MySQL/Oracle/Memcache/Memcached]]></title>
-    <link href="http://kinopyo.github.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
+    <link href="http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
     <updated>2011-06-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
+    <id>http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
     <content type="html"><![CDATA[<p>環境構築時に接続テスト用のコードをまとめました。</p>
 
 <script type="text/javascript" src="scripts/gist.js"></script>
@@ -203,9 +203,9 @@ http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
   
   <entry>
     <title type="html"><![CDATA[PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication]]></title>
-    <link href="http://kinopyo.github.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication"/>
+    <link href="http://kinopyo.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication"/>
     <updated>2011-03-17T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication</id>
+    <id>http://kinopyo.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication</id>
     <content type="html"><![CDATA[<h2>問題</h2>
 
 <p><blockquote><p>新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”</p></blockquote></p>
@@ -283,9 +283,9 @@ mysql> select password('aa');</p>
   
   <entry>
     <title type="html"><![CDATA[MySQL autocommitでトランザクションを制御する]]></title>
-    <link href="http://kinopyo.github.com/blog/mysql-using-autocommit-to-control-transaction"/>
+    <link href="http://kinopyo.com/blog/mysql-using-autocommit-to-control-transaction"/>
     <updated>2010-12-07T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mysql-using-autocommit-to-control-transaction</id>
+    <id>http://kinopyo.com/blog/mysql-using-autocommit-to-control-transaction</id>
     <content type="html"><![CDATA[<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
 
 <p>```sql</p>

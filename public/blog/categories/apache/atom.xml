@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Apache | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/apache/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/apache/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[さくらVPSのパフォーマンスチューニング]]></title>
-    <link href="http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
+    <link href="http://kinopyo.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
     <updated>2011-11-11T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
+    <id>http://kinopyo.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
     <content type="html"><![CDATA[<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
 
 <p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
@@ -76,9 +76,9 @@
   
   <entry>
     <title type="html"><![CDATA[Windowsにmemcacheをインストール、PHPの設定]]></title>
-    <link href="http://kinopyo.github.com/blog/install-memcache-in-windows-setup-php"/>
+    <link href="http://kinopyo.com/blog/install-memcache-in-windows-setup-php"/>
     <updated>2010-11-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-memcache-in-windows-setup-php</id>
+    <id>http://kinopyo.com/blog/install-memcache-in-windows-setup-php</id>
     <content type="html"><![CDATA[<h2>My環境</h2>
 
 <p>XAMPP1.7.3 + WinXP

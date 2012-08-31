@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -14,10 +14,53 @@
 
   
   <entry>
+    <title type="html"><![CDATA[My New Blog with Octopress]]></title>
+    <link href="http://kinopyo.com/blog/my-new-blog-with-octopress/"/>
+    <updated>2012-08-31T22:49:00+09:00</updated>
+    <id>http://kinopyo.com/blog/my-new-blog-with-octopress</id>
+    <content type="html"><![CDATA[<p>Finally migrated all my posts from Wordpress to Octopress. I think it&#8217;s quite popular among hackers and geeks these days, if you don&#8217;t know it just google it, tons of results.</p>
+
+<p>There&#8217;re still a lot of works to do, like some posts with messy format or broken links, Disqus comments need to be migrated, categories are nonsense etc, but I&#8217;ll announce this anyway. Done is better than perfect right?</p>
+
+<p>I&#8217;m not gonna mention any migration details here, I&#8217;d like to look back and have a summary or something now.</p>
+
+<h1>Over 300 posts since 2009/10/07</h1>
+
+<p>I&#8217;m really surprised by myself. I was not aware of that I&#8217;ve done so many writings. Even many of them are just simple code gist and programming related.</p>
+
+<p>It&#8217;s so easy now to &#8220;execute&#8221; an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential &#8220;things&#8221; here, as part of my life.</p>
+
+<h1>Japanese, English and Chinese</h1>
+
+<p>There was a time I was trying to write down every single post in these 3 languages. I believe the plugin I used in Wordpress is called <em>qTranslate</em>, which let you write with each language or all of them.</p>
+
+<p>After a while I noticed it was too hard for me. Translating same contents into a different language is boring and wasting of time, at least I tried and found out it doesn&#8217;t work for me. So this time, I want this blog to be an English mainly blog, with occasional different language posts. My plan is writing emotional feelings in Chinese, and social activities or something related to Japan in Japanese.</p>
+
+<p>I&#8217;m still keeping those language mixed posts here even though I think it&#8217;s not useful to my &#8220;readers&#8221;, not sure how many I got, I&#8217;d like to take those posts as old-days foot prints. &#8220;あの時がんばったな！ー&#8221; hehe.</p>
+
+<h1>About the priority or weight of each language</h1>
+
+<p>I want to be a top player in this programming field. In order to achieve that English is a MUST condition. I still remember when I first time read a programming book in English, it was so difficult that I hardly understood the meanings. But I keep trying and trying, now I&#8217;m very comfortable with it and believe it&#8217;s more natural than any other language in programming field.</p>
+
+<p>Besides the effort I put in English, I also want to start writing in my native language, Chinese. Although English is more friendly to me than before, it&#8217;s still difficult to describe my feelings and emotions precisely. I need more vocabularies. I need to look back to think about if there is a grammar mistake. So when I think about some topics such as meanings of life, or what I want to left to the world, am I making this world a little bit better, etc. In these cases I need to grab my most familiar weapon :)</p>
+
+<p>For Japanese, hmmm.. I&#8217;ll leave it for now :)</p>
+
+<h1>Google Adsense</h1>
+
+<p>If you&#8217;re an old readers of me, I hope you are, you may notice that there&#8217;s no ads anymore. Yeah I used to put those ads for experiment. With 500-600 daily PVs, it gave me around 4,000￥ every month. Not that much but it&#8217;s better than nothing, so I kept ads for a long time. But to be honest, as a personal blog it&#8217;s just annoying. I didn&#8217;t like it personally, and it&#8217;s for sure it gives people bad impression, I don&#8217;t like to miss a job opportunity if some head hunters open my blog and leave with a &#8220;WTF?!..&#8221;.</p>
+
+<p>Let&#8217;s just be simple and clean.</p>
+
+<p>That&#8217;s it~ see you next time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[How to I get rid of "WARN Could not determine content-length of response body"]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body/"/>
+    <link href="http://kinopyo.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body/"/>
     <updated>2012-08-30T19:51:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body</id>
+    <id>http://kinopyo.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body</id>
     <content type="html"><![CDATA[<p>If you get these warning messages in your rails log, just simply put <code>thin</code> to your Gemfile.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -37,9 +80,9 @@
   
   <entry>
     <title type="html"><![CDATA[an iterm theme - SOLARIZED]]></title>
-    <link href="http://kinopyo.github.com/blog/an-iterm-theme-solarized/"/>
+    <link href="http://kinopyo.com/blog/an-iterm-theme-solarized/"/>
     <updated>2012-08-29T00:34:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/an-iterm-theme-solarized</id>
+    <id>http://kinopyo.com/blog/an-iterm-theme-solarized</id>
     <content type="html"><![CDATA[<p>Just found out a theme called - <a href="http://ethanschoonover.com/solarized">SOLARIZED</a>.</p>
 
 <p>And actually it supports a lot of Editors and terminals, just go to its website.</p>
@@ -56,9 +99,9 @@
   
   <entry>
     <title type="html"><![CDATA[Upgrading to Rails 3.2 from 3.1]]></title>
-    <link href="http://kinopyo.github.com/blog/upgrade-to-rails-3-dot-2-from-3-dot-1/"/>
+    <link href="http://kinopyo.com/blog/upgrade-to-rails-3-dot-2-from-3-dot-1/"/>
     <updated>2012-08-23T12:55:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/upgrade-to-rails-3-dot-2-from-3-dot-1</id>
+    <id>http://kinopyo.com/blog/upgrade-to-rails-3-dot-2-from-3-dot-1</id>
     <content type="html"><![CDATA[<p>Yesterday I upgraded one of my old-pending-hobby projects to latest Rails version, which is 3.2.8 now. Since I have several other projects in old version, I&#8217;d like to keep a note for what I&#8217;ve done.</p>
 
 <p>As you can see in my <a href="https://github.com/kinopyo/NumberStory/commit/a11ab75263f7f74f703b377891dd0c8665bf3da5">commit</a>, all you have to do is update the version in <code>Gemfile</code> and hit <code>bundle update</code> in your terminal.</p>
@@ -114,9 +157,9 @@
   
   <entry>
     <title type="html"><![CDATA[Finding an array of ids while keeping the order with Rails]]></title>
-    <link href="http://kinopyo.github.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/"/>
+    <link href="http://kinopyo.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/"/>
     <updated>2012-08-14T15:13:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails</id>
+    <id>http://kinopyo.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails</id>
     <content type="html"><![CDATA[<h2>The order may different</h2>
 
 <p>Suppose you&#8217;re retrieving records using array of <code>ids</code>.</p>
@@ -179,9 +222,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[How to reset zoom in chrome]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-reset-zoom-in-chrome/"/>
+    <link href="http://kinopyo.com/blog/how-to-reset-zoom-in-chrome/"/>
     <updated>2012-08-03T14:49:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-reset-zoom-in-chrome</id>
+    <id>http://kinopyo.com/blog/how-to-reset-zoom-in-chrome</id>
     <content type="html"><![CDATA[<p><code>cmd + 0</code> in mac :)</p>
 
 <p>If you click the tool icon on the right of the address bar, you can also check the current zoom rate.</p>
@@ -192,9 +235,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[How to disable auto correct in oh-my-zsh]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh/"/>
+    <link href="http://kinopyo.com/blog/how-to-disable-auto-correct-in-zsh/"/>
     <updated>2012-07-20T20:35:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh</id>
+    <id>http://kinopyo.com/blog/how-to-disable-auto-correct-in-zsh</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is very handy and I&#8217;ve been using it for almost a year.</p>
 
 <p>But I found the auto correct is kind of annoying and barely helped me. So I decided to turn if off!</p>
@@ -235,9 +278,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[Machinist 1.0: How to generate an object without saving it to the database]]></title>
-    <link href="http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/"/>
+    <link href="http://kinopyo.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/"/>
     <updated>2012-07-20T20:12:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database</id>
+    <id>http://kinopyo.com/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database</id>
     <content type="html"><![CDATA[<p><strong>CAUTION</strong> It&#8217;s specific machinist 1.0-maintenance.</p>
 
 <p>Machinist is an alternative for Fixtures or FactoryGirl.</p>
@@ -270,9 +313,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[Escape square brackets by default in zsh]]></title>
-    <link href="http://kinopyo.github.com/blog/escape-square-bracket-by-default-in-zsh/"/>
+    <link href="http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh/"/>
     <updated>2012-07-08T18:45:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/escape-square-bracket-by-default-in-zsh</id>
+    <id>http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh</id>
     <content type="html"><![CDATA[<h2>Square brackets in zsh</h2>
 
 <p>Square brackets in zsh have special meanings but in MOST circumstances maybe you just have to escape them by putting <code>\</code>(backslash) before them.</p>
@@ -307,9 +350,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[Bootswatch - A simple solution to customize Bootstrap color]]></title>
-    <link href="http://kinopyo.github.com/blog/bootswatch-simple-solution-to-custimze-bootstrap-color/"/>
+    <link href="http://kinopyo.com/blog/bootswatch-simple-solution-to-custimze-bootstrap-color/"/>
     <updated>2012-07-03T18:17:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/bootswatch-simple-solution-to-custimze-bootstrap-color</id>
+    <id>http://kinopyo.com/blog/bootswatch-simple-solution-to-custimze-bootstrap-color</id>
     <content type="html"><![CDATA[<p>Recently I found this website called <strong><a href="http://bootswatch.com/">Bootswatch</a></strong>, which is really helpful when you want to add color(or say different theme) to your bootstrap project. There is also a <a href="https://wrapbootstrap.com/">marketplace</a> for you to buy/sell themes.</p>
 
 <p>I&#8217;ll definetly try one next time I use bootstrap.</p>
@@ -320,9 +363,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[Run Ruby Script in Rails Environment]]></title>
-    <link href="http://kinopyo.github.com/blog/run-ruby-script-in-rails-environment/"/>
+    <link href="http://kinopyo.com/blog/run-ruby-script-in-rails-environment/"/>
     <updated>2012-06-29T18:04:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/run-ruby-script-in-rails-environment</id>
+    <id>http://kinopyo.com/blog/run-ruby-script-in-rails-environment</id>
     <content type="html"><![CDATA[<h2>Overview</h2>
 
 <p>If you wanna execute some ruby code in rails environment, say manipulate w/ model or something, you can always try <code>rake task</code> first. But there&#8217;re circumstances you don&#8217;t want to use it, maybe it&#8217;s just a one-time script that you don&#8217;t want to save it to git, or whatever.</p>
@@ -371,9 +414,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[Explicitly specify table name in scope definition]]></title>
-    <link href="http://kinopyo.github.com/blog/someone-is-leaving/"/>
+    <link href="http://kinopyo.com/blog/someone-is-leaving/"/>
     <updated>2012-06-29T15:56:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/someone-is-leaving</id>
+    <id>http://kinopyo.com/blog/someone-is-leaving</id>
     <content type="html"><![CDATA[<p>I was wondering why people explicitly specify table name in such a scope definition&#8230;</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -403,9 +446,9 @@ Here is just an example:</p>
   
   <entry>
     <title type="html"><![CDATA[Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
+    <link href="http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
     <updated>2012-03-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
+    <id>http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
     <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
 
 <blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence &#8220;peroperos_id_seq&#8221; for serial column &#8220;peroperos.id&#8221;<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index &#8220;peroperos_pkey&#8221; for table &#8220;peroperos&#8221;<br/>～略～</p></blockquote>
@@ -432,9 +475,9 @@ test:
   
   <entry>
     <title type="html"><![CDATA[Railsテスト時のrack警告"warning: regexp match /.../n against to UTF-8 string"を消す方法]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-test-quietrack-warning"/>
+    <link href="http://kinopyo.com/blog/rails-test-quietrack-warning"/>
     <updated>2012-03-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-test-quietrack-warning</id>
+    <id>http://kinopyo.com/blog/rails-test-quietrack-warning</id>
     <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -475,9 +518,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[SafariのTabにFaviconを表示する]]></title>
-    <link href="http://kinopyo.github.com/blog/safari-display-favicon-to-tab"/>
+    <link href="http://kinopyo.com/blog/safari-display-favicon-to-tab"/>
     <updated>2012-03-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/safari-display-favicon-to-tab</id>
+    <id>http://kinopyo.com/blog/safari-display-favicon-to-tab</id>
     <content type="html"><![CDATA[<p>Safariは開いたタブが多くなるとFaviconがなく文字だけのため、ちょっと見にくいと思います。
 Chromeと同じようにタブにFaviconを表示する方法を紹介します。<a href="http://www.machangout.com">glims</a>というプラグインです！</p>
 
@@ -497,9 +540,9 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
   
   <entry>
     <title type="html"><![CDATA[PayPal Here: スマーフォンでクレジットカードを読み込んで支払い]]></title>
-    <link href="http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution"/>
+    <link href="http://kinopyo.com/blog/paypal-here-mobile-payments-solution"/>
     <updated>2012-03-19T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/paypal-here-mobile-payments-solution</id>
+    <id>http://kinopyo.com/blog/paypal-here-mobile-payments-solution</id>
     <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
 
 <blockquote><p>PayPal Here is the world&#8217;s first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote>
@@ -514,9 +557,9 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
   
   <entry>
     <title type="html"><![CDATA[A Mystery: Why Cant We Walk Straight?]]></title>
-    <link href="http://kinopyo.github.com/blog/a-mystery-why-can-not-we-walk-straight"/>
+    <link href="http://kinopyo.com/blog/a-mystery-why-can-not-we-walk-straight"/>
     <updated>2012-01-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/a-mystery-why-can-not-we-walk-straight</id>
+    <id>http://kinopyo.com/blog/a-mystery-why-can-not-we-walk-straight</id>
     <content type="html"><![CDATA[<p>面白かったのでブログに載せました。目を閉じて歩けば直線だと本人は思うが、実はぐるぐる回ってるって実験が80年前から行われていて、未だにその原因がわからないそうです。</p>
 
 <iframe src="http://player.vimeo.com/video/17083789?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
@@ -529,9 +572,9 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
   
   <entry>
     <title type="html"><![CDATA[FactoryGirl: How to define a value based on an already defined one]]></title>
-    <link href="http://kinopyo.github.com/blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one"/>
+    <link href="http://kinopyo.com/blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one"/>
     <updated>2012-01-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/factorygirl-%e6%97%a2%e3%81%ab%e5%ae%9a%e7%be%a9%e3%81%97%e3%81%9f%e5%80%a4%e3%82%92%e3%83%99%e3%83%bc%e3%82%b9%e3%81%ab%e3%81%97%e3%81%9f%e5%80%a4%e3%82%92%e8%a8%ad%e5%ae%9a%e3%81%99%e3%82%8b</id>
+    <id>http://kinopyo.com/blog/factorygirl-%e6%97%a2%e3%81%ab%e5%ae%9a%e7%be%a9%e3%81%97%e3%81%9f%e5%80%a4%e3%82%92%e3%83%99%e3%83%bc%e3%82%b9%e3%81%ab%e3%81%97%e3%81%9f%e5%80%a4%e3%82%92%e8%a8%ad%e5%ae%9a%e3%81%99%e3%82%8b</id>
     <content type="html"><![CDATA[<p>FactoryGirlで既に定義した値を使おうとする時の方法です。
 例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。</p>
 
@@ -562,9 +605,9 @@ end</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Heroku, how to check and add ENV vars]]></title>
-    <link href="http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars"/>
+    <link href="http://kinopyo.com/blog/heroku-how-to-check-and-add-env-vars"/>
     <updated>2012-01-24T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/heroku-how-to-check-and-add-env-vars</id>
+    <id>http://kinopyo.com/blog/heroku-how-to-check-and-add-env-vars</id>
     <content type="html"><![CDATA[<div><script src='https://gist.github.com/1667607.js?file='></script>
 <noscript><pre><code># check all your ENV vars.
 heroku config -long
@@ -591,9 +634,9 @@ heroku config:add S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre></no
   
   <entry>
     <title type="html"><![CDATA[iPhone 4Sのモバイルデータ通信(3G)をオフにしたらたまたま電話機能が使えなくなる件]]></title>
-    <link href="http://kinopyo.github.com/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data"/>
+    <link href="http://kinopyo.com/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data"/>
     <updated>2012-01-08T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data</id>
+    <id>http://kinopyo.com/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data</id>
     <content type="html"><![CDATA[<h2>SMSと電話ができなくなる故障？</h2>
 
 <p>iPhone 4Sになってからは「3Gオフ」のオプションはなくなり、代わりに「モバイルデータ通信」をずっとオフにしたのですが、ある日からたまたま<strong>電話やSMSができなくなりました</strong>。
@@ -619,30 +662,6 @@ heroku config:add S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre></no
 <h2>なぜ3Gオフのオプションはなくなったのか</h2>
 
 <p>Googleで検索してもAppleからの正式回答はなかったのです。>_&lt;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iPad2とソフトバンクWi-Fiスポット(2years)]]></title>
-    <link href="http://kinopyo.github.com/blog/ipad2-softbank-wifi-spot-2-year"/>
-    <updated>2012-01-08T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ipad2-softbank-wifi-spot-2-year</id>
-    <content type="html"><![CDATA[<p>iPad2でたまに駅とかでソフトバンクのWifiスポットへのアクセス画面が出てきて、気になって使えるかを調べたんです。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/20100606_softbankWifi.gif"></p>
-
-<h2>利用するには</h2>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg"></p>
-
-<blockquote><p>iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi-Fiスポットを無料で提供します。</p></blockquote>
-
-
-<p>自分場合当時アップルストアで購入したのですが、iPad2の個装底面にはシールがありませんでした。上記の説明の「一部の量販店」の部分が曖昧だっだので、ソフトバンクのスタッフに聞いたら、とりあえず<strong>ソフトバンクのショップで買わないとほとんどはwifiスポットを提供しない</strong>らしいです。また<strong>iPadのモデルがそもそも違うので他にWifi加入とかの申し込みも全然できない</strong>です。</p>
-
-<p>そこの説明文は全然嘘ということでした。</p>
-
-<p>関連リンク：<a href="http://mb.softbank.jp/mb/ipad/service/wi-fi/">http://mb.softbank.jp/mb/ipad/service/wi-fi/</a></p>
 ]]></content>
   </entry>
   

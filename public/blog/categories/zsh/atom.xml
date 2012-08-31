@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: zsh | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/zsh/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/zsh/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to disable auto correct in oh-my-zsh]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh/"/>
+    <link href="http://kinopyo.com/blog/how-to-disable-auto-correct-in-zsh/"/>
     <updated>2012-07-20T20:35:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-disable-auto-correct-in-zsh</id>
+    <id>http://kinopyo.com/blog/how-to-disable-auto-correct-in-zsh</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is very handy and I've been using it for almost a year.</p>
 
 <p>But I found the auto correct is kind of annoying and barely helped me. So I decided to turn if off!</p>
@@ -54,9 +54,9 @@ alias git=’nocorrect heroku’
   
   <entry>
     <title type="html"><![CDATA[Escape square brackets by default in zsh]]></title>
-    <link href="http://kinopyo.github.com/blog/escape-square-bracket-by-default-in-zsh/"/>
+    <link href="http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh/"/>
     <updated>2012-07-08T18:45:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/escape-square-bracket-by-default-in-zsh</id>
+    <id>http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh</id>
     <content type="html"><![CDATA[<h2>Square brackets in zsh</h2>
 
 <p>Square brackets in zsh have special meanings but in MOST circumstances maybe you just have to escape them by putting <code>\</code>(backslash) before them.</p>
@@ -84,9 +84,9 @@ alias rake='noglob rake'
   
   <entry>
     <title type="html"><![CDATA[zshでgitの^caretは使えないっぽい: zsh: no matches found: HEAD^]]></title>
-    <link href="http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found"/>
+    <link href="http://kinopyo.com/blog/git-caret-does-not-work-in-zsh-no-matches-found"/>
     <updated>2011-10-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/git-caret-does-not-work-in-zsh-no-matches-found</id>
+    <id>http://kinopyo.com/blog/git-caret-does-not-work-in-zsh-no-matches-found</id>
     <content type="html"><![CDATA[<p><a href="http://www.kinopyo.com/blog/what-does-caret-character-mean-in-git">前回の記事：gitの<sup>記号は<em>で</em>HEAD<sup></em>を書いたのですが、<em>zsh</sup></sup></a>でやるとこんなエラーに。。</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

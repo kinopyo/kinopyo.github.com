@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: checkbox | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/checkbox/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/checkbox/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[jQuery checkbox checked event]]></title>
-    <link href="http://kinopyo.github.com/blog/jquery-checkbox-checked-event"/>
+    <link href="http://kinopyo.com/blog/jquery-checkbox-checked-event"/>
     <updated>2011-11-22T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/jquery-checkbox-checked-event</id>
+    <id>http://kinopyo.com/blog/jquery-checkbox-checked-event</id>
     <content type="html"><![CDATA[<p>jQueryでチェックボックスの状態を監視するイベントは<strong>click event</strong>を使う。</p>
 
 <p>チェックされたかを判断するには<code>$("#some_checkbox").is(':checked')</code>がいい。</p>
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[iPhone safari(webkit-base browser)のcheckboxのサイズを調整]]></title>
-    <link href="http://kinopyo.github.com/blog/change-checkbox-size-in-iphone-safari"/>
+    <link href="http://kinopyo.com/blog/change-checkbox-size-in-iphone-safari"/>
     <updated>2011-09-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/change-checkbox-size-in-iphone-safari</id>
+    <id>http://kinopyo.com/blog/change-checkbox-size-in-iphone-safari</id>
     <content type="html"><![CDATA[<p>Webkit-baseのブラウザ(Safari, Google Chrome)に適用します。</p>
 
 <p>普通のcheckboxはiphoneのようなスマートフォンで見るときとても小さいです。checkboxはcssでheightやwidthを指定しても効かないため、ちょっとしたトリックが必要です。</p>

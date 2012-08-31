@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: hibernate | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/hibernate/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/hibernate/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hibernate：複数項目のPKに対応するアノテーションの記述方法]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate"/>
+    <link href="http://kinopyo.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate"/>
     <updated>2010-12-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate</id>
+    <id>http://kinopyo.com/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate</id>
     <content type="html"><![CDATA[<p>一つ以上の項目がPKとなったケースでHibernateはどう設定すればいいのかを説明します。
 ずいぶん昔のメモになります。</p>
 

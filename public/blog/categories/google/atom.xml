@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Google | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/google/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/google/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Google Calendarで土日のカラムを色付け]]></title>
-    <link href="http://kinopyo.github.com/blog/set-weekend-color-in-google-calendar"/>
+    <link href="http://kinopyo.com/blog/set-weekend-color-in-google-calendar"/>
     <updated>2011-09-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/set-weekend-color-in-google-calendar</id>
+    <id>http://kinopyo.com/blog/set-weekend-color-in-google-calendar</id>
     <content type="html"><![CDATA[<p>Google ChromeのExtensionです。
 <a href="http://www.suekichi.org/blog/google-calendar-color-extension/">http://www.suekichi.org/blog/google-calendar-color-extension/</a>
 の<a href="http://www.suekichi.org/download/GoogleCalendarColorSunday.crx">日曜始まり版</a>をダウンロードしインストールすればOKです。</p>
@@ -26,9 +26,9 @@
   
   <entry>
     <title type="html"><![CDATA[初めてのgadget.xml with iGoogle]]></title>
-    <link href="http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle"/>
+    <link href="http://kinopyo.com/blog/first-gadget-xml-with-igoogle"/>
     <updated>2011-02-28T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/first-gadget-xml-with-igoogle</id>
+    <id>http://kinopyo.com/blog/first-gadget-xml-with-igoogle</id>
     <content type="html"><![CDATA[<p>Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。<a href="http://code.google.com/apis/gadgets/docs/gs.html">http://code.google.com/apis/gadgets/docs/gs.html</a>を参照してください。</p>
 
 <h2>ソースを用意</h2>
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ajaxとアクセス解析PVの関係]]></title>
-    <link href="http://kinopyo.github.com/blog/ajax-and-pageview"/>
+    <link href="http://kinopyo.com/blog/ajax-and-pageview"/>
     <updated>2011-02-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ajax-and-pageview</id>
+    <id>http://kinopyo.com/blog/ajax-and-pageview</id>
     <content type="html"><![CDATA[<p>AJAXでのアクセスはPVにカウントされない、というのをこの間にミーティングで知りました。考えてみりゃ当たり前のことですが、考えたことはなかったです。。でどうするか、とのことでちょっとぐぐってみました。</p>
 
 <p>結論からいうと<strong>ダミーのページを指定するようにJavascript側で書く</strong>（Google Analytics前提）</p>

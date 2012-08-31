@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: encoding | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/encoding/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/encoding/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[文字コードとは？エンコードとは？なぜ文字化けするのか？]]></title>
-    <link href="http://kinopyo.github.com/blog/what-is-character-set-and-encode"/>
+    <link href="http://kinopyo.com/blog/what-is-character-set-and-encode"/>
     <updated>2009-11-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/what-is-character-set-and-encode</id>
+    <id>http://kinopyo.com/blog/what-is-character-set-and-encode</id>
     <content type="html"><![CDATA[<div class="section">
 <p>文字コードが何なのか、エンコードは何なのか、何で文字化けするかはっきり分かっていませんでした。月刊DBマガジンの2010/JANの徹底研究に文字コードの内容が載せていて、とても分かりやすく説明してくれたので、勉強メモを書きます。</p>
 <h4>文字コードとは</h4>

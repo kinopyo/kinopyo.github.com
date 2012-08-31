@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Lionにはフルスクリーンという機能がありますね。Safari、MailとかPreviewといったMacネーティブなアプリではView->Enter Full Screenでフルスクリーンモードに入れます。 そのショットカットキーは control + shift + fですが、 &hellip;">
+	<meta name="description" content="MacでGoogle Chromeを使う時、誤操作でcommand+wを押したかったのに間違ってcommand+q押しちゃってChromeアプリケーションを閉じたことはありますか？それを防ぐために既にいろいろ方法が出てますが、いつの間にかChrome自体で簡単に設定できるようになりました！ 方法 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -41,7 +41,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -65,12 +65,54 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/chrome-warn-before-quitting-with-command-q-in-mac">Mac Google Chromeの終了をCommand+Qの長押しに簡単変更する</a></h1>
+	<div class="entry-content">
+		<p>MacでGoogle Chromeを使う時、誤操作でcommand+wを押したかったのに間違ってcommand+q押しちゃってChromeアプリケーションを閉じたことはありますか？それを防ぐために既にいろいろ方法が出てますが、いつの間にかChrome自体で簡単に設定できるようになりました！</p>
+
+<h1>方法</h1>
+
+<p>Chromeのアプリケーションをアクティブにし、一番上のトップバーからChrome -> <strong>Warn Before Quitting (⌘Q)</strong>をチェックすればOKです。
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Chrome_wanr_before_quitting.png" title="Chrome_wanr_before_quitting" ></p>
+
+<p>こうすればCommand + Qは警告のメッセージが出て、長押しで終了するようになります。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-29T00:00:00+09:00" pubdate data-updated="true">2011-07-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -587,46 +629,6 @@ git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript.tmbundl
 
 
 	<a class='category' href='/blog/categories/coffeescript/'>CoffeeScript</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/nodejs/'>nodejs</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/gist-wordpress-plugin-to-display-source-code-in-rss">gistのソースコードをRSSにも出力できるWordpress Plugin</a></h1>
-	<div class="entry-content">
-		<p>gistでソースをjavascriptタグで表示したらRSSには出力できません。また毎回githubから呼びこむのはパフォーマンスも悪いですね。</p>
-
-<p>これらの問題を解消してくれるプラグインが<a href="http://wordpress.org/extend/plugins/embed-github-gist/">Embed GitHub Gist</a>です。
-Embed GitHub Gistはgistから内容を取得して本文に出力するためRSSでも表示できるようになります。
-記述ルールはとても簡単で**にgist id=12345のように書けば終わりです。詳細は上記のリンクで確認してください。
-デフォルトのキャッシュは一日です。今のバージョン0.8ではまだ他の値に設定できませんが、簡単で十分だと思います。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-03T00:00:00+09:00" pubdate data-updated="true">2011-07-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>
 
 
 </div>

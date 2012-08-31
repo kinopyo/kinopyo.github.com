@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: diary | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/diary/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/diary/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
-    <link href="http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
+    <link href="http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
     <updated>2012-01-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
+    <id>http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
     <content type="html"><![CDATA[<p>この間仕事の関係でたくさんの技術者のブログを見たことがあって、自見ですが、採用の観点から見たときにどういうブログがよかったのか、正確に言うと採用に欲しい情報が探しやすいのかを整理したいと思いいます。</p>
 
 <p>私自身はエンジニアで採用関連の仕事はほとんど未経験なので、プロの意見ではなく、あくまで自分が仕事の中で感じたことを書いただけです。ご参考までに。</p>
@@ -68,9 +68,9 @@ Facebookは逆にあっても全然チェックする気がないです。
   
   <entry>
     <title type="html"><![CDATA[2012年の目標]]></title>
-    <link href="http://kinopyo.github.com/blog/goal-for-2012"/>
+    <link href="http://kinopyo.com/blog/goal-for-2012"/>
     <updated>2012-01-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/goal-for-2012</id>
+    <id>http://kinopyo.com/blog/goal-for-2012</id>
     <content type="html"><![CDATA[<p>Nettus+の記事:<a href="http://net.tutsplus.com/articles/general/ten-new-years-resolutions-every-web-developer-should-make/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+nettuts+%28Nettuts%2B%29">10 New Year’s Resolutions Every Web Developer Should Make</a>がとても素晴らしかったので、それに乗って2012の目標をできるだけ数字化で評価しやすいように設定しようと思います。</p>
 
 <p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/photo-2.jpg" title="Goal for 2012" ></p>
@@ -171,9 +171,9 @@ Facebookは逆にあっても全然チェックする気がないです。
   
   <entry>
     <title type="html"><![CDATA[How COOKPAD changed me]]></title>
-    <link href="http://kinopyo.github.com/blog/how-cookpad-changed-me"/>
+    <link href="http://kinopyo.com/blog/how-cookpad-changed-me"/>
     <updated>2011-12-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-cookpad-changed-me</id>
+    <id>http://kinopyo.com/blog/how-cookpad-changed-me</id>
     <content type="html"><![CDATA[<h2>Presentation</h2>
 
 <div style="width:425px" id="__ss_10645457"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fantasyday/how-cookpad-changed-me" title="How COOKPAD changed me" target="_blank">How COOKPAD changed me</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/10645457" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/fantasyday" target="_blank">Qihuan Piao</a> </div> </div>
@@ -195,9 +195,9 @@ Facebookは逆にあっても全然チェックする気がないです。
   
   <entry>
     <title type="html"><![CDATA[楽天、アマゾン、Yahooなどを一括検索できるサイト]]></title>
-    <link href="http://kinopyo.github.com/blog/search-for-rakuten-amazon-yahoo"/>
+    <link href="http://kinopyo.com/blog/search-for-rakuten-amazon-yahoo"/>
     <updated>2011-11-14T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/search-for-rakuten-amazon-yahoo</id>
+    <id>http://kinopyo.com/blog/search-for-rakuten-amazon-yahoo</id>
     <content type="html"><![CDATA[<p>使ったことはないけど、とりあえずリストアップ。</p>
 
 <ul>
@@ -213,9 +213,9 @@ Facebookは逆にあっても全然チェックする気がないです。
   
   <entry>
     <title type="html"><![CDATA[iPhone水没記、液晶交換で復活]]></title>
-    <link href="http://kinopyo.github.com/blog/iphone-dropped-in-water"/>
+    <link href="http://kinopyo.com/blog/iphone-dropped-in-water"/>
     <updated>2011-06-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/iphone-dropped-in-water</id>
+    <id>http://kinopyo.com/blog/iphone-dropped-in-water</id>
     <content type="html"><![CDATA[<p>一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。</p>
 
 <p>液晶が点灯しなかったものの、まだ生きてます。

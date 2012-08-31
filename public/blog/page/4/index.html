@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="MacのTweet公式アプリをインストール後、テキストを選択状態で右クリックするとメニューに「Tweet」が出てきますね。個人的には使わないのでそれを消す方法をシェアします。 これはOS XのServicesとして登録されます。どのServicesをON/OFFにするかはSystem &hellip;">
+	<meta name="description" content="jQueryでチェックボックスの状態を監視するイベントはclick eventを使う。 チェックされたかを判断するには$("#some_checkbox").is(':checked')がいい。 CoffeeScriptでのサンプルコード： $(&quot;#some_checkbox&quot &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -41,7 +41,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:kinopyo.github.com">
+				<input type="hidden" name="q" value="site:kinopyo.com">
 			</form>
 		</div>
 	</div>
@@ -65,12 +65,66 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:kinopyo.github.com">
+		<input type="hidden" name="q" value="site:kinopyo.com">
 	</form>
 </nav>
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-checkbox-checked-event">jQuery checkbox checked event</a></h1>
+	<div class="entry-content">
+		<p>jQueryでチェックボックスの状態を監視するイベントは<strong>click event</strong>を使う。</p>
+
+<p>チェックされたかを判断するには<code>$("#some_checkbox").is(':checked')</code>がいい。</p>
+
+<p>CoffeeScriptでのサンプルコード：</p>
+
+<div><script src='https://gist.github.com/1385217.js?file='></script>
+<noscript><pre><code>$(&quot;#some_checkbox&quot;).click (e) -&gt;
+  if $(this).is(':checked')
+    # actions when checked
+  else
+    # actions when not checked</code></pre></noscript></div>
+
+
+<p><strong>change event</strong>も監視はできるが、取れる値は遅延されるみたいです。</p>
+
+<blockquote><p>The change event is sent to an element when its value changes. This event is limited to input elements, textarea boxes and select elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse, but for the other element types the event is deferred until the element loses focus.</p></blockquote>
+
+
+<p>参考：<a href="http://forum.jquery.com/topic/jquery-checkbox-checked-event">http://forum.jquery.com/topic/jquery-checkbox-checked-event</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-22T00:00:00+09:00" pubdate data-updated="true">2011-11-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/checkbox/'>checkbox</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -754,63 +808,6 @@ end</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/capybara/'>capybara</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/webkit/'>webkit</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-customize-redirect-url-after-sign-in-with-omniauth-twitter-provider">Rails OmniauthでTwitter認証ログイン後のcallback urlをカスタマイズ</a></h1>
-	<div class="entry-content">
-		<h2>目的</h2>
-
-<p>OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい</p>
-
-<h2>方法</h2>
-
-<div><script src='https://gist.github.com/819806.js?file='></script>
-<noscript><pre><code># config/application.rb
-
-config.middleware.use 'StoreRedirectTo'
-
-# and make sure you autoload the contents of /lib
-
-</code></pre></noscript></div>
-
-
-<p>libディレクトリのautoloadは<a href="http://www.kinopyo.com/blog/rails-autoload-lib-directory-file">Rails libディレクトリのファイルをautoload</a>を参考してください。</p>
-
-<h2>解説</h2>
-
-<p><em>redirect_to</em>パラメータ或いはrefererをログイン直前のリクエストから取ってセッションに保存するRack middwareの手法です。そしてsessions_controllerではセッション内に保存されたurlにリダイレクトし、セッションクリアしています。</p>
-
-<p>もちろんTwitter以外のproviderでの認証＆ログイン処理にも対応できます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-05T00:00:00+09:00" pubdate data-updated="true">2011-11-05</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/omniauth/'>omniauth</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/redirect/'>redirect</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
 
 
 </div>

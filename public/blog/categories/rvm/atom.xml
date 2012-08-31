@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rvm | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/rvm/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/rvm/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby 1.9.3-p0 をRVMでインストール]]></title>
-    <link href="http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm"/>
+    <link href="http://kinopyo.com/blog/install-ruby-1-9-3-p0-with-rvm"/>
     <updated>2011-11-02T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
+    <id>http://kinopyo.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
     <content type="html"><![CDATA[<h2>インストール</h2>
 
 <p><div><script src='https://gist.github.com/1333112.js?file='></script>
@@ -40,9 +40,9 @@ rvm use 1.9.3</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[REEとはRuby Enterprise Edition]]></title>
-    <link href="http://kinopyo.github.com/blog/ree-is-ruby-enterprise-edition"/>
+    <link href="http://kinopyo.com/blog/ree-is-ruby-enterprise-edition"/>
     <updated>2011-09-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/ree-is-ruby-enterprise-edition</id>
+    <id>http://kinopyo.com/blog/ree-is-ruby-enterprise-edition</id>
     <content type="html"><![CDATA[<p>Rubyのエンタープライズ版のこと。Phusion Passengerと相性がよく、メモリ消費がだいぶ下がる利点があるそうです。
 rvmでの紹介を引用しますと：
 <blockquote><p>Ruby Enterprise Edition, MRI Ruby with several custom<br/>patches for performance, stability, and memory.</p></blockquote></p>
@@ -61,9 +61,9 @@ rvmでの紹介を引用しますと：
   
   <entry>
     <title type="html"><![CDATA[RVMの更新、Ruby 1.9.2p290の更新]]></title>
-    <link href="http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290"/>
+    <link href="http://kinopyo.com/blog/upgrade-rvm-and-ruby-1-9-2-p290"/>
     <updated>2011-08-19T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290</id>
+    <id>http://kinopyo.com/blog/upgrade-rvm-and-ruby-1-9-2-p290</id>
     <content type="html"><![CDATA[<p>ruby 1.9.2p290へ更新しました。rvmもついでに。</p>
 
 <p><div><script src='https://gist.github.com/1073555.js?file=update_rvm_and_ruby-1.9.2-p290.sh'></script>

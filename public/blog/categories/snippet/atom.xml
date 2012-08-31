@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Snippet | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/snippet/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/snippet/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[PHP プロセス数を指定して実行するマルチスレッド処理(curl_multi)]]></title>
-    <link href="http://kinopyo.github.com/blog/php-multi-thread-with-specific-process-number-using-curl-multi"/>
+    <link href="http://kinopyo.com/blog/php-multi-thread-with-specific-process-number-using-curl-multi"/>
     <updated>2011-08-09T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-multi-thread-with-specific-process-number-using-curl-multi</id>
+    <id>http://kinopyo.com/blog/php-multi-thread-with-specific-process-number-using-curl-multi</id>
     <content type="html"><![CDATA[<p>curl_multi系を使って、プロセス数を指定して実行するマルチスレッド処理です。</p>
 
 <p>urlは配列で受け取って、もし指定したプロセス数より多い場合は分割して実行するようになってます。</p>
@@ -174,9 +174,9 @@ print_r($titles);</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた]]></title>
-    <link href="http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
+    <link href="http://kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread"/>
     <updated>2011-06-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
+    <id>http://kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</id>
     <content type="html"><![CDATA[<h2>スレット経緯</h2>
 
 <p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
@@ -211,9 +211,9 @@ print_r($titles);</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[PHPで他のJSON形式APIをコールするサンプルコード]]></title>
-    <link href="http://kinopyo.github.com/blog/php-call-json-api-sample-code"/>
+    <link href="http://kinopyo.com/blog/php-call-json-api-sample-code"/>
     <updated>2011-03-07T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-call-json-api-sample-code</id>
+    <id>http://kinopyo.com/blog/php-call-json-api-sample-code</id>
     <content type="html"><![CDATA[<p>file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。</p>
 
 <p>```php
@@ -246,9 +246,9 @@ else
   
   <entry>
     <title type="html"><![CDATA[Spring DataSource beanのメモ]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-define-spring-datasource-bean"/>
+    <link href="http://kinopyo.com/blog/how-to-define-spring-datasource-bean"/>
     <updated>2010-12-06T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-define-spring-datasource-bean</id>
+    <id>http://kinopyo.com/blog/how-to-define-spring-datasource-bean</id>
     <content type="html"><![CDATA[<p>DataSource Beanを定義する際applicationContext.xmlの書き方と、Javaで呼び出すコードのメモです。ずいぶん昔のメモです。。</p>
 
 <p>こんなjdbc.propertiesファイルがクラスパスにあるとします。</p>
@@ -304,9 +304,9 @@ ApplicationContext context = new ClassPathXmlApplicationContext(</p>
   
   <entry>
     <title type="html"><![CDATA[JavaScript: カンマ区切りで数値をフォーマットする]]></title>
-    <link href="http://kinopyo.github.com/blog/javascript-format-number-to-japanese-currency"/>
+    <link href="http://kinopyo.com/blog/javascript-format-number-to-japanese-currency"/>
     <updated>2010-11-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/javascript-format-number-to-japanese-currency</id>
+    <id>http://kinopyo.com/blog/javascript-format-number-to-japanese-currency</id>
     <content type="html"><![CDATA[<p>```javascript</p>
 
 <p>/##

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tool | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/tool/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/tool/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mouse Locator for Mac、マウスがスクリーンのどこにあるかを知りたい時]]></title>
-    <link href="http://kinopyo.github.com/blog/mouse-locator-for-mac"/>
+    <link href="http://kinopyo.com/blog/mouse-locator-for-mac"/>
     <updated>2011-11-08T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mouse-locator-for-mac</id>
+    <id>http://kinopyo.com/blog/mouse-locator-for-mac</id>
     <content type="html"><![CDATA[<p><img src="http://www.2point5fish.com/img/MLLogo.png" alt="Mouse Locator for Mac" /></p>
 
 <p>自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
@@ -31,9 +31,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gmailを常に全員返信に設定]]></title>
-    <link href="http://kinopyo.github.com/blog/reply-to-all-always-in-gmail"/>
+    <link href="http://kinopyo.com/blog/reply-to-all-always-in-gmail"/>
     <updated>2011-07-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/reply-to-all-always-in-gmail</id>
+    <id>http://kinopyo.com/blog/reply-to-all-always-in-gmail</id>
     <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。
 <img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
 
@@ -44,9 +44,9 @@
   
   <entry>
     <title type="html"><![CDATA[Google Readerで以上/以下のアイテムを既読にする方法(要firefox)]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-mark-above-or-below-as-read-in-google-reader"/>
+    <link href="http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader"/>
     <updated>2011-07-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-mark-above-or-below-as-read-in-google-reader</id>
+    <id>http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader</id>
     <content type="html"><![CDATA[<p>Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。</p>
 
 <p>現時点で使ってるFirefoxは5.0.1です。</p>
@@ -63,9 +63,9 @@
   
   <entry>
     <title type="html"><![CDATA[10分でWordPressにコメントシステムDisqusを導入]]></title>
-    <link href="http://kinopyo.github.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues"/>
+    <link href="http://kinopyo.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues"/>
     <updated>2011-05-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues</id>
+    <id>http://kinopyo.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues</id>
     <content type="html"><![CDATA[<h2>Disqusの概要</h2>
 
 <p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：
@@ -100,9 +100,9 @@ Disqusの管理画面で確認したらステータスが"Queued for import"に�
   
   <entry>
     <title type="html"><![CDATA[Evernote x Mac: Cant synchronize error, Content is not valid.]]></title>
-    <link href="http://kinopyo.github.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid"/>
+    <link href="http://kinopyo.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid"/>
     <updated>2011-04-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid</id>
+    <id>http://kinopyo.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid</id>
     <content type="html"><![CDATA[<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
 So I encountered this problem when I synced my evernote in Mac OS.</p>
 

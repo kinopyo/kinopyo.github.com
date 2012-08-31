@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Facebook | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/facebook/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/facebook/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[What you can do with Facebook Comments Social Plugin]]></title>
-    <link href="http://kinopyo.github.com/blog/what-you-can-do-with-facebook-comments-social-plugin"/>
+    <link href="http://kinopyo.com/blog/what-you-can-do-with-facebook-comments-social-plugin"/>
     <updated>2012-01-05T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin</id>
+    <id>http://kinopyo.com/blog/english-what-you-can-do-with-facebook-comments-social-plugin</id>
     <content type="html"><![CDATA[<h1>Goal</h1>
 
 <p>To use facebook comments integrated to your own site.</p>
@@ -74,9 +74,9 @@
   
   <entry>
     <title type="html"><![CDATA[FacebookとHeroku]]></title>
-    <link href="http://kinopyo.github.com/blog/facebook-and-heroku"/>
+    <link href="http://kinopyo.com/blog/facebook-and-heroku"/>
     <updated>2011-09-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/facebook-and-heroku</id>
+    <id>http://kinopyo.com/blog/facebook-and-heroku</id>
     <content type="html"><![CDATA[<p>これはいいコンビの結成ですね。Heroku上で簡単にFacebookアプリが開発できるようになったそうです。言語も選択できるし、Herokuに慣れた人にとっては大変便利なツールだと思います。</p>
 
 <p><a href="http://blog.heroku.com/archives/2011/9/15/facebook/">http://blog.heroku.com/archives/2011/9/15/facebook/</a></p>
@@ -93,9 +93,9 @@
   
   <entry>
     <title type="html"><![CDATA[複数URLのFacebookいいね(Like)された数を取得する方法]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-get-facebook-like-counts-for-multiple-urls"/>
+    <link href="http://kinopyo.com/blog/how-to-get-facebook-like-counts-for-multiple-urls"/>
     <updated>2011-07-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-get-facebook-like-counts-for-multiple-urls</id>
+    <id>http://kinopyo.com/blog/how-to-get-facebook-like-counts-for-multiple-urls</id>
     <content type="html"><![CDATA[<p>今はほとんどのサイトがLike(いいね！)ボタンを置いてますが、Likeボタンがどれだけクリックされたか、その数は気になりますね。</p>
 
 <p>Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントは<a href="http://developers.facebook.com/docs/reference/fql/link_stat/">こちら</a>にあります。</p>
@@ -152,9 +152,9 @@ Array
   
   <entry>
     <title type="html"><![CDATA[Facebookからのメール：you may be allowing authentication data to be passed to 3rd parties]]></title>
-    <link href="http://kinopyo.github.com/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties"/>
+    <link href="http://kinopyo.com/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties"/>
     <updated>2011-05-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties</id>
+    <id>http://kinopyo.com/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties</id>
     <content type="html"><![CDATA[<p>Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties.</p>
 
 <p>ここ最近Facebookから”認証情報をサードパーティに渡している可能性がある、48時間内に修正しろ”みたいなメールが届いた人が多いと思います。

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: memcache | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/memcache/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/memcache/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[PHP:環境構築時に使う接続テストコードまとめ MySQL/Oracle/Memcache/Memcached]]></title>
-    <link href="http://kinopyo.github.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
+    <link href="http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
     <updated>2011-06-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
+    <id>http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
     <content type="html"><![CDATA[<p>環境構築時に接続テスト用のコードをまとめました。</p>
 
 <script type="text/javascript" src="scripts/gist.js"></script>
@@ -30,9 +30,9 @@
   
   <entry>
     <title type="html"><![CDATA[Windowsにmemcacheをインストール、PHPの設定]]></title>
-    <link href="http://kinopyo.github.com/blog/install-memcache-in-windows-setup-php"/>
+    <link href="http://kinopyo.com/blog/install-memcache-in-windows-setup-php"/>
     <updated>2010-11-26T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-memcache-in-windows-setup-php</id>
+    <id>http://kinopyo.com/blog/install-memcache-in-windows-setup-php</id>
     <content type="html"><![CDATA[<h2>My環境</h2>
 
 <p>XAMPP1.7.3 + WinXP
@@ -119,9 +119,9 @@ print_r(unserialize($memcache-&gt;get("key")));
   
   <entry>
     <title type="html"><![CDATA[Kohana3でmemcacheを利用する方法]]></title>
-    <link href="http://kinopyo.github.com/blog/setup-memcache-in-kohana"/>
+    <link href="http://kinopyo.com/blog/setup-memcache-in-kohana"/>
     <updated>2010-09-24T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/setup-memcache-in-kohana</id>
+    <id>http://kinopyo.com/blog/setup-memcache-in-kohana</id>
     <content type="html"><![CDATA[<h2>前提条件</h2>
 
 <p>memcacheとphp_memcache extensionがインストールされたこと。
@@ -189,9 +189,9 @@ string(5) "world"</p>
   
   <entry>
     <title type="html"><![CDATA[Mac XAMPP環境でmemcacheとPHP extensionのインストール]]></title>
-    <link href="http://kinopyo.github.com/blog/install-memcache-and-php-extension-in-mac-xampp"/>
+    <link href="http://kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xampp"/>
     <updated>2010-09-24T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-memcache-and-php-extension-in-mac-xampp</id>
+    <id>http://kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xampp</id>
     <content type="html"><![CDATA[<h2>環境情報</h2>
 
 <ul>

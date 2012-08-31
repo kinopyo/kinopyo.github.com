@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: editor | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/editor/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/editor/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[TextMate Auto-refresh your browsers when saving file in Textmate]]></title>
-    <link href="http://kinopyo.github.com/blog/textmate-auto-refresh-browers-when-saving-file"/>
+    <link href="http://kinopyo.com/blog/textmate-auto-refresh-browers-when-saving-file"/>
     <updated>2011-10-12T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/textmate-auto-refresh-browers-when-saving-file</id>
+    <id>http://kinopyo.com/blog/textmate-auto-refresh-browers-when-saving-file</id>
     <content type="html"><![CDATA[<h2>Overview</h2>
 
 <p>This is a tip to auto refresh your browser(s) when you hit Command + S(means saving file) in Textmate.</p>
@@ -63,9 +63,9 @@ Below is a sample for Safari.</p>
   
   <entry>
     <title type="html"><![CDATA[最近よく目にするSublimeエディター、Textmate2になれるか]]></title>
-    <link href="http://kinopyo.github.com/blog/sublime-a-textmate-like-editor"/>
+    <link href="http://kinopyo.com/blog/sublime-a-textmate-like-editor"/>
     <updated>2011-09-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/sublime-a-textmate-like-editor</id>
+    <id>http://kinopyo.com/blog/sublime-a-textmate-like-editor</id>
     <content type="html"><![CDATA[<p><img src="http://d2o0t5hpnwv4c1.cloudfront.net/1038_sublime/sublime.png" />
 最近#textmateのTwitterタグでたまたま<a href="http://www.sublimetext.com/title:sublime">http://www.sublimetext.com/title:sublime</a>を目にするんですが、Textmate2の代わりになれるかで議論されているようです。</p>
 
@@ -85,9 +85,9 @@ Below is a sample for Safari.</p>
   
   <entry>
     <title type="html"><![CDATA[Vimビープ音を消す]]></title>
-    <link href="http://kinopyo.github.com/blog/set-vim-beep-alarm-off"/>
+    <link href="http://kinopyo.com/blog/set-vim-beep-alarm-off"/>
     <updated>2010-10-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/set-vim-beep-alarm-off</id>
+    <id>http://kinopyo.com/blog/set-vim-beep-alarm-off</id>
     <content type="html"><![CDATA[<p>ビープ音を消す。</p>
 
 <p>vi ~/.inputrc

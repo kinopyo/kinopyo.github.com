@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: font | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/font/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/font/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[今週（10/25～10/31）新たに知ったもの]]></title>
-    <link href="http://kinopyo.github.com/blog/new-to-me-this-week-1025-1031"/>
+    <link href="http://kinopyo.com/blog/new-to-me-this-week-1025-1031"/>
     <updated>2010-11-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/new-to-me-this-week-1025-1031</id>
+    <id>http://kinopyo.com/blog/new-to-me-this-week-1025-1031</id>
     <content type="html"><![CDATA[<h1>Compass</h1>
 
 <p><blockquote><p>A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:</p></p><p><p>Compass Core<br/>Blueprint<br/>960<br/>Susy<br/>YUI</p></p><p><p>New frameworks and extensions are tracked on the wiki as they are created.<br/>Other frameworks can be added relatively easily. Create your own!</p></blockquote>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: log | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/log/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/log/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Railsでcustom log(file)の作り方]]></title>
-    <link href="http://kinopyo.github.com/blog/rails-custom-log-file"/>
+    <link href="http://kinopyo.com/blog/rails-custom-log-file"/>
     <updated>2011-10-12T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rails-custom-log-file</id>
+    <id>http://kinopyo.com/blog/rails-custom-log-file</id>
     <content type="html"><![CDATA[<h2>Overview</h2>
 
 <p>rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます</p>

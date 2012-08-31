@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jQuery | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/jquery/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[jQuery checkbox checked event]]></title>
-    <link href="http://kinopyo.github.com/blog/jquery-checkbox-checked-event"/>
+    <link href="http://kinopyo.com/blog/jquery-checkbox-checked-event"/>
     <updated>2011-11-22T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/jquery-checkbox-checked-event</id>
+    <id>http://kinopyo.com/blog/jquery-checkbox-checked-event</id>
     <content type="html"><![CDATA[<p>jQueryでチェックボックスの状態を監視するイベントは<strong>click event</strong>を使う。</p>
 
 <p>チェックされたかを判断するには<code>$("#some_checkbox").is(':checked')</code>がいい。</p>
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[iPhone Safariキーボードの"Return"のkeydownイベントをキャッチ]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-catch-return-keydown-event-of-iphone-safari"/>
+    <link href="http://kinopyo.com/blog/how-to-catch-return-keydown-event-of-iphone-safari"/>
     <updated>2011-10-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-catch-return-keydown-event-of-iphone-safari</id>
+    <id>http://kinopyo.com/blog/how-to-catch-return-keydown-event-of-iphone-safari</id>
     <content type="html"><![CDATA[<h2>Situation</h2>
 
 <p>iPhone Safariを使うときにあるInput boxで何か入力後"return"キーのkeydownイベントをキャッチして、何かしらのアクションを行いたい、のが目的です。よくあるのがreturnキーでformをsubmitしたり、ボタンクリックのアクションを行ったり、キーボードを隠したりするところですかね。</p>
@@ -64,9 +64,9 @@
   
   <entry>
     <title type="html"><![CDATA[CoffeeScriptでjQueryのdocument.readyの書き方]]></title>
-    <link href="http://kinopyo.github.com/blog/coffeescript-jquery-document-ready"/>
+    <link href="http://kinopyo.com/blog/coffeescript-jquery-document-ready"/>
     <updated>2011-07-09T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/coffeescript-jquery-document-ready</id>
+    <id>http://kinopyo.com/blog/coffeescript-jquery-document-ready</id>
     <content type="html"><![CDATA[<p>下記どちらもOKです。明示的に書きたいときはjQueryで。</p>
 
 <p><div><script src='https://gist.github.com/1073555.js?file=coffee-script-jquery-document-ready'></script>
@@ -81,9 +81,9 @@ $ -&gt;
   
   <entry>
     <title type="html"><![CDATA[jQueryでselectorと一致する最初のものを取る]]></title>
-    <link href="http://kinopyo.github.com/blog/jquery-selector-get-the-first-matched-element"/>
+    <link href="http://kinopyo.com/blog/jquery-selector-get-the-first-matched-element"/>
     <updated>2011-07-02T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/jquery-selector-get-the-first-matched-element</id>
+    <id>http://kinopyo.com/blog/jquery-selector-get-the-first-matched-element</id>
     <content type="html"><![CDATA[<p>一年くらい使ってなかったので、ほぼ忘れてしまいました。そのためのメモという感じです。</p>
 
 <p>```javascript
@@ -101,9 +101,9 @@ $("#wrapper").find("div:first")</p>
   
   <entry>
     <title type="html"><![CDATA[jQuery: append(prepend,appendTo,prependTo)とafter(before,insertAfter,insertBefore)の違い]]></title>
-    <link href="http://kinopyo.github.com/blog/jquery-difference-between-append-and-after"/>
+    <link href="http://kinopyo.com/blog/jquery-difference-between-append-and-after"/>
     <updated>2010-12-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/jquery-difference-between-append-and-after</id>
+    <id>http://kinopyo.com/blog/jquery-difference-between-append-and-after</id>
     <content type="html"><![CDATA[<p>jQueryのappendやafterは全部DOM Manipulation、つまりDOM操作のメソッドであります。どう違うかは下記ソースコードを見るのが一番速いでしょう。</p>
 
 <h2>append(prepend,appendTo,prependTo)は要素内に、子供要素として貼り付ける</h2>

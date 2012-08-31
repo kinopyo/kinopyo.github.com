@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: shared_context | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/shared-context/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/shared-context/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[rspec shared context sample code]]></title>
-    <link href="http://kinopyo.github.com/blog/rspec-shared_context-sample-code"/>
+    <link href="http://kinopyo.com/blog/rspec-shared_context-sample-code"/>
     <updated>2011-10-13T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/rspec-shared_context-sample-code</id>
+    <id>http://kinopyo.com/blog/rspec-shared_context-sample-code</id>
     <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/1283896.js?file='></script>
 <noscript><pre><code>shared_context &quot;shared stuff&quot; do
   before { @some_var = :some_value }

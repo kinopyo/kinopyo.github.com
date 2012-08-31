@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: steak | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/steak/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/steak/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cucumberのいいところをこう語った：Delay The Solution ]]></title>
-    <link href="http://kinopyo.github.com/blog/about-cucumber-delay-the-solution"/>
+    <link href="http://kinopyo.com/blog/about-cucumber-delay-the-solution"/>
     <updated>2011-02-04T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/about-cucumber-delay-the-solution</id>
+    <id>http://kinopyo.com/blog/about-cucumber-delay-the-solution</id>
     <content type="html"><![CDATA[<p>全文：
 <a href="http://iain.nl/2011/01/cucumber-vs-steak">http://iain.nl/2011/01/cucumber-vs-steak</a></p>
 

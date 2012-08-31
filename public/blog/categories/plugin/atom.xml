@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: plugin | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/plugin/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/plugin/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[10分でWordPressにコメントシステムDisqusを導入]]></title>
-    <link href="http://kinopyo.github.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues"/>
+    <link href="http://kinopyo.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues"/>
     <updated>2011-05-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues</id>
+    <id>http://kinopyo.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues</id>
     <content type="html"><![CDATA[<h2>Disqusの概要</h2>
 
 <p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：

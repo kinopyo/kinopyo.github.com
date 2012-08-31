@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Chrome | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/chrome/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/chrome/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to reset zoom in chrome]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-reset-zoom-in-chrome/"/>
+    <link href="http://kinopyo.com/blog/how-to-reset-zoom-in-chrome/"/>
     <updated>2012-08-03T14:49:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-reset-zoom-in-chrome</id>
+    <id>http://kinopyo.com/blog/how-to-reset-zoom-in-chrome</id>
     <content type="html"><![CDATA[<p><code>cmd + 0</code> in mac :)</p>
 
 <p>If you click the tool icon on the right of the address bar, you can also check the current zoom rate.</p>
@@ -28,9 +28,9 @@
   
   <entry>
     <title type="html"><![CDATA[SafariのTabにFaviconを表示する]]></title>
-    <link href="http://kinopyo.github.com/blog/safari-display-favicon-to-tab"/>
+    <link href="http://kinopyo.com/blog/safari-display-favicon-to-tab"/>
     <updated>2012-03-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/safari-display-favicon-to-tab</id>
+    <id>http://kinopyo.com/blog/safari-display-favicon-to-tab</id>
     <content type="html"><![CDATA[<p>Safariは開いたタブが多くなるとFaviconがなく文字だけのため、ちょっと見にくいと思います。
 Chromeと同じようにタブにFaviconを表示する方法を紹介します。<a href="http://www.machangout.com">glims</a>というプラグインです！</p>
 
@@ -49,9 +49,9 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
   
   <entry>
     <title type="html"><![CDATA[Chrome（Chromium）でマルチプロファイルを使う]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium"/>
+    <link href="http://kinopyo.com/blog/how-to-enable-multiple-profiles-in-chome-chromium"/>
     <updated>2011-10-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-enable-multiple-profiles-in-chome-chromium</id>
+    <id>http://kinopyo.com/blog/how-to-enable-multiple-profiles-in-chome-chromium</id>
     <content type="html"><![CDATA[<h2>メリット</h2>
 
 <p>マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。</p>
@@ -74,9 +74,9 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
   
   <entry>
     <title type="html"><![CDATA[Google Chrome Extension: Youku Opener作りました]]></title>
-    <link href="http://kinopyo.github.com/blog/my-first-google-chrome-extension-youku-opener"/>
+    <link href="http://kinopyo.com/blog/my-first-google-chrome-extension-youku-opener"/>
     <updated>2011-10-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/my-first-google-chrome-extension-youku-opener</id>
+    <id>http://kinopyo.com/blog/my-first-google-chrome-extension-youku-opener</id>
     <content type="html"><![CDATA[<p>すごく簡単なGoogle Chrome Extensionを作りました。</p>
 
 <p>実装自体は結構前にできたんですが、公開するまでもないかと思って自分で使いました。でもせっかく作ったしひょっとしたら使いたいユーザもあるんじゃない？の気持ちで公開しました。詳細はまた時間があったら整理してソースコードと一緒に公開します。</p>
@@ -91,9 +91,9 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
   
   <entry>
     <title type="html"><![CDATA[TextMate Auto-refresh your browsers when saving file in Textmate]]></title>
-    <link href="http://kinopyo.github.com/blog/textmate-auto-refresh-browers-when-saving-file"/>
+    <link href="http://kinopyo.com/blog/textmate-auto-refresh-browers-when-saving-file"/>
     <updated>2011-10-12T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/textmate-auto-refresh-browers-when-saving-file</id>
+    <id>http://kinopyo.com/blog/textmate-auto-refresh-browers-when-saving-file</id>
     <content type="html"><![CDATA[<h2>Overview</h2>
 
 <p>This is a tip to auto refresh your browser(s) when you hit Command + S(means saving file) in Textmate.</p>

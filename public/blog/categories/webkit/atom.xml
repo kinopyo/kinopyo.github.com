@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: webkit | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/webkit/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/webkit/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rspec Capybara_webkitを使ってjavascriptをテストする]]></title>
-    <link href="http://kinopyo.github.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit"/>
+    <link href="http://kinopyo.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit"/>
     <updated>2011-11-06T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit</id>
+    <id>http://kinopyo.com/blog/test-javascript-spec-in-rspec-with-capybara-webkit</id>
     <content type="html"><![CDATA[<h2>Goal</h2>
 
 <p>ゴールと言うか目標はrspecのrequest(integration) testでjavascriptのテストをしたいです。が、いろいろハマってその問題と解決策を時間軸でメモしておきます。</p>

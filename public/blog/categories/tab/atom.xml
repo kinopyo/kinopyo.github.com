@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tab | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/tab/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/tab/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac Tabであらゆるダイアログのフォーカスを移動]]></title>
-    <link href="http://kinopyo.github.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs"/>
+    <link href="http://kinopyo.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs"/>
     <updated>2011-10-12T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs</id>
+    <id>http://kinopyo.com/blog/mac-move-keyboard-focus-between-windows-and-dialogs</id>
     <content type="html"><![CDATA[<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don't Save, Cancel, Save...」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
 
 <p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！

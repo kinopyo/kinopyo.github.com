@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 環境構築 | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/環境構築/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/環境構築/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby 1.9.3-p0 をRVMでインストール]]></title>
-    <link href="http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm"/>
+    <link href="http://kinopyo.com/blog/install-ruby-1-9-3-p0-with-rvm"/>
     <updated>2011-11-02T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
+    <id>http://kinopyo.com/blog/install-ruby-1-9-3-p0-with-rvm</id>
     <content type="html"><![CDATA[<h2>インストール</h2>
 
 <p><div><script src='https://gist.github.com/1333112.js?file='></script>
@@ -40,9 +40,9 @@ rvm use 1.9.3</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[RVMの更新、Ruby 1.9.2p290の更新]]></title>
-    <link href="http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290"/>
+    <link href="http://kinopyo.com/blog/upgrade-rvm-and-ruby-1-9-2-p290"/>
     <updated>2011-08-19T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/upgrade-rvm-and-ruby-1-9-2-p290</id>
+    <id>http://kinopyo.com/blog/upgrade-rvm-and-ruby-1-9-2-p290</id>
     <content type="html"><![CDATA[<p>ruby 1.9.2p290へ更新しました。rvmもついでに。</p>
 
 <p><div><script src='https://gist.github.com/1073555.js?file=update_rvm_and_ruby-1.9.2-p290.sh'></script>
@@ -78,9 +78,9 @@ $ ruby -v
   
   <entry>
     <title type="html"><![CDATA[TextMateをLionのフルスクリーンに]]></title>
-    <link href="http://kinopyo.github.com/blog/turn-textmate-to-lion-full-screen"/>
+    <link href="http://kinopyo.com/blog/turn-textmate-to-lion-full-screen"/>
     <updated>2011-08-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/turn-textmate-to-lion-full-screen</id>
+    <id>http://kinopyo.com/blog/turn-textmate-to-lion-full-screen</id>
     <content type="html"><![CDATA[<p>```
 git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen</p>
 
@@ -101,9 +101,9 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
   
   <entry>
     <title type="html"><![CDATA[coffee-scriptのインストール、TextMate Bundleで実行(Mac OS X)]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
+    <link href="http://kinopyo.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle"/>
     <updated>2011-07-04T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
+    <id>http://kinopyo.com/blog/how-to-install-coffeescript-on-mac-osx-and-textmate-bundle</id>
     <content type="html"><![CDATA[<p>coffee-scriptをMacportsを使ってインストールし、TextMateのcoffee-script bundleでコンパイルするメモです。
 注意すべきなのはたとえターミナルでcoffeeが実行できても、TextMateはPATHをインクルードしないので(インクルードしているのは/usr/binらしい)、/usr/binにcoffeeのシンボリックを作る必要があります。
 またcoffee-scriptをコンパイルするにはnodejsとnpm(Node Package Manager)が前提条件となるため、それらのインストールも必要です。</p>
@@ -154,9 +154,9 @@ git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript.tmbundl
   
   <entry>
     <title type="html"><![CDATA[Macのrubyで、no such file to load -- ubygems (LoadError)]]></title>
-    <link href="http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror"/>
+    <link href="http://kinopyo.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror"/>
     <updated>2011-05-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror</id>
+    <id>http://kinopyo.com/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror</id>
     <content type="html"><![CDATA[<p><a href="http://www.sinatrarb.com/intro">Sinatra</a>を試したところこのようなエラーになりました。</p>
 
 <p>```

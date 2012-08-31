@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: themes | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/themes/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/themes/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[an iterm theme - SOLARIZED]]></title>
-    <link href="http://kinopyo.github.com/blog/an-iterm-theme-solarized/"/>
+    <link href="http://kinopyo.com/blog/an-iterm-theme-solarized/"/>
     <updated>2012-08-29T00:34:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/an-iterm-theme-solarized</id>
+    <id>http://kinopyo.com/blog/an-iterm-theme-solarized</id>
     <content type="html"><![CDATA[<p>Just found out a theme called - <a href="http://ethanschoonover.com/solarized">SOLARIZED</a>.</p>
 
 <p>And actually it supports a lot of Editors and terminals, just go to its website.</p>

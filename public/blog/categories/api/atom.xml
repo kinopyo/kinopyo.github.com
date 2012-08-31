@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: API | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/api/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/api/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[PHPで他のJSON形式APIをコールするサンプルコード]]></title>
-    <link href="http://kinopyo.github.com/blog/php-call-json-api-sample-code"/>
+    <link href="http://kinopyo.com/blog/php-call-json-api-sample-code"/>
     <updated>2011-03-07T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/php-call-json-api-sample-code</id>
+    <id>http://kinopyo.com/blog/php-call-json-api-sample-code</id>
     <content type="html"><![CDATA[<p>file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。</p>
 
 <p>```php

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: blog | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/blog/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wordpress plugin to redirect "Page" to other url：Page Links To]]></title>
-    <link href="http://kinopyo.github.com/blog/wordpress-page-links-to-plugin"/>
+    <link href="http://kinopyo.com/blog/wordpress-page-links-to-plugin"/>
     <updated>2012-01-03T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/wordpress-page-links-to-plugin</id>
+    <id>http://kinopyo.com/blog/wordpress-page-links-to-plugin</id>
     <content type="html"><![CDATA[<p>I use <a href="http://wordpress.org/extend/plugins/page-links-to">Page Links To</a> plugin to redirect the "about" page to <a href="http://about.me/kinopyo/">http://about.me/kinopyo</a> url.</p>
 
 <p><blockquote><p>This plugin allows you to make a WordPress page or post link to a URL of your choosing, instead of its WordPress page or post URL. It also will redirect people who go to the old (or "normal") URL to the new one you've chosen (301 Moved Permanently redirects are standard, but you can choose a 302 Moved Temporarily redirect if you wish).</p></p><p><p>This functionality is useful for setting up navigational links to non-WordPress sections of your site or to off-site resources.</p></p><p><p>You can also use it to create a hand-crafted menu that links to pages, posts, categories, or anything within your site.</p></blockquote></p>
@@ -39,9 +39,9 @@
   
   <entry>
     <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
-    <link href="http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
+    <link href="http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
     <updated>2012-01-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
+    <id>http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
     <content type="html"><![CDATA[<p>この間仕事の関係でたくさんの技術者のブログを見たことがあって、自見ですが、採用の観点から見たときにどういうブログがよかったのか、正確に言うと採用に欲しい情報が探しやすいのかを整理したいと思いいます。</p>
 
 <p>私自身はエンジニアで採用関連の仕事はほとんど未経験なので、プロの意見ではなく、あくまで自分が仕事の中で感じたことを書いただけです。ご参考までに。</p>
@@ -92,9 +92,9 @@ Facebookは逆にあっても全然チェックする気がないです。
   
   <entry>
     <title type="html"><![CDATA[WP Social Bookmarking Lightでブログのソーシャルブックマークボタン]]></title>
-    <link href="http://kinopyo.github.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button"/>
+    <link href="http://kinopyo.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button"/>
     <updated>2011-05-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button</id>
+    <id>http://kinopyo.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button</id>
     <content type="html"><![CDATA[<p>もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
 <a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">http://www.lastday.jp/2011/05/16/increase-number-of-rss</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
 FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDeliciousなどまで対応してて便利ですよ。</p>
@@ -121,9 +121,9 @@ FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDelicious
   
   <entry>
     <title type="html"><![CDATA[Evernote,Twitterとブログ]]></title>
-    <link href="http://kinopyo.github.com/blog/evernote-twitter-and-blog"/>
+    <link href="http://kinopyo.com/blog/evernote-twitter-and-blog"/>
     <updated>2011-04-22T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/evernote-twitter-and-blog</id>
+    <id>http://kinopyo.com/blog/evernote-twitter-and-blog</id>
     <content type="html"><![CDATA[<p>Evernote使い始めたのは結構前ですが、ちゃんとノートブックを整理してライフログ始めたのはまだこの二ヶ月の話です。
 それからなかなかブログ更新するきっかけが少なくなりましたね。ただ教訓としてメモするのは基本Evernoteに蓄積してるし、普段思いついたものやストレス、情報共有とかは随時Twitterにつぶやくようになりました。</p>
 

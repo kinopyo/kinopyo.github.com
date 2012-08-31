@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Firefox | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/firefox/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/firefox/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[FirefoxのTab BarとNavigation Barを一行にしてくれるAddon:OneLiner]]></title>
-    <link href="http://kinopyo.github.com/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line"/>
+    <link href="http://kinopyo.com/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line"/>
     <updated>2011-08-16T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line</id>
+    <id>http://kinopyo.com/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line</id>
     <content type="html"><![CDATA[<p>表題の通りFirefoxのTab BarとNavigation Barを一行にしてくれるアドオンです。by Mozilla Labsのアドオンで<a href="http://www.lifehacker.jp/2011/08/110807_oneliner.html">http://www.lifehacker.jp/2011/08/110807_oneliner.html</a>でも紹介しています。早速入れてみました、結構ツールバーのスペースが増えたように感じますね。
 <img src="http://www.kinopyo.com/wp-content/uploads/2011/08/Firefox_addon_oneliner.jpg" title="Firefox_addon_oneliner" ></p>
 
@@ -29,9 +29,9 @@
   
   <entry>
     <title type="html"><![CDATA[Google Readerで以上/以下のアイテムを既読にする方法(要firefox)]]></title>
-    <link href="http://kinopyo.github.com/blog/how-to-mark-above-or-below-as-read-in-google-reader"/>
+    <link href="http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader"/>
     <updated>2011-07-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/how-to-mark-above-or-below-as-read-in-google-reader</id>
+    <id>http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader</id>
     <content type="html"><![CDATA[<p>Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。</p>
 
 <p>現時点で使ってるFirefoxは5.0.1です。</p>

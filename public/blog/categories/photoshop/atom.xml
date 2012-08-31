@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: photoshop | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/photoshop/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/photoshop/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Photoshopで画像の座標を取得]]></title>
-    <link href="http://kinopyo.github.com/blog/get-image-coordinate-with-photoshop"/>
+    <link href="http://kinopyo.com/blog/get-image-coordinate-with-photoshop"/>
     <updated>2010-11-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/get-image-coordinate-with-photoshop</id>
+    <id>http://kinopyo.com/blog/get-image-coordinate-with-photoshop</id>
     <content type="html"><![CDATA[<p>仕事の事情であるPSDファイルにある画像の座標の情報が必要になって調べました。詳しく説明すると例えば背景が100x100のサイズで、その上に張り付いた違うレイヤーの画像の座標のことです。</p>
 
 <p>ショットカットキーはCTRL+Tです。

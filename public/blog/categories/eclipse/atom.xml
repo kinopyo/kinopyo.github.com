@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Eclipse | Yet Another Kinopyo Blog]]></title>
-  <link href="http://kinopyo.github.com/blog/categories/eclipse/atom.xml" rel="self"/>
-  <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T20:53:14+09:00</updated>
-  <id>http://kinopyo.github.com/</id>
+  <link href="http://kinopyo.com/blog/categories/eclipse/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-08-31T22:50:41+09:00</updated>
+  <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[作業効率：Eclipseをフルスクリーンして効率をあげよう！]]></title>
-    <link href="http://kinopyo.github.com/blog/eclipse-fullscreen-plugin"/>
+    <link href="http://kinopyo.com/blog/eclipse-fullscreen-plugin"/>
     <updated>2010-11-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.github.com/blog/eclipse-fullscreen-plugin</id>
+    <id>http://kinopyo.com/blog/eclipse-fullscreen-plugin</id>
     <content type="html"><![CDATA[<p><a href="http://code.google.com/p/eclipse-fullscreen/">http://code.google.com/p/eclipse-fullscreen/</a>からzipファイルダウンロードしてEclipseのフォルダに解凍する形でインストールできます。</p>
 
 <p>ショットカットキーは<strong>CTRL + ALT + Z</strong>です。覚えておきましょう！</p>
