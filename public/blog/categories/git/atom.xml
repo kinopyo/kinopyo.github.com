@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://kinopyo.github.com/"/>
-  <updated>2012-08-31T01:34:05+09:00</updated>
+  <updated>2012-08-31T20:53:14+09:00</updated>
   <id>http://kinopyo.github.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[gitの^記号は]]></title>
+    <title type="html"><![CDATA[gitの^(caret)記号は]]></title>
     <link href="http://kinopyo.github.com/blog/what-does-caret-character-mean-in-git"/>
     <updated>2011-10-26T00:00:00+09:00</updated>
     <id>http://kinopyo.github.com/blog/what-does-caret-character-mean-in-git</id>
@@ -28,7 +28,7 @@
 
 <p>これは上記と若干違ってmergeのコミットに対してのみ有効です。</p>
 
-<p>マージの場合はparentが2つあるので、HEAD\<sup>1は今のブランチでのparent、HEAD\<sup>2は取得先のparentを差してます。</sup></sup></p>
+<p>マージの場合はparentが2つあるので、HEAD<sup>1は今のブランチでのparent、HEAD\<sup>2は取得先のparentを差してます。</sup></sup></p>
 ]]></content>
   </entry>
   
