@@ -7,13 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="表題の通り、Mapをnewしたときに値を入れて
-初期化するコード方法です。 1
-2
-3
-4
-5
-Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;() { { put(&quot;one&quot;, 1 &hellip;">
+	<meta name="description" content="表題の通り、IE6 + jQuery1.3.2の状態でbindする時に
+jQueryのnamespaceを使うと確実にメモリリークが発生します。
+jQuery1.4.2では発生しないことを確認しました。 メモリリークが発生するコード 1
+$(&quot;#foo&quot;).bind(& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -77,6 +74,74 @@ Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;() { { put(&q
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery1-3-2-memory-leak-when-bind-with-namespace-in-ie6">jQuery1.3.2 bind時にnamespaceを使うとIE6ではメモリリーク</a></h1>
+	<div class="entry-content">
+		<p>表題の通り、IE6 + jQuery1.3.2の状態でbindする時に
+jQueryのnamespaceを使うと確実にメモリリークが発生します。
+jQuery1.4.2では発生しないことを確認しました。</p>
+
+<h2>メモリリークが発生するコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change.abc&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記&#8221;change.abc&#8221;のabcがnamespaceです。
+それをなくすことでメモリリークは解消されます。
+イベントハンドラの中身とは関係ありません。</p>
+
+<h2>メモリリークは発生しない</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これはjQueryのbugとして上げられましたが、
+完全に修正できなかったみたいです。
+<a href="http://dev.jquery.com/ticket/4241">http://dev.jquery.com/ticket/4241</a>で
+当時の担当者のコメントを見ると</p>
+
+<p>{% blockquote }</p>
+
+<p>I had a really difficult time getting a reliable test case to verify this actually solves the memory leak. r6321 appears to have fixed this issue</p>
+
+<p>{% endblockquote %}
+「時間ないからちゃんとテストしてない、r6321の対応で解決できたように見える」と、
+ずいぶん適当な回答ですよね。。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-04T00:00:00+09:00" pubdate data-updated="true">2010-04-04</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -847,89 +912,6 @@ idに**が付いてますね。</p>
 
 
 <time datetime="2010-03-02T00:00:00+09:00" pubdate data-updated="true">2010-03-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-for-loop-good-performance">Javascriptのforループのパフォーマンスのいい書き方</a></h1>
-	<div class="entry-content">
-		<p>面白いかと思ったのでメモしときます。</p>
-
-<h2>普通の書き方</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;newclass&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>効率のいい書き方</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">row</span><span class="p">;</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">row</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;newclass&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">row</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考サイト：<a href="http://www.javaeye.com/topic/455376">http://www.javaeye.com/topic/455376</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-22T00:00:00+09:00" pubdate data-updated="true">2010-02-22</time></div>
 	<div class="tags">
 
 

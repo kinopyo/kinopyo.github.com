@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iPad2でたまに駅とかでソフトバンクのWifiスポットへのアクセス画面が出てきて、気になって使えるかを調べたんです。 利用するには iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi- &hellip;">
+	<meta name="description" content="SMSと電話ができなくなる故障？ iPhone 4Sになってからは「3Gオフ」のオプションはなくなり、代わりに「モバイルデータ通信」をずっとオフにしたのですが、ある日からたまたま電話やSMSができなくなりました。 詳しくは：
++ SMS送信しても成功とならない(プログレスバーがずっと送信状態 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,65 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-4s-lose-phone-function-after-turn-off-cellular-data">iPhone 4Sのモバイルデータ通信(3G)をオフにしたらたまたま電話機能が使えなくなる件</a></h1>
+	<div class="entry-content">
+		<h2>SMSと電話ができなくなる故障？</h2>
+
+<p>iPhone 4Sになってからは「3Gオフ」のオプションはなくなり、代わりに「モバイルデータ通信」をずっとオフにしたのですが、ある日からたまたま<strong>電話やSMSができなくなりました</strong>。
+<img src="http://www.kinopyo.com/wp-content/uploads/2012/01/20111015-11syiqan1e8ijfhiiu1rtp3frx.jpg" width="20111015"></p>
+
+<p>詳しくは：
++  SMS送信しても成功とならない(プログレスバーがずっと送信状態)
++  電話かけても何も聞こえない＆話せないが、相手は受話できる(相手にとっては通話状態になっているのにこっちが何も喋ってない感じになる)
++  そして電話のアプリがしんでしまう</p>
+
+<h2>原因</h2>
+
+<p>Appleジーニアスバーに行きましたが、答えとしては<strong>「iPhone4Sはモバイルデータ通信、つまり3Gオフにするのは電話がそもそも使えなくなる、そのように設計されたんです。」</strong>
+「え、、？でも3GSの時はずっとオフにして使いましたが。。。」
+「残念ながら4Sからはそれはできなくなるんです」</p>
+
+<h2>しょうがない解決策</h2>
+
+<p>「設定 → 一般 → ネットワーク → モバイルデータ通信モバイルデータ通信」をONにするしかないですね。</p>
+
+<p>今までオフにしても一日で大体80%のバッテリー消費になったのが、ONにしたらもう。。。「iOS 5.1を待つしかないですね」これがジーニアスバーのスタッフの回答です。</p>
+
+<h2>なぜ3Gオフのオプションはなくなったのか</h2>
+
+<p>Googleで検索してもAppleからの正式回答はなかったのです。>_&lt;</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-08T00:00:00+09:00" pubdate data-updated="true">2012-01-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/iphone4s/'>iphone4s</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -659,52 +719,6 @@ CGI.escape(url)</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/urlencode/'>urlencode</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-append-class-if-condition-is-true-in-haml">Rails Append class if condition is true in Haml</a></h1>
-	<div class="entry-content">
-		<div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Append class if condition is true in Haml (with Rails) - Stack Overflow <a href="http://t.co/7pyL7pNn" title="http://stackoverflow.com/questions/3453560/append-class-if-condition-is-true-in-haml-with-rails">stackoverflow.com/questions/3453…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/138923631433625600" data-datetime="2011-11-22T10:15:49+00:00">11月 22, 2011</a></blockquote>
-<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">post</span><span class="p">{</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="s1">&#39;gray&#39;</span> <span class="k">unless</span> <span class="n">post</span><span class="o">.</span><span class="n">published?</span><span class="p">)</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>HAMLである条件がtrueの時だけあるclassをタグに追加したい場合。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-22T00:00:00+09:00" pubdate data-updated="true">2011-11-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/haml/'>haml</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>

@@ -7,17 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="MacportでPHPをインストールし、CakePHPを動かしたら「Strict Standards」エラーが出ました。
-当時のエラー本文は残ってませんので、Googleで検索したエラー本文を貼り付けます。パス以外は同じのはずです。 1
-2
-3
-4
-5
-6
-7
-8
-9
-Strict &hellip;">
+	<meta name="description" content="問題 新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -81,6 +71,139 @@ Strict &hellip;">
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication">PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication</a></h1>
+	<div class="entry-content">
+		<h2>問題</h2>
+
+<blockquote><p>新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”</p></blockquote>
+
+
+
+
+<blockquote><p>MacPortでインストールしたPHP5.3では、</p><p>mysqlnd(php5.3のmysql native client)が適用される。<br/>しかし、CentOSなどのyumでインストールできるMySQLサーバーとの相性がよろしくない。<br/>PHP Warning:  mysql_connect(): mysqlnd cannot connect to MySQL 4.1+ using old authentication<br/>というエラーが現れ、接続することができません。<br/>mysqlndを利用しないよう再コンパイルが必要となる。</p></blockquote>
+
+
+<h2>解決方法</h2>
+
+<p>portでインストールしたモジュールを確認、mysqlndがactiveなってるはず。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port installed
+</span><span class='line'>
+</span><span class='line'>php5-mysql @5.3.5_0+mysqlnd (active)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてmysql5のvariantsを指定で再インストール。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>% sudo port install php5-mysql +mysql5
+</span><span class='line'>
+</span><span class='line'>---&gt;  Computing dependencies for php5-mysql
+</span><span class='line'>---&gt;  Fetching php5-mysql
+</span><span class='line'>---&gt;  Verifying checksum(s) for php5-mysql
+</span><span class='line'>---&gt;  Extracting php5-mysql
+</span><span class='line'>---&gt;  Configuring php5-mysql
+</span><span class='line'>---&gt;  Building php5-mysql
+</span><span class='line'>---&gt;  Staging php5-mysql into destroot
+</span><span class='line'>---&gt;  Installing php5-mysql @5.3.5_0+mysql5
+</span><span class='line'>---&gt;  Deactivating php5-mysql @5.3.5_0+mysqlnd
+</span><span class='line'>---&gt;  Cleaning php5-mysql
+</span><span class='line'>---&gt;  Activating php5-mysql @5.3.5_0+mysql5
+</span><span class='line'>---&gt;  Cleaning php5-mysql
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>再度port installedで確認すればmysql5がactiveになるはず。これで解決。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>php5-mysql @5.3.5_0+mysqlnd
+</span><span class='line'>php5-mysql @5.3.5_0+mysql5 (active)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考</h2>
+
+<p>【php】mysqlndを使うとMySQLに接続できない
+<a href="http://www.softel.co.jp/blogs/tech/archives/2225">http://www.softel.co.jp/blogs/tech/archives/2225</a></p>
+
+<p>SnowLeopard + PHP5.3でのMySQLリモート接続
+<a href="http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html">http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html</a></p>
+
+<p>PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication
+<a href="http://www.bitshop.com/Blogs/tabid/95/EntryId/67/PHP-mysqlnd-cannot-connect-to-MySQL-4-1-using-old-authentication.aspx">http://www.bitshop.com/Blogs/tabid/95/EntryId/67/PHP-mysqlnd-cannot-connect-to-MySQL-4-1-using-old-authentication.aspx</a></p>
+
+<h2>おまけ</h2>
+
+<p>mysqlが古い16バイトのパスワードを使ってるかを確認する方法です。
+mysqlにログインして下記コマンドを実行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql&gt; select password('aa');
+</span><span class='line'>
+</span><span class='line'>+------------------+
+</span><span class='line'>| password('aa')         |
+</span><span class='line'>+------------------+
+</span><span class='line'>| 0123456789abcdef |
+</span><span class='line'>+------------------+
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>16位だっだら古いです。40位なら新しいってことです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-17T00:00:00+09:00" pubdate data-updated="true">2011-03-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -639,50 +762,6 @@ Cucumberでは自然言語で書けるため、実装から離れた視点でい
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/string/'>string</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/what-is-the-difference-between-_request-_get-and-_post">PHP: $_REQUESTと$_GET、$_POSTはどこが違うか</a></h1>
-	<div class="entry-content">
-		<blockquote><p>$_GET、 $_POST そして $_COOKIE の内容をまとめた連想配列です。</p></blockquote>
-
-
-<p>もう少し説明を加えると、</p>
-
-<blockquote><p>In the beginning of execution, $_REQUEST is a clone of $_GET. $_POST is then merged into the array, overwriting keys if they exist in both $_GET and $_POST. Finally, $_COOKIE is merged into the array, again overwriting old values.</p></blockquote>
-
-
-<p>まずは$<em>GETのクローンでそこに$</em>POSTをマージする感じで、同じキーのものがあれば上書きされます。同じくその後$<em>COOKIEもマージします。
-なので本当にPOSTで受取るものは$</em>REQUESTに書き換えてはいけないと思いますね。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-27T00:00:00+09:00" pubdate data-updated="true">2010-12-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

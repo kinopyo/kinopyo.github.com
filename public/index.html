@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Finally migrated all my posts from Wordpress to Octopress. I think it&#8217;s quite popular among hackers and geeks these days, if you don&#8217;t &hellip;">
+	<meta name="description" content="In your rails app, when you need an envionment variable like ENV['TWITTER_CONSUMER_KEY'] for local deveopment, where do you put them? Simply set &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +74,78 @@
 
 
     <article class="post">
+	<h1 class="title"><a href="/blog/setup-project-specific-environment-variables-with-pow/">Set Project Specific Environment Variables with Pow</a></h1>
+	<div class="entry-content">
+		<p>In your rails app, when you need an envionment variable like <code>ENV['TWITTER_CONSUMER_KEY']</code> for local deveopment, where do you put them? Simply set them before you start your rails server as a one time thing, or just put them under ~/.profile or ~/.zshrc?</p>
+
+<p>Well it works but I&#8217;m not happy with that. Because first it belongs to a specific project and expose them to global env make me feel a little bit uncomfortable, second, what if you happend to have more than one twitter integrated app, how do you name the variables to solve naming collision?</p>
+
+<p>If you&#8217;re using <a href="http://pow.cx">Pow</a>, there is a perfect solution for you.</p>
+
+<h2>.powrc and .powenv</h2>
+
+<p>Pow provides these 2 files for you to config pow and setup any environment variables.</p>
+
+<blockquote><p>Before an application boots, Pow attempts to execute two scripts — first .powrc, then .powenv — in the application&#8217;s root. Any environment variables exported from these scripts are passed along to Rack.</p></blockquote>
+
+<p>Convention here is putting <code>.powrc</code> under git version control, and override or setup any project specific environment variables to <code>.powenv</code>.</p>
+
+<h2>Let&#8217;s do it</h2>
+
+<figure class='code'><figcaption><span>.gitignore</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gi">+ .powenv</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>.powenv</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">export</span> <span class="no">TWITTER_CONSUMER_KEY</span><span class="o">=</span><span class="n">foo</span>
+</span><span class='line'><span class="n">export</span> <span class="no">TWITTER_CONSUMER_SECRET</span><span class="o">=</span><span class="n">bar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>BTW, you must run this command to restart pow manually so these scripts will be loaded.</p>
+
+<figure class='code'><figcaption><span>.powenv</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">touch</span> <span class="o">~</span><span class="sr">/.pow/</span><span class="n">restart</span><span class="o">.</span><span class="n">txt</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://pow.cx/manual.html#section_2.2">Pow Document: Customizing Environment Variables</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-01T21:56:00+09:00" pubdate data-updated="true">2012-09-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/pow/'>Pow</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
 	<h1 class="title"><a href="/blog/my-new-blog-with-octopress/">My New Blog with Octopress</a></h1>
 	<div class="entry-content">
 		<p>Finally migrated all my posts from Wordpress to Octopress. I think it&#8217;s quite popular among hackers and geeks these days, if you don&#8217;t know it just google it, tons of results.</p>
@@ -84,7 +156,7 @@
 
 <h1>Over 300 posts since 2009/10/07</h1>
 
-<p>I&#8217;m really surprised by myself. I was not aware of that I&#8217;ve done so many writings. Even many of them are just simple code gist and programming related.</p>
+<p>I&#8217;m really surprised by myself. I was not aware of that I&#8217;ve done so many writings, and these&#8217;re only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related.</p>
 
 <p>It&#8217;s so easy now to &#8220;execute&#8221; an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential &#8220;things&#8221; here, as part of my life.</p>
 
@@ -132,6 +204,10 @@
 
 <time datetime="2012-08-31T22:49:00+09:00" pubdate data-updated="true">2012-08-31</time></div>
 	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
 
 </div>
 	
@@ -631,45 +707,6 @@ Here is just an example:</p>
 
 
 	<a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/zsh/'>zsh</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/bootswatch-simple-solution-to-custimze-bootstrap-color/">Bootswatch - A simple solution to customize Bootstrap color</a></h1>
-	<div class="entry-content">
-		<p>Recently I found this website called <strong><a href="http://bootswatch.com/">Bootswatch</a></strong>, which is really helpful when you want to add color(or say different theme) to your bootstrap project. There is also a <a href="https://wrapbootstrap.com/">marketplace</a> for you to buy/sell themes.</p>
-
-<p>I&#8217;ll definetly try one next time I use bootstrap.</p>
-
-<p><img src="https://img.skitch.com/20120703-cjc4d2ndgng626am5t46yc9b7m.jpg"></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-03T18:17:00+09:00" pubdate data-updated="true">2012-07-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/bootstrap/'>bootstrap</a>
 
 
 </div>

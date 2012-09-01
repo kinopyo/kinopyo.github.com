@@ -7,9 +7,16 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="基本 多分ほとんどの人は分かっていると思いますが、
-jspファイル内のコメントの記述は以下になります。 1
-&lt;%-- JSPのコメント --%&gt; そしてHTMLのコメントの記述は 1 &amp;lt;!-- HTMLのコメント --&gt; 問題 &hellip;">
+	<meta name="description" content="面白いかと思ったのでメモしときます。 普通の書き方 1
+2
+3
+4
+5
+6
+7
+8
+9
+var rows = document.getElementsByTagName(&#39;tr&#39;); for( var i = 0; i &lt; rows.length; i++ ) { rows &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +80,89 @@ jspファイル内のコメントの記述は以下になります。 1
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-for-loop-good-performance">Javascriptのforループのパフォーマンスのいい書き方</a></h1>
+	<div class="entry-content">
+		<p>面白いかと思ったのでメモしときます。</p>
+
+<h2>普通の書き方</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;newclass&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>効率のいい書き方</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">row</span><span class="p">;</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">row</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;newclass&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">row</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考サイト：<a href="http://www.javaeye.com/topic/455376">http://www.javaeye.com/topic/455376</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-22T00:00:00+09:00" pubdate data-updated="true">2010-02-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -871,126 +961,6 @@ titleのところのシングルクォーテーションがUTF-8の#039になっ
 <h3>validates_size_of</h3>
 
 <p>validates_length_ofと同じ。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-24T00:00:00+09:00" pubdate data-updated="true">2010-01-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/canonicalization-url-for-www-non-www">自分のサイトURLを&#8221;wwwあり&#8221;か&#8221;wwwなし&#8221;に正規化する方法</a></h1>
-	<div class="entry-content">
-		<p>&#8220;wwwあり&#8221;か&#8221;wwwなし&#8221;はSEO的には優劣はありませんし、
-どっちを使うかはたいてい各人の好き嫌いで決まっています。
-例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
-私は&#8221;wwwあり&#8221;で正規化ています。
-この正規化というのは非常に重要で、検索エンジンに対しての知らせです。
-Googleのヘルプによると下記の解説になります。</p>
-
-<p>{% blockquote }</p>
-
-<p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p>
-
-<p>{% endblockquote %}</p>
-
-<p>なので&#8221;wwwあり&#8221;と&#8221;wwwなし&#8221;が同じサイトであれば
-正規化する必要があります。</p>
-
-<h2>正規化する方法</h2>
-
-<p>.htaccessが使える環境では.htaccessを下記のように設定
-.htaccessファイルはサイトのルートディレクトリに置いてください。
-例えばこのブログのURLはwww.kinopyo.com/blogになっていますが、
-.htaccessファイルはwww.kinopyo.comのディレクトリに置いてあればOKです。
-設定に基づいてリダイレクトします。</p>
-
-<ul>
-<li>wwwありに統一</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>RewriteEngine on
-</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com *NC*
-</span><span class='line'>RewriteRule ^(.# )$ http://www.example.com/$1 *R=301,L*
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>+  wwwなしに統一
-</span><span class='line'>&lt;pre class="brush:plain"&gt;
-</span><span class='line'>RewriteEngine on
-</span><span class='line'>RewriteCond %{HTTP_HOST} ^www.example\.com *NC*
-</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>※”example.com”は自分のドメイン名に置き換えてください。</p>
-
-<h2>Googleウェブマスターツールでの設定</h2>
-
-<p>Googleウェブマスターツールは自分のサイトとGoogle検索の関係いついて
-いろいろ設定できる支援ツールです。
-ここでは自分が&#8221;www有り無し&#8221;をGoogleに伝えるための設定をします。
-そうしないとGoogleは&#8221;www有り無し&#8221;をそれぞれ別のページへの異なる参照として処理されます。</p>
-
-<ul>
-<li><p>Googleウェブマスターツール使うにはまずサイトを登録
-サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。
-{% img http://www.kinopyo.com/wp-content/uploads/2010/01/Googleウェブマスターツール.jpg Googleウェブマスターツール %}
-Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
-(具体的な認証方法はGoogleのヘルプを見てください)</p></li>
-<li><p>使用するドメイン
-登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
-利用するドメイン、つまりwww有りなしを指定してください。
-{% img http://www.kinopyo.com/wp-content/uploads/2010/01/ウェブマスター-ツール-設定.jpg Googleウェブマスターツール %}</p></li>
-</ul>
-
-
-<h2>Wordpressお使いの方は注意を</h2>
-
-<p>Wordpressの「設定→一般」でサイトURLが正しく設定されるか確認してください。
-もし.htaccessでは&#8221;wwwあり&#8221;で指定しWordpressでは&#8221;wwwなし&#8221;と指定した場合は
-無限ループとなるため、サイトがエラーとなり表示できなくなります。
-Wordpressの仕様は調べていないが、どうやらWordpressの設定によりリダイレクトするように見えます。</p>
-
-<h2>参考サイト</h2>
-
-<p><a href="http://www.suzukikenichi.com/blog/which-do-you-prefer-www-or-non-www/">wwwあり／wwwなし、どちらを使用するか?</a></p>
 
 		
 		

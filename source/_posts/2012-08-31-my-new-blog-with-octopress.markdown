@@ -3,7 +3,7 @@ layout: post
 title: "My New Blog with Octopress"
 date: 2012-08-31 22:49
 comments: true
-categories: 
+categories:  diary
 ---
 
 Finally migrated all my posts from Wordpress to Octopress. I think it's quite popular among hackers and geeks these days, if you don't know it just google it, tons of results. 
@@ -14,7 +14,7 @@ I'm not gonna mention any migration details here, I'd like to look back and have
 
 # Over 300 posts since 2009/10/07
 
-I'm really surprised by myself. I was not aware of that I've done so many writings. Even many of them are just simple code gist and programming related.
+I'm really surprised by myself. I was not aware of that I've done so many writings, and these're only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related. 
 
 It's so easy now to "execute" an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential "things" here, as part of my life.
 

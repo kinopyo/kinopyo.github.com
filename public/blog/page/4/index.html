@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="jQueryでチェックボックスの状態を監視するイベントはclick eventを使う。 チェックされたかを判断するには$("#some_checkbox").is(':checked')がいい。 CoffeeScriptでのサンプルコード： $(&quot;#some_checkbox&quot &hellip;">
+	<meta name="description" content="Append class if condition is true in Haml (with Rails) - Stack Overflow stackoverflow.com/questions/3453…&mdash; kinopyoさん (@fantasyday) 11月 22, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,52 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-append-class-if-condition-is-true-in-haml">Rails Append class if condition is true in Haml</a></h1>
+	<div class="entry-content">
+		<div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Append class if condition is true in Haml (with Rails) - Stack Overflow <a href="http://t.co/7pyL7pNn" title="http://stackoverflow.com/questions/3453560/append-class-if-condition-is-true-in-haml-with-rails">stackoverflow.com/questions/3453…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/138923631433625600" data-datetime="2011-11-22T10:15:49+00:00">11月 22, 2011</a></blockquote>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">post</span><span class="p">{</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="s1">&#39;gray&#39;</span> <span class="k">unless</span> <span class="n">post</span><span class="o">.</span><span class="n">published?</span><span class="p">)</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>HAMLである条件がtrueの時だけあるclassをタグに追加したい場合。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-22T00:00:00+09:00" pubdate data-updated="true">2011-11-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/haml/'>haml</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -646,168 +692,6 @@
 
 
 	<a class='category' href='/blog/categories/actionview/'>ActionView</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/partial/'>partial</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/test-javascript-spec-in-rspec-with-capybara-webkit">Rspec Capybara_webkitを使ってjavascriptをテストする</a></h1>
-	<div class="entry-content">
-		<h2>Goal</h2>
-
-<p>ゴールと言うか目標はrspecのrequest(integration) testでjavascriptのテストをしたいです。が、いろいろハマってその問題と解決策を時間軸でメモしておきます。</p>
-
-<p><em>Capybara</em>についてはある程度知ってる前提です。</p>
-
-<h2>javascriptのテストを書く</h2>
-
-<p><em>:js => true</em>でrspecのintegration testでjavascriptを有効に設定できます。
-例：</p>
-
-<div><script src='https://gist.github.com/1342538.js?file=example_spec_with_javascript_enalbed.rb'></script>
-<noscript><pre><code># in your view erb file
-&lt;%= link_to_function &quot;test js&quot;, '$(this).html(&quot;js works&quot;)' %&gt;
-
-# in test spec
-it &quot;supports js&quot;, :js =&gt; true do
-  visit tasks_path
-  click_link &quot;test js&quot;
-  page.should have_content(&quot;js works&quot;)
-end</code></pre></noscript></div>
-
-
-<p>ただデフォルトではjavascriptをサポートしないので、このspecは失敗します。解決の鍵は<em>capybara driver</em>というものです。</p>
-
-<h2>capybara_webkit driver</h2>
-
-<h3>なぜcapybara_webkit driver使う</h3>
-
-<blockquote><p>Capybara &#8230; currently comes with Rack::Test and Selenium support built in.</p><p>By default, Capybara uses the :rack_test driver, which is fast but does not support JavaScript. You can set up a different default driver for your features.</p><p>The capybara-webkit driver is for true headless testing. It uses QtWebKit to start a rendering engine process. It can execute JavaScript as well. It is significantly faster than drivers like Selenium since it does not load an entire browser.</p></blockquote>
-
-
-<p>のようにcapybaraは <em>Rack::Test</em>と<em>Selenium</em>のdriverがbuilt-inされて、デフォルトdriverは前者の:rack_testでjavascriptをサポートしないです。<em>Selenium</em>はサポートしますが、それよりも速いのが<em>capybara-webkit</em>なのでそれを採用しました。</p>
-
-<h2>capybara_webkit driverをインストール</h2>
-
-<p>Gemfileにcapybara_webkitを追記、bundle installします。webkitはQTが必要なので、もしそれがないとbundle installで失敗(エラー)します。後はspec_helper.rbにdefault driverをwebkitに設定します。</p>
-
-<div><script src='https://gist.github.com/1342538.js?file=install_capybara_webkit.rb'></script>
-<noscript><pre><code># webkit-dependency
-# if you don't have homebrew installed
-/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731)&quot;
-# if you don't have QT installed
-brew install qt
-
-# Gemfile, add capybara-webkit
-group :test, :development do
-  ...
-  gem &quot;capybara-webkit&quot;
-end
-
-# in Terminal
-bundle install
-
-# set default capybara driver to webkit.
-# I put this into spec_helper.rb
-Capybara.javascript_driver = :webkit
-
-# In RSpec, use the :js =&gt; true flag
-it &quot;supports js&quot;, :js =&gt; true do
-  ...
-end</code></pre></noscript></div>
-
-
-<p>これで最初のサンプルspecは通るはずです。</p>
-
-<h2>データベースと絡んだテスト</h2>
-
-<p>上記のままだとデータベースと絡んだテストはまた失敗します。
-例：</p>
-
-<div><script src='https://gist.github.com/1342538.js?file=js_test_combined_with_database.rb'></script>
-<noscript><pre><code>it &quot;displays tasks&quot;, :js =&gt; true do
-  Task.create!(:name =&gt; &quot;foo&quot;)
-  visit tasks_path
-  click_link 'some link'
-  page.should have_content(&quot;some text&quot;)
-end</code></pre></noscript></div>
-
-
-<p>自分で確認してみたら、テスト時に作成したデータはjavascriptのテストで使えないっぽいです。Railscastsの記事によりますと<strong>rspecのテストではデータベーストランザクションを使うが、それがselenium或いはwebkitでは使えない</strong>そうです。そのために<em>database_cleaner</em>というgemを使います。</p>
-
-<h2>database_cleanerを使う</h2>
-
-<div><script src='https://gist.github.com/1342538.js?file=use_database_cleaner_gem.rb'></script>
-<noscript><pre><code># in Gemfiile
-group :test, :development do
-  ...
-  gem &quot;database_cleaner&quot;
-end
-
-# in Terminal
-bundle install
-
-# in spec_helper.rb
-RSpec.configure do |config|
-  # ...
-  config.use_transactional_fixtures = false
-  
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-end</code></pre></noscript></div>
-
-
-<p><em>config.use_transactional_fixtures</em>をfalseにした時点でもうテスト自体は通るはずですが、データはずっとそのまま残ってしまうんです。database_cleanerは名の通りデータベースをテスト前後で綺麗な状態に保つことができます。</p>
-
-<p>これでもう環境面の設定は完了です！</p>
-
-<h2>Resources</h2>
-
-<ul>
-<li><a href="https://github.com/jnicklas/capybara">capybara</a></li>
-<li><a href="https://github.com/mxcl/homebrew/wiki/installation">install_homebrew</a></li>
-<li><a href="https://github.com/thoughtbot/capybara-webkit/wiki/Installing-QT">install_QT</a></li>
-<li><a href="https://github.com/thoughtbot/capybara-webkit">capybara_webkit_driver</a></li>
-<li><a href="https://github.com/bmabey/database_cleaner">database_cleaner_gem</a></li>
-<li><a href="http://railscasts.com/episodes/257-request-specs-and-capybara">#257 Request Specs and Capybara</a></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-06T00:00:00+09:00" pubdate data-updated="true">2011-11-06</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/capybara/'>capybara</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/webkit/'>webkit</a>
 
 
 </div>

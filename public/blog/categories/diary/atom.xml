@@ -4,7 +4,7 @@
   <title><![CDATA[Category: diary | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/diary/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-08-31T22:50:41+09:00</updated>
+  <updated>2012-09-02T11:12:17+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My New Blog with Octopress]]></title>
+    <link href="http://kinopyo.com/blog/my-new-blog-with-octopress/"/>
+    <updated>2012-08-31T22:49:00+09:00</updated>
+    <id>http://kinopyo.com/blog/my-new-blog-with-octopress</id>
+    <content type="html"><![CDATA[<p>Finally migrated all my posts from Wordpress to Octopress. I think it's quite popular among hackers and geeks these days, if you don't know it just google it, tons of results.</p>
+
+<p>There're still a lot of works to do, like some posts with messy format or broken links, Disqus comments need to be migrated, categories are nonsense etc, but I'll announce this anyway. Done is better than perfect right?</p>
+
+<p>I'm not gonna mention any migration details here, I'd like to look back and have a summary or something now.</p>
+
+<h1>Over 300 posts since 2009/10/07</h1>
+
+<p>I'm really surprised by myself. I was not aware of that I've done so many writings, and these're only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related.</p>
+
+<p>It's so easy now to "execute" an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential "things" here, as part of my life.</p>
+
+<h1>Japanese, English and Chinese</h1>
+
+<p>There was a time I was trying to write down every single post in these 3 languages. I believe the plugin I used in Wordpress is called <em>qTranslate</em>, which let you write with each language or all of them.</p>
+
+<p>After a while I noticed it was too hard for me. Translating same contents into a different language is boring and wasting of time, at least I tried and found out it doesn't work for me. So this time, I want this blog to be an English mainly blog, with occasional different language posts. My plan is writing emotional feelings in Chinese, and social activities or something related to Japan in Japanese.</p>
+
+<p>I'm still keeping those language mixed posts here even though I think it's not useful to my "readers", not sure how many I got, I'd like to take those posts as old-days foot prints. "あの時がんばったな！ー" hehe.</p>
+
+<h1>About the priority or weight of each language</h1>
+
+<p>I want to be a top player in this programming field. In order to achieve that English is a MUST condition. I still remember when I first time read a programming book in English, it was so difficult that I hardly understood the meanings. But I keep trying and trying, now I'm very comfortable with it and believe it's more natural than any other language in programming field.</p>
+
+<p>Besides the effort I put in English, I also want to start writing in my native language, Chinese. Although English is more friendly to me than before, it's still difficult to describe my feelings and emotions precisely. I need more vocabularies. I need to look back to think about if there is a grammar mistake. So when I think about some topics such as meanings of life, or what I want to left to the world, am I making this world a little bit better, etc. In these cases I need to grab my most familiar weapon :)</p>
+
+<p>For Japanese, hmmm.. I'll leave it for now :)</p>
+
+<h1>Google Adsense</h1>
+
+<p>If you're an old readers of me, I hope you are, you may notice that there's no ads anymore. Yeah I used to put those ads for experiment. With 500-600 daily PVs, it gave me around 4,000￥ every month. Not that much but it's better than nothing, so I kept ads for a long time. But to be honest, as a personal blog it's just annoying. I didn't like it personally, and it's for sure it gives people bad impression, I don't like to miss a job opportunity if some head hunters open my blog and leave with a "WTF?!..".</p>
+
+<p>Let's just be simple and clean.</p>
+
+<p>That's it~ see you next time.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
@@ -208,39 +251,6 @@ Facebookは逆にあっても全然チェックする気がないです。
 <li><a href="http://psearch.yahoo.co.jp/search/advanced">http://psearch.yahoo.co.jp/search/advanced</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iPhone水没記、液晶交換で復活]]></title>
-    <link href="http://kinopyo.com/blog/iphone-dropped-in-water"/>
-    <updated>2011-06-18T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/iphone-dropped-in-water</id>
-    <content type="html"><![CDATA[<p>一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。</p>
-
-<p>液晶が点灯しなかったものの、まだ生きてます。
-急いで電源を切りました。スワイプのジェスチャーがなかなか効かないので何回かやったんです。</p>
-
-<p>そこでググってみてこんな措置をとりました。
-+  本体は振ってはいけない
-+  ドライヤーで乾かす
-+  米に埋める(乾燥剤がなかった)
-+  乾燥剤とiPhoneをジップロックに入れて待つ！
-+  毎晩一回起動して様子を観察</p>
-
-<p>それで、ほぼ4-5日経って特に変わりがなかったです。
-(まだ液晶が点灯しない、バッテリとかその他は問題ない)
-画面が暗いまま1週間使い続けてもう待てないと思って
-ソフトバンクの店舗にいって正直に言いました。
-思ったとおり検査で水没のセンサは反応あり、
-修理はできず22,800¥で交換するしかないと言われました。</p>
-
-<p>そんな時にTwitter<a href="https://twitter.com/#!/spdshinjuku">スマートフォンドクター新宿店</a>から連絡がきましたので、
-お店にいって液晶だけ交換することにしました。
-その場でTwitterでつぶやけばツイッター割があります。
-合わせて8,800¥でした。ありがとうございました。</p>
-
-<p>今まで問題なく使いました。大事にしないと。。</p>
 ]]></content>
   </entry>
   

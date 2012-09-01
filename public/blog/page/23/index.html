@@ -7,9 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="システムを作る時に、パスワードを2回入力してもらって、確認処理をおこなうことが多いですね。
-そんなめんどな仕事には、Railsはvalidates_confirmation_of メソッドを用意してくれました。
-それでは、使い方を見てみましょうか。 まず、モデルで以下のチェックを行います。 1 &hellip;">
+	<meta name="description" content="&#8220;wwwあり&#8221;か&#8221;wwwなし&#8221;はSEO的には優劣はありませんし、
+どっちを使うかはたいてい各人の好き嫌いで決まっています。
+例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
+私は&#8221; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +74,126 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/canonicalization-url-for-www-non-www">自分のサイトURLを&#8221;wwwあり&#8221;か&#8221;wwwなし&#8221;に正規化する方法</a></h1>
+	<div class="entry-content">
+		<p>&#8220;wwwあり&#8221;か&#8221;wwwなし&#8221;はSEO的には優劣はありませんし、
+どっちを使うかはたいてい各人の好き嫌いで決まっています。
+例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
+私は&#8221;wwwあり&#8221;で正規化ています。
+この正規化というのは非常に重要で、検索エンジンに対しての知らせです。
+Googleのヘルプによると下記の解説になります。</p>
+
+<p>{% blockquote }</p>
+
+<p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p>
+
+<p>{% endblockquote %}</p>
+
+<p>なので&#8221;wwwあり&#8221;と&#8221;wwwなし&#8221;が同じサイトであれば
+正規化する必要があります。</p>
+
+<h2>正規化する方法</h2>
+
+<p>.htaccessが使える環境では.htaccessを下記のように設定
+.htaccessファイルはサイトのルートディレクトリに置いてください。
+例えばこのブログのURLはwww.kinopyo.com/blogになっていますが、
+.htaccessファイルはwww.kinopyo.comのディレクトリに置いてあればOKです。
+設定に基づいてリダイレクトします。</p>
+
+<ul>
+<li>wwwありに統一</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com *NC*
+</span><span class='line'>RewriteRule ^(.# )$ http://www.example.com/$1 *R=301,L*
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'>
+</span><span class='line'>+  wwwなしに統一
+</span><span class='line'>&lt;pre class="brush:plain"&gt;
+</span><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^www.example\.com *NC*
+</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※”example.com”は自分のドメイン名に置き換えてください。</p>
+
+<h2>Googleウェブマスターツールでの設定</h2>
+
+<p>Googleウェブマスターツールは自分のサイトとGoogle検索の関係いついて
+いろいろ設定できる支援ツールです。
+ここでは自分が&#8221;www有り無し&#8221;をGoogleに伝えるための設定をします。
+そうしないとGoogleは&#8221;www有り無し&#8221;をそれぞれ別のページへの異なる参照として処理されます。</p>
+
+<ul>
+<li><p>Googleウェブマスターツール使うにはまずサイトを登録
+サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。
+{% img http://www.kinopyo.com/wp-content/uploads/2010/01/Googleウェブマスターツール.jpg Googleウェブマスターツール %}
+Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
+(具体的な認証方法はGoogleのヘルプを見てください)</p></li>
+<li><p>使用するドメイン
+登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
+利用するドメイン、つまりwww有りなしを指定してください。
+{% img http://www.kinopyo.com/wp-content/uploads/2010/01/ウェブマスター-ツール-設定.jpg Googleウェブマスターツール %}</p></li>
+</ul>
+
+
+<h2>Wordpressお使いの方は注意を</h2>
+
+<p>Wordpressの「設定→一般」でサイトURLが正しく設定されるか確認してください。
+もし.htaccessでは&#8221;wwwあり&#8221;で指定しWordpressでは&#8221;wwwなし&#8221;と指定した場合は
+無限ループとなるため、サイトがエラーとなり表示できなくなります。
+Wordpressの仕様は調べていないが、どうやらWordpressの設定によりリダイレクトするように見えます。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.suzukikenichi.com/blog/which-do-you-prefer-www-or-non-www/">wwwあり／wwwなし、どちらを使用するか?</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-24T00:00:00+09:00" pubdate data-updated="true">2010-01-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -642,256 +763,6 @@ No More Countdowns - Automatic Downloads.</p></li>
 
 
 <time datetime="2010-01-09T00:00:00+09:00" pubdate data-updated="true">2010-01-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-block">Rubyブロック</a></h1>
-	<div class="entry-content">
-		<h2>ブロックとは？</h2>
-
-<p>Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
-メソッドに渡された処理はブロックといいます。</p>
-
-<h2>ブロックを渡すには？</h2>
-
-<p>ブロックを渡すには、二つの方法があります。
-+  ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">+  ②メソッドの最後にdo..endで囲んだコードを渡す。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">{% codeblock %}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">test_block</span> <span class="k">do</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">## ブロックの使い方？</span>
-</span><span class='line'><span class="sx">ブロックは使ってもらわないと、意味がありません。</span>
-</span><span class='line'><span class="sx">使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。</span>
-</span><span class='line'><span class="sx">メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block</span>
-</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
-</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
-</span><span class='line'><span class="sx">yield</span>
-</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
-</span><span class='line'><span class="c1">#ブロックを渡す</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">実行結果：</span>
-</span><span class='line'><span class="sx">Start of method</span>
-</span><span class='line'><span class="sx">In the block</span>
-</span><span class='line'><span class="sx">End of method</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">## ブロックにはパラメータを渡す？</span>
-</span><span class='line'><span class="sx">ブロックにはパラメータを渡せますか？もちろんです。</span>
-</span><span class='line'><span class="sx">パラメータの定義はブロックで、</span>
-</span><span class='line'><span class="sx">yieldでブロックを実行する際には、パラメータを渡します。</span>
-</span><span class='line'><span class="sx">ブロックは渡されたパラメータを受け取って、処理します。</span>
-</span><span class='line'><span class="sx">文字の説明だけで、わからないかもしれません。</span>
-</span><span class='line'><span class="sx">実はメソッドの定義とほとんど変わらないです。</span>
-</span><span class='line'><span class="sx">サンプルを見てみましょう。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block_pramater</span>
-</span><span class='line'><span class="sx">yield(&#39;helloworld&#39;)</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'><span class="sx">call_block {|str, num| puts &#39;Ruby sample:&#39;+str }</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'><span class="sx">※注意点：ブロックでは、||でパラメータを受け取っています。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">## 渡されたブロックをさらに別のメソッドを渡すには？</span>
-</span><span class='line'><span class="sx">渡されたブロックをさらに内部で使っているメソッドに渡すことができます。</span>
-</span><span class='line'><span class="sx">引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block(&amp;block)</span>
-</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
-</span><span class='line'><span class="sx">puts &#39;Start of test_block&#39;</span>
-</span><span class='line'><span class="sx">test_block_paramater(&amp;block)</span>
-</span><span class='line'><span class="sx">puts &#39;End of test_block&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">def test_block_paramater(&amp;block)</span>
-</span><span class='line'><span class="sx">puts &#39;Start of test_block_paramater&#39;</span>
-</span><span class='line'><span class="sx">yield</span>
-</span><span class='line'><span class="sx">puts&#39;End of test_block_paramater&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">実行結果：</span>
-</span><span class='line'><span class="sx">Start of test_block</span>
-</span><span class='line'><span class="sx">Start of test_block_paramater</span>
-</span><span class='line'><span class="sx">In the block</span>
-</span><span class='line'><span class="sx">End of test_block_paramater</span>
-</span><span class='line'><span class="sx">End of test_block</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'><span class="sx">※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'><span class="sx">## ブロックが渡されたか調べるには？</span>
-</span><span class='line'><span class="sx">yieldを実行する時、ブロックが渡されるかどうかを確認することができます。</span>
-</span><span class='line'><span class="sx">block_given?を使って、ブロックがあるかどうかを確認できます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block</span>
-</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
-</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
-</span><span class='line'><span class="sx">yield if block_given?</span>
-</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
-</span><span class='line'><span class="c1">#ブロックを渡す</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
 	<div class="tags">
 
 

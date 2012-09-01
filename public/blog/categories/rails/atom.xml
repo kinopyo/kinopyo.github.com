@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-08-31T22:50:41+09:00</updated>
+  <updated>2012-09-02T11:12:17+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Set Project Specific Environment Variables with Pow]]></title>
+    <link href="http://kinopyo.com/blog/setup-project-specific-environment-variables-with-pow/"/>
+    <updated>2012-09-01T21:56:00+09:00</updated>
+    <id>http://kinopyo.com/blog/setup-project-specific-environment-variables-with-pow</id>
+    <content type="html"><![CDATA[<p>In your rails app, when you need an envionment variable like <code>ENV['TWITTER_CONSUMER_KEY']</code> for local deveopment, where do you put them? Simply set them before you start your rails server as a one time thing, or just put them under ~/.profile or ~/.zshrc?</p>
+
+<p>Well it works but I'm not happy with that. Because first it belongs to a specific project and expose them to global env make me feel a little bit uncomfortable, second, what if you happend to have more than one twitter integrated app, how do you name the variables to solve naming collision?</p>
+
+<p>If you're using <a href="http://pow.cx">Pow</a>, there is a perfect solution for you.</p>
+
+<h2>.powrc and .powenv</h2>
+
+<p>Pow provides these 2 files for you to config pow and setup any environment variables.</p>
+
+<blockquote><p>Before an application boots, Pow attempts to execute two scripts — first .powrc, then .powenv — in the application's root. Any environment variables exported from these scripts are passed along to Rack.</p></blockquote>
+
+<p>Convention here is putting <code>.powrc</code> under git version control, and override or setup any project specific environment variables to <code>.powenv</code>.</p>
+
+<h2>Let's do it</h2>
+
+<p><code>diff .gitignore
++ .powenv
+</code></p>
+
+<p><code>ruby .powenv
+export TWITTER_CONSUMER_KEY=foo
+export TWITTER_CONSUMER_SECRET=bar
+</code></p>
+
+<p>BTW, you must run this command to restart pow manually so these scripts will be loaded.</p>
+
+<p><code>
+$ touch ~/.pow/restart.txt
+</code></p>
+
+<p><a href="http://pow.cx/manual.html#section_2.2">Pow Document: Customizing Environment Variables</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Explicitly specify table name in scope definition]]></title>

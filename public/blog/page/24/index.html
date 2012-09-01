@@ -7,12 +7,19 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="jQueryでマウス右クリックを無効にする方法です。
-&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
-それのハンドラでreturn falseすることで簡単に実現できます。 1
+	<meta name="description" content="ブロックとは？ Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
+メソッドに渡された処理はブロックといいます。 ブロックを渡すには？ ブロックを渡すには、二つの方法があります。
++ ①メソッドの最後に｛｝で囲んだコードを渡す。 1
 2
 3
-$(&quot;document&quot;). &hellip;">
+4
+5
+6
+7
+8
+9
+10
+11 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,6 +83,256 @@ $(&quot;document&quot;). &hellip;">
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-block">Rubyブロック</a></h1>
+	<div class="entry-content">
+		<h2>ブロックとは？</h2>
+
+<p>Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
+メソッドに渡された処理はブロックといいます。</p>
+
+<h2>ブロックを渡すには？</h2>
+
+<p>ブロックを渡すには、二つの方法があります。
++  ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">+  ②メソッドの最後にdo..endで囲んだコードを渡す。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">{% codeblock %}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="k">do</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">## ブロックの使い方？</span>
+</span><span class='line'><span class="sx">ブロックは使ってもらわないと、意味がありません。</span>
+</span><span class='line'><span class="sx">使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。</span>
+</span><span class='line'><span class="sx">メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block</span>
+</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
+</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
+</span><span class='line'><span class="sx">yield</span>
+</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
+</span><span class='line'><span class="c1">#ブロックを渡す</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">実行結果：</span>
+</span><span class='line'><span class="sx">Start of method</span>
+</span><span class='line'><span class="sx">In the block</span>
+</span><span class='line'><span class="sx">End of method</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">## ブロックにはパラメータを渡す？</span>
+</span><span class='line'><span class="sx">ブロックにはパラメータを渡せますか？もちろんです。</span>
+</span><span class='line'><span class="sx">パラメータの定義はブロックで、</span>
+</span><span class='line'><span class="sx">yieldでブロックを実行する際には、パラメータを渡します。</span>
+</span><span class='line'><span class="sx">ブロックは渡されたパラメータを受け取って、処理します。</span>
+</span><span class='line'><span class="sx">文字の説明だけで、わからないかもしれません。</span>
+</span><span class='line'><span class="sx">実はメソッドの定義とほとんど変わらないです。</span>
+</span><span class='line'><span class="sx">サンプルを見てみましょう。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block_pramater</span>
+</span><span class='line'><span class="sx">yield(&#39;helloworld&#39;)</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'><span class="sx">call_block {|str, num| puts &#39;Ruby sample:&#39;+str }</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'><span class="sx">※注意点：ブロックでは、||でパラメータを受け取っています。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">## 渡されたブロックをさらに別のメソッドを渡すには？</span>
+</span><span class='line'><span class="sx">渡されたブロックをさらに内部で使っているメソッドに渡すことができます。</span>
+</span><span class='line'><span class="sx">引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block(&amp;block)</span>
+</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
+</span><span class='line'><span class="sx">puts &#39;Start of test_block&#39;</span>
+</span><span class='line'><span class="sx">test_block_paramater(&amp;block)</span>
+</span><span class='line'><span class="sx">puts &#39;End of test_block&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">def test_block_paramater(&amp;block)</span>
+</span><span class='line'><span class="sx">puts &#39;Start of test_block_paramater&#39;</span>
+</span><span class='line'><span class="sx">yield</span>
+</span><span class='line'><span class="sx">puts&#39;End of test_block_paramater&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">実行結果：</span>
+</span><span class='line'><span class="sx">Start of test_block</span>
+</span><span class='line'><span class="sx">Start of test_block_paramater</span>
+</span><span class='line'><span class="sx">In the block</span>
+</span><span class='line'><span class="sx">End of test_block_paramater</span>
+</span><span class='line'><span class="sx">End of test_block</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'><span class="sx">※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'><span class="sx">## ブロックが渡されたか調べるには？</span>
+</span><span class='line'><span class="sx">yieldを実行する時、ブロックが渡されるかどうかを確認することができます。</span>
+</span><span class='line'><span class="sx">block_given?を使って、ブロックがあるかどうかを確認できます。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;br/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">def test_block</span>
+</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
+</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
+</span><span class='line'><span class="sx">yield if block_given?</span>
+</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
+</span><span class='line'><span class="sx">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
+</span><span class='line'><span class="c1">#ブロックを渡す</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -657,74 +914,6 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 
 
 <time datetime="2009-12-22T00:00:00+09:00" pubdate data-updated="true">2009-12-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-select-multy-element-with-same-id">jQuery #idでは一つし要素か選択できない、同じIDを持つ複数要素を選択するには</a></h1>
-	<div class="entry-content">
-		<p>そもそもIDというのは一つのページ内でユニークなはずですが、
-何らかの理由で同じIDを持つ形になったとしましょう。
-その場合普通のjQueryの#idセレクタでは一つの要素(順番的に最初に合致した要素)しか選択できません。
-そこで<em>id=xx</em>の形で属性フィルタで全ての選択することができます。
-以下サンプルコードです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;*id=bar*&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:html&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">use</span> <span class="err">#</span><span class="nx">id</span> <span class="nx">selector</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Text1&quot;</span> <span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Text2&quot;</span> <span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">use</span> <span class="nx">attribute</span> <span class="nx">selector</span> <span class="o">*</span><span class="nx">id</span><span class="o">=</span><span class="nx">xx</span><span class="o">*&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Text3&quot;</span> <span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Text4&quot;</span> <span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Text5&quot;</span> <span class="o">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jQuerySelectorByID.jpg" title="jQuerySelectorByID" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-20T00:00:00+09:00" pubdate data-updated="true">2009-12-20</time></div>
 	<div class="tags">
 
 

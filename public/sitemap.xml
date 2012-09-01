@@ -1378,14 +1378,18 @@
     </url>
     <url>
         <loc>http://kinopyo.com/blog/my-new-blog-with-octopress/</loc>
-        <lastmod>2012-08-31T22:50:32+09:00</lastmod>
+        <lastmod>2012-08-31T23:13:23+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kinopyo.com/blog/setup-project-specific-environment-variables-with-pow/</loc>
+        <lastmod>2012-09-02T11:12:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://kinopyo.com/blog/archives/</loc>
-        <lastmod>2012-08-31T22:50:32+09:00</lastmod>
+        <lastmod>2012-09-02T11:12:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://kinopyo.com/</loc>
-        <lastmod>2012-08-31T22:50:32+09:00</lastmod>
+        <lastmod>2012-09-02T11:12:06+09:00</lastmod>
     </url>
 </urlset>
