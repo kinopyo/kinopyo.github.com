@@ -40,12 +40,14 @@
 		}
 		.title{
 			margin-bottom: 0;
+			font-weight: normal;
+			font-size: 1.8em;
 		}
 		.meta{
 			color: $color-gray02;
 			font-size: 0.9em;
 			line-height: 2;
-			margin-top: 15px;
+			margin-top: 6px;
 			@media screen and (max-width: 600px){
 				display: none;
 			}
