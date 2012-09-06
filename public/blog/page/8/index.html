@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="これはいいコンビの結成ですね。Heroku上で簡単にFacebookアプリが開発できるようになったそうです。言語も選択できるし、Herokuに慣れた人にとっては大変便利なツールだと思います。 http://blog.heroku.com/archives/2011/9/15/facebook/ &hellip;">
+	<meta name="description" content="確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。 1
+Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,94 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails3-1rc-please-install-the-mysql-adapter-error">Rails3.1rc(?)でPlease install the mysql adapterというエラー</a></h1>
+	<div class="entry-content">
+		<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決策</h2>
+
+<ul>
+<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
+<li>Gemfileにmysql2を追加しbundle installを実行</li>
+</ul>
+
+
+<h2>参考</h2>
+
+<p><a href="http://stackoverflow.com/questions/6141276/rails-3-1-0-rc1-mysql-adapter-error">http://stackoverflow.com/questions/6141276/rails-3-1-0-rc1-mysql-adapter-error</a>
+<a href="http://stackoverflow.com/questions/3467054/problem-with-mysql2-and-rails3-bundler">http://stackoverflow.com/questions/3467054/problem-with-mysql2-and-rails3-bundler</a></p>
+
+<h1>中文</h1>
+
+<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決策</h2>
+
+<ul>
+<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
+<li>Gemfileにmysql2を追加しbundle installを実行</li>
+</ul>
+
+
+<h2>参考</h2>
+
+<h1>English</h1>
+
+<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決策</h2>
+
+<ul>
+<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
+<li>Gemfileにmysql2を追加しbundle installを実行</li>
+</ul>
+
+
+<h2>参考</h2>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -742,109 +831,6 @@ p String.hello  # =&gt; &quot;hello from String class methods&quot;</code></pre>
 
 
 	<a class='category' href='/blog/categories/oracle/'>Oracle</a>, <a class='category' href='/blog/categories/excel/'>excel</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/sqlplus/'>sqlplus</a>, <a class='category' href='/blog/categories/文字化け/'>文字化け</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-create-user-and-grant-root-privilege-in-linux">Linuxで新規ユーザ作成＆root権限付与のメモ書き</a></h1>
-	<div class="entry-content">
-		<p>コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。</p>
-
-<div><script src='https://gist.github.com/1073555.js?file=linux_create_user_modify_group.sh'></script>
-<noscript><pre><code># HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE
-
-## PART1 CREATE USER
-# assume user1,user2,user3 is already created
-# and they are in wheel group, which can execute as root
-# and here we're creating a new user named:new_user
-
-# create new user
-useradd new_user
-# set password for it, in the prompt
-passwd new_user
-
-
-# you can now login as new_user
-# but when you run sudo you may get this error
-new_user is not in the sudoers file.  This incident will be reported.
-# so you need to set the privilege to new_user
-
-## PART2 GRANT SUDO PRIVILEGE
-## 1. BY CHANGE USER GROUP
-$ visudo
-############ in visudo ############
-## Allows people in group wheel to run all commands
-# %wheel        ALL=(ALL)       ALL
-## Same thing without a password
-%wheel  ALL=(ALL)       NOPASSWD: ALL
-############ in visudo ############
-# It means people in wheel group can run all commands, without password
-# Below we're adding the new user called new_user to the wheel group.
-
-# list users and user id, group id, home directory, login shell, etc.
-$ cat /etc/passwd
-...
-wheel:x:10:root,user1,user2,user3
-...
-
-$ id -a [user name]
-uid=503(user3) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
-$ usermod -g init_group -G init_group,wheel new_user
-$ id -a new_user
-uid=506(new_user) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
-
-## 2. BY ADD USER TO sudoers FILE.
-$ visudo
-############ in visudo ############
-new_user          ALL=(ALL) NOPASSWD: ALL
-############ in visudo ############
-
-## some handy commands
-# show user list
-$ cut -d: -f1 /etc/passwd
-root
-bin
-daemon
-adm
-...
-
-# TODO
-# what is the difference between -g(initial_group) and -G(group)
-
-# Reference
-# (ENG) http://superuser.com/questions/120340/user-not-in-the-sudoers-file-this-incident-will-be-reported
-# (JPN) http://kazmax.zpp.jp/linux_beginner/usermod.html</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-01T00:00:00+09:00" pubdate data-updated="true">2011-09-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>
 
 
 </div>

@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Append class if condition is true in Haml (with Rails) - Stack Overflow stackoverflow.com/questions/3453…&mdash; kinopyoさん (@fantasyday) 11月 22, &hellip;">
+	<meta name="description" content=" require 'cgi'
+CGI.escape(url) 2011-12-08 Ruby, urlencode ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,44 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-url-encode">Ruby how to encode url</a></h1>
+	<div class="entry-content">
+		<div><script src='https://gist.github.com/1445867.js?file='></script>
+<noscript><pre><code>require 'cgi'
+CGI.escape(url)</code></pre></noscript></div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-08T00:00:00+09:00" pubdate data-updated="true">2011-12-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/urlencode/'>urlencode</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -605,93 +644,6 @@
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/application/'>application</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-passing-optional-local-variables-to-partial-view">Rails オプション(省略可)local variablesをpartial viewに渡す方法</a></h1>
-	<div class="entry-content">
-		<p>例えば省略可能なフラグみたいなローカル変数をpartial viewに渡した時、そのデフォルト動作をpartial viewでハンドリングしたいですね。</p>
-
-<div><script src='https://gist.github.com/1344066.js?file=use_case_sample.erb'></script>
-<noscript><pre><code>&lt;%= render 'article', :show_author =&gt; false %&gt;
-&lt;%= render 'article' %&gt;
-</code></pre></noscript></div>
-
-
-<p>調べてみたら<em>defined?</em>と<em>local_assigns.has_key?</em>が見つかりましたが、前者のほうはオススメできなさそうです。</p>
-
-<blockquote><p>Testing using defined? headline will not work. This is an implementation restriction.</p></blockquote>
-
-
-
-
-<div><script src='https://gist.github.com/1344066.js?file=solution.erb'></script>
-<noscript><pre><code># http://api.rubyonrails.org/classes/ActionView/Base.html
-
-# If you need to find out whether a certain local variable
-# has been assigned a value in a particular render call, 
-# you need to use the following pattern:
-
-&lt;% unless local_assigns.has_key? :show_author %&gt;
-  &lt;% show_author = true %&gt;
-&lt;% end %&gt;
-
-&lt;% if show_author %&gt;
-  Author: &lt;%= @article.author %&gt;
-&lt;% end %&gt;
-
-# Testing using defined? headline will not work. This is an implementation restriction.
-</code></pre></noscript></div>
-
-
-<p>実際やってみて、defined?でも動けるパターンはありますが、if/unless文で一行にしたらバグりました。なのでやはり<em> local_assigns.has_key?</em>を使いましょう。</p>
-
-<div><script src='https://gist.github.com/1344066.js?file=compared_to_defined_method_with_oneline_condition.erb'></script>
-<noscript><pre><code># this will work
-&lt;% unless defined?(:show_author) %&gt;
-  &lt;% show_author = true %&gt;
-&lt;% end %&gt;
-
-# NOT work
-&lt;% show_author = true unless defined?(:show_author) %&gt;
-
-# this will work
-&lt;% show_author = true unless local_assigns.has_key? :show_author %&gt;</code></pre></noscript></div>
-
-
-<h2>Resources</h2>
-
-<p><a href="http://stackoverflow.com/questions/238615/defined-method-in-ruby-and-rails">http://stackoverflow.com/questions/238615/defined-method-in-ruby-and-rails</a>
-<a href="http://api.rubyonrails.org/classes/ActionView/Base.html">http://api.rubyonrails.org/classes/ActionView/Base.html</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-07T00:00:00+09:00" pubdate data-updated="true">2011-11-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/actionview/'>ActionView</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/partial/'>partial</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>

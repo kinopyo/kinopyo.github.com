@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。 結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
-例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
-この&#8221;event&#8221;続いてドット &hellip;">
+	<meta name="description" content="James Wardさんのブログから見たものです。 結果から言うとAMF（リモートオブジェクト）での通信は
+ほかのJSONとか、XMLより遥かに速いです。
+下記がその結果のスクリーンショットです。 また各通信手段のParse time, Render time, Request &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +73,50 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex-bench-amf-json-xml-html">Flex AMFはJSON、XML、HTMLより遥かに速い</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.jamesward.com/2007/12/12/blazebench-why-you-want-amf-and-blazeds/">James Wardさんのブログ</a>から見たものです。</p>
+
+<p>結果から言うとAMF（リモートオブジェクト）での通信は
+ほかのJSONとか、XMLより遥かに速いです。
+下記がその結果のスクリーンショットです。</p>
+
+<p><img src="http://www.jamesward.org/wordpress/wp-content/uploads/2007/12/blazebench.jpg" alt="Benchmark AFM vs JSON vs HTML" width="490" height="385"/></p>
+
+<p>また<a href="http://www.jamesward.com/census/">各通信手段のParse time, Render time, Request timeなど見れるページ</a>も公開されましたので、
+使ってみてください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-14T00:00:00+09:00" pubdate data-updated="true">2010-05-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -581,62 +625,6 @@ asListのJavadocでの記載は
 </span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;d&quot;</span><span class="o">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-16T00:00:00+09:00" pubdate data-updated="true">2010-04-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/java-number-format-exception-when-parseint">Java：Integer.parseInt時のNumberFormatExceptionについて</a></h1>
-	<div class="entry-content">
-		<p>ハマっちゃったException第二弾です。
-実際はハマったワケではありませんが、
-一応こんなExceptionがあると。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">blank</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">blank</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで余裕に下記のExceptionが出ます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>java.lang.NumberFormatException: For input string: ""</span></code></pre></td></tr></table></div></figure>
-
-
-<p>何も考えずにあるJavascriptの処理をJavaに書き換える作業で発生したんです。
-JavascriptはブランクをparseIntするとNaN(Not a Number)になるが、
-Javaは完全におちますね。。。</p>
 
 		
 		

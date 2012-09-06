@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="課題 最後の編集した箇所に遷移する機能はTextMateデフォルトではないですが、多分みんなUndo/Redoで実現していたと思います。
-でも⌘Z(Undo)、⇧⌘Z(Redo)はやはり手間がかかってしまいますので、一発でできるかをググッてみたところ、TMGoToLastEditを見つかりました &hellip;">
+	<meta name="description" content="コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。 # HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE ## PART1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,6 +71,109 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-create-user-and-grant-root-privilege-in-linux">Linuxで新規ユーザ作成＆root権限付与のメモ書き</a></h1>
+	<div class="entry-content">
+		<p>コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。</p>
+
+<div><script src='https://gist.github.com/1073555.js?file=linux_create_user_modify_group.sh'></script>
+<noscript><pre><code># HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE
+
+## PART1 CREATE USER
+# assume user1,user2,user3 is already created
+# and they are in wheel group, which can execute as root
+# and here we're creating a new user named:new_user
+
+# create new user
+useradd new_user
+# set password for it, in the prompt
+passwd new_user
+
+
+# you can now login as new_user
+# but when you run sudo you may get this error
+new_user is not in the sudoers file.  This incident will be reported.
+# so you need to set the privilege to new_user
+
+## PART2 GRANT SUDO PRIVILEGE
+## 1. BY CHANGE USER GROUP
+$ visudo
+############ in visudo ############
+## Allows people in group wheel to run all commands
+# %wheel        ALL=(ALL)       ALL
+## Same thing without a password
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+############ in visudo ############
+# It means people in wheel group can run all commands, without password
+# Below we're adding the new user called new_user to the wheel group.
+
+# list users and user id, group id, home directory, login shell, etc.
+$ cat /etc/passwd
+...
+wheel:x:10:root,user1,user2,user3
+...
+
+$ id -a [user name]
+uid=503(user3) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
+$ usermod -g init_group -G init_group,wheel new_user
+$ id -a new_user
+uid=506(new_user) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
+
+## 2. BY ADD USER TO sudoers FILE.
+$ visudo
+############ in visudo ############
+new_user          ALL=(ALL) NOPASSWD: ALL
+############ in visudo ############
+
+## some handy commands
+# show user list
+$ cut -d: -f1 /etc/passwd
+root
+bin
+daemon
+adm
+...
+
+# TODO
+# what is the difference between -g(initial_group) and -G(group)
+
+# Reference
+# (ENG) http://superuser.com/questions/120340/user-not-in-the-sudoers-file-this-incident-will-be-reported
+# (JPN) http://kazmax.zpp.jp/linux_beginner/usermod.html</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-01T00:00:00+09:00" pubdate data-updated="true">2011-09-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -695,49 +797,6 @@ print_r($titles);</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/php/'>php</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ipad-2-not-charging-when-connected-to-pc-usb">iPad2をPCのUSBに接続する時「充電していません」(Not Charging)と表示する問題</a></h1>
-	<div class="entry-content">
-		<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/ipad2-not-charged.jpg" title="ipad2-not-charged" ></p>
-
-<p>iPad2をPCのUSBに繋ぐと「充電していません」(Not Charging)のメッセージが右上に出ます。Macbook Proは問題なかったです。</p>
-
-<p>どうやらPC（あるいは結構古いMac）のUSBは十分の電力を提供できないらしいです。すクルーンをオフにしてNot Chargingのままでも一応チャージはできるんですが、4倍くらい遅いと言われてます。</p>
-
-<p><a href="http://event.asus.com/mb/2010/ai_charger/">ASUS Ai Charger</a>という面白いツールも見つかりました。なんとPCでiPod, iPhone, iPadの充電を50%くらいスピードアップできるそうです。全部のマザーボードをサポートしているようですが、自分は試していません。。</p>
-
-<p>参考：<a href="https://discussions.apple.com/thread/2789455?start=0&amp;tstart=0">https://discussions.apple.com/thread/2789455?start=0&amp;tstart=0</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-08T00:00:00+09:00" pubdate data-updated="true">2011-08-08</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/charging/'>charging</a>, <a class='category' href='/blog/categories/ipad/'>iPad</a>, <a class='category' href='/blog/categories/ipad/'>ipad</a>, <a class='category' href='/blog/categories/pc/'>pc</a>
 
 
 </div>

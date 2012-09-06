@@ -7,10 +7,21 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="&#8220;wwwあり&#8221;か&#8221;wwwなし&#8221;はSEO的には優劣はありませんし、
-どっちを使うかはたいてい各人の好き嫌いで決まっています。
-例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
-私は&#8221; &hellip;">
+	<meta name="description" content="Railsのvalidateチェックはすばらしいです。
+使いかた非常便利だし、機能が強いです。
+それでは、一緒に見てみましょう。 validate validateを使って、カスタマイズのvadidationチェックを定義できます。
+例： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +85,181 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-validate">Rails validate処理</a></h1>
+	<div class="entry-content">
+		<p>Railsのvalidateチェックはすばらしいです。
+使いかた非常便利だし、機能が強いです。
+それでは、一緒に見てみましょう。</p>
+
+<h3>validate</h3>
+
+<p>validateを使って、カスタマイズのvadidationチェックを定義できます。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">validate</span>
+</span><span class='line'>    <span class="n">errors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="ss">:content</span><span class="p">,</span> <span class="s2">&quot;を入力してください&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">content</span> <span class="o">=~</span> <span class="sr">/^(ここに感想を書いてください。|ここに感想を書いてください)$/</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">### validates_acceptance_of</span>
+</span><span class='line'><span class="sx">チェックボックスがチェックされたかを確認。</span>
+</span><span class='line'><span class="sx">チェックされていない場合、エラーが起こリます。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">### validates_confirmation_of</span>
+</span><span class='line'><span class="sx">再入力を確認します。</span>
+</span><span class='line'><span class="sx">詳細の使い方は、「validates_confirmation_of の使い方」を参照してください。</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">### validates_exclusion_of</span>
+</span><span class='line'><span class="sx">指定した値に含まれていないかをチェックします。</span>
+</span><span class='line'><span class="sx">例：</span>
+</span><span class='line'><span class="sx">{% codeblock %}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">validates_exclusion_of</span> <span class="ss">:sex</span><span class="p">,</span><span class="ss">:in</span> <span class="o">=&gt;</span> <span class="o">*</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="o">*</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">### validates_inclusion_of</span>
+</span><span class='line'><span class="sx">指定した値に含まれているかをチェックします。</span>
+</span><span class='line'><span class="sx">validates_exclusion_ofの逆です。</span>
+</span><span class='line'><span class="sx">例：</span>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">validates_inclusion_of:sex, :in =&gt; *&#39;female&#39;,&#39;male&#39;*</span>
+</span><span class='line'><span class="sx">{% endcodeblock %}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">### validates_format_of</span>
+</span><span class='line'><span class="err">正規表現を使って、値をチェックします。</span>
+</span><span class='line'><span class="err">例：</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">validates_format_of</span> <span class="ss">:code</span><span class="p">,</span><span class="ss">:with</span><span class="o">=&gt;</span> <span class="sr">/^*0-9A-Za-z*/</span><span class="p">,</span> <span class="ss">:message</span><span class="o">=&gt;</span><span class="s2">&quot;は半角英数字で入力してください。&quot;</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">### validates_length_of</span>
+</span><span class='line'><span class="sx">値の長さをチェックします。</span>
+</span><span class='line'><span class="sx"> 例：</span>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">validates_length_of :name, :maximum=&gt;30</span>
+</span><span class='line'><span class="sx">{% endcodeblock %}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">### validates_numericality_of</span>
+</span><span class='line'><span class="err">値は数字かどうかをチェックします。数字ではない場合、エラーを表示します。</span>
+</span><span class='line'><span class="err">例：</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">validates_numericality_of</span><span class="err">　</span><span class="ss">:code</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">### validates_presence_of</span>
+</span><span class='line'><span class="sx">必須値のチェック。値が入力されていない場合、エラーを表示します。</span>
+</span><span class='line'><span class="sx">例：</span>
+</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
+</span><span class='line'><span class="sx">validates_presence_of :code</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">{% endcodeblock %}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">### validates_uniqueness_of</span>
+</span><span class='line'><span class="err">値の重複チェック。</span><span class="no">DB</span><span class="err">に既に同じ値が存在した場合、エラーを表示します。</span>
+</span><span class='line'><span class="err">例：</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">validates_uniqueness_of</span> <span class="ss">:id</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_size_of</h3>
+
+<p>validates_length_ofと同じ。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-24T00:00:00+09:00" pubdate data-updated="true">2010-01-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -689,80 +875,6 @@ jarファイルもサポートされているようです。</p>
 
 
 <time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mac-chrome-extension-available">MacのChromeエクステンションついに登場！</a></h1>
-	<div class="entry-content">
-		<p>本日Mac ChromeのDev版が更新されエクステンションが使えるようになりました。
-<a href="http://dev.chromium.org/getting-involved/dev-channel">Chrome Dev版をダウンロード</a>
-不安定とは言ってるものの、やはり使いたいです！</p>
-
-<br/>
-
-
-<p>早速ですが、以下のエクステンションを入れました。
-Chromeの再起動が必要なく、インストールするだけで使えます。</p>
-
-<h3>とりあえずこんなエクステンションを入れた</h3>
-
-<ul>
-<li><p><a href="https://chrome.google.com/extensions/detail/jaikcnhlohebodlpkmjepipngegjbfpg">Drag and Go</a>
-Drag and Go</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/jpkfjicglakibpenojifdiepckckakgk"> Chrome Gestures</a>
-Chrome Mouse Gestures</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/ajpgkpeckebdhofmmjfgcjjiiejpodla">Xmarks Bookmarks Sync</a>
-Backup and sync your bookmarks across computers and browsers. Xmarks is also available for Firefox, Safari and IE.</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/mihcahmgecmbnbcchbopgniflfhgnkff">Google Mail Checker</a>
-Displays the number of unread messages in your Google Mail inbox. You can also click the button to open your inbox.</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/pgphcomnlaojlmmcjmiddhdapjpbgeoc"> Send from Gmail (by Google) </a>
-Makes Gmail your default email application and provides a button to compose a Gmail message to quickly share a link via email</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/anlkjppofaicbdanhhpbbogknfodfhfm"> Chromium Delicious plugin</a>
-Extension to work with delicious.com</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/kbmipnjdeifmobkhgogdnomkihhgojep"> Shareaholic for Google Chrome</a>
-Share, save or email any web page with your friends right from the page you are on using Twitter, Facebook, GMail, and many more!</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/galfofdpepkcahkfobimileafiobdplb"> Tab Menu</a>
-Select, close, rearrange, and search your tabs in a vertical menu! Extras: merge windows, keyboard shortcut, and tab counter!</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/nlbjncdgjeocebhnmkbbbdekmmmcbfjd">RSS Subscription Extension (by Google)</a>
-Adds one-click subscription to your toolbar.</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/ggkljdkflooidjlkahdnfgodflkelkai"> Fast YouTube Search</a>
-Fast YouTube Search - Search in YouTube with a single click.</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/pbadgdglepgngpoeijdgicjccomadekm"> TwitterBar</a>
-Post to Twitter from the Google Chrome toolbar.</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/leekjckogogidfhpejjmaaekecplpdcg"> MegaUpload DownloadHelper</a>
-No More Countdowns - Automatic Downloads.</p></li>
-<li><p><a href="https://chrome.google.com/extensions/detail/afpbkpjjkfakdcakapanjoeijlphieei"> RapidShare DownloadHelper</a>:No More Countdowns - Automatic Downloads.</p></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-09T00:00:00+09:00" pubdate data-updated="true">2010-01-09</time></div>
 	<div class="tags">
 
 

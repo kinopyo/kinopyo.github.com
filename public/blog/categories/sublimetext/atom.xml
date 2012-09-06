@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SublimeText | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/sublimetext/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-09-06T19:14:01+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text Build without Saving - Anypreter]]></title>
+    <link href="http://kinopyo.com/blog/sublimetext-build-without-saving-anypreter/"/>
+    <updated>2012-09-06T19:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sublimetext-build-without-saving-anypreter</id>
+    <content type="html"><![CDATA[<h2>Sublimetext2 Build System</h2>
+
+<p>Sublimetext2 ships with its Build System. You can run a ruby file by <em>Cmd + B</em> (or through Tools -> Build menu). Here is an example.</p>
+
+<p><img src="https://img.skitch.com/20120906-484u6864itytf4hwsajdaq1qy.jpg" title="Sublimetext Build System" ></p>
+
+<p>One thing bothers me is you have to <strong>SAVE</strong> that file first, you can't run "untitled" ruby code even you specified which build system (language) to use. This was the reason I still keep Textmate in my Mac, thanks to this plugin called <a href="https://github.com/PhilippSchaffrath/Anypreter">Anypreter</a> I can finally say goodbye to Textmate.</p>
+
+<h2>About Anypreter</h2>
+
+<p>You can install it through Package Control. It supports PHP, Python and Ruby.</p>
+
+<p>After specify the language (suppose you haven't saved it), <code>Ctrl + Shift + X</code> to run and check the result. Rightclick in the document works too.</p>
+
+<h2>Futher Reading</h2>
+
+<ul>
+<li><a href="http://docs.sublimetext.info/en/latest/reference/build_systems.html">Build Systems — Sublime Text Unofficial Documentation</a></li>
+<li><a href="http://addyosmani.com/blog/custom-sublime-text-build-systems-for-popular-tools-and-languages/">Custom Sublime Text Build Systems For Popular Tools And Languages</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -7,7 +7,17 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="$_GET、 $_POST そして $_COOKIE の内容をまとめた連想配列です。 もう少し説明を加えると、 In the beginning of execution, $_REQUEST is a clone of $_GET. $_POST is then merged into the &hellip;">
+	<meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+/## # 文字列を全て半角に # @param string $str 文字列 # @return string $str 半角の文字列 # /
+function toHankaku($str) { $str= mb_convert_kana($str,& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +81,60 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/convert_string_to_hankaku">PHP:文字列を全て半角に</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">/## </span>
+</span><span class='line'><span class="x"> #  文字列を全て半角に</span>
+</span><span class='line'><span class="x"> #  @param  string $str 文字列</span>
+</span><span class='line'><span class="x"> #  @return string $str 半角の文字列</span>
+</span><span class='line'><span class="x"> # /</span>
+</span><span class='line'><span class="x">function toHankaku($str) {</span>
+</span><span class='line'><span class="x">    $str= mb_convert_kana($str,&quot;rnask&quot;);</span>
+</span><span class='line'><span class="x">    return $str;</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-01T00:00:00+09:00" pubdate data-updated="true">2011-02-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/string/'>string</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1056,107 +1120,6 @@ Sprintって、本当に便利ですね。</p>
 
 
 	<a class='category' href='/blog/categories/database/'>Database</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/spring/'>Spring</a>, <a class='category' href='/blog/categories/h2db/'>h2db</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/tips-for-mac-termina">Macのターミナルを活用</a></h1>
-	<div class="entry-content">
-		<h2>ターミナルの起動</h2>
-
-<p>ターミナルはApplication/Utilitiesフォルダにあります。
-CTRL+Spaceで直接Terminalを叩いても直接開けますので、
-とても便利でずっとこれを使ってます。</p>
-
-<h2>基本コマンド</h2>
-
-<p>:ls:(Windowsのdirコマンドと同じ役割)list files and directories
-:cd:change directory
-:mkdir:create a new directory
-:cp:copy files or directories
-:mv:move (rename) files or directories
-:rm:remove files or directories</p>
-
-<h2>便利なコマンド</h2>
-
-<ul>
-<li><p>pwd
-今のディレクトリのパスを返します。&#8221;/Users/(yourusername)&#8221;のような</p></li>
-<li><p>open
-Finderでダブルクリックと同じ効果です。アプリを開くに使います。</p></li>
-<li><p>~
-波記号はHomeディレクトリのショートカットです。
-例えばcd ~で叩くとデフォルトで&#8221;/Users/(yourusername)&#8221;ディレクトリに行きます。</p></li>
-</ul>
-
-
-<h2>ジョブコントロール</h2>
-
-<ul>
-<li>ps -ax
-これはActivity Monitorのコマンドバージョンと理解していいでしょう。
-現在アクティブなアプリのリストを表示します。
-よくgrepコマンドと組み合わせて使います。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ps -ax | grep http
-</span><span class='line'>ps -ax | grep mysql
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>kill
-ps -axの一番目の列はプロセスのIDの列です。
-あるプロセスを強制的に終了させたい場合はID指定で&#8221;kill&#8221;できます。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kill xxx
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記の&#8221;xxx&#8221;はプロセスのIDです。</p>
-
-<p>またアプリの名前がわかった場合はkillallコマンドが使えます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>killall Dock
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>大文字小文字は区別しますので、気おつけてください。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
 
 
 </div>
