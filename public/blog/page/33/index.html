@@ -7,10 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iPhoneの基礎知識、SDKにある程度理解しているため、
-今日のiPhoneについてのスピーチの６－７割は既にわかっているものにすぎませんでした。
-この場に来る人たちは多分そうであろうと私は思っていますが、
-背景や歴史など、そこまで詳しく説明しなくても良さそうな気がします。 &hellip;">
+	<meta name="description" content="インストール 公式サイト(http://www.sqlite.org/download.html)でファイルをダウンロード。Macなら二番目の「sqlite-amalgamation-3.6.18.tar.gz」をダウンロードすればよい。
+Macのターミナルを起動し、上記解凍パスに移動する。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +72,94 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-sqlite-in-mac">Mac OSでsqliteをインストール</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>インストール</h4>
+<ul>
+<li>公式サイト(<a href="http://www.sqlite.org/download.html" target="_blank">http://www.sqlite.org/download.html</a>)でファイルをダウンロード。Macなら二番目の「sqlite-amalgamation-3.6.18.tar.gz」をダウンロードすればよい。</li>
+<li>Macのターミナルを起動し、上記解凍パスに移動する。</li>
+<li>下記コマンドを実行する。</li>
+</ul>
+<blockquote>
+<p>./configure &#8211;prefix=ここでインストールパスを指定</p>
+<p>make</p>
+<p>make install</p>
+</blockquote>
+<ul>
+<ul>
+<li>私の場合は&#8211;prefix=/users/user_name/Database/sqlite</li>
+</ul>
+</ul>
+<p>インストールの詳細は解凍先のドキュメントの「INSTALL」を参照してください。</p>
+<p>ここでは一番簡単(デフォルト)のコマンドを紹介します。</p>
+<p>英語ばかりでわかりづらいかもしれません。</p>
+<p><br/></p>
+<p>これでインストールは完了です。</p>
+<p>指定したインストール先には「bin」、「include」、「lib」の三つのフォルダがあるはずです。</p>
+<p>次にターミナルでbinフォルダに移動します。</p>
+<p>ここからはsqliteのシンタックスになります。</p>
+<h4>データベースの起動/作成</h4>
+<blockquote>
+<p>sqlite test.db;</p>
+</blockquote>
+<p>これでtestという名のデータベースにつながります。もしtest.dbのファイルがなければ自動で作成されます。</p>
+<p>こんなメッセージも出るはずです。</p>
+<blockquote>
+<p>SQLite version 3.4.0</p>
+<p>Enter &#8220;.help&#8221; for instructions</p>
+</blockquote>
+<h4>テーブルの作成</h4>
+<p>次に簡単なテーブルを作成し、データをINSERTしましょう。</p>
+<blockquote>
+<p>sqlite&#62; create table Employee(id int,name varchar(15));</p>
+<p>sqlite&#62; insert into Employee values (1,&#8217;Jim&#8217;);</p>
+<p>sqlite&#62; insert into Employee values (2,&#8217;Tom&#8217;);</p>
+<p>sqlite&#62; select * from Employee;</p>
+<p>1|Jim</p>
+<p>2|Tom</p>
+<p>sqlite&#62; </p>
+</blockquote>
+<h4>データベースのクローズ</h4>
+<blockquote>
+<p>.exit</p>
+</blockquote>
+<p>ちょっと探しましたが、このサイトで日本語の資料がたくさんあるようです。</p>
+<p><a href="http://www.dbonline.jp/sqlite/index.html" target="_blank">http://www.dbonline.jp/sqlite/index.html</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-11T00:00:00+09:00" pubdate data-updated="true">2009-10-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">

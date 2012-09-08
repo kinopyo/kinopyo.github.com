@@ -7,21 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Railsのvalidateチェックはすばらしいです。
-使いかた非常便利だし、機能が強いです。
-それでは、一緒に見てみましょう。 validate validateを使って、カスタマイズのvadidationチェックを定義できます。
-例： 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12 &hellip;">
+	<meta name="description" content="RAILS_ENV 現在動作している環境。開発終わって、テスト環境でテストしたい場合、この変数を修正すればOKです。
+&#8216;development&#8217;,&#8217;test&#8217;または&#8217;production&#8217;があります。
+　 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -85,6 +73,49 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-useful-constants">Railsの知らないと損になる、便利な定数</a></h1>
+	<div class="entry-content">
+		<h2>RAILS_ENV</h2>
+
+<p>現在動作している環境。開発終わって、テスト環境でテストしたい場合、この変数を修正すればOKです。
+&#8216;development&#8217;,&#8217;test&#8217;または&#8217;production&#8217;があります。
+　</p>
+
+<h2>RAILS_ROOT</h2>
+
+<p>ルートフォルダのパスです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-26T00:00:00+09:00" pubdate data-updated="true">2010-01-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -801,60 +832,6 @@ jarファイルもサポートされているようです。</p>
 
 <p>パラメータで渡された値が配列であるかどうかを判別します。
 戻り値はtrueかfalseです。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/difference-between-service-and-component-annotation-in-sprin">Spring: @Serviceと@Componentの区別は？</a></h1>
-	<div class="entry-content">
-		<p>@ComponentアノテーションはJavaのクラスにつけるもので
-このクラスをコンテナが管理するBeanとして登録する機能です。
-@Serviceアノテーションも現状では@Componentと違いはありませんが、
-通常<strong>サービス層</strong>のコンポネントは@Serviceアノテーションをつけます。
-その理由は主に以下の二つです。
-+  コンポーネントがサービス層のコンポーネントを明確にする意味で
-+  今後@Serviceアノテーションを付与したBeanには自動的にトランザクション管理の機能が付与されるなどの機能拡張も期待される</p>
-
-<br/>
-
-
-<p>Spring3.0のリリースノートを見たところ特に@Serviceに関する変更はないみたいです。
-なのでサービス層のクラスに対して@Componentか@Serviceか悩んでるんだっだら
-@Serviceをつけた方がいいでしょう。</p>
-
-<br/>
-
-
-<p>参考サイト：
-<a href="http://www.infoq.com/jp/articles/spring2.5-1">Spring 2.5の新機能を使ってアプリケーションを作る(その1)</a></p>
 
 		
 		

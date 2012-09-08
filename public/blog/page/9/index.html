@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。 # HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE ## PART1 &hellip;">
+	<meta name="description" content="現象 SQL# Plusで出力したcsvファイルなどをExcelで開いたら日本語の部分が全部文字化けになっちゃいました。 原因 出力ファイルはUTF8ですが、ExcelではShiftJisじゃないと文字化けするらしいです。 解決策 秀丸などのエディターで出力ファイルを開き、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,52 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/oracle-sqlplus-output-file-garbled-when-open-in-excel">Oracle SQL*Plusで出力したファイルをExcelで文字化けの解決策</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p>SQL# Plusで出力したcsvファイルなどをExcelで開いたら日本語の部分が全部文字化けになっちゃいました。</p>
+
+<h2>原因</h2>
+
+<p>出力ファイルはUTF8ですが、ExcelではShiftJisじゃないと文字化けするらしいです。</p>
+
+<h2>解決策</h2>
+
+<p>秀丸などのエディターで出力ファイルを開き、エンコードUTF8で名前をつけて保存。
+そうすればExcelで開くときに文字化けは治る。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-09T00:00:00+09:00" pubdate data-updated="true">2011-09-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/oracle/'>Oracle</a>, <a class='category' href='/blog/categories/excel/'>excel</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/sqlplus/'>sqlplus</a>, <a class='category' href='/blog/categories/文字化け/'>文字化け</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -612,191 +658,6 @@ http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
 
 
 	<a class='category' href='/blog/categories/mixi/'>Mixi</a>, <a class='category' href='/blog/categories/form/'>form</a>, <a class='category' href='/blog/categories/mixi/'>mixi</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>, <a class='category' href='/blog/categories/post/'>post</a>, <a class='category' href='/blog/categories/signature/'>signature</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/php-multi-thread-with-specific-process-number-using-curl-multi">PHP プロセス数を指定して実行するマルチスレッド処理(curl_multi)</a></h1>
-	<div class="entry-content">
-		<p>curl_multi系を使って、プロセス数を指定して実行するマルチスレッド処理です。</p>
-
-<p>urlは配列で受け取って、もし指定したプロセス数より多い場合は分割して実行するようになってます。</p>
-
-<p>このサンプルコードではこのブログの幾つかのurlに対してtitleを取得しました。</p>
-
-<div><script src='https://gist.github.com/1073555.js?file=multi-process-exec.php'></script>
-<noscript><pre><code>&lt;?php
-/**
-* 指定したプロセス数で並列処理を実行する
-*
-* @param array $url_list URLの配列
-* @param boolean $url_as_key 結果配列を返すときに、urlをキーにする
-* @param int $timeout タイムアウト秒数 0だと無制限
-* @return array 結果配列
-*/
-function execute($url_list, $url_as_key = false, $timeout=0) {
-    // set your process number
-    $process = 5;
-
-    $is_over_process = false;
-    if ($process &lt; count($url_list)) {
-        // chunk url list / process number*
-        $url_chunk = array_chunk($url_list, $process);
-        $is_over_process = true;
-    }
-
-    $ret = array(); 
-        
-    if ($is_over_process &amp;&amp; !empty($url_chunk)) {
-
-        foreach ($url_chunk as $key =&gt; $url_list) {
-            echo &quot;chunk start:{$key}\n&quot;;
-            
-            $res = fetch_multi_url($url_list, $url_as_key, $timeout);
-            if (!empty($res)) {
-                $ret = array_merge($ret, $res);
-            } else {
-                continue;
-            }
-
-        }
-    } else if (!$is_over_process &amp;&amp; !empty($url_list)){
-        $ret = fetch_multi_url($url_list, $url_as_key, $timeout);
-    } else {
-        echo &quot;url invalid::&quot;;
-    }
-    
-    return $ret;
-    
-}
-
-/**
- * curl_multi_execの並列処理
- * ほぼboilerplate
- *
-* @param array $url_list URLの配列
-* @param boolean $url_as_key 結果配列を返すときに、urlをキーにする
-* @param int $timeout タイムアウト秒数 0だと無制限
-* @return array 結果配列
- */
-function fetch_multi_url($url_list, $url_as_key, $timeout) {
-    $mh = curl_multi_init();
-    foreach ($url_list as $i =&gt; $url) {
-        $ch[$i] = curl_init($url);
-        curl_setopt($ch[$i],CURLOPT_RETURNTRANSFER,1);
-
-        //タイムアウト
-        if ($timeout){
-            curl_setopt($ch[$i],CURLOPT_TIMEOUT,$timeout);
-        }
-
-        curl_multi_add_handle($mh,$ch[$i]);
-    }
-
-    //URLを取得
-    //すべて取得するまでループ
-    $active = null;
-    do {
-        $mrc = curl_multi_exec($mh,$active);
-    } while ($mrc == CURLM_CALL_MULTI_PERFORM);
-
-    while ($active and $mrc == CURLM_OK) {
-        if (curl_multi_select($mh) != -1) {
-            do {
-                $mrc = curl_multi_exec($mh,$active);
-            } while ($mrc == CURLM_CALL_MULTI_PERFORM);
-        }
-    }
-
-    if ($mrc != CURLM_OK) {
-        echo '読み込みエラーが発生しました:'.$mrc;
-    }
-
-    //ソースコードを取得
-    $res = array();
-    foreach ($url_list as $i =&gt; $url) {
-        if (($err = curl_error($ch[$i])) == '') {
-            // url_as_keyがtrueの場合、urlをキーとして格納
-            if ($url_as_key) {
-                $res[$url] = curl_multi_getcontent($ch[$i]);
-            // そうでない場合は、ただ配列に入れる
-            } else {
-                $res[$i] = curl_multi_getcontent($ch[$i]);
-            }
-        } else {
-            echo '取得に失敗しました:'.$url_list[$i].'&lt;br /&gt;';
-        }
-        curl_multi_remove_handle($mh,$ch[$i]);
-        curl_close($ch[$i]);
-    }
-    curl_multi_close($mh);
-
-    return $res;
-}
-
-
-// 並列実行したいurl list
-$url_list = array(
-    &quot;http://www.kinopyo.com/blog/ipad-2-not-charging-when-connected-to-pc-usb&quot;,
-    &quot;http://www.kinopyo.com/blog/the-first-app-i-installed-to-ipad2&quot;,
-    &quot;http://www.kinopyo.com/blog/chrome-warn-before-quitting-with-command-q-in-mac&quot;,
-    &quot;http://www.kinopyo.com/blog/reply-to-all-always-in-gmail&quot;,
-    &quot;http://www.kinopyo.com/blog/lion-fullscreen-shortcut-key-conflict-with-evernote-client&quot;,
-    &quot;http://www.kinopyo.com/blog/how-to-set-gesture-for-chrome-to-swipe-back-and-forth-in-lion&quot;,
-    &quot;http://www.kinopyo.com/blog/3-free-ebooks-for-study-coffeescript&quot;
-);
-
-// start time
-$start_time = microtime(true);
-
-// execute
-$res = execute($url_list, true);
-
-// execute time
-$time = microtime(true) - $start_time;
-
-// play with the result
-// here I just get the page title
-$titles = array();
-foreach ($res as $url =&gt; $html) {
-    preg_match('{&lt;title&gt;(.*)&lt;/title&gt;}',$html, $match_title);
-    $titles[$url] = $match_title[1];
-}
-
-echo &quot;Result:\n&quot;;
-echo &quot;time:{$time} sec\n&quot;;
-print_r($titles);</code></pre></noscript></div>
-
-
-<p>参考：<a href="http://techblog.ecstudio.jp/tech-tips/php-multi.html">PHPでマルチスレッド(バックグラウンド処理)を実現する方法</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-09T00:00:00+09:00" pubdate data-updated="true">2011-08-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

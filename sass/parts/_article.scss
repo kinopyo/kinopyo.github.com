@@ -19,6 +19,12 @@ article{
 			color: $color-gray01;
 		}
 	}
+	h2 {
+		font-weight: bold;
+	}
+	h3, h4 {
+		font-weight: normal;
+	}
 	.entry-content{
 		line-height: 2;
 		text-align: justify;

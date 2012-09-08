@@ -7,11 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Macではドット&#8221;.&#8221;で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
-Finderで表示する方法を紹介します。
-はるか昔のメモです。。 ターミナルを開く(アプリケーション/ユーティリティ) 下記コマンドを叩いてreturnキーを押して実行 1
-2
-3 &hellip;">
+	<meta name="description" content="SQLiteの起動、データベースの選択/作成 sqlite DB_NAME DB_NAMEは実際のファイル名と同じです。例えば：
+sqlite db/development.sqlite3 テーブル一覧 .tables
+.ta テーブルスキーマを見る .schema TABLE_NAME ヘルプ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +73,124 @@ Finderで表示する方法を紹介します。
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sqlite-common-comman">SQLite common command</a></h1>
+	<div class="entry-content">
+		<h2>SQLiteの起動、データベースの選択/作成</h2>
+
+<p>sqlite DB_NAME</p>
+
+<p>DB_NAMEは実際のファイル名と同じです。例えば：
+sqlite db/development.sqlite3</p>
+
+<h2>テーブル一覧</h2>
+
+<p>.tables
+.ta</p>
+
+<h2>テーブルスキーマを見る</h2>
+
+<p>.schema TABLE_NAME</p>
+
+<h2>ヘルプ</h2>
+
+<p>.help</p>
+
+<h2>シェルモードを終了</h2>
+
+<p>.quit
+.exit</p>
+
+<p>詳しくは<a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>を参照してください。</p>
+
+<h1>中文</h1>
+
+<h2>SQLite的启动，选择或创建数据库</h2>
+
+<p>sqlite DB_NAME</p>
+
+<p>DB_NAME即是数据库名又是文件名。因为SQLite的一个文件就是一个数据库。比如Ruby开发中常用的：
+sqlite db/development.sqlite3</p>
+
+<h2>所有表的一览</h2>
+
+<p>.tables
+.ta</p>
+
+<h2>查看表结构</h2>
+
+<p>.schema TABLE_NAME</p>
+
+<h2>查看帮助</h2>
+
+<p>.help</p>
+
+<h2>退出SQLite</h2>
+
+<p>.quit
+.exit</p>
+
+<p>更多请参照命令<a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>。</p>
+
+<h1>English</h1>
+
+<h2>To start SQLite program, select/create a Database</h2>
+
+<p>sqlite DB_NAME</p>
+
+<p>DB_NAME is also the file name.For example:
+sqlite db/development.sqlite3</p>
+
+<h2>List names of tables</h2>
+
+<p>.tables
+.ta</p>
+
+<h2>Show the create statements</h2>
+
+<p>.schema TABLE_NAME</p>
+
+<h2>Help</h2>
+
+<p>.help</p>
+
+<h2>Exit SQLite program</h2>
+
+<p>.quit
+.exit</p>
+
+<p>For more information, visit <a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-19T00:00:00+09:00" pubdate data-updated="true">2010-07-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -868,107 +984,6 @@ Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
 
 
 <time datetime="2010-06-01T00:00:00+09:00" pubdate data-updated="true">2010-06-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-selector-performance-elem-vs-i">jQueryセレクタのパフォーマンス：elem vs id</a></h1>
-	<div class="entry-content">
-		<p>elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
-<strong>&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;</strong>
-vs
-<strong>&#8220;直接jQueryのidセレクタでとるやつ&#8221;。</strong></p>
-
-<br/>
-
-
-<p>コードで言うと
-<strong>$(document.getElementById(&#8220;foo&#8221;))</strong>
-vs
-<strong>$(&#8220;#foo&#8221;)</strong></p>
-
-<br/>
-
-
-<p>普通前者が勝だろうと思うだろう、
-どれくらいの差かを確認したくて。</p>
-
-<h2>結果</h2>
-
-<p>一万回ループでとった結果です。</p>
-
-<ul>
-<li>IE8: 187 vs 344</li>
-<li>IE6: 203 vs 453</li>
-<li>Firefox×(3.6.3):  21 vs 63</li>
-<li>Chrome(4.1.xx):  9 vs 39</li>
-</ul>
-
-
-<h2>サンプルコード</h2>
-
-<p><a href="http://www.kinopyo.com/demo/jquery/selector_performance.html" target="_blank" >デモページへ</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">t0</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">));</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;直接elementを渡す時間は：&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t1</span><span class="o">-</span><span class="nx">t0</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; , ID指定でとる時間は：&quot;</span><span class="o">+</span> <span class="p">(</span><span class="nx">t2</span><span class="o">-</span><span class="nx">t1</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-17T00:00:00+09:00" pubdate data-updated="true">2010-05-17</time></div>
 	<div class="tags">
 
 

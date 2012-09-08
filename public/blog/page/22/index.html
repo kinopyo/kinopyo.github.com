@@ -7,7 +7,15 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="すべての言語でAutomatic Translationを無効にしたい人のために。 C:\Users\（ユーザ名）\AppData\Local\Google\Chrome\User Data\Defaultへアクセスします。 -WinXPはC:\Documents and Settings\（ &hellip;">
+	<meta name="description" content="スクロールバーを最下部に移動するJavascriptです。 普通のJavascriptで書くと 1
+2
+3
+4
+5
+6
+7
+8
+function go_bottom(targetId){ var obj = document.getElementById(targetId); if(!obj) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +79,91 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-get-scrollbar-to-bottom">スクロールを最下部に移動するJavascript</a></h1>
+	<div class="entry-content">
+		<p>スクロールバーを最下部に移動するJavascriptです。</p>
+
+<p>普通のJavascriptで書くと</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">go_bottom</span><span class="p">(</span><span class="nx">targetId</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">targetId</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">obj</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>完全にjQueryで書くとこんな感じ</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">go_bottom</span><span class="p">(</span><span class="nx">targetId</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">$obj</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="nx">targetId</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">$obj</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$obj</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">(</span><span class="nx">$obj</span><span class="o">*</span><span class="mi">0</span><span class="o">*</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br>
+
+
+<p>これ以外はhiddenのinput項目を最下部に置いといて、
+それをfocusするような技もありけど、、</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-02T00:00:00+09:00" pubdate data-updated="true">2010-03-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -810,49 +903,6 @@ titleのところのシングルクォーテーションがUTF-8の#039になっ
 
 
 <time datetime="2010-01-27T00:00:00+09:00" pubdate data-updated="true">2010-01-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-useful-constants">Railsの知らないと損になる、便利な定数</a></h1>
-	<div class="entry-content">
-		<h2>RAILS_ENV</h2>
-
-<p>現在動作している環境。開発終わって、テスト環境でテストしたい場合、この変数を修正すればOKです。
-&#8216;development&#8217;,&#8217;test&#8217;または&#8217;production&#8217;があります。
-　</p>
-
-<h2>RAILS_ROOT</h2>
-
-<p>ルートフォルダのパスです。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-26T00:00:00+09:00" pubdate data-updated="true">2010-01-26</time></div>
 	<div class="tags">
 
 

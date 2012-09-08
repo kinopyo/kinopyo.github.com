@@ -7,12 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iframeでXMLを読み込んた場合、XMLのdocumentを正しく指定すれば
-普通のDOM操作のようにXMLに対して操作できます。
-FirefoxとIEの取り方が異なるため、その方法を紹介します。 サンプル こんなXMLファイルの中の各name要素のテキストを取るとします。 1
-2
-3
-4 &hellip;">
+	<meta name="description" content="jQueryのeach()は関数のためcontinueやbreakなどのループ制御文は使えません。
+グーグル先生に聞いたら代わりの方法が見つかりました。 break : return false
+continue : return true 参考サイト：
+jQuery の each() の &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,6 +74,51 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。 �
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-continue-break-in-each-loop">jQuery each()関数内にcontinue/breakを使いたい時は</a></h1>
+	<div class="entry-content">
+		<p>jQueryのeach()は関数のためcontinueやbreakなどのループ制御文は使えません。
+グーグル先生に聞いたら代わりの方法が見つかりました。</p>
+
+<ul>
+<li>break : <strong>return false</strong></li>
+<li>continue : <strong>return true</strong></li>
+</ul>
+
+
+<p>参考サイト：
+<a href="http://blog.livedoor.jp/jimuguri/archives/51522193.html">jQuery の each() の continue / break は・・・</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-22T00:00:00+09:00" pubdate data-updated="true">2009-12-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -700,58 +743,6 @@ Warning: call_user_func_array() <em>function.call-user-func-array</em>: First ar
 
 
 <time datetime="2009-12-11T00:00:00+09:00" pubdate data-updated="true">2009-12-11</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-live-pass-data-will-be-implemented-in-1-3-3">jQuery liveにデータを渡すのは1.3.3で実現</a></h1>
-	<div class="entry-content">
-		<p>今のlive関数は二番目の引数にデータを渡すことができません。
-bindとliveのシグネチャーは以下になります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">bind</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="o">*</span><span class="nx">data</span><span class="o">*</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
-</span><span class='line'><span class="nx">live</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br>
-
-
-<p>いざ使おうと思って単純にbindをliveに変換したところアプリは動かなくなっちゃいました。
-回避方法はいろいろありますが、以下の記事によりますと
-jQuery 1.3.3ではliveにもdataを渡すことができるそうです。
-作者はjQueryのコアコントリビュートだそうです。
-<a href="http://brandonaaron.net/blog/2009/05/8/jquery-edge-live-events-now-with-data">jQuery Edge: Live Events now with Data</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
 	<div class="tags">
 
 

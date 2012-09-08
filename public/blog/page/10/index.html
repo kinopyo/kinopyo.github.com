@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iPad2をPCのUSBに繋ぐと「充電していません」(Not Charging)のメッセージが右上に出ます。Macbook Proは問題なかったです。 どうやらPC（あるいは結構古いMac）のUSBは十分の電力を提供できないらしいです。すクルーンをオフにしてNot &hellip;">
+	<meta name="description" content="curl_multi系を使って、プロセス数を指定して実行するマルチスレッド処理です。 urlは配列で受け取って、もし指定したプロセス数より多い場合は分割して実行するようになってます。 このサンプルコードではこのブログの幾つかのurlに対してtitleを取得しました。 &lt;?php &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,191 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-multi-thread-with-specific-process-number-using-curl-multi">PHP プロセス数を指定して実行するマルチスレッド処理(curl_multi)</a></h1>
+	<div class="entry-content">
+		<p>curl_multi系を使って、プロセス数を指定して実行するマルチスレッド処理です。</p>
+
+<p>urlは配列で受け取って、もし指定したプロセス数より多い場合は分割して実行するようになってます。</p>
+
+<p>このサンプルコードではこのブログの幾つかのurlに対してtitleを取得しました。</p>
+
+<div><script src='https://gist.github.com/1073555.js?file=multi-process-exec.php'></script>
+<noscript><pre><code>&lt;?php
+/**
+* 指定したプロセス数で並列処理を実行する
+*
+* @param array $url_list URLの配列
+* @param boolean $url_as_key 結果配列を返すときに、urlをキーにする
+* @param int $timeout タイムアウト秒数 0だと無制限
+* @return array 結果配列
+*/
+function execute($url_list, $url_as_key = false, $timeout=0) {
+    // set your process number
+    $process = 5;
+
+    $is_over_process = false;
+    if ($process &lt; count($url_list)) {
+        // chunk url list / process number*
+        $url_chunk = array_chunk($url_list, $process);
+        $is_over_process = true;
+    }
+
+    $ret = array(); 
+        
+    if ($is_over_process &amp;&amp; !empty($url_chunk)) {
+
+        foreach ($url_chunk as $key =&gt; $url_list) {
+            echo &quot;chunk start:{$key}\n&quot;;
+            
+            $res = fetch_multi_url($url_list, $url_as_key, $timeout);
+            if (!empty($res)) {
+                $ret = array_merge($ret, $res);
+            } else {
+                continue;
+            }
+
+        }
+    } else if (!$is_over_process &amp;&amp; !empty($url_list)){
+        $ret = fetch_multi_url($url_list, $url_as_key, $timeout);
+    } else {
+        echo &quot;url invalid::&quot;;
+    }
+    
+    return $ret;
+    
+}
+
+/**
+ * curl_multi_execの並列処理
+ * ほぼboilerplate
+ *
+* @param array $url_list URLの配列
+* @param boolean $url_as_key 結果配列を返すときに、urlをキーにする
+* @param int $timeout タイムアウト秒数 0だと無制限
+* @return array 結果配列
+ */
+function fetch_multi_url($url_list, $url_as_key, $timeout) {
+    $mh = curl_multi_init();
+    foreach ($url_list as $i =&gt; $url) {
+        $ch[$i] = curl_init($url);
+        curl_setopt($ch[$i],CURLOPT_RETURNTRANSFER,1);
+
+        //タイムアウト
+        if ($timeout){
+            curl_setopt($ch[$i],CURLOPT_TIMEOUT,$timeout);
+        }
+
+        curl_multi_add_handle($mh,$ch[$i]);
+    }
+
+    //URLを取得
+    //すべて取得するまでループ
+    $active = null;
+    do {
+        $mrc = curl_multi_exec($mh,$active);
+    } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+
+    while ($active and $mrc == CURLM_OK) {
+        if (curl_multi_select($mh) != -1) {
+            do {
+                $mrc = curl_multi_exec($mh,$active);
+            } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+        }
+    }
+
+    if ($mrc != CURLM_OK) {
+        echo '読み込みエラーが発生しました:'.$mrc;
+    }
+
+    //ソースコードを取得
+    $res = array();
+    foreach ($url_list as $i =&gt; $url) {
+        if (($err = curl_error($ch[$i])) == '') {
+            // url_as_keyがtrueの場合、urlをキーとして格納
+            if ($url_as_key) {
+                $res[$url] = curl_multi_getcontent($ch[$i]);
+            // そうでない場合は、ただ配列に入れる
+            } else {
+                $res[$i] = curl_multi_getcontent($ch[$i]);
+            }
+        } else {
+            echo '取得に失敗しました:'.$url_list[$i].'&lt;br /&gt;';
+        }
+        curl_multi_remove_handle($mh,$ch[$i]);
+        curl_close($ch[$i]);
+    }
+    curl_multi_close($mh);
+
+    return $res;
+}
+
+
+// 並列実行したいurl list
+$url_list = array(
+    &quot;http://www.kinopyo.com/blog/ipad-2-not-charging-when-connected-to-pc-usb&quot;,
+    &quot;http://www.kinopyo.com/blog/the-first-app-i-installed-to-ipad2&quot;,
+    &quot;http://www.kinopyo.com/blog/chrome-warn-before-quitting-with-command-q-in-mac&quot;,
+    &quot;http://www.kinopyo.com/blog/reply-to-all-always-in-gmail&quot;,
+    &quot;http://www.kinopyo.com/blog/lion-fullscreen-shortcut-key-conflict-with-evernote-client&quot;,
+    &quot;http://www.kinopyo.com/blog/how-to-set-gesture-for-chrome-to-swipe-back-and-forth-in-lion&quot;,
+    &quot;http://www.kinopyo.com/blog/3-free-ebooks-for-study-coffeescript&quot;
+);
+
+// start time
+$start_time = microtime(true);
+
+// execute
+$res = execute($url_list, true);
+
+// execute time
+$time = microtime(true) - $start_time;
+
+// play with the result
+// here I just get the page title
+$titles = array();
+foreach ($res as $url =&gt; $html) {
+    preg_match('{&lt;title&gt;(.*)&lt;/title&gt;}',$html, $match_title);
+    $titles[$url] = $match_title[1];
+}
+
+echo &quot;Result:\n&quot;;
+echo &quot;time:{$time} sec\n&quot;;
+print_r($titles);</code></pre></noscript></div>
+
+
+<p>参考：<a href="http://techblog.ecstudio.jp/tech-tips/php-multi.html">PHPでマルチスレッド(バックグラウンド処理)を実現する方法</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-09T00:00:00+09:00" pubdate data-updated="true">2011-08-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -499,94 +684,6 @@ Scroll direction:naturalは2本指スクロールが今までの動きと真逆�
 
 
 	<a class='category' href='/blog/categories/firefox/'>Firefox</a>, <a class='category' href='/blog/categories/rss/'>rss</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-get-facebook-like-counts-for-multiple-urls">複数URLのFacebookいいね(Like)された数を取得する方法</a></h1>
-	<div class="entry-content">
-		<p>今はほとんどのサイトがLike(いいね！)ボタンを置いてますが、Likeボタンがどれだけクリックされたか、その数は気になりますね。</p>
-
-<p>Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントは<a href="http://developers.facebook.com/docs/reference/fql/link_stat/">こちら</a>にあります。</p>
-
-<p>下記はPHPでのサンプルコードです。</p>
-
-<div><script src='https://gist.github.com/1073555.js?file=get_facebook_like_counts_of_multiple_urls.php'></script>
-<noscript><pre><code>&lt;?php
-// see fql docs:
-// http://developers.facebook.com/docs/reference/fql/link_stat/
-
-$url_list = array(
-    'http://example.com/url1.html',
-    'http://example.com/url2.html',
-);
-
-$url_string = '(&quot;'. implode('&quot;,&quot;', $url_list). '&quot;)';
-
-// just like sql syntax
-$fql = &quot;select url, like_count from link_stat where url in&quot;.$url_string;
-// remember to encode it
-$url = &quot;https://api.facebook.com/method/fql.query?format=json&amp;query=&quot;.urlencode($fql);
-
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$data = curl_exec($ch);
-curl_close($ch);
-
-$json = json_decode($data, true);
-$ret = array();
-print_r($json);
-
-// result example
-/*
-Array
-(
-    [0] =&gt; Array
-        (
-            [url] =&gt; http://example.com/url1.html
-            [like_count] =&gt; 10
-        )
-
-    [1] =&gt; Array
-        (
-            [url] =&gt; http://example.com/url2.html
-            [like_count] =&gt; 20
-        )
-
-)
-*/</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-20T00:00:00+09:00" pubdate data-updated="true">2011-07-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/php/'>PHP</a>
 
 
 </div>

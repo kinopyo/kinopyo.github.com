@@ -7,18 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="今まで平気に$(expression)を使ってきましたが、
-この二番目のcontextパラメータでセレクタの範囲を決まることができます。 この関数はjQueryのコア関数で幅広く使われ、
-もっとも一般的な使い方はcontextを省略したものでしょう。 1
+	<meta name="description" content="今のlive関数は二番目の引数にデータを渡すことができません。
+bindとliveのシグネチャーは以下になります。 1
 2
-3
-4
-5
-6
-7
-8
-9
-10 &hellip;">
+bind(type, *data*, fn)
+live(type, fn) いざ使おうと思って単純にbindをliveに変換したところアプリは動かなくなっちゃいました。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -82,6 +75,58 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-live-pass-data-will-be-implemented-in-1-3-3">jQuery liveにデータを渡すのは1.3.3で実現</a></h1>
+	<div class="entry-content">
+		<p>今のlive関数は二番目の引数にデータを渡すことができません。
+bindとliveのシグネチャーは以下になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">bind</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="o">*</span><span class="nx">data</span><span class="o">*</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
+</span><span class='line'><span class="nx">live</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>いざ使おうと思って単純にbindをliveに変換したところアプリは動かなくなっちゃいました。
+回避方法はいろいろありますが、以下の記事によりますと
+jQuery 1.3.3ではliveにもdataを渡すことができるそうです。
+作者はjQueryのコアコントリビュートだそうです。
+<a href="http://brandonaaron.net/blog/2009/05/8/jquery-edge-live-events-now-with-data">jQuery Edge: Live Events now with Data</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -670,67 +715,6 @@ http://example.com/?p=N
 
 
 	<a class='category' href='/blog/categories/movie/'>movie</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/commanly-used-application-name-of-windows">Windowsでよく使ってるアプリのファイル名、Win + Rで簡単実行</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>よくWindowsで「Win + R」で実行のダイアログを開いて、「cmd」でコマンドプロンプトを実行してきました。</p>
-<p>これしか覚えてなくて、ペイントなどを開こうとするに結構めんどうな操作が必要でした。</p>
-<p>(そんなにめんどうではないけどいちいちメニューから選択するのが嫌いだけです)</p>
-<p>ここでいったんよく使ってるWindowsアプリのファイル名をメモしときます。</p>
-<h4>リスト</h4>
-<dl>
-<dt>コマンドプロンプト</dt>
-<dd>cmd</dd>
-<dt>ペイント</dt>
-<dd>mspaint</dd>
-<dt>メモ帳</dt>
-<dd>notepad</dd>
-<dt>電卓</dt>
-<dd>calc</dd>
-<dt>リモートデスクトップ</dt>
-<dd>mstsc</dd>
-</dl>
-<p>注意：上記Windows XPに基づいてます。</p>
-<p>「Win + R」で実行のダイアログを開き、上記コマンドを叩けばアプリを開けます。</p>
-<h4>自分で調べる</h4>
-<ol>
-<li>「スタート→すべてのプログラム→アクセサリ」から調べたいアプリを右クリックして「プロパティ」を開く</li>
-<li>「リンク先」の「xxx.exe」のxxxの部分がファイル名になります。</li>
-</ol>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-03T00:00:00+09:00" pubdate data-updated="true">2009-12-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

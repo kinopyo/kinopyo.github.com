@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: diary | Yet Another Kinopyo Blog]]></title>
+  <title><![CDATA[Category: Diary | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/diary/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-06T19:14:01+09:00</updated>
+  <updated>2012-09-08T15:34:18+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,243 +14,58 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My New Blog with Octopress]]></title>
-    <link href="http://kinopyo.com/blog/my-new-blog-with-octopress/"/>
-    <updated>2012-08-31T22:49:00+09:00</updated>
-    <id>http://kinopyo.com/blog/my-new-blog-with-octopress</id>
-    <content type="html"><![CDATA[<p>Finally migrated all my posts from Wordpress to Octopress. I think it's quite popular among hackers and geeks these days, if you don't know it just google it, tons of results.</p>
+    <title type="html"><![CDATA[Amazon Kindle Press Conference(Video) and My Thoughts]]></title>
+    <link href="http://kinopyo.com/blog/amazon-kindle-press-conference-video-and-my-thoughts/"/>
+    <updated>2012-09-08T14:12:00+09:00</updated>
+    <id>http://kinopyo.com/blog/amazon-kindle-press-conference-video-and-my-thoughts</id>
+    <content type="html"><![CDATA[<p>Here is the video of Amazon Kindle Press Conference, hold on September 6, 2012. This article does not intend to cover all the hardware details but just something worth for me to write down.</p>
 
-<p>There're still a lot of works to do, like some posts with messy format or broken links, Disqus comments need to be migrated, categories are nonsense etc, but I'll announce this anyway. Done is better than perfect right?</p>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/VYi1jZXz9Kg" frameborder="0" allowfullscreen></iframe>
 
-<p>I'm not gonna mention any migration details here, I'd like to look back and have a summary or something now.</p>
 
-<h1>Over 300 posts since 2009/10/07</h1>
+<h2>Why video?</h2>
 
-<p>I'm really surprised by myself. I was not aware of that I've done so many writings, and these're only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related.</p>
+<p>I really don't like just check the new hardware's specs and see the numbers bumped up from this level to that level. I'd always like to watch the press videos, to enjoy the process, to feel the revolutionary stories behind this. Of course part of it kind of depends on how the CEO did the presentation.</p>
 
-<p>It's so easy now to "execute" an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential "things" here, as part of my life.</p>
+<h2>KDP - Kindle Direct Publishing</h2>
 
-<h1>Japanese, English and Chinese</h1>
+<p>During watching the viode I found something new, something amazed me. That is <a href="https://kdp.amazon.com/self-publishing/signin">KDP - Kindle Direct Publishing</a></p>
 
-<p>There was a time I was trying to write down every single post in these 3 languages. I believe the plugin I used in Wordpress is called <em>qTranslate</em>, which let you write with each language or all of them.</p>
+<blockquote><p>With Kindle Direct Publishing (KDP) you can self-publish your books on the Amazon Kindle Store. It's free, fast, and easy. Books self-published through KDP can participate in the 70% royalty program and are available for purchase on Kindle devices and Kindle apps for iPad, iPhone, iPod touch, PC, Mac, BlackBerry, and Android-based devices. With KDP, you can self-publish books in many languages and specify pricing in US Dollars, Pounds Sterling, and Euros.</p></blockquote>
 
-<p>After a while I noticed it was too hard for me. Translating same contents into a different language is boring and wasting of time, at least I tried and found out it doesn't work for me. So this time, I want this blog to be an English mainly blog, with occasional different language posts. My plan is writing emotional feelings in Chinese, and social activities or something related to Japan in Japanese.</p>
+<p>I really think it's a good job, good job Amazon. There is a also a video clip interviewing the authors who have published and succeeded through KDP. Jeff Bezos, the CEO of Amazon, also mentioned some numbers about this business, apparently it's going well and actually helping people. To be honest, suddenly it occurs to me that maybe one day I can publish my own book, if it's really just a matter of whether I can finish it, and no need to consider about the publisher.</p>
 
-<p>I'm still keeping those language mixed posts here even though I think it's not useful to my "readers", not sure how many I got, I'd like to take those posts as old-days foot prints. "あの時がんばったな！ー" hehe.</p>
+<h2>Audio books</h2>
 
-<h1>About the priority or weight of each language</h1>
+<p>I bought Steven Job's biography audio book last year, which is the first time I ever tried an audio book. Despite my English skill it was still a pretty good experience. I really encourage you to try at least once. If you keep saying, "Oh no I can never understand those English" and stop trying or improving yourself, you can never get that place. Just my opinion.</p>
 
-<p>I want to be a top player in this programming field. In order to achieve that English is a MUST condition. I still remember when I first time read a programming book in English, it was so difficult that I hardly understood the meanings. But I keep trying and trying, now I'm very comfortable with it and believe it's more natural than any other language in programming field.</p>
+<h3>Narration</h3>
 
-<p>Besides the effort I put in English, I also want to start writing in my native language, Chinese. Although English is more friendly to me than before, it's still difficult to describe my feelings and emotions precisely. I need more vocabularies. I need to look back to think about if there is a grammar mistake. So when I think about some topics such as meanings of life, or what I want to left to the world, am I making this world a little bit better, etc. In these cases I need to grab my most familiar weapon :)</p>
+<p>I never cared about who was narrating the book to me, until I heard this:</p>
 
-<p>For Japanese, hmmm.. I'll leave it for now :)</p>
+<blockquote><p>They're getting people like Susan Sarandon, Colin Firth Anne Hathaway to narrate these books.</p></blockquote>
 
-<h1>Google Adsense</h1>
+<p>So what's the big deal? I think it's better to know it's not someone who is cold heart just do his/her jobs to READ the book, but it's someone you know like big movie stars, narrating the story, vividly. I want to know the details behind the scenes if I'm really into something. So it's different for me.</p>
 
-<p>If you're an old readers of me, I hope you are, you may notice that there's no ads anymore. Yeah I used to put those ads for experiment. With 500-600 daily PVs, it gave me around 4,000￥ every month. Not that much but it's better than nothing, so I kept ads for a long time. But to be honest, as a personal blog it's just annoying. I didn't like it personally, and it's for sure it gives people bad impression, I don't like to miss a job opportunity if some head hunters open my blog and leave with a "WTF?!..".</p>
+<h3>Whispersync for Voice</h3>
 
-<p>Let's just be simple and clean.</p>
+<p>Listen to your audio book on the way home, when you get home, pick up the "book" and start reading. Keep the place between the two media formats. I love this idea, and it becomes true.</p>
 
-<p>That's it~ see you next time.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
-    <link href="http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
-    <updated>2012-01-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
-    <content type="html"><![CDATA[<p>この間仕事の関係でたくさんの技術者のブログを見たことがあって、自見ですが、採用の観点から見たときにどういうブログがよかったのか、正確に言うと採用に欲しい情報が探しやすいのかを整理したいと思いいます。</p>
+<h2>Reading time</h2>
 
-<p>私自身はエンジニアで採用関連の仕事はほとんど未経験なので、プロの意見ではなく、あくまで自分が仕事の中で感じたことを書いただけです。ご参考までに。</p>
+<p>I almost forgot about this. Now kindle can show you how many times do you need to finish the current chapter, or the entire book. And it's based on <strong>your</strong> speed. Isn't that amazing!?</p>
 
-<h1>レイアウト</h1>
+<h2>When We Make Money?</h2>
 
-<p>ブログにアクセスしたときは私はまず「About」ページを見つけようとしました。実際の記事とかサイドバーの内容とかよりも、一般的には「About」ページでより詳しい、採用観点からの欲しい情報が得られるからです。なのでこの「自己紹介」のページへのリンクが見やすいかどうかが重要だと思います。</p>
+<p>In the end, Jeff also mentioned about alignment of amazon.</p>
 
-<p>下にスクロールせずに見られる場所、例えばトップのタブバーとかにあれば助かります。</p>
+<blockquote><p>We want to make money when people <strong>use</strong> our devices, not when they <strong>buy</strong> our devices.</p></blockquote>
 
-<h1>Aboutページ</h1>
+<p>I appreciate this. I'm sure we all know that it is the place where you are supposed to say something beautiful to the public. But I still love it, and I bought it.</p>
 
-<p>多分ブロガーは誰もがこのAboutページを持っていると思いますが、「誰に向けて発信しているか？」が明確でないとなかなかいい文章にはならないと思います。</p>
+<p>It let me look back the "common" flow of my daily work. There was a time when we were told like this: "We need to make xxx money by the end of xxx, so we have to release the product before xxx! So do it and do it harder!". Ok I may extragerate too much but you got the point. I admit it's neccessary to have a <strong>business plan</strong>, including numbers, to run a <strong>business</strong>. But it would be thankful if we and our managers and BOSS stop talking about how many money we're gonna make or should make, and think about how much it's gonna be helpful and valuable to our users. You don't need to say it loud every single day, but at least consider about this in your heart.</p>
 
-<p>私も今まで自分のAboutページを本当適当に書いていて、「どうせ誰も見てないだろう」と思ってずっと更新すらしなかったですが、今回の仕事でわかったのが「採用/転職のチャンスを見逃したかも」ってことです。準備すらしなければ、実際チャンスにめぐり合った時もそのまま捕まえることができないです。</p>
-
-<p>自分のAboutページは実際Google Analyticsで見たときはちょこちょこクリック率があることはわかってますが、本当に手抜き状態にしたまま。。too lazyですね！</p>
-
-<h2>Aboutページで必要な情報</h2>
-
-<p>ではこのAboutページで一体どんな情報があればいいのか？
-+  簡単な自己紹介
-+  言語（できれば英語版のも欲しい）
-+  今の居場所（意外と重要）
-+  スキル
-+  今までの作品や成果、オープンソースへの貢献など
-+  どういうことに興味があるか？どんなものが作りたいのか？
-+  ソーシャルアカウント(Linkedin, Twitter, Github)
-+  連絡先（メールアドレス）</p>
-
-<p>自分の母国語以外に英語バージョンのも用意して欲しいですね。グローバル採用の流れで、本人も世界を目指すならばできれば絶対英語をオススメします。記事はまだ母国語でもいいですが。
-Linkedinへのリンクがあれば一番助かります。
-Githubでは持っているリポジトリ（Forkしたのも大丈夫）でどんな分野の技術に興味が有るのかをチェックして、フォローされた数も参考にしました。
-Facebookは逆にあっても全然チェックする気がないです。
-今の居場所は実際にFace to Faceで話したい時に会える距離であるかの参考になります。</p>
-
-<h1>ブログ記事については</h1>
-
-<p>ブログ記事は一個一個チェックしないですが、あまりにも更新がない（年に3〜4回とか）ブログは「あれ？放棄状態？」な心配がありそこの情報が信用できるかが疑われます。</p>
-
-<h1>オススメトール</h1>
-
-<p><a href="http://about.me">http://about.me</a>のサイトがありますが、ブログのAboutページをこれにしてもいいと思います。見た目が綺麗ですし、ソーシャルアカウントへのリンクも簡単に付けられて書く側も見る側も楽です。</p>
-
-<p>さて、この記事を読んで自分のブログを見直したい方はいらっしゃるのかな？</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2012年の目標]]></title>
-    <link href="http://kinopyo.com/blog/goal-for-2012"/>
-    <updated>2012-01-01T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/goal-for-2012</id>
-    <content type="html"><![CDATA[<p>Nettus+の記事:<a href="http://net.tutsplus.com/articles/general/ten-new-years-resolutions-every-web-developer-should-make/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+nettuts+%28Nettuts%2B%29">10 New Year’s Resolutions Every Web Developer Should Make</a>がとても素晴らしかったので、それに乗って2012の目標をできるだけ数字化で評価しやすいように設定しようと思います。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/photo-2.jpg" title="Goal for 2012" ></p>
-
-<h1>1 - Learn a New Language, Framework, Or Methodology</h1>
-
-<p><strong>Node.jsとNode.jsで何の問題を解決するのが一番得意なのか？を知りたい。</strong></p>
-
-<p>「Node.jsは何の問題を解決したの」ってNode.jsを勉強した友達に聞いたら、「front-endのエンジニアは昔client sideのことしか出来なかったのを、今はserver sideの実装もできるようになった、と転職活動でもっと有利になった」みたいなジョークで返しました。。。</p>
-
-<p>今まで言語を学ぶプロセスとは違う手法で、文法などを勉強する前に先にこれを一番知りたいです。
-言語自体はRubyがもっと好きですし、今まで簡単なプロトタイプなどはSinatraでも十分対応できました。もしNode.jsの使い道が自分の趣味などに合わなければ途中、あるいは真っ先に捨てるのも全然あり。</p>
-
-<h1>2 - Get Better At What You Know</h1>
-
-<p>下記のスキルの熟練度をあげて、普段の仕事の中でもう<strong>apiなど参照しなくてもできるくらい</strong>！
-+   Ruby(Metaprogrammingあたり)
-+   Rails
-+   Sinatra
-+   Heroku
-+   MongoDB(MongoMapper)
-+   TextMate 2</p>
-
-<p>仕事でも環境が整った上、これくらい出来なくちゃ！
-全部頭で覚えられるはベストですが、DRYの観点からTextMate(2)を工夫してSnippet作ったりして効率にするのもありです。</p>
-
-<h1>3 - Explore a New Field</h1>
-
-<p><strong>iOS Developmentで簡単なアプリをひとつ公開する</strong></p>
-
-<p>昔作ってた経験もあるし、このまま放棄するのは悔しいというかもったいないかなと思います。iOS 4からはほとんど触ってないのでキャッチアップしたいです！</p>
-
-<p>いつも同じことをやるのにRubyだと一行でできるのがiOSでは数行の見苦しいコードになっちゃうことに抵抗があって、なかなかモチベーションが湧いてこないですが、会社の人が2時間で相当完成度の高いプロトタイプが作れたことにびっくりしてやっぱ熟練度を上げればそこまでWeb開発と差はないでしょうね。</p>
-
-<h1>4 - Engage the Community</h1>
-
-<p><strong>あえて目標は設定しません。</strong></p>
-
-<p>オープンソースへの貢献という話に私見ですが、「貢献するために貢献する」ことには抵抗があります。私は自分が使ってるうちに気づいたことは自分で改善しそれを作者さんにフィードバックしたいのですが、それを数字化で「10件のPull Requestを送る」とかはあまり意味ないと思います。「今年は恋をする！」ではなく、「縁で知り合って気に入った子と深く付き合いたい、その気持ちを伝えたい」マインドセットで進みます。</p>
-
-<h1>5 - Teach Others</h1>
-
-<p>人に何を教えるかまだ半信半疑ですが、以下の2つはチャンスがあればもっと人に伝えたいです。
-+  <strong>料理は社会問題、料理で世界を変える</strong>
-+  <strong>Lean Startupの手法で、自分/人類の無駄なエナージーを減らす</strong></p>
-
-<h1>6 - Take Better Care Of Yourself</h1>
-
-<p>数年前より体がだいぶ鈍くなったし、あんまり働いてないのに、いっぱい寝たのに疲れが回復しないのがどうも気に入らないです。そのためにちゃんと体を鍛えたいです！</p>
-
-<ul>
-<li><strong>10時以降に起きるのを年間休日の10回以内に</strong></li>
-<li><strong>夜1時以降寝るのを週一回のペースに、3ヶ月実施して問題なければ12時前に寝ることに。</strong></li>
-<li><strong>トータルで144 km走る(2週間で3回走る x 1回で2km = 1ヶ月で 12km, 12 x 12 = 144km)</strong></li>
-<li><strong>一回くらい10km走る</strong></li>
-<li>自転車通勤(Optional)</li>
-</ul>
-
-
-<h1>7 - Manage Your Time Better</h1>
-
-<p>まだどう実施するかノープランですが、とりあえずは：</p>
-
-<ul>
-<li><strong>朝の時間をもっと利用したい</strong></li>
-<li><strong>家での集中時間を増やしたい</strong></li>
-</ul>
-
-
-<p>どう実施するかはまた後で考えます。</p>
-
-<h1>8 - Use Better Programming Practices</h1>
-
-<p>これは言うまでもないものなのでpass</p>
-
-<h1>9 - Generate Passive Income</h1>
-
-<ul>
-<li><strong>2ヶ月で一つのプロダクトをリリースし検証する</strong>
-<blockquote><p>Start-ups Don't Starve, They Drown.</p></blockquote>
-のようにideaは今までもうものたくさんある中、作りっぱなしにしたか、放棄状態にしたのはもったいない！2ヶ月のスパンではいろいろ試せると思って、年に6つのideaを試せるからね！</li>
-</ul>
-
-
-<p>2011年はブログのAdSenseで何とか給料以外の収入は得たものの、金額が少なすぎてまだ言えるほどのものではないです。でも儲かるのは目的ではなくて、それなりの価値を提供すればそれなりのフィードバックはあるはずなので、まだ価値があるものを作れていないことです。</p>
-
-<p>またドメインとかサーバ、Herokuなどにもっと大胆に投資してもいいよって自分に言いたいです。</p>
-
-<h1>10 - Take a Break</h1>
-
-<ul>
-<li><strong>週に3回は料理する、週末は豪華なやつを作る！</strong>(cook.kinopyo.comの料理専用ブログを作る！)</li>
-<li><strong>StarCraft2でMaster Leagueを目標に進出！</strong></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How COOKPAD changed me]]></title>
-    <link href="http://kinopyo.com/blog/how-cookpad-changed-me"/>
-    <updated>2011-12-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/how-cookpad-changed-me</id>
-    <content type="html"><![CDATA[<h2>Presentation</h2>
-
-<div style="width:425px" id="__ss_10645457"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fantasyday/how-cookpad-changed-me" title="How COOKPAD changed me" target="_blank">How COOKPAD changed me</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/10645457" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/fantasyday" target="_blank">Qihuan Piao</a> </div> </div>
-
-
-<h2>Resources（おすすめの本とプレゼン）</h2>
-
-<ul>
-<li><a href="http://www.amazon.com/Cooking-Solves-Everything-Kitchen-ebook/dp/B005OKGVT0/ref=sr_1_8?ie=UTF8&amp;qid=1323817673&amp;sr=8-8">Cooking Solves Everything</a></li>
-<li><a href="http://www.ted.com/talks/lang/en/jamie_oliver.html">TED - Teach every child about food</a></li>
-<li><a href="http://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898">The Lean Startup</a></li>
-</ul>
-
-
-<br/>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[楽天、アマゾン、Yahooなどを一括検索できるサイト]]></title>
-    <link href="http://kinopyo.com/blog/search-for-rakuten-amazon-yahoo"/>
-    <updated>2011-11-14T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/search-for-rakuten-amazon-yahoo</id>
-    <content type="html"><![CDATA[<p>使ったことはないけど、とりあえずリストアップ。</p>
-
-<ul>
-<li><a href="http://all-search.biz/index.php">http://all-search.biz/index.php</a></li>
-<li><a href="http://www.tsukaerusite.com/">http://www.tsukaerusite.com/</a></li>
-<li><a href="http://www.shopping-tool.com/">http://www.shopping-tool.com/</a></li>
-<li><a href="http://aucfan.com/">http://aucfan.com/</a></li>
-<li><a href="http://psearch.yahoo.co.jp/search/advanced">http://psearch.yahoo.co.jp/search/advanced</a></li>
-</ul>
-
+<p>I want to make money when people use my products, although I'm just an employee now.</p>
 ]]></content>
   </entry>
   

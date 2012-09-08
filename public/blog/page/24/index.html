@@ -7,10 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="本日Mac ChromeのDev版が更新されエクステンションが使えるようになりました。
-Chrome Dev版をダウンロード
-不安定とは言ってるものの、やはり使いたいです！ 早速ですが、以下のエクステンションを入れました。
-Chromeの再起動が必要なく、インストールするだけで使えます。 &hellip;">
+	<meta name="description" content="@ComponentアノテーションはJavaのクラスにつけるもので
+このクラスをコンテナが管理するBeanとして登録する機能です。
+@Serviceアノテーションも現状では@Componentと違いはありませんが、
+通常サービス層のコンポネントは@Serviceアノテーションをつけます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +74,60 @@ Chromeの再起動が必要なく、インストールするだけで使えま�
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/difference-between-service-and-component-annotation-in-sprin">Spring: @Serviceと@Componentの区別は？</a></h1>
+	<div class="entry-content">
+		<p>@ComponentアノテーションはJavaのクラスにつけるもので
+このクラスをコンテナが管理するBeanとして登録する機能です。
+@Serviceアノテーションも現状では@Componentと違いはありませんが、
+通常<strong>サービス層</strong>のコンポネントは@Serviceアノテーションをつけます。
+その理由は主に以下の二つです。
++  コンポーネントがサービス層のコンポーネントを明確にする意味で
++  今後@Serviceアノテーションを付与したBeanには自動的にトランザクション管理の機能が付与されるなどの機能拡張も期待される</p>
+
+<br/>
+
+
+<p>Spring3.0のリリースノートを見たところ特に@Serviceに関する変更はないみたいです。
+なのでサービス層のクラスに対して@Componentか@Serviceか悩んでるんだっだら
+@Serviceをつけた方がいいでしょう。</p>
+
+<br/>
+
+
+<p>参考サイト：
+<a href="http://www.infoq.com/jp/articles/spring2.5-1">Spring 2.5の新機能を使ってアプリケーションを作る(その1)</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -822,51 +876,6 @@ AppStoreでのレーティングもレビューも大好評です。
 
 
 	<a class='category' href='/blog/categories/movie/'>movie</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-continue-break-in-each-loop">jQuery each()関数内にcontinue/breakを使いたい時は</a></h1>
-	<div class="entry-content">
-		<p>jQueryのeach()は関数のためcontinueやbreakなどのループ制御文は使えません。
-グーグル先生に聞いたら代わりの方法が見つかりました。</p>
-
-<ul>
-<li>break : <strong>return false</strong></li>
-<li>continue : <strong>return true</strong></li>
-</ul>
-
-
-<p>参考サイト：
-<a href="http://blog.livedoor.jp/jimuguri/archives/51522193.html">jQuery の each() の continue / break は・・・</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-22T00:00:00+09:00" pubdate data-updated="true">2009-12-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

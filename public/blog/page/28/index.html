@@ -7,9 +7,34 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="toggle()の普通の使い方は多分皆さんご存知だと思います。
-該当要素をクリックするたびに表示/非表示を切り替えます。 今日紹介するのはこのswitchパラメータ付のtoggleです。
-swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。 &hellip;">
+	<meta name="description" content="htmlにoptionが一つしかないselectboxがあるとします。
+このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +98,138 @@ swtich文を評価しtrueであれば要素を表示、falseであれば非表�
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-convert-one-child-selectbox-to-label">jQueryでoptionが一つのSelectボックスをラベル表示</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>htmlにoptionが一つしかないselectboxがあるとします。</p>
+<p>このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;option&gt;</span>1<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'><span class="nt">&lt;br/&gt;</span>
+</span><span class='line'><span class="nt">&lt;h4&gt;</span>jQuery文はこれ：<span class="nt">&lt;/h4&gt;</span>
+</span><span class='line'>{% codeblock %}
+</span><span class='line'>
+</span><span class='line'>//:only-childフィルタで子要素が一つしかない要素を選択
+</span><span class='line'>var $target = $(&quot;select :only-child&quot;);
+</span><span class='line'>
+</span><span class='line'>$.each($target, function(index, item) {
+</span><span class='line'>
+</span><span class='line'>  // spanのhtmlを構築
+</span><span class='line'>  var span = &#39;<span class="nt">&lt;span&gt;</span>&#39; + $(this).text() + &#39;<span class="nt">&lt;/span&gt;</span>&#39;;
+</span><span class='line'>
+</span><span class='line'>  // thisはoptionを指しているため、そのparentのselect要素を非表示
+</span><span class='line'>  // 構築したspanを挿入
+</span><span class='line'>  $(this).parent().hide().after(span);
+</span><span class='line'>
+</span><span class='line'>});
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'><span class="nt">&lt;h4&gt;</span>さらにブランクの要素をフィルタ<span class="nt">&lt;/h4&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>selectボックスの先頭がblankのケースが結構あると思います。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>その場合はラベル表示させたくないです。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>なのでそれをフィルタするには、以下のようにfilter()を使います。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>var $target = $(&quot;select :only-child&quot;).filter(function(index) {
+</span><span class='line'>
+</span><span class='line'>  return $.trim($(this).text()).length != 0;
+</span><span class='line'>
+</span><span class='line'>});
+</span><span class='line'>
+</span><span class='line'>{% endcodeblock %}
+</span><span class='line'><span class="nt">&lt;br/&gt;</span>
+</span><span class='line'><span class="nt">&lt;h4&gt;</span>$.trim()の1000倍速い方法でブランクを検出<span class="nt">&lt;/h4&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>jQueryにはblankを検出するメソッドがないため、上記のソースコードでは<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>$.trim()を利用して判断しています。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>しかしこの$.trim()は遅いとの報告がありました。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>そこでblankのテキストを検出するためのメソッドも提供されました。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>$.trim()が2000msかかったものがこれだと0.5msになったようです。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>blank: function( text ) {
+</span><span class='line'>  return !text || !/\S/.test(text);
+</span><span class='line'>}
+</span></code></pre></td></tr></table></div></figure>
+<p>興味のある方はこの記事を参照してください。英語のサイトです。</p>
+<p><a href="http://zipalong.com/blog/?p=287" target="_blank">Zipalong Blog  &#187; Blog Archive   &#187; jQuery: x1000 faster test for blank strings (on large strings)</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-28T00:00:00+09:00" pubdate data-updated="true">2009-11-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -786,109 +943,6 @@ $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant
 <p>jQueryのvalidationプラグイン:showErrorを定義するとhighlightとunhighlightとは実行しない</p>
 <p>そもそもshowErrorはエラーをどう表示するかを決めるための高レベルの関数なので、</p>
 <p>簡略化したhighlightとunhighlightは隠蔽されたっぽいの感じで、完全に実行しません。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-reverse-lookup-reference-attribute">jQuery逆引きレファレンス、属性＆コンテンツ編(@ITより)</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_00.html" target="_blank">@IT連載：jQuery逆引きリファレンスの第二回</a>のテーマは属性＆コンテンツです。</p>
-<p>目次は以下になります。</p>
-<blockquote>
-<p>    * 属性値を取得するには？</p>
-<p>    * 属性値を設定するには？</p>
-<p>    * 複数の属性値をまとめて設定するには？</p>
-<p>    * 関数の結果によって動的に属性値を設定するには？</p>
-<p>    * 属性値を削除するには？</p>
-<p>    * スタイル・クラスを追加／削除するには？</p>
-<p>    * スタイル・クラスが適用されているかを判定するには？</p>
-<p>    * スタイル・クラスの適用／解除を交互に行うには？</p>
-<p>    * 要素に適用されたスタイル情報を取得するには？</p>
-<p>    * 要素に特定のスタイルを適用するには？</p>
-<p>    * 複数のスタイル・プロパティをまとめて設定するには？</p>
-<p>    * 要素の表示位置を取得するには？</p>
-<p>    * ページのスクロール位置を取得／設定するには？</p>
-<p>    * 要素の高さや幅を取得するには？</p>
-<p>    * 要素の高さや幅を設定するには？</p>
-<p>    * 要素のテキストを取得するには？</p>
-<p>    * 要素のテキストを設定するには？</p>
-<p>    * フォーム要素の値を取得／設定するには？</p>
-</blockquote>
-<h4>勉強メモ</h4>
-<h5>text()とhtml()の違い</h5>
-<blockquote title="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html" cite="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html">
-<p>（1）取得する対象</p>
-<p>　要素セット（jQueryオブジェクト）が複数の要素を含んでいる場合、htmlメソッドは先頭要素の内容だけを取得しますが、textメソッドはすべての要素の内容を結合したものを取得します。</p>
-<p>（2）取得する内容</p>
-<p>　名前のとおり、htmlメソッドは要素の内容をHTML文字列として取得しますが、textメソッドは純粋なテキストだけを取得します。</p>
-<p>（3）対応する形式</p>
-<p>　textメソッドはHTML／XMLいずれの形式でも動作しますが、htmlメソッドはHTML（XHTMLを含む）形式でしか動作しません。このサンプルでは扱っていませんが、textメソッドをXML形式で利用する方法については、あらためてAjax編で紹介する予定です。</p>
-<cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html" target="_blank">http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html</a></cite></blockquote>
-<h5>height(val)、width(val)</h5>
-<p>引数valには数値、もしくは「em」や「%」などの単位付きの数値を指定できます（単なる数値の場合はピクセル値として認識します）。</p>
-<h5>要素の高さや幅を取得するには？</h5>
-<p>－ height()、width()、innerHeight()、innerWidth()、outerHeight()、outerWidth()</p>
-<table>
-<tr><td>関数</td><th>padding</th><th>border-width</th><th>margin</th></tr>
-<tr><td>height、width</td><td>x</td><td>x</td><td>x</td></tr>
-<tr><td>innerHeight、innerWidth</td><td>o</td><td>x</td><td>x</td></tr>
-<tr><td>outerHeight、outerWidth</td><td>o</td><td>o</td><td>x</td></tr>
-<tr><td>outerHeight、outerWidth（true</td><td>o</td><td>o</td><td>o</td></tr>
-</table>
-<br/>
-<h5>関数の結果によって動的に属性値を設定するには？</h5>
-<p>－ attr(name, fnc) －</p>
-<p>コールバック関数の戻り値を用いて設定。</p>
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;li &gt; img&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span>
-</span><span class='line'>          <span class="s1">&#39;src&#39;</span><span class="p">,</span>
-</span><span class='line'>          <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>              <span class="k">return</span> <span class="s2">&quot;http://www.wings.msn.to/books/&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
-</span><span class='line'>                      <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;_logo.jpg&quot;</span><span class="p">;</span>
-</span><span class='line'>          <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-<br/>
-<p> </p>
 </div>
 
 

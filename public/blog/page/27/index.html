@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ここが危ない！Web2.0のセキュリティ：第1回　Ajaxとクロスサイトスクリプティング｜gihyo.jp … 技術評論社の勉強メモ＆実験です。
-実験
-あるJavaScriptの拡張子をcsvに変更してSCRIPTタグでそれをインポートするHTMLを用意します。 &hellip;">
+	<meta name="description" content="よくWindowsで「Win + R」で実行のダイアログを開いて、「cmd」でコマンドプロンプトを実行してきました。
+これしか覚えてなくて、ペイントなどを開こうとするに結構めんどうな操作が必要でした。
+(そんなにめんどうではないけどいちいちメニューから選択するのが嫌いだけです) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +73,67 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/commanly-used-application-name-of-windows">Windowsでよく使ってるアプリのファイル名、Win + Rで簡単実行</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>よくWindowsで「Win + R」で実行のダイアログを開いて、「cmd」でコマンドプロンプトを実行してきました。</p>
+<p>これしか覚えてなくて、ペイントなどを開こうとするに結構めんどうな操作が必要でした。</p>
+<p>(そんなにめんどうではないけどいちいちメニューから選択するのが嫌いだけです)</p>
+<p>ここでいったんよく使ってるWindowsアプリのファイル名をメモしときます。</p>
+<h4>リスト</h4>
+<dl>
+<dt>コマンドプロンプト</dt>
+<dd>cmd</dd>
+<dt>ペイント</dt>
+<dd>mspaint</dd>
+<dt>メモ帳</dt>
+<dd>notepad</dd>
+<dt>電卓</dt>
+<dd>calc</dd>
+<dt>リモートデスクトップ</dt>
+<dd>mstsc</dd>
+</dl>
+<p>注意：上記Windows XPに基づいてます。</p>
+<p>「Win + R」で実行のダイアログを開き、上記コマンドを叩けばアプリを開けます。</p>
+<h4>自分で調べる</h4>
+<ol>
+<li>「スタート→すべてのプログラム→アクセサリ」から調べたいアプリを右クリックして「プロパティ」を開く</li>
+<li>「リンク先」の「xxx.exe」のxxxの部分がファイル名になります。</li>
+</ol>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-03T00:00:00+09:00" pubdate data-updated="true">2009-12-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -632,138 +693,6 @@
 
 
 <time datetime="2009-11-29T00:00:00+09:00" pubdate data-updated="true">2009-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-convert-one-child-selectbox-to-label">jQueryでoptionが一つのSelectボックスをラベル表示</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>htmlにoptionが一つしかないselectboxがあるとします。</p>
-<p>このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。</p>
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;option&gt;</span>1<span class="nt">&lt;/option&gt;</span>
-</span><span class='line'><span class="nt">&lt;/select&gt;</span>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;br/&gt;</span>
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>jQuery文はこれ：<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'>{% codeblock %}
-</span><span class='line'>
-</span><span class='line'>//:only-childフィルタで子要素が一つしかない要素を選択
-</span><span class='line'>var $target = $(&quot;select :only-child&quot;);
-</span><span class='line'>
-</span><span class='line'>$.each($target, function(index, item) {
-</span><span class='line'>
-</span><span class='line'>  // spanのhtmlを構築
-</span><span class='line'>  var span = &#39;<span class="nt">&lt;span&gt;</span>&#39; + $(this).text() + &#39;<span class="nt">&lt;/span&gt;</span>&#39;;
-</span><span class='line'>
-</span><span class='line'>  // thisはoptionを指しているため、そのparentのselect要素を非表示
-</span><span class='line'>  // 構築したspanを挿入
-</span><span class='line'>  $(this).parent().hide().after(span);
-</span><span class='line'>
-</span><span class='line'>});
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>さらにブランクの要素をフィルタ<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>selectボックスの先頭がblankのケースが結構あると思います。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>その場合はラベル表示させたくないです。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>なのでそれをフィルタするには、以下のようにfilter()を使います。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>var $target = $(&quot;select :only-child&quot;).filter(function(index) {
-</span><span class='line'>
-</span><span class='line'>  return $.trim($(this).text()).length != 0;
-</span><span class='line'>
-</span><span class='line'>});
-</span><span class='line'>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;br/&gt;</span>
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>$.trim()の1000倍速い方法でブランクを検出<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>jQueryにはblankを検出するメソッドがないため、上記のソースコードでは<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>$.trim()を利用して判断しています。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>しかしこの$.trim()は遅いとの報告がありました。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>そこでblankのテキストを検出するためのメソッドも提供されました。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>$.trim()が2000msかかったものがこれだと0.5msになったようです。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>blank: function( text ) {
-</span><span class='line'>  return !text || !/\S/.test(text);
-</span><span class='line'>}
-</span></code></pre></td></tr></table></div></figure>
-<p>興味のある方はこの記事を参照してください。英語のサイトです。</p>
-<p><a href="http://zipalong.com/blog/?p=287" target="_blank">Zipalong Blog  &#187; Blog Archive   &#187; jQuery: x1000 faster test for blank strings (on large strings)</a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-28T00:00:00+09:00" pubdate data-updated="true">2009-11-28</time></div>
 	<div class="tags">
 
 

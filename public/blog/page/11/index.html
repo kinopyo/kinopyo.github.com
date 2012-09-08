@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" 下記どちらもOKです。明示的に書きたいときはjQueryで。 jQuery -&gt; alert &quot;hello&quot; $ -&gt; alert &quot;hello&quot; 2011-07-09 CoffeeScript, jQuery ">
+	<meta name="description" content="今はほとんどのサイトがLike(いいね！)ボタンを置いてますが、Likeボタンがどれだけクリックされたか、その数は気になりますね。 Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントはこちらにあります。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,94 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-get-facebook-like-counts-for-multiple-urls">複数URLのFacebookいいね(Like)された数を取得する方法</a></h1>
+	<div class="entry-content">
+		<p>今はほとんどのサイトがLike(いいね！)ボタンを置いてますが、Likeボタンがどれだけクリックされたか、その数は気になりますね。</p>
+
+<p>Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントは<a href="http://developers.facebook.com/docs/reference/fql/link_stat/">こちら</a>にあります。</p>
+
+<p>下記はPHPでのサンプルコードです。</p>
+
+<div><script src='https://gist.github.com/1073555.js?file=get_facebook_like_counts_of_multiple_urls.php'></script>
+<noscript><pre><code>&lt;?php
+// see fql docs:
+// http://developers.facebook.com/docs/reference/fql/link_stat/
+
+$url_list = array(
+    'http://example.com/url1.html',
+    'http://example.com/url2.html',
+);
+
+$url_string = '(&quot;'. implode('&quot;,&quot;', $url_list). '&quot;)';
+
+// just like sql syntax
+$fql = &quot;select url, like_count from link_stat where url in&quot;.$url_string;
+// remember to encode it
+$url = &quot;https://api.facebook.com/method/fql.query?format=json&amp;query=&quot;.urlencode($fql);
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$data = curl_exec($ch);
+curl_close($ch);
+
+$json = json_decode($data, true);
+$ret = array();
+print_r($json);
+
+// result example
+/*
+Array
+(
+    [0] =&gt; Array
+        (
+            [url] =&gt; http://example.com/url1.html
+            [like_count] =&gt; 10
+        )
+
+    [1] =&gt; Array
+        (
+            [url] =&gt; http://example.com/url2.html
+            [like_count] =&gt; 20
+        )
+
+)
+*/</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-20T00:00:00+09:00" pubdate data-updated="true">2011-07-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/php/'>PHP</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -600,86 +688,6 @@ heroku addons:add memcache</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/run-rails-31-rc-on-heroku">Rails3.1rcをHerokuで動かす</a></h1>
-	<div class="entry-content">
-		<p>この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。</p>
-
-<div><script src='https://gist.github.com/1014428.js?file='></script>
-<noscript><pre><code>### in Terminal
-# create rails app
-rails new test_app
-
-############ start: edit Gemfile ##############
-#wrap sqlite3 in 
-group :test, :development do
-gem 'sqlite3'
-end
-
-# add thin server
-gem 'thin'
-
-#add the rubyracer for heroku
-group :production do 
-  gem 'therubyracer-heroku', '0.8.1.pre3'
-  gem 'pg'
-end
-
-############ end: edit Gemfile ##############
-
-### in Terminal
-# bundle install
-bundle
-
-# git initialize 
-git init .
-
-# add files 
-git commit -am &quot;initial commit&quot;
-
-#create app on heroku 
-heroku create --stack cedar
-
-# push app to heroku
-git push heroku master
-
-# test it 
-heroku open
-</code></pre></noscript></div>
-
-
-<p>上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-17T00:00:00+09:00" pubdate data-updated="true">2011-06-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>
 
 
 </div>

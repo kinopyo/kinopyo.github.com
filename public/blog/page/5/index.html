@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="例えば省略可能なフラグみたいなローカル変数をpartial viewに渡した時、そのデフォルト動作をpartial viewでハンドリングしたいですね。 &lt;%= render 'article', :show_author =&gt; false %&gt;
-&lt;%= render ' &hellip;">
+	<meta name="description" content="自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
+ホットキーを押せば大きい緑色の圓でマウスポインタを示しので、すぐに分かります。 http://www.2point5fish.com/ さらに素晴らしいことはパソコンロック解除されたときに自動でアクティブになるんです！ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,6 +72,48 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mouse-locator-for-mac">Mouse Locator for Mac、マウスがスクリーンのどこにあるかを知りたい時</a></h1>
+	<div class="entry-content">
+		<p><img src="http://www.2point5fish.com/img/MLLogo.png" alt="Mouse Locator for Mac" /></p>
+
+<p>自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
+ホットキーを押せば大きい緑色の圓でマウスポインタを示しので、すぐに分かります。</p>
+
+<p><a href="http://www.2point5fish.com/">http://www.2point5fish.com/</a></p>
+
+<p>さらに素晴らしいことはパソコンロック解除されたときに自動でアクティブになるんです！ユーザエクスペリエンス！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-08T00:00:00+09:00" pubdate data-updated="true">2011-11-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/application/'>application</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -663,59 +705,6 @@ rvm use 1.9.3</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/git/'>git</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-revert-git-reset-hard-miss-with-git-reflog">git reset &#8211;hardでミスった内容を取戻したいときはgit reflog</a></h1>
-	<div class="entry-content">
-		<p>例えば<em>git reset &#8211;hard HEAD<sup>*で誤操作して内容を消してしまった、それを取戻したいときは</sup>
-+   </em>git reflog<em>で取戻したいHEAD@{x}の番号を確認
-+   </em>git reset &#8211;hard HEAD@{1}*で番号指定でもう一回git reset（ここでは例として1番にしてる）</p>
-
-<p>reflogの定義は</p>
-
-<blockquote><p>a log of where your HEAD and branch references have been for the last few months.</p></blockquote>
-
-
-<p>いわば自分のローカルリポジトリのHEADが指していた情報を全部保存したログです。ブランチの切り替えやpull、コミットなどの情報が<em>ローカルで</em>保存されるんです。</p>
-
-<ul>
-<li>git log -g: </em>で<em>git log*のフォーマット（コミットログやコミット者の情報）で表示できます。</li>
-</ul>
-
-
-<p>参考：
-<a href="http://d.hatena.ne.jp/idesaku/20091106/1257507849">http://d.hatena.ne.jp/idesaku/20091106/1257507849</a>
-<a href="http://progit.org/book/ch6-1.html#reflog_shortnames">http://progit.org/book/ch6-1.html#reflog_shortnames</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T00:00:00+09:00" pubdate data-updated="true">2011-10-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/git-reflog/'>git-reflog</a>, <a class='category' href='/blog/categories/git-reset/'>git-reset</a>
 
 
 </div>

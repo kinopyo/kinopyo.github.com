@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Overview rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます ソースコード # lib/custom_logger.rb &hellip;">
+	<meta name="description" content="Overview This is a tip to auto refresh your browser(s) when you hit Command + S(means saving file) in Textmate. Steps Open Bundle Editor, look for &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,80 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/textmate-auto-refresh-browers-when-saving-file">TextMate Auto-refresh your browsers when saving file in Textmate</a></h1>
+	<div class="entry-content">
+		<h2>Overview</h2>
+
+<p>This is a tip to auto refresh your browser(s) when you hit Command + S(means saving file) in Textmate.</p>
+
+<h2>Steps</h2>
+
+<p>Open Bundle Editor, look for HTML, there will be a snippet called &#8216;Refresh Running Browser(s)&#8217;.</p>
+
+<p>The code in the right side is very easy to understand. First it checks if one browser is opened, if yes, refresh it. By default it supports all the major browsers.</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" title="Bundle Editor Refresh Running Browsers" ></p>
+
+<p><strong>Set the Activation Key Equivalent to Command + S, and delete those file type in Scope Selector.</strong>
+This way when you hit Command + S, text mate will save the file first and refresh all your opened browser.</p>
+
+<p>If you want to just refresh a specific browser, like Safari, you can copy the snippet related to your browser.
+Below is a sample for Safari.</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" title="Textmate auto refresh safari" ></p>
+
+<h1>日本語</h1>
+
+<h2>目的</h2>
+
+<p>Textmateでファイルを保存（Command + S）したら自動でブラウザをリフレッシュしてくれる。</p>
+
+<h2>手順</h2>
+
+<p>Bundle Editorを開いて、HTMLのセクションの中の「Refresh Running Browser(s)」をクリックします。</p>
+
+<p>右側のコードはわかりやすいです。まずそのブラウザが起動しているかをチェックして、リフレッシュします。デフォルトではFirefox、ChromeやSafariなど全部対応しています。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" title="Bundle Editor Refresh Running Browsers" ></p>
+
+<p><strong>Activation Key EquivalentをCommand + Sに変更して下のScope Selectorを空にします</strong>
+これでCommand + Sでファイルを保存した場合起動中のブラウザは全部リフレッシュされるはずです。</p>
+
+<p>もし特定のブラウザだけリフレッシュしたい場合は、コピペーで新規にSnippetを作成し、該当のブラウザのコードだけを貼ればいいです。以下はSafariの例です。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" title="Textmate auto refresh safari" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/textmate/'>TextMate</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/editor/'>editor</a>, <a class='category' href='/blog/categories/safari/'>safari</a>, <a class='category' href='/blog/categories/textmate/'>textmate</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -517,58 +591,6 @@ CentOSなのでyumを使ってインストールすれば解決です。</p>
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/windows/'>Windows</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/vps/'>vps</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ree-is-ruby-enterprise-edition">REEとはRuby Enterprise Edition</a></h1>
-	<div class="entry-content">
-		<p>Rubyのエンタープライズ版のこと。Phusion Passengerと相性がよく、メモリ消費がだいぶ下がる利点があるそうです。
-rvmでの紹介を引用しますと：</p>
-
-<blockquote><p>Ruby Enterprise Edition, MRI Ruby with several custom<br/>patches for performance, stability, and memory.</p></blockquote>
-
-
-<p><a href="http://www.rubyenterpriseedition.com/documentation.html">ガイドのドキュメント</a>
-<a href="http://www.rubyenterpriseedition.com/">公式サイト</a></p>
-
-<p>現在は1.8.7が最新のようでrvmでインストールする場合は：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm list known
-</span><span class='line'>rvm install ree</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://beginrescueend.com/interpreters/ree/">Install REE with RVM</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ree/'>ree</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>
 
 
 </div>
