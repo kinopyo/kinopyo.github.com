@@ -8,11 +8,11 @@ comments: true
 categories: ["Mac", "macport", "MySQL", "PHP", "php", "環境構築"]
 ---
 ## 問題
-{% blockquote http://www.php.net/manual/ja/migration53.incompatible.php %}
+{% blockquote %}
 新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”
 {% endblockquote %}
 
-{% blockquote http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html %}
+{% blockquote %}
 MacPortでインストールしたPHP5.3では、
 
 mysqlnd(php5.3のmysql native client)が適用される。

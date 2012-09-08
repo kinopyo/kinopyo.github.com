@@ -4,7 +4,7 @@
   <title><![CDATA[Category: partial | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/partial/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-08T16:00:35+09:00</updated>
+  <updated>2012-09-08T18:07:18+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -26,7 +26,7 @@
 </p>
 
 <p>調べてみたら<em>defined?</em>と<em>local_assigns.has_key?</em>が見つかりましたが、前者のほうはオススメできなさそうです。
-<blockquote><p>Testing using defined? headline will not work. This is an implementation restriction.</p></blockquote></p>
+<blockquote><p>Testing using defined? headline will not work. This is an implementation restriction.</p><footer><strong>ActionView::Base</strong> <cite><a href='http://api.rubyonrails.org/classes/ActionView/Base.html'>api.rubyonrails.org/classes/&hellip;</a></cite></footer></blockquote></p>
 
 <p><div><script src='https://gist.github.com/1344066.js?file=solution.erb'></script>
 <noscript><pre><code># http://api.rubyonrails.org/classes/ActionView/Base.html

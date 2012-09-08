@@ -241,18 +241,19 @@ Facebook Developer Relations
 <p>どうやらこのSprocketsというのがポイントのようです。
 ぐぐってみたらgithubでこのようなコメントがありました。</p>
 
-<blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem &#8216;sprockets&#8217;, &#8216;2.0.0.beta.2&#8217; in your Gemfile.</p></blockquote>
+<blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem &#8216;sprockets&#8217;, &#8216;2.0.0.beta.2&#8217; in your Gemfile.</p><footer><strong>github</strong> <cite><a href='https://github.com/rails/rails/issues/453'>github.com/rails/rails/issues/&hellip;</a></cite></footer></blockquote>
 
 
 <p>のようでGemfileに下記を追記し再度bundle update。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'sprockets', '2.0.0.beta.2'
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;sprockets&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0.0.beta.2&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>解決〜
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
+<p>解決〜</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
 
 		
 		

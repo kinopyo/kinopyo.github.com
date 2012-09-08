@@ -15,7 +15,7 @@ iPad2でたまに駅とかでソフトバンクのWifiスポットへのアク�
 
 {% img http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg %}
 
-{% blockquote http://mb.softbank.jp/mb/ipad/service/wi-fi/ %}
+{% blockquote %}
 iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi-Fiスポットを無料で提供します。
 {% endblockquote %}
 

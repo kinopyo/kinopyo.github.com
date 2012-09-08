@@ -4,7 +4,7 @@
   <title><![CDATA[Category: webkit | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/webkit/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-08T16:00:35+09:00</updated>
+  <updated>2012-09-08T18:07:18+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -46,7 +46,7 @@ end</code></pre></noscript></div>
 
 <h3>なぜcapybara_webkit driver使う</h3>
 
-<p><blockquote><p>Capybara ... currently comes with Rack::Test and Selenium support built in.</p></p><p><p>By default, Capybara uses the :rack_test driver, which is fast but does not support JavaScript. You can set up a different default driver for your features.</p></p><p><p>The capybara-webkit driver is for true headless testing. It uses QtWebKit to start a rendering engine process. It can execute JavaScript as well. It is significantly faster than drivers like Selenium since it does not load an entire browser.</p></blockquote>
+<p><blockquote><p>Capybara ... currently comes with Rack::Test and Selenium support built in.</p></p><p><p>By default, Capybara uses the :rack_test driver, which is fast but does not support JavaScript. You can set up a different default driver for your features.</p></p><p><p>The capybara-webkit driver is for true headless testing. It uses QtWebKit to start a rendering engine process. It can execute JavaScript as well. It is significantly faster than drivers like Selenium since it does not load an entire browser.</p><footer><strong>github</strong> <cite><a href='https://github.com/jnicklas/capybara'>github.com/jnicklas/capybara/&hellip;</a></cite></footer></blockquote>
 のようにcapybaraは <em>Rack::Test</em>と<em>Selenium</em>のdriverがbuilt-inされて、デフォルトdriverは前者の:rack_testでjavascriptをサポートしないです。<em>Selenium</em>はサポートしますが、それよりも速いのが<em>capybara-webkit</em>なのでそれを採用しました。</p>
 
 <h2>capybara_webkit driverをインストール</h2>

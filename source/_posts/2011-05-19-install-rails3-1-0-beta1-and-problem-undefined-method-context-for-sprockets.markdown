@@ -38,16 +38,16 @@ rails s
 どうやらこのSprocketsというのがポイントのようです。
 ぐぐってみたらgithubでこのようなコメントがありました。
 
-{% blockquote https://github.com/rails/rails/issues/453 %}
+{% blockquote github https://github.com/rails/rails/issues/453 %}
 Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem 'sprockets', '2.0.0.beta.2' in your Gemfile.
 {% endblockquote %}
 
 のようでGemfileに下記を追記し再度bundle update。
 
-```
+```ruby Gemfile
 gem 'sprockets', '2.0.0.beta.2'
-
 ```
 
 解決〜
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png rails server running %}

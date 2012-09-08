@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-08T16:00:35+09:00</updated>
+  <updated>2012-09-08T18:07:18+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -24,10 +24,10 @@
 
 <p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
 CentOSなのでyumを使ってインストールすれば解決です。
-{% codeblock %}
-sudo yum install php-gd
-sudo service httpd restart
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo yum install php-gd
+</span><span class='line'>sudo service httpd restart</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
@@ -38,7 +38,71 @@ sudo service httpd restart
     <id>http://kinopyo.com/blog/how-to-create-user-and-grant-root-privilege-in-linux</id>
     <content type="html"><![CDATA[<p>コメントでいろいろ書いてますが、root権限付与のところは多分個人の場合はそのままvisudoにユーザ名を追記して、会社の場合はグループを変更したほうが良さそうです。</p>
 
-<p>{% gist 1073555  linux_create_user_modify_group.sh  %}</p>
+<p><div><script src='https://gist.github.com/1073555.js?file=linux_create_user_modify_group.sh'></script>
+<noscript><pre><code># HOW TO CREATE USER AND GROUP, GRANT ROOT PRIVILEGE
+
+## PART1 CREATE USER
+# assume user1,user2,user3 is already created
+# and they are in wheel group, which can execute as root
+# and here we're creating a new user named:new_user
+
+# create new user
+useradd new_user
+# set password for it, in the prompt
+passwd new_user
+
+
+# you can now login as new_user
+# but when you run sudo you may get this error
+new_user is not in the sudoers file.  This incident will be reported.
+# so you need to set the privilege to new_user
+
+## PART2 GRANT SUDO PRIVILEGE
+## 1. BY CHANGE USER GROUP
+$ visudo
+############ in visudo ############
+## Allows people in group wheel to run all commands
+# %wheel        ALL=(ALL)       ALL
+## Same thing without a password
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+############ in visudo ############
+# It means people in wheel group can run all commands, without password
+# Below we're adding the new user called new_user to the wheel group.
+
+# list users and user id, group id, home directory, login shell, etc.
+$ cat /etc/passwd
+...
+wheel:x:10:root,user1,user2,user3
+...
+
+$ id -a [user name]
+uid=503(user3) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
+$ usermod -g init_group -G init_group,wheel new_user
+$ id -a new_user
+uid=506(new_user) gid=503(init_group) 所属グループ=503(init_group),10(wheel)
+
+## 2. BY ADD USER TO sudoers FILE.
+$ visudo
+############ in visudo ############
+new_user          ALL=(ALL) NOPASSWD: ALL
+############ in visudo ############
+
+## some handy commands
+# show user list
+$ cut -d: -f1 /etc/passwd
+root
+bin
+daemon
+adm
+...
+
+# TODO
+# what is the difference between -g(initial_group) and -G(group)
+
+# Reference
+# (ENG) http://superuser.com/questions/120340/user-not-in-the-sudoers-file-this-incident-will-be-reported
+# (JPN) http://kazmax.zpp.jp/linux_beginner/usermod.html</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   
@@ -47,13 +111,28 @@ sudo service httpd restart
     <link href="http://kinopyo.com/blog/how-to-set-server-date-with-ntp"/>
     <updated>2011-08-19T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/how-to-set-server-date-with-ntp</id>
-    <content type="html"><![CDATA[<p>{% gist 1073555 set_server_time_with_ntpd.sh %}</p>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/1073555.js?file=set_server_time_with_ntpd.sh'></script>
+<noscript><pre><code># stop it first if it's running, 
+# or you will get a warning like: 
+# the NTP socket is in use, exiting
+$ /etc/init.d/ntpd stop
+
+# ntp.nict.jp: 日本標準時プロジェクト 公開NTP
+$ ntpdate ntp.nict.jp
+19 Aug 15:30:18 ntpdate[27156]: step time server 133.243.238.243 offset -856.532277 sec
+
+# start ntp again
+$ /etc/init.d/ntpd start
+
+# confirm
+$ date
+2011年  8月 19日 金曜日 15:32:15 JST
+</code></pre></noscript></div>
+</p>
 
 <h2>NPTについて</h2>
 
-<p>{% blockquote http://linux.kororo.jp/cont/server/ntp.php %}
-ここでは、ネットワーク上のサーバー及びクライアントマシンの時刻同期をとるためのプロトコルであるNTP（Network Time Protocol ）について解説していきます。PCの時刻はマザーボード上のリアルタイムクロック（RTC)によって時間が表示されていますが、この時間はあまり正確ではなく、毎日少しづつ時間が狂っていきます（電池の消耗度にもよりますが、年間約10分程度）。NTPサーバーは、タイムサーバーに接続されたラジオ・クロックや原子時計から時刻を取得し、UTC (協定世界時)に同期させることができます。PCの時刻が狂っていると、メールの送受信時刻が狂ったり、こまめにとっているログの取得時間なども狂ってくることになります。Linuxでは標準でNTPサーバーが付属しているので是非、活用して時刻同期を行いましょう。
-&lt;&lt;</p>
+<p><blockquote><p></p></p><p><p>ここでは、ネットワーク上のサーバー及びクライアントマシンの時刻同期をとるためのプロトコルであるNTP（Network Time Protocol ）について解説していきます。PCの時刻はマザーボード上のリアルタイムクロック（RTC)によって時間が表示されていますが、この時間はあまり正確ではなく、毎日少しづつ時間が狂っていきます（電池の消耗度にもよりますが、年間約10分程度）。NTPサーバーは、タイムサーバーに接続されたラジオ・クロックや原子時計から時刻を取得し、UTC (協定世界時)に同期させることができます。PCの時刻が狂っていると、メールの送受信時刻が狂ったり、こまめにとっているログの取得時間なども狂ってくることになります。Linuxでは標準でNTPサーバーが付属しているので是非、活用して時刻同期を行いましょう。</p></blockquote></p>
 ]]></content>
   </entry>
   
@@ -64,13 +143,18 @@ sudo service httpd restart
     <id>http://kinopyo.com/blog/zshrc-tab-to-autocomplete-case-insensitive</id>
     <content type="html"><![CDATA[<p>下記を.zshrcに記述すればtabで大文字を無視して補完ができるようになります。</p>
 
-<p>{% codeblock %}</p>
-
-<h2>Case-insensitive completion</h2>
-
-<p>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:# ' menu select=1
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h2>Case-insensitive completion&lt;/h2>
+</span><span class='line'>
+</span><span class='line'>&lt;p>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
+</span><span class='line'>zstyle ':completion:# ' menu select=1</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

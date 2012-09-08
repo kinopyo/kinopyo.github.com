@@ -15,7 +15,7 @@ Can't synchronize error, Content is not valid.
 {% endblockquote %}
 
 I googled and found this in the evernote support forum.
-{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&t=23986 %}
+{% blockquote %}
 One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.
 
 On my 10.6.6 box, that command is 65072 bytes:
@@ -34,7 +34,7 @@ So if your `tidy` file size does not match 65072 bytes, just copy on from other 
 なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
 
 公式サイトのサポートでこんな回答を見つかったので共有します。
-{% blockquote http://forum.evernote.com/phpbb/viewtopic.php?f=38&t=23986 %}
+{% blockquote %}
 One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.
 
 On my 10.6.6 box, that command is 65072 bytes:

@@ -18,7 +18,7 @@ $this->Ingredient->category;    // NG
 
 登録/更新には関係なく。
 公式マニュアルでは：
-{% blockquote http://book.cakephp.org/ja/view/75/データを保存する %}
+{% blockquote %}
 一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。
 {% endblockquote %}
 と書いてありますが、id以外のフィールド情報は持ってないようです。

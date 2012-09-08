@@ -408,13 +408,29 @@ $ ruby -v
     <article class="post">
 	<h1 class="title"><a href="/blog/how-to-set-server-date-with-ntp">サーバの時刻確認と設定（NTPで時刻補正）</a></h1>
 	<div class="entry-content">
-		<p>{% gist 1073555 set_server_time_with_ntpd.sh %}</p>
+		<div><script src='https://gist.github.com/1073555.js?file=set_server_time_with_ntpd.sh'></script>
+<noscript><pre><code># stop it first if it's running, 
+# or you will get a warning like: 
+# the NTP socket is in use, exiting
+$ /etc/init.d/ntpd stop
+
+# ntp.nict.jp: 日本標準時プロジェクト 公開NTP
+$ ntpdate ntp.nict.jp
+19 Aug 15:30:18 ntpdate[27156]: step time server 133.243.238.243 offset -856.532277 sec
+
+# start ntp again
+$ /etc/init.d/ntpd start
+
+# confirm
+$ date
+2011年  8月 19日 金曜日 15:32:15 JST
+</code></pre></noscript></div>
+
 
 <h2>NPTについて</h2>
 
-<p>{% blockquote http://linux.kororo.jp/cont/server/ntp.php %}
-ここでは、ネットワーク上のサーバー及びクライアントマシンの時刻同期をとるためのプロトコルであるNTP（Network Time Protocol ）について解説していきます。PCの時刻はマザーボード上のリアルタイムクロック（RTC)によって時間が表示されていますが、この時間はあまり正確ではなく、毎日少しづつ時間が狂っていきます（電池の消耗度にもよりますが、年間約10分程度）。NTPサーバーは、タイムサーバーに接続されたラジオ・クロックや原子時計から時刻を取得し、UTC (協定世界時)に同期させることができます。PCの時刻が狂っていると、メールの送受信時刻が狂ったり、こまめにとっているログの取得時間なども狂ってくることになります。Linuxでは標準でNTPサーバーが付属しているので是非、活用して時刻同期を行いましょう。
-&lt;&lt;</p>
+<blockquote><p>ここでは、ネットワーク上のサーバー及びクライアントマシンの時刻同期をとるためのプロトコルであるNTP（Network Time Protocol ）について解説していきます。PCの時刻はマザーボード上のリアルタイムクロック（RTC)によって時間が表示されていますが、この時間はあまり正確ではなく、毎日少しづつ時間が狂っていきます（電池の消耗度にもよりますが、年間約10分程度）。NTPサーバーは、タイムサーバーに接続されたラジオ・クロックや原子時計から時刻を取得し、UTC (協定世界時)に同期させることができます。PCの時刻が狂っていると、メールの送受信時刻が狂ったり、こまめにとっているログの取得時間なども狂ってくることになります。Linuxでは標準でNTPサーバーが付属しているので是非、活用して時刻同期を行いましょう。</p></blockquote>
+
 
 		
 		

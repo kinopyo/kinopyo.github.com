@@ -12,7 +12,7 @@ categories: ["php", "PHP", "Smarty", "環境構築"]
 
 ## インストール
 githubでも手順がとても分かりやすいので直接引用させていただきます。
-{% blockquote http://wiki.github.com/MrAnchovy/kohana-module-smarty/ %}
+{% blockquote %}
 1. Download the latest version from the links above
 2. Unpack the downloaded file
 3. Move the smarty directory into the Kohana modules directory

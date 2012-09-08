@@ -101,7 +101,7 @@ end</code></pre></noscript></div>
 
 <h3>なぜcapybara_webkit driver使う</h3>
 
-<blockquote><p>Capybara &#8230; currently comes with Rack::Test and Selenium support built in.</p><p>By default, Capybara uses the :rack_test driver, which is fast but does not support JavaScript. You can set up a different default driver for your features.</p><p>The capybara-webkit driver is for true headless testing. It uses QtWebKit to start a rendering engine process. It can execute JavaScript as well. It is significantly faster than drivers like Selenium since it does not load an entire browser.</p></blockquote>
+<blockquote><p>Capybara &#8230; currently comes with Rack::Test and Selenium support built in.</p><p>By default, Capybara uses the :rack_test driver, which is fast but does not support JavaScript. You can set up a different default driver for your features.</p><p>The capybara-webkit driver is for true headless testing. It uses QtWebKit to start a rendering engine process. It can execute JavaScript as well. It is significantly faster than drivers like Selenium since it does not load an entire browser.</p><footer><strong>github</strong> <cite><a href='https://github.com/jnicklas/capybara'>github.com/jnicklas/capybara/&hellip;</a></cite></footer></blockquote>
 
 
 <p>のようにcapybaraは <em>Rack::Test</em>と<em>Selenium</em>のdriverがbuilt-inされて、デフォルトdriverは前者の:rack_testでjavascriptをサポートしないです。<em>Selenium</em>はサポートしますが、それよりも速いのが<em>capybara-webkit</em>なのでそれを採用しました。</p>

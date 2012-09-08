@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails3.1 | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/rails3-1/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-08T16:00:35+09:00</updated>
+  <updated>2012-09-08T18:07:18+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -230,17 +230,17 @@ rails s</p>
 <p>どうやらこのSprocketsというのがポイントのようです。
 ぐぐってみたらgithubでこのようなコメントがありました。</p>
 
-<p><blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem 'sprockets', '2.0.0.beta.2' in your Gemfile.</p></blockquote></p>
+<p><blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem 'sprockets', '2.0.0.beta.2' in your Gemfile.</p><footer><strong>github</strong> <cite><a href='https://github.com/rails/rails/issues/453'>github.com/rails/rails/issues/&hellip;</a></cite></footer></blockquote></p>
 
 <p>のようでGemfileに下記を追記し再度bundle update。</p>
 
-<p>```
-gem 'sprockets', '2.0.0.beta.2'</p>
+<p><code>ruby Gemfile
+gem 'sprockets', '2.0.0.beta.2'
+</code></p>
 
-<p>```</p>
+<p>解決〜</p>
 
-<p>解決〜
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
 ]]></content>
   </entry>
   

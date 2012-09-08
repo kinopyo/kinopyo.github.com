@@ -8,7 +8,7 @@ comments: true
 categories: ["Git", "git"]
 ---
 ## HEAD^
-{% blockquote http://progit.org/book/ch6-1.html#ancestry_references %}
+{% blockquote %}
 If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.
 
 HEAD^, which means “the parent of HEAD”:

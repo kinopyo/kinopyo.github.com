@@ -12,7 +12,7 @@ categories: [nil]
 
 <img src="http://gitbox.pierlis.com/gitbox-screenshot.png" alt="Gitbox"  width="500" height="350"/>
 
-{% blockquote http://gitbox.pierlis.com/}
+{% blockquote %}
 
 Gitbox is a Mac OS X graphical interface for Git version control system. In a single window you see branches, history and working directory status.
 
@@ -23,7 +23,6 @@ Everyday operations are easy: stage and unstage changes with a checkbox. Commit,
 ステージや、コミット、プール、マージなどの作業が
 簡単にできそうです。
 
-<br/>
 まだpreviewバージョンですが、使ってみる価値はあると思います。
 
 ## 使い方

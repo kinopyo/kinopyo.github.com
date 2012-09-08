@@ -7,7 +7,7 @@ permalink: /blog/wordpress-plugin-social-metrics-for-japanese
 comments: true
 categories: ["WordPress"]
 ---
-{% blockquote http://kachibito.net/wordpress/social-metrics-for-japanese.html %}
+{% blockquote %}
 今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる
 {% endblockquote %}
 

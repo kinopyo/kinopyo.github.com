@@ -11,7 +11,7 @@ categories: ["ActionView", "partial", "rails", "Ruby"]
 {% gist 1344066 use_case_sample.erb %}
 
 調べてみたら*defined?*と*local_assigns.has_key?*が見つかりましたが、前者のほうはオススメできなさそうです。
-{% blockquote http://api.rubyonrails.org/classes/ActionView/Base.html %}
+{% blockquote ActionView::Base http://api.rubyonrails.org/classes/ActionView/Base.html %}
 Testing using defined? headline will not work. This is an implementation restriction.
 {% endblockquote %}
 

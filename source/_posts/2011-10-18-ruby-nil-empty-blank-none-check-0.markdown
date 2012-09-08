@@ -7,7 +7,7 @@ permalink: /blog/ruby-nil-empty-blank-none-check-0
 comments: true
 categories: ["Ruby"]
 ---
-{% blockquote http://ameblo.jp/ootokage/entry-10314565693.html %}
+{% blockquote %}
 よくつかうメソッドの nil? empty? blank? のまとめ。
 
 nil? すべてのオブジェクトにある。nilのときにTrueを返す。
@@ -22,7 +22,7 @@ PHP使うときは*empty(0)</em>でtrueになりますが、上記のメソッ�
 
 迷ったらここにいっぱいサンプルがあります。
 
-{% blockquote http://underrails.seesaa.net/article/135698039.html %}
+{% blockquote %}
 0.nil? #=> false
 0.zero? #= true
 0.empty? #=> NoMethodError

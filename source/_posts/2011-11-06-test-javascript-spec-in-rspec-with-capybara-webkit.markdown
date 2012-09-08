@@ -21,7 +21,7 @@ categories: ["capybara", "rails", "rspec", "Ruby", "webkit"]
 
 ## capybara_webkit driver
 ### なぜcapybara_webkit driver使う
-{% blockquote https://github.com/jnicklas/capybara %}
+{% blockquote github https://github.com/jnicklas/capybara %}
 Capybara ... currently comes with Rack::Test and Selenium support built in.
 
 By default, Capybara uses the :rack_test driver, which is fast but does not support JavaScript. You can set up a different default driver for your features.
