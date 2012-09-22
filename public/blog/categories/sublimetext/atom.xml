@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SublimeText | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/sublimetext/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T15:21:21+09:00</updated>
+  <updated>2012-09-22T16:18:38+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MarkdownEditing - SublimeText plugin to make your markdown looks like iA Writer]]></title>
+    <link href="http://kinopyo.com/blog/markdownediting-sublimetext-plugin-to-make-your-markdown-looks-like-ia-writer/"/>
+    <updated>2012-09-22T15:35:00+09:00</updated>
+    <id>http://kinopyo.com/blog/markdownediting-sublimetext-plugin-to-make-your-markdown-looks-like-ia-writer</id>
+    <content type="html"><![CDATA[<p>If you're using SublimeText and also a fan of <a href="http://www.iawriter.com/">iA Writer</a> , you may want to check this plugin called <a href="https://github.com/ttscoff/MarkdownEditing">MarkdownEditing</a>. It provides a iA Writer-like interface to your SublimeText.</p>
+
+<h2>How does it look like?</h2>
+
+<p>A picture is worth a thousand words:</p>
+
+<p><img src="http://kinopyo.com/wp-content/MarkdownEditing.png" alt="MarkdownEditing" /></p>
+
+<h2>Install</h2>
+
+<p>Use <code>cmd+shift+P</code> then Package <code>Control: Install Package</code>, type <code>MarkdownEditing</code> to install it, then any markdown file will get associated.</p>
+
+<h2>Other Features</h2>
+
+<p>Besides iA Writer-like UI it also has many other features like:</p>
+
+<ul>
+<li>Asterisks, underscores and parenthesis are auto paired and will wrap selected text</li>
+<li>⌘⌥V will paste the contents of the clipboard as an inline link on selected text</li>
+<li>⌘⌥K inserts a standard inline link, ⌘⇧K inserts an inline image</li>
+<li>⌘⌥B and ⌘⌥I are bound to bold and italics (Markdown).</li>
+<li>...</li>
+</ul>
+
+
+<p>So, how do you think?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sync SublimeText2 Settings with Dropbox]]></title>

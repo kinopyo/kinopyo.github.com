@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Compass A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:Compass CoreBlueprint960SusyYUINew &hellip;">
+	<meta name="description" content="My環境 XAMPP1.7.3 + WinXP
+ダウンロードはこちら memcache側の設定 memcacheのインストール手順 http://code.jellycan.com/memcached/よりmemcached 1.2.6 => win32 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,139 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-memcache-in-windows-setup-php">Windowsにmemcacheをインストール、PHPの設定</a></h1>
+	<div class="entry-content">
+		<h2>My環境</h2>
+
+<p>XAMPP1.7.3 + WinXP
+ダウンロードは<a href="http://www.apachefriends.org/en/xampp-windows.html">こちら</a></p>
+
+<h2>memcache側の設定</h2>
+
+<h3>memcacheのインストール手順</h3>
+
+<ul>
+<li><a href="http://code.jellycan.com/memcached/">http://code.jellycan.com/memcached/</a>より<strong>memcached 1.2.6 => win32 binary</strong>バージョンのファイルをダウンロード
++zipファイルを適当な場所(例えばc:\memcached)に解凍
++コマンドプロンプトから下記コマンドを叩く、Windowsサービスとしてインストール。これで今度Windowsが起動すると自動でmemcacheサーバが起動してくれる。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached.exe -d install</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>memcacheの起動(初回のみ)</h3>
+
+<p>コマンドプロンプト</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached\memcached.exe -d start</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>php側</h2>
+
+<h3>php.iniの設定</h3>
+
+<p>XAMPPのパス/php/php.iniを編集：下記コードを追加</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>extension = php_memcache.dll</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここはLinux環境と違い拡張子が.soではなく.dll。</p>
+
+<h3>php_memcache.dllのダウンロード</h3>
+
+<p><a href="http://downloads.php.net/pierre/">http://downloads.php.net/pierre/</a>から&#8217;memcache&#8217;を検索して正しいバージョンのファイルをダウンロード。
+そしてxampp/php/extに入れる。</p>
+
+<br/>
+
+
+<p>ここで問題！正しいバージョンはなんなのか？間違ってダウンロードすると後でApacheサーバを立ち上がるときエラーが出るよ。私の環境だと<b>php_memcache-cvs-20090703-5.3-VC6-x86.zip</b>のファイルが正しいけど、今時点で上記URLには載せていない。結構ググって見ても結局古い結果で、しょうがなく友人からそのファイル貰った。。。ここにアップしたので、必要な方はダウンロードしてください。ウイルススキャンしてね。。
+<a href='http://www.kinopyo.com/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a></p>
+
+<h2>動作確認</h2>
+
+<p>xamppでapacheサーバを起動、下記内容をphpファイルと保存してサーバのDocumentパス(デフォルトではXAMPP/htdocs)に置く。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>    <span class="nv">$memcache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memcache</span><span class="p">;</span> <span class="c1">// instantiating memcache extension class</span>
+</span><span class='line'>    <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="mi">11211</span><span class="p">);</span> <span class="c1">// try 127.0.0.1 instead of localhost</span>
+</span><span class='line'>                                           <span class="c1">// if it is not working</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">echo</span> <span class="s2">&quot;Server&#39;s version: &quot;</span> <span class="o">.</span> <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">getVersion</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// we will create an array which will be stored in cache serialized</span>
+</span><span class='line'>    <span class="nv">$testArray</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$tmp</span>       <span class="o">=</span> <span class="nb">serialize</span><span class="p">(</span><span class="nv">$testArray</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="nv">$tmp</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">echo</span> <span class="s2">&quot;Data from the cache:&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">print_r</span><span class="p">(</span><span class="nb">unserialize</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)));</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>おまけ：memcacheメモリの調整</h2>
+
+<blockquote><p>Memcached, by default, loads with 64mb of memory for it’s use which is low for most applications. To change this to something else, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server in your registry, find the ImagePath entry and change it to look something like this:</p><p>“C:\memcached\memcached.exe” -d runservice -m 512</p></blockquote>
+
+
+<h2>参考</h2>
+
+<p><a href="http://www.codeforest.net/how-to-install-memcached-on-windows-machine">http://www.codeforest.net/how-to-install-memcached-on-windows-machine</a>
+<a href="http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/">http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-26T00:00:00+09:00" pubdate data-updated="true">2010-11-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -771,54 +905,6 @@ alt+ctrl+back_space</p>
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-smarty-module-to-kohan">Kohana3にSmarty moduleをインストール</a></h1>
-	<div class="entry-content">
-		<h2>ダウンロード</h2>
-
-<p><a href="http://wiki.github.com/MrAnchovy/kohana-module-smarty/">http://wiki.github.com/MrAnchovy/kohana-module-smarty/</a></p>
-
-<h2>インストール</h2>
-
-<p>githubでも手順がとても分かりやすいので直接引用させていただきます。</p>
-
-<blockquote><p>1. Download the latest version from the links above<br/>2. Unpack the downloaded file<br/>3. Move the smarty directory into the Kohana modules directory<br/>4. Enable the module in your application’s bootstrap.php<br/>Kohana::modules(array(<br/>  ‘auth’ => MODPATH.‘auth’, // Basic authentication<br/>  // ‘cache’ => MODPATH.‘cache’, // Caching with multiple backends<br/>   // ‘codebench’ => MODPATH.‘codebench’, // Benchmarking tool<br/>    ‘database’ => MODPATH.‘database’, // Database access<br/>   // ‘image’ => MODPATH.‘image’, // Image manipulation<br/>   ‘orm’ => MODPATH.‘orm’, // Object Relationship Mapping<br/> ‘pagination’ => MODPATH.‘pagination’, // Paging of results<br/> ‘userguide’ => MODPATH.‘userguide’, // User guide and API documentation<br/>    <strong>&#8216;smarty&#8217; => MODPATH.&#8217;smarty&#8217;, // smarty template module. </strong><br/>));<br/>5. Visit the page www.yoursite.com/smarty to confirm all is OK</p></blockquote>
-
-
-<h2>その他リンク</h2>
-
-<p>このモジュールのファイル構造: <a href="http://github.com/MrAnchovy/kohana-module-smarty/wiki/file-structure">http://github.com/MrAnchovy/kohana-module-smarty/wiki/file-structure</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-25T00:00:00+09:00" pubdate data-updated="true">2010-09-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>

@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="スレット経緯 bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
-実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
-githubのスレット 一個スペースが多かったですね。。 &hellip;">
+	<meta name="description" content="昨日の記事http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-threadにも簡単に述べましたが、DalliはHerokuでお勧められているMemcachedのGemです。正確にはpure &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +71,91 @@ githubのスレット 一個スペースが多かったですね。。 &hellip;"
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/memcached-gem-dalli-with-heroku-rails-sinatra">HerokuとRails,Sinatraで使えるMemcached Gem Dalli</a></h1>
+	<div class="entry-content">
+		<p>昨日の記事<a href="http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread">http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</a>にも簡単に述べましたが、DalliはHerokuでお勧められているMemcachedのGemです。正確にはpure ruby memcache-clientです。</p>
+
+<p>インストールと使い方をGistで公開しています。</p>
+
+<div><script src='https://gist.github.com/1039656.js?file='></script>
+<noscript><pre><code># Herodu Dev Center Doc:
+# http://devcenter.heroku.com/articles/memcache
+# Dalli gem heroku url:
+# https://github.com/mperham/dalli
+
+#######################
+# Local Setup memcached
+#######################
+
+sudo port install memcached
+
+# run the memcached daemon:
+memcached -vv
+
+#######################
+#Using Memcache with Sinatra
+#######################
+
+# add gem to .gems (or Gemfile)
+dalli
+
+# install the gem
+sudo gem install dalli
+
+# require it first
+require &quot;dalli&quot;
+
+# add cache setting to yourapp.rb
+# eg.cache for 10 min here. deault options is never expire
+cache = Dalli::Client.new(nil, {:expires_in =&gt; 60*10})
+set :cache, cache
+
+# how to use
+settings.cache.set('color', 'blue')
+settings.cache.get('color')  # =&gt; 'blue'
+
+#######################
+# Deploy to Heroku
+#######################
+
+heroku addons:add memcache</code></pre></noscript></div>
+
+
+<p>参考サイト：
+<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a>
+<a href="https://github.com/mperham/dalli">https://github.com/mperham/dalli</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-23T00:00:00+09:00" pubdate data-updated="true">2011-06-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/memcached/'>memcached</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -584,41 +667,6 @@ Disqusの管理画面で確認したらステータスが&#8221;Queued for impor
 
 
 	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/plugin/'>plugin</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/cute-cats">会社近くの公園の子猫</a></h1>
-	<div class="entry-content">
-		<p><em>gallery link=&#8221;file&#8221;</em></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-25T00:00:00+09:00" pubdate data-updated="true">2011-05-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>diary</a>
 
 
 </div>
