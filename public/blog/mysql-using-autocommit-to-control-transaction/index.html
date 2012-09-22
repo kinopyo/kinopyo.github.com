@@ -26,11 +26,10 @@
 17
 18
 19
-20
--暗黙(自動)コミットを無効に
+--暗黙(自動)コミットを無効に
 SET AUTOCOMMIT = 0;
--トランザクション開始
-BEGIN; - &hellip;">
+--トランザクション開始
+BEGIN; -- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -116,26 +115,24 @@ BEGIN; - &hellip;">
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを無効に</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="c1">--暗黙(自動)コミットを無効に</span>
 </span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="o">-</span><span class="err">トランザクション開始</span>
+</span><span class='line'><span class="c1">--トランザクション開始</span>
 </span><span class='line'><span class="k">BEGIN</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="k">SQL</span><span class="err">文をながす</span>
+</span><span class='line'><span class="c1">--SQL文をながす</span>
 </span><span class='line'><span class="k">UPDATE</span><span class="p">...</span>
 </span><span class='line'><span class="k">INSERT</span><span class="p">...</span>
-</span><span class='line'><span class="p">...</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="err">コミット</span>
+</span><span class='line'><span class="c1">--コミット</span>
 </span><span class='line'><span class="k">COMMIT</span><span class="p">;</span>
-</span><span class='line'><span class="o">-</span><span class="err">あるいはロールバック</span>
+</span><span class='line'><span class="c1">--あるいはロールバック</span>
 </span><span class='line'><span class="k">ROLLBACK</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットを有効に</span>
+</span><span class='line'><span class="c1">--暗黙(自動)コミットを有効に</span>
 </span><span class='line'><span class="k">SET</span> <span class="n">AUTOCOMMIT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">-</span><span class="err">暗黙</span><span class="p">(</span><span class="err">自動</span><span class="p">)</span><span class="err">コミットのステータスを確認</span>
+</span><span class='line'><span class="c1">--暗黙(自動)コミットのステータスを確認</span>
 </span><span class='line'><span class="k">SELECT</span> <span class="o">@@</span><span class="n">AUTOCOMMIT</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure>
 

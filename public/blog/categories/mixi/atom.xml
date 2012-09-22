@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mixi | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/mixi/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -44,11 +44,16 @@
 
 <h2>参考リンク</h2>
 
-<p>同じ現象にあった方がいました: <a href="http://d.hatena.ne.jp/phantasmist/20110224">http://d.hatena.ne.jp/phantasmist/20110224</a>
-<a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/</a>
-<a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">http://developer.mixi.co.jp/appli/spec/mob/pages_api/</a>
-<a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">http://oauth.net/core/1.0/#rfc.section.A.5.1</a>
-<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a></p>
+<p>同じ現象にあった方がいました:</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/phantasmist/20110224">Mixi OAuth POST時のシグネチャ検証 - phantasmistの日記</a></li>
+<li><a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">OAuth Signatureの検証方法について &lt;&lt; mixi Developer Center (ミクシィ デベロッパーセンター)</a></li>
+<li><a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">ページ遷移とAPIアクセス &lt;&lt; mixi Developer Center (ミクシィ デベロッパーセンター)</a></li>
+<li><a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">OAuth Core 1.0</a></li>
+<li><a href="http://oauth.net/core/1.0a/#anchor13">OAuth Core 1.0a</a></li>
+</ul>
+
 ]]></content>
   </entry>
   

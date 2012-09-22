@@ -19,7 +19,8 @@ WordPress管理画面から「subscribe-to-comments」を検索してインス�
 
 ## カスタマイズ
 初期設定ではメールの本文が英語となっています。
-{% img http://kinopyo.com/wp-content/uploads/2009/12/コメント更新通知のメール.jpg  %}
+
+{% img http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_en.jpg %}
 
 <br/>
 それを日本語にカスタマイズしてみました。
@@ -30,13 +31,14 @@ WordPress管理画面から「subscribe-to-comments」を検索してインス�
 <br/>
 以下自分のサンプルです。
 
-<br/>
+```plain
 :There is a new comment on the post:新規のコメントが投稿されました。
 :See all comments on this post here:すべてのコメントを確認するには下記のリンクをクリックしてください
 :Author:お名前
 :Comment:コメント
 :To manage your subscriptions or to block all notifications from this site, click the link below:コメント閲覧を管理、このサイトからの通知をブロックするには下記のリンクをクリックしてください
+```
 
 <br/>
 修正後のメール本文はこんな風になりました。
-{% img http://kinopyo.com/wp-content/uploads/2009/12/コメント更新通知のメールを日本語化.jpg  %}
+{% img http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_jp.jpg  %}

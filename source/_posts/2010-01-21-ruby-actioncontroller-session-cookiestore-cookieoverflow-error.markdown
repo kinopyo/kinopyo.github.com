@@ -5,7 +5,7 @@ date: 2010-1-21
 wordpress_id: 882
 permalink: /blog/ruby-actioncontroller-session-cookiestore-cookieoverflow-error
 comments: true
-categories: [nil]
+categories: Rails
 ---
 セッションを使って、データを保存する時、
 以下のエラーが表示されました。
@@ -21,21 +21,20 @@ ActionController::Session::CookieStore::CookieOverflow
 ### 解決方法：
 セッションデータをDBに保存します。
 
-+  セッションデータを保存用テーブルを作成します。
++ セッションデータを保存用テーブルを作成します。
 以下のコマンドを実行します。
 
-```plain
-
+```ruby
 rake db:sessions:create
 rake db:migrate
-{% endcodeblock %}
-
-+  config/environment.rbで以下の行をコメントアウトします。
-<pre class="brush:plain">
-  config.action_controller.session_store = :active_record_store
-
 ```
 
-+  サーバーを再起動します。
++ config/environment.rbで以下の行をコメントアウトします。
+
+```ruby
+config.action_controller.session_store = :active_record_store
+```
+
++ サーバーを再起動します。
 
 これで、解決です。

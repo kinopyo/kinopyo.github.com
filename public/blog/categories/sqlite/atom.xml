@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sqlite | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/sqlite/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -20,46 +20,27 @@
     <id>http://kinopyo.com/blog/mysql-using-autocommit-to-control-transaction</id>
     <content type="html"><![CDATA[<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
 
-<p>```sql</p>
+<p>```sql
+--暗黙(自動)コミットを無効に
+SET AUTOCOMMIT = 0;
+--トランザクション開始
+BEGIN;</p>
 
-<pre><code>-暗黙(自動)コミットを無効に
-</code></pre>
+<p>--SQL文をながす
+UPDATE...
+INSERT...</p>
 
-<p>SET AUTOCOMMIT = 0;</p>
+<p>--コミット
+COMMIT;
+--あるいはロールバック
+ROLLBACK;</p>
 
-<pre><code>-トランザクション開始
-</code></pre>
+<p>--暗黙(自動)コミットを有効に
+SET AUTOCOMMIT = 1;</p>
 
-<p>BEGIN;</p>
-
-<pre><code>-SQL文をながす
-</code></pre>
-
-<p>UPDATE...
-INSERT...
-...</p>
-
-<pre><code>-コミット
-</code></pre>
-
-<p>COMMIT;</p>
-
-<pre><code>-あるいはロールバック
-</code></pre>
-
-<p>ROLLBACK;</p>
-
-<pre><code>-暗黙(自動)コミットを有効に
-</code></pre>
-
-<p>SET AUTOCOMMIT = 1;</p>
-
-<pre><code>-暗黙(自動)コミットのステータスを確認
-</code></pre>
-
-<p>SELECT @@AUTOCOMMIT;</p>
-
-<p>```</p>
+<p>--暗黙(自動)コミットのステータスを確認
+SELECT @@AUTOCOMMIT;
+```</p>
 ]]></content>
   </entry>
   

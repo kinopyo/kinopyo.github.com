@@ -3,13 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Rails ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError - Yet Another Kinopyo Blog</title>
+	<title>Rails HasAndBelongsToMany Association With Primary Key Error - Yet Another Kinopyo Blog</title>
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Railsでhas_and_belongs_to_manyを使うときにこんなエラーが出ました。
-ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyErrorの中身は： 1
-Primary key is not allowed in &hellip;">
+	<meta name="description" content="When using has_and_belongs_to_many, I ran into this error,
+ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError 1
+Primary key is not &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,75 +73,9 @@ Primary key is not allowed in &hellip;">
 
 </header>
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Rails ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</h1>
-	<div class="entry-content"><p>Railsでhas_and_belongs_to_manyを使うときにこんなエラーが出ました。
-<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>の中身は：</p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これはメッセージの通りリンクテーブル（ここではarticles_users）にPKが設定されたからです。</p>
-
-<h2>解決方法</h2>
-
-<p><em>:id => false</em>をmigration文に追加すればOKです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>中文</h1>
-
-<p>在使用Rails的has_and_belongs_to_many的时候，遇到了<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>异常。内容如下：</p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>也就是说articles_users的表里设置了PK所导致。</p>
-
-<h2>解决方法</h2>
-
-<p>将<em>:id => false</em>添加到migration的create_table语句后面</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>English</h1>
-
-<p>When using has_and_belongs_to_many, I run into this error,
+	<h1 class="title">Rails HasAndBelongsToMany Association With Primary Key Error</h1>
+	<div class="entry-content"><p>When using has_and_belongs_to_many, I ran into this error,
 <em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em></p>
-
-<br/>
-
-
-
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
@@ -183,7 +117,7 @@ Primary key is not allowed in &hellip;">
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

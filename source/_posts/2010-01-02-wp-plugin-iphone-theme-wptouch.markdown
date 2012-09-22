@@ -10,6 +10,7 @@ categories: [nil]
 iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
 12月で1.68%でした。
 僅かな割合なんですが、それでもうれしいです。
+
 {% img http://kinopyo.com/wp-content/uploads/2010/01/Blog-Browsers-and-OS.jpg Blog-Browsers-and-OS %}
 
 ## WPTouch
@@ -21,7 +22,10 @@ WPTouchはiPhone閲覧に最適にしてくれるWPプラグインです。
 今のところFollow Meのプラグインがうまく表示されませんが、
 これはFlashがiPhoneではサポートされてないからです。
 
-{% img http://kinopyo.com/wp-content/uploads/2010/01/初期画面、記事一覧.jpg 初期画面：記事一覧 %}
-{% img http://kinopyo.com/wp-content/uploads/2010/01/記事概要.jpg 記事概要 %}
-{% img http://kinopyo.com/wp-content/uploads/2010/01/記事詳細.jpg 記事詳細 %}
-{% img http://kinopyo.com/wp-content/uploads/2010/01/カテゴリ、タグ、コメント.jpg カテゴリ、タグ、コメント %}
+{% img http://kinopyo.com/wp-content/uploads/2010/01/article_lists.jpg 初期画面：記事一覧 %}
+
+{% img http://kinopyo.com/wp-content/uploads/2010/01/article_preview.jpg 記事概要 %}
+
+{% img http://kinopyo.com/wp-content/uploads/2010/01/article_detail.jpg 記事詳細 %}
+
+{% img http://kinopyo.com/wp-content/uploads/2010/01/article_metadata.jpg カテゴリ、タグ、コメント %}

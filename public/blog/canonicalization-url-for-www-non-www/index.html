@@ -82,11 +82,8 @@
 この正規化というのは非常に重要で、検索エンジンに対しての知らせです。
 Googleのヘルプによると下記の解説になります。</p>
 
-<p>{% blockquote }</p>
+<blockquote><p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p></blockquote>
 
-<p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p>
-
-<p>{% endblockquote %}</p>
 
 <p>なので&#8221;wwwあり&#8221;と&#8221;wwwなし&#8221;が同じサイトであれば
 正規化する必要があります。</p>
@@ -99,34 +96,24 @@ Googleのヘルプによると下記の解説になります。</p>
 .htaccessファイルはwww.kinopyo.comのディレクトリに置いてあればOKです。
 設定に基づいてリダイレクトします。</p>
 
-<ul>
-<li>wwwありに統一</li>
-</ul>
-
+<h3>wwwありに統一</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>RewriteEngine on
-</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com *NC*
-</span><span class='line'>RewriteRule ^(.# )$ http://www.example.com/$1 *R=301,L*
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>+  wwwなしに統一
-</span><span class='line'>&lt;pre class="brush:plain"&gt;
-</span><span class='line'>RewriteEngine on
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com [NC]
+</span><span class='line'>RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>wwwなしに統一</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
 </span><span class='line'>RewriteCond %{HTTP_HOST} ^www.example\.com *NC*
-</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*</span></code></pre></td></tr></table></div></figure>
 
 
 <p>※”example.com”は自分のドメイン名に置き換えてください。</p>
@@ -138,18 +125,21 @@ Googleのヘルプによると下記の解説になります。</p>
 ここでは自分が&#8221;www有り無し&#8221;をGoogleに伝えるための設定をします。
 そうしないとGoogleは&#8221;www有り無し&#8221;をそれぞれ別のページへの異なる参照として処理されます。</p>
 
-<ul>
-<li><p>Googleウェブマスターツール使うにはまずサイトを登録
-サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。
-{% img http://www.kinopyo.com/wp-content/uploads/2010/01/Googleウェブマスターツール.jpg Googleウェブマスターツール %}
-Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
-(具体的な認証方法はGoogleのヘルプを見てください)</p></li>
-<li><p>使用するドメイン
-登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
-利用するドメイン、つまりwww有りなしを指定してください。
-{% img http://www.kinopyo.com/wp-content/uploads/2010/01/ウェブマスター-ツール-設定.jpg Googleウェブマスターツール %}</p></li>
-</ul>
+<h3>Googleウェブマスターツール使うにはまずサイトを登録</h3>
 
+<p>サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool.jpg" title="Googleウェブマスターツール" ></p>
+
+<p>Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
+(具体的な認証方法はGoogleのヘルプを見てください)</p>
+
+<h3>使用するドメイン</h3>
+
+<p>登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
+利用するドメイン、つまりwww有りなしを指定してください。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool_setting.jpg" title="Googleウェブマスターツール" ></p>
 
 <h2>Wordpressお使いの方は注意を</h2>
 
@@ -181,7 +171,7 @@ Wordpressの仕様は調べていないが、どうやらWordpressの設定に�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
 
 
 </div>

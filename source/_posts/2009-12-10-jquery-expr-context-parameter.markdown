@@ -9,17 +9,15 @@ categories: [nil]
 ---
 今まで平気に$(expression)を使ってきましたが、
 この二番目のcontextパラメータでセレクタの範囲を決まることができます。
-<br/>
 この関数はjQueryのコア関数で幅広く使われ、
 もっとも一般的な使い方はcontextを省略したものでしょう。
 
 ```javascript
-
 $("div")
-{% endcodeblock %}
+```
 
 ## contextパラメータ
-{% blockquote }
+{% blockquote %}
 
 contextが何も指定されなければ、$()関数は現在のHTMLのDOMエレメントを検索する。
 逆にDOMエレメントやjQueryオブジェクトなどのcontextが指定されれば、expressionはそのcontextに対して合致するものを捜します。
@@ -27,10 +25,9 @@ contextが何も指定されなければ、$()関数は現在のHTMLのDOMエレ
 {% endblockquote %}
 簡単にいうとfind()関数と似ています。
 実践でいうと以下の二つは同じ機能をしています。
-<pre class="brush: javascript">
+```javascript
 $("body").find("div");
 $("div,body");
-
 ```
 
 ## 参考サイト

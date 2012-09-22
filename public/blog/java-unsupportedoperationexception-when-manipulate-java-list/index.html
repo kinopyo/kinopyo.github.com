@@ -96,12 +96,10 @@ String** array = {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}; List&lt;String&g
 
 <p>ちょこっとググッてみたらasListで作ったListに
 add()で要素を追加すると上記のExceptionになるそうです。
-asListのJavadocでの記載は
-{% blockquote }</p>
+asListのJavadocでの記載は</p>
 
-<p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p>
+<blockquote><p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p></blockquote>
 
-<p>{% endblockquote %}</p>
 
 <p>なるほど。。。
 とりあえず深く考えずに下記のように書き換えて回避しました。</p>

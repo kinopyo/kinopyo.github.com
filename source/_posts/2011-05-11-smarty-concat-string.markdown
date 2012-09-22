@@ -11,12 +11,3 @@ categories: ["Smarty"]
 {"`$foo` plain text `$bar`"}
 
 ```
-
-# 日本語
-
-こんな感じです。
-
-```php
-{"`$foo` plain text `$bar`"}
-
-```

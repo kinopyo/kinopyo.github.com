@@ -74,40 +74,44 @@ swtich文を評価しtrueであれば要素を表示、falseであれば非表�
 </header>
 	<div id="content" class="inner"><article class="post">
 	<h1 class="title">jQueryのtoggle(switch)が大変便利、条件文5行のコードが1行に短縮！</h1>
-	<div class="entry-content"><div class="section">
-<p>toggle()の普通の使い方は多分皆さんご存知だと思います。</p>
-<p>該当要素をクリックするたびに表示/非表示を切り替えます。</p>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091128134759" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134759.gif" alt="f:id:kinopyo:20091128134759g:image:right" title="f:id:kinopyo:20091128134759g:image:right" class="hatena-fotolife hatena-image-right"></a></p>
-<p>今日紹介するのはこのswitchパラメータ付のtoggleです。</p>
-<p><span style="font-weight:bold;">swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。</span></p>
-<p>これで下記のコードがこのswtich付きのtoggle文なら一行ですみます。</p>
+	<div class="entry-content"><p>toggle()の普通の使い方は多分皆さんご存知だと思います。
+該当要素をクリックするたびに表示/非表示を切り替えます。</p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134759.gif" alt="" /></p>
+
+<p>今日紹介するのはこのswitchパラメータ付のtoggleです。
+<strong>swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。</strong>
+これで下記のコードがこのswtich付きのtoggle文なら一行ですみます。</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
 </span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これがこうなります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">toggle</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
-<p>どうですか？すごくないですか？</p>
-<p>まさにjQueryの「The Write Less, Do More」ですよね。</p>
-<p>ただし判断の条件文が行の最後になるので、</p>
-<p>読みやすさは多少落ちると思います。</p>
-<br/>
-<p>ちなみに、Googleの単語とよく似ているので、ついついtoogleと書いちゃいますorz</p>
-</div>
 
+
+<p>これがこうなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">toggle</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうですか？すごくないですか？
+まさにjQueryの「The Write Less, Do More」ですよね。
+ただし判断の条件文が行の最後になるので、
+読みやすさは多少落ちると思います。</p>
+
+<br/>
+
+
+<p>ちなみに、Googleの単語とよく似ているので、ついついtoogleと書いちゃいますorz</p>
 </div>
 
 

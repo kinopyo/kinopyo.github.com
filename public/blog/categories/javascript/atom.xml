@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -97,28 +97,28 @@ git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript.tmbundl
     <content type="html"><![CDATA[<h2>PHP側で</h2>
 
 <p>```php
-echo $_GET<em>'callback'</em> . '(' . json_encode($object) . ');';</p>
+echo $_GET['callback'] . '(' . json_encode($object) . ');';</p>
 
 <p>```</p>
 
 <h2>JS側で</h2>
 
-<p>```javascript</p>
+<p>```javascript
+$(function(){
+   $.getJSON('foo.php?callback=?',</p>
 
-<pre><code>$(function(){
-     $.getJSON('foo.php?callback=?',
-                {},  // No additional parameters sent
-                function (data) {
-                     // data is now JSON object instantiated from retrieved info
-                     alert(data*'key'*);
-     });
-});
+<pre><code>{},  // No additional parameters sent
+function (data) {
+   // data is now JSON object instantiated from retrieved info
+   alert(data*'key'*);
 </code></pre>
 
-<p>```</p>
+<p>   });
+});
+```</p>
 
 <p>参考：
-<a href="http://www.carolinamantis.com/wordpress/?p=29">http://www.carolinamantis.com/wordpress/?p=29</a></p>
+<a href="http://www.carolinamantis.com/wordpress/?p=29">Mantis and Jessamine | Creating a JSONP Data Provider in PHP</a></p>
 ]]></content>
   </entry>
   

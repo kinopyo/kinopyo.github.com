@@ -30,8 +30,10 @@ MixiモバイルアプリのフォームからPOSTするとOAuth Signatureが不
 
 
 ## 参考リンク
-同じ現象にあった方がいました: [http://d.hatena.ne.jp/phantasmist/20110224](http://d.hatena.ne.jp/phantasmist/20110224)
-[http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/](http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/)
-[http://developer.mixi.co.jp/appli/spec/mob/pages_api/](http://developer.mixi.co.jp/appli/spec/mob/pages_api/)
-[http://oauth.net/core/1.0/#rfc.section.A.5.1](http://oauth.net/core/1.0/#rfc.section.A.5.1)
-[http://oauth.net/core/1.0a/#anchor13](http://oauth.net/core/1.0a/#anchor13)
+同じ現象にあった方がいました: 
+
+- [Mixi OAuth POST時のシグネチャ検証 - phantasmistの日記](http://d.hatena.ne.jp/phantasmist/20110224)
+- [OAuth Signatureの検証方法について << mixi Developer Center (ミクシィ デベロッパーセンター)](http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/)
+- [ページ遷移とAPIアクセス << mixi Developer Center (ミクシィ デベロッパーセンター)](http://developer.mixi.co.jp/appli/spec/mob/pages_api/)
+- [OAuth Core 1.0](http://oauth.net/core/1.0/#rfc.section.A.5.1)
+- [OAuth Core 1.0a](http://oauth.net/core/1.0a/#anchor13)

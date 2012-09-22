@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xml | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/xml/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,24 +18,14 @@
     <link href="http://kinopyo.com/blog/cakephp-xml-to-array"/>
     <updated>2011-05-15T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/cakephp-xml-to-array</id>
-    <content type="html"><![CDATA[<p>```php
-uses('Xml');
-$xml = new Xml("/path/to/xml");
-$xml_array = Set::reverse($xml);</p>
-
-<p>```</p>
-
-<h1>日本語</h1>
-
-<p>CakephpでXMLを配列に変換するのはとても簡単です。
+    <content type="html"><![CDATA[<p>CakephpでXMLを配列に変換するのはとても簡単です。
 下記のファンクションを使えば一発でできます。</p>
 
-<p>```php
+<p><code>php
 uses('Xml');
 $xml = new Xml("/path/to/xml");
-$xml_array = Set::reverse($xml);</p>
-
-<p>```</p>
+$xml_array = Set::reverse($xml);
+</code></p>
 ]]></content>
   </entry>
   

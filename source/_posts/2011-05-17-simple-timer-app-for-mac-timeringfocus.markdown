@@ -14,6 +14,7 @@ Mac専用になります。
 <br/>
 時間の設定にはマウスクリックするか、キーボードのTabキーでhh:mm:ss間で切り替えられます。
 そして時間を入力してreturnキー(Enterキー)を押せば設定完了です。とてもシンプルです。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/05/TimeRingFocus.png TimeRingFocus %}
 
 <br/>
@@ -26,6 +27,7 @@ Mac専用になります。
 <br/>
 *Setup*ボタンで設定画面に行きますが、こちらのsoundを「Glass」に設定しています。
 全部試しましたが、これが一番いいかと思います。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/05/TimeRingFocus-Setting.png TimeRingFocus Setting %}
 
 <br/>

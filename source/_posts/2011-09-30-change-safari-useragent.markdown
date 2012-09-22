@@ -8,7 +8,9 @@ comments: true
 categories: ["safari", "Safari", "UserAgent"]
 ---
 SafariのPreferences-> Advancedタブで"Show Develop menu in menu bar"をチェックします。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg Safari-show-develop-menu-in-menu-bar %}
 
 これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg Safari-change-useragent %}

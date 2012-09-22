@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 環境構築 | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/環境構築/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -81,7 +81,7 @@ $ ruby -v
     <link href="http://kinopyo.com/blog/turn-textmate-to-lion-full-screen"/>
     <updated>2011-08-16T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/turn-textmate-to-lion-full-screen</id>
-    <content type="html"><![CDATA[<p>```
+    <content type="html"><![CDATA[<p>```bash
 git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen</p>
 
 <p>xcodebuild -project /tmp/EGOTextMateFullScreen/EGOTextMateFullScreen.xcodeproj -target EGOTextMateFullScreen</p>
@@ -90,12 +90,12 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 
 <h1>after installed</h1>
 
-<p>rm -rf /tmp/EGOTextMateFullScreen/</p>
+<p>rm -rf /tmp/EGOTextMateFullScreen/
+```</p>
 
-<p>```</p>
+<p>これが完成図！</p>
 
-<p>これが完成図！
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg" title="textmate_fullscreen" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg" alt="Textmate Fullscreen" /></p>
 ]]></content>
   </entry>
   

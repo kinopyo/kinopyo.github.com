@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[alfred post test]]></title>
+    <link href="http://kinopyo.com/blog/how-i-keep-my-self-as-positive-as-possible-these-days/"/>
+    <updated>2012-09-22T22:24:00+09:00</updated>
+    <id>http://kinopyo.com/blog/how-i-keep-my-self-as-positive-as-possible-these-days</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MarkdownEditing - SublimeText plugin to make your markdown looks like iA Writer]]></title>
@@ -714,49 +723,6 @@ test:
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Railsテスト時のrack警告"warning: regexp match /.../n against to UTF-8 string"を消す方法]]></title>
-    <link href="http://kinopyo.com/blog/rails-test-quietrack-warning"/>
-    <updated>2012-03-23T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/rails-test-quietrack-warning</id>
-    <content type="html"><![CDATA[<p>Rails 3.1以前のバージョンなら多分テスト実行時にこういう警告が出ることがあるかもしれません。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gems/rack-1.2.5/lib/rack/utils.rb:16: warning: regexp match /.../n against to UTF-8 string</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このうるさい警告を消す方法を紹介します。</p>
-
-<h2>解決方法</h2>
-
-<p>rspecを使う場合はspec/spec_helper.rbに下記コードを最後に追記してください。</p>
-
-<div><script src='https://gist.github.com/2168152.js?file='></script>
-<noscript><pre><code>
-RSpec.configure do |config|
-  # ...
-end
-
-# quick hack to get Rack to be quiet about &quot;warning: regexp match /.../n against to UTF-8 string&quot; until we upgrade to Rails 3.1 with Rack 1.3
-module Rack
-  module Utils
-    def escape(s)
-      CGI.escape(s.to_s)
-    end
-    def unescape(s)
-      CGI.unescape(s)
-    end
-  end
-end</code></pre></noscript></div>
-
-
-<h2>原因</h2>
-
-<p>Rack1.3からは解決できたらしいですが、Rails 3.1以前を使うならとりあえずこの方法で回避してもいいかと。
-詳しくは：<a href="https://github.com/rack/rack/issues/41">https://github.com/rack/rack/issues/41</a></p>
 ]]></content>
   </entry>
   

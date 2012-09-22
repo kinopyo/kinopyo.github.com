@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="文字コードが何なのか、エンコードは何なのか、何で文字化けするかはっきり分かっていませんでした。月刊DBマガジンの2010/JANの徹底研究に文字コードの内容が載せていて、とても分かりやすく説明してくれたので、勉強メモを書きます。
-文字コードとは
-文字コードは「文字集合」と「エンコード方式」 &hellip;">
+	<meta name="description" content="自分でブログやサイトを運営する上には、よくこの問題で悩みました。このSEOって言葉にちょっと神経質になってしまった気がします。何もかもSEOに最適な方向で考えてるんです。 さて、本題に入りますとサブディレクトリが有効だそうです。
+このサイトを参考にしました。
+サブドメインとサブディレクトリ、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +73,62 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/seo-sub-domain-vs-sub-directory">SEO対策：サブドメイン vs サブディレクトリ</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091128134914" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134914.gif" alt="f:id:kinopyo:20091128134914g:image:right" title="f:id:kinopyo:20091128134914g:image:right" class="hatena-fotolife hatena-image-right"></a></p>
+<p>自分でブログやサイトを運営する上には、よくこの問題で悩みました。このSEOって言葉にちょっと神経質になってしまった気がします。何もかもSEOに最適な方向で考えてるんです。</p>
+<br/>
+<p>さて、本題に入りますと<span style="color:#0000FF;">サブディレクトリが有効だそうです</span>。</p>
+<p>このサイトを参考にしました。</p>
+<p><a href="http://www.suzukikenichi.com/blog/which-are-stronger-subdomains-or-subdirectories/" target="_blank">サブドメインとサブディレクトリ、SEOに強いのはどっち? | 海外SEO情報ブログ・メルマガ</a></p>
+<p>自分が一番印象的なものは</p>
+<ul>
+<li>サブドメインはルートドメインの恩恵を必ず受けることとは限らない</li>
+<li>一方サブディレクトリのほうはルートドメインの恩恵を受ける</li>
+</ul>
+<p>ってことです。</p>
+<blockquote>
+<p>たとえば、自分のブログの記事がはてなやnewsingに引用されると、検索結果でオリジナルの自分のページよりも上に来ることが多々あります。これは、はてなやnewsingのドメインの評価が高いからです。</p>
+</blockquote>
+<br/>
+<p>私も前FC2のブログを使ったことがありますが、正直はてなダイアリーほど検索上位にならなかったんです。</p>
+<p>「同じ内容の記事なのになぜはてなはGoogle検索で上位になったか」の疑問をずっと抱いてました。</p>
+<p>この記事を読んで分かったんです。FC2はサブドメインの形でブログサービスを提供、はてなはサブディレクトリだからです。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-30T00:00:00+09:00" pubdate data-updated="true">2009-11-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -304,9 +360,20 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/jquery-convert-one-child-selectbox-to-label">jQueryでoptionが一つのSelectボックスをラベル表示</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<p>htmlにoptionが一つしかないselectboxがあるとします。</p>
-<p>このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。</p>
+		<p>htmlにoptionが一つしかないselectboxがあるとします。
+このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;option&gt;</span>1<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>jQuery文はこれ</h3>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -320,88 +387,56 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;option&gt;</span>1<span class="nt">&lt;/option&gt;</span>
-</span><span class='line'><span class="nt">&lt;/select&gt;</span>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;br/&gt;</span>
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>jQuery文はこれ：<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'>{% codeblock %}
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//:only-childフィルタで子要素が一つしかない要素を選択</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">$target</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select :only-child&quot;</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'>//:only-childフィルタで子要素が一つしかない要素を選択
-</span><span class='line'>var $target = $(&quot;select :only-child&quot;);
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">$target</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>
-</span><span class='line'>$.each($target, function(index, item) {
+</span><span class='line'>  <span class="c1">// spanのhtmlを構築</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">span</span> <span class="o">=</span> <span class="s1">&#39;&lt;span&gt;&#39;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>  // spanのhtmlを構築
-</span><span class='line'>  var span = &#39;<span class="nt">&lt;span&gt;</span>&#39; + $(this).text() + &#39;<span class="nt">&lt;/span&gt;</span>&#39;;
+</span><span class='line'>  <span class="c1">// thisはoptionを指しているため、そのparentのselect要素を非表示</span>
+</span><span class='line'>  <span class="c1">// 構築したspanを挿入</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">hide</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="nx">span</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'>  // thisはoptionを指しているため、そのparentのselect要素を非表示
-</span><span class='line'>  // 構築したspanを挿入
-</span><span class='line'>  $(this).parent().hide().after(span);
-</span><span class='line'>
-</span><span class='line'>});
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>さらにブランクの要素をフィルタ<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>selectボックスの先頭がblankのケースが結構あると思います。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>その場合はラベル表示させたくないです。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>なのでそれをフィルタするには、以下のようにfilter()を使います。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>var $target = $(&quot;select :only-child&quot;).filter(function(index) {
-</span><span class='line'>
-</span><span class='line'>  return $.trim($(this).text()).length != 0;
-</span><span class='line'>
-</span><span class='line'>});
-</span><span class='line'>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;br/&gt;</span>
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>$.trim()の1000倍速い方法でブランクを検出<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>jQueryにはblankを検出するメソッドがないため、上記のソースコードでは<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>$.trim()を利用して判断しています。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>しかしこの$.trim()は遅いとの報告がありました。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>そこでblankのテキストを検出するためのメソッドも提供されました。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>$.trim()が2000msかかったものがこれだと0.5msになったようです。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>blank: function( text ) {
-</span><span class='line'>  return !text || !/\S/.test(text);
-</span><span class='line'>}
+</span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
-<p>興味のある方はこの記事を参照してください。英語のサイトです。</p>
-<p><a href="http://zipalong.com/blog/?p=287" target="_blank">Zipalong Blog  &#187; Blog Archive   &#187; jQuery: x1000 faster test for blank strings (on large strings)</a></p>
-</div>
 
+
+<h3>さらにブランクの要素をフィルタ</h3>
+
+<p>selectボックスの先頭がblankのケースが結構あると思います。
+その場合はラベル表示させたくないです。
+なのでそれをフィルタするには、以下のようにfilter()を使います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">$target</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select :only-child&quot;</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">()).</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>$.trim()の1000倍速い方法でブランクを検出</h3>
+
+<p>jQueryにはblankを検出するメソッドがないため、上記のソースコードでは
+$.trim()を利用して判断しています。
+しかしこの$.trim()は遅いとの報告がありました。
+そこでblankのテキストを検出するためのメソッドも提供されました。
+$.trim()が2000msかかったものがこれだと0.5msになったようです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">blank</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">text</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="o">!</span><span class="nx">text</span> <span class="o">||</span> <span class="o">!</span><span class="sr">/\S/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>興味のある方はこの記事を参照してください。英語のサイトです。
+<a href="http://zipalong.com/blog/?p=287">Zipalong Blog » Blog Archive » jQuery: x1000 faster test for blank strings (on large strings)</a></p>
 
 		
 		
@@ -436,40 +471,44 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/jquery-toggle-swtich-tips">jQueryのtoggle(switch)が大変便利、条件文5行のコードが1行に短縮！</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<p>toggle()の普通の使い方は多分皆さんご存知だと思います。</p>
-<p>該当要素をクリックするたびに表示/非表示を切り替えます。</p>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091128134759" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134759.gif" alt="f:id:kinopyo:20091128134759g:image:right" title="f:id:kinopyo:20091128134759g:image:right" class="hatena-fotolife hatena-image-right"></a></p>
-<p>今日紹介するのはこのswitchパラメータ付のtoggleです。</p>
-<p><span style="font-weight:bold;">swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。</span></p>
-<p>これで下記のコードがこのswtich付きのtoggle文なら一行ですみます。</p>
+		<p>toggle()の普通の使い方は多分皆さんご存知だと思います。
+該当要素をクリックするたびに表示/非表示を切り替えます。</p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134759.gif" alt="" /></p>
+
+<p>今日紹介するのはこのswitchパラメータ付のtoggleです。
+<strong>swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。</strong>
+これで下記のコードがこのswtich付きのtoggle文なら一行ですみます。</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
 </span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">これがこうなります。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">toggle</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
-<p>どうですか？すごくないですか？</p>
-<p>まさにjQueryの「The Write Less, Do More」ですよね。</p>
-<p>ただし判断の条件文が行の最後になるので、</p>
-<p>読みやすさは多少落ちると思います。</p>
-<br/>
-<p>ちなみに、Googleの単語とよく似ているので、ついついtoogleと書いちゃいますorz</p>
-</div>
 
+
+<p>これがこうなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">toggle</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうですか？すごくないですか？
+まさにjQueryの「The Write Less, Do More」ですよね。
+ただし判断の条件文が行の最後になるので、
+読みやすさは多少落ちると思います。</p>
+
+<br/>
+
+
+<p>ちなみに、Googleの単語とよく似ているので、ついついtoogleと書いちゃいますorz</p>
 
 		
 		
@@ -504,33 +543,39 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/iphone-bookmarklet-navigate-to-page-bottom">iPhoneでページ最下部へ移動するブックマークレット</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<h4>ブックマークレット(Bookmarklet)とは</h4>
-<p>簡単に言うとJavaScriptをブックマークしたものです。</p>
-<p>普通はURLをブックマークするに対し、JavaScriptをブックマークします。</p>
-<p>そしてこのブックマークを選ぶときは保存されたJavaScriptが実行されます。</p>
-<p>iPhoneのブラウザ関連のアプリでは結構使われています。</p>
-<h4>最下部へ移動するJavaScriptをiPhoneに登録する方法</h4>
+		<h3>ブックマークレット(Bookmarklet)とは</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>javascript:&lt;span class="synStatement">window&lt;/span>.scrollTo(0,&lt;span class="synStatement">document&lt;/span>.documentElement.scrollHeight);</span></code></pre></td></tr></table></div></figure>
+<p>簡単に言うとJavaScriptをブックマークしたものです。
+普通はURLをブックマークするに対し、JavaScriptをブックマークします。
+そしてこのブックマークを選ぶときは保存されたJavaScriptが実行されます。
+iPhoneのブラウザ関連のアプリでは結構使われています。</p>
+
+<h3>最下部へ移動するJavaScriptをiPhoneに登録する方法</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">javascript</span><span class="o">:&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;synStatement&quot;</span><span class="o">&gt;</span><span class="nb">window</span><span class="o">&lt;</span><span class="err">/span&gt;.scrollTo(0,&lt;span class=&quot;synStatement&quot;&gt;document&lt;/span&gt;.documentElement.scrollHeight);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <ul>
 <li>まずSafariで任意のサイトをブックマークする</li>
 <li>そのブックマークを編集する</li>
 <li>一行名に好きな名前(ここではPage Bottom)を記入し、二行目を上記のJavaScriptを貼付けで保存する</li>
 </ul>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091128002653" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128002653.png" alt="f:id:kinopyo:20091128002653p:image" title="f:id:kinopyo:20091128002653p:image" class="hatena-fotolife"></a></p>
+
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128002653.png" alt="" /></p>
+
 <ul>
 <li>ページの最下部へ移動したい時はブックマークからさっき登録したブックマークレットをタップすればOK。</li>
 </ul>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091128002655" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128002655.png" alt="f:id:kinopyo:20091128002655p:image" title="f:id:kinopyo:20091128002655p:image" class="hatena-fotolife"></a></p>
-<br/>
-<p>参考サイト：</p>
-<p><a href="http://css-eblog.com/javascript/scrolltoend-for-iphone.html" target="_blank">http://css-eblog.com/javascript/scrolltoend-for-iphone.html</a></p>
-<p><a href="http://d.hatena.ne.jp/keyword/%A5%D6%A5%C3%A5%AF%A5%DE%A1%BC%A5%AF%A5%EC%A5%C3%A5%C8" target="_blank">ブックマークレットとは - はてなキーワード</a></p>
-</div>
 
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128002655.png" alt="" /></p>
+
+<p>参考サイト：
+- <a href="http://css-eblog.com/javascript/scrolltoend-for-iphone.html">iPhoneでページ最下部へ移動するブックマークレット | CSS-EBLOG</a>
+- <a href="http://d.hatena.ne.jp/keyword/%A5%D6%A5%C3%A5%AF%A5%DE%A1%BC%A5%AF%A5%EC%A5%C3%A5%C8">ブックマークレットとは - はてなキーワード</a></p>
 
 		
 		
@@ -736,12 +781,39 @@ Java7,,,やってみたいっす！
     <article class="post">
 	<h1 class="title"><a href="/blog/memo-of-flash-json-cross-domain">Flash，JSONでのクロスドメインアクセス勉強メモ</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<p>gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の<a href="http://gihyo.jp/dev/serial/01/web20sec/0004" target="_blank">第4回：「Flash，JSONでのクロスドメインアクセス」の</a>勉強メモです。</p>
-<h4>Flashのクロスドメインアクセス</h4>
-<h5>動作原理</h5>
-<p>データ提供側で認証のファイルを設置するだけです。</p>
-<p>ファイル名は「crossdomain.xml」で、これが例なのかこう書かなければならないのかは明確に書いてません。</p>
+		<p>gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の<a href="http://gihyo.jp/dev/serial/01/web20sec/0004" target="_blank">第4回：「Flash，JSONでのクロスドメインアクセス」の</a>勉強メモです。</p>
+
+<h2>Flashのクロスドメインアクセス</h2>
+
+<h3>動作原理</h3>
+
+<p>データ提供側で認証のファイルを設置するだけです。
+ファイル名は「crossdomain.xml」で、これが例なのかこう書かなければならないのかは明確に書いてません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;cross-domain-policy&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;allow-access-from</span> <span class="na">domain=</span><span class="s">&quot;www.securesky-tech.com&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/cross-domain-policy&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>JSONでも実はクロスドメインアクセスが可能</h2>
+
+<h3>動作原理</h3>
+
+<p>eval()関数でデータを評価するだけで使用可能になる</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">responseText</span><span class="o">+</span><span class="s2">&quot;)&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>クロスドメインの実現</h3>
+
+<p>setterメソッドをサポートしているブラウザ（FirefoxやSafari 3等）では，setterメソッドを再定義することによって，JSONもSCRIPTタグで呼び出して使うことが可能になる。</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -749,141 +821,14 @@ Java7,,,やってみたいっす！
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;cross-domain-policy&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;allow-access-from</span> <span class="na">domain=</span><span class="s">&quot;www.securesky-tech.com&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/cross-domain-policy&gt;</span>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;h4&gt;</span>JSONでも実はクロスドメインアクセスが可能<span class="nt">&lt;/h4&gt;</span>
-</span><span class='line'><span class="nt">&lt;h5&gt;</span>動作原理<span class="nt">&lt;/h5&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>eval()関数でデータを評価するだけで使用可能になる<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>{% codeblock %}
-</span><span class='line'>
-</span><span class='line'>var obj = eval(&quot;(&quot;+req.responseText+&quot;)&quot;);
-</span><span class='line'>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'><span class="nt">&lt;h5&gt;</span>クロスドメインの実現<span class="nt">&lt;/h5&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>setterメソッドをサポートしているブラウザ（FirefoxやSafari 3等）では，setterメソッドを再定義することによって，JSONもSCRIPTタグで呼び出して使うことが可能になる。<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:html&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;script&gt;</span>
-</span><span class='line'>      Object.prototype.__defineSetter__(&#39;name&#39;, function(x){sendtoAttacker(x);});
+</span><span class='line'>      <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__defineSetter__</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span><span class="nx">sendtoAttacker</span><span class="p">(</span><span class="nx">x</span><span class="p">);});</span>
 </span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;http://www.securesky-tech.com/object.dat&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://www.securesky-tech.com/object.dat&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
 </span><span class='line'><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
-<p>　</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-php5-and-apache2-2-in-windows">PHP5とApache2.2をWindowsにインストール</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<h4>Apache</h4>
-<h5>ダウンロード＆インストール</h5>
-<ul>
-<li><a href="http://httpd.apache.org" target="_blank">Welcome! - The Apache HTTP Server Project</a>から最新版を入手</li>
-<li>インストールファイルを実行、下記2点注意すればOK</li>
-<li>[Network Domain]と[Server Name]のところはlocalhostと記入</li>
-<li>[Custom]インストールでインストール先が指定できる</li>
-</ul>
-<h5>設定</h5>
-<p>[Apache Home]\conf\httpd.confを開いて下記のパスを自分の環境にあわせて</p>
-<p>設定してください。このパスはサーバが立ち上がった際のrootとして使います。</p>
-<ul>
-<li>DocumentRoot &#8220;D:/www&#8221;</li>
-<li>&#60;Directory &#8220;D:/www&#8221;&#62;</li>
-</ul>
-<h4>PHP</h4>
-<ul>
-<li><a href="http://www.php.net/downloads.php" target="_blank">PHP: Downloads</a>から入手
-<ul>
-<li>Windows BinariesからPHP 5.2.11 zip packageをダウンロード</li>
-</ul>
-</li>
-</ul>
-<p>拡張子がMSIのinstaller版もあるが、マニュアルでのインストールがすすめられる</p>
-<ul>
-<li>zipファイルを適当な場所に解凍。今回はd:\phpに。</li>
-<li>Windowsの環境変数pathに設定</li>
-<li>コマンドプロンプトで下記コマンドでインストール成功かを確認</li>
-</ul>
-<blockquote>
-<p>php -v</p>
-</blockquote>
-<h4>php.ini</h4>
-<ul>
-<li>php.ini-recommendedをphp.iniにリネーム</li>
-<li>doc_rootを検索し内容を編集</li>
-</ul>
-<blockquote>
-<p>doc_root = d:\www</p>
-</blockquote>
-<p>Apacheサーバと同じルート(httpd.confの DocumentRoot)</p>
-<h4>ApacheサーバとPHPの連携</h4>
-<p>httpd.confの修正</p>
-<blockquote>
-<p>LoadModule php5_module d:/php/php5apache2_2.dll</p>
-<p>AddType application/x-httpd-php .php</p>
-<p>PHPIniDir &#8220;d:/php&#8221;</p>
-</blockquote>
-<p>ディレクトリは自分の環境に合わせて修正してください。</p>
-<br/>
-<h4>動作確認</h4>
-<p>d:/phpにtest.phpというファイルを作ります。内容は下記になります。</p>
-<p><?php phpinfo();?></p>
-<p>注意！！<? phpinfo();?>は動かない！</p>
-<p>Apacheサーバを再起動し、<a href="http://localhost/test.php" target="_blank">http://localhost/test.php</a>を叩いてPHPのページが表示されればOKです。</p>
-<h4>参考サイト</h4>
-<p><a href="http://blog.cheki.net/archives/250" target="_blank">  Apache2 + PHP5をWindowsXPにインストール</a></p>
-<p><a href="http://www.adminweb.jp/apache/php/index3.html" target="_blank">php.iniの配置場所の指定(PHPIniDir) - PHP利用のための設定 - Apache入門</a></p>
-</div>
 
 
 		

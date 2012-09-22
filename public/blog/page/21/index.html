@@ -7,12 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="現象 IE6を使ってSSL(https)経由で接続する時に以下の警告が出るなら
-iframeのsrc属性をまずチェックしてください。 1
-このページにはセキュリティで保護されている項目と保護されていない項目が含まれています。 ダメな書き方 1
-2
-&lt;iframe /&gt;
-&lt; &hellip;">
+	<meta name="description" content="http://ruzanow.ru/extensions/getflash.crx インストール後Flashがあるサイトに接続すると
+アドレスバーの一番右にFlashのアイコンが表示され、
+クリックするとサイト内のFlashの上にDownloadのリンクが表示されます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,6 +73,49 @@ iframeのsrc属性をまずチェックしてください。 1
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/chrome-plugin-getflash-download-flash">FlashをダウンロードするChrome Plugin：GetFlash</a></h1>
+	<div class="entry-content">
+		<p><a href="http://ruzanow.ru/extensions/getflash.crx">http://ruzanow.ru/extensions/getflash.crx</a></p>
+
+<p>インストール後Flashがあるサイトに接続すると
+アドレスバーの一番右にFlashのアイコンが表示され、
+クリックするとサイト内のFlashの上にDownloadのリンクが表示されます。
+そのリンクでダウンロードできます。</p>
+
+<p>公式サイトは多分これです。
+<a href="http://www.chromeplugins.org/google/chrome-plugins/ext-getflash-8721.html">http://www.chromeplugins.org/google/chrome-plugins/ext-getflash-8721.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-28T00:00:00+09:00" pubdate data-updated="true">2010-04-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -303,12 +343,10 @@ javaでのIteratorのhasNext()関数みたいな動きをしていますね。</
 
 <p>ちょこっとググッてみたらasListで作ったListに
 add()で要素を追加すると上記のExceptionになるそうです。
-asListのJavadocでの記載は
-{% blockquote }</p>
+asListのJavadocでの記載は</p>
 
-<p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p>
+<blockquote><p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p></blockquote>
 
-<p>{% endblockquote %}</p>
 
 <p>なるほど。。。
 とりあえず深く考えずに下記のように書き換えて回避しました。</p>
@@ -446,12 +484,10 @@ jQuery1.4.2では発生しないことを確認しました。</p>
 <a href="http://dev.jquery.com/ticket/4241">http://dev.jquery.com/ticket/4241</a>で
 当時の担当者のコメントを見ると</p>
 
-<p>{% blockquote }</p>
+<blockquote><p>I had a really difficult time getting a reliable test case to verify this actually solves the memory leak. r6321 appears to have fixed this issue</p></blockquote>
 
-<p>I had a really difficult time getting a reliable test case to verify this actually solves the memory leak. r6321 appears to have fixed this issue</p>
 
-<p>{% endblockquote %}
-「時間ないからちゃんとテストしてない、r6321の対応で解決できたように見える」と、
+<p>「時間ないからちゃんとテストしてない、r6321の対応で解決できたように見える」と、
 ずいぶん適当な回答ですよね。。。</p>
 
 		
@@ -840,44 +876,6 @@ has the lowest precedence.</p>
 
 
 <time datetime="2010-03-24T00:00:00+09:00" pubdate data-updated="true">2010-03-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/dir-command-to-output-all-subfolder-file-nam">dirコマンドでサブフォルダにあるファイル一覧を出力</a></h1>
-	<div class="entry-content">
-		<p>dir /s /b >file.txt</p>
-
-<p><strong>/s</strong>指定されたディレクトリおよびそのサブディレクトリのすべてのファイルを表示します。
-<strong>/b</strong>は拡張子とディレクト付きのファイル名を表示します。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-19T00:00:00+09:00" pubdate data-updated="true">2010-03-19</time></div>
 	<div class="tags">
 
 

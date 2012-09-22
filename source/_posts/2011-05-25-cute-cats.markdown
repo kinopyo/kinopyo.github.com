@@ -7,4 +7,25 @@ permalink: /blog/cute-cats
 comments: true
 categories: ["diary"]
 ---
-*gallery link="file"*
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/2b66f92cfa4414c3bc7d158c7a6885cb.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/2d54b04165695942c4a70e8aed091b5b.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/40dfbc3ad08bacff15a441db2b386e99.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/062d49f5a94327750da05593feb1a79c.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/95c71dbe4c1f549a8dcadeeae7acbe0a.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/38413b69288ac2cd1038e08a0b990c34.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/61512c47235929adbded44e686e331f6.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/031907128cc8199311f634b07c6c71e3.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/b495b4e1f2fd67496c6fc818e5ce7de4.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/baff4da7ee4781bfdd81ff9e6e828db6.jpeg)
+
+![](http://www.kinopyo.com/wp-content/uploads/2011/05/e3ee0c2bf551e3fbd6745850960a1550.jpeg)

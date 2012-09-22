@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cakephp | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/cakephp/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,24 +18,14 @@
     <link href="http://kinopyo.com/blog/cakephp-xml-to-array"/>
     <updated>2011-05-15T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/cakephp-xml-to-array</id>
-    <content type="html"><![CDATA[<p>```php
-uses('Xml');
-$xml = new Xml("/path/to/xml");
-$xml_array = Set::reverse($xml);</p>
-
-<p>```</p>
-
-<h1>日本語</h1>
-
-<p>CakephpでXMLを配列に変換するのはとても簡単です。
+    <content type="html"><![CDATA[<p>CakephpでXMLを配列に変換するのはとても簡単です。
 下記のファンクションを使えば一発でできます。</p>
 
-<p>```php
+<p><code>php
 uses('Xml');
 $xml = new Xml("/path/to/xml");
-$xml_array = Set::reverse($xml);</p>
-
-<p>```</p>
+$xml_array = Set::reverse($xml);
+</code></p>
 ]]></content>
   </entry>
   
@@ -79,19 +69,20 @@ php.iniを開いて<strong>error_reporting</strong>で検索します。
     <link href="http://kinopyo.com/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields"/>
     <updated>2011-02-03T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields</id>
-    <content type="html"><![CDATA[<p>```php
-$this->Ingredient->save($newData);
-$newIngredientId = $this->Ingredient->id;    // OK
+    <content type="html"><![CDATA[<p><code>php
+$this-&gt;Ingredient-&gt;save($newData);
+$newIngredientId = $this-&gt;Ingredient-&gt;id;    // OK
 // id以外のフィールドはダメ
-$this->Ingredient->name;    // NG
-$this->Ingredient->category;    // NG</p>
-
-<p>```</p>
+$this-&gt;Ingredient-&gt;name;    // NG
+$this-&gt;Ingredient-&gt;category;    // NG
+</code></p>
 
 <p>登録/更新には関係なく。
-公式マニュアルでは：
+公式マニュアルでは：</p>
+
 <blockquote><p>一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。</p></blockquote>
-と書いてありますが、id以外のフィールド情報は持ってないようです。
+
+<p>と書いてありますが、id以外のフィールド情報は持ってないようです。
 欲しければ$this->dataから取れます。</p>
 ]]></content>
   </entry>

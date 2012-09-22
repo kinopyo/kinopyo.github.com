@@ -5,7 +5,7 @@ date: 2009-12-22
 wordpress_id: 645
 permalink: /blog/jquery-continue-break-in-each-loop
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 jQueryのeach()は関数のためcontinueやbreakなどのループ制御文は使えません。
 グーグル先生に聞いたら代わりの方法が見つかりました。

@@ -8,25 +8,22 @@ comments: true
 categories: [nil]
 ---
 FirebugのJavaScript、HTML、CSSをシンタクスハイライトするアドオンです。
-<br/>
 
 {% img http://kinopyo.com/wp-content/uploads/2009/12/firerainbow-mainshot-full1.png firewindow %}
+
 ## ダウンロード
 [FireRainbow Download](https://addons.mozilla.org/en-US/firefox/addon/9603)
 
 ## 機能概要
-{% blockquote }
 
-+  Mixed syntax highlighting powered by CodeMirror
-	-Javascript
-	-HTML
-	-CSS
-+  Advanced features:
-	-Color theme can be modified using Firebug's CSS panel
-	-Highlighting is applied incrementally (good performance)
-	-Color themes available on GitHub
-
-{% endblockquote %}
+> - Mixed syntax highlighting powered by CodeMirror
+>   - Javascript
+>   - HTML
+>   - CSS
+> - Advanced features:
+>   - Color theme can be modified using Firebug's CSS panel
+>   - Highlighting is applied incrementally (good performance)
+>   - Color themes available on GitHub
 
 ## 追記
 今まで使ったところブレークポイントが付けない不具合がありました。

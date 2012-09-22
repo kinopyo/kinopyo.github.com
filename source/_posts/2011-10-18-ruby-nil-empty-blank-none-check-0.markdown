@@ -7,22 +7,21 @@ permalink: /blog/ruby-nil-empty-blank-none-check-0
 comments: true
 categories: ["Ruby"]
 ---
-{% blockquote %}
-よくつかうメソッドの nil? empty? blank? のまとめ。
 
-nil? すべてのオブジェクトにある。nilのときにTrueを返す。
-empty? 文字の長さが0のとき、配列が空のときにTrueを返す。
-
-blank? railsの拡張。nil, "", " ", **, {} のいずれかでTrueを返す。
-{% endblockquote %}
+> よくつかうメソッドの nil? empty? blank? のまとめ。
+> 
+> nil? すべてのオブジェクトにある。nilのときにTrueを返す。
+> empty? 文字の長さが0のとき、配列が空のときにTrueを返す。
+> 
+> blank? railsの拡張。nil, "", " ", **, {} のいずれかでTrueを返す。
 
 素晴らしいまとめですね！ootokageさんに感謝。
 
-PHP使うときは*empty(0)</em>でtrueになりますが、上記のメソッドどれも0をチェックしないですね。。.<em>zero?*というのメソッドは一応あるようですが。
+PHP使うときは*empty(0)*でtrueになりますが、上記のメソッドどれも0をチェックしないですね。。.*zero?*というのメソッドは一応あるようですが。
 
 迷ったらここにいっぱいサンプルがあります。
 
-{% blockquote %}
+```ruby
 0.nil? #=> false
 0.zero? #= true
 0.empty? #=> NoMethodError
@@ -58,4 +57,4 @@ false.zero? #=> NoMethodError
 false.empty? #=> NoMethodError
 false.blank? #=> true
 false == false #=> true
-<<
+```

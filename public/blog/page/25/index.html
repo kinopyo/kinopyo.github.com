@@ -7,8 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="なぜDIコンテナを使うのかの勉強メモです。
-{% blockquote } SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります &hellip;">
+	<meta name="description" content="Eclipse Tomcat Pluginダウンロードページでzipファイルをダウンロード
+現時点の最新版はtomcatPluginV321.zipです。
+your_Eclipse_Home/pluginsに解凍
+Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,14 +77,71 @@
 
 
     <article class="post">
+	<h1 class="title"><a href="/blog/eclipse-install-tomcat-plugin">EclipseにTomcatプラグインをインストール</a></h1>
+	<div class="entry-content">
+		<ul>
+<li><p><a href="http://www.eclipsetotale.com/tomcatPlugin.html#A4">Eclipse Tomcat Pluginダウンロードページ</a>でzipファイルをダウンロード
+現時点の最新版はtomcatPluginV321.zipです。</p></li>
+<li><p>your_Eclipse_Home/pluginsに解凍</p></li>
+<li>Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-toolbar-icon.jpg" title="tomcat-toolbar-icon" ></p>
+
+<ul>
+<li>下記のようにTomcatバージョンとTomcatホームを設定</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-home-path.jpg" title="tomcat-settings-home-path" ></p>
+
+<ul>
+<li>下記のようにTomcat用のJVM SettingでJREバージョンを選択</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-jre-version.jpg" title="tomcat-settings-jre-version" ></p>
+
+<p>私の場合デフォルトがJRE1.4になっていたため、これを1.5の変えました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
 	<h1 class="title"><a href="/blog/spring-improve-unit-test">Springによる単体テストの促進</a></h1>
 	<div class="entry-content">
-		<p><a href="http://www.atmarkit.co.jp/fjava/rensai3/springdi04/springdi04_3.html">なぜDIコンテナを使うのか</a>の勉強メモです。
-{% blockquote }</p>
+		<p><a href="http://www.atmarkit.co.jp/fjava/rensai3/springdi04/springdi04_3.html">なぜDIコンテナを使うのか</a>の勉強メモです。</p>
 
-<p>SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります。DIコンテナを利用すればDIコンテナが設定ファイルの記述に従ってインターフェイスの実装クラスをセットします。そのため、設定ファイルの内容を切り替えることで単体テスト用のモックオブジェクト（ダミーオブジェクト）に切り替えることができます。</p>
+<blockquote><p>SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります。DIコンテナを利用すればDIコンテナが設定ファイルの記述に従ってインターフェイスの実装クラスをセットします。そのため、設定ファイルの内容を切り替えることで単体テスト用のモックオブジェクト（ダミーオブジェクト）に切り替えることができます。</p></blockquote>
 
-<p>{% endblockquote %}</p>
 
 <h2>サンプル</h2>
 
@@ -99,21 +158,6 @@ ZaikoHikiateImplクラスのhikiate()メソッドにバグがある場合テス�
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
 </pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
 </span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">juchu</span><span class="o">(</span><span class="n">Integer</span> <span class="n">syohinCode</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">suryo</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'>        <span class="n">ZaikoHikiate</span> <span class="n">hikiate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZaikoHikiateImpl</span><span class="o">();</span>
@@ -121,10 +165,24 @@ ZaikoHikiateImplクラスのhikiate()メソッドにバグがある場合テス�
 </span><span class='line'>        <span class="c1">// 受注を処理</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
-</span><span class='line'><span class="o">{%</span> <span class="n">endcodeblock</span> <span class="o">%}</span>
-</span><span class='line'><span class="err">###</span> <span class="n">DI</span><span class="err">により依存を低めたクラス</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;brush:java&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>DIにより依存を低めたクラス</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="kd">private</span> <span class="n">ZaikoHikiate</span> <span class="n">hikiate</span><span class="o">;</span>
 </span><span class='line'>
@@ -165,7 +223,7 @@ DIコンテナにセットしてJuchuImplの単体テストを実行できます
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/java/'>Java</a>
 
 
 </div>
@@ -227,8 +285,9 @@ DIコンテナにセットしてJuchuImplの単体テストを実行できます
     <article class="post">
 	<h1 class="title"><a href="/blog/movie-avatar-the-inside-story-and-games">映画：アバター脚本はタイタニック前もできた、ゲームがiPhone、PS3、XBOX、DSに登場</a></h1>
 	<div class="entry-content">
-		<p>映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg" title="アバターポスタ" ></p>
+		<p>映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg" title="アバターポスタ" ></p>
 
 <p>映画館でアバターを見ました。最高です。
 ストリー、3Dの表現力、監督が創った世界：パンドラ。
@@ -237,11 +296,14 @@ DIコンテナにセットしてJuchuImplの単体テストを実行できます
 
 <h3>iPhone/iPodにもアバターゲームが登場</h3>
 
-<p><a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store"><img alt="ジェームズ・キャメロン　アバター " src="http://a1.phobos.apple.com/us/r1000/017/Purple/07/ad/bf/mzl.qhbrhmbb.175x175-75.jpg" /></a>
-<a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store">AppStoreでチェック</a>
-<a href="http://www.youtube.com/watch?v=73XttXv11io">Youtubeでチェック</a>
-<img src="http://a1.phobos.apple.com/us/r1000/057/Purple/98/e9/33/mzl.zkolxplp.480x480-75.jpg" alt="iPhoneゲーム：アバター" />
-AppStoreでのレーティングもレビューも大好評です。
+<p><a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store"><img alt="ジェームズ・キャメロン　アバター " src="http://a1.phobos.apple.com/us/r1000/017/Purple/07/ad/bf/mzl.qhbrhmbb.175x175-75.jpg" /></a></p>
+
+<p><a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store">AppStoreでチェック</a>
+<a href="http://www.youtube.com/watch?v=73XttXv11io">Youtubeでチェック</a></p>
+
+<p><img src="http://a1.phobos.apple.com/us/r1000/057/Purple/98/e9/33/mzl.zkolxplp.480x480-75.jpg" alt="iPhoneゲーム：アバター" /></p>
+
+<p>AppStoreでのレーティングもレビューも大好評です。
 私も買いたい。。</p>
 
 <h3>ジェームズ・キャメロン、「アバター」のビジョンを語る</h3>
@@ -261,14 +323,13 @@ AppStoreでのレーティングもレビューも大好評です。
 
 <h3>いくつか面白い記事</h3>
 
-<p><a href="http://news.walkerplus.com/2009/1222/11/">驚愕の『アバター』映画館で観るべき“3つの理由</a>
-<a href="http://news.walkerplus.com/2009/1222/3/">キャメロン監督『アバター』2作目、3作目構想を明かす</a>
-<a href="http://news.walkerplus.com/2009/1223/8/">『アバター』出演女優ゾーイ・サルダナはスタントも軽々こなす万能女優</a>
-<a href="http://getnews.jp/archives/40882">オンラインゲーム好きは絶対に観た方がいい映画『アバター』</a></p>
+<ul>
+<li><a href="http://news.walkerplus.com/2009/1222/11/">驚愕の『アバター』映画館で観るべき“3つの理由</a></li>
+<li><a href="http://news.walkerplus.com/2009/1222/3/">キャメロン監督『アバター』2作目、3作目構想を明かす</a></li>
+<li><a href="http://news.walkerplus.com/2009/1223/8/">『アバター』出演女優ゾーイ・サルダナはスタントも軽々こなす万能女優</a></li>
+<li><a href="http://getnews.jp/archives/40882">オンラインゲーム好きは絶対に観た方がいい映画『アバター』</a></li>
+</ul>
 
-<h3>最後にパンドラの景色を御覧下さい</h3>
-
-<p><em>gallery link=&#8221;file&#8221;</em></p>
 
 		
 		
@@ -337,7 +398,7 @@ AppStoreでのレーティングもレビューも大好評です。
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -366,30 +427,6 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=”1.0″ encoding=”utf-8″ ?&gt;</span>
 </span><span class='line'><span class="nt">&lt;games&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;game&gt;</span>World of Warcraft<span class="nt">&lt;/game&gt;</span>
@@ -397,30 +434,44 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 </span><span class='line'>    <span class="nt">&lt;game&gt;</span>StarCraft<span class="nt">&lt;/game&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;game&gt;</span>Final Fantasy<span class="nt">&lt;/game&gt;</span>
 </span><span class='line'><span class="nt">&lt;/games&gt;</span>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>## IEの場合XMLDocument
-</span><span class='line'>{% codeblock %}
-</span><span class='line'>
-</span><span class='line'>$(&quot;iframe&quot;).attr(&quot;src&quot;,xmlUrl).one(&quot;load&quot;, function(){
-</span><span class='line'>    var xmlDocument = this.contentWindow.document.XMLDocument;
-</span><span class='line'>    $(xmlDocument).find(&quot;game&quot;).each(function(){
-</span><span class='line'>        var game = $(this).text();
-</span><span class='line'>       // ほかの処理
-</span><span class='line'>    });
-</span><span class='line'>});
-</span><span class='line'>
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>## Firefoxの場合ActiveElement
-</span><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush:javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>$(&quot;iframe&quot;).attr(&quot;src&quot;,xmlUrl).one(&quot;load&quot;, function(){
-</span><span class='line'>    var xmlDocument = this.contentWindow.document.ActiveElement;
-</span><span class='line'>    $(xmlDocument).find(&quot;game&quot;).each(function(){
-</span><span class='line'>        var game = $(this).text();
-</span><span class='line'>       // ほかの処理
-</span><span class='line'>    });
-</span><span class='line'>});
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>IEの場合XMLDocument</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;iframe&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="nx">xmlUrl</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">xmlDocument</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">XMLDocument</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">xmlDocument</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;game&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">game</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>       <span class="c1">// ほかの処理</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Firefoxの場合ActiveElement</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;iframe&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="nx">xmlUrl</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">xmlDocument</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">ActiveElement</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">xmlDocument</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;game&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">game</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>       <span class="c1">// ほかの処理</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -453,7 +504,7 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -664,8 +715,9 @@ WordPress管理画面から「subscribe-to-comments」を検索してインス�
 
 <h2>カスタマイズ</h2>
 
-<p>初期設定ではメールの本文が英語となっています。
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/コメント更新通知のメール.jpg" title="" ></p>
+<p>初期設定ではメールの本文が英語となっています。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_en.jpg"></p>
 
 <br/>
 
@@ -680,70 +732,25 @@ WordPress管理画面から「subscribe-to-comments」を検索してインス�
 
 <p>以下自分のサンプルです。</p>
 
-<br/>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:There is a new comment on the post:新規のコメントが投稿されました。
+</span><span class='line'>:See all comments on this post here:すべてのコメントを確認するには下記のリンクをクリックしてください
+</span><span class='line'>:Author:お名前
+</span><span class='line'>:Comment:コメント
+</span><span class='line'>:To manage your subscriptions or to block all notifications from this site, click the link below:コメント閲覧を管理、このサイトからの通知をブロックするには下記のリンクをクリックしてください</span></code></pre></td></tr></table></div></figure>
 
 
-<p>:There is a new comment on the post:新規のコメントが投稿されました。
-:See all comments on this post here:すべてのコメントを確認するには下記のリンクをクリックしてください
-:Author:お名前
-:Comment:コメント
-:To manage your subscriptions or to block all notifications from this site, click the link below:コメント閲覧を管理、このサイトからの通知をブロックするには下記のリンクをクリックしてください</p>
+
 
 <br/>
 
 
 <p>修正後のメール本文はこんな風になりました。
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/コメント更新通知のメールを日本語化.jpg" title="" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-plugin-hatena-notation">WordPressにはてな記法を適用するプラグイン</a></h1>
-	<div class="entry-content">
-		<p>Wordpressブログにはてな記法を適用するプラグインを紹介します。
-はてな記法に慣れたら結構手軽にブログを書けます。
-Wordpressにそのはてな記法のプラグインがあります。</p>
-
-<h2>インストール</h2>
-
-<p>+<a href="http://rewish.org/wp/hatena_notation_plugin">WordPressにはてな記法を導入するプラグイン</a>にてダウンロード
-+サーバにアップロード(wp-content/pluginsフォルダに)
-+ダッシュボード→プラグイン→インストール済みでアクティブすればOK
-+設定画面の「Posts -> WP HatenaNotation」で適用する時間範囲を決める、するとその時間以降の記事に対して有効になる
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/hatena-notation-plugin.jpg" title="hatena-notation-plugin" >
-この例で言うと、2009年11月30日以前のはてな記法で書かれて記事は対象外となる意味です。</p>
-
-<h2>まだ対応してない機能</h2>
-
-<p>http記法の<em>[http://～～]</em>は現時点まだ対応予定の状態です。</p>
+<img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_jp.jpg" title="" ></p>
 
 		
 		

@@ -8,14 +8,14 @@ comments: true
 categories: ["PHP", "php", "string"]
 ---
 ```php
-    /## 
-     #  文字列を全て半角に
-     #  @param  string $str 文字列
-     #  @return string $str 半角の文字列
-     # /
-    function toHankaku($str) {
-        $str= mb_convert_kana($str,"rnask");
-        return $str;
-    }
+/##
+ #  文字列を全て半角に
+ #  @param  string $str 文字列
+ #  @return string $str 半角の文字列
+ # /
+function toHankaku($str) {
+    $str= mb_convert_kana($str,"rnask");
+    return $str;
+}
 
 ```

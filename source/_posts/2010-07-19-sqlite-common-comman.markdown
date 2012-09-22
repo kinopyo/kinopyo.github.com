@@ -29,29 +29,6 @@ sqlite db/development.sqlite3
 
 詳しくは[http://www.sqlite.org/sqlite.html](http://www.sqlite.org/sqlite.html)を参照してください。
 
-# 中文
-## SQLite的启动，选择或创建数据库
-sqlite DB_NAME
-
-DB_NAME即是数据库名又是文件名。因为SQLite的一个文件就是一个数据库。比如Ruby开发中常用的：
-sqlite db/development.sqlite3
-
-## 所有表的一览
-.tables
-.ta
-
-## 查看表结构
-.schema TABLE_NAME
-
-## 查看帮助
-.help
-
-## 退出SQLite
-.quit
-.exit
-
-更多请参照命令[http://www.sqlite.org/sqlite.html](http://www.sqlite.org/sqlite.html)。
-
 # English
 
 ## To start SQLite program, select/create a Database

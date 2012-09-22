@@ -8,6 +8,7 @@ comments: true
 categories: ["movie"]
 ---
 映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。
+
 {% img http://kinopyo.com/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg アバターポスタ %}
 
 映画館でアバターを見ました。最高です。
@@ -17,9 +18,12 @@ categories: ["movie"]
 
 ### iPhone/iPodにもアバターゲームが登場
 <a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store"><img alt="ジェームズ・キャメロン　アバター " src="http://a1.phobos.apple.com/us/r1000/017/Purple/07/ad/bf/mzl.qhbrhmbb.175x175-75.jpg" /></a>
+
 <a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store">AppStoreでチェック</a>
 [Youtubeでチェック](http://www.youtube.com/watch?v=73XttXv11io)
+
 <img src="http://a1.phobos.apple.com/us/r1000/057/Purple/98/e9/33/mzl.zkolxplp.480x480-75.jpg" alt="iPhoneゲーム：アバター" />
+
 AppStoreでのレーティングもレビューも大好評です。
 私も買いたい。。
 
@@ -35,10 +39,7 @@ AppStoreでのレーティングもレビューも大好評です。
 [アバターの公式ゲームサイト](http://avatargame.us.ubi.com/)
 
 ### いくつか面白い記事
-[驚愕の『アバター』映画館で観るべき“3つの理由](http://news.walkerplus.com/2009/1222/11/)
-[キャメロン監督『アバター』2作目、3作目構想を明かす](http://news.walkerplus.com/2009/1222/3/)
-[『アバター』出演女優ゾーイ・サルダナはスタントも軽々こなす万能女優](http://news.walkerplus.com/2009/1223/8/)
-[オンラインゲーム好きは絶対に観た方がいい映画『アバター』](http://getnews.jp/archives/40882)
-
-### 最後にパンドラの景色を御覧下さい
-*gallery link="file"*
+- [驚愕の『アバター』映画館で観るべき“3つの理由](http://news.walkerplus.com/2009/1222/11/)
+- [キャメロン監督『アバター』2作目、3作目構想を明かす](http://news.walkerplus.com/2009/1222/3/)
+- [『アバター』出演女優ゾーイ・サルダナはスタントも軽々こなす万能女優](http://news.walkerplus.com/2009/1223/8/)
+- [オンラインゲーム好きは絶対に観た方がいい映画『アバター』](http://getnews.jp/archives/40882)

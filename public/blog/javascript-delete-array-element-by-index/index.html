@@ -9,8 +9,7 @@
 	
 	<meta name="description" content="今まで全然気付かなかったんです、
 JavascriptのArrayにはdeleteみたいなAPIがないことに。
-配列の要素をindex指定で削除したい場合は代わりにsplice関数を使います。 splice関数 とほほからのレファレンスでは
-{% blockquote } array.splice &hellip;">
+配列の要素をindex指定で削除したい場合は代わりにsplice関数を使います。 splice関数 とほほからのレファレンスでは array.splice(start, n, e1, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -81,13 +80,12 @@ JavascriptのArrayにはdeleteみたいなAPIがないことに。
 
 <h2>splice関数</h2>
 
-<p>とほほからのレファレンスでは
-{% blockquote }</p>
+<p>とほほからのレファレンスでは</p>
 
-<p>array.splice(start, n, e1, e2, &#8230;) (N4)
-0 から数えて、start 番目から n 個の要素を削除し、その代わりに e1, e2, &#8230;を値とする要素を埋め込みます。戻り値は JavaScript のバージョンによって異なります。</p>
+<blockquote><p>array.splice(start, n, e1, e2, &#8230;) (N4)<br/>0 から数えて、start 番目から n 個の要素を削除し、その代わりに e1, e2, &#8230;を値とする要素を埋め込みます。戻り値は JavaScript のバージョンによって異なります。</p></blockquote>
 
-<p>{% endblockquote %}</p>
+
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

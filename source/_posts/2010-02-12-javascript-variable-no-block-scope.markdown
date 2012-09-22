@@ -17,25 +17,15 @@ function内に定義された変数は全て同じスコープ：functionのス�
 
 ```javascript
 function test(o) {
-
     var i = 0;                      // i is defined throughout function
-
     if (typeof o == "object") {
-
         var j = 0;                  // j is defined everywhere, not just block
-
         for(var k=0; k < 10; k++) { // k is defined everywhere, not just loop
-
             document.write(k);
-
         }
-
         document.write(k);          // k is still defined: prints 10
-
     }
-
     document.write(j);              // j is defined, but may not be initialized
-
 }
 
 ```
@@ -49,18 +39,13 @@ function test(o) {
 
 ```javascript
 var scope = "global";
-
 function test( ) {
-
     alert(scope);         // Displays "undefined", not "global"
-
     var scope = "local";  // Variable initialized here, but defined everywhere
-
     alert(scope);         // Displays "local"
 }
 
 test( );
-
 ```
 
 <br/>
@@ -79,15 +64,10 @@ varで宣言する位置、順番と関係ありません。
 
 ```javascript
 function test( ) {
-
     var scope;       // Local variable is declared at the start of the function
-
     alert(scope);    // It exists here, but still has "undefined" value
-
     scope = "local"; // Now we initialize it and give it a value
-
     alert(scope);    // And here it has a value
-
 }
 
 ```

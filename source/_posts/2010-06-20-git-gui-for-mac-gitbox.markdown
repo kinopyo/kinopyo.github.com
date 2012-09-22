@@ -10,7 +10,7 @@ categories: [nil]
 <a href="http://gitbox.pierlis.com/">Gitbox</a>はGitバージョンコントロールのGUIトールです。
 表題の通りFor Macです。
 
-<img src="http://gitbox.pierlis.com/gitbox-screenshot.png" alt="Gitbox"  width="500" height="350"/>
+![](http://d1oa71y4zxyi0a.cloudfront.net/1.6.2-screenshot1.jpg)
 
 {% blockquote %}
 

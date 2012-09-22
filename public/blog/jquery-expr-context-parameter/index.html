@@ -8,18 +8,10 @@
 
 	
 	<meta name="description" content="今まで平気に$(expression)を使ってきましたが、
-この二番目のcontextパラメータでセレクタの範囲を決まることができます。 この関数はjQueryのコア関数で幅広く使われ、
+この二番目のcontextパラメータでセレクタの範囲を決まることができます。
+この関数はjQueryのコア関数で幅広く使われ、
 もっとも一般的な使い方はcontextを省略したものでしょう。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11 &hellip;">
+$(&quot;div&quot;) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -85,43 +77,26 @@
 	<div id="content" class="inner"><article class="post">
 	<h1 class="title">jQueryの$(expr, context)、今まで気づいてなかったcontextパラメータ</h1>
 	<div class="entry-content"><p>今まで平気に$(expression)を使ってきましたが、
-この二番目のcontextパラメータでセレクタの範囲を決まることができます。</p>
-
-<br/>
-
-
-<p>この関数はjQueryのコア関数で幅広く使われ、
+この二番目のcontextパラメータでセレクタの範囲を決まることができます。
+この関数はjQueryのコア関数で幅広く使われ、
 もっとも一般的な使い方はcontextを省略したものでしょう。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">##</span> <span class="nx">context</span><span class="err">パラメータ</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">blockquote</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">context</span><span class="err">が何も指定されなければ、</span><span class="nx">$</span><span class="p">()</span><span class="err">関数は現在の</span><span class="nx">HTML</span><span class="err">の</span><span class="nx">DOM</span><span class="err">エレメントを検索する。</span>
-</span><span class='line'><span class="err">逆に</span><span class="nx">DOM</span><span class="err">エレメントや</span><span class="nx">jQuery</span><span class="err">オブジェクトなどの</span><span class="nx">context</span><span class="err">が指定されれば、</span><span class="nx">expression</span><span class="err">はその</span><span class="nx">context</span><span class="err">に対して合致するものを捜します。</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endblockquote</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="err">簡単にいうと</span><span class="nx">find</span><span class="p">()</span><span class="err">関数と似ています。</span>
-</span><span class='line'><span class="err">実践でいうと以下の二つは同じ機能をしています。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush: javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>contextパラメータ</h2>
+
+<blockquote><p>contextが何も指定されなければ、$()関数は現在のHTMLのDOMエレメントを検索する。<br/>逆にDOMエレメントやjQueryオブジェクトなどのcontextが指定されれば、expressionはそのcontextに対して合致するものを捜します。</p></blockquote>
+
+
+<p>簡単にいうとfind()関数と似ています。
+実践でいうと以下の二つは同じ機能をしています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
 </span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div,body&quot;</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 

@@ -76,16 +76,26 @@
 
 <h2>ソースを用意</h2>
 
-<p>&#8220;`xml
-&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;UTF-8&#8221; ?>
-<Module>
-  <ModulePrefs title="Hello World!" />
-  <Content type="html"></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+</span><span class='line'><span class="nt">&lt;Module&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;ModulePrefs</span> <span class="na">title=</span><span class="s">&quot;Hello World!&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;Content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">      Hello, world!</span>
+</span><span class='line'><span class="cp">    ]]]]&gt;&lt;![CDATA[&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/Content&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Module&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;![CDATA[
-  Hello, world!
-]]
-</code></pre>
 </div>
 
 

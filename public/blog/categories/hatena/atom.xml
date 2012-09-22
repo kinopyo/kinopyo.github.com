@@ -4,7 +4,7 @@
   <title><![CDATA[Category: hatena | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/hatena/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,17 +19,17 @@
     <updated>2011-05-16T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/using-wordpress-plugin-fo-my-social-bookmark-button</id>
     <content type="html"><![CDATA[<p>もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
-<a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">http://www.lastday.jp/2011/05/16/increase-number-of-rss</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
+<a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">ブログのRSS登録者を50%増やすシンプルな6つの方法 | Last Day. jp</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
 FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDeliciousなどまで対応してて便利ですよ。</p>
 
-<p>Wordpressプラグイン：WP Social Bookmarking Light
-<a href="http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/">http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/</a></p>
+<p><a href="http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/">WordPressにソーシャルブックマークボタンを楽々設置：WP Social Bookmarking Light | ninxit.blog</a></p>
 
 <h2>設定</h2>
 
 <p>設定方法はとても簡単です。WPの設定画面でWP Social Bookmarking Lightを選択肢
-下記のように必要なサービスを左にドラッグ＆ドロップすればOKです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png" title="WP Social Bookmarking Light Settings" ></p>
+下記のように必要なサービスを左にドラッグ＆ドロップすればOKです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png" title="WP Social Bookmarking Light Settings" ></p>
 
 <h3>General Settingタブ</h3>
 
@@ -37,8 +37,9 @@ FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDelicious
 
 <h3>Facebookタブ</h3>
 
-<p>LikeボタンのVersionはデフォルトは「XFBML」となっていますが、XFBMLはもう廃止予定なのでiFrameに変更します。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg" title="WP Social Bookmarking Light Facebook Setting" ></p>
+<p>LikeボタンのVersionはデフォルトは「XFBML」となっていますが、XFBMLはもう廃止予定なのでiFrameに変更します。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg" title="WP Social Bookmarking Light Facebook Setting" ></p>
 ]]></content>
   </entry>
   

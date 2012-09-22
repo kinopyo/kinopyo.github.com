@@ -13,7 +13,6 @@ categories: [nil]
 ```ruby
 temperature = 34
 puts temperature
-
 ```
 
 ### Rubyの変数名
@@ -22,18 +21,16 @@ Rubyではキャメルケースより、アンダースコアが好みだそう�
 
 ### 予約語
 
-{% blockquote >
-__FILE__	def	in	self
-__LINE__	defined?	module	super
-BEGIN	do	next	then
-END	else	nil	true
-alias	elsif	not	undef
-and	end	or	unless
-begin	ensure	redo	until
-break	false	rescue	when
-case	for	retry	while
-class	if	return	yield
-<<
+> __FILE__	def	in	self
+> __LINE__	defined?	module	super
+> BEGIN	do	next	then
+> END	else	nil	true
+> alias	elsif	not	undef
+> and	end	or	unless
+> begin	ensure	redo	until
+> break	false	rescue	when
+> case	for	retry	while
+> class	if	return	yield
 
 ### Example2
 
@@ -42,7 +39,6 @@ age = 99
 puts "My age: " + String(age)
 puts "My age: " + age.to_s
 puts "My age: #{age} "
-
 ```
 
 整数を文字列に変換することに注意してください。
@@ -57,61 +53,6 @@ PI = 3.1415926535
 
 コンスタントは大文字でスタートします。
 これでRubyはコンスタントと認識してくれます。
-
-
-# 中文
-## 变量
-### 声明例子1
-
-```ruby
-temperature = 34
-puts temperature
-
-```
-
-### Ruby变量名
-Ruby更常用下划线而非骆驼拼写法。
-比如page_transfer_manager，但pageTransferManager却不常用。
-
-### Reserved Word
-以下变量名为Ruby所使用，无法用来定义自己的变量。
->>
-__FILE__	def	in	self
-__LINE__	defined?	module	super
-BEGIN	do	next	then
-END	else	nil	true
-alias	elsif	not	undef
-and	end	or	unless
-begin	ensure	redo	until
-break	false	rescue	when
-case	for	retry	while
-class	if	return	yield
-<<
-
-### Example2
-
-```ruby
-age = 99
-puts "My age: " + String(age)
-puts "My age: " + age.to_s
-puts "My age: #{age} "
-
-```
-
-注意要将integer转换为string.
-在双引号""内，可以在#{和}之间放置任何表达式，
-表达式的值会被转换为string显示。
-
-## 常量
-
-```ruby
-PI = 3.1415926535
-
-```
-
-常量在Ruby里以大写字母开头。
-通常习惯上常量的所有字符都是大写，
-但只要开头是大写，Ruby便认为这是常量。
 
 # English
 
@@ -131,20 +72,16 @@ page_transfer_manager is good, for example, but pageTransferManager is not.
 
 ### Reserved words
 
->}
-
-__FILE__	def	in	self
-__LINE__	defined?	module	super
-BEGIN	do	next	then
-END	else	nil	true
-alias	elsif	not	undef
-and	end	or	unless
-begin	ensure	redo	until
-break	false	rescue	when
-case	for	retry	while
-class	if	return	yield
-
-{% endblockquote %}
+> __FILE__	def	in	self
+> __LINE__	defined?	module	super
+> BEGIN	do	next	then
+> END	else	nil	true
+> alias	elsif	not	undef
+> and	end	or	unless
+> begin	ensure	redo	until
+> break	false	rescue	when
+> case	for	retry	while
+> class	if	return	yield
 
 ### Example2
 

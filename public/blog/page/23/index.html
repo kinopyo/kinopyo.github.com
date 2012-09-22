@@ -7,12 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Rubyでは変数の型を宣言しないです。
-そのため、オブジェクトは実際に何型かがわからない時が多いです。
-オブジェクトのクラスを調べるには以下の三つの方法があります。 class オブジェクトのクラスを調べられます。
-返された結果はクラス名です。
-例： 1
-&quot;文字列です。&quot;. &hellip;">
+	<meta name="description" content="JavaをやってからJavascriptを触ったので、
+Javascript変数にブロックレベルのスコープがないことにビックリしました。
+if文ブロックか、forループブロックか関係なく、
+function内に定義された変数は全て同じスコープ：functionのスコープになります。 例えば 1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,6 +74,145 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-variable-no-block-scope">Javascript変数にブロックスコープはない</a></h1>
+	<div class="entry-content">
+		<p>JavaをやってからJavascriptを触ったので、
+Javascript変数にブロックレベルのスコープがないことにビックリしました。
+if文ブロックか、forループブロックか関係なく、
+function内に定義された変数は全て同じスコープ：functionのスコープになります。</p>
+
+<br/>
+
+
+<p>例えば</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                      <span class="c1">// i is defined throughout function</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">o</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                  <span class="c1">// j is defined everywhere, not just block</span>
+</span><span class='line'>        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// k is defined everywhere, not just loop</span>
+</span><span class='line'>            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>          <span class="c1">// k is still defined: prints 10</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>              <span class="c1">// j is defined, but may not be initialized</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>変数kとjはそれぞれif文のブロック、forループのブロック内に定義されたが、
+実はfunctionのスコープとなりfunction内ならどこでも参照できます。</p>
+
+<br/>
+
+
+<p>これをしっかり理解しないと以下のようなミスが起こしやすいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;undefined&quot;, not &quot;global&quot;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>  <span class="c1">// Variable initialized here, but defined everywhere</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;local&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">test</span><span class="p">(</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>一番目のalertは&#8221;global&#8221;だと思ったらこの記事を読む価値はあるでしょう。
+一番目のalertは&#8221;undefined&#8221;を表示します。
+なぜならさっき言ったように変数のスコープはfunction内に跨るのです。
+varで宣言する位置、順番と関係ありません。</p>
+
+<br/>
+
+
+<p>ここではfunction内で同じ名前でscopeという変数が宣言され、
+&#8220;global&#8221;の値を持つグローバル変数は上書きされました。
+そして一番目のalert時のscopeは初期化されていないため、undefinedとなってしまいます。</p>
+
+<br/>
+
+
+<p>上記のコードを書き換えると以下と同じです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span><span class="p">;</span>       <span class="c1">// Local variable is declared at the start of the function</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// It exists here, but still has &quot;undefined&quot; value</span>
+</span><span class='line'>    <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span> <span class="c1">// Now we initialize it and give it a value</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// And here it has a value</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>誤解を招かないように変数の宣言はfunctionの先頭に置くのが大事ですね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-12T00:00:00+09:00" pubdate data-updated="true">2010-02-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -226,11 +363,8 @@ instance_of?は特定のクラスだけ、サブクラスを調べられない�
 その記述順番に気になったことはありますか?
 そしてそれがどのような影響があるかぐぐってみました。</p>
 
-<p>{% blockquote }</p>
+<blockquote><p>headセクション内のタグの記述順に特に決まりはないが、&#8221;charset&#8221;で示す文字コード指定のタグは、titleタグやmeta description/keywordsタグよりも先に記述することが推奨される。の中身がまさに、文字で書かれ、文字コード判定が必要だからです。</p></blockquote>
 
-<p>headセクション内のタグの記述順に特に決まりはないが、&#8221;charset&#8221;で示す文字コード指定のタグは、titleタグやmeta description/keywordsタグよりも先に記述することが推奨される。の中身がまさに、文字で書かれ、文字コード判定が必要だからです。</p>
-
-<p>{% endblockquote %}</p>
 
 <p>そういえばWordpressを使ってからこの辺全然気にしてないので
 早速自分のサイトのheadセクションを確認しました。
@@ -346,129 +480,92 @@ titleのところのシングルクォーテーションがUTF-8の#039になっ
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">validate</span>
-</span><span class='line'>    <span class="n">errors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="ss">:content</span><span class="p">,</span> <span class="s2">&quot;を入力してください&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">content</span> <span class="o">=~</span> <span class="sr">/^(ここに感想を書いてください。|ここに感想を書いてください)$/</span>
+</span><span class='line'>  <span class="n">errors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="ss">:content</span><span class="p">,</span> <span class="s2">&quot;を入力してください&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">content</span> <span class="o">=~</span> <span class="sr">/^(ここに感想を書いてください。|ここに感想を書いてください)$/</span>
 </span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">### validates_acceptance_of</span>
-</span><span class='line'><span class="sx">チェックボックスがチェックされたかを確認。</span>
-</span><span class='line'><span class="sx">チェックされていない場合、エラーが起こリます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">### validates_confirmation_of</span>
-</span><span class='line'><span class="sx">再入力を確認します。</span>
-</span><span class='line'><span class="sx">詳細の使い方は、「validates_confirmation_of の使い方」を参照してください。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">### validates_exclusion_of</span>
-</span><span class='line'><span class="sx">指定した値に含まれていないかをチェックします。</span>
-</span><span class='line'><span class="sx">例：</span>
-</span><span class='line'><span class="sx">{% codeblock %}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">validates_exclusion_of</span> <span class="ss">:sex</span><span class="p">,</span><span class="ss">:in</span> <span class="o">=&gt;</span> <span class="o">*</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="o">*</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">### validates_inclusion_of</span>
-</span><span class='line'><span class="sx">指定した値に含まれているかをチェックします。</span>
-</span><span class='line'><span class="sx">validates_exclusion_ofの逆です。</span>
-</span><span class='line'><span class="sx">例：</span>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">validates_inclusion_of:sex, :in =&gt; *&#39;female&#39;,&#39;male&#39;*</span>
-</span><span class='line'><span class="sx">{% endcodeblock %}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">### validates_format_of</span>
-</span><span class='line'><span class="err">正規表現を使って、値をチェックします。</span>
-</span><span class='line'><span class="err">例：</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="n">validates_format_of</span> <span class="ss">:code</span><span class="p">,</span><span class="ss">:with</span><span class="o">=&gt;</span> <span class="sr">/^*0-9A-Za-z*/</span><span class="p">,</span> <span class="ss">:message</span><span class="o">=&gt;</span><span class="s2">&quot;は半角英数字で入力してください。&quot;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">### validates_length_of</span>
-</span><span class='line'><span class="sx">値の長さをチェックします。</span>
-</span><span class='line'><span class="sx"> 例：</span>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">validates_length_of :name, :maximum=&gt;30</span>
-</span><span class='line'><span class="sx">{% endcodeblock %}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">### validates_numericality_of</span>
-</span><span class='line'><span class="err">値は数字かどうかをチェックします。数字ではない場合、エラーを表示します。</span>
-</span><span class='line'><span class="err">例：</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="n">validates_numericality_of</span><span class="err">　</span><span class="ss">:code</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">### validates_presence_of</span>
-</span><span class='line'><span class="sx">必須値のチェック。値が入力されていない場合、エラーを表示します。</span>
-</span><span class='line'><span class="sx">例：</span>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">validates_presence_of :code</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">{% endcodeblock %}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">### validates_uniqueness_of</span>
-</span><span class='line'><span class="err">値の重複チェック。</span><span class="no">DB</span><span class="err">に既に同じ値が存在した場合、エラーを表示します。</span>
-</span><span class='line'><span class="err">例：</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="n">validates_uniqueness_of</span> <span class="ss">:id</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_acceptance_of</h3>
+
+<p>チェックボックスがチェックされたかを確認。
+チェックされていない場合、エラーが起こリます。</p>
+
+<h3>validates_confirmation_of</h3>
+
+<p>再入力を確認します。
+詳細の使い方は、「validates_confirmation_of の使い方」を参照してください。</p>
+
+<h3>validates_exclusion_of</h3>
+
+<p>指定した値に含まれていないかをチェックします。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_exclusion_of</span> <span class="ss">:sex</span><span class="p">,</span><span class="ss">:in</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_inclusion_of</h3>
+
+<p>指定した値に含まれているかをチェックします。
+validates_exclusion_ofの逆です。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_inclusion_of</span><span class="ss">:sex</span><span class="p">,</span> <span class="ss">:in</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_format_of</h3>
+
+<p>正規表現を使って、値をチェックします。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_format_of</span> <span class="ss">:code</span><span class="p">,</span><span class="ss">:with</span> <span class="o">=&gt;</span> <span class="sr">/^[0-9A-Za-z]/</span><span class="p">,</span> <span class="ss">:message</span> <span class="o">=&gt;</span><span class="s2">&quot;は半角英数字で入力してください。&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>`</p>
+
+<h3>validates_length_of</h3>
+
+<p>値の長さをチェックします。
+ 例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_length_of</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:maximum</span> <span class="o">=&gt;</span> <span class="mi">30</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_numericality_of</h3>
+
+<p>値は数字かどうかをチェックします。数字ではない場合、エラーを表示します。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_numericality_of</span><span class="err">　</span><span class="ss">:code</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_presence_of</h3>
+
+<p>必須値のチェック。値が入力されていない場合、エラーを表示します。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_presence_of</span> <span class="ss">:code</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>validates_uniqueness_of</h3>
+
+<p>値の重複チェック。DBに既に同じ値が存在した場合、エラーを表示します。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_uniqueness_of</span> <span class="ss">:id</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -498,7 +595,7 @@ titleのところのシングルクォーテーションがUTF-8の#039になっ
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>
@@ -516,11 +613,8 @@ titleのところのシングルクォーテーションがUTF-8の#039になっ
 この正規化というのは非常に重要で、検索エンジンに対しての知らせです。
 Googleのヘルプによると下記の解説になります。</p>
 
-<p>{% blockquote }</p>
+<blockquote><p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p></blockquote>
 
-<p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p>
-
-<p>{% endblockquote %}</p>
 
 <p>なので&#8221;wwwあり&#8221;と&#8221;wwwなし&#8221;が同じサイトであれば
 正規化する必要があります。</p>
@@ -533,34 +627,24 @@ Googleのヘルプによると下記の解説になります。</p>
 .htaccessファイルはwww.kinopyo.comのディレクトリに置いてあればOKです。
 設定に基づいてリダイレクトします。</p>
 
-<ul>
-<li>wwwありに統一</li>
-</ul>
-
+<h3>wwwありに統一</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>RewriteEngine on
-</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com *NC*
-</span><span class='line'>RewriteRule ^(.# )$ http://www.example.com/$1 *R=301,L*
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>+  wwwなしに統一
-</span><span class='line'>&lt;pre class="brush:plain"&gt;
-</span><span class='line'>RewriteEngine on
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com [NC]
+</span><span class='line'>RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>wwwなしに統一</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
 </span><span class='line'>RewriteCond %{HTTP_HOST} ^www.example\.com *NC*
-</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*</span></code></pre></td></tr></table></div></figure>
 
 
 <p>※”example.com”は自分のドメイン名に置き換えてください。</p>
@@ -572,18 +656,21 @@ Googleのヘルプによると下記の解説になります。</p>
 ここでは自分が&#8221;www有り無し&#8221;をGoogleに伝えるための設定をします。
 そうしないとGoogleは&#8221;www有り無し&#8221;をそれぞれ別のページへの異なる参照として処理されます。</p>
 
-<ul>
-<li><p>Googleウェブマスターツール使うにはまずサイトを登録
-サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。
-{% img http://www.kinopyo.com/wp-content/uploads/2010/01/Googleウェブマスターツール.jpg Googleウェブマスターツール %}
-Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
-(具体的な認証方法はGoogleのヘルプを見てください)</p></li>
-<li><p>使用するドメイン
-登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
-利用するドメイン、つまりwww有りなしを指定してください。
-{% img http://www.kinopyo.com/wp-content/uploads/2010/01/ウェブマスター-ツール-設定.jpg Googleウェブマスターツール %}</p></li>
-</ul>
+<h3>Googleウェブマスターツール使うにはまずサイトを登録</h3>
 
+<p>サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool.jpg" title="Googleウェブマスターツール" ></p>
+
+<p>Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
+(具体的な認証方法はGoogleのヘルプを見てください)</p>
+
+<h3>使用するドメイン</h3>
+
+<p>登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
+利用するドメイン、つまりwww有りなしを指定してください。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool_setting.jpg" title="Googleウェブマスターツール" ></p>
 
 <h2>Wordpressお使いの方は注意を</h2>
 
@@ -618,7 +705,7 @@ Wordpressの仕様は調べていないが、どうやらWordpressの設定に�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
 
 
 </div>
@@ -637,18 +724,17 @@ Wordpressの仕様は調べていないが、どうやらWordpressの設定に�
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">validates_confirmation_of</span> <span class="ss">:password</span>               <span class="c1">#カラム名</span>
-</span><span class='line'>  <span class="kp">attr_accessor</span>             <span class="ss">:password_confirmation</span>  <span class="c1">#カラム名に_confirmation{% endcodeblock %}</span>
-</span><span class='line'><span class="err">そして、関連のビューで、以下の処理を書きます。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= password_field :user, :password %&amp;gt;</span>
-</span><span class='line'><span class="sx">&amp;lt;P&amp;gt;</span>
-</span><span class='line'><span class="sx">&amp;lt;%=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password_confirmation</span> <span class="o">%&amp;</span><span class="n">gt</span><span class="p">;</span><span class="err">（確認用）</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_confirmation_of</span> <span class="ss">:password</span>  <span class="c1">#カラム名</span>
+</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:password_confirmation</span> <span class="c1">#カラム名に_confirmation</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして、関連のビューで、以下の処理を書きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password</span>
+</span><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password_confirmation</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -678,7 +764,7 @@ Wordpressの仕様は調べていないが、どうやらWordpressの設定に�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>
@@ -753,10 +839,11 @@ Yahooに申請するときは&#8221;wwwあり&#8221;のwww.kinopyo.comで申請�
 		<p>セッションを使って、データを保存する時、
 以下のエラーが表示されました。</p>
 
-<p>{% codeblock %}
-Status: 500 Internal Server Error
-ActionController::Session::CookieStore::CookieOverflow
-{% endcodeblock %}</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Status: 500 Internal Server Error
+</span><span class='line'>ActionController::Session::CookieStore::CookieOverflow</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>原因：Railsのセッションに保存できるデータの長さは４KBしかないです。</h3>
 
@@ -774,20 +861,18 @@ ActionController::Session::CookieStore::CookieOverflow
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>rake db:sessions:create
-</span><span class='line'>rake db:migrate
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>+  config/environment.rbで以下の行をコメントアウトします。
-</span><span class='line'>&lt;pre class="brush:plain"&gt;
-</span><span class='line'>  config.action_controller.session_store = :active_record_store
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">db</span><span class="ss">:sessions:create</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>config/environment.rbで以下の行をコメントアウトします。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_controller</span><span class="o">.</span><span class="n">session_store</span> <span class="o">=</span> <span class="ss">:active_record_store</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -820,81 +905,7 @@ ActionController::Session::CookieStore::CookieOverflow
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required">EclipseにMavenプラグインインストール後のエラー: &#8220;Eclipse is running in a JRE, but a JDK is required&#8221;</a></h1>
-	<div class="entry-content">
-		<p>EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。</p>
-
-<p><a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>The Maven Integration required that Eclipse be running in a JDK,
-</span><span class='line'>because a number of Maven core plugins are using jars from the JDK.
-</span><span class='line'>
-</span><span class='line'>Please make sure the -vm option in eclipse.ini is pointing to a JDK and
-</span><span class='line'>verify that Installed JREs are also using JDK installs.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使ってた環境は確かにJREのみがあってJDKはなかったんです。
-回避策としては
-+  JDKをインストール
-+  eclipse.iniに-vmオプションでインストールしたJDKと関連付ける</p>
-
-<h3>JDKのインストール</h3>
-
-<p>JDKのダウンロードはこちら:<a href="http://java.sun.com">Sun Java</a>
-インストール後JAVA_HOMEとPATH環境変数もあわせて編集
-エクスプローラ→マイコンピュータ→右クリック→プロパティ→詳細設定タブ→環境変数ボタン</p>
-
-<h3>eclipse.iniの編集</h3>
-
-<p>jdkのパスはインストール先に合わせて下記内容を追記
-vmの後に<strong>改行が必要</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> -vm
-</span><span class='line'>C:\Java\jdk1.6.0_18\bin\javaw.exe
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで再起動したらエラーメッセージは出なくなりました。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-20T00:00:00+09:00" pubdate data-updated="true">2010-01-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

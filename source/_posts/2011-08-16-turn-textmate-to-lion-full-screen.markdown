@@ -7,7 +7,7 @@ permalink: /blog/turn-textmate-to-lion-full-screen
 comments: true
 categories: ["Mac", "textmate", "TextMate", "環境構築"]
 ---
-```
+```bash
 git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen
 
 xcodebuild -project /tmp/EGOTextMateFullScreen/EGOTextMateFullScreen.xcodeproj -target EGOTextMateFullScreen
@@ -16,8 +16,8 @@ cp -R /tmp/EGOTextMateFullScreen/build/Release/EGOTextMateFullScreen.tmplugin ~/
 
 # after installed
 rm -rf /tmp/EGOTextMateFullScreen/
-
 ```
 
 これが完成図！
-{% img http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg textmate_fullscreen %}
+
+![Textmate Fullscreen](http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg)

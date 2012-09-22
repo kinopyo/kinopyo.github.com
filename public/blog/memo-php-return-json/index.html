@@ -8,7 +8,7 @@
 
 	
 	<meta name="description" content="PHP側で 1
-echo $_GET*&#39;callback&#39;* . &#39;(&#39; . json_encode($object) . &#39;);&#39;; JS側で 1
+echo $_GET[&#39;callback&#39;] . &#39;(&#39; . json_encode($object) . &#39;);&#39;; JS側で 1
 2
 3
 4
@@ -84,7 +84,7 @@ $(function(){ $.getJSON(&#39;foo.php &hellip;">
 	<div class="entry-content"><h2>PHP側で</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo $_GET*&#39;callback&#39;* . &#39;(&#39; . json_encode($object) . &#39;);&#39;;</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo $_GET[&#39;callback&#39;] . &#39;(&#39; . json_encode($object) . &#39;);&#39;;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -99,18 +99,18 @@ $(function(){ $.getJSON(&#39;foo.php &hellip;">
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>     <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;foo.php?callback=?&#39;</span><span class="p">,</span>
-</span><span class='line'>                <span class="p">{},</span>  <span class="c1">// No additional parameters sent</span>
-</span><span class='line'>                <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>                     <span class="c1">// data is now JSON object instantiated from retrieved info</span>
-</span><span class='line'>                     <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="o">*</span><span class="s1">&#39;key&#39;</span><span class="o">*</span><span class="p">);</span>
-</span><span class='line'>     <span class="p">});</span>
+</span><span class='line'>   <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;foo.php?callback=?&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">{},</span>  <span class="c1">// No additional parameters sent</span>
+</span><span class='line'>    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="c1">// data is now JSON object instantiated from retrieved info</span>
+</span><span class='line'>       <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="o">*</span><span class="s1">&#39;key&#39;</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>   <span class="p">});</span>
 </span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>参考：
-<a href="http://www.carolinamantis.com/wordpress/?p=29">http://www.carolinamantis.com/wordpress/?p=29</a></p>
+<a href="http://www.carolinamantis.com/wordpress/?p=29">Mantis and Jessamine | Creating a JSONP Data Provider in PHP</a></p>
 </div>
 
 

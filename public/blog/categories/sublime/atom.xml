@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sublime | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/sublime/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,8 +18,9 @@
     <link href="http://kinopyo.com/blog/sublime-a-textmate-like-editor"/>
     <updated>2011-09-20T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/sublime-a-textmate-like-editor</id>
-    <content type="html"><![CDATA[<p><img src="http://d2o0t5hpnwv4c1.cloudfront.net/1038_sublime/sublime.png" />
-最近#textmateのTwitterタグでたまたま<a href="http://www.sublimetext.com/title:sublime">http://www.sublimetext.com/title:sublime</a>を目にするんですが、Textmate2の代わりになれるかで議論されているようです。</p>
+    <content type="html"><![CDATA[<p><img src="http://d2o0t5hpnwv4c1.cloudfront.net/1038_sublime/sublime.png" alt="" /></p>
+
+<p>最近#textmateのTwitterタグでたまたま<a href="http://www.sublimetext.com/">sublimetext</a>を目にするんですが、Textmate2の代わりになれるかで議論されているようです。</p>
 
 <p>一応入れてみたのですが、最初の印象というえば
 +  速い。163MBのcsvファイルをたった数秒で開きました。Textmateはもう何分間固まったんです。
@@ -28,7 +29,7 @@
 +  コードの比較機能が便利
 +  ShiftJISなどの日本語文字コードは依然サポートされない</p>
 
-<p><img alt="" src="http://www.sublimetext.com/screenshots/pythonHeroLarge.png" title="Edit side by side in widescreen" class="alignnone" width="500" height="300" /></p>
+<p><img src="http://www.sublimetext.com/screenshots/pythonHeroLarge.png" alt="" /></p>
 
 <p>このへんにいいTipsを紹介してくれる記事があります。
 <a href="http://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/">http://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/</a></p>

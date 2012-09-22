@@ -97,36 +97,16 @@ function内に定義された変数は全て同じスコープ：functionのス�
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                      <span class="c1">// i is defined throughout function</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">o</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
 </span><span class='line'>        <span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                  <span class="c1">// j is defined everywhere, not just block</span>
-</span><span class='line'>
 </span><span class='line'>        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// k is defined everywhere, not just loop</span>
-</span><span class='line'>
 </span><span class='line'>            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
-</span><span class='line'>
 </span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
 </span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>          <span class="c1">// k is still defined: prints 10</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>              <span class="c1">// j is defined, but may not be initialized</span>
-</span><span class='line'>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -152,18 +132,10 @@ function内に定義された変数は全て同じスコープ：functionのス�
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
-</span><span class='line'>
 </span><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;undefined&quot;, not &quot;global&quot;</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>  <span class="c1">// Variable initialized here, but defined everywhere</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;local&quot;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
@@ -199,21 +171,11 @@ varで宣言する位置、順番と関係ありません。</p>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span><span class="p">;</span>       <span class="c1">// Local variable is declared at the start of the function</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// It exists here, but still has &quot;undefined&quot; value</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span> <span class="c1">// Now we initialize it and give it a value</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// And here it has a value</span>
-</span><span class='line'>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

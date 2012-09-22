@@ -7,8 +7,17 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="この記事で紹介するのはGoogle Appsのアカウント（多くの場合は会社で使うGoogleアカウント：yourname@yourcompany.comのような）のカレンダーをiPhoneに同期する方法です。 手順 (英語の環境設定です)
-+Settingsアプリの&#8221;Mail, &hellip;">
+	<meta name="description" content="開発者のブログではよく各言語に関する変数名やメソッド名などのようなキーワードを強調して表示する必要がありますね。「AV女優.com 開発者ブログ」を見るとき「これだっ！」と思ったCSSをから借りました、@sunomaruさんに感謝です！ CSS 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +84,73 @@
 
 
     <article class="post">
+	<h1 class="title"><a href="/blog/wonderful-syntax-keyword-highlight-css-for-developer-blo">開発者ブログに便利なキーワードや言語シンタックスなどを強調するCSS</a></h1>
+	<div class="entry-content">
+		<p>開発者のブログではよく各言語に関する変数名やメソッド名などのようなキーワードを強調して表示する必要がありますね。「AV女優.com 開発者ブログ」を見るとき「これだっ！」と思ったCSSをから借りました、@sunomaruさんに感謝です！</p>
+
+<h2>CSS</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>em {
+</span><span class='line'>    font-weight: normal;
+</span><span class='line'>    font-style: normal;
+</span><span class='line'>    white-space: nowrap;
+</span><span class='line'>    border: 1px solid #ccc;
+</span><span class='line'>    padding: 0.1em 0.6em;
+</span><span class='line'>    background: #f9f9f9;
+</span><span class='line'>
+</span><span class='line'>    border-radius: 3px;
+</span><span class='line'>    -webkit-border-radius: 3px;
+</span><span class='line'>    -moz-border-radius: 3px;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>DEMO</h2>
+
+<p><em>emタグ</em>で囲めばいいですよ〜どうでしょう〜！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-18T00:00:00+09:00" pubdate data-updated="true">2011-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>CSS</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
 	<h1 class="title"><a href="/blog/sync-google-calendar-to-iphone">GoogleカレンダーとiPhoneカレンダーの同期</a></h1>
 	<div class="entry-content">
 		<p>この記事で紹介するのはGoogle Appsのアカウント（多くの場合は会社で使うGoogleアカウント：yourname@yourcompany.comのような）のカレンダーをiPhoneに同期する方法です。</p>
@@ -136,14 +212,12 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/ruby-nil-empty-blank-none-check-0">ruby: nil? empty? blank? どれも0をチェックしない</a></h1>
 	<div class="entry-content">
-		<p>{% blockquote %}
-よくつかうメソッドの nil? empty? blank? のまとめ。</p>
+		<blockquote><p>よくつかうメソッドの nil? empty? blank? のまとめ。</p>
 
 <p>nil? すべてのオブジェクトにある。nilのときにTrueを返す。
 empty? 文字の長さが0のとき、配列が空のときにTrueを返す。</p>
 
-<p>blank? railsの拡張。nil, &#8220;&#8221;, &#8221; &#8220;, **, {} のいずれかでTrueを返す。
-{% endblockquote %}</p>
+<p>blank? railsの拡張。nil, &#8220;&#8221;, &#8221; &#8220;, **, {} のいずれかでTrueを返す。</p></blockquote>
 
 <p>素晴らしいまとめですね！ootokageさんに感謝。</p>
 
@@ -151,43 +225,78 @@ empty? 文字の長さが0のとき、配列が空のときにTrueを返す。</
 
 <p>迷ったらここにいっぱいサンプルがあります。</p>
 
-<p>{% blockquote %}
-0.nil? #=> false
-0.zero? #= true
-0.empty? #=> NoMethodError
-0.blank? #=> false
-0 == false #=> false</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#= true</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="mi">0</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="p">{}</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">**.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="o">**.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="o">**.</span><span class="n">empty?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="o">**.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="o">**</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="kp">nil</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="kp">false</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; true</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>&#8221;&#8221;.nil? #=> false
-&#8221;&#8221;.zero? #=> NoMethodError
-&#8221;&#8221;.empty? #=> true
-&#8221;&#8221;.blank? #=> true
-&#8221;&#8221; == false #=> false</p>
-
-<p>{}.nil? #=> false
-{}.zero? #=> NoMethodError
-{}.empty? #=> true
-{}.blank? #=> true
-{} == false #=> false</p>
-
-<p><strong>.nil? #=> false
-</strong>.zero? #=> NoMethodError
-<strong>.empty? #=> true
-</strong>.blank? #=> true
-** == false #=> false</p>
-
-<p>nil.nil? #=> true
-nil.zero? #=> NoMethodError
-nil.empty? #=> NoMethodError
-nil.blank? #=> true
-nil == false #=> false</p>
-
-<p>false.nil? #=> false
-false.zero? #=> NoMethodError
-false.empty? #=> NoMethodError
-false.blank? #=> true
-false == false #=> true
-&lt;&lt;</p>
 
 		
 		
@@ -461,8 +570,9 @@ CUSTOM_LOGGER = CustomLogger.new(logfile)  # constant accessible anywhere</code>
 	<div class="entry-content">
 		<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don&#8217;t Save, Cancel, Save&#8230;」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
 
-<p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Keyboard-All-controls.jpg" title="Keyboard All controls" ></p>
+<p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Keyboard-All-controls.jpg" title="Keyboard All controls" ></p>
 
 <p>そこでの説明文の通り「In windows and dialogs, press Tab to move keyboard focus between All controls」、Tabであらゆるウィンドウやダイアログのキーボードフォーカスを移動することができます。</p>
 
@@ -598,11 +708,13 @@ git mergetoolでビジュアルのDiffソフトで差分を見れたり修正し
     <article class="post">
 	<h1 class="title"><a href="/blog/change-safari-useragent">SafariのUserAgentを変更</a></h1>
 	<div class="entry-content">
-		<p>SafariのPreferences-> Advancedタブで&#8221;Show Develop menu in menu bar&#8221;をチェックします。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg" title="Safari-show-develop-menu-in-menu-bar" ></p>
+		<p>SafariのPreferences-> Advancedタブで&#8221;Show Develop menu in menu bar&#8221;をチェックします。</p>
 
-<p>これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg" title="Safari-change-useragent" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg" title="Safari-show-develop-menu-in-menu-bar" ></p>
+
+<p>これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg" title="Safari-change-useragent" ></p>
 
 		
 		
@@ -627,52 +739,6 @@ git mergetoolでビジュアルのDiffソフトで差分を見れたり修正し
 
 
 	<a class='category' href='/blog/categories/safari/'>Safari</a>, <a class='category' href='/blog/categories/useragent/'>UserAgent</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/change-checkbox-size-in-iphone-safari">iPhone safari(webkit-base browser)のcheckboxのサイズを調整</a></h1>
-	<div class="entry-content">
-		<p>Webkit-baseのブラウザ(Safari, Google Chrome)に適用します。</p>
-
-<p>普通のcheckboxはiphoneのようなスマートフォンで見るときとても小さいです。checkboxはcssでheightやwidthを指定しても効かないため、ちょっとしたトリックが必要です。</p>
-
-<div><script src='https://gist.github.com/1252946.js?file='></script>
-<noscript><pre><code>input[type=checkbox] {
-  -webkit-transform: scale(2,2);
-}</code></pre></noscript></div>
-
-
-<p>実機ではこんなふうになります。2.0, 1.5, 1.0の3つのサンプルです。
-<a href="http://www.kinopyo.com/wp-content/uploads/2011/09/scale-checkbox-in-iphone-safari.jpg"><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/scale-checkbox-in-iphone-safari.jpg" style="border: 10px solid #CCC;" alt="" title="scale-checkbox-in-iphone-safari" width="320" height="480" class="alignnone size-full wp-image-2290" /></a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-30T00:00:00+09:00" pubdate data-updated="true">2011-09-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/css/'>CSS</a>, <a class='category' href='/blog/categories/checkbox/'>checkbox</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
 
 
 </div>

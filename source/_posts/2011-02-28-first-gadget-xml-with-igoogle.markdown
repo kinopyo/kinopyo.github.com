@@ -18,4 +18,7 @@ Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを
   <Content type="html">
     <![CDATA[
       Hello, world!
-    ]]
+    ]]]]><![CDATA[>
+  </Content>
+</Module>
+```

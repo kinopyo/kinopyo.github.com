@@ -5,7 +5,7 @@ date: 2010-2-15
 wordpress_id: 984
 permalink: /blog/is-cross-linking-websites-bad
 comments: true
-categories: [nil]
+categories: SEO
 ---
 ## Question
 If I have 3 websites, Is there a problem to cross link websites?
@@ -19,7 +19,7 @@ If I have 3 websites, Is there a problem to cross link websites?
 
 ### 「海外SEO情報ブログ」からの訳文
 
-{% blockquote }
+{% blockquote %}
 
 サイト同士に何らかの関連性があるかが問題だね。
 

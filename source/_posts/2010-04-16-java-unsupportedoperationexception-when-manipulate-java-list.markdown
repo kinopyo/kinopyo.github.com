@@ -22,7 +22,7 @@ list.add("d");
 ちょこっとググッてみたらasListで作ったListに
 add()で要素を追加すると上記のExceptionになるそうです。
 asListのJavadocでの記載は
-{% blockquote }
+{% blockquote %}
 
 指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)
 

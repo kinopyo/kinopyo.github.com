@@ -10,24 +10,22 @@ categories: ["JavaScript", "JSONP", "PHP", "php"]
 ## PHP側で
 
 ```php
-echo $_GET*'callback'* . '(' . json_encode($object) . ');';
+echo $_GET['callback'] . '(' . json_encode($object) . ');';
 
 ```
 
 ## JS側で
 
 ```javascript
-    $(function(){
-         $.getJSON('foo.php?callback=?',
-                    {},  // No additional parameters sent
-                    function (data) {
-                         // data is now JSON object instantiated from retrieved info
-                         alert(data*'key'*);
-         });
-    });
-
+$(function(){
+   $.getJSON('foo.php?callback=?',
+    {},  // No additional parameters sent
+    function (data) {
+       // data is now JSON object instantiated from retrieved info
+       alert(data*'key'*);
+   });
+});
 ```
 
-
 参考：
-[http://www.carolinamantis.com/wordpress/?p=29](http://www.carolinamantis.com/wordpress/?p=29)
+[Mantis and Jessamine | Creating a JSONP Data Provider in PHP](http://www.carolinamantis.com/wordpress/?p=29)

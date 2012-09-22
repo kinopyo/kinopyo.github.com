@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MySQL | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -63,98 +63,6 @@ ensure
   db.close if db
 end</code></pre></noscript></div>
 </p>
-
-<h1>中文</h1>
-
-<p><div><script src='https://gist.github.com/1205708.js?file='></script>
-<noscript><pre><code>require &quot;mysql&quot;
-
-# more examples: 
-# http://www.kitebird.com/articles/ruby-mysql.html
-
-hostname = 'localhost'
-username = 'yourname'
-password = 'password'
-database = 'mysql'
-port = 3306
-
-begin
-  # connect
-  db = Mysql::connect(hostname, username, password, database, port)
-
-  sql = &quot;select id, nickname from users limit 10&quot;
-  res = db.query(sql);
-  # each hash approch
-  res.each_hash do |h|
-    p &quot;#{h['id']}, #{h['nickname']}&quot;
-  end
-  
-  # each approach
-  res2 = db.query(sql);
-  res2.each do |row|
-    p row.join(&quot;,&quot;)
-    p row[0]
-  end
-  
-  # Mysql::Result
-  p res.class
-  
-  # Number of rows
-  p &quot;Number of rows: #{res.num_rows}&quot;
-  
-rescue Mysql::Error =&gt; e
-  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
-ensure
-  # disconnect from server
-  db.close if db
-end</code></pre></noscript></div>
-</p>
-
-<h1>English</h1>
-
-<p><div><script src='https://gist.github.com/1205708.js?file='></script>
-<noscript><pre><code>require &quot;mysql&quot;
-
-# more examples: 
-# http://www.kitebird.com/articles/ruby-mysql.html
-
-hostname = 'localhost'
-username = 'yourname'
-password = 'password'
-database = 'mysql'
-port = 3306
-
-begin
-  # connect
-  db = Mysql::connect(hostname, username, password, database, port)
-
-  sql = &quot;select id, nickname from users limit 10&quot;
-  res = db.query(sql);
-  # each hash approch
-  res.each_hash do |h|
-    p &quot;#{h['id']}, #{h['nickname']}&quot;
-  end
-  
-  # each approach
-  res2 = db.query(sql);
-  res2.each do |row|
-    p row.join(&quot;,&quot;)
-    p row[0]
-  end
-  
-  # Mysql::Result
-  p res.class
-  
-  # Number of rows
-  p &quot;Number of rows: #{res.num_rows}&quot;
-  
-rescue Mysql::Error =&gt; e
-  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
-ensure
-  # disconnect from server
-  db.close if db
-end</code></pre></noscript></div>
-</p>
 ]]></content>
   </entry>
   
@@ -163,26 +71,31 @@ end</code></pre></noscript></div>
     <link href="http://kinopyo.com/blog/mysql-oracle-group-by-date"/>
     <updated>2011-08-17T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/mysql-oracle-group-by-date</id>
-    <content type="html"><![CDATA[<p>これが既存データで、同じ日に複数のデータがある。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" title="table_data" ></p>
+    <content type="html"><![CDATA[<p>これが既存データで、同じ日に複数のデータがある。</p>
 
-<p>期望結果はこれ、つまり日付別で集計したい場合
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" title="expected-result" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" alt="Example data" /></p>
+
+<p>期望結果はこれ、つまり日付別で集計したい場合</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" alt="Expected result" /></p>
 
 <h2>MySQLではDATE関数を使う</h2>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(# ) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>Oracleではto_char関数を使う</h2>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(# ) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(*) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>参考</h2>
 
-<p><a href="http://blog.asial.co.jp/209">http://blog.asial.co.jp/209</a>
-http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
+<ul>
+<li><a href="http://blog.asial.co.jp/209">ちょっと使えるMySQLの小技5つ+1 : アシアルブログ</a></li>
+<li><a href="http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406">第104回 Oracleのお勉強 GROUP BY の罠 - bingo_nakanishiの他言語出身者のためのPerl入門</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -288,46 +201,27 @@ mysql> select password('aa');</p>
     <id>http://kinopyo.com/blog/mysql-using-autocommit-to-control-transaction</id>
     <content type="html"><![CDATA[<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
 
-<p>```sql</p>
+<p>```sql
+--暗黙(自動)コミットを無効に
+SET AUTOCOMMIT = 0;
+--トランザクション開始
+BEGIN;</p>
 
-<pre><code>-暗黙(自動)コミットを無効に
-</code></pre>
+<p>--SQL文をながす
+UPDATE...
+INSERT...</p>
 
-<p>SET AUTOCOMMIT = 0;</p>
+<p>--コミット
+COMMIT;
+--あるいはロールバック
+ROLLBACK;</p>
 
-<pre><code>-トランザクション開始
-</code></pre>
+<p>--暗黙(自動)コミットを有効に
+SET AUTOCOMMIT = 1;</p>
 
-<p>BEGIN;</p>
-
-<pre><code>-SQL文をながす
-</code></pre>
-
-<p>UPDATE...
-INSERT...
-...</p>
-
-<pre><code>-コミット
-</code></pre>
-
-<p>COMMIT;</p>
-
-<pre><code>-あるいはロールバック
-</code></pre>
-
-<p>ROLLBACK;</p>
-
-<pre><code>-暗黙(自動)コミットを有効に
-</code></pre>
-
-<p>SET AUTOCOMMIT = 1;</p>
-
-<pre><code>-暗黙(自動)コミットのステータスを確認
-</code></pre>
-
-<p>SELECT @@AUTOCOMMIT;</p>
-
-<p>```</p>
+<p>--暗黙(自動)コミットのステータスを確認
+SELECT @@AUTOCOMMIT;
+```</p>
 ]]></content>
   </entry>
   

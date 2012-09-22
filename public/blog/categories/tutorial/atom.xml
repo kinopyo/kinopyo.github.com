@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tutorial | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -19,98 +19,6 @@
     <updated>2011-09-09T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/ruby-mysql-tutorial</id>
     <content type="html"><![CDATA[<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
-
-<p><div><script src='https://gist.github.com/1205708.js?file='></script>
-<noscript><pre><code>require &quot;mysql&quot;
-
-# more examples: 
-# http://www.kitebird.com/articles/ruby-mysql.html
-
-hostname = 'localhost'
-username = 'yourname'
-password = 'password'
-database = 'mysql'
-port = 3306
-
-begin
-  # connect
-  db = Mysql::connect(hostname, username, password, database, port)
-
-  sql = &quot;select id, nickname from users limit 10&quot;
-  res = db.query(sql);
-  # each hash approch
-  res.each_hash do |h|
-    p &quot;#{h['id']}, #{h['nickname']}&quot;
-  end
-  
-  # each approach
-  res2 = db.query(sql);
-  res2.each do |row|
-    p row.join(&quot;,&quot;)
-    p row[0]
-  end
-  
-  # Mysql::Result
-  p res.class
-  
-  # Number of rows
-  p &quot;Number of rows: #{res.num_rows}&quot;
-  
-rescue Mysql::Error =&gt; e
-  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
-ensure
-  # disconnect from server
-  db.close if db
-end</code></pre></noscript></div>
-</p>
-
-<h1>中文</h1>
-
-<p><div><script src='https://gist.github.com/1205708.js?file='></script>
-<noscript><pre><code>require &quot;mysql&quot;
-
-# more examples: 
-# http://www.kitebird.com/articles/ruby-mysql.html
-
-hostname = 'localhost'
-username = 'yourname'
-password = 'password'
-database = 'mysql'
-port = 3306
-
-begin
-  # connect
-  db = Mysql::connect(hostname, username, password, database, port)
-
-  sql = &quot;select id, nickname from users limit 10&quot;
-  res = db.query(sql);
-  # each hash approch
-  res.each_hash do |h|
-    p &quot;#{h['id']}, #{h['nickname']}&quot;
-  end
-  
-  # each approach
-  res2 = db.query(sql);
-  res2.each do |row|
-    p row.join(&quot;,&quot;)
-    p row[0]
-  end
-  
-  # Mysql::Result
-  p res.class
-  
-  # Number of rows
-  p &quot;Number of rows: #{res.num_rows}&quot;
-  
-rescue Mysql::Error =&gt; e
-  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
-ensure
-  # disconnect from server
-  db.close if db
-end</code></pre></noscript></div>
-</p>
-
-<h1>English</h1>
 
 <p><div><script src='https://gist.github.com/1205708.js?file='></script>
 <noscript><pre><code>require &quot;mysql&quot;
@@ -175,8 +83,12 @@ end</code></pre></noscript></div>
 
 <pre><code>&lt;![CDATA[
   Hello, world!
-]]
+]]]]&gt;&lt;![CDATA[&gt;
 </code></pre>
+
+<p>  </Content>
+</Module>
+```</p>
 ]]></content>
   </entry>
   

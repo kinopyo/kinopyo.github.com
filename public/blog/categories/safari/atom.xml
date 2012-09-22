@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Safari | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/safari/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -39,11 +39,13 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
     <link href="http://kinopyo.com/blog/change-safari-useragent"/>
     <updated>2011-09-30T00:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/change-safari-useragent</id>
-    <content type="html"><![CDATA[<p>SafariのPreferences-> Advancedタブで"Show Develop menu in menu bar"をチェックします。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg" title="Safari-show-develop-menu-in-menu-bar" ></p>
+    <content type="html"><![CDATA[<p>SafariのPreferences-> Advancedタブで"Show Develop menu in menu bar"をチェックします。</p>
 
-<p>これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg" title="Safari-change-useragent" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg" title="Safari-show-develop-menu-in-menu-bar" ></p>
+
+<p>これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg" title="Safari-change-useragent" ></p>
 ]]></content>
   </entry>
   

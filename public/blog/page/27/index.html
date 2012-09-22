@@ -7,11 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Mac向けのソフトです。同じ集中力アップのWriteroomと似てますが、
-使ってみると結構こっちが陶酔するくらい美しいです。
-音楽が流されて、何かを書くこと自体が癒されるプロセスになります。
-下記DEMOをぜひ御覧下さい。
-Ommwriter from Herraiz Soto on &hellip;">
+	<meta name="description" content="最適なSEOになるためのWordPressのパーマリンク設定方法について書きたいと思います。 パーマリンク 簡単に言うとURLのことです。例えば下記のようなURLです。
+http://example.com/?p=N
+これはWordPressのデフォルトで、実によくない設定です。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +73,101 @@ Ommwriter from Herraiz Soto on &hellip;">
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-permalink-settings-for-seo">WordPressパーマリンクのSEO対策</a></h1>
+	<div class="entry-content">
+		<p>最適なSEOになるためのWordPressのパーマリンク設定方法について書きたいと思います。</p>
+
+<h2>パーマリンク</h2>
+
+<p>簡単に言うとURLのことです。例えば下記のようなURLです。
+http://example.com/?p=N
+これはWordPressのデフォルトで、実によくない設定です。
+基本のものは<a href="http://wpdocs.sourceforge.jp/%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">パーマリンクの使い方</a>を参照してください。</p>
+
+<h2>SEOに最適なパーマリンク</h2>
+
+<p>いろんなサイトを参考しました。結構の情報量で、どこまで通用するかはやはりご自分の判断でお願いします。
++  URLにスペースを入れないのはさいやく、アンダースコアはちょっとマシ、ハイフンは一番(in URLs, no spaces are worst, underscore are better, dashes or hyphens are best.)
++  %postname%で始まるのはパフォーマンス的によくないが、2.0バージョン以降はOKになった</p>
+
+<pre><code>-(Starting Permalinks with %postname% is strongly not recommended for performance reasons.. ###  Note - this has been changed and is ok to do since ver. 2.0)
+</code></pre>
+
+<ul>
+<li>%category%、%tag%で始まるのはパフォーマンスの原因でやめてほしい
+ -(Starting Permalinks with %category%,%tag% is strongly not recommended for performance reasons. )</li>
+<li>日本語のパーマリンクにするのはよろしくない</li>
+</ul>
+
+
+<h2>結論</h2>
+
+<ul>
+<li>%postname%</li>
+<li>あるいは%year%/%postname%
+にしようかと私は思ってます。</li>
+</ul>
+
+
+<br/>
+
+
+<p>まず、%postname%が改善されたため、これを使うのが一番いいSEO対策になってます。
+ただし日本語をパーマリンクにするのはよくしくないと思うので、
+そこは手動で毎回毎回変えるしかないです。
+手間かかると思う方はやはり年月日+post_idを選択したほうがいいかもです。
+ただパーマリンクに無意味なpost_idをつけるのがちょっと抵抗があるので、
+私は別に英語の意味に翻訳するのも大丈夫かと思います。</p>
+
+<br/>
+
+
+<h2>パーマリンクをリダイレクトするプラグイン</h2>
+
+<p>これはあるようです。
+パーマリンクの形式を変更した場合このプラグインで
+簡単リダイレクトができるそうです。
+<a href="http://scott.yang.id.au/code/permalink-redirect">Permalink Redirect WordPress Plugin</a></p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://wpdocs.sourceforge.jp/%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">パーマリンクの使い方</a>
+<a href="http://wphacks.com/how-to-setting-up-your-wordpress-permalink-structure">How To: Setting Up Your WordPress Permalink Structure</a>
+<a href="http://openplay.org/2009/04/18/140.html">WordPressで日本語のパーマリンクにするのはよろしくない</a>
+<a href="http://ja.forums.wordpress.org/topic/2048">WordPress のアドレスに日本語を含むURLが使えない</a>
+<a href="http://coliss.com/articles/blog/wordpress/plugin/wordpress-plugin-permalink-edirect.html">パーマリンクの変更後、旧アドレスでもアクセスできるWordPressのプラグイン</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-07T00:00:00+09:00" pubdate data-updated="true">2009-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -570,62 +663,6 @@ Ommwriter from Herraiz Soto on &hellip;">
 
 
 <time datetime="2009-12-01T00:00:00+09:00" pubdate data-updated="true">2009-12-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/seo-sub-domain-vs-sub-directory">SEO対策：サブドメイン vs サブディレクトリ</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091128134914" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134914.gif" alt="f:id:kinopyo:20091128134914g:image:right" title="f:id:kinopyo:20091128134914g:image:right" class="hatena-fotolife hatena-image-right"></a></p>
-<p>自分でブログやサイトを運営する上には、よくこの問題で悩みました。このSEOって言葉にちょっと神経質になってしまった気がします。何もかもSEOに最適な方向で考えてるんです。</p>
-<br/>
-<p>さて、本題に入りますと<span style="color:#0000FF;">サブディレクトリが有効だそうです</span>。</p>
-<p>このサイトを参考にしました。</p>
-<p><a href="http://www.suzukikenichi.com/blog/which-are-stronger-subdomains-or-subdirectories/" target="_blank">サブドメインとサブディレクトリ、SEOに強いのはどっち? | 海外SEO情報ブログ・メルマガ</a></p>
-<p>自分が一番印象的なものは</p>
-<ul>
-<li>サブドメインはルートドメインの恩恵を必ず受けることとは限らない</li>
-<li>一方サブディレクトリのほうはルートドメインの恩恵を受ける</li>
-</ul>
-<p>ってことです。</p>
-<blockquote>
-<p>たとえば、自分のブログの記事がはてなやnewsingに引用されると、検索結果でオリジナルの自分のページよりも上に来ることが多々あります。これは、はてなやnewsingのドメインの評価が高いからです。</p>
-</blockquote>
-<br/>
-<p>私も前FC2のブログを使ったことがありますが、正直はてなダイアリーほど検索上位にならなかったんです。</p>
-<p>「同じ内容の記事なのになぜはてなはGoogle検索で上位になったか」の疑問をずっと抱いてました。</p>
-<p>この記事を読んで分かったんです。FC2はサブドメインの形でブログサービスを提供、はてなはサブディレクトリだからです。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-30T00:00:00+09:00" pubdate data-updated="true">2009-11-30</time></div>
 	<div class="tags">
 
 

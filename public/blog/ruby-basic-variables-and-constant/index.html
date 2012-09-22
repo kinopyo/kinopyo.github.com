@@ -94,18 +94,16 @@ puts temperature Rubyの変数名 Rubyではキャメルケースより、アン
 
 <h3>予約語</h3>
 
-<p>{% blockquote >
-<strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield
-&lt;&lt;</p>
+<blockquote><p><strong>FILE</strong>  def in  self
+<strong>LINE</strong>  defined?    module  super
+BEGIN do  next    then
+END   else    nil true
+alias elsif   not undef
+and   end or  unless
+begin ensure  redo    until
+break false   rescue  when
+case  for retry   while
+class if  return  yield</p></blockquote>
 
 <h3>Example2</h3>
 
@@ -133,68 +131,6 @@ class   if  return  yield
 <p>コンスタントは大文字でスタートします。
 これでRubyはコンスタントと認識してくれます。</p>
 
-<h1>中文</h1>
-
-<h2>变量</h2>
-
-<h3>声明例子1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Ruby变量名</h3>
-
-<p>Ruby更常用下划线而非骆驼拼写法。
-比如page_transfer_manager，但pageTransferManager却不常用。</p>
-
-<h3>Reserved Word</h3>
-
-<p>以下变量名为Ruby所使用，无法用来定义自己的变量。</p>
-
-<blockquote><blockquote><p><strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield
-&lt;&lt;</p></blockquote></blockquote>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注意要将integer转换为string.
-在双引号&#8221;&#8220;内，可以在#{和}之间放置任何表达式，
-表达式的值会被转换为string显示。</p>
-
-<h2>常量</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>常量在Ruby里以大写字母开头。
-通常习惯上常量的所有字符都是大写，
-但只要开头是大写，Ruby便认为这是常量。</p>
-
 <h1>English</h1>
 
 <h2>Variable</h2>
@@ -216,20 +152,16 @@ class   if  return  yield
 
 <h3>Reserved words</h3>
 
-<blockquote><p>}</p></blockquote>
-
-<p><strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield</p>
-
-<p>{% endblockquote %}</p>
+<blockquote><p><strong>FILE</strong>  def in  self
+<strong>LINE</strong>  defined?    module  super
+BEGIN do  next    then
+END   else    nil true
+alias elsif   not undef
+and   end or  unless
+begin ensure  redo    until
+break false   rescue  when
+case  for retry   while
+class if  return  yield</p></blockquote>
 
 <h3>Example2</h3>
 

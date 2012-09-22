@@ -83,18 +83,17 @@
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">validates_confirmation_of</span> <span class="ss">:password</span>               <span class="c1">#カラム名</span>
-</span><span class='line'>  <span class="kp">attr_accessor</span>             <span class="ss">:password_confirmation</span>  <span class="c1">#カラム名に_confirmation{% endcodeblock %}</span>
-</span><span class='line'><span class="err">そして、関連のビューで、以下の処理を書きます。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;brush:ruby&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= password_field :user, :password %&amp;gt;</span>
-</span><span class='line'><span class="sx">&amp;lt;P&amp;gt;</span>
-</span><span class='line'><span class="sx">&amp;lt;%=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password_confirmation</span> <span class="o">%&amp;</span><span class="n">gt</span><span class="p">;</span><span class="err">（確認用）</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_confirmation_of</span> <span class="ss">:password</span>  <span class="c1">#カラム名</span>
+</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:password_confirmation</span> <span class="c1">#カラム名に_confirmation</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして、関連のビューで、以下の処理を書きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password</span>
+</span><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password_confirmation</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -121,7 +120,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

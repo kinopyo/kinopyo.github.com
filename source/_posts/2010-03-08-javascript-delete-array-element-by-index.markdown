@@ -13,7 +13,7 @@ JavascriptのArrayにはdeleteみたいなAPIがないことに。
 
 ## splice関数
 とほほからのレファレンスでは
-{% blockquote }
+{% blockquote %}
 
 array.splice(start, n, e1, e2, ...) (N4)
 0 から数えて、start 番目から n 個の要素を削除し、その代わりに e1, e2, ...を値とする要素を埋め込みます。戻り値は JavaScript のバージョンによって異なります。

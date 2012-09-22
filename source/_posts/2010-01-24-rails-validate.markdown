@@ -5,7 +5,7 @@ date: 2010-1-24
 wordpress_id: 901
 permalink: /blog/rails-validate
 comments: true
-categories: [nil]
+categories: Rails
 ---
 Railsのvalidateチェックはすばらしいです。
 使いかた非常便利だし、機能が強いです。
@@ -16,11 +16,10 @@ validateを使って、カスタマイズのvadidationチェックを定義で�
 例：
 
 ```ruby
-
 def validate
-    errors.add(:content, "を入力してください") if content =~ /^(ここに感想を書いてください。|ここに感想を書いてください)$/
+  errors.add(:content, "を入力してください") if content =~ /^(ここに感想を書いてください。|ここに感想を書いてください)$/
 end
-{% endcodeblock %}
+```
 
 ### validates_acceptance_of
 チェックボックスがチェックされたかを確認。
@@ -33,54 +32,59 @@ end
 ### validates_exclusion_of
 指定した値に含まれていないかをチェックします。
 例：
-{% codeblock %}
 
-validates_exclusion_of :sex,:in => *'female','male'*
-{% endcodeblock %}
+```ruby
+validates_exclusion_of :sex,:in => ['female','male']
+```
 
 ### validates_inclusion_of
 指定した値に含まれているかをチェックします。
 validates_exclusion_ofの逆です。
 例：
-<pre class="brush:ruby">
-validates_inclusion_of:sex, :in => *'female','male'*
-{% endcodeblock %}
+
+```ruby
+validates_inclusion_of:sex, :in => ['female','male']
+```
 
 ### validates_format_of
 正規表現を使って、値をチェックします。
 例：
-<pre class="brush:ruby">
-validates_format_of :code,:with=> /^*0-9A-Za-z*/, :message=>"は半角英数字で入力してください。"
-{% endcodeblock %}
+
+```ruby
+validates_format_of :code,:with => /^[0-9A-Za-z]/, :message =>"は半角英数字で入力してください。"
+````
 
 ### validates_length_of
 値の長さをチェックします。
  例：
-<pre class="brush:ruby">
-validates_length_of :name, :maximum=>30
-{% endcodeblock %}
+
+```ruby
+validates_length_of :name, :maximum => 30
+```
 
 ### validates_numericality_of
 値は数字かどうかをチェックします。数字ではない場合、エラーを表示します。
 例：
-<pre class="brush:ruby">
+
+```ruby
 validates_numericality_of　:code
-{% endcodeblock %}
+```
 
 ### validates_presence_of
 必須値のチェック。値が入力されていない場合、エラーを表示します。
 例：
-<pre class="brush:ruby">
+
+```ruby
 validates_presence_of :code
 
-{% endcodeblock %}
+```
 
 ### validates_uniqueness_of
 値の重複チェック。DBに既に同じ値が存在した場合、エラーを表示します。
 例：
-<pre class="brush:ruby">
-validates_uniqueness_of :id
 
+```ruby
+validates_uniqueness_of :id
 ```
 
 ### validates_size_of

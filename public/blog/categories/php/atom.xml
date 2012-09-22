@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -81,14 +81,13 @@
     <id>http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
     <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
 
-<p><img src="http://hsuzuki.ddo.jp/wewp-content/uploads/2008/12/radio_f.bmp" /></p>
-
 <p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
-CentOSなのでyumを使ってインストールすれば解決です。
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo yum install php-gd
-</span><span class='line'>sudo service httpd restart</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+CentOSなのでyumを使ってインストールすれば解決です。</p>
+
+<p><code>bash
+sudo yum install php-gd
+sudo service httpd restart
+</code></p>
 ]]></content>
   </entry>
   

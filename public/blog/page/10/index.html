@@ -7,15 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen xcodebuild -project /tmp/ &hellip;">
+	<meta name="description" content="これが既存データで、同じ日に複数のデータがある。 期望結果はこれ、つまり日付別で集計したい場合 MySQLではDATE関数を使う 1
+mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -82,9 +75,70 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 
 
     <article class="post">
+	<h1 class="title"><a href="/blog/mysql-oracle-group-by-date">MySQL, OracleのGroup by date, 日付別で集計</a></h1>
+	<div class="entry-content">
+		<p>これが既存データで、同じ日に複数のデータがある。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" alt="Example data" /></p>
+
+<p>期望結果はこれ、つまり日付別で集計したい場合</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" alt="Expected result" /></p>
+
+<h2>MySQLではDATE関数を使う</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Oracleではto_char関数を使う</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(*) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考</h2>
+
+<ul>
+<li><a href="http://blog.asial.co.jp/209">ちょっと使えるMySQLの小技5つ+1 : アシアルブログ</a></li>
+<li><a href="http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406">第104回 Oracleのお勉強 GROUP BY の罠 - bingo_nakanishiの他言語出身者のためのPerl入門</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-17T00:00:00+09:00" pubdate data-updated="true">2011-08-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
 	<h1 class="title"><a href="/blog/turn-textmate-to-lion-full-screen">TextMateをLionのフルスクリーンに</a></h1>
 	<div class="entry-content">
-		<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -92,19 +146,20 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen
 </span><span class='line'>
 </span><span class='line'>xcodebuild -project /tmp/EGOTextMateFullScreen/EGOTextMateFullScreen.xcodeproj -target EGOTextMateFullScreen
 </span><span class='line'>
-</span><span class='line'>cp -R /tmp/EGOTextMateFullScreen/build/Release/EGOTextMateFullScreen.tmplugin ~/Library/Application\ Support/TextMate/PlugIns
+</span><span class='line'>cp -R /tmp/EGOTextMateFullScreen/build/Release/EGOTextMateFullScreen.tmplugin ~/Library/Application<span class="se">\ </span>Support/TextMate/PlugIns
 </span><span class='line'>
-</span><span class='line'># after installed
+</span><span class='line'><span class="c"># after installed</span>
 </span><span class='line'>rm -rf /tmp/EGOTextMateFullScreen/
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>これが完成図！
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg" title="textmate_fullscreen" ></p>
+<p>これが完成図！</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg" alt="Textmate Fullscreen" /></p>
 
 		
 		
@@ -139,8 +194,9 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
     <article class="post">
 	<h1 class="title"><a href="/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line">FirefoxのTab BarとNavigation Barを一行にしてくれるAddon:OneLiner</a></h1>
 	<div class="entry-content">
-		<p>表題の通りFirefoxのTab BarとNavigation Barを一行にしてくれるアドオンです。by Mozilla Labsのアドオンで<a href="http://www.lifehacker.jp/2011/08/110807_oneliner.html">http://www.lifehacker.jp/2011/08/110807_oneliner.html</a>でも紹介しています。早速入れてみました、結構ツールバーのスペースが増えたように感じますね。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/Firefox_addon_oneliner.jpg" title="Firefox_addon_oneliner" ></p>
+		<p>表題の通りFirefoxのTab BarとNavigation Barを一行にしてくれるアドオンです。by Mozilla Labsのアドオンで<a href="http://www.lifehacker.jp/2011/08/110807_oneliner.html">http://www.lifehacker.jp/2011/08/110807_oneliner.html</a>でも紹介しています。早速入れてみました、結構ツールバーのスペースが増えたように感じますね。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/Firefox_addon_oneliner.jpg" title="Firefox_addon_oneliner" ></p>
 
 <p><a href="https://addons.mozilla.org/en-US/firefox/addon/prospector-oneLiner/">oneLiner</a>でインストール!</p>
 
@@ -208,11 +264,16 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 
 <h2>参考リンク</h2>
 
-<p>同じ現象にあった方がいました: <a href="http://d.hatena.ne.jp/phantasmist/20110224">http://d.hatena.ne.jp/phantasmist/20110224</a>
-<a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/</a>
-<a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">http://developer.mixi.co.jp/appli/spec/mob/pages_api/</a>
-<a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">http://oauth.net/core/1.0/#rfc.section.A.5.1</a>
-<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a></p>
+<p>同じ現象にあった方がいました:</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/phantasmist/20110224">Mixi OAuth POST時のシグネチャ検証 - phantasmistの日記</a></li>
+<li><a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">OAuth Signatureの検証方法について &lt;&lt; mixi Developer Center (ミクシィ デベロッパーセンター)</a></li>
+<li><a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">ページ遷移とAPIアクセス &lt;&lt; mixi Developer Center (ミクシィ デベロッパーセンター)</a></li>
+<li><a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">OAuth Core 1.0</a></li>
+<li><a href="http://oauth.net/core/1.0a/#anchor13">OAuth Core 1.0a</a></li>
+</ul>
+
 
 		
 		
@@ -475,11 +536,13 @@ print_r($titles);</code></pre></noscript></div>
     <article class="post">
 	<h1 class="title"><a href="/blog/reply-to-all-always-in-gmail">Gmailを常に全員返信に設定</a></h1>
 	<div class="entry-content">
-		<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
+		<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。</p>
 
-<p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
+
+<p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
 
 		
 		
@@ -518,8 +581,9 @@ print_r($titles);</code></pre></noscript></div>
 
 <h1>方法</h1>
 
-<p>Chromeのアプリケーションをアクティブにし、一番上のトップバーからChrome -> <strong>Warn Before Quitting (⌘Q)</strong>をチェックすればOKです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Chrome_wanr_before_quitting.png" title="Chrome_wanr_before_quitting" ></p>
+<p>Chromeのアプリケーションをアクティブにし、一番上のトップバーからChrome -> <strong>Warn Before Quitting (⌘Q)</strong>をチェックすればOKです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Chrome_wanr_before_quitting.png" title="Chrome_wanr_before_quitting" ></p>
 
 <p>こうすればCommand + Qは警告のメッセージが出て、長押しで終了するようになります。</p>
 
@@ -556,13 +620,15 @@ print_r($titles);</code></pre></noscript></div>
     <article class="post">
 	<h1 class="title"><a href="/blog/lion-fullscreen-shortcut-key-conflict-with-evernote-client">Lionのフルスクリーン機能はEvernoteクライアントの検索ショットカットキーとコンフリクト</a></h1>
 	<div class="entry-content">
-		<p>Lionにはフルスクリーンという機能がありますね。Safari、MailとかPreviewといったMacネーティブなアプリではView->Enter Full Screenでフルスクリーンモードに入れます。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Lion_Fullscreen.jpg" title="Lion_Fullscreen" ></p>
+		<p>Lionにはフルスクリーンという機能がありますね。Safari、MailとかPreviewといったMacネーティブなアプリではView->Enter Full Screenでフルスクリーンモードに入れます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Lion_Fullscreen.jpg" title="Lion_Fullscreen" ></p>
 
 <p>そのショットカットキーは control + shift + fですが、自分の環境だとこれはEvernoteクライアントの検索ショットカットキーと衝突します。正確にはEvernoteのほうが優先で占めて、Lionフルスクリーンが効かなくなります。</p>
 
-<p>解決方法はEvernoteクライアントの検索ショットカットキーを他に設定するか、キャンセルして<strong>Lionを再起動</strong>することです。再起動しないとショットカットキーの変更は有効にならないからです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Evernote_Preferences_shortcuts.jpg" title="Evernote_Preferences_shortcuts" ></p>
+<p>解決方法はEvernoteクライアントの検索ショットカットキーを他に設定するか、キャンセルして<strong>Lionを再起動</strong>することです。再起動しないとショットカットキーの変更は有効にならないからです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Evernote_Preferences_shortcuts.jpg" title="Evernote_Preferences_shortcuts" ></p>
 
 		
 		
@@ -650,58 +716,6 @@ BetterTouchToolはトラックパッドを便利にするためのツールで�
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/lion/'>Lion</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/php-pad-a-number-to-certain-length-with-0">PHP:必要桁数まで0埋めする</a></h1>
-	<div class="entry-content">
-		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// 47 -&gt; 047</span>
-</span><span class='line'><span class="x">sprintf(&quot;%03d&quot;, 47);</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">// or</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">// parameter: string $input , int $pad_length,</span>
-</span><span class='line'><span class="x">str_pad(47, 3, &#39;0&#39;, STR_PAD_LEFT);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>str-padについては：<a href="http://php.net/manual/en/function.str-pad.php">http://php.net/manual/en/function.str-pad.php</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-22T00:00:00+09:00" pubdate data-updated="true">2011-07-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

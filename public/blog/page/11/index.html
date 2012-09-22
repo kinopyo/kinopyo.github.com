@@ -7,7 +7,16 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Smooth CoffeeScript 200ページを超え、35の練習問題があります。基本文法からオブジェクト指向、モジュラリティ、そしてHTML5のCanvasとWebSocketsまで紹介されています。PDFは答えがついてあるバージョンと付いてないバージョンがあり、さらにソースコードまで。 &hellip;">
+	<meta name="description" content="1
+2
+3
+4
+5
+6
+7
+// 47 -&gt; 047
+sprintf(&quot;%03d&quot;, 47); // or // parameter: string $input , int $pad_length,
+str_pad(47, 3, &#39;0&#39;, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,18 +83,75 @@
 
 
     <article class="post">
+	<h1 class="title"><a href="/blog/php-pad-a-number-to-certain-length-with-0">PHP:必要桁数まで0埋めする</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// 47 -&gt; 047</span>
+</span><span class='line'><span class="x">sprintf(&quot;%03d&quot;, 47);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// or</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// parameter: string $input , int $pad_length,</span>
+</span><span class='line'><span class="x">str_pad(47, 3, &#39;0&#39;, STR_PAD_LEFT);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>str-padについては：<a href="http://php.net/manual/en/function.str-pad.php">http://php.net/manual/en/function.str-pad.php</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-22T00:00:00+09:00" pubdate data-updated="true">2011-07-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
 	<h1 class="title"><a href="/blog/3-free-ebooks-for-study-coffeescript">CoffeeScript勉強する上で役に立つebook3冊(無料)</a></h1>
 	<div class="entry-content">
-		<p><a href="http://autotelicum.github.com/Smooth-CoffeeScript/">Smooth CoffeeScript</a>
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/SmoothCoverWithSolutions1.jpg" title="SmoothCoverWithSolutions" >
-200ページを超え、35の練習問題があります。基本文法からオブジェクト指向、モジュラリティ、そしてHTML5のCanvasとWebSocketsまで紹介されています。PDFは答えがついてあるバージョンと付いてないバージョンがあり、さらにソースコードまで。</p>
+		<p><a href="http://autotelicum.github.com/Smooth-CoffeeScript/">Smooth CoffeeScript</a></p>
 
-<p><a href="http://coffeescriptcookbook.com/">CoffeeScript Cookbook</a>
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/CoffeeScript-Cookbook.png" title="CoffeeScript Cookbook" >
-リファレンス参照が一目瞭然で、ebookよりは気軽く読めると思います。メタプログラミングまで書いてあります。ちなみにこれは複数の人が協力して作ったもので、githubにあるのでforkしてpullリクエストも出せます。</p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/SmoothCoverWithSolutions1.jpg" title="SmoothCoverWithSolutions" ></p>
 
-<p><a href="http://arcturo.github.com/library/coffeescript/index.html">The Little Book on CoffeeScript</a>
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/The-Little-Book-on-CoffeeScript.png" title="The Little Book on CoffeeScript" ></p>
+<p>200ページを超え、35の練習問題があります。基本文法からオブジェクト指向、モジュラリティ、そしてHTML5のCanvasとWebSocketsまで紹介されています。PDFは答えがついてあるバージョンと付いてないバージョンがあり、さらにソースコードまで。</p>
+
+<p><a href="http://coffeescriptcookbook.com/">CoffeeScript Cookbook</a></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/CoffeeScript-Cookbook.png" title="CoffeeScript Cookbook" ></p>
+
+<p>リファレンス参照が一目瞭然で、ebookよりは気軽く読めると思います。メタプログラミングまで書いてあります。ちなみにこれは複数の人が協力して作ったもので、githubにあるのでforkしてpullリクエストも出せます。</p>
+
+<p><a href="http://arcturo.github.com/library/coffeescript/index.html">The Little Book on CoffeeScript</a></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/The-Little-Book-on-CoffeeScript.png" title="The Little Book on CoffeeScript" ></p>
 
 <p>5章しかないですが、CoffeeScriptがベストプライスが書かれています。少なくとも4章のIdiomsは読んどいたほうがいいと思います。</p>
 
@@ -566,74 +632,6 @@ Embed GitHub Gistはgistから内容を取得して本文に出力するためRS
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/zshrc/'>zshrc</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/get-https-contents-with-nokogiri">Nokogiriでhttpsプロトコールのコンテンツを取得</a></h1>
-	<div class="entry-content">
-		<p>Nokogiriでurlをparseするときは普通こんなコードになります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;http://example.com/&#39;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>しかし接続先のプロトコールがhttpsの場合はNo such file or directoryのエラーとなります。
-一旦net/httpsで取ってからそれをnokogiriでparseするような工夫が必要です。</p>
-
-<div><script src='https://gist.github.com/1037492.js?file='></script>
-<noscript><pre><code>require 'net/https'
-require 'nokogiri'
-
-url = &quot;https://example.com&quot;
-url = URI.parse( url )
-http = Net::HTTP.new( url.host, url.port )
-http.use_ssl = true if url.port == 443
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE if url.port == 443
-path = url.path
-path += &quot;?&quot; + url.query unless url.query.nil?
-res, data = http.get( path )
-
-case res
-  when Net::HTTPSuccess, Net::HTTPRedirection
-    # parse link
-    doc = Nokogiri::HTML(data)
-     # do what you want ...
-  else
-    return &quot;failed&quot; + res.to_s
-end</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-27T00:00:00+09:00" pubdate data-updated="true">2011-06-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/https/'>https</a>, <a class='category' href='/blog/categories/nokogiri/'>nokogiri</a>
 
 
 </div>

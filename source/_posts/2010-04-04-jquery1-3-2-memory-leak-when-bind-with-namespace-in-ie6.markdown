@@ -34,7 +34,7 @@ $("#foo").bind("change", function(){});
 [http://dev.jquery.com/ticket/4241](http://dev.jquery.com/ticket/4241)で
 当時の担当者のコメントを見ると
 
-{% blockquote }
+{% blockquote %}
 
 I had a really difficult time getting a reliable test case to verify this actually solves the memory leak. r6321 appears to have fixed this issue
 

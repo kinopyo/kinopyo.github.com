@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ダウンロード http://wiki.github.com/MrAnchovy/kohana-module-smarty/ インストール githubでも手順がとても分かりやすいので直接引用させていただきます。 1. Download the latest version from the &hellip;">
+	<meta name="description" content="ダウンロード http://wiki.github.com/MrAnchovy/kohana-module-smarty/ インストール githubでも手順がとても分かりやすいので直接引用させていただきます。 Download the latest version from the links &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,7 +80,42 @@
 
 <p>githubでも手順がとても分かりやすいので直接引用させていただきます。</p>
 
-<blockquote><p>1. Download the latest version from the links above<br/>2. Unpack the downloaded file<br/>3. Move the smarty directory into the Kohana modules directory<br/>4. Enable the module in your application’s bootstrap.php<br/>Kohana::modules(array(<br/>  ‘auth’ => MODPATH.‘auth’, // Basic authentication<br/>  // ‘cache’ => MODPATH.‘cache’, // Caching with multiple backends<br/>   // ‘codebench’ => MODPATH.‘codebench’, // Benchmarking tool<br/>    ‘database’ => MODPATH.‘database’, // Database access<br/>   // ‘image’ => MODPATH.‘image’, // Image manipulation<br/>   ‘orm’ => MODPATH.‘orm’, // Object Relationship Mapping<br/> ‘pagination’ => MODPATH.‘pagination’, // Paging of results<br/> ‘userguide’ => MODPATH.‘userguide’, // User guide and API documentation<br/>    <strong>&#8216;smarty&#8217; => MODPATH.&#8217;smarty&#8217;, // smarty template module. </strong><br/>));<br/>5. Visit the page www.yoursite.com/smarty to confirm all is OK</p></blockquote>
+<ol>
+<li>Download the latest version from the links above</li>
+<li>Unpack the downloaded file</li>
+<li>Move the smarty directory into the Kohana modules directory</li>
+<li>Enable the module in your application’s bootstrap.php</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">Kohana::modules(array(</span>
+</span><span class='line'><span class="x">  ‘auth’ =&gt; MODPATH.‘auth’, // Basic authentication</span>
+</span><span class='line'><span class="x">  // ‘cache’ =&gt; MODPATH.‘cache’, // Caching with multiple backends</span>
+</span><span class='line'><span class="x">  // ‘codebench’ =&gt; MODPATH.‘codebench’, // Benchmarking tool</span>
+</span><span class='line'><span class="x">  ‘database’ =&gt; MODPATH.‘database’, // Database access</span>
+</span><span class='line'><span class="x">  // ‘image’ =&gt; MODPATH.‘image’, // Image manipulation</span>
+</span><span class='line'><span class="x">  ‘orm’ =&gt; MODPATH.‘orm’, // Object Relationship Mapping</span>
+</span><span class='line'><span class="x">  ‘pagination’ =&gt; MODPATH.‘pagination’, // Paging of results</span>
+</span><span class='line'><span class="x">  ‘userguide’ =&gt; MODPATH.‘userguide’, // User guide and API documentation</span>
+</span><span class='line'><span class="x">  &#39;smarty&#39; =&gt; MODPATH.&#39;smarty&#39;, // smarty template module.</span>
+</span><span class='line'><span class="x">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Visit the page www.yoursite.com/smarty to confirm all is OK</li>
+</ol>
 
 
 <h2>その他リンク</h2>

@@ -74,26 +74,23 @@
 </header>
 	<div id="content" class="inner"><article class="post">
 	<h1 class="title">Flex：カスタムイベントクラスのパッケージ名をeventにするのは避けましょう</h1>
-	<div class="entry-content"><p>カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_package_event.jpg" title="flex_package_event" ></p>
+	<div class="entry-content"><p>カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_package_event.jpg" title="flex_package_event" ></p>
 
 <p>結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
 例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
-この&#8221;event&#8221;続いてドット(.)を叩いて出たのは各eventパッケージしたのクラスになります。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_confused.jpg" title="flex_autocomplete_confused" ></p>
+この&#8221;event&#8221;続いてドット(.)を叩いて出たのは各eventパッケージしたのクラスになります。</p>
 
-<br/>
-
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_confused.jpg" title="flex_autocomplete_confused" ></p>
 
 <p>イベントハンドラの変数を&#8221;event&#8221;以外にすれば回避できますが、
 ハンドラの自動生成は結構便利なものなので
 やはりパッケージ名を&#8221;events&#8221;などに変えたほうがいいと思います。</p>
 
-<br/>
+<p>これで自動補完はちゃんと出ます。</p>
 
-
-<p>これで自動補完はちゃんと出ます。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_correct.jpg" title="flex_autocomplete_correct" ></p>
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_correct.jpg" title="flex_autocomplete_correct" ></p>
 </div>
 
 

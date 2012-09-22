@@ -32,6 +32,7 @@ rails s
 
 ## トラブル
 ここまで順調でしたが、http://127.0.0.1:3000にアクセスしたときにundefined method `context' for #<Sprockets::Environment:>のトラブルに会いました。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png Sprockets trouble %}
 
 <br/>

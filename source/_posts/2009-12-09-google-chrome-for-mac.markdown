@@ -24,8 +24,8 @@ Firefoxのブックマークや履歴など簡単にインポートされまし�
 深夜の2時41分、Mac版Chromeリリースのメールがきました。
 このメールにはChrome for Macチームがどれだけ頑張ったかの内容も載っていたので、
 一緒に見てみたいと思います。
-{% blockquote }
 
+{% blockquote %}
 73,804 lines of Mac-specific code written
 29 developer builds
 1,177 Mac-specific bugs fixed
@@ -33,11 +33,11 @@ Firefoxのブックマークや履歴など簡単にインポートされまし�
 64 Mac Minis doing continuous builds and tests
 8,760 cups of soft drinks and coffee consumed
 4,380 frosted mini-wheats eaten
-
 {% endblockquote %}
 
 印象的なのは8760カップのコーヒと4380のfrosted mini-wheatsです。
 このfrosted mini-wheatsはこんなもののアメリカンフードです。
+
 {% img http://kinopyo.com/wp-content/uploads/2009/12/frostedminiwheats.jpg frosted mini-wheats %}
 Googleらしき風土ですね。どれくらいお菓子食ったのも統計されてます。
 

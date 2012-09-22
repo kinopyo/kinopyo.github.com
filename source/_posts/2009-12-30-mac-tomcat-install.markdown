@@ -5,10 +5,12 @@ date: 2009-12-30
 wordpress_id: 722
 permalink: /blog/mac-tomcat-install
 comments: true
-categories: [nil]
+categories: mac
 ---
 ### ダウンロード
+
 {% img http://kinopyo.com/wp-content/uploads/2009/12/tomcat-download.jpg tomcat-download %}
+
 [Tomcat公式サイトダウンロードページ](http://tomcat.apache.org/download-60.cgi)で上記ファイルをダウンロード
 
 ### インストール
@@ -22,4 +24,4 @@ categories: [nil]
 ターミナルで使われるUNIXコマンドはイマイチなので、もっと便利な使い方はあると思います。
 
 ### 検証
-[http://localhost:8080](http://localhost:8080)
+http://localhost:8080

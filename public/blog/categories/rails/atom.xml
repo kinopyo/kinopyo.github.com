@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rails | Yet Another Kinopyo Blog]]></title>
+  <title><![CDATA[Category: rails | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-22T16:18:38+09:00</updated>
+  <updated>2012-09-23T03:29:40+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,69 +14,190 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Set Project Specific Environment Variables with Pow]]></title>
-    <link href="http://kinopyo.com/blog/setup-project-specific-environment-variables-with-pow/"/>
-    <updated>2012-09-01T21:56:00+09:00</updated>
-    <id>http://kinopyo.com/blog/setup-project-specific-environment-variables-with-pow</id>
-    <content type="html"><![CDATA[<p>In your rails app, when you need an envionment variable like <code>ENV['TWITTER_CONSUMER_KEY']</code> for local deveopment, where do you put them? Simply set them before you start your rails server as a one time thing, or just put them under ~/.profile or ~/.zshrc?</p>
-
-<p>Well it works but I'm not happy with that. Because first it belongs to a specific project and expose them to global env make me feel a little bit uncomfortable, second, what if you happend to have more than one twitter integrated app, how do you name the variables to solve naming collision?</p>
-
-<p>If you're using <a href="http://pow.cx">Pow</a>, there is a perfect solution for you.</p>
-
-<h2>.powrc and .powenv</h2>
-
-<p>Pow provides these 2 files for you to config pow and setup any environment variables.</p>
-
-<blockquote><p>Before an application boots, Pow attempts to execute two scripts — first .powrc, then .powenv — in the application's root. Any environment variables exported from these scripts are passed along to Rack.</p></blockquote>
-
-<p>Convention here is putting <code>.powrc</code> under git version control, and override or setup any project specific environment variables to <code>.powenv</code>.</p>
-
-<h2>Let's do it</h2>
-
-<p><code>diff .gitignore
-+ .powenv
-</code></p>
-
-<p><code>ruby .powenv
-export TWITTER_CONSUMER_KEY=foo
-export TWITTER_CONSUMER_SECRET=bar
-</code></p>
-
-<p>BTW, you must run this command to restart pow manually so these scripts will be loaded.</p>
+    <title type="html"><![CDATA[How to I get rid of "WARN Could not determine content-length of response body"]]></title>
+    <link href="http://kinopyo.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body/"/>
+    <updated>2012-08-30T19:51:00+09:00</updated>
+    <id>http://kinopyo.com/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body</id>
+    <content type="html"><![CDATA[<p>If you get these warning messages in your rails log, just simply put <code>thin</code> to your Gemfile.</p>
 
 <p><code>
-$ touch ~/.pow/restart.txt
+WARN  Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true
 </code></p>
 
-<p><a href="http://pow.cx/manual.html#section_2.2">Pow Document: Customizing Environment Variables</a></p>
+<p><code>ruby Gemfile
+gem 'thin'
+</code></p>
+
+<p>I found this from this stackoverflow <a href="http://stackoverflow.com/questions/7082364/what-does-warn-could-not-determine-content-length-of-response-body-mean-and-h">question</a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Explicitly specify table name in scope definition]]></title>
-    <link href="http://kinopyo.com/blog/explicitly-specify-table-name-in-scope-definition/"/>
-    <updated>2012-06-29T15:56:00+09:00</updated>
-    <id>http://kinopyo.com/blog/explicitly-specify-table-name-in-scope-definition</id>
-    <content type="html"><![CDATA[<p>I was wondering why people explicitly specify table name in such a scope definition...</p>
+    <title type="html"><![CDATA[Upgrading to Rails 3.2 from 3.1]]></title>
+    <link href="http://kinopyo.com/blog/upgrade-to-rails-3-dot-2-from-3-dot-1/"/>
+    <updated>2012-08-23T12:55:00+09:00</updated>
+    <id>http://kinopyo.com/blog/upgrade-to-rails-3-dot-2-from-3-dot-1</id>
+    <content type="html"><![CDATA[<p>Yesterday I upgraded one of my old-pending-hobby projects to latest Rails version, which is 3.2.8 now. Since I have several other projects in old version, I'd like to keep a note for what I've done.</p>
 
-<p><code>ruby
-class Answer &lt; ActiveRecord::Base
-  scope :recent, order('answers.created_at DESC')
+<p>As you can see in my <a href="https://github.com/kinopyo/NumberStory/commit/a11ab75263f7f74f703b377891dd0c8665bf3da5">commit</a>, all you have to do is update the version in <code>Gemfile</code> and hit <code>bundle update</code> in your terminal.</p>
+
+<p>```ruby Gemfile
+gem 'rails', '3.2.0'</p>
+
+<p>group :assets do
+  gem 'sass-rails', "  ~> 3.2.3"
+  gem 'coffee-rails', "~> 3.2.1"
+  gem 'uglifier', '>= 1.0.3'
 end
+```</p>
+
+<p>Then add new configuration to <code>development.rb</code> and <code>test.rb</code> environment file. That's all :)</p>
+
+<p>```ruby config/environments/development.rb
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL)
+  config.active_record.auto_explain_threshold_in_seconds = 0.5</p>
+
+<p>  # Do not compress assets
+  config.assets.compress = false
+<code>
+</code>diff config/environments/test.rb
+-  # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
+-  config.assets.allow_debugging = true</p>
+
+<ul>
+<li><h1>Raise exception on mass assignment protection for Active Record models</h1></li>
+<li>config.active_record.mass_assignment_sanitizer = :strict
+```</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding an array of ids while keeping the order with Rails]]></title>
+    <link href="http://kinopyo.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/"/>
+    <updated>2012-08-14T15:13:00+09:00</updated>
+    <id>http://kinopyo.com/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails</id>
+    <content type="html"><![CDATA[<h2>The order may different</h2>
+
+<p>Suppose you're retrieving records using array of <code>ids</code>.</p>
+
+<p>```ruby
+ids = [100, 1, 6]
+User.where(:id => ids).map(&amp;:id)</p>
+
+<h1>=> [1, 6, 100]</h1>
+
+<p>```</p>
+
+<p>The order of the data may different from <code>ids</code> array, <strong>what if you want to keep its order</strong>?</p>
+
+<h2>for MySQL</h2>
+
+<p>There is a function in mysql called <a href="http://dev.mysql.com/doc/refman/5.0/en/string-functions.html#function%5Ffield">FIELD()</a></p>
+
+<blockquote><p> FIELD(str,str1,str2,str3,...)
+Returns the index (position) of str in the str1, str2, str3, ... list. Returns 0 if str is not found.</p></blockquote>
+
+<p>So by combing this <code>FIELD()</code> function, here is the code.</p>
+
+<p>```ruby
+ids = [100, 1, 6]
+User.where(:id => ids).order("field(id, #{ids.join(',')})").map(&amp;:id)</p>
+
+<h1>=> [100, 1, 6]</h1>
+
+<p>```</p>
+
+<p>This will generate SQL below:
+<code>sql
+SELECT `users`.* FROM `users` WHERE `users`.`id` IN (100, 1, 6) ORDER BY field(id, 100, 1, 6)
 </code></p>
 
-<p>Until I got this error today.</p>
+<h2>for other databases</h2>
 
-<p><code>sql
-Mysql2::Error: Column 'created_at' in order clause is ambiguous: SELECT  COUNT(DISTINCT `answers`.`id`) AS count_id, question_id AS question_id FROM `answers` LEFT OUTER JOIN `questions` ON `questions`.`id` = `answers`.`question_id` WHERE (`answers`.user_id = 87) GROUP BY question_id ORDER BY created_at DESC LIMIT 10
-</code></p>
+<p>I didn't dig too much but most of google results suggest just sort it manually using ruby.
+Here is just an example:</p>
 
-<p>I have a <code>recent</code> scope defined in both <code>Question</code> and <code>Answer</code> model. And when you chain those two models, rails don't know the <code>recent</code> is associated to which one.</p>
+<p>```ruby
+ids = [100, 1, 6]
+users = User.where(:id => ids)
+users = ids.map {|id| users.detect {|user| user.id == id } }
+users.map(&amp;:id)</p>
+
+<h1>=> [100, 1, 6]</h1>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Run Ruby Script in Rails Environment]]></title>
+    <link href="http://kinopyo.com/blog/run-ruby-script-in-rails-environment/"/>
+    <updated>2012-06-29T18:04:00+09:00</updated>
+    <id>http://kinopyo.com/blog/run-ruby-script-in-rails-environment</id>
+    <content type="html"><![CDATA[<h2>Overview</h2>
+
+<p>If you wanna execute some ruby code in rails environment, say manipulate w/ model or something, you can always try <code>rake task</code> first. But there're circumstances you don't want to use it, maybe it's just a one-time script that you don't want to save it to git, or whatever.</p>
+
+<p>I've found out there're two simple ways to accomplish it.</p>
+
+<h2>require config/environment.rb</h2>
+
+<p>```ruby</p>
+
+<h1>test.rb</h1>
+
+<p>require "config/environment"
+p User.first</p>
+
+<h1>in terminal</h1>
+
+<p>ruby test.rb
+```</p>
+
+<h2>use rails runner</h2>
+
+<p><a href="http://guides.rubyonrails.org/command_line.html#rails-runner">Rails Guides about rails runner</a></p>
+
+<blockquote><p>runner runs Ruby code in the context of Rails non-interactively. For instance:</p></blockquote>
 
 <p><code>ruby
-@answers = @user.answers.recent.group(:question_id).includes(:question).limit(10)
+rails runner "p User.first"
+rails runner some_ruby_script.rb
+rails runner -e staging "Model.long_running_method"
+rails runner -h
 </code></p>
+
+<blockquote><p>You can also use the alias “r” to invoke the runner: <code>rails r</code>.</p></blockquote>
+
+<p>I failed to call <code>rails r</code> on Rails 3.0.10, maybe it's above 3.1+.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た]]></title>
+    <link href="http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
+    <updated>2012-03-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
+    <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
+
+<p><blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence "peroperos_id_seq" for serial column "peroperos.id"<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "peroperos_pkey" for table "peroperos"<br/>～略～</p></blockquote>
+の警告をシャットダウンする方法です。</p>
+
+<p><div><script src='https://gist.github.com/2232851.js?file='></script>
+<noscript><pre><code># add min_messages to test env
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: homu_test
+  pool: 5
+  username: postgres
+  password:
+  min_messages: warning</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

@@ -30,11 +30,15 @@ iPhoneでの定番RSSリーダーのReederをいつも愛用していますが�
 
 ## 操作性
 リストビューで左スワイプがstar/unstart、右スワイプがread/unreadです。これはiPhone版と一緒です。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/06/IMG_0011.jpg right swipe %}
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/06/IMG_0013.jpg swipe left %}
+
 左スワイプの処理は設定画面でReadItLaterやInstapaperに変更できます。
 
 <br />
 そして記事ビューでは、右スワイプはリストビューに戻ります。
+
 {% img http://www.kinopyo.com/wp-content/uploads/2011/05/IMG_0009.jpg reeder for ipad right swipe to go back to list view %}
 

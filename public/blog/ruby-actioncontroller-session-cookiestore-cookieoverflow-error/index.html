@@ -8,10 +8,10 @@
 
 	
 	<meta name="description" content="セッションを使って、データを保存する時、
-以下のエラーが表示されました。 {% codeblock %}
+以下のエラーが表示されました。 1
+2
 Status: 500 Internal Server Error
-ActionController::Session::CookieStore::CookieOverflow
-{% &hellip;">
+ActionController::Session::CookieStore::CookieOverflow 原因： &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,10 +79,11 @@ ActionController::Session::CookieStore::CookieOverflow
 	<div class="entry-content"><p>セッションを使って、データを保存する時、
 以下のエラーが表示されました。</p>
 
-<p>{% codeblock %}
-Status: 500 Internal Server Error
-ActionController::Session::CookieStore::CookieOverflow
-{% endcodeblock %}</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Status: 500 Internal Server Error
+</span><span class='line'>ActionController::Session::CookieStore::CookieOverflow</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>原因：Railsのセッションに保存できるデータの長さは４KBしかないです。</h3>
 
@@ -100,20 +101,18 @@ ActionController::Session::CookieStore::CookieOverflow
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>rake db:sessions:create
-</span><span class='line'>rake db:migrate
-</span><span class='line'>{% endcodeblock %}
-</span><span class='line'>
-</span><span class='line'>+  config/environment.rbで以下の行をコメントアウトします。
-</span><span class='line'>&lt;pre class="brush:plain"&gt;
-</span><span class='line'>  config.action_controller.session_store = :active_record_store
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">db</span><span class="ss">:sessions:create</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>config/environment.rbで以下の行をコメントアウトします。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_controller</span><span class="o">.</span><span class="n">session_store</span> <span class="o">=</span> <span class="ss">:active_record_store</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -143,7 +142,7 @@ ActionController::Session::CookieStore::CookieOverflow
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

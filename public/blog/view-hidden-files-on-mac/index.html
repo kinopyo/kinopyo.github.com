@@ -105,37 +105,6 @@ Finderで表示する方法を紹介します。
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>中文</h1>
-
-<h2>Mac下显示隐藏文件的方法。</h2>
-
-<p>一般由点&#8221;.&#8221;开头的都是隐藏文件或文件夹，这些在Finder里面是看不到的，必须按以下方式才能使Finder显示隐藏文件。</p>
-
-<ol>
-    <li>打开Terminal(Applications/Utilities)</li>
-    <li>输入下面的命令，按return执行</li>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool true
-</span><span class='line'>
-</span><span class='line'>killall Finder
-</span></code></pre></td></tr></table></div></figure>
-    <li>killall Finder就会使命令立即生效，此外强制结束Finder进程，或者登出都可以使命令生效</li>
-
-</ol>
-
-
-<h2>不显示隐藏文件的方法</h2>
-
-<p>和上面的步骤完全一样，只是敲的命令不一样。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
-</span></code></pre></td></tr></table></div></figure>
-
-
 <h1>English</h1>
 
 <p>Viewing hidden files on a Mac is useful for accessing the hidden UNIX directories or for recovering Music from an iPod. Additionally, by prefixing the name of a folder with a &#8216;.&#8217;, you can create a folder that is seemingly hidden from prying eyes.</p>

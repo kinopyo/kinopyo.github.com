@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="http://railscasts.com/episodes/211-validations-in-rails-3で学んだ技です。
-Rails 3.0 beta4を利用しています。 カスタムバリデーションメソッドを作成する方法を紹介します。
-こんなコードがあるとします。 &hellip;">
+	<meta name="description" content="一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。 まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +71,168 @@ Rails 3.0 beta4を利用しています。 カスタムバリデーションメ�
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-a-helper-method-shows-the-required-mark">Rails: a helper method shows the required mark</a></h1>
+	<div class="entry-content">
+		<p>一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。</p>
+
+<p>まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、第二引数はそのクラスのプロパティを渡します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>viewのerbには下記のように@userインスタンス変数と:nameを渡します。もしUserモデルに:nameに対して必須バリデーションが存在すれば必須マークが出力されます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span><span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考リンク：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+
+<h2>20110704更新</h2>
+
+<p>もしhtmlタグも一緒に出力したいときは、タグがエスケープされてしまいます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;&lt;span class=&#39;require_mark&#39;&gt;# &lt;/span&gt;&quot;</span>
+</span><span class='line'>    <span class="n">mark</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span><span class="n">raw</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この場合はrawを書けばエスケープされずにちゃんとHTMLタグが出力します。</p>
+
+<h1>中文</h1>
+
+<p>我们将创建一个Helper方法来输出&#8221;# &#8220;表示必须项目。
+（原谅我这蹩脚的汉语，实在是不知道这些术语用中文该怎么叫）</p>
+
+<p>首先在application_helper里创建一个叫mark_required的方法。他的第一个参数为对象，第二个参数接收的是对象的属性。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后在View里我们只要把@user和:name传过去即可。如果你的User Model对:name进行了必须验证(presence validator)，&#8221;# &#8220;就会显示出来。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>链接：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+
+<h1>English</h1>
+
+<p>Let&#8217;s make a helper method that shows a required mark &#8220;# &#8221; when the attribute of the object has a presence validator.</p>
+
+<p>First, create a mark_required method in the application_helper, pass the object as 1st parameter, the attribute as the second one.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, just call the custom method in the erb view file. In this sample we pass the @user instance variable and the :name attribute symbol. So if your User model has a presence validator on the :name attribute, the required-mark &#8220;# &#8221; will show up.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I learned from this site：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T00:00:00+09:00" pubdate data-updated="true">2010-07-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -281,8 +441,9 @@ BTW, I&#8217;m using Rails 3.0 beta4.</p>
 		<p><a href="http://b.hatena.ne.jp/guide/blogparts">http://b.hatena.ne.jp/guide/blogparts</a>にて自分のサイトの人気エントリーをブログパーツとして設置できます。
 手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。</p>
 
-<p>できたらこんな感じです。なぜか画像が暗くなっちゃいました。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg" title="hatena-bookmark-entry" ></p>
+<p>できたらこんな感じです。なぜか画像が暗くなっちゃいました。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg" title="hatena-bookmark-entry" ></p>
 
 		
 		
@@ -315,76 +476,10 @@ BTW, I&#8217;m using Rails 3.0 beta4.</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/rails-active-record-has-and-belongs-to-many-association-with-primary-keyerror">Rails ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</a></h1>
+	<h1 class="title"><a href="/blog/rails-active-record-has-and-belongs-to-many-association-with-primary-keyerror">Rails HasAndBelongsToMany Association With Primary Key Error</a></h1>
 	<div class="entry-content">
-		<p>Railsでhas_and_belongs_to_manyを使うときにこんなエラーが出ました。
-<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>の中身は：</p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これはメッセージの通りリンクテーブル（ここではarticles_users）にPKが設定されたからです。</p>
-
-<h2>解決方法</h2>
-
-<p><em>:id => false</em>をmigration文に追加すればOKです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>中文</h1>
-
-<p>在使用Rails的has_and_belongs_to_many的时候，遇到了<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>异常。内容如下：</p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>也就是说articles_users的表里设置了PK所导致。</p>
-
-<h2>解决方法</h2>
-
-<p>将<em>:id => false</em>添加到migration的create_table语句后面</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>English</h1>
-
-<p>When using has_and_belongs_to_many, I run into this error,
+		<p>When using has_and_belongs_to_many, I ran into this error,
 <em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em></p>
-
-<br/>
-
-
-
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
@@ -429,7 +524,7 @@ BTW, I&#8217;m using Rails 3.0 beta4.</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>
@@ -466,35 +561,6 @@ sqlite db/development.sqlite3</p>
 .exit</p>
 
 <p>詳しくは<a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>を参照してください。</p>
-
-<h1>中文</h1>
-
-<h2>SQLite的启动，选择或创建数据库</h2>
-
-<p>sqlite DB_NAME</p>
-
-<p>DB_NAME即是数据库名又是文件名。因为SQLite的一个文件就是一个数据库。比如Ruby开发中常用的：
-sqlite db/development.sqlite3</p>
-
-<h2>所有表的一览</h2>
-
-<p>.tables
-.ta</p>
-
-<h2>查看表结构</h2>
-
-<p>.schema TABLE_NAME</p>
-
-<h2>查看帮助</h2>
-
-<p>.help</p>
-
-<h2>退出SQLite</h2>
-
-<p>.quit
-.exit</p>
-
-<p>更多请参照命令<a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>。</p>
 
 <h1>English</h1>
 
@@ -581,37 +647,6 @@ Finderで表示する方法を紹介します。
 <h2>隠しファイルを非表示にするには</h2>
 
 <p>上記と全く同じ手順で、コマンドを書き換えます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>中文</h1>
-
-<h2>Mac下显示隐藏文件的方法。</h2>
-
-<p>一般由点&#8221;.&#8221;开头的都是隐藏文件或文件夹，这些在Finder里面是看不到的，必须按以下方式才能使Finder显示隐藏文件。</p>
-
-<ol>
-    <li>打开Terminal(Applications/Utilities)</li>
-    <li>输入下面的命令，按return执行</li>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool true
-</span><span class='line'>
-</span><span class='line'>killall Finder
-</span></code></pre></td></tr></table></div></figure>
-    <li>killall Finder就会使命令立即生效，此外强制结束Finder进程，或者登出都可以使命令生效</li>
-
-</ol>
-
-
-<h2>不显示隐藏文件的方法</h2>
-
-<p>和上面的步骤完全一样，只是敲的命令不一样。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
@@ -762,30 +797,9 @@ Finderで表示する方法を紹介します。
 
 <p><a href="http://www.lifehacker.jp/2010/06/100623iphonenotes_sync.html">http://www.lifehacker.jp/2010/06/100623iphonenotes_sync.html</a></p>
 
-<h1>中文</h1>
-
-<p>安装iOS4以后，在你的邮件设置里会多出“备忘录”和“日历”的选项。
-设置为ON以后memo和日历就会和gmail，google calendar进行同步。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes.png" title="iphone-notes" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-2.png" title="iphone-notes-2" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-4.png" title="iphone-notes-4" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-3.png" title="iphone-notes-3" ></p>
-
 <h1>English</h1>
 
 <p>Apple&#8217;s iOS 4 (iPhone OS 4) added an important missing feature: a way to save your notes online. If you add an IMAP mail account like Gmail or Yahoo Mail and enable the notes feature, you can create notes that are saved to your email account.</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes.png" title="iphone-notes" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-2.png" title="iphone-notes-2" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-4.png" title="iphone-notes-4" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-3.png" title="iphone-notes-3" ></p>
 
 		
 		
@@ -906,18 +920,16 @@ Finderで表示する方法を紹介します。
 
 <h3>予約語</h3>
 
-<p>{% blockquote >
-<strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield
-&lt;&lt;</p>
+<blockquote><p><strong>FILE</strong>  def in  self
+<strong>LINE</strong>  defined?    module  super
+BEGIN do  next    then
+END   else    nil true
+alias elsif   not undef
+and   end or  unless
+begin ensure  redo    until
+break false   rescue  when
+case  for retry   while
+class if  return  yield</p></blockquote>
 
 <h3>Example2</h3>
 
@@ -945,68 +957,6 @@ class   if  return  yield
 <p>コンスタントは大文字でスタートします。
 これでRubyはコンスタントと認識してくれます。</p>
 
-<h1>中文</h1>
-
-<h2>变量</h2>
-
-<h3>声明例子1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Ruby变量名</h3>
-
-<p>Ruby更常用下划线而非骆驼拼写法。
-比如page_transfer_manager，但pageTransferManager却不常用。</p>
-
-<h3>Reserved Word</h3>
-
-<p>以下变量名为Ruby所使用，无法用来定义自己的变量。</p>
-
-<blockquote><blockquote><p><strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield
-&lt;&lt;</p></blockquote></blockquote>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注意要将integer转换为string.
-在双引号&#8221;&#8220;内，可以在#{和}之间放置任何表达式，
-表达式的值会被转换为string显示。</p>
-
-<h2>常量</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>常量在Ruby里以大写字母开头。
-通常习惯上常量的所有字符都是大写，
-但只要开头是大写，Ruby便认为这是常量。</p>
-
 <h1>English</h1>
 
 <h2>Variable</h2>
@@ -1028,20 +978,16 @@ class   if  return  yield
 
 <h3>Reserved words</h3>
 
-<blockquote><p>}</p></blockquote>
-
-<p><strong>FILE</strong>    def in  self
-<strong>LINE</strong>    defined?    module  super
-BEGIN   do  next    then
-END else    nil true
-alias   elsif   not undef
-and end or  unless
-begin   ensure  redo    until
-break   false   rescue  when
-case    for retry   while
-class   if  return  yield</p>
-
-<p>{% endblockquote %}</p>
+<blockquote><p><strong>FILE</strong>  def in  self
+<strong>LINE</strong>  defined?    module  super
+BEGIN do  next    then
+END   else    nil true
+alias elsif   not undef
+and   end or  unless
+begin ensure  redo    until
+break false   rescue  when
+case  for retry   while
+class if  return  yield</p></blockquote>
 
 <h3>Example2</h3>
 
@@ -1090,89 +1036,6 @@ letter that is crucial—it must be uppercase so that Ruby knows that you intend
 
 
 <time datetime="2010-06-23T00:00:00+09:00" pubdate data-updated="true">2010-06-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/eclipse-3-6-helios-6-23-releas">Eclipse 3.6 Helios 23/6 release</a></h1>
-	<div class="entry-content">
-		<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
-<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
-
-<p>RC1 Friday, May 21
-RC2 Friday, May 28
-RC3 Friday, June 4
-RC4 Friday, June 11
-<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
-Release Wednesday, June 23</p>
-
-<p>23日正式リリースだそうです。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
-
-<h1>中文</h1>
-
-<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
-<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
-
-<p>RC1 Friday, May 21
-RC2 Friday, May 28
-RC3 Friday, June 4
-RC4 Friday, June 11
-<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
-Release Wednesday, June 23</p>
-
-<p>最终版本已于18日编译完成,将于23日正式发布.</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
-
-<h1>English</h1>
-
-<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
-<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
-
-<p>RC1 Friday, May 21
-RC2 Friday, May 28
-RC3 Friday, June 4
-RC4 Friday, June 11
-<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
-Release Wednesday, June 23</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-22T00:00:00+09:00" pubdate data-updated="true">2010-06-22</time></div>
 	<div class="tags">
 
 

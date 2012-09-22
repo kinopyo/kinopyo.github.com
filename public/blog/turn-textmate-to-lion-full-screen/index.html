@@ -80,7 +80,7 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 </header>
 	<div id="content" class="inner"><article class="post">
 	<h1 class="title">TextMateをLionのフルスクリーンに</h1>
-	<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+	<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -88,19 +88,20 @@ git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMate
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen
 </span><span class='line'>
 </span><span class='line'>xcodebuild -project /tmp/EGOTextMateFullScreen/EGOTextMateFullScreen.xcodeproj -target EGOTextMateFullScreen
 </span><span class='line'>
-</span><span class='line'>cp -R /tmp/EGOTextMateFullScreen/build/Release/EGOTextMateFullScreen.tmplugin ~/Library/Application\ Support/TextMate/PlugIns
+</span><span class='line'>cp -R /tmp/EGOTextMateFullScreen/build/Release/EGOTextMateFullScreen.tmplugin ~/Library/Application<span class="se">\ </span>Support/TextMate/PlugIns
 </span><span class='line'>
-</span><span class='line'># after installed
+</span><span class='line'><span class="c"># after installed</span>
 </span><span class='line'>rm -rf /tmp/EGOTextMateFullScreen/
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>これが完成図！
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg" title="textmate_fullscreen" ></p>
+<p>これが完成図！</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/textmate_fullscreen.jpg" alt="Textmate Fullscreen" /></p>
 </div>
 
 

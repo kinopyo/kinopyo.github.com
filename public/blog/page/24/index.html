@@ -7,10 +7,13 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
-ずいぶん前一度使ったことがあります。
-スタンドアロンのJD-GUIツールと、
-Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。 &hellip;">
+	<meta name="description" content="EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。 1
+2
+3
+4
+5
+The Maven Integration required that Eclipse be running in a JDK,
+because a &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +77,80 @@ Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required">EclipseにMavenプラグインインストール後のエラー: &#8220;Eclipse is running in a JRE, but a JDK is required&#8221;</a></h1>
+	<div class="entry-content">
+		<p>EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。</p>
+
+<p><a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The Maven Integration required that Eclipse be running in a JDK,
+</span><span class='line'>because a number of Maven core plugins are using jars from the JDK.
+</span><span class='line'>
+</span><span class='line'>Please make sure the -vm option in eclipse.ini is pointing to a JDK and
+</span><span class='line'>verify that Installed JREs are also using JDK installs.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使ってた環境は確かにJREのみがあってJDKはなかったんです。
+回避策としては
++  JDKをインストール
++  eclipse.iniに-vmオプションでインストールしたJDKと関連付ける</p>
+
+<h3>JDKのインストール</h3>
+
+<p>JDKのダウンロードはこちら:<a href="http://java.sun.com">Sun Java</a>
+インストール後JAVA_HOMEとPATH環境変数もあわせて編集
+エクスプローラ→マイコンピュータ→右クリック→プロパティ→詳細設定タブ→環境変数ボタン</p>
+
+<h3>eclipse.iniの編集</h3>
+
+<p>jdkのパスはインストール先に合わせて下記内容を追記
+vmの後に<strong>改行が必要</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> -vm
+</span><span class='line'>C:\Java\jdk1.6.0_18\bin\javaw.exe
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで再起動したらエラーメッセージは出なくなりました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-20T00:00:00+09:00" pubdate data-updated="true">2010-01-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -389,7 +466,89 @@ No More Countdowns - Automatic Downloads.</p></li>
 <h2>ブロックを渡すには？</h2>
 
 <p>ブロックを渡すには、二つの方法があります。
-+  ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
++ ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>②メソッドの最後にdo..endで囲んだコードを渡す。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブロックの使い方？</h2>
+
+<p>ブロックは使ってもらわないと、意味がありません。
+使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。
+メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of method&#39;</span>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of method&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Start of method
+</span><span class='line'>In the block
+</span><span class='line'>End of method</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブロックにはパラメータを渡す？</h2>
+
+<p>ブロックにはパラメータを渡せますか？もちろんです。
+パラメータの定義はブロックで、
+yieldでブロックを実行する際には、パラメータを渡します。
+ブロックは渡されたパラメータを受け取って、処理します。
+文字の説明だけで、わからないかもしれません。
+実はメソッドの定義とほとんど変わらないです。
+サンプルを見てみましょう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block_pramater</span>
+</span><span class='line'>  <span class="k">yield</span><span class="p">(</span><span class="s1">&#39;helloworld&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">call_block</span> <span class="p">{</span><span class="o">|</span><span class="n">str</span><span class="p">,</span> <span class="n">num</span><span class="o">|</span> <span class="nb">puts</span> <span class="s1">&#39;Ruby sample:&#39;</span><span class="o">+</span><span class="n">str</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※注意点：ブロックでは、||でパラメータを受け取っています。</p>
+
+<h2>渡されたブロックをさらに別のメソッドを渡すには？</h2>
+
+<p>渡されたブロックをさらに内部で使っているメソッドに渡すことができます。
+引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -405,196 +564,60 @@ No More Countdowns - Automatic Downloads.</p></li>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">+  ②メソッドの最後にdo..endで囲んだコードを渡す。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">{% codeblock %}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">test_block</span> <span class="k">do</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of test_block&#39;</span>
+</span><span class='line'>  <span class="n">test_block_paramater</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of test_block&#39;</span>
 </span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
 </span><span class='line'>
-</span><span class='line'><span class="sx">## ブロックの使い方？</span>
-</span><span class='line'><span class="sx">ブロックは使ってもらわないと、意味がありません。</span>
-</span><span class='line'><span class="sx">使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。</span>
-</span><span class='line'><span class="sx">メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">test_block_paramater</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of test_block_paramater&#39;</span>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>  <span class="nb">puts</span><span class="s1">&#39;End of test_block_paramater&#39;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block</span>
-</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
-</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
-</span><span class='line'><span class="sx">yield</span>
-</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
-</span><span class='line'><span class="sx">end</span>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Start of test_block
+</span><span class='line'>Start of test_block_paramater
+</span><span class='line'>In the block
+</span><span class='line'>End of test_block_paramater
+</span><span class='line'>End of test_block</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</p>
+
+<h2>ブロックが渡されたか調べるには？</h2>
+
+<p>yieldを実行する時、ブロックが渡されるかどうかを確認することができます。
+block_given?を使って、ブロックがあるかどうかを確認できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of method&#39;</span>
+</span><span class='line'>  <span class="k">yield</span> <span class="k">if</span> <span class="nb">block_given?</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of method&#39;</span>
+</span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
-</span><span class='line'><span class="c1">#ブロックを渡す</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">実行結果：</span>
-</span><span class='line'><span class="sx">Start of method</span>
-</span><span class='line'><span class="sx">In the block</span>
-</span><span class='line'><span class="sx">End of method</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">## ブロックにはパラメータを渡す？</span>
-</span><span class='line'><span class="sx">ブロックにはパラメータを渡せますか？もちろんです。</span>
-</span><span class='line'><span class="sx">パラメータの定義はブロックで、</span>
-</span><span class='line'><span class="sx">yieldでブロックを実行する際には、パラメータを渡します。</span>
-</span><span class='line'><span class="sx">ブロックは渡されたパラメータを受け取って、処理します。</span>
-</span><span class='line'><span class="sx">文字の説明だけで、わからないかもしれません。</span>
-</span><span class='line'><span class="sx">実はメソッドの定義とほとんど変わらないです。</span>
-</span><span class='line'><span class="sx">サンプルを見てみましょう。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block_pramater</span>
-</span><span class='line'><span class="sx">yield(&#39;helloworld&#39;)</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'><span class="sx">call_block {|str, num| puts &#39;Ruby sample:&#39;+str }</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'><span class="sx">※注意点：ブロックでは、||でパラメータを受け取っています。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">## 渡されたブロックをさらに別のメソッドを渡すには？</span>
-</span><span class='line'><span class="sx">渡されたブロックをさらに内部で使っているメソッドに渡すことができます。</span>
-</span><span class='line'><span class="sx">引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block(&amp;block)</span>
-</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
-</span><span class='line'><span class="sx">puts &#39;Start of test_block&#39;</span>
-</span><span class='line'><span class="sx">test_block_paramater(&amp;block)</span>
-</span><span class='line'><span class="sx">puts &#39;End of test_block&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">def test_block_paramater(&amp;block)</span>
-</span><span class='line'><span class="sx">puts &#39;Start of test_block_paramater&#39;</span>
-</span><span class='line'><span class="sx">yield</span>
-</span><span class='line'><span class="sx">puts&#39;End of test_block_paramater&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="n">endcodeblock</span> <span class="sx">%}</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">実行結果：</span>
-</span><span class='line'><span class="sx">Start of test_block</span>
-</span><span class='line'><span class="sx">Start of test_block_paramater</span>
-</span><span class='line'><span class="sx">In the block</span>
-</span><span class='line'><span class="sx">End of test_block_paramater</span>
-</span><span class='line'><span class="sx">End of test_block</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'><span class="sx">※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'><span class="sx">## ブロックが渡されたか調べるには？</span>
-</span><span class='line'><span class="sx">yieldを実行する時、ブロックが渡されるかどうかを確認することができます。</span>
-</span><span class='line'><span class="sx">block_given?を使って、ブロックがあるかどうかを確認できます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;br/&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">&lt;pre class=&quot;brush:ruby&quot;&gt;</span>
-</span><span class='line'><span class="sx">def test_block</span>
-</span><span class='line'><span class="sx"># test_blockメソッドを定義する</span>
-</span><span class='line'><span class="sx">puts &#39;Start of method&#39;</span>
-</span><span class='line'><span class="sx">yield if block_given?</span>
-</span><span class='line'><span class="sx">puts &#39;End of method&#39;</span>
-</span><span class='line'><span class="sx">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">test_block {puts &#39;In the block&#39;}</span>
-</span><span class='line'><span class="c1">#ブロックを渡す</span>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -679,8 +702,9 @@ No More Countdowns - Automatic Downloads.</p></li>
 	<div class="entry-content">
 		<p>iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
 12月で1.68%でした。
-僅かな割合なんですが、それでもうれしいです。
-<img src="http://kinopyo.com/wp-content/uploads/2010/01/Blog-Browsers-and-OS.jpg" title="Blog-Browsers-and-OS" ></p>
+僅かな割合なんですが、それでもうれしいです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/Blog-Browsers-and-OS.jpg" title="Blog-Browsers-and-OS" ></p>
 
 <h2>WPTouch</h2>
 
@@ -695,10 +719,13 @@ No More Countdowns - Automatic Downloads.</p></li>
 今のところFollow Meのプラグインがうまく表示されませんが、
 これはFlashがiPhoneではサポートされてないからです。</p>
 
-<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/初期画面、記事一覧.jpg" title="初期画面：記事一覧" >
-<img src="http://kinopyo.com/wp-content/uploads/2010/01/記事概要.jpg" title="記事概要" >
-<img src="http://kinopyo.com/wp-content/uploads/2010/01/記事詳細.jpg" title="記事詳細" >
-<img src="http://kinopyo.com/wp-content/uploads/2010/01/カテゴリ、タグ、コメント.jpg" title="カテゴリ、タグ、コメント" ></p>
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_lists.jpg" title="初期画面：記事一覧" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_preview.jpg" title="記事概要" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_detail.jpg" title="記事詳細" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_metadata.jpg" title="カテゴリ、タグ、コメント" ></p>
 
 		
 		
@@ -735,8 +762,9 @@ No More Countdowns - Automatic Downloads.</p></li>
 	<div class="entry-content">
 		<h3>ダウンロード</h3>
 
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-download.jpg" title="tomcat-download" >
-<a href="http://tomcat.apache.org/download-60.cgi">Tomcat公式サイトダウンロードページ</a>で上記ファイルをダウンロード</p>
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-download.jpg" title="tomcat-download" ></p>
+
+<p><a href="http://tomcat.apache.org/download-60.cgi">Tomcat公式サイトダウンロードページ</a>で上記ファイルをダウンロード</p>
 
 <h3>インストール</h3>
 
@@ -752,7 +780,7 @@ No More Countdowns - Automatic Downloads.</p></li>
 
 <h3>検証</h3>
 
-<p><a href="http://localhost:8080">http://localhost:8080</a></p>
+<p>http://localhost:8080</p>
 
 		
 		
@@ -776,54 +804,7 @@ No More Countdowns - Automatic Downloads.</p></li>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/eclipse-install-tomcat-plugin">EclipseにTomcatプラグインをインストール</a></h1>
-	<div class="entry-content">
-		<ul>
-<li><p><a href="http://www.eclipsetotale.com/tomcatPlugin.html#A4">Eclipse Tomcat Pluginダウンロードページ</a>でzipファイルをダウンロード
-現時点の最新版はtomcatPluginV321.zipです。</p></li>
-<li><p>your_Eclipse_Home/pluginsに解凍</p></li>
-<li>Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-toolbar-icon.jpg" title="tomcat-toolbar-icon" ></li>
-<li>下記のようにTomcatバージョンとTomcatホームを設定
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-home-path.jpg" title="tomcat-settings-home-path" ></li>
-<li>下記のようにTomcat用のJVM SettingでJREバージョンを選択
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-jre-version.jpg" title="tomcat-settings-jre-version" >
-私の場合デフォルトがJRE1.4になっていたため、これを1.5の変えました。</li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/mac/'>mac</a>
 
 
 </div>
