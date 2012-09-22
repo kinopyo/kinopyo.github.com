@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SEO | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/seo/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-09-23T03:29:40+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[クロスサイトのリンクはいいか悪いか]]></title>
+    <link href="http://kinopyo.com/blog/is-cross-linking-websites-bad"/>
+    <updated>2010-02-15T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/is-cross-linking-websites-bad</id>
+    <content type="html"><![CDATA[<h2>Question</h2>
+
+<p>If I have 3 websites, Is there a problem to cross link websites?</p>
+
+<h2>Answer by Google Webmaster Central</h2>
+
+<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
+
+
+<p>要はサイト間の"関連性"が一番大事です。
+関連性があればOKで、なければ無意味って感じです。</p>
+
+<h3>「海外SEO情報ブログ」からの訳文</h3>
+
+<p><blockquote><p></p></p><p><p>サイト同士に何らかの関連性があるかが問題だね。</p></p><p><p>1つがドライクリーニングのサイト、もう1つが古美術のサイト、もう1つが携帯レビューのサイトだとしたら、ページの下にリンクがあるのは奇妙だ。<br/>漫画のサイトを見ていたのに、ページの最後に行ったら自動車保険やコーヒーテーブルのサイトへのリンクが突然出てくるのは、何にも関係がない。</p></p><p><p>「どのくらい関連性があるのか」をまず先に考えてほしい。</p></p><p><p>3つのサイトで相互リンクしてもたいした数じゃないから、大きな問題にはならないと思う。<br/>でも、30サイト、300サイトでクロスリンクしていたら、「何の関係があるんだろうか」と一般のユーザーも競合も不思議に思うだろう。</p></p><p><p>紳士洋服・婦人洋服・子供洋服がクロスリンクしあうのは、関連があるから完全に理由がある。<br/>同じ企業傘下にある会社同士も、正当な理由があるから問題があるとは思えない。<br/>少ない数だったらまだいいかもしれないけど、サイトの規模が大きくなるに連れてページの下に大量のリンクが出現するのは良くないね。</p></p><p><p></p></blockquote></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[自分のサイトURLを"wwwあり"か"wwwなし"に正規化する方法]]></title>
+    <link href="http://kinopyo.com/blog/canonicalization-url-for-www-non-www"/>
+    <updated>2010-01-24T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/canonicalization-url-for-www-non-www</id>
+    <content type="html"><![CDATA[<p>"wwwあり"か"wwwなし"はSEO的には優劣はありませんし、
+どっちを使うかはたいてい各人の好き嫌いで決まっています。
+例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
+私は"wwwあり"で正規化ています。
+この正規化というのは非常に重要で、検索エンジンに対しての知らせです。
+Googleのヘルプによると下記の解説になります。</p>
+
+<p><blockquote><p></p></p><p><p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p></p><p><p></p></blockquote></p>
+
+<p>なので"wwwあり"と"wwwなし"が同じサイトであれば
+正規化する必要があります。</p>
+
+<h2>正規化する方法</h2>
+
+<p>.htaccessが使える環境では.htaccessを下記のように設定
+.htaccessファイルはサイトのルートディレクトリに置いてください。
+例えばこのブログのURLはwww.kinopyo.com/blogになっていますが、
+.htaccessファイルはwww.kinopyo.comのディレクトリに置いてあればOKです。
+設定に基づいてリダイレクトします。</p>
+
+<h3>wwwありに統一</h3>
+
+<p><code>plain
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^example\.com [NC]
+RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]
+</code></p>
+
+<h3>wwwなしに統一</h3>
+
+<p><code>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.example\.com *NC*
+RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*
+</code></p>
+
+<p>※”example.com”は自分のドメイン名に置き換えてください。</p>
+
+<h2>Googleウェブマスターツールでの設定</h2>
+
+<p>Googleウェブマスターツールは自分のサイトとGoogle検索の関係いついて
+いろいろ設定できる支援ツールです。
+ここでは自分が"www有り無し"をGoogleに伝えるための設定をします。
+そうしないとGoogleは"www有り無し"をそれぞれ別のページへの異なる参照として処理されます。</p>
+
+<h3>Googleウェブマスターツール使うにはまずサイトを登録</h3>
+
+<p>サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool.jpg" title="Googleウェブマスターツール" ></p>
+
+<p>Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
+(具体的な認証方法はGoogleのヘルプを見てください)</p>
+
+<h3>使用するドメイン</h3>
+
+<p>登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
+利用するドメイン、つまりwww有りなしを指定してください。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool_setting.jpg" title="Googleウェブマスターツール" ></p>
+
+<h2>Wordpressお使いの方は注意を</h2>
+
+<p>Wordpressの「設定→一般」でサイトURLが正しく設定されるか確認してください。
+もし.htaccessでは"wwwあり"で指定しWordpressでは"wwwなし"と指定した場合は
+無限ループとなるため、サイトがエラーとなり表示できなくなります。
+Wordpressの仕様は調べていないが、どうやらWordpressの設定によりリダイレクトするように見えます。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.suzukikenichi.com/blog/which-do-you-prefer-www-or-non-www/">wwwあり／wwwなし、どちらを使用するか?</a></p>
+]]></content>
+  </entry>
+  
+</feed>
