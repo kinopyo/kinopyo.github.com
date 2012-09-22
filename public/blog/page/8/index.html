@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Rubyのエンタープライズ版のこと。Phusion Passengerと相性がよく、メモリ消費がだいぶ下がる利点があるそうです。
-rvmでの紹介を引用しますと： Ruby Enterprise Edition, MRI Ruby with several custompatches for &hellip;">
+	<meta name="description" content="Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。 調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
+CentOSなのでyumを使ってインストールすれば解決です。 1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,6 +72,54 @@ rvmでの紹介を引用しますと： Ruby Enterprise Edition, MRI Ruby with s
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps">さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件</a></h1>
+	<div class="entry-content">
+		<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
+
+<p><img src="http://hsuzuki.ddo.jp/wewp-content/uploads/2008/12/radio_f.bmp" /></p>
+
+<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
+CentOSなのでyumを使ってインストールすれば解決です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo yum install php-gd
+</span><span class='line'>sudo service httpd restart</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/windows/'>Windows</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/vps/'>vps</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -749,94 +797,6 @@ end</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-add-method-to-string-class">Ruby: 既存クラスにメソッドを追加、class_evalとsingleton method</a></h1>
-	<div class="entry-content">
-		<p>Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。</p>
-
-<div><script src='https://gist.github.com/1205255.js?file=solution_1.rb'></script>
-<noscript><pre><code>class String
-  def sex_code
-    if [&quot;male&quot;, &quot;男&quot;].include? self
-      0
-    elsif self == &quot;女&quot;
-      1
-    else
-      self
-    end
-  end  
-end
-
-p String.instance_methods.grep(/^sex/) # =&gt; [:sex_code]
-
-p &quot;male&quot;.sex_code  # =&gt; 0
-p &quot;女&quot;.sex_code  # =&gt; 1
-p &quot;other&quot;.sex_code # =&gt; &quot;other&quot;</code></pre></noscript></div>
-
-
-<p>solution_1.rbはOpen Classというテクニックです。classキーワードで既存クラスを定義するときは上書きするのではなく、拡張した感じで、他のStringメソッドに影響がないです。</p>
-
-<div><script src='https://gist.github.com/1205255.js?file=solution_2.rb'></script>
-<noscript><pre><code>String.class_eval do
-  def sex_code
-    if [&quot;male&quot;, &quot;男&quot;].include? self
-      0
-    elsif self == &quot;女&quot;
-      1
-    else
-      self
-    end
-  end  
-end
-
-p String.instance_methods.grep(/^sex/) # =&gt; [:sex_code]</code></pre></noscript></div>
-
-
-<p>solution_2.rbはただ<strong>class_eval</strong>の理論を試したかっただけです。<strong>class_eval</strong>はスコープ内の<strong>self</strong>と<strong>current class</strong>をreceiverのStringクラスに変更するんです。だからclass_evalのブロック内に定義したメソッドはStringのinstance methodになります。</p>
-
-<div><script src='https://gist.github.com/1205255.js?file=solution_mistake.rb'></script>
-<noscript><pre><code>def String.hello
-  &quot;hello from String class methods&quot;
-end
-
-p String.singleton_methods.grep(/hello/)
-p String.hello  # =&gt; &quot;hello from String class methods&quot;</code></pre></noscript></div>
-
-
-<p>solution_mistake.rbはStringのクラスメソッド(Singleton methods)を定義したもので、instance methodではないです。</p>
-
-<p>最近「Metaprogramming Ruby」という本を読んでます。よくわからなかったこととか、曖昧だっだことがすっきりした感じです。お勧めです！</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-09T00:00:00+09:00" pubdate data-updated="true">2011-09-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/metaprogramming/'>metaprogramming</a>
 
 
 </div>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Overview This is a tip to auto refresh your browser(s) when you hit Command + S(means saving file) in Textmate. Steps Open Bundle Editor, look for &hellip;">
+	<meta name="description" content="shared_context &quot;shared stuff&quot; do before { @some_var = :some_value } def shared_method &quot;it works&quot; end let(:shared_let) { {' &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,112 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rspec-shared_context-sample-code">rspec shared context sample code</a></h1>
+	<div class="entry-content">
+		<div><script src='https://gist.github.com/1283896.js?file='></script>
+<noscript><pre><code>shared_context &quot;shared stuff&quot; do
+  before { @some_var = :some_value }
+  def shared_method
+    &quot;it works&quot;
+  end
+  let(:shared_let) { {'arbitrary' =&gt; 'object'} }
+  subject do
+    'this is the subject'
+  end
+end
+
+describe &quot;group that includes a shared context using 'include_context'&quot; do
+  include_context &quot;shared stuff&quot;
+
+  it &quot;has access to methods defined in shared context&quot; do
+    shared_method.should eq(&quot;it works&quot;)
+  end
+
+  it &quot;has access to methods defined with let in shared context&quot; do
+    shared_let['arbitrary'].should eq('object')
+  end
+
+  it &quot;runs the before hooks defined in the shared context&quot; do
+    @some_var.should be(:some_value)
+  end
+
+  it &quot;accesses the subject defined in the shared context&quot; do
+    subject.should eq('this is the subject')
+  end
+end</code></pre></noscript></div>
+
+
+<h1>日本語</h1>
+
+<p>shared_context はその名前の通りコンテキスト (テストを行なうときの状況) を共有するための機能です。
+shared_context を使うことで複数箇所にちらばる同一処理をまとめることができます。shared_context は shared_context が書かれたファイルを require することでも使えるようになるので別のスペックファイルでも使うことができます。</p>
+
+<div><script src='https://gist.github.com/1283896.js?file='></script>
+<noscript><pre><code>shared_context &quot;shared stuff&quot; do
+  before { @some_var = :some_value }
+  def shared_method
+    &quot;it works&quot;
+  end
+  let(:shared_let) { {'arbitrary' =&gt; 'object'} }
+  subject do
+    'this is the subject'
+  end
+end
+
+describe &quot;group that includes a shared context using 'include_context'&quot; do
+  include_context &quot;shared stuff&quot;
+
+  it &quot;has access to methods defined in shared context&quot; do
+    shared_method.should eq(&quot;it works&quot;)
+  end
+
+  it &quot;has access to methods defined with let in shared context&quot; do
+    shared_let['arbitrary'].should eq('object')
+  end
+
+  it &quot;runs the before hooks defined in the shared context&quot; do
+    @some_var.should be(:some_value)
+  end
+
+  it &quot;accesses the subject defined in the shared context&quot; do
+    subject.should eq('this is the subject')
+  end
+end</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-13T00:00:00+09:00" pubdate data-updated="true">2011-10-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/best-practice/'>best_practice</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/shared-context/'>shared_context</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -543,54 +649,6 @@ config.assets.digest = true
 
 
 	<a class='category' href='/blog/categories/asset-pipeline/'>Asset Pipeline</a>, <a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps">さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件</a></h1>
-	<div class="entry-content">
-		<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
-
-<p><img src="http://hsuzuki.ddo.jp/wewp-content/uploads/2008/12/radio_f.bmp" /></p>
-
-<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
-CentOSなのでyumを使ってインストールすれば解決です。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo yum install php-gd
-</span><span class='line'>sudo service httpd restart</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/windows/'>Windows</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/vps/'>vps</a>
 
 
 </div>

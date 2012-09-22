@@ -7,11 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
-&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;
-vs
-&#8220;直接jQueryのidセレクタでとるやつ&#8221;。 コードで言うと
-$( &hellip;">
+	<meta name="description" content="Googleのhttp://www.google.com/adplanner/static/top1000/によりますと、
+Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
+日本と中国ではまだFacebookが主流のSNSサイトにはなっていないようですが &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +73,66 @@ $( &hellip;">
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/add-facebook-like-button-to-my-blog">FacebookのLikeボタンを追加しました</a></h1>
+	<div class="entry-content">
+		<p>Googleの<a href="http://www.google.com/adplanner/static/top1000/">http://www.google.com/adplanner/static/top1000/</a>によりますと、
+Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
+日本と中国ではまだFacebookが主流のSNSサイトにはなっていないようですが、
+そのうちどうなりますかね。。</p>
+
+<br/>
+
+
+<p><a href="http://developers.facebook.com/docs/api">Graph API</a>とかまだ全然わかりませんが、
+とりあえずLikeボタンをブログに設置しました。
+<a href="http://developers.facebook.com/docs/reference/plugins/like">このページ</a>でURLとwidthを入力するだけで簡単に作れます。
+生成されたコードは二種類ありまして一つは<em>iframe</em>のやつと
+もう一つはFacebookのカスタムタグのやつで
+これは<a href="http://developers.facebook.com/docs/reference/javascript/">Javascript SDK</a>が必要だそうです。
+もちろん後者のほうがもっとパワフルな感じです。</p>
+
+<br/>
+
+
+<p>ソーシャルアプリとかゲームの開発はちょっとやりたいので
+時間があればFacebookの各種APIも勉強するつもりです。</p>
+
+<br/>
+
+
+<p>ひとまずサイドバーに設置して自分が&#8217;Like&#8217;を押しました。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-01T00:00:00+09:00" pubdate data-updated="true">2010-06-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -587,89 +645,6 @@ IE,FirefoxとChromeでテストした結果、Firefoxは無事のようです。
 
 
 <time datetime="2010-04-26T00:00:00+09:00" pubdate data-updated="true">2010-04-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-source-siblings-children">jQuery siblings()とchildren()の内部ソースを見た</a></h1>
-	<div class="entry-content">
-		<p>よく出来ていると思います。
-勉強になります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">siblings</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">sibling</span><span class="p">(</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">,</span> <span class="nx">elem</span> <span class="p">);</span>
-</span><span class='line'><span class="p">},</span>
-</span><span class='line'><span class="nx">children</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">sibling</span><span class="p">(</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">firstChild</span> <span class="p">);</span>
-</span><span class='line'><span class="p">},</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>そしてjQuery.sibling()の中身です！
-nodeTypeが1の場合はelementノードの意味です。
-nはループに使われて、elemは除外する要素です。
-例えばsiblings()の場合は自分自身を除外しています。
-for文の書き方も覚えとこう、、
-javaでのIteratorのhasNext()関数みたいな動きをしていますね。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'>   <span class="nx">sibling</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="o">**</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">for</span> <span class="p">(</span> <span class="p">;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">nextSibling</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="k">if</span> <span class="p">(</span> <span class="nx">n</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">!==</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>              <span class="nx">r</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">n</span> <span class="p">);</span>
-</span><span class='line'>          <span class="p">}</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-19T00:00:00+09:00" pubdate data-updated="true">2010-04-19</time></div>
 	<div class="tags">
 
 

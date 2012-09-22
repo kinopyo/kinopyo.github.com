@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="CAUTION It&#8217;s specific machinist 1.0-maintenance. Machinist is an alternative for Fixtures or FactoryGirl. make_unsaved If you want to generate &hellip;">
+	<meta name="description" content="oh-my-zsh is very handy and I&#8217;ve been using it for almost a year. But I found the auto correct is kind of annoying and barely helped me. So I &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,75 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-disable-auto-correct-in-zsh/">How to disable auto correct in oh-my-zsh</a></h1>
+	<div class="entry-content">
+		<p><a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is very handy and I&#8217;ve been using it for almost a year.</p>
+
+<p>But I found the auto correct is kind of annoying and barely helped me. So I decided to turn if off!</p>
+
+<h2>Disable it globally</h2>
+
+<p>Add this <code>unsetopt</code> to your ~/.zshrc</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">source</span> <span class="nv">$ZSH</span>/oh-my-zsh.sh
+</span><span class='line'>
+</span><span class='line'>unsetopt correct_all
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Disable it per command base</h2>
+
+<p>Say if you just want to disable it for <code>git</code> command, you can setup an alias.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">git</span><span class="o">=</span>’nocorrect heroku’
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I didn&#8217;t test out this one :)</p>
+
+<h3>References:</h3>
+
+<ul>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/issues/534">Issue #534: auto-correcting sucks hard · robbyrussell/oh-my-zsh</a></li>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/issues/949">Issue #949: Disable autocorrect lg to log · robbyrussell/oh-my-zsh</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-20T20:35:00+09:00" pubdate data-updated="true">2012-07-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/zsh/'>zsh</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -579,47 +648,6 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 
 
 	<a class='category' href='/blog/categories/mobile/'>mobile</a>, <a class='category' href='/blog/categories/payment/'>payment</a>, <a class='category' href='/blog/categories/paypal/'>paypal</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/a-mystery-why-can-not-we-walk-straight">A Mystery: Why Cant We Walk Straight?</a></h1>
-	<div class="entry-content">
-		<p>面白かったのでブログに載せました。目を閉じて歩けば直線だと本人は思うが、実はぐるぐる回ってるって実験が80年前から行われていて、未だにその原因がわからないそうです。</p>
-
-<iframe src="http://player.vimeo.com/video/17083789?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p><a href="http://vimeo.com/17083789">A Mystery: Why  Can&#8217;t We Walk Straight?</a> from <a href="http://vimeo.com/npr">NPR</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-30T00:00:00+09:00" pubdate data-updated="true">2012-01-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/uncategorized/'>Uncategorized</a>
 
 
 </div>

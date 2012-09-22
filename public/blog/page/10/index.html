@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="curl_multi系を使って、プロセス数を指定して実行するマルチスレッド処理です。 urlは配列で受け取って、もし指定したプロセス数より多い場合は分割して実行するようになってます。 このサンプルコードではこのブログの幾つかのurlに対してtitleを取得しました。 &lt;?php &hellip;">
+	<meta name="description" content="現象 MixiモバイルアプリのフォームからPOSTするとOAuth Signatureが不一致で検証が通らない。 デバッグ フォームをPOSTするときはフォーム内のデータがOAuthのBase StringのNormalize Request Parametersに含まれます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,74 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mixi-mobile-oauth-signature-failure-when-posting-form">Mixiモバイルアプリ：フォームPost時のOAuth Signature検証失敗について</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p>MixiモバイルアプリのフォームからPOSTするとOAuth Signatureが不一致で検証が通らない。</p>
+
+<h2>デバッグ</h2>
+
+<p>フォームをPOSTするときはフォーム内のデータがOAuthのBase StringのNormalize Request Parametersに含まれます。
+これはOAuthに仕様に準じてます（<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a>）が、
+なぜかMixiだと通れないです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;?guid=ON&amp;url=http%3A%2F%2Fexample.com%2Ffoo%2F&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;field1&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;value1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;送信&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんなフォームがあるとして、中のfield1がNormalize Request Parametersに存在するとダメだってことが検証でわかりました。</p>
+
+<h2>回避方法</h2>
+
+<p>フォームPOSTする箇所を特定して、その場合はOAuth Signatureを検証しないようにしました。</p>
+
+<h2>参考リンク</h2>
+
+<p>同じ現象にあった方がいました: <a href="http://d.hatena.ne.jp/phantasmist/20110224">http://d.hatena.ne.jp/phantasmist/20110224</a>
+<a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/</a>
+<a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">http://developer.mixi.co.jp/appli/spec/mob/pages_api/</a>
+<a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">http://oauth.net/core/1.0/#rfc.section.A.5.1</a>
+<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-10T00:00:00+09:00" pubdate data-updated="true">2011-08-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mixi/'>Mixi</a>, <a class='category' href='/blog/categories/form/'>form</a>, <a class='category' href='/blog/categories/mixi/'>mixi</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>, <a class='category' href='/blog/categories/post/'>post</a>, <a class='category' href='/blog/categories/signature/'>signature</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -639,51 +707,6 @@ Scroll direction:naturalは2本指スクロールが今までの動きと真逆�
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-mark-above-or-below-as-read-in-google-reader">Google Readerで以上/以下のアイテムを既読にする方法(要firefox)</a></h1>
-	<div class="entry-content">
-		<p>Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。</p>
-
-<p>現時点で使ってるFirefoxは5.0.1です。</p>
-
-<h2>手順</h2>
-
-<p>+<a href="https://addons.mozilla.org/ja/firefox/addon/greasemonkey/">https://addons.mozilla.org/ja/firefox/addon/greasemonkey/</a>でGreasemonkeyをインストールし、Firefoxを再起動
-+<a href="http://userscripts.org/scripts/show/47830">http://userscripts.org/scripts/show/47830</a>右上のInstallをクリック
-+Google Readerを開けば&#8221;Mark below as read&#8221;と&#8221;Mark above as read&#8221;ボタンが上のツールバーに現れる
-+一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す
-+ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-21T00:00:00+09:00" pubdate data-updated="true">2011-07-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/firefox/'>Firefox</a>, <a class='category' href='/blog/categories/rss/'>rss</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
 
 
 </div>

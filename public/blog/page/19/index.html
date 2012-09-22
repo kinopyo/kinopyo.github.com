@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="SQLiteの起動、データベースの選択/作成 sqlite DB_NAME DB_NAMEは実際のファイル名と同じです。例えば：
-sqlite db/development.sqlite3 テーブル一覧 .tables
-.ta テーブルスキーマを見る .schema TABLE_NAME ヘルプ &hellip;">
+	<meta name="description" content="Railsでhas_and_belongs_to_manyを使うときにこんなエラーが出ました。
+ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyErrorの中身は： 1
+Primary key is not allowed in &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +73,129 @@ sqlite db/development.sqlite3 テーブル一覧 .tables
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-active-record-has-and-belongs-to-many-association-with-primary-keyerror">Rails ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</a></h1>
+	<div class="entry-content">
+		<p>Railsでhas_and_belongs_to_manyを使うときにこんなエラーが出ました。
+<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>の中身は：</p>
+
+<br/>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これはメッセージの通りリンクテーブル（ここではarticles_users）にPKが設定されたからです。</p>
+
+<h2>解決方法</h2>
+
+<p><em>:id => false</em>をmigration文に追加すればOKです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>中文</h1>
+
+<p>在使用Rails的has_and_belongs_to_many的时候，遇到了<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>异常。内容如下：</p>
+
+<br/>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也就是说articles_users的表里设置了PK所导致。</p>
+
+<h2>解决方法</h2>
+
+<p>将<em>:id => false</em>添加到migration的create_table语句后面</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>English</h1>
+
+<p>When using has_and_belongs_to_many, I run into this error,
+<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em></p>
+
+<br/>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So check the linked-table , articles_users in my case, if there is a pk set by default.</p>
+
+<h2>Solution</h2>
+
+<p>Put the <em>:id => false</em> to the migration create_table SQL.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-20T00:00:00+09:00" pubdate data-updated="true">2010-07-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -915,66 +1038,6 @@ Githubで管理しているディレクトリを開けます。</p>
 
 
 <time datetime="2010-06-20T00:00:00+09:00" pubdate data-updated="true">2010-06-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/add-facebook-like-button-to-my-blog">FacebookのLikeボタンを追加しました</a></h1>
-	<div class="entry-content">
-		<p>Googleの<a href="http://www.google.com/adplanner/static/top1000/">http://www.google.com/adplanner/static/top1000/</a>によりますと、
-Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
-日本と中国ではまだFacebookが主流のSNSサイトにはなっていないようですが、
-そのうちどうなりますかね。。</p>
-
-<br/>
-
-
-<p><a href="http://developers.facebook.com/docs/api">Graph API</a>とかまだ全然わかりませんが、
-とりあえずLikeボタンをブログに設置しました。
-<a href="http://developers.facebook.com/docs/reference/plugins/like">このページ</a>でURLとwidthを入力するだけで簡単に作れます。
-生成されたコードは二種類ありまして一つは<em>iframe</em>のやつと
-もう一つはFacebookのカスタムタグのやつで
-これは<a href="http://developers.facebook.com/docs/reference/javascript/">Javascript SDK</a>が必要だそうです。
-もちろん後者のほうがもっとパワフルな感じです。</p>
-
-<br/>
-
-
-<p>ソーシャルアプリとかゲームの開発はちょっとやりたいので
-時間があればFacebookの各種APIも勉強するつもりです。</p>
-
-<br/>
-
-
-<p>ひとまずサイドバーに設置して自分が&#8217;Like&#8217;を押しました。。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-01T00:00:00+09:00" pubdate data-updated="true">2010-06-01</time></div>
 	<div class="tags">
 
 

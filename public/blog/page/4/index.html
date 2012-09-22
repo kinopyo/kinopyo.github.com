@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Update If you already upgraded to Moutain Lion OSX, you definetly don&#8217;t need this, there is a navtive Reminder app built in :) Original Post &hellip;">
+	<meta name="description" content="Presentation How COOKPAD changed me View more presentations from Qihuan Piao Resources（おすすめの本とプレゼン） Cooking Solves Everything
+TED - Teach every &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,56 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-cookpad-changed-me">How COOKPAD changed me</a></h1>
+	<div class="entry-content">
+		<h2>Presentation</h2>
+
+<div style="width:425px" id="__ss_10645457"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fantasyday/how-cookpad-changed-me" title="How COOKPAD changed me" target="_blank">How COOKPAD changed me</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/10645457" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/fantasyday" target="_blank">Qihuan Piao</a> </div> </div>
+
+
+<h2>Resources（おすすめの本とプレゼン）</h2>
+
+<ul>
+<li><a href="http://www.amazon.com/Cooking-Solves-Everything-Kitchen-ebook/dp/B005OKGVT0/ref=sr_1_8?ie=UTF8&amp;qid=1323817673&amp;sr=8-8">Cooking Solves Everything</a></li>
+<li><a href="http://www.ted.com/talks/lang/en/jamie_oliver.html">TED - Teach every child about food</a></li>
+<li><a href="http://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898">The Lean Startup</a></li>
+</ul>
+
+
+<br/>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-20T00:00:00+09:00" pubdate data-updated="true">2011-12-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -516,157 +567,6 @@ CGI.escape(url)</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/performance/'>Performance</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/centos/'>centos</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-using-asset-hosts">Rails asset hostsについて</a></h1>
-	<div class="entry-content">
-		<p><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html">ActionView/Helpers/AssetTagHelper</a>、asset(画像、CSSなど)ホストのチューニングについての勉強メモです。</p>
-
-<h2>asset hostを指定</h2>
-
-<p>image_tag(&#8220;rails.png&#8221;)のhelper methodで生成するリンクはデフォルトでは同じホストのpublicフォルダを指しています。それを変更したい場合は<code>config/environments/production.rb</code>の<code>ActionController::Base.asset_host</code>をいじります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="s2">&quot;assets.example.com&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">image_tag(&quot;rails.png&quot;)</span>
-</span><span class='line'><span class="x"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets.example.com/images/rails.png?1230601161&quot; /&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>asset hostを複数指定</h2>
-
-<p>ブラウザが一度に同一サーバには２つのコネクションしかできないそう（これは初めて知りました）で、asset同士のダウンロード完了するのを待たなければなりません。もし複数台のassetサーバがある場合は<code>assets%d.example.com</code>を使ってそれをコネクション数を増やせることができます。<code>%d</code>が指定されればRailsは0~3の４つの番号を付けて、並行して８つのコネクションができます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="s2">&quot;assets%d.example.com&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">image_tag(&quot;rails.png&quot;)</span>
-</span><span class='line'><span class="x"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets.example.com/images/rails.png?1230601161&quot; /&gt;</span>
-</span><span class='line'><span class="x">stylesheet_link_tag(&quot;application&quot;)</span>
-</span><span class='line'><span class="x"># =&gt; &lt;link href=&quot;http://assets2.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>カスタマイズ</h2>
-
-<p>もっと自分でカスタマイズしたい場合は<code>source</code>のprocパラメータを使えます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">source</span><span class="o">|</span>
-</span><span class='line'>  <span class="s2">&quot;http://assets</span><span class="si">#{</span><span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">.example.com&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;rails.png&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets1.example.com/images/rails.png?1230601161&quot; /&gt;</span>
-</span><span class='line'><span class="n">stylesheet_link_tag</span><span class="p">(</span><span class="s2">&quot;application&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; &lt;link href=&quot;http://assets2.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>特定のパスで始まるassetを特定のホストに指定する例：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">source</span><span class="o">|</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">starts_with?</span><span class="p">(</span><span class="s1">&#39;/images&#39;</span><span class="p">)</span>
-</span><span class='line'>     <span class="s2">&quot;http://images.example.com&quot;</span>
-</span><span class='line'>   <span class="k">else</span>
-</span><span class='line'>     <span class="s2">&quot;http://assets.example.com&quot;</span>
-</span><span class='line'>   <span class="k">end</span>
-</span><span class='line'> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">image_tag(&quot;rails.png&quot;)</span>
-</span><span class='line'><span class="x"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://images.example.com/images/rails.png?1230601161&quot; /&gt;</span>
-</span><span class='line'><span class="x">stylesheet_link_tag(&quot;application&quot;)</span>
-</span><span class='line'><span class="x"># =&gt; &lt;link href=&quot;http://assets.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>さらに<code>request</code>の第二パラメータもあります。これでHTTPSの動作も制御できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">source</span><span class="p">,</span> <span class="n">request</span><span class="o">|</span>
-</span><span class='line'>  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">ssl?</span>
-</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">request</span><span class="o">.</span><span class="n">protocol</span><span class="si">}#{</span><span class="n">request</span><span class="o">.</span><span class="n">host_with_port</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="k">else</span>
-</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">request</span><span class="o">.</span><span class="n">protocol</span><span class="si">}</span><span class="s2">assets.example.com&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Resources</h2>
-
-<p>http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-09T00:00:00+09:00" pubdate data-updated="true">2011-11-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/asset/'>asset</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>

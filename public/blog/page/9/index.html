@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="現象 SQL# Plusで出力したcsvファイルなどをExcelで開いたら日本語の部分が全部文字化けになっちゃいました。 原因 出力ファイルはUTF8ですが、ExcelではShiftJisじゃないと文字化けするらしいです。 解決策 秀丸などのエディターで出力ファイルを開き、 &hellip;">
+	<meta name="description" content="Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。 class String def sex_code if [&quot;male&quot;, &quot;男&quot;].include? self 0 elsif self == &quot;女&quot &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,94 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-add-method-to-string-class">Ruby: 既存クラスにメソッドを追加、class_evalとsingleton method</a></h1>
+	<div class="entry-content">
+		<p>Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。</p>
+
+<div><script src='https://gist.github.com/1205255.js?file=solution_1.rb'></script>
+<noscript><pre><code>class String
+  def sex_code
+    if [&quot;male&quot;, &quot;男&quot;].include? self
+      0
+    elsif self == &quot;女&quot;
+      1
+    else
+      self
+    end
+  end  
+end
+
+p String.instance_methods.grep(/^sex/) # =&gt; [:sex_code]
+
+p &quot;male&quot;.sex_code  # =&gt; 0
+p &quot;女&quot;.sex_code  # =&gt; 1
+p &quot;other&quot;.sex_code # =&gt; &quot;other&quot;</code></pre></noscript></div>
+
+
+<p>solution_1.rbはOpen Classというテクニックです。classキーワードで既存クラスを定義するときは上書きするのではなく、拡張した感じで、他のStringメソッドに影響がないです。</p>
+
+<div><script src='https://gist.github.com/1205255.js?file=solution_2.rb'></script>
+<noscript><pre><code>String.class_eval do
+  def sex_code
+    if [&quot;male&quot;, &quot;男&quot;].include? self
+      0
+    elsif self == &quot;女&quot;
+      1
+    else
+      self
+    end
+  end  
+end
+
+p String.instance_methods.grep(/^sex/) # =&gt; [:sex_code]</code></pre></noscript></div>
+
+
+<p>solution_2.rbはただ<strong>class_eval</strong>の理論を試したかっただけです。<strong>class_eval</strong>はスコープ内の<strong>self</strong>と<strong>current class</strong>をreceiverのStringクラスに変更するんです。だからclass_evalのブロック内に定義したメソッドはStringのinstance methodになります。</p>
+
+<div><script src='https://gist.github.com/1205255.js?file=solution_mistake.rb'></script>
+<noscript><pre><code>def String.hello
+  &quot;hello from String class methods&quot;
+end
+
+p String.singleton_methods.grep(/hello/)
+p String.hello  # =&gt; &quot;hello from String class methods&quot;</code></pre></noscript></div>
+
+
+<p>solution_mistake.rbはStringのクラスメソッド(Singleton methods)を定義したもので、instance methodではないです。</p>
+
+<p>最近「Metaprogramming Ruby」という本を読んでます。よくわからなかったこととか、曖昧だっだことがすっきりした感じです。お勧めです！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-09T00:00:00+09:00" pubdate data-updated="true">2011-09-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/metaprogramming/'>metaprogramming</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -606,74 +694,6 @@ http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
 
 
 	<a class='category' href='/blog/categories/firefox/'>Firefox</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mixi-mobile-oauth-signature-failure-when-posting-form">Mixiモバイルアプリ：フォームPost時のOAuth Signature検証失敗について</a></h1>
-	<div class="entry-content">
-		<h2>現象</h2>
-
-<p>MixiモバイルアプリのフォームからPOSTするとOAuth Signatureが不一致で検証が通らない。</p>
-
-<h2>デバッグ</h2>
-
-<p>フォームをPOSTするときはフォーム内のデータがOAuthのBase StringのNormalize Request Parametersに含まれます。
-これはOAuthに仕様に準じてます（<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a>）が、
-なぜかMixiだと通れないです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;?guid=ON&amp;url=http%3A%2F%2Fexample.com%2Ffoo%2F&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;field1&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;value1&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;送信&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>こんなフォームがあるとして、中のfield1がNormalize Request Parametersに存在するとダメだってことが検証でわかりました。</p>
-
-<h2>回避方法</h2>
-
-<p>フォームPOSTする箇所を特定して、その場合はOAuth Signatureを検証しないようにしました。</p>
-
-<h2>参考リンク</h2>
-
-<p>同じ現象にあった方がいました: <a href="http://d.hatena.ne.jp/phantasmist/20110224">http://d.hatena.ne.jp/phantasmist/20110224</a>
-<a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/</a>
-<a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">http://developer.mixi.co.jp/appli/spec/mob/pages_api/</a>
-<a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">http://oauth.net/core/1.0/#rfc.section.A.5.1</a>
-<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-10T00:00:00+09:00" pubdate data-updated="true">2011-08-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mixi/'>Mixi</a>, <a class='category' href='/blog/categories/form/'>form</a>, <a class='category' href='/blog/categories/mixi/'>mixi</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>, <a class='category' href='/blog/categories/post/'>post</a>, <a class='category' href='/blog/categories/signature/'>signature</a>
 
 
 </div>

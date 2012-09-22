@@ -7,10 +7,13 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="@ComponentアノテーションはJavaのクラスにつけるもので
-このクラスをコンテナが管理するBeanとして登録する機能です。
-@Serviceアノテーションも現状では@Componentと違いはありませんが、
-通常サービス層のコンポネントは@Serviceアノテーションをつけます。 &hellip;">
+	<meta name="description" content="$.inArray(value, array) 指定した値が配列中にあれば、そのインデックスを返します。
+配列に存在しなければ戻り値は&#8221;-1&#8221;になりますので注意してください。 1
+2
+3
+4
+5
+var array = *&quot;a&quot;, &quot;b& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +77,65 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-be-careful-lf-inarray-function-return-value">jQuery $.inArray()関数の戻り値に注意を</a></h1>
+	<div class="entry-content">
+		<h2>$.inArray(value, array)</h2>
+
+<p>指定した値が配列中にあれば、そのインデックスを返します。
+配列に存在しなければ戻り値は&#8221;-1&#8221;になりますので注意してください。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="o">*</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="o">*</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// d is not in array</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>下記のコードは間違いですよ。。。
+<code>if ($.inArray("d", array)) {}</code></p>
+
+<h2>$.isArray(obj)</h2>
+
+<p>パラメータで渡された値が配列であるかどうかを判別します。
+戻り値はtrueかfalseです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -800,82 +862,6 @@ DIコンテナにセットしてJuchuImplの単体テストを実行できます
 
 
 	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/movie-avatar-the-inside-story-and-games">映画：アバター脚本はタイタニック前もできた、ゲームがiPhone、PS3、XBOX、DSに登場</a></h1>
-	<div class="entry-content">
-		<p>映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg" title="アバターポスタ" ></p>
-
-<p>映画館でアバターを見ました。最高です。
-ストリー、3Dの表現力、監督が創った世界：パンドラ。
-素晴らしかったとしか言えません。
-<a href="http://microsites2.foxinternational.com/jp/avatar/">映画アバター公式サイト</a></p>
-
-<h3>iPhone/iPodにもアバターゲームが登場</h3>
-
-<p><a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store"><img alt="ジェームズ・キャメロン　アバター " src="http://a1.phobos.apple.com/us/r1000/017/Purple/07/ad/bf/mzl.qhbrhmbb.175x175-75.jpg" /></a>
-<a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store">AppStoreでチェック</a>
-<a href="http://www.youtube.com/watch?v=73XttXv11io">Youtubeでチェック</a>
-<img src="http://a1.phobos.apple.com/us/r1000/057/Purple/98/e9/33/mzl.zkolxplp.480x480-75.jpg" alt="iPhoneゲーム：アバター" />
-AppStoreでのレーティングもレビューも大好評です。
-私も買いたい。。</p>
-
-<h3>ジェームズ・キャメロン、「アバター」のビジョンを語る</h3>
-
-<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/LYoOFm-RoH4&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/LYoOFm-RoH4&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
-
-
-<p>実際はタイタニックよりも前でアバターの脚本ができたんです。
-ただし当時の映画レベルではキャメロン監督が創造に応えなかったので
-テクノロジーが進化するまでずっと10何年間も待ってたそうです。</p>
-
-<h3>映画『アバター』をゲーム化、米国では間もなく発売</h3>
-
-<p>プレーステーション3、XBOX360、ニンテンドーDSにて1月7日発売予定だそうです。
-<a href="http://www.youtube.com/watch?v=i5jzSM4ihtE">Youtubeで実際の開発現場をチェック</a>
-<a href="http://avatargame.us.ubi.com/">アバターの公式ゲームサイト</a></p>
-
-<h3>いくつか面白い記事</h3>
-
-<p><a href="http://news.walkerplus.com/2009/1222/11/">驚愕の『アバター』映画館で観るべき“3つの理由</a>
-<a href="http://news.walkerplus.com/2009/1222/3/">キャメロン監督『アバター』2作目、3作目構想を明かす</a>
-<a href="http://news.walkerplus.com/2009/1223/8/">『アバター』出演女優ゾーイ・サルダナはスタントも軽々こなす万能女優</a>
-<a href="http://getnews.jp/archives/40882">オンラインゲーム好きは絶対に観た方がいい映画『アバター』</a></p>
-
-<h3>最後にパンドラの景色を御覧下さい</h3>
-
-<p><em>gallery link=&#8221;file&#8221;</em></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-24T00:00:00+09:00" pubdate data-updated="true">2009-12-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/movie/'>movie</a>
 
 
 </div>

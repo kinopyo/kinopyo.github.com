@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="例えばgit reset &#8211;hard HEAD*で誤操作して内容を消してしまった、それを取戻したいときは
-+ git reflogで取戻したいHEAD@{x}の番号を確認
-+ git reset &#8211;hard HEAD@{1}*で番号指定でもう一回git reset（ &hellip;">
+	<meta name="description" content="HEAD^ If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.HEAD^, which means “the parent of HEAD”: &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +71,52 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/what-does-caret-character-mean-in-git">gitの^(caret)記号は</a></h1>
+	<div class="entry-content">
+		<h2>HEAD^</h2>
+
+<blockquote><p>If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.</p><p>HEAD^, which means “the parent of HEAD”:</p></blockquote>
+
+
+<p>通常ケースで言うと*HEAD<sup><em>は一個前のコミット、</em>HEAD<sup>^<em>は2つ前のコミットってことですね。他の書き方は</em>HEAD~2<em>、</em>HEAD~5*があります。</sup></sup></p>
+
+<h2>HEAD<sup>1、HEAD<sup>2</sup></sup></h2>
+
+<p>これは上記と若干違ってmergeのコミットに対してのみ有効です。</p>
+
+<p>マージの場合はparentが2つあるので、HEAD<sup>1は今のブランチでのparent、HEAD\<sup>2は取得先のparentを差してます。</sup></sup></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-26T00:00:00+09:00" pubdate data-updated="true">2011-10-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/git/'>git</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -600,112 +644,6 @@ false == false #=> true
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rspec-shared_context-sample-code">rspec shared context sample code</a></h1>
-	<div class="entry-content">
-		<div><script src='https://gist.github.com/1283896.js?file='></script>
-<noscript><pre><code>shared_context &quot;shared stuff&quot; do
-  before { @some_var = :some_value }
-  def shared_method
-    &quot;it works&quot;
-  end
-  let(:shared_let) { {'arbitrary' =&gt; 'object'} }
-  subject do
-    'this is the subject'
-  end
-end
-
-describe &quot;group that includes a shared context using 'include_context'&quot; do
-  include_context &quot;shared stuff&quot;
-
-  it &quot;has access to methods defined in shared context&quot; do
-    shared_method.should eq(&quot;it works&quot;)
-  end
-
-  it &quot;has access to methods defined with let in shared context&quot; do
-    shared_let['arbitrary'].should eq('object')
-  end
-
-  it &quot;runs the before hooks defined in the shared context&quot; do
-    @some_var.should be(:some_value)
-  end
-
-  it &quot;accesses the subject defined in the shared context&quot; do
-    subject.should eq('this is the subject')
-  end
-end</code></pre></noscript></div>
-
-
-<h1>日本語</h1>
-
-<p>shared_context はその名前の通りコンテキスト (テストを行なうときの状況) を共有するための機能です。
-shared_context を使うことで複数箇所にちらばる同一処理をまとめることができます。shared_context は shared_context が書かれたファイルを require することでも使えるようになるので別のスペックファイルでも使うことができます。</p>
-
-<div><script src='https://gist.github.com/1283896.js?file='></script>
-<noscript><pre><code>shared_context &quot;shared stuff&quot; do
-  before { @some_var = :some_value }
-  def shared_method
-    &quot;it works&quot;
-  end
-  let(:shared_let) { {'arbitrary' =&gt; 'object'} }
-  subject do
-    'this is the subject'
-  end
-end
-
-describe &quot;group that includes a shared context using 'include_context'&quot; do
-  include_context &quot;shared stuff&quot;
-
-  it &quot;has access to methods defined in shared context&quot; do
-    shared_method.should eq(&quot;it works&quot;)
-  end
-
-  it &quot;has access to methods defined with let in shared context&quot; do
-    shared_let['arbitrary'].should eq('object')
-  end
-
-  it &quot;runs the before hooks defined in the shared context&quot; do
-    @some_var.should be(:some_value)
-  end
-
-  it &quot;accesses the subject defined in the shared context&quot; do
-    subject.should eq('this is the subject')
-  end
-end</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-13T00:00:00+09:00" pubdate data-updated="true">2011-10-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/best-practice/'>best_practice</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/shared-context/'>shared_context</a>
 
 
 </div>

@@ -7,9 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="The command contextual menu. Repository checkout.
-For more screenshots
-Download After download, drag the application to the Finder toolbar. 日本語 &hellip;">
+	<meta name="description" content="環境情報 Mac OSX Snow Leopard 10.6.4
+XAMPP 1.7.3 手順書 1. Apple Developer Tools (Xcode)の最新版をインストール 2. XAMPP Developer Packageをインストール http://www. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +72,166 @@ Download After download, drag the application to the Finder toolbar. 日本語 &
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-memcache-and-php-extension-in-mac-xampp">Mac XAMPP環境でmemcacheとPHP extensionのインストール</a></h1>
+	<div class="entry-content">
+		<h2>環境情報</h2>
+
+<ul>
+<li>Mac OSX Snow Leopard 10.6.4</li>
+<li>XAMPP 1.7.3</li>
+</ul>
+
+
+<h2>手順書</h2>
+
+<h3>1. Apple Developer Tools (Xcode)の最新版をインストール</h3>
+
+<h3>2. XAMPP Developer Packageをインストール</h3>
+
+<p><a href="http://www.apachefriends.org/en/xampp-macosx.html">http://www.apachefriends.org/en/xampp-macosx.html</a>より下記赤線のリンクをダウンロードします。
+<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/xampp-developer-package-for-mac.jpg" title="xampp develop package for mac" >
+参考リンク：<a href="http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/">http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/</a>
+ダウンロードしたdmgファイルを開いてDevel-Package.mpkgをダブルクリックでインストールします。</p>
+
+<h3>3. ターミナルを開いて(/Applications/Utilities/Terminal)下記コマンドを実行</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /tmp
+</span><span class='line'>pecl download memcache
+</span><span class='line'>tar xzf memcache-2.2.5.tgz
+</span><span class='line'>cd memcache-2.2.5
+</span><span class='line'>/Applications/XAMPP/xamppfiles/bin/phpize-5.3.1
+</span><span class='line'>MACOSX_DEPLOYMENT_TARGET=10.6 CFLAGS='-O3 -fno-common -arch i386 -arch x86_64' LDFLAGS='-O3 -arch i386 -arch x86_64' CXXFLAGS='-O3 -fno-common -arch i386 -arch x86_64' ./configure --with-php-config=/Applications/XAMPP/xamppfiles/bin/php-config-5.3.1
+</span><span class='line'>make
+</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>成功したら/Applications/XAMPP/xamppfiles/lib/php/php-5.3.1/extensions/no-debug-non-zts-xxxxのフォルダ(xxは20090626みたいな日付)に<strong>memcache.so</strong>というファイルが生成されます。</p>
+
+<h3>4. php.iniファイルの編集</h3>
+
+<p>/Applications/XAMPP/xamppfiles/etc/php.iniファイルを開いて&#8221;Dynamic Extensions&#8221;のブロックを検索し、下記内容を追記します。私の環境では538行くらいでした。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>extension=memcache.so</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんあ感じです。
+<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/php-ini-memcache-extension.jpg" title="Add memcache extention to php.ini" ></p>
+
+<h3>5.memcacheを立ち上がる</h3>
+
+<p>ターミナルで下記コマンドを実行します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>memcached -m 8 -l 127.0.0.1 -p 11211 -d</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これは自分の環境でmemcacheをIP:127.0.0.1、ポート:11211、8MBのRAMスペースで立ち上がる意味です。</p>
+
+<h3>6. phpで動作確認</h3>
+
+<p>下記ファイルを用意します。ファイル名は任意です(ここではmemcache.phpとしました)。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$memcache</span> <span class="o">=</span> <span class="nx">memcache_connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">11211</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nv">$memcache</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;str_key&quot;</span><span class="p">,</span> <span class="s2">&quot;String to store in memcached&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;num_key&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="k">StdClass</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$object</span><span class="o">-&gt;</span><span class="na">attribute</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;obj_key&quot;</span><span class="p">,</span> <span class="nv">$object</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">$array</span> <span class="o">=</span> <span class="k">Array</span><span class="p">(</span><span class="s1">&#39;assoc&#39;</span><span class="o">=&gt;</span><span class="mi">123</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">567</span><span class="p">);</span>
+</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;arr_key&quot;</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;str_key&#39;</span><span class="p">));</span>
+</span><span class='line'>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;num_key&#39;</span><span class="p">));</span>
+</span><span class='line'>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;obj_key&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">echo</span> <span class="s2">&quot;Connection to memcached failed&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これを/Applications/XAMPP/xamppfiles/htdocsに置いて、ブラウザでhttp://localhost/memcache.php(あるいはhttp://127.0.0.1/memcache.php)を開きます。
+下記のようなページが表示されればOKです。
+<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/memcache-test-in-php.jpg" title="memcache test in php" ></p>
+
+<p>ちなみにmemcacheを停止するコマンドは：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>killall memcached</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-24T00:00:00+09:00" pubdate data-updated="true">2010-09-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -859,129 +1018,6 @@ BTW, I&#8217;m using Rails 3.0 beta4.</p>
 
 
 <time datetime="2010-07-21T00:00:00+09:00" pubdate data-updated="true">2010-07-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-active-record-has-and-belongs-to-many-association-with-primary-keyerror">Rails ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</a></h1>
-	<div class="entry-content">
-		<p>Railsでhas_and_belongs_to_manyを使うときにこんなエラーが出ました。
-<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>の中身は：</p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これはメッセージの通りリンクテーブル（ここではarticles_users）にPKが設定されたからです。</p>
-
-<h2>解決方法</h2>
-
-<p><em>:id => false</em>をmigration文に追加すればOKです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>中文</h1>
-
-<p>在使用Rails的has_and_belongs_to_many的时候，遇到了<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em>异常。内容如下：</p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>也就是说articles_users的表里设置了PK所导致。</p>
-
-<h2>解决方法</h2>
-
-<p>将<em>:id => false</em>添加到migration的create_table语句后面</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>English</h1>
-
-<p>When using has_and_belongs_to_many, I run into this error,
-<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em></p>
-
-<br/>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So check the linked-table , articles_users in my case, if there is a pk set by default.</p>
-
-<h2>Solution</h2>
-
-<p>Put the <em>:id => false</em> to the migration create_table SQL.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
-</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-20T00:00:00+09:00" pubdate data-updated="true">2010-07-20</time></div>
 	<div class="tags">
 
 

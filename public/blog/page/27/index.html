@@ -7,9 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="よくWindowsで「Win + R」で実行のダイアログを開いて、「cmd」でコマンドプロンプトを実行してきました。
-これしか覚えてなくて、ペイントなどを開こうとするに結構めんどうな操作が必要でした。
-(そんなにめんどうではないけどいちいちメニューから選択するのが嫌いだけです) &hellip;">
+	<meta name="description" content="大人になって、年をとってから気づいた昔の自分を失ったあなたに、
+幸せな恋と結婚を求めているあなたに、
+この映画をおすすめします、 映画は本当に良く出来てます。
+宣伝よりも優れたものです。
+幼なじみの二人が恋人になって、結婚して、年をとって、
+子ともができなくて悲しくなっても、お互い支えて生きて、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +76,66 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/movie-up">映画レビュー：カールじいさんの空飛ぶ家</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>大人になって、年をとってから気づいた昔の自分を失ったあなたに、</p>
+<p>幸せな恋と結婚を求めているあなたに、</p>
+<p>この映画をおすすめします、</p>
+<br/>
+<p><object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/hUuM5IGWgoE&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/hUuM5IGWgoE&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
+<br/>
+<p>映画は本当に良く出来てます。</p>
+<p>宣伝よりも優れたものです。</p>
+<p>幼なじみの二人が恋人になって、結婚して、年をとって、</p>
+<p>子ともができなくて悲しくなっても、お互い支えて生きて、やがて離れを迎えた。。。</p>
+<p>わずか数分で幸せの二人の一生の生活を描きましたが、</p>
+<p>とても印象的です。</p>
+<p>特に妻が夫にネクタイをつけるシンは男にとって最高の幸せじゃないかなと思います。</p>
+<br/>
+<p>妻を失ってから段々社会と離れてゆくカールじいさん、</p>
+<p>他の人からはただの頑固爺にしか見えないだろう。</p>
+<p>それは妻との思い出がいっぱいの家を守るためです。</p>
+<p>それだけで必死でしたカールじいさんは</p>
+<p>映画の最後でもっと大切な何かに気づき、その家を諦めました。</p>
+<p>それはなんだろう？それが人生の一番重要なことではないでしょうか。</p>
+<br/>
+<p>明日から公開です。</p>
+<p><a href="http://movie.goo.ne.jp/contents/movies/MOVCSTD14480/index.html" target="_blank">カールじいさんの空飛ぶ家 - goo 映画</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00+09:00" pubdate data-updated="true">2009-12-04</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -626,51 +689,6 @@
 <p>参考サイト：</p>
 <p><a href="http://httpd.apache.org/docs/2.2/install.html" target="_blank">Compiling and Installing - Apache HTTP Server</a></p>
 <p><a href="http://lists.freebsd.org/pipermail/freebsd-questions/2003-November/025576.html" target="_blank"> apache install problem   </a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-29T00:00:00+09:00" pubdate data-updated="true">2009-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/apache-redirect-memo">ApacheサーバRedirectメモ、別のサイトに転送</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>サイトの引越しなどであるURLから別のURLへ転送する場合の話です。例えば JavaScript を利用して転送したり、HTMLの機能で転送させたりするかもしれません。</p>
-<br/>
-<p>しかしトップページでリダイレクトしてみても、別のページに直リンクしていた場合は旧ページが表示されることになります。そのような時に、Apache では httpd.conf に下記の１行を追加することで、別のＵＲＬへ転送させる事が可能です。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Redirect / &lt;a href="http://www.yahoo.co.jp/" target="_blank">http://www.yahoo.co.jp/&lt;/a></span></code></pre></td></tr></table></div></figure>
-
-<p>この例では Yahoo Japan へリダイレクトされますが、例えば <a href="http://www.example.com/base/" target="_blank">http://www.example.com/base/</a> にアクセスした場合でも <a href="http://www.yahoo.co.jp/base/" target="_blank">http://www.yahoo.co.jp/base/</a> へのリダイレクトが行われます。</p>
 </div>
 
 
