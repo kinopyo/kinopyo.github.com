@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Rubyのクラスにメソッドを追加する方法です。ここではStringを例にしました。 class String def sex_code if [&quot;male&quot;, &quot;男&quot;].include? self 0 elsif self == &quot;女&quot &hellip;">
+	<meta name="description" content="結果セットを操作するためにはeachとeach_hashがあります。 require &quot;mysql&quot; # more examples: # http://www.kitebird.com/articles/ruby-mysql.html hostname = ' &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,179 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-mysql-tutorial">Ruby MySQL Tutorial</a></h1>
+	<div class="entry-content">
+		<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
+
+<div><script src='https://gist.github.com/1205708.js?file='></script>
+<noscript><pre><code>require &quot;mysql&quot;
+
+# more examples: 
+# http://www.kitebird.com/articles/ruby-mysql.html
+
+hostname = 'localhost'
+username = 'yourname'
+password = 'password'
+database = 'mysql'
+port = 3306
+
+begin
+  # connect
+  db = Mysql::connect(hostname, username, password, database, port)
+
+  sql = &quot;select id, nickname from users limit 10&quot;
+  res = db.query(sql);
+  # each hash approch
+  res.each_hash do |h|
+    p &quot;#{h['id']}, #{h['nickname']}&quot;
+  end
+  
+  # each approach
+  res2 = db.query(sql);
+  res2.each do |row|
+    p row.join(&quot;,&quot;)
+    p row[0]
+  end
+  
+  # Mysql::Result
+  p res.class
+  
+  # Number of rows
+  p &quot;Number of rows: #{res.num_rows}&quot;
+  
+rescue Mysql::Error =&gt; e
+  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
+ensure
+  # disconnect from server
+  db.close if db
+end</code></pre></noscript></div>
+
+
+<h1>中文</h1>
+
+<div><script src='https://gist.github.com/1205708.js?file='></script>
+<noscript><pre><code>require &quot;mysql&quot;
+
+# more examples: 
+# http://www.kitebird.com/articles/ruby-mysql.html
+
+hostname = 'localhost'
+username = 'yourname'
+password = 'password'
+database = 'mysql'
+port = 3306
+
+begin
+  # connect
+  db = Mysql::connect(hostname, username, password, database, port)
+
+  sql = &quot;select id, nickname from users limit 10&quot;
+  res = db.query(sql);
+  # each hash approch
+  res.each_hash do |h|
+    p &quot;#{h['id']}, #{h['nickname']}&quot;
+  end
+  
+  # each approach
+  res2 = db.query(sql);
+  res2.each do |row|
+    p row.join(&quot;,&quot;)
+    p row[0]
+  end
+  
+  # Mysql::Result
+  p res.class
+  
+  # Number of rows
+  p &quot;Number of rows: #{res.num_rows}&quot;
+  
+rescue Mysql::Error =&gt; e
+  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
+ensure
+  # disconnect from server
+  db.close if db
+end</code></pre></noscript></div>
+
+
+<h1>English</h1>
+
+<div><script src='https://gist.github.com/1205708.js?file='></script>
+<noscript><pre><code>require &quot;mysql&quot;
+
+# more examples: 
+# http://www.kitebird.com/articles/ruby-mysql.html
+
+hostname = 'localhost'
+username = 'yourname'
+password = 'password'
+database = 'mysql'
+port = 3306
+
+begin
+  # connect
+  db = Mysql::connect(hostname, username, password, database, port)
+
+  sql = &quot;select id, nickname from users limit 10&quot;
+  res = db.query(sql);
+  # each hash approch
+  res.each_hash do |h|
+    p &quot;#{h['id']}, #{h['nickname']}&quot;
+  end
+  
+  # each approach
+  res2 = db.query(sql);
+  res2.each do |row|
+    p row.join(&quot;,&quot;)
+    p row[0]
+  end
+  
+  # Mysql::Result
+  p res.class
+  
+  # Number of rows
+  p &quot;Number of rows: #{res.num_rows}&quot;
+  
+rescue Mysql::Error =&gt; e
+  p &quot;Error message: #{e.error}, code: #{e.errno}&quot;
+ensure
+  # disconnect from server
+  db.close if db
+end</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-09T00:00:00+09:00" pubdate data-updated="true">2011-09-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -654,46 +827,6 @@ http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406</p>
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/textmate/'>TextMate</a>, <a class='category' href='/blog/categories/textmate/'>textmate</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/firefox-addon-combine-tab-bar-and-navigation-bar-to-one-line">FirefoxのTab BarとNavigation Barを一行にしてくれるAddon:OneLiner</a></h1>
-	<div class="entry-content">
-		<p>表題の通りFirefoxのTab BarとNavigation Barを一行にしてくれるアドオンです。by Mozilla Labsのアドオンで<a href="http://www.lifehacker.jp/2011/08/110807_oneliner.html">http://www.lifehacker.jp/2011/08/110807_oneliner.html</a>でも紹介しています。早速入れてみました、結構ツールバーのスペースが増えたように感じますね。
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/08/Firefox_addon_oneliner.jpg" title="Firefox_addon_oneliner" ></p>
-
-<p><a href="https://addons.mozilla.org/en-US/firefox/addon/prospector-oneLiner/">oneLiner</a>でインストール!</p>
-
-<p>アドレスバーにフォーカスするときは自動で横幅を拡大してくれます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-16T00:00:00+09:00" pubdate data-updated="true">2011-08-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/firefox/'>Firefox</a>
 
 
 </div>

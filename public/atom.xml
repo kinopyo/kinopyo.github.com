@@ -4,7 +4,7 @@
   <title><![CDATA[Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-16T20:22:29+09:00</updated>
+  <updated>2012-09-22T15:21:21+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sync SublimeText2 Settings with Dropbox]]></title>
+    <link href="http://kinopyo.com/blog/sync-sublimetext2-settings-with-dropbox/"/>
+    <updated>2012-09-22T15:04:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sync-sublimetext2-settings-with-dropbox</id>
+    <content type="html"><![CDATA[<h2>Overview</h2>
+
+<p>In order to sync SublimeText2 settings with Dropbox, you need to symlink these folders of SublimeText to your dropbox.</p>
+
+<ul>
+<li>Packages</li>
+<li>Installed Packages</li>
+<li>Pristine Packages</li>
+</ul>
+
+
+<h2>On your main machine</h2>
+
+<p>cd to your dropbox folder where your want to symlink to.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Dropbox/99_Sync/SublimeText
+</span><span class='line'>ln -s <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2/Packages/&quot;</span> Packages
+</span><span class='line'>ln -s <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2/Installed Packages/&quot;</span> <span class="s1">&#39;Installed Packages&#39;</span>
+</span><span class='line'>ln -s <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2/Pristine Packages/&quot;</span> <span class="s1">&#39;Pristine Packages&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>On your second machine</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2&quot;</span>
+</span><span class='line'>rm -rf Installed<span class="se">\ </span>Packages
+</span><span class='line'>rm -rf Packages
+</span><span class='line'>rm -rf Pristine<span class="se">\ </span>Packages
+</span><span class='line'>ln -s ~/Dropbox/99_Sync/SublimeText/Installed<span class="se">\ </span>Packages <span class="s1">&#39;Installed Packages&#39;</span>
+</span><span class='line'>ln -s ~/Dropbox/99_Sync/SublimeText/Pristine<span class="se">\ </span>Packages <span class="s1">&#39;Pristine Packages&#39;</span>
+</span><span class='line'>ln -s ~/Dropbox/99_Sync/SublimeText/Packages Packages
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My One Year Anniversary at COOKPAD]]></title>
@@ -692,23 +744,6 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 機能一覧：</p>
 
 <blockquote><p>Adds thumbnails to Google/Yahoo/Bing search results<br/>Adds search engines to the default Safari&#8217;s search tab<br/>Adds Favicons to tab labels<br/>Adds keyword search from address bar<br/>Adds new tab position option (right/left/leftmost/rightmost)<br/>Adds tab closing using middle mouse button (or CMD-Click)<br/>Focus last selected tab<br/>Type-ahead support (auto cmd-f)<br/>Sets the focus on the search field when opening a new window<br/>Adds Amazon&#8217;s information banner on Google/Yahoo/Bing search results<br/>Adds a &#8220;Max Window Size&#8221; menu item to resize the Safari window<br/>Autocomplete search phrase<br/>Adds bookmark separator<br/>Adds bookmark actions<br/>Dated download folders<br/>Auto-Closes download window<br/>Undo &#8220;Close Tab&#8221; (cmd-z)<br/>Localized to Japanese, French, Polish, German, Spanish, Italian, and Korean</p></blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[PayPal Here: スマーフォンでクレジットカードを読み込んで支払い]]></title>
-    <link href="http://kinopyo.com/blog/paypal-here-mobile-payments-solution"/>
-    <updated>2012-03-19T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/paypal-here-mobile-payments-solution</id>
-    <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
-
-<blockquote><p>PayPal Here is the world&#8217;s first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote>
-
-
-
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/x5woIGSOLGk" frameborder="0" allowfullscreen></iframe>
 
 ]]></content>
   </entry>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ActionView/Helpers/AssetTagHelper、asset(画像、CSSなど)ホストのチューニングについての勉強メモです。 asset hostを指定 image_tag(&#8220;rails.png&#8221;)のhelper &hellip;">
+	<meta name="description" content="さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +71,86 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sakura-vps-centos-performance-tunning-wordpress">さくらVPSのパフォーマンスチューニング</a></h1>
+	<div class="entry-content">
+		<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
+
+<p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
+
+<p>チューニングしてから結構時間が経ったのでだいぶ忘れました。Evernoteでのメモを貼ります。</p>
+
+<p>効果が高い順で。</p>
+
+<h2>Wordpress</h2>
+
+<p><strong>W3 Total Cache</strong>プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
+ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</p>
+
+<h2>Apache</h2>
+
+<p><code>httpd.conf</code>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule prefork.c>
+</span><span class='line'>StartServers       5
+</span><span class='line'>MinSpareServers    5
+</span><span class='line'>MaxSpareServers   10
+</span><span class='line'>ServerLimit      64
+</span><span class='line'>MaxClients       64
+</span><span class='line'>MaxRequestsPerChild  50
+</span><span class='line'>MaxMemFree 2000
+</span><span class='line'>&lt;/IfModule></span></code></pre></td></tr></table></div></figure>
+
+
+<h2>PHP</h2>
+
+<h3>/etc/php.ini</h3>
+
+<p>zlib.output_compression = On</p>
+
+<h3>APC</h3>
+
+<p>pecl install APC</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-11T00:00:00+09:00" pubdate data-updated="true">2011-11-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/performance/'>Performance</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/centos/'>centos</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -748,67 +828,6 @@ rvm use 1.9.3</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/evernote/'>Evernote</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/evernote/'>evernote</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-update-visa-in-japan">在日外国人ビザ更新必要書類</a></h1>
-	<div class="entry-content">
-		<h2>個人で準備する書類</h2>
-
-<ul>
-<li>パスポート</li>
-<li>外国人登録証明書</li>
-<li>前年分納税証明書 (区役所で300円)</li>
-<li>前年分課税証明書 (区役所で300円)</li>
-<li>転職した場合退職証明書 (必要項目は 在職期間、退職理由、在職時の業務内容、と名前生年月日など、一社以上転職した場合は全部必要)</li>
-<li>在留期間更新申請書（技術ビザの場合は１，２ページが個人が書く）</li>
-</ul>
-
-
-<br/>
-
-
-<h2>会社側で用意してもらう書類:</h2>
-
-<ul>
-<li>雇用証明書（あるいは労働契約書）</li>
-<li>登記謄本 (写し)</li>
-<li>去年分の源泉徴収票の法定調書合計表（上場企業の場合は不要）</li>
-<li>パンフレット（あればもっといいくらい）</li>
-<li>在留期間更新申請書（技術ビザの場合３，４ページが会社が書く）</li>
-</ul>
-
-
-<p>上記のうち、パスポートと外国人登録証明書以外は取り戻せないです。会社が出すものは写しでOK。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-28T00:00:00+09:00" pubdate data-updated="true">2011-10-28</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/japan/'>Japan</a>, <a class='category' href='/blog/categories/japan/'>japan</a>, <a class='category' href='/blog/categories/visa/'>visa</a>
 
 
 </div>

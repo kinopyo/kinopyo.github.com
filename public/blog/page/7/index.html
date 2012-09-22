@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="shared_context &quot;shared stuff&quot; do before { @some_var = :some_value } def shared_method &quot;it works&quot; end let(:shared_let) { {' &hellip;">
+	<meta name="description" content="{% blockquote %}
+よくつかうメソッドの nil? empty? blank? のまとめ。 nil? すべてのオブジェクトにある。nilのときにTrueを返す。
+empty? 文字の長さが0のとき、配列が空のときにTrueを返す。 blank? railsの拡張。nil, &# &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +73,92 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-nil-empty-blank-none-check-0">ruby: nil? empty? blank? どれも0をチェックしない</a></h1>
+	<div class="entry-content">
+		<p>{% blockquote %}
+よくつかうメソッドの nil? empty? blank? のまとめ。</p>
+
+<p>nil? すべてのオブジェクトにある。nilのときにTrueを返す。
+empty? 文字の長さが0のとき、配列が空のときにTrueを返す。</p>
+
+<p>blank? railsの拡張。nil, &#8220;&#8221;, &#8221; &#8220;, **, {} のいずれかでTrueを返す。
+{% endblockquote %}</p>
+
+<p>素晴らしいまとめですね！ootokageさんに感謝。</p>
+
+<p>PHP使うときは<em>empty(0)</em>でtrueになりますが、上記のメソッドどれも0をチェックしないですね。。.<em>zero?</em>というのメソッドは一応あるようですが。</p>
+
+<p>迷ったらここにいっぱいサンプルがあります。</p>
+
+<p>{% blockquote %}
+0.nil? #=> false
+0.zero? #= true
+0.empty? #=> NoMethodError
+0.blank? #=> false
+0 == false #=> false</p>
+
+<p>&#8221;&#8221;.nil? #=> false
+&#8221;&#8221;.zero? #=> NoMethodError
+&#8221;&#8221;.empty? #=> true
+&#8221;&#8221;.blank? #=> true
+&#8221;&#8221; == false #=> false</p>
+
+<p>{}.nil? #=> false
+{}.zero? #=> NoMethodError
+{}.empty? #=> true
+{}.blank? #=> true
+{} == false #=> false</p>
+
+<p><strong>.nil? #=> false
+</strong>.zero? #=> NoMethodError
+<strong>.empty? #=> true
+</strong>.blank? #=> true
+** == false #=> false</p>
+
+<p>nil.nil? #=> true
+nil.zero? #=> NoMethodError
+nil.empty? #=> NoMethodError
+nil.blank? #=> true
+nil == false #=> false</p>
+
+<p>false.nil? #=> false
+false.zero? #=> NoMethodError
+false.empty? #=> NoMethodError
+false.blank? #=> true
+false == false #=> true
+&lt;&lt;</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-18T00:00:00+09:00" pubdate data-updated="true">2011-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -574,81 +662,6 @@ git mergetoolでビジュアルのDiffソフトで差分を見れたり修正し
 
 
 	<a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200">Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに</a></h1>
-	<div class="entry-content">
-		<h2>現象</h2>
-
-<p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
-発生バージョンはRails 3.1。</p>
-
-<h2>解決策</h2>
-
-<p>app/tmp/cacheを削除し、rake assets:precompileをもう一回実行。
-ブラウザキャッシュを消してリロード。</p>
-
-<h2>調査経緯</h2>
-
-<p>assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部チェックしましたが、全然ダメでした。
-最後はgithubの<a href="https://gist.github.com/rails/rails/issues/2299" title="このスレ" target="_blank">このスレ</a>の方法で解決になりました。</p>
-
-<p>問題となったrails applicationはRails 3.1.rc1から作っていたもので、そのままrc4, rc5, stableに更新してきました。githubで議論されたのはrc4からrc5になったときにこのような現象があったようです。恐らくtmp/cacheが変な動きをして手動で削除しない限り古いバージョンのものがずっと残されたかもしれません。</p>
-
-<h2>おまけ</h2>
-
-<p>Asset Pipelineの周りの設定ファイルを一応貼っておきます。</p>
-
-<div><script src='https://gist.github.com/1239153.js?file='></script>
-<noscript><pre><code># Disable Rails's static asset server (Apache or nginx will already do this)
-config.serve_static_assets = false
-
-# Compress JavaScripts and CSS
-config.assets.compress = true
-
-# Don't fallback to assets pipeline if a precompiled asset is missed
-config.assets.compile = false
-
-# Generate digests for assets URLs
-config.assets.digest = true
-
-# Specifies the header that your server uses for sending files
-# config.action_dispatch.x_sendfile_header = &quot;X-Sendfile&quot; # for apache
-# config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
-</code></pre></noscript></div>
-
-
-<p>Githubでのスレ：<a href="https://gist.github.com/rails/rails/issues/2299">https://gist.github.com/rails/rails/issues/2299</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-24T00:00:00+09:00" pubdate data-updated="true">2011-09-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/asset-pipeline/'>Asset Pipeline</a>, <a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
 
 
 </div>

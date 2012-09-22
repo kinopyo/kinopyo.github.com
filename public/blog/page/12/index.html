@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。 液晶が点灯しなかったものの、まだ生きてます。
-急いで電源を切りました。スワイプのジェスチャーがなかなか効かないので何回かやったんです。 そこでググってみてこんな措置をとりました。
-+ &hellip;">
+	<meta name="description" content="スレット経緯 bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
+実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
+githubのスレット 一個スペースが多かったですね。。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +73,69 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread">githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた</a></h1>
+	<div class="entry-content">
+		<h2>スレット経緯</h2>
+
+<p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
+実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
+<a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png" title="bumblebee rm -rf :usr" ></p>
+
+<p>一個スペースが多かったですね。。</p>
+
+<p>でコメントに上がっている画像がとても面白かったので、それをNokogiriを使って拾うrubyコードを書きました。プログラマのヒューモア満載の画像ですね。</p>
+
+<p>Sinatra + Nokogiri + Herokuで作りました、キャッシュは<a href="https://github.com/mperham/dalli">dalli</a>というgemを使いました。</p>
+
+<h2>成果</h2>
+
+<p>下記iframeで表示しています。urlは<a href="http://kinopyo-omgmyusr.heroku.com">http://kinopyo-omgmyusr.heroku.com</a></p>
+
+<iframe src="http://kinopyo-omgmyusr.heroku.com/" scrolling="yes" width="480" height="720" >
+</iframe>
+
+
+<h2>ソースコード</h2>
+
+<p>githubに上げています。
+<a href="https://github.com/kinopyo/Funny-Images-in-bumblebee-rm--rf--usr-thread">https://github.com/kinopyo/Funny-Images-in-bumblebee-rm&#8211;rf&#8211;usr-thread</a></p>
+
+<p>参考になったリンク：
+<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-21T00:00:00+09:00" pubdate data-updated="true">2011-06-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/nokogiri/'>nokogiri</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -556,62 +619,6 @@ Disqusの管理画面で確認したらステータスが&#8221;Queued for impor
 
 
 	<a class='category' href='/blog/categories/diary/'>diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/sinatra-hot-deploy-without-restart-server">Sinatraサーバ起動せずに修正したソースを反映する方法(ホットデプロイ)</a></h1>
-	<div class="entry-content">
-		<p>Sinatra使って二日目ですが、サーバーを再起動しないと修正したコードが反映されないことに気づきました。これは不便なので、改善する方法を紹介します。</p>
-
-<p>shotgunというgemを使えばOKです。インストールし、ruby -rubygemsではなくshotgunでサーバを起動します。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo gem install shotgun
-</span><span class='line'>$ shotgun myapp.rb
-</span><span class='line'>== Shotgun/WEBrick on http://127.0.0.1:9393/
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これでサーバを再起動せずにホットデプロイができるようになります。</p>
-
-<p>他にも<a href="https://github.com/rack/rack/blob/master/lib/rack/reloader.rb">Sinatra::Reloader</a>や<a href="https://github.com/rkh/sinatra-reloader">Sinatra::Reloader</a>が公式サイトで紹介されていますが、shotgunは一番簡単だそうです。</p>
-
-<p>参考サイト：
-<a href="http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server">http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server</a>
-<a href="http://www.sinatrarb.com/faq.html#reloading"> What happened to reloading in Sinatra</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-24T00:00:00+09:00" pubdate data-updated="true">2011-05-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
 
 
 </div>

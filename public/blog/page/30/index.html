@@ -7,10 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="概要
-ローカルのファイルを参照する際のセキュリティを変更したとします。
-IEの[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブでは
-ローカルのマイコンピュータのセキュリティゾーンがデフォルトでは非表示になっています。 &hellip;">
+	<meta name="description" content="知っておくべきこと ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない
+new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される IE のバージョンによっては、&#8221; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +72,82 @@ IEの[インターネット オプション] ダイアログ ボックスの [�
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-to-check-is-activex-enabled-in-client">クライアント側のActiveXが有効か無効かを検出するJavaScript</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>知っておくべきこと</h4>
+<ul>
+<li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
+<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される
+<ul>
+<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：</li>
+<li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP&#8221;</li>
+</ul>
+</li>
+<li>もし生成できればActiveXコントロールは有効になっている</li>
+</ul>
+<br/>
+<h4>検出ソースコード</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synComment">// ブラウザがIEの場合&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">if&lt;/span> (&lt;span class="synStatement">window&lt;/span>.ActiveXObject) &lt;span class="synIdentifier">{&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">try&lt;/span> &lt;span class="synIdentifier">{&lt;/span>
+</span><span class='line'>&lt;span class="synComment">//IEのXMLHttpRequestオブジェクトを試しに生成&lt;/span>
+</span><span class='line'>&lt;span class="synIdentifier">var&lt;/span> xhr = &lt;span class="synStatement">new&lt;/span> ActiveXObject(&lt;span class="synConstant">&#34;Microsoft.XMLHTTP&#34;&lt;/span>);
+</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span> &lt;span class="synStatement">catch&lt;/span> (e) &lt;span class="synIdentifier">{&lt;/span>
+</span><span class='line'>&lt;span class="synStatement">alert&lt;/span>(&lt;span class="synConstant">'ActiveXコントロールは無効になっています'&lt;/span>);
+</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span>
+</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span></span></code></pre></td></tr></table></div></figure>
+
+<br/>
+<h4>参考サイト</h4>
+<p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1249,163 +1323,6 @@ $(input).unbind(<span class="synConstant">'click.2'</span>);
 
 
 <time datetime="2009-11-10T00:00:00+09:00" pubdate data-updated="true">2009-11-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/issue-when-using-jquery-to-manipulate-option-to-selectbox-in-ie">IE6でjQueryを使う時のエラー：selectにoption生成の不具合</a></h1>
-	<div class="entry-content">
-		<h4>環境<a href="http://f.hatena.ne.jp/kinopyo/20091110011109" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091110/20091110011109.jpg" alt="f:id:kinopyo:20091110011109j:image:right" title="f:id:kinopyo:20091110011109j:image:right" class="hatena-fotolife hatena-image-right"></a></h4>
-
-
-<ul>
-<li>IE6</li>
-<li>jQuery1.3.2</li>
-</ul>
-
-
-<h4>現象</h4>
-
-
-<p>IE7、IE8、Firefox上全部OKのアプリが</p>
-
-
-<p>なぜかIE6ではエラーが頻発しました。</p>
-
-
-<p>エラーの詳細もないので、原因がはっきりわかりません。</p>
-
-
-<br/>
-
-
-<p>ソースは特に変な作り方をしてないと思うので、</p>
-
-
-<p>やはりIE6が主な原因と判断しググってみました。</p>
-
-
-<h4>調査結果</h4>
-
-
-<blockquote>
-<p>IE6でselect boxに<option>を追加した直後、</p>
-<p>その追加した値を.valで設定しようとすると上記のエラーが発生します。</p>
-<p>（設定する値が追加した値以外の場合、正常に設定できます）</p>
-</blockquote>
-
-
-<p>今回のアプリではselectボックスは静的にHTMLで書いて、</p>
-
-
-<p>jQueryでoptionをどんどんappendしてました。</p>
-
-
-<p>やはりこの辺が怪しかったですね。</p>
-
-
-<br/>
-
-
-<p>回避策としてあげられるのは<span style="color:#3300FF;">.valを設定する前に.width()を一回実行すること</span>です。</p>
-
-
-<p>信じられないぐらい、本当になおりました。</p>
-
-
-<p>setTimeout(function () {}, 0); も回避策の一つとの選択肢もあったのですが、</p>
-
-
-<p>なぜかこれは効きませんでした。</p>
-
-
-<h4>以下個人感想</h4>
-
-
-<p>IE6のばかばかしい動きが元凶なので、詳しく追求する気はないです。</p>
-
-
-<p>ほかにもjQueryを使うときに注意すべきものがいっぱいあるようです。</p>
-
-
-<p>まあ、またエラーなんか起きたらそのときまた検索すればって思います。</p>
-
-
-<br/>
-
-
-<p>ウェブアプリ開発者はIE6～IE8、Firefoxなどいろいろなブラウザにも注意しながら</p>
-
-
-<p>開発するしかないことがすごく嫌です。</p>
-
-
-<p>この前FirefoxがやっとIE6を市場シェアを抜けて一位になった記事がありました。</p>
-
-
-<p>(Firefox &#62; IE6 &#62; IE7 &#62; IE8の感じかな、トータルではもちろIE全体がまだトップ)</p>
-
-
-<p>IE6なんかもう早く下がってほしい。</p>
-
-
-<br/>
-
-
-<p>なので、ブラウザに気にしないFlex開発に興味を持ち、今勉強中です。</p>
-
-
-<p>そこら辺の感想はまた別途で記事書きます。</p>
-
-
-<br/>
-
-
-<p>ちなみに、Google分析で私のブログを見る平均時間は44秒です。</p>
-
-
-<p>内容的にこんなに駄目なんですか。。？</p>
-
-
-<p>44秒、、短すぎ、、</p>
-
-
-<h4>参考になったサイト</h4>
-
-
-<p><a href="http://d.hatena.ne.jp/x6x6/20080318/1205817536">jQueryでoption要素を追加した際の諸問題</a></p>
-
-
-<p><a href="http://tech.kayac.com/archive/jquery-checkpoints.html">jQueryを使うときに気をつけるべき8のポイント</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-09T00:00:00+09:00" pubdate data-updated="true">2009-11-09</time></div>
 	<div class="tags">
 
 

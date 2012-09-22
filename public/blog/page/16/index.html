@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="http://code.google.com/p/eclipse-fullscreen/からzipファイルダウンロードしてEclipseのフォルダに解凍する形でインストールできます。 ショットカットキーはCTRL + ALT + Zです。覚えておきましょう！ 2010-11-30 Eclipse &hellip;">
+	<meta name="description" content="jQueryのappendやafterは全部DOM Manipulation、つまりDOM操作のメソッドであります。どう違うかは下記ソースコードを見るのが一番速いでしょう。 append(prepend,appendTo,prependTo)は要素内に、子供要素として貼り付ける 1
+$(&#39 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,99 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-difference-between-append-and-after">jQuery: append(prepend,appendTo,prependTo)とafter(before,insertAfter,insertBefore)の違い</a></h1>
+	<div class="entry-content">
+		<p>jQueryのappendやafterは全部DOM Manipulation、つまりDOM操作のメソッドであります。どう違うかは下記ソースコードを見るのが一番速いでしょう。</p>
+
+<h2>append(prepend,appendTo,prependTo)は要素内に、子供要素として貼り付ける</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;span text&lt;/span&gt;&#39;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">&quot;.chapter&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;chapter&quot;</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>組み立てた結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;chapter&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  ...
+</span><span class='line'>  <span class="nt">&lt;span&gt;</span>span text<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>append、appendToは最後の子供要素として、prepend、prependToは最初の子供要素として挿入する感じです。</p>
+
+<h2>after(before,insertAfter,insertBefore)は要素の外、つまり同一のレベルで兄弟要素として貼り付ける</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;span text&lt;/span&gt;&#39;</span><span class="p">).</span><span class="nx">insertAfter</span><span class="p">(</span><span class="s2">&quot;.chapter&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>組み立てた結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;chapter&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  ...
+</span><span class='line'>  <span class="nt">&lt;span&gt;</span>span text<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>htmlタグがなければ無効</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;some text&#39;</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">&quot;.chapter&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>htmlに何の変更もないです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-01T00:00:00+09:00" pubdate data-updated="true">2010-12-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -763,61 +857,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/new-to-me-this-week-1025-1031">今週（10/25～10/31）新たに知ったもの</a></h1>
-	<div class="entry-content">
-		<h1>Compass</h1>
-
-<blockquote><p>A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:</p><p>Compass Core<br/>Blueprint<br/>960<br/>Susy<br/>YUI</p><p>New frameworks and extensions are tracked on the wiki as they are created.<br/>Other frameworks can be added relatively easily. Create your own!</p></blockquote>
-
-
-<p><a href="http://github.com/chriseppstein/compass/tree#readme">http://github.com/chriseppstein/compass/tree#readme</a>
-<a href="http://compass-style.org/docs/">http://compass-style.org/docs/</a></p>
-
-<h1>Rails Rumble</h1>
-
-<blockquote><p>The Rails Rumble is an annual 48 hour web application development competition in which teams of skilled web application developers get one weekend to design, develop, and deploy the best web property that they can, using the power of Ruby and Rails.</p></blockquote>
-
-
-<p><a href="http://railsrumble.com/">http://railsrumble.com/</a></p>
-
-<h1>Monospaced font</h1>
-
-<blockquote><p>A monospaced font, also called a fixed-pitch or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space.*1* This contrasts to variable-width fonts, where the letters differ in size to one another.<br/>The first monospaced typefaces were designed for typewriters, which could only move the same distance forward with each letter typed. This also meant that monospaced fonts need not be typeset like variable width fonts and were, arguably, easier to deal with.</p></blockquote>
-
-
-<p><a href="http://en.wikipedia.org/wiki/Monospaced_font">http://en.wikipedia.org/wiki/Monospaced_font</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-01T00:00:00+09:00" pubdate data-updated="true">2010-11-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/uncategorized/'>Uncategorized</a>, <a class='category' href='/blog/categories/font/'>font</a>, <a class='category' href='/blog/categories/new/'>new</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>

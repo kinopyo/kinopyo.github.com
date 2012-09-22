@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SublimeText | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/sublimetext/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-16T20:22:29+09:00</updated>
+  <updated>2012-09-22T15:21:21+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sync SublimeText2 Settings with Dropbox]]></title>
+    <link href="http://kinopyo.com/blog/sync-sublimetext2-settings-with-dropbox/"/>
+    <updated>2012-09-22T15:04:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sync-sublimetext2-settings-with-dropbox</id>
+    <content type="html"><![CDATA[<h2>Overview</h2>
+
+<p>In order to sync SublimeText2 settings with Dropbox, you need to symlink these folders of SublimeText to your dropbox.</p>
+
+<ul>
+<li>Packages</li>
+<li>Installed Packages</li>
+<li>Pristine Packages</li>
+</ul>
+
+
+<h2>On your main machine</h2>
+
+<p>cd to your dropbox folder where your want to symlink to.</p>
+
+<p><code>bash
+cd ~/Dropbox/99_Sync/SublimeText
+ln -s "/Users/your_user_name/Library/Application Support/Sublime Text 2/Packages/" Packages
+ln -s "/Users/your_user_name/Library/Application Support/Sublime Text 2/Installed Packages/" 'Installed Packages'
+ln -s "/Users/your_user_name/Library/Application Support/Sublime Text 2/Pristine Packages/" 'Pristine Packages'
+</code></p>
+
+<h2>On your second machine</h2>
+
+<p><code>bash
+cd "/Users/your_user_name/Library/Application Support/Sublime Text 2"
+rm -rf Installed\ Packages
+rm -rf Packages
+rm -rf Pristine\ Packages
+ln -s ~/Dropbox/99_Sync/SublimeText/Installed\ Packages 'Installed Packages'
+ln -s ~/Dropbox/99_Sync/SublimeText/Pristine\ Packages 'Pristine Packages'
+ln -s ~/Dropbox/99_Sync/SublimeText/Packages Packages
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text Build without Saving - Anypreter]]></title>

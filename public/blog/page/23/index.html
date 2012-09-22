@@ -7,9 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="HTMLのheadセクションにはタイトルといろんなMetaタグが記述されているが、
-その記述順番に気になったことはありますか?
-そしてそれがどのような影響があるかぐぐってみました。 {% blockquote } headセクション内のタグの記述順に特に決まりはないが、&#8221; &hellip;">
+	<meta name="description" content="window.open()で新規開いた小窓ウィンドウで親ウィンドウのdocumentを取得するには
+下記のプロパティを使います。 1
+window.opener.document これで親ウィンドウの値を取得するだけではなく、
+値を編集することもできます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,6 +74,65 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-get-opener-window-document">Javascript window.openで開いたページで親ウィンドウのdocumentを取得には</a></h1>
+	<div class="entry-content">
+		<p>window.open()で新規開いた小窓ウィンドウで親ウィンドウのdocumentを取得するには
+下記のプロパティを使います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nb">document</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで親ウィンドウの値を取得するだけではなく、
+値を編集することもできます。</p>
+
+<br/>
+
+
+<p>例えば下記のコードは親ウィンドwのフォーム内のテキストをAAAに変更します。
+新規開いたページに記述します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">FORM1</span><span class="p">.</span><span class="nx">TEXT1</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="s2">&quot;AAA&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.tohoho-web.com/js/window.htm#open">とほほのJavascriptレファレンス：ウィンドウオブジェクト</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-29T00:00:00+09:00" pubdate data-updated="true">2010-01-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -795,77 +855,6 @@ jarファイルもサポートされているようです。</p>
 
 
 	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/add-left-sidebar-to-wptheme-glowing-amber">WPテーマGlowing Amberに二番目のサイドバーを追加</a></h1>
-	<div class="entry-content">
-		<p>本文はWPテーマGlowing Amberに二番目のサイドバーを追加する方法を紹介します。</p>
-
-<p>Glowing Amberは今現在このブログで使われているテーマです。
-見た目がいいデザインがいいのですぐインストールしましたが、
-簡単にカスタマイズするメニューがなくて少し不便を感じました。
-マニュアルもなく、作者が提示したURLにも無効となっています。。。</p>
-
-<h2>二番目のサイドバーを追加する方法</h2>
-
-<ul>
-<li><p>Main Index Templateのindex.phpかSingle Postのsingle.phpを編集します。
-それぞれブログのトップページ、個々の記事ページのファイルです。</p></li>
-<li><p>サイドバーを追加したい場所で下記コードを挿入します。</p></li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>div id=&quot;left&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>?php if (!function_exists(&#39;dynamic_sidebar&#39;) || !dynamic_sidebar(&#39;Sidebar Left&#39;)) : ?<span class="ni">&amp;gt;&amp;lt;</span>?php endif; ?<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>例えば左に追加したい場合は
-&lt;div id=&#8221;mainbody-l&#8221;&gt;の前に上記コードを挿入します。</p>
-
-<ul>
-<li><p>&lt;div id=&#8221;mainbody-l&#8221;&gt;を&lt;div id=&#8221;mainbody-lr&#8221;&gt;に変更
-これはid=mainbody-lrにwidthが適切に設定されているからです。</p></li>
-<li><p>Stylesheet (style.css)で幅を編集
-104行目近くにある#mainbody-lr と#left, #rightのwidth値を編集すればOKです。</p></li>
-</ul>
-
-
-<p>これでWidgetsメニューでSidebar Leftが使えるようになります。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-17T00:00:00+09:00" pubdate data-updated="true">2010-01-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

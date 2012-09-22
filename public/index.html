@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="My &#8220;Thank You&#8221; Mails Yesterday was my one year anniversary at Cookpad, and I came up with an idea to send a couple of mails to my &hellip;">
+	<meta name="description" content="Overview In order to sync SublimeText2 settings with Dropbox, you need to symlink these folders of SublimeText to your dropbox. Packages
+Installed &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +72,84 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sync-sublimetext2-settings-with-dropbox/">Sync SublimeText2 Settings with Dropbox</a></h1>
+	<div class="entry-content">
+		<h2>Overview</h2>
+
+<p>In order to sync SublimeText2 settings with Dropbox, you need to symlink these folders of SublimeText to your dropbox.</p>
+
+<ul>
+<li>Packages</li>
+<li>Installed Packages</li>
+<li>Pristine Packages</li>
+</ul>
+
+
+<h2>On your main machine</h2>
+
+<p>cd to your dropbox folder where your want to symlink to.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Dropbox/99_Sync/SublimeText
+</span><span class='line'>ln -s <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2/Packages/&quot;</span> Packages
+</span><span class='line'>ln -s <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2/Installed Packages/&quot;</span> <span class="s1">&#39;Installed Packages&#39;</span>
+</span><span class='line'>ln -s <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2/Pristine Packages/&quot;</span> <span class="s1">&#39;Pristine Packages&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>On your second machine</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="s2">&quot;/Users/your_user_name/Library/Application Support/Sublime Text 2&quot;</span>
+</span><span class='line'>rm -rf Installed<span class="se">\ </span>Packages
+</span><span class='line'>rm -rf Packages
+</span><span class='line'>rm -rf Pristine<span class="se">\ </span>Packages
+</span><span class='line'>ln -s ~/Dropbox/99_Sync/SublimeText/Installed<span class="se">\ </span>Packages <span class="s1">&#39;Installed Packages&#39;</span>
+</span><span class='line'>ln -s ~/Dropbox/99_Sync/SublimeText/Pristine<span class="se">\ </span>Packages <span class="s1">&#39;Pristine Packages&#39;</span>
+</span><span class='line'>ln -s ~/Dropbox/99_Sync/SublimeText/Packages Packages
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-22T15:04:00+09:00" pubdate data-updated="true">2012-09-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -665,45 +744,6 @@ Here is just an example:</p>
 
 
 	<a class='category' href='/blog/categories/rails/'>rails</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-reset-zoom-in-chrome/">How to reset zoom in chrome</a></h1>
-	<div class="entry-content">
-		<p><code>cmd + 0</code> in mac :)</p>
-
-<p>If you click the tool icon on the right of the address bar, you can also check the current zoom rate.</p>
-
-<p><img src="https://img.skitch.com/20120803-1ew92g41qdw65n6iecywgwun6u.jpg" title="'Google Chrome Check Zoom Rate'" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-03T14:49:00+09:00" pubdate data-updated="true">2012-08-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
 
 
 </div>

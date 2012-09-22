@@ -7,7 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="HEAD^ If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.HEAD^, which means “the parent of HEAD”: &hellip;">
+	<meta name="description" content="個人で準備する書類 パスポート
+外国人登録証明書
+前年分納税証明書 (区役所で300円)
+前年分課税証明書 (区役所で300円)
+転職した場合退職証明書 (必要項目は 在職期間、退職理由、在職時の業務内容、と名前生年月日など、一社以上転職した場合は全部必要)
+在留期間更新申請書（ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +76,67 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-update-visa-in-japan">在日外国人ビザ更新必要書類</a></h1>
+	<div class="entry-content">
+		<h2>個人で準備する書類</h2>
+
+<ul>
+<li>パスポート</li>
+<li>外国人登録証明書</li>
+<li>前年分納税証明書 (区役所で300円)</li>
+<li>前年分課税証明書 (区役所で300円)</li>
+<li>転職した場合退職証明書 (必要項目は 在職期間、退職理由、在職時の業務内容、と名前生年月日など、一社以上転職した場合は全部必要)</li>
+<li>在留期間更新申請書（技術ビザの場合は１，２ページが個人が書く）</li>
+</ul>
+
+
+<br/>
+
+
+<h2>会社側で用意してもらう書類:</h2>
+
+<ul>
+<li>雇用証明書（あるいは労働契約書）</li>
+<li>登記謄本 (写し)</li>
+<li>去年分の源泉徴収票の法定調書合計表（上場企業の場合は不要）</li>
+<li>パンフレット（あればもっといいくらい）</li>
+<li>在留期間更新申請書（技術ビザの場合３，４ページが会社が書く）</li>
+</ul>
+
+
+<p>上記のうち、パスポートと外国人登録証明書以外は取り戻せないです。会社が出すものは写しでOK。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-28T00:00:00+09:00" pubdate data-updated="true">2011-10-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/japan/'>Japan</a>, <a class='category' href='/blog/categories/japan/'>japan</a>, <a class='category' href='/blog/categories/visa/'>visa</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -558,92 +624,6 @@ end</code></pre></noscript></div>
 
 
 	<a class='category' href='/blog/categories/google-calendar/'>google calendar</a>, <a class='category' href='/blog/categories/ipad/'>iPad</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/ipad/'>ipad</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-nil-empty-blank-none-check-0">ruby: nil? empty? blank? どれも0をチェックしない</a></h1>
-	<div class="entry-content">
-		<p>{% blockquote %}
-よくつかうメソッドの nil? empty? blank? のまとめ。</p>
-
-<p>nil? すべてのオブジェクトにある。nilのときにTrueを返す。
-empty? 文字の長さが0のとき、配列が空のときにTrueを返す。</p>
-
-<p>blank? railsの拡張。nil, &#8220;&#8221;, &#8221; &#8220;, **, {} のいずれかでTrueを返す。
-{% endblockquote %}</p>
-
-<p>素晴らしいまとめですね！ootokageさんに感謝。</p>
-
-<p>PHP使うときは<em>empty(0)</em>でtrueになりますが、上記のメソッドどれも0をチェックしないですね。。.<em>zero?</em>というのメソッドは一応あるようですが。</p>
-
-<p>迷ったらここにいっぱいサンプルがあります。</p>
-
-<p>{% blockquote %}
-0.nil? #=> false
-0.zero? #= true
-0.empty? #=> NoMethodError
-0.blank? #=> false
-0 == false #=> false</p>
-
-<p>&#8221;&#8221;.nil? #=> false
-&#8221;&#8221;.zero? #=> NoMethodError
-&#8221;&#8221;.empty? #=> true
-&#8221;&#8221;.blank? #=> true
-&#8221;&#8221; == false #=> false</p>
-
-<p>{}.nil? #=> false
-{}.zero? #=> NoMethodError
-{}.empty? #=> true
-{}.blank? #=> true
-{} == false #=> false</p>
-
-<p><strong>.nil? #=> false
-</strong>.zero? #=> NoMethodError
-<strong>.empty? #=> true
-</strong>.blank? #=> true
-** == false #=> false</p>
-
-<p>nil.nil? #=> true
-nil.zero? #=> NoMethodError
-nil.empty? #=> NoMethodError
-nil.blank? #=> true
-nil == false #=> false</p>
-
-<p>false.nil? #=> false
-false.zero? #=> NoMethodError
-false.empty? #=> NoMethodError
-false.blank? #=> true
-false == false #=> true
-&lt;&lt;</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-18T00:00:00+09:00" pubdate data-updated="true">2011-10-18</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>

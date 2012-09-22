@@ -7,10 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ターミナルで
-sudo visudo そして次のラインを追加。(&#8220;kinopyo&#8221;は自分のユーザ名に変更してください) 1
-kinopyo ALL=(ALL) NOPASSWD: ALL 中文 先在Terminal输入
-sudo visudo 接着插入下面的代码。(&# &hellip;">
+	<meta name="description" content="なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
+So I encountered this problem when I synced my evernote in Mac OS. Can&#8217;t synchronize error, Content &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +72,75 @@ sudo visudo 接着插入下面的代码。(&# &hellip;">
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid">Evernote x Mac: Cant synchronize error, Content is not valid.</a></h1>
+	<div class="entry-content">
+		<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
+So I encountered this problem when I synced my evernote in Mac OS.</p>
+
+<blockquote><p>Can&#8217;t synchronize error, Content is not valid.</p></blockquote>
+
+
+<p>I googled and found this in the evernote support forum.</p>
+
+<blockquote><p>One of the Ruby gems replaces the built-in &#8216;tidy&#8217; command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p><p>On my 10.6.6 box, that command is 65072 bytes:</p><p>~ $ ls -al `which tidy`<br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p><p>Once you&#8217;ve fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote>
+
+
+<p>It seems like that ruby gems in mac did a mess that replaced the /usr/bin/tidy command unintentionally.
+So if your <code>tidy</code> file size does not match 65072 bytes, just copy on from other Mac OS, and chmod it.</p>
+
+<h1>日本語</h1>
+
+<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。</p>
+
+<p>公式サイトのサポートでこんな回答を見つかったので共有します。</p>
+
+<blockquote><p>One of the Ruby gems replaces the built-in &#8216;tidy&#8217; command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p><p>On my 10.6.6 box, that command is 65072 bytes:</p><p>~ $ ls -al `which tidy`<br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p><p>Once you&#8217;ve fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote>
+
+
+<p>MacのRuby gemsが勝手に<code>/usr/bin/tidy</code>コマンドをリプレースしてしまったそうです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~ $ ls -al `which tidy`
+</span><span class='line'>+  rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記の65072バイトサイズが正しいです。
+もしサイズが異なるなら他のMacでそのファイルをコピーしてきて、
+chmodで他のファイルと同じ権限にしなければいけませんよ。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-18T00:00:00+09:00" pubdate data-updated="true">2011-04-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/tool/'>tool</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -718,72 +785,6 @@ php.iniを開いて<strong>error_reporting</strong>で検索します。
 
 
 	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/ajax/'>ajax</a>, <a class='category' href='/blog/categories/pageview/'>pageview</a>, <a class='category' href='/blog/categories/アクセス解析/'>アクセス解析</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-install-oracle-instant-client-on-xampp-for-windows">Windows XAMPPにOracle Instantclientをインストール</a></h1>
-	<div class="entry-content">
-		<p>Oracle Instantclientをインストールすることで、PHPからOracleデータベースへの接続が可能になります。</p>
-
-<p>XAMPPのデフォルトインストールではそれが無効となっています。確認方法はphpinfoのページから&#8217;oci8&#8217;を検索して何もなかったらつまり接続できてないことです。</p>
-
-<h2>手順</h2>
-
-<ul>
-<li>php.ini(XAMPP/phpのパスにある)の中から;extension=php_oci8.dllを検索して、セミコロン(;)を削除。</li>
-<li>Oracleから“Instant Client Package – Basic” for Windowsをダウンロードし、任意の場所に解凍。ここではc:\instantclient_11_1とする。</li>
-<li>Windowsの環境変数pathに上記instantclientが解凍されたパスを追加(c:\instantclient_11_1)</li>
-<li>そしてWindowsを再起動！</li>
-<li>Apacheを再起動</li>
-</ul>
-
-
-<br/>
-
-
-<h2>確認</h2>
-
-<p>phpinfoのページからoci8を検索してあれば成功！</p>
-
-<br/>
-
-
-<h2>その他</h2>
-
-<ul>
-<li>ORACLE_HOMEやORACLE_SIDなどの環境変数はInstant Clientでは必要ないから設定しなくても大丈夫だそう。</li>
-<li>パス設定後Windowsを再起動しないと、&#8221;unable to load dynamic library php_oci8.dll&#8221;のようなエラーが出た。</li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-18T00:00:00+09:00" pubdate data-updated="true">2011-02-18</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/xampp/'>XAMPP</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>
