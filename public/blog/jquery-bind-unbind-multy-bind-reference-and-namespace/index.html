@@ -7,10 +7,18 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="多重bind 検証：一つのボタンにイベントを多重バインドした時の動き {% codeblock %} $(input).bind(&#8216;click&#8217;,function(){
-alert(1);
+	<meta name="description" content="多重bind 検証：一つのボタンにイベントを多重バインドした時の動き 1
+2
+3
+4
+5
+6
+7
+8
+9
+$(input).bind(&#39;click&#39;, function() { alert(1);
 });
-$(input).bind(&#8216;click&#8217;, &hellip;">
+$(input).bind(&#39;click&#39;, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,117 +83,192 @@ $(input).bind(&#8216;click&#8217;, &hellip;">
 </header>
 	<div id="content" class="inner"><article class="post">
 	<h1 class="title">jQuery bind, unbind：多重バインド、リファレンス、名前空間の利用</h1>
-	<div class="entry-content"><div class="section">
-<h4>多重bind</h4>
+	<div class="entry-content"><h2>多重bind</h2>
+
 <ul>
 <li>検証：一つのボタンにイベントを多重バインドした時の動き</li>
 </ul>
-{% codeblock %}
 
-$(input).bind(<span class="synConstant">&#8216;click&#8217;</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(1);
-<span class="synIdentifier">}</span>);
-$(input).bind(<span class="synConstant">&#8216;click&#8217;</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(2);
-<span class="synIdentifier">}</span>);
-$(input).bind(<span class="synConstant">&#8216;click&#8217;</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(3);
-<span class="synIdentifier">}</span>);
-{% endcodeblock %}
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>出力：inputのボタンをクリックするとalertで1,2,3が次々と出る</li>
 <li>結論：バインドされた順番どおり実行</li>
 </ul>
-<h4>一括unbind</h4>
+
+
+<h2>一括unbind</h2>
+
 <ul>
 <li>検証：上記多数バインドされた要素に対し、一括でunbind</li>
 </ul>
-<pre class="syntax-highlight">
-$(input).unbind(<span class="synConstant">'click'</span>);
-{% endcodeblock %}
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>出力：なし</li>
 <li>結論：一括でunbindされた</li>
 </ul>
-<h4>特定のイベントのみunbind</h4>
+
+
+<h2>特定のイベントのみunbind</h2>
+
 <ul>
 <li>検証：多数bindしたイベントの中で、特定のイベントのみunbind</li>
 </ul>
-<h5>バインド時のファンクションをそのまま記述(失敗)</h5>
-<pre class="syntax-highlight">
-$(input).unbind(<span class="synConstant">'click'</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(2);
-<span class="synIdentifier">}</span>);
-{% endcodeblock %}
+
+
+<h3>バインド時のファンクションをそのまま記述(失敗)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>出力：1, 2, 3</li>
 <li>結論：失敗</li>
 </ul>
-<h5>ファンクションのリテラル(リファレンス)を通してunbind</h5>
-<pre class="syntax-highlight">
-<span class="synIdentifier">function</span> out1()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(1);
-<span class="synIdentifier">}</span>;
-<span class="synIdentifier">function</span> out2()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(2);
-<span class="synIdentifier">}</span>;
-<span class="synIdentifier">function</span> out3()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(3);
-<span class="synIdentifier">}</span>;
-$(input).bind(<span class="synConstant">'click'</span>,out1);
-$(input).bind(<span class="synConstant">'click'</span>,out2);
-$(input).bind(<span class="synConstant">'click'</span>,out3);
-$(input).unbind(<span class="synConstant">'click'</span>,out2)
-{% endcodeblock %}
+
+
+<h3>ファンクションのリテラル(リファレンス)を通してunbind</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">out1</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">out2</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">out3</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out1</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out2</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out3</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>出力：1, 3</li>
 <li>結論：ファンクションのリテラル(リファレンス変数)を通して指定したイベントのみをunbindできる、しかしこれはあらかじめファンクションを定義しておかないと駄目</li>
 </ul>
-<h5>名前空間を用いてbind</h5>
-<pre class="syntax-highlight">
-$(input).bind(<span class="synConstant">'click.1'</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(1);
-<span class="synIdentifier">}</span>);
-$(input).bind(<span class="synConstant">'click.2'</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(2);
-<span class="synIdentifier">}</span>);
-$(input).bind(<span class="synConstant">'click.3'</span>,<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(3);
-<span class="synIdentifier">}</span>);
-$(input).unbind(<span class="synConstant">'click.2'</span>);
-{% endcodeblock %}
+
+
+<h3>名前空間を用いてbind</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.2&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.3&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click.2&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>出力：1, 3</li>
 <li>結論：bindの第一引数でevent.namespaceと名前空間を使えばうまくunbindできる</li>
 </ul>
-<h5>同じの名前空間で複数のイベントにbindされた際</h5>
-<pre class="syntax-highlight">
-$(input).bind(<span class="synConstant">'click.namespace'</span>, <span class="synIdentifier">function</span>()<span class="synIdentifier">{}</span>);
-$(input).bind(<span class="synConstant">'blur.namespace'</span>, <span class="synIdentifier">function</span>()<span class="synIdentifier">{}</span>);
-$(input).unbind(<span class="synConstant">'.namespace'</span>);
-{% endcodeblock %}
+
+
+<p>同じの名前空間で複数のイベントにbindされた際</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.namespace&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;blur.namespace&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;.namespace&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>結論：名前空間指定で一括でunbindできる</li>
 </ul>
-<h5>一つのイベントに複数の名前空間を登録</h5>
-<pre class="syntax-highlight">
-$(input).bind(<span class="synConstant">'click.1.2'</span>, <span class="synIdentifier">function</span>()<span class="synIdentifier">{}</span>);
-<span class="synComment">// click.1.2の名前空間にたどり着ける</span>
-$(input).trigger(<span class="synConstant">'click.1'</span>);
-<span class="synComment">// click.1.2名前空間にたどり着ける</span>
-$(input).unbind(<span class="synConstant">'click.2'</span>);
 
-{% endcodeblock %}
+
+<h3>一つのイベントに複数の名前空間を登録</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.1.2&#39;</span><span class="p">,</span>  <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class='line'><span class="c1">// click.1.2の名前空間にたどり着ける</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;click.1&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// click.1.2名前空間にたどり着ける</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click.2&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>結論：複数の名前空間のうち、任意の一つを使えばそのイベントを選択できる</li>
 </ul>
-<br/>
-<p><span style="float:right">つづく</span></p>
-<br/>
+
+
 <p>公式サイト(英語)：</p>
-<p><a href="http://docs.jquery.com/Events/bind#typedatafn">bind Events</a></p>
-<p><a href="http://docs.jquery.com/Namespaced_Events">Namespaced_Events</a></p>
-</div>
+
+<ul>
+<li><a href="http://docs.jquery.com/Events/bind#typedatafn">bind Events</a></li>
+<li><a href="http://docs.jquery.com/Namespaced_Events">Namespaced_Events</a></li>
+</ul>
 
 </div>
 
@@ -207,7 +290,7 @@ $(input).unbind(<span class="synConstant">'click.2'</span>);
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

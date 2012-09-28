@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Nokogiriでurlをparseするときは普通こんなコードになります。 1
-doc = Nokogiri::HTML(open(&#39;http://example.com/&#39;)) しかし接続先のプロトコールがhttpsの場合はNo such file or &hellip;">
+	<meta name="description" content="昨日の記事http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-threadにも簡単に述べましたが、DalliはHerokuでお勧められているMemcachedのGemです。正確にはpure &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,74 +71,6 @@ doc = Nokogiri::HTML(open(&#39;http://example.com/&#39;)) しかし接続先の�
 
 </header>
 	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/get-https-contents-with-nokogiri">Nokogiriでhttpsプロトコールのコンテンツを取得</a></h1>
-	<div class="entry-content">
-		<p>Nokogiriでurlをparseするときは普通こんなコードになります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;http://example.com/&#39;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>しかし接続先のプロトコールがhttpsの場合はNo such file or directoryのエラーとなります。
-一旦net/httpsで取ってからそれをnokogiriでparseするような工夫が必要です。</p>
-
-<div><script src='https://gist.github.com/1037492.js?file='></script>
-<noscript><pre><code>require 'net/https'
-require 'nokogiri'
-
-url = &quot;https://example.com&quot;
-url = URI.parse( url )
-http = Net::HTTP.new( url.host, url.port )
-http.use_ssl = true if url.port == 443
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE if url.port == 443
-path = url.path
-path += &quot;?&quot; + url.query unless url.query.nil?
-res, data = http.get( path )
-
-case res
-  when Net::HTTPSuccess, Net::HTTPRedirection
-    # parse link
-    doc = Nokogiri::HTML(data)
-     # do what you want ...
-  else
-    return &quot;failed&quot; + res.to_s
-end</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-27T00:00:00+09:00" pubdate data-updated="true">2011-06-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/https/'>https</a>, <a class='category' href='/blog/categories/nokogiri/'>nokogiri</a>
-
-
-</div>
-	
-</div></article>
 
 
     <article class="post">
@@ -677,6 +608,76 @@ heroku open
 
 
 	<a class='category' href='/blog/categories/instagram/'>instagram</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-disqus-comment-system-to-wordpress-in-10-minitues">10分でWordPressにコメントシステムDisqusを導入</a></h1>
+	<div class="entry-content">
+		<h2>Disqusの概要</h2>
+
+<p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png" title="Disqus Login with Twitter, Facebook, etc." ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png" title="Disqus Comment system" ></p>
+
+<h2>導入手順</h2>
+
+<p>実際の導入フローはとても簡単なので、流れだけ書きます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png" title="Disqus comment system site" ></p>
+
+<ul>
+<li><a href="http://disqus.com/">Disqus</a>でアカウント登録</li>
+<li>ブログサイトの情報、メインライター、導入ブログタイプ（ここはWordpress）などの設定</li>
+<li>自分のWordpressブログの管理画面でプラグインをインストール：Disqus Comment System</li>
+<li>Disqusプラグインの設定画面でさっき<a href="http://disqus.com/">Disqus</a>で登録したアカウントでログイン</li>
+<li>必要でなれば今までのコメントをエクスポートすることもできる</li>
+</ul>
+
+
+<br/>
+
+
+<h2>既存コメントのエクスポート</h2>
+
+<p>既存コメントのエクスポートは時間がかかりそうで、すぐには反映しないようです。
+Disqusの管理画面で確認したらステータスが&#8221;Queued for import&#8221;になってます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg" alt="DISQUS Admin page - tools - Import/export" /></p>
+
+<p>すると翌日にインポートできましたよというメールがきました。管理画面でチェック：</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png" title="Disqus-comment-import-complete" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-25T00:00:00+09:00" pubdate data-updated="true">2011-05-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/plugin/'>plugin</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
 
 
 </div>

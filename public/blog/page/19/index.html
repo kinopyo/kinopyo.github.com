@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。 まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、 &hellip;">
+	<meta name="description" content="http://railscasts.com/episodes/211-validations-in-rails-3で学んだ技です。
+Rails 3.0 beta4を利用しています。 カスタムバリデーションメソッドを作成する方法を紹介します。
+こんなコードがあるとします。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,168 +73,6 @@
 
 </header>
 	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-a-helper-method-shows-the-required-mark">Rails: a helper method shows the required mark</a></h1>
-	<div class="entry-content">
-		<p>一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。</p>
-
-<p>まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、第二引数はそのクラスのプロパティを渡します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
-</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>viewのerbには下記のように@userインスタンス変数と:nameを渡します。もしUserモデルに:nameに対して必須バリデーションが存在すれば必須マークが出力されます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span><span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
-</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考リンク：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
-
-<h2>20110704更新</h2>
-
-<p>もしhtmlタグも一緒に出力したいときは、タグがエスケープされてしまいます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;&lt;span class=&#39;require_mark&#39;&gt;# &lt;/span&gt;&quot;</span>
-</span><span class='line'>    <span class="n">mark</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span><span class="n">raw</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
-</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>この場合はrawを書けばエスケープされずにちゃんとHTMLタグが出力します。</p>
-
-<h1>中文</h1>
-
-<p>我们将创建一个Helper方法来输出&#8221;# &#8220;表示必须项目。
-（原谅我这蹩脚的汉语，实在是不知道这些术语用中文该怎么叫）</p>
-
-<p>首先在application_helper里创建一个叫mark_required的方法。他的第一个参数为对象，第二个参数接收的是对象的属性。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
-</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后在View里我们只要把@user和:name传过去即可。如果你的User Model对:name进行了必须验证(presence validator)，&#8221;# &#8220;就会显示出来。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
-</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>链接：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
-
-<h1>English</h1>
-
-<p>Let&#8217;s make a helper method that shows a required mark &#8220;# &#8221; when the attribute of the object has a presence validator.</p>
-
-<p>First, create a mark_required method in the application_helper, pass the object as 1st parameter, the attribute as the second one.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
-</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then, just call the custom method in the erb view file. In this sample we pass the @user instance variable and the :name attribute symbol. So if your User model has a presence validator on the :name attribute, the required-mark &#8220;# &#8221; will show up.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
-</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I learned from this site：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T00:00:00+09:00" pubdate data-updated="true">2010-07-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
 
 
     <article class="post">
@@ -1036,6 +876,71 @@ letter that is crucial—it must be uppercase so that Ruby knows that you intend
 
 
 <time datetime="2010-06-23T00:00:00+09:00" pubdate data-updated="true">2010-06-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/eclipse-3-6-helios-6-23-releas">Eclipse 3.6 Helios 23/6 release</a></h1>
+	<div class="entry-content">
+		<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
+<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
+
+<p>RC1 Friday, May 21
+RC2 Friday, May 28
+RC3 Friday, June 4
+RC4 Friday, June 11
+<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
+Release Wednesday, June 23</p>
+
+<p>23日正式リリースだそうです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
+
+<h1>English</h1>
+
+<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
+<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
+
+<p>RC1 Friday, May 21
+RC2 Friday, May 28
+RC3 Friday, June 4
+RC4 Friday, June 11
+<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
+Release Wednesday, June 23</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-22T00:00:00+09:00" pubdate data-updated="true">2010-06-22</time></div>
 	<div class="tags">
 
 

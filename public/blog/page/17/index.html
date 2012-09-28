@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" Webページの画像を右クリックで簡単にFlickrにアップロードできるChromeエクステンションです。
-もしタイトルやタグなども編集できればもっどいいですけどね。 Flickr Upload Extensionをダウンロード 2010-11-29 Chrome ">
+	<meta name="description" content="My環境 XAMPP1.7.3 + WinXP
+ダウンロードはこちら memcache側の設定 memcacheのインストール手順 http://code.jellycan.com/memcached/よりmemcached 1.2.6 => win32 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,47 +72,6 @@
 
 </header>
 	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/chrome-extension-flickr-upload">Chrome Extension: Flickr Upload右クリックで画像をアップロード</a></h1>
-	<div class="entry-content">
-		<p>Webページの画像を右クリックで簡単にFlickrにアップロードできるChromeエクステンションです。
-もしタイトルやタグなども編集できればもっどいいですけどね。</p>
-
-<p><a href="https://chrome.google.com/extensions/detail/nacmiiefmonpjkmcfhkajdhcgdnglaje">Flickr Upload Extensionをダウンロード</a></p>
-
-<p><img src="https://chrome.google.com/extensions/img/nacmiiefmonpjkmcfhkajdhcgdnglaje/1284778713.67/screenshot/6001" alt="Chrome extension:Flickr Upload" />
-<img src="https://chrome.google.com/extensions/img/nacmiiefmonpjkmcfhkajdhcgdnglaje/1284778713.67/screenshot/2001" alt="Chrome extension: Flickr Upload" /></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
-
-
-</div>
-	
-</div></article>
 
 
     <article class="post">
@@ -814,6 +773,138 @@ alt+ctrl+back_space</p>
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-smarty-to-mac-xampp">SmartyをMac XAMPP環境にインストール</a></h1>
+	<div class="entry-content">
+		<p>Smartyのインストールはphp.iniにインクルードパスを書く方法と書かない方法があります。ここではphpのインクルードパスに書く方法を紹介します。</p>
+
+<h3>1 Smartyをダウンロード</h3>
+
+<p><a href="http://www.smarty.net/download.php">http://www.smarty.net/download.php</a>からダウンロードします。今回は3.0rc3にしました。</p>
+
+<h3>2 ファイルの解凍</h3>
+
+<p>できたフォルダ名はSmarty-3.0rc3で、それをsmartyにリネームして、/Applications/XAMPP/xamppfiles/lib/phpに移動します。こうするのはここがXAMPPの場合のinclude_pathになるからです。</p>
+
+<h3>3 php.iniを変更して、smartyを読み込ませる</h3>
+
+<p>php.ini中のinclude_pathに&#8221;.:/Applications/XAMPP/xamppfiles/lib/php/smarty/libs&#8221;の記述を追加します。
+できたイメージはこうなります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>include_path=".:/Applications/XAMPP/xamppfiles/lib/php:/Applications/XAMPP/xamppfiles/lib/php/pear.:/Applications/XAMPP/xamppfiles/lib/php/smarty/libs"</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4 smartyが必要なフォルダを作成します。</h3>
+
+<p>smartyは四つのフォルダが必要です：
++  templates
++  templates_c
++  cache
++  config</p>
+
+<p>templates_cとcacheフォルダには適切な書き込み権限を付与しなければなりません。
+場所は任意のはずです。ここではこんな形にしました。htdocsはXAMPPのウェブルートフォルダです。
++  /Applications/XAMPP/xamppfiles/htdocs/smarty/templates
++  /Applications/XAMPP/xamppfiles/htdocs/smarty/config
++  /Users/zolo/Develop/smarty/templates_c
++  /Users/zolo/Develop/smarty/cache</p>
+
+<h3>5 smartyテンプレートを作成</h3>
+
+<p>上記templatesフォルダにsmarty.tplというファイルを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>Hello, {$name}!
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>6 テンプレートに値をセットするphpファイルを作成</h3>
+
+<p>/Applications/XAMPP/xamppfiles/htdocs/にsmarty.phpというファイルを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// load Smarty library</span>
+</span><span class='line'><span class="k">require</span><span class="p">(</span><span class="s1">&#39;Smarty.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Smarty</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="s1">&#39;/Applications/XAMPP/xamppfiles/htdocs/smarty/templates&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">config_dir</span> <span class="o">=</span> <span class="s1">&#39; /Applications/XAMPP/xamppfiles/htdocs/smarty/config&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="s1">&#39;/Users/zolo/Develop/smarty/cache&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="s1">&#39;/Users/zolo/Develop/smarty/templates_c&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;kinopyo!&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">&#39;smarty.tpl&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>7 動作確認</h3>
+
+<p>php.iniを編集したため、まずはapacheを再起動します。
+そして<a href="http://127.0.0.1/smarty.php">http://127.0.0.1/smarty.php</a>にアクセスしてエラーがなければOKです。</p>
+
+<h2>参考リンク:</h2>
+
+<p><a href="http://news.php.net/php.smarty.dev/2703">http://news.php.net/php.smarty.dev/2703</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-25T00:00:00+09:00" pubdate data-updated="true">2010-09-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>

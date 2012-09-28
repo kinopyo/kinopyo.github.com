@@ -7,7 +7,6 @@ permalink: /blog/iphone-version-google-wave-fancy
 comments: true
 categories: [nil]
 ---
-<div class="section">
 <p><object height="364" width="445"><param value="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1" name="movie" ></param><param value="true" name="allowFullScreen" ></param><param value="always" name="allowscriptaccess" ></param><embed height="364" width="445" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1"></embed></object></p>
 <p>Google Waveはみんなご存知だと思います。</p>
 <p>5月発表以来今だテストの最中です。</p>
@@ -21,5 +20,3 @@ categories: [nil]
 <p>なんとこれはMacのKeynote(WindowsにおいてはPowerPoint見たいなソフト)で作ったらしい。</p>
 <p>iPhoneにどんなwaveが登場するかお楽しみですね。</p>
 <br/>
-<p><img alt="Google Wave" src="http://blog-imgs-34.fc2.com/k/i/n/kinopyo/Google-Wave-iphone-app.jpg"></p>
-</div>

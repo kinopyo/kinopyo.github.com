@@ -7,8 +7,15 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" dir /s /b >file.txt /s指定されたディレクトリおよびそのサブディレクトリのすべてのファイルを表示します。
-/bは拡張子とディレクト付きのファイル名を表示します。 2010-03-19 nil ">
+	<meta name="description" content="jQuery 1.4.2ではこれは治ったようです。
+jQuery最新版をお使いの方は下記のようなバグはもう発生しません。 サンプル ※jQuery 1.3.2で発生する問題※ HTML 1
+2
+3
+4
+5
+6
+7
+&lt;select&gt; &lt;option id=&quot;foo& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,44 +79,6 @@
 
 </header>
 	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/dir-command-to-output-all-subfolder-file-nam">dirコマンドでサブフォルダにあるファイル一覧を出力</a></h1>
-	<div class="entry-content">
-		<p>dir /s /b >file.txt</p>
-
-<p><strong>/s</strong>指定されたディレクトリおよびそのサブディレクトリのすべてのファイルを表示します。
-<strong>/b</strong>は拡張子とディレクト付きのファイル名を表示します。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-19T00:00:00+09:00" pubdate data-updated="true">2010-03-19</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
 
 
     <article class="post">
@@ -768,6 +737,145 @@ JSPのコメント式を記述します。
 
 
 	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-variable-no-block-scope">Javascript変数にブロックスコープはない</a></h1>
+	<div class="entry-content">
+		<p>JavaをやってからJavascriptを触ったので、
+Javascript変数にブロックレベルのスコープがないことにビックリしました。
+if文ブロックか、forループブロックか関係なく、
+function内に定義された変数は全て同じスコープ：functionのスコープになります。</p>
+
+<br/>
+
+
+<p>例えば</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                      <span class="c1">// i is defined throughout function</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">o</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                  <span class="c1">// j is defined everywhere, not just block</span>
+</span><span class='line'>        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// k is defined everywhere, not just loop</span>
+</span><span class='line'>            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>          <span class="c1">// k is still defined: prints 10</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>              <span class="c1">// j is defined, but may not be initialized</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>変数kとjはそれぞれif文のブロック、forループのブロック内に定義されたが、
+実はfunctionのスコープとなりfunction内ならどこでも参照できます。</p>
+
+<br/>
+
+
+<p>これをしっかり理解しないと以下のようなミスが起こしやすいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;undefined&quot;, not &quot;global&quot;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>  <span class="c1">// Variable initialized here, but defined everywhere</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;local&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">test</span><span class="p">(</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>一番目のalertは&#8221;global&#8221;だと思ったらこの記事を読む価値はあるでしょう。
+一番目のalertは&#8221;undefined&#8221;を表示します。
+なぜならさっき言ったように変数のスコープはfunction内に跨るのです。
+varで宣言する位置、順番と関係ありません。</p>
+
+<br/>
+
+
+<p>ここではfunction内で同じ名前でscopeという変数が宣言され、
+&#8220;global&#8221;の値を持つグローバル変数は上書きされました。
+そして一番目のalert時のscopeは初期化されていないため、undefinedとなってしまいます。</p>
+
+<br/>
+
+
+<p>上記のコードを書き換えると以下と同じです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span><span class="p">;</span>       <span class="c1">// Local variable is declared at the start of the function</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// It exists here, but still has &quot;undefined&quot; value</span>
+</span><span class='line'>    <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span> <span class="c1">// Now we initialize it and give it a value</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// And here it has a value</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>誤解を招かないように変数の宣言はfunctionの先頭に置くのが大事ですね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-12T00:00:00+09:00" pubdate data-updated="true">2010-02-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: IE | Yet Another Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/ie/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2012-09-29T01:26:08+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[IE6でjQueryを使う時のエラー：selectにoption生成の不具合]]></title>
+    <link href="http://kinopyo.com/blog/issue-when-using-jquery-to-manipulate-option-to-selectbox-in-ie"/>
+    <updated>2009-11-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/issue-when-using-jquery-to-manipulate-option-to-selectbox-in-ie</id>
+    <content type="html"><![CDATA[<h2>環境</h2>
+
+<ul>
+<li>IE6</li>
+<li>jQuery1.3.2</li>
+</ul>
+
+
+<h2>現象</h2>
+
+<p>IE7、IE8、Firefox上全部OKのアプリがなぜかIE6ではエラーが頻発しました。
+エラーの詳細もないので、原因がはっきりわかりません。</p>
+
+<br />
+
+
+<p>ソースは特に変な作り方をしてないと思うので、やはりIE6が主な原因と判断しググってみました。</p>
+
+<h2>調査結果</h2>
+
+<blockquote><p>IE6でselect boxに&lt;option&gt;を追加した直後、
+その追加した値を.valで設定しようとすると上記のエラーが発生します。
+（設定する値が追加した値以外の場合、正常に設定できます）</p></blockquote>
+
+<p>今回のアプリではselectボックスは静的にHTMLで書いて、
+jQueryでoptionをどんどんappendしてました。
+やはりこの辺が怪しかったですね。</p>
+
+<br/>
+
+
+<p>回避策としてあげられるのは<strong>.valを設定する前に.width()を一回実行すること</strong>です。
+信じられないぐらい、本当になおりました。
+setTimeout(function () {}, 0); も回避策の一つとの選択肢もあったのですが、
+なぜかこれは効きませんでした。</p>
+
+<h2>以下個人感想</h2>
+
+<p>IE6のばかばかしい動きが元凶なので、詳しく追求する気はないです。
+ほかにもjQueryを使うときに注意すべきものがいっぱいあるようです。
+まあ、またエラーなんか起きたらそのときまた検索すればって思います。</p>
+
+<br/>
+
+
+<p>ウェブアプリ開発者はIE6～IE8、Firefoxなどいろいろなブラウザにも注意しながら
+開発するしかないことがすごく嫌です。
+この前FirefoxがやっとIE6を市場シェアを抜けて一位になった記事がありました。
+(Firefox &#62; IE6 &#62; IE7 &#62; IE8の感じかな、トータルではもちろIE全体がまだトップ)
+IE6なんかもう早く下がってほしい。</p>
+
+<br/>
+
+
+<p>なので、ブラウザに気にしないFlex開発に興味を持ち、今勉強中です。
+そこら辺の感想はまた別途で記事書きます。</p>
+
+<br/>
+
+
+<p>ちなみに、Google分析で私のブログを見る平均時間は44秒です。
+内容的にこんなに駄目なんですか。。？
+44秒、、短すぎ、、</p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091110/20091110011109.jpg" alt="" /></p>
+
+<h2>参考になったサイト</h2>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/x6x6/20080318/1205817536">jQueryでoption要素を追加した際の諸問題</a></li>
+<li><a href="http://tech.kayac.com/archive/jquery-checkpoints.html">jQueryを使うときに気をつけるべき8のポイント</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Smartyのインストールはphp.iniにインクルードパスを書く方法と書かない方法があります。ここではphpのインクルードパスに書く方法を紹介します。 1 Smartyをダウンロード http://www.smarty.net/download.phpからダウンロードします。今回は3. &hellip;">
+	<meta name="description" content="ダウンロード http://wiki.github.com/MrAnchovy/kohana-module-smarty/ インストール githubでも手順がとても分かりやすいので直接引用させていただきます。 Download the latest version from the links &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,138 +71,6 @@
 
 </header>
 	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-smarty-to-mac-xampp">SmartyをMac XAMPP環境にインストール</a></h1>
-	<div class="entry-content">
-		<p>Smartyのインストールはphp.iniにインクルードパスを書く方法と書かない方法があります。ここではphpのインクルードパスに書く方法を紹介します。</p>
-
-<h3>1 Smartyをダウンロード</h3>
-
-<p><a href="http://www.smarty.net/download.php">http://www.smarty.net/download.php</a>からダウンロードします。今回は3.0rc3にしました。</p>
-
-<h3>2 ファイルの解凍</h3>
-
-<p>できたフォルダ名はSmarty-3.0rc3で、それをsmartyにリネームして、/Applications/XAMPP/xamppfiles/lib/phpに移動します。こうするのはここがXAMPPの場合のinclude_pathになるからです。</p>
-
-<h3>3 php.iniを変更して、smartyを読み込ませる</h3>
-
-<p>php.ini中のinclude_pathに&#8221;.:/Applications/XAMPP/xamppfiles/lib/php/smarty/libs&#8221;の記述を追加します。
-できたイメージはこうなります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>include_path=".:/Applications/XAMPP/xamppfiles/lib/php:/Applications/XAMPP/xamppfiles/lib/php/pear.:/Applications/XAMPP/xamppfiles/lib/php/smarty/libs"</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>4 smartyが必要なフォルダを作成します。</h3>
-
-<p>smartyは四つのフォルダが必要です：
-+  templates
-+  templates_c
-+  cache
-+  config</p>
-
-<p>templates_cとcacheフォルダには適切な書き込み権限を付与しなければなりません。
-場所は任意のはずです。ここではこんな形にしました。htdocsはXAMPPのウェブルートフォルダです。
-+  /Applications/XAMPP/xamppfiles/htdocs/smarty/templates
-+  /Applications/XAMPP/xamppfiles/htdocs/smarty/config
-+  /Users/zolo/Develop/smarty/templates_c
-+  /Users/zolo/Develop/smarty/cache</p>
-
-<h3>5 smartyテンプレートを作成</h3>
-
-<p>上記templatesフォルダにsmarty.tplというファイルを作成します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>Hello, {$name}!
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>6 テンプレートに値をセットするphpファイルを作成</h3>
-
-<p>/Applications/XAMPP/xamppfiles/htdocs/にsmarty.phpというファイルを作成します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// load Smarty library</span>
-</span><span class='line'><span class="k">require</span><span class="p">(</span><span class="s1">&#39;Smarty.class.php&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$smarty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Smarty</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="s1">&#39;/Applications/XAMPP/xamppfiles/htdocs/smarty/templates&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">config_dir</span> <span class="o">=</span> <span class="s1">&#39; /Applications/XAMPP/xamppfiles/htdocs/smarty/config&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="s1">&#39;/Users/zolo/Develop/smarty/cache&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="s1">&#39;/Users/zolo/Develop/smarty/templates_c&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;kinopyo!&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">&#39;smarty.tpl&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>7 動作確認</h3>
-
-<p>php.iniを編集したため、まずはapacheを再起動します。
-そして<a href="http://127.0.0.1/smarty.php">http://127.0.0.1/smarty.php</a>にアクセスしてエラーがなければOKです。</p>
-
-<h2>参考リンク:</h2>
-
-<p><a href="http://news.php.net/php.smarty.dev/2703">http://news.php.net/php.smarty.dev/2703</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-25T00:00:00+09:00" pubdate data-updated="true">2010-09-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
 
 
     <article class="post">
@@ -957,6 +825,168 @@ You can access the url &#8216;/person/1-kinopyo&#8217; or &#8216;/person/1&#8217
 
 
 <time datetime="2010-07-29T00:00:00+09:00" pubdate data-updated="true">2010-07-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-a-helper-method-shows-the-required-mark">Rails: a helper method shows the required mark</a></h1>
+	<div class="entry-content">
+		<p>一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの&#8221;# &#8220;を出力します。</p>
+
+<p>まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、第二引数はそのクラスのプロパティを渡します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>viewのerbには下記のように@userインスタンス変数と:nameを渡します。もしUserモデルに:nameに対して必須バリデーションが存在すれば必須マークが出力されます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span><span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考リンク：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+
+<h2>20110704更新</h2>
+
+<p>もしhtmlタグも一緒に出力したいときは、タグがエスケープされてしまいます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;&lt;span class=&#39;require_mark&#39;&gt;# &lt;/span&gt;&quot;</span>
+</span><span class='line'>    <span class="n">mark</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span><span class="n">raw</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この場合はrawを書けばエスケープされずにちゃんとHTMLタグが出力します。</p>
+
+<h1>中文</h1>
+
+<p>我们将创建一个Helper方法来输出&#8221;# &#8220;表示必须项目。
+（原谅我这蹩脚的汉语，实在是不知道这些术语用中文该怎么叫）</p>
+
+<p>首先在application_helper里创建一个叫mark_required的方法。他的第一个参数为对象，第二个参数接收的是对象的属性。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后在View里我们只要把@user和:name传过去即可。如果你的User Model对:name进行了必须验证(presence validator)，&#8221;# &#8220;就会显示出来。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>链接：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+
+<h1>English</h1>
+
+<p>Let&#8217;s make a helper method that shows a required mark &#8220;# &#8221; when the attribute of the object has a presence validator.</p>
+
+<p>First, create a mark_required method in the application_helper, pass the object as 1st parameter, the attribute as the second one.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># application_helper.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mark_required</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+</span><span class='line'>  <span class="s2">&quot;# &quot;</span> <span class="k">if</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">validators_on</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span><span class="o">.</span><span class="n">include?</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span><span class="o">::</span><span class="no">PresenceValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, just call the custom method in the erb view file. In this sample we pass the @user instance variable and the :name attribute symbol. So if your User model has a presence validator on the :name attribute, the required-mark &#8220;# &#8221; will show up.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= f.label :name %&gt;&lt;%=</span> <span class="n">mark_required</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span> <span class="sx">%&gt;&lt;br /&gt;</span>
+</span><span class='line'>    <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I learned from this site：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T00:00:00+09:00" pubdate data-updated="true">2010-07-27</time></div>
 	<div class="tags">
 
 

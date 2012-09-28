@@ -7,8 +7,15 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="これが既存データで、同じ日に複数のデータがある。 期望結果はこれ、つまり日付別で集計したい場合 MySQLではDATE関数を使う 1
-mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE( &hellip;">
+	<meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+git clone https://github.com/enormego/EGOTextMateFullScreen.git /tmp/EGOTextMateFullScreen xcodebuild -project /tmp/ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,67 +79,6 @@ mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE( &hellip
 
 </header>
 	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mysql-oracle-group-by-date">MySQL, OracleのGroup by date, 日付別で集計</a></h1>
-	<div class="entry-content">
-		<p>これが既存データで、同じ日に複数のデータがある。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" alt="Example data" /></p>
-
-<p>期望結果はこれ、つまり日付別で集計したい場合</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" alt="Expected result" /></p>
-
-<h2>MySQLではDATE関数を使う</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Oracleではto_char関数を使う</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(*) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>参考</h2>
-
-<ul>
-<li><a href="http://blog.asial.co.jp/209">ちょっと使えるMySQLの小技5つ+1 : アシアルブログ</a></li>
-<li><a href="http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406">第104回 Oracleのお勉強 GROUP BY の罠 - bingo_nakanishiの他言語出身者のためのPerl入門</a></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-17T00:00:00+09:00" pubdate data-updated="true">2011-08-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
-
-
-</div>
-	
-</div></article>
 
 
     <article class="post">
@@ -716,6 +662,58 @@ BetterTouchToolはトラックパッドを便利にするためのツールで�
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/lion/'>Lion</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-pad-a-number-to-certain-length-with-0">PHP:必要桁数まで0埋めする</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// 47 -&gt; 047</span>
+</span><span class='line'><span class="x">sprintf(&quot;%03d&quot;, 47);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// or</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// parameter: string $input , int $pad_length,</span>
+</span><span class='line'><span class="x">str_pad(47, 3, &#39;0&#39;, STR_PAD_LEFT);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>str-padについては：<a href="http://php.net/manual/en/function.str-pad.php">http://php.net/manual/en/function.str-pad.php</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-22T00:00:00+09:00" pubdate data-updated="true">2011-07-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>
