@@ -5,7 +5,7 @@ date: 2010-4-16
 wordpress_id: 1074
 permalink: /blog/java-unsupportedoperationexception-when-manipulate-java-list
 comments: true
-categories: [nil]
+categories: Java
 ---
 久々にJavaを書いたので、表題のExceptionにハマっちゃいました。
 こんなコードでした。

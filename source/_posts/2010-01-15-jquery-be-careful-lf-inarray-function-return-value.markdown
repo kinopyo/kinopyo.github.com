@@ -5,7 +5,7 @@ date: 2010-1-15
 wordpress_id: 800
 permalink: /blog/jquery-be-careful-lf-inarray-function-return-value
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 ## $.inArray(value, array)
 指定した値が配列中にあれば、そのインデックスを返します。

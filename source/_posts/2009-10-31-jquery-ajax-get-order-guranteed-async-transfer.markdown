@@ -5,7 +5,7 @@ date: 2009-10-31
 wordpress_id: 289
 permalink: /blog/jquery-ajax-get-order-guranteed-async-transfer
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 
 ## 前記：
@@ -43,9 +43,9 @@ ajax通信が終わってない段階でalertが出るかもです。
 一番簡単なのはjQueryが用意したコールバック関数です。
 
 ```js
-$.load(url,[data],[callback])
-$.get(url,[data],[callback],[returnType])
-$.getJSON(url,[data],[callback])
+$.load(url, [data], [callback])
+$.get(url, [data], [callback], [returnType])
+$.getJSON(url, [data], [callback])
 ```
 
 などがあります。
@@ -132,17 +132,17 @@ optionにはglobalというフラグがあり、デフォルトはtrueになっ�
 
 ```js
 var option1 = {
-	global : false
+	global: false
 	// ほかのurlなどの設定
 }
 
 var option2 = {
-	global : false
+	global: false
 	// ほかのurlなどの設定
 }
 
 var option3 = {
-	global : true
+	global: true
 	// ほかのurlなどの設定
 }
 
@@ -182,21 +182,22 @@ completeは完了した際のコールバックです。
 (抜粋)
 ```js
 var option1 = {
-	complete : $.ajax(option2)
+	complete: $.ajax(option2)
 }
 
 var option2 = {
-	complete : $.ajax(option3)
+	complete: $.ajax(option3)
 }
 
 var option3 = {
-	complete :function(){
-				alert('ajax all complete');
+	complete: function(){
+		alert('ajax all complete');
 	}
 }
 
 $.ajax(option1);
 ```
+
 動作確認でOKでした。
 completeオプションで前のajax通信が必ず完了した後に次のajax通信を始まることを
 保障しています。
@@ -204,6 +205,7 @@ completeオプションで前のajax通信が必ず完了した後に次のajax�
 
 これをちょっと綺麗にラッパーした関数を作りました。
 ご覧ください。
+
 ```js
 function doOrderGuaranteedAjax(ajaxOptionArray, allCompleteHandler){
   var defaults = {

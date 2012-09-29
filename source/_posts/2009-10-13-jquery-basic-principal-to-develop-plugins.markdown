@@ -5,7 +5,7 @@ date: 2009-10-13
 wordpress_id: 272
 permalink: /blog/jquery-basic-principal-to-develop-plugins
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 本文(英語)のアドレス：
 [A Plugin Development Pattern » Learning jQuery - Tips, Techniques, Tutorials](http://www.learningjquery.com/2007/10/a-plugin-development-pattern)

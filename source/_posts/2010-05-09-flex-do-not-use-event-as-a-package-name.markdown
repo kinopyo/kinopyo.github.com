@@ -5,7 +5,7 @@ date: 2010-5-9
 wordpress_id: 1124
 permalink: /blog/flex-do-not-use-event-as-a-package-name
 comments: true
-categories: [nil]
+categories: Flex
 ---
 カスタムイベントのパッケージ名を"event"にしました。
 

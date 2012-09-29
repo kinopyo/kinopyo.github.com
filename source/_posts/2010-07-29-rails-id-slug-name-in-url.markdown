@@ -5,7 +5,7 @@ date: 2010-7-29
 wordpress_id: 1287
 permalink: /blog/rails-id-slug-name-in-url
 comments: true
-categories: [nil]
+categories: Rails
 ---
 This is about how to customize the url to the form like "id + post.title", which can be simply overriding the* to_param* method in your model class.
 

@@ -5,7 +5,7 @@ date: 2009-11-29
 wordpress_id: 328
 permalink: /blog/apache-redirect-memo
 comments: true
-categories: [nil]
+categories: Apache
 ---
 <div class="section">
 <p>サイトの引越しなどであるURLから別のURLへ転送する場合の話です。例えば JavaScript を利用して転送したり、HTMLの機能で転送させたりするかもしれません。</p>

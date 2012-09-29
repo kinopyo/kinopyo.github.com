@@ -5,7 +5,7 @@ date: 2009-12-7
 wordpress_id: 265
 permalink: /blog/wordpress-permalink-settings-for-seo
 comments: true
-categories: [nil]
+categories: Wordpress SEO
 ---
 最適なSEOになるためのWordPressのパーマリンク設定方法について書きたいと思います。
 

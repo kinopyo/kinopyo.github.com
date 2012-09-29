@@ -5,7 +5,7 @@ date: 2009-12-1
 wordpress_id: 331
 permalink: /blog/wordpress-import-issue-posttime-become-1970year
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 <div class="section">
 <h4>移行手順</h4>

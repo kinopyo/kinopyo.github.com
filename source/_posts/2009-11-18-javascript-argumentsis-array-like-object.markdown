@@ -5,7 +5,7 @@ date: 2009-11-18
 wordpress_id: 309
 permalink: /blog/javascript-argumentsis-array-like-object
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 <div class="section">
 <p>argumentsは配列じゃないため、配列のメソッドは</p>

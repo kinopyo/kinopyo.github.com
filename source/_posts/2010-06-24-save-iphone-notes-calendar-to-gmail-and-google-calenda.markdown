@@ -5,7 +5,7 @@ date: 2010-6-24
 wordpress_id: 1215
 permalink: /blog/save-iphone-notes-calendar-to-gmail-and-google-calenda
 comments: true
-categories: [nil]
+categories: iPhone
 ---
 iOS4をインストールできたら、メールアカウントの設定画面をチェックしてみてください。
 「メモ（Notes）」という項目が追加されているはずです。

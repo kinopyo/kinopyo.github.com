@@ -5,7 +5,7 @@ date: 2009-11-24
 wordpress_id: 319
 permalink: /blog/install-php5-and-apache2-2-in-windows
 comments: true
-categories: [nil]
+categories: PHP Apache
 ---
 <div class="section">
 <h4>Apache</h4>

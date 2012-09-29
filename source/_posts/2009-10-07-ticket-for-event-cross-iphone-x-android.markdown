@@ -5,9 +5,8 @@ date: 2009-10-7
 wordpress_id: 267
 permalink: /blog/ticket-for-event-cross-iphone-x-android
 comments: true
-categories: [nil, "other"]
+categories: Diary
 ---
-<div class="section">
 <p>これが何のイベントかっていうと、下記になります。</p>
 <p>CROSS（クロス）は、CSS Niteからスピンオフした、Webクリエイター向けのイベントです。2つのすばらしいプロダクトを交互に紹介して、その魅力や特長をスピーディに知ることができる場を提供いたします。</p>
 <p>今回取り上げるのは、Appleの「iPhone」と、Googleケータイこと「Android」。</p>
@@ -19,4 +18,3 @@ categories: [nil, "other"]
 <p>すぐに申し込み！</p>
 <p>うれしいな～</p>
 <p>今週の土曜日です。お楽しみに！</p>
-</div>

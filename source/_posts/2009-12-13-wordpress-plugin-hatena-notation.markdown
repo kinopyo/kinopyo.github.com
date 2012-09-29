@@ -5,7 +5,7 @@ date: 2009-12-13
 wordpress_id: 525
 permalink: /blog/wordpress-plugin-hatena-notation
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 Wordpressブログにはてな記法を適用するプラグインを紹介します。
 はてな記法に慣れたら結構手軽にブログを書けます。

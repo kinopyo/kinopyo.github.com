@@ -5,7 +5,7 @@ date: 2009-12-13
 wordpress_id: 578
 permalink: /blog/wordpress-plugin-subscribe-to-comments-for-readers
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 閲覧者がコメントする際にチェックボックスにマークしておくことで、
 さらにコメントが追加された場合、メールで知らせてくれるプラグインです。

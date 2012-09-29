@@ -5,7 +5,7 @@ date: 2010-6-1
 wordpress_id: 1150
 permalink: /blog/add-facebook-like-button-to-my-blog
 comments: true
-categories: [nil]
+categories: Facebook
 ---
 Googleの[http://www.google.com/adplanner/static/top1000/](http://www.google.com/adplanner/static/top1000/)によりますと、
 Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。

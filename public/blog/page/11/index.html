@@ -7,7 +7,16 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Smooth CoffeeScript 200ページを超え、35の練習問題があります。基本文法からオブジェクト指向、モジュラリティ、そしてHTML5のCanvasとWebSocketsまで紹介されています。PDFは答えがついてあるバージョンと付いてないバージョンがあり、さらにソースコードまで。 &hellip;">
+	<meta name="description" content="1
+2
+3
+4
+5
+6
+7
+// 47 -&gt; 047
+sprintf(&quot;%03d&quot;, 47); // or // parameter: string $input , int $pad_length,
+str_pad(47, 3, &#39;0&#39;, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +80,58 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-pad-a-number-to-certain-length-with-0">PHP:必要桁数まで0埋めする</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// 47 -&gt; 047</span>
+</span><span class='line'><span class="x">sprintf(&quot;%03d&quot;, 47);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// or</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// parameter: string $input , int $pad_length,</span>
+</span><span class='line'><span class="x">str_pad(47, 3, &#39;0&#39;, STR_PAD_LEFT);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>str-padについては：<a href="http://php.net/manual/en/function.str-pad.php">http://php.net/manual/en/function.str-pad.php</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-22T00:00:00+09:00" pubdate data-updated="true">2011-07-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -195,11 +256,14 @@ Scroll direction:naturalは2本指スクロールが今までの動きと真逆�
 
 <h2>手順</h2>
 
-<p>+<a href="https://addons.mozilla.org/ja/firefox/addon/greasemonkey/">https://addons.mozilla.org/ja/firefox/addon/greasemonkey/</a>でGreasemonkeyをインストールし、Firefoxを再起動
-+<a href="http://userscripts.org/scripts/show/47830">http://userscripts.org/scripts/show/47830</a>右上のInstallをクリック
-+Google Readerを開けば&#8221;Mark below as read&#8221;と&#8221;Mark above as read&#8221;ボタンが上のツールバーに現れる
-+一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す
-+ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong></p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/greasemonkey/">https://addons.mozilla.org/ja/firefox/addon/greasemonkey/</a>でGreasemonkeyをインストールし、Firefoxを再起動</li>
+<li><a href="http://userscripts.org/scripts/show/47830">http://userscripts.org/scripts/show/47830</a>右上のInstallをクリック</li>
+<li>Google Readerを開けば&#8221;Mark below as read&#8221;と&#8221;Mark above as read&#8221;ボタンが上のツールバーに現れる</li>
+<li>一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す</li>
+<li>ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong></li>
+</ul>
+
 
 		
 		
@@ -571,74 +635,6 @@ Embed GitHub Gistはgistから内容を取得して本文に出力するためRS
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/zshrc/'>zshrc</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/get-https-contents-with-nokogiri">Nokogiriでhttpsプロトコールのコンテンツを取得</a></h1>
-	<div class="entry-content">
-		<p>Nokogiriでurlをparseするときは普通こんなコードになります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;http://example.com/&#39;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>しかし接続先のプロトコールがhttpsの場合はNo such file or directoryのエラーとなります。
-一旦net/httpsで取ってからそれをnokogiriでparseするような工夫が必要です。</p>
-
-<div><script src='https://gist.github.com/1037492.js?file='></script>
-<noscript><pre><code>require 'net/https'
-require 'nokogiri'
-
-url = &quot;https://example.com&quot;
-url = URI.parse( url )
-http = Net::HTTP.new( url.host, url.port )
-http.use_ssl = true if url.port == 443
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE if url.port == 443
-path = url.path
-path += &quot;?&quot; + url.query unless url.query.nil?
-res, data = http.get( path )
-
-case res
-  when Net::HTTPSuccess, Net::HTTPRedirection
-    # parse link
-    doc = Nokogiri::HTML(data)
-     # do what you want ...
-  else
-    return &quot;failed&quot; + res.to_s
-end</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-27T00:00:00+09:00" pubdate data-updated="true">2011-06-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/https/'>https</a>, <a class='category' href='/blog/categories/nokogiri/'>nokogiri</a>
 
 
 </div>

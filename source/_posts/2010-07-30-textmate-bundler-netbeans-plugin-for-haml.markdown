@@ -5,7 +5,7 @@ date: 2010-7-30
 wordpress_id: 1302
 permalink: /blog/textmate-bundler-netbeans-plugin-for-haml
 comments: true
-categories: [nil]
+categories: Textmate Editor
 ---
 ## TextMate Bundler：
 [http://github.com/handcrafted/handcrafted-haml-textmate-bundle](http://github.com/handcrafted/handcrafted-haml-textmate-bundle)

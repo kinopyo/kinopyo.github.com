@@ -5,7 +5,7 @@ date: 2009-12-7
 wordpress_id: 338
 permalink: /blog/concentrate-editor-ommwriter
 comments: true
-categories: [nil]
+categories: Mac Editor
 ---
 <div class="section">
 <p>Mac向けのソフトです。同じ集中力アップのWriteroomと似てますが、</p>

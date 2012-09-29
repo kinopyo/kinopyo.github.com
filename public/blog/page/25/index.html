@@ -7,7 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="なぜDIコンテナを使うのかの勉強メモです。 SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります。 &hellip;">
+	<meta name="description" content="Eclipse Tomcat Pluginダウンロードページでzipファイルをダウンロード
+現時点の最新版はtomcatPluginV321.zipです。
+your_Eclipse_Home/pluginsに解凍
+Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -71,6 +74,65 @@
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/eclipse-install-tomcat-plugin">EclipseにTomcatプラグインをインストール</a></h1>
+	<div class="entry-content">
+		<ul>
+<li><p><a href="http://www.eclipsetotale.com/tomcatPlugin.html#A4">Eclipse Tomcat Pluginダウンロードページ</a>でzipファイルをダウンロード
+現時点の最新版はtomcatPluginV321.zipです。</p></li>
+<li><p>your_Eclipse_Home/pluginsに解凍</p></li>
+<li>Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-toolbar-icon.jpg" title="tomcat-toolbar-icon" ></p>
+
+<ul>
+<li>下記のようにTomcatバージョンとTomcatホームを設定</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-home-path.jpg" title="tomcat-settings-home-path" ></p>
+
+<ul>
+<li>下記のようにTomcat用のJVM SettingでJREバージョンを選択</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-jre-version.jpg" title="tomcat-settings-jre-version" ></p>
+
+<p>私の場合デフォルトがJRE1.4になっていたため、これを1.5の変えました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/eclipse/'>Eclipse</a>, <a class='category' href='/blog/categories/editor/'>Editor</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -212,7 +274,7 @@ DIコンテナにセットしてJuchuImplの単体テストを実行できます
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -510,7 +572,7 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -629,7 +691,7 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>
@@ -712,62 +774,7 @@ WordPress管理画面から「subscribe-to-comments」を検索してインス�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-plugin-hatena-notation">WordPressにはてな記法を適用するプラグイン</a></h1>
-	<div class="entry-content">
-		<p>Wordpressブログにはてな記法を適用するプラグインを紹介します。
-はてな記法に慣れたら結構手軽にブログを書けます。
-Wordpressにそのはてな記法のプラグインがあります。</p>
-
-<h2>インストール</h2>
-
-<ul>
-<li><a href="http://rewish.org/wp/hatena_notation_plugin">WordPressにはてな記法を導入するプラグイン</a>にてダウンロード</li>
-<li>サーバにアップロード(wp-content/pluginsフォルダに)</li>
-<li>ダッシュボード→プラグイン→インストール済みでアクティブすればOK</li>
-<li>設定画面の「Posts -> WP HatenaNotation」で適用する時間範囲を決める、するとその時間以降の記事に対して有効になる</li>
-</ul>
-
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/hatena-notation-plugin.jpg" title="hatena-notation-plugin" ></p>
-
-<p>この例で言うと、2009年11月30日以前のはてな記法で書かれて記事は対象外となる意味です。</p>
-
-<h2>まだ対応してない機能</h2>
-
-<p>http記法の<em>[http://～～]</em>は現時点まだ対応予定の状態です。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>

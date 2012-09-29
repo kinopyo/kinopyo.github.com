@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Facebook | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/facebook/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -225,6 +225,40 @@ https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&amp;redirect_uri=YOU
 <p>OAuthについては<a href="https://developers.facebook.com/docs/authentication/">https://developers.facebook.com/docs/authentication/</a>で詳しく説明しています。</p>
 
 <p>後者の場合は<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>の最後でサンプルコードがあるので参考できます。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FacebookのLikeボタンを追加しました]]></title>
+    <link href="http://kinopyo.com/blog/add-facebook-like-button-to-my-blog"/>
+    <updated>2010-06-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/add-facebook-like-button-to-my-blog</id>
+    <content type="html"><![CDATA[<p>Googleの<a href="http://www.google.com/adplanner/static/top1000/">http://www.google.com/adplanner/static/top1000/</a>によりますと、
+Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
+日本と中国ではまだFacebookが主流のSNSサイトにはなっていないようですが、
+そのうちどうなりますかね。。</p>
+
+<br/>
+
+
+<p><a href="http://developers.facebook.com/docs/api">Graph API</a>とかまだ全然わかりませんが、
+とりあえずLikeボタンをブログに設置しました。
+<a href="http://developers.facebook.com/docs/reference/plugins/like">このページ</a>でURLとwidthを入力するだけで簡単に作れます。
+生成されたコードは二種類ありまして一つは<em>iframe</em>のやつと
+もう一つはFacebookのカスタムタグのやつで
+これは<a href="http://developers.facebook.com/docs/reference/javascript/">Javascript SDK</a>が必要だそうです。
+もちろん後者のほうがもっとパワフルな感じです。</p>
+
+<br/>
+
+
+<p>ソーシャルアプリとかゲームの開発はちょっとやりたいので
+時間があればFacebookの各種APIも勉強するつもりです。</p>
+
+<br/>
+
+
+<p>ひとまずサイドバーに設置して自分が'Like'を押しました。。</p>
 ]]></content>
   </entry>
   

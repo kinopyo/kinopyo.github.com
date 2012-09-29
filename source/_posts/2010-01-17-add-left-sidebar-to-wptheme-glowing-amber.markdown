@@ -5,7 +5,7 @@ date: 2010-1-17
 wordpress_id: 804
 permalink: /blog/add-left-sidebar-to-wptheme-glowing-amber
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 本文はWPテーマGlowing Amberに二番目のサイドバーを追加する方法を紹介します。
 

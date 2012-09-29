@@ -5,7 +5,7 @@ date: 2010-4-28
 wordpress_id: 1100
 permalink: /blog/chrome-plugin-getflash-download-flash
 comments: true
-categories: [nil]
+categories: Chrome
 ---
 [http://ruzanow.ru/extensions/getflash.crx](http://ruzanow.ru/extensions/getflash.crx)
 

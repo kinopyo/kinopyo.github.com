@@ -5,7 +5,7 @@ date: 2009-12-2
 wordpress_id: 334
 permalink: /blog/is-extension-changed-js-still-run
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 <div class="section">
 <p><a href="http://gihyo.jp/dev/serial/01/web20sec/0001?page=2" target="_blank">ここが危ない！Web2.0のセキュリティ：第1回　Ajaxとクロスサイトスクリプティング｜gihyo.jp … 技術評論社</a>の勉強メモ＆実験です。</p>

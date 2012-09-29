@@ -5,7 +5,7 @@ date: 2009-12-1
 wordpress_id: 330
 permalink: /blog/install-multy-wordpress-in-same-db
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 <div class="section">
 <h4>手法</h4>

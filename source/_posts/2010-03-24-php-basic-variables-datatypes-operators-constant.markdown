@@ -5,7 +5,7 @@ date: 2010-3-24
 wordpress_id: 1048
 permalink: /blog/php-basic-variables-datatypes-operators-constant
 comments: true
-categories: [nil]
+categories: PHP
 ---
 ## Declare a variable
 

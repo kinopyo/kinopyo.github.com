@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: PHP | Yet Another Kinopyo Blog]]></title>
+  <title><![CDATA[Category: php | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,84 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[さくらVPSのパフォーマンスチューニング]]></title>
-    <link href="http://kinopyo.com/blog/sakura-vps-centos-performance-tunning-wordpress"/>
-    <updated>2011-11-11T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/sakura-vps-centos-performance-tunning-wordpress</id>
-    <content type="html"><![CDATA[<p>さくらVPSでWordpressブログをやってます。そんなにアクセスがないはずなのに、さくらVPSに移行した当時は結構サーバが落ちました。topコマンドで見るとスワップが結構70%まで上がったりして、手動でapache再起動とかもやりました。。ネットでいろいろググッてそれなりにパフォーマンスチューニングした結果やっと安定して、同じサーバに2つのWordpressブログと一つのRailsアプリケーションを実行しています。</p>
-
-<p>参考までにさくらVPSは一番安いの512MB、月1000円のプランで、平日だとこのブログの一日PVは大体500〜600です。</p>
-
-<p>チューニングしてから結構時間が経ったのでだいぶ忘れました。Evernoteでのメモを貼ります。</p>
-
-<p>効果が高い順で。</p>
-
-<h2>Wordpress</h2>
-
-<p><strong>W3 Total Cache</strong>プラグインが一押しです。インストールも設定も簡単ですし、一番効果があります。
-ページのキャッシュ、cssやjavascriptのマージと圧縮など、結構やってくれます。実際これだけ入れても感じるほど早くなるはずです。</p>
-
-<h2>Apache</h2>
-
-<p><code>httpd.conf</code>を編集します。いろいろ修正してみましたが、結果下記の設定にしました。この辺はググったら結構出ますが、それぞれの環境に合わせて試行錯誤したほうがオススメです。</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&lt;IfModule prefork.c>
-</span><span class='line'>StartServers       5
-</span><span class='line'>MinSpareServers    5
-</span><span class='line'>MaxSpareServers   10
-</span><span class='line'>ServerLimit      64
-</span><span class='line'>MaxClients       64
-</span><span class='line'>MaxRequestsPerChild  50
-</span><span class='line'>MaxMemFree 2000
-</span><span class='line'>&lt;/IfModule>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h2>PHP</h2>
-
-<h3>/etc/php.ini</h3>
-
-<p>zlib.output_compression = On</p>
-
-<h3>APC</h3>
-
-<p>pecl install APC</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件]]></title>
-    <link href="http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
-    <updated>2011-09-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
-    <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
-
-<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
-CentOSなのでyumを使ってインストールすれば解決です。</p>
-
-<p><code>bash
-sudo yum install php-gd
-sudo service httpd restart
-</code></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[PHP プロセス数を指定して実行するマルチスレッド処理(curl_multi)]]></title>
@@ -271,61 +193,45 @@ str_pad(47, 3, '0', STR_PAD_LEFT);</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[複数URLのFacebookいいね(Like)された数を取得する方法]]></title>
-    <link href="http://kinopyo.com/blog/how-to-get-facebook-like-counts-for-multiple-urls"/>
-    <updated>2011-07-20T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/how-to-get-facebook-like-counts-for-multiple-urls</id>
-    <content type="html"><![CDATA[<p>今はほとんどのサイトがLike(いいね！)ボタンを置いてますが、Likeボタンがどれだけクリックされたか、その数は気になりますね。</p>
+    <title type="html"><![CDATA[PEAR HTTP_Requestのサンプルコード]]></title>
+    <link href="http://kinopyo.com/blog/pear-http_request-example"/>
+    <updated>2011-06-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/pear-http_request-example</id>
+    <content type="html"><![CDATA[<p>仕事で使ったので簡単にサンプルコードをまとめました。</p>
 
-<p>Facebook独自のFQL（文法はSQLに似ている）を使って複数URLのLikeされた数が取れます。Facebook公式ドキュメントは<a href="http://developers.facebook.com/docs/reference/fql/link_stat/">こちら</a>にあります。</p>
+<script type="text/javascript" src="scripts/gist1014278.js"></script>
 
-<p>下記はPHPでのサンプルコードです。
-<div><script src='https://gist.github.com/1073555.js?file=get_facebook_like_counts_of_multiple_urls.php'></script>
-<noscript><pre><code>&lt;?php
-// see fql docs:
-// http://developers.facebook.com/docs/reference/fql/link_stat/
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP:環境構築時に使う接続テストコードまとめ MySQL/Oracle/Memcache/Memcached]]></title>
+    <link href="http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
+    <updated>2011-06-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
+    <content type="html"><![CDATA[<p>環境構築時に接続テスト用のコードをまとめました。</p>
 
-$url_list = array(
-	'http://example.com/url1.html',
-	'http://example.com/url2.html',
-);
+<script type="text/javascript" src="scripts/gist.js"></script>
 
-$url_string = '(&quot;'. implode('&quot;,&quot;', $url_list). '&quot;)';
 
-// just like sql syntax
-$fql = &quot;select url, like_count from link_stat where url in&quot;.$url_string;
-// remember to encode it
-$url = &quot;https://api.facebook.com/method/fql.query?format=json&amp;query=&quot;.urlencode($fql);
+<script type="text/javascript">gist()</script>
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$data = curl_exec($ch);
-curl_close($ch);
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cakephp XML to Array]]></title>
+    <link href="http://kinopyo.com/blog/cakephp-xml-to-array"/>
+    <updated>2011-05-15T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/cakephp-xml-to-array</id>
+    <content type="html"><![CDATA[<p>CakephpでXMLを配列に変換するのはとても簡単です。
+下記のファンクションを使えば一発でできます。</p>
 
-$json = json_decode($data, true);
-$ret = array();
-print_r($json);
-
-// result example
-/*
-Array
-(
-    [0] =&gt; Array
-        (
-            [url] =&gt; http://example.com/url1.html
-            [like_count] =&gt; 10
-        )
-
-    [1] =&gt; Array
-        (
-            [url] =&gt; http://example.com/url2.html
-            [like_count] =&gt; 20
-        )
-
-)
-*/</code></pre></noscript></div>
-</p>
+<p><code>php
+uses('Xml');
+$xml = new Xml("/path/to/xml");
+$xml_array = Set::reverse($xml);
+</code></p>
 ]]></content>
   </entry>
   

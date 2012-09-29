@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -373,56 +373,65 @@ xsi:schemaLocation="http://www.springframework.org/schema/jdbc</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Springによる単体テストの促進]]></title>
-    <link href="http://kinopyo.com/blog/spring-improve-unit-test"/>
-    <updated>2009-12-28T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/spring-improve-unit-test</id>
-    <content type="html"><![CDATA[<p><a href="http://www.atmarkit.co.jp/fjava/rensai3/springdi04/springdi04_3.html">なぜDIコンテナを使うのか</a>の勉強メモです。
-<blockquote><p></p></p><p><p>SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります。DIコンテナを利用すればDIコンテナが設定ファイルの記述に従ってインターフェイスの実装クラスをセットします。そのため、設定ファイルの内容を切り替えることで単体テスト用のモックオブジェクト（ダミーオブジェクト）に切り替えることができます。</p></p><p><p></p></blockquote></p>
-
-<h2>サンプル</h2>
-
-<p>JuchuImplクラスはZaikoHikiateImplクラスに依存しています。
-そのためJuchuImpl単体のテストを行おうとしても、
-ZaikoHikiateImplクラスのhikiate()メソッドにバグがある場合テストができませんでした。</p>
-
-<h3>単体テストを行いにくいクラス</h3>
+    <title type="html"><![CDATA[jspにメソッドを定義するには]]></title>
+    <link href="http://kinopyo.com/blog/define-method-in-js"/>
+    <updated>2010-05-06T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/define-method-in-js</id>
+    <content type="html"><![CDATA[<p><strong>&lt;&amp;!～&amp;></strong>宣言部でメソッドを定義することができます。</p>
 
 <p>```java
-public class JuchuImpl implements Juchu {</p>
+&lt;%!
+private String myMethod (String str) {</p>
 
-<pre><code>public void juchu(Integer syohinCode, Integer suryo) {
-    ZaikoHikiate hikiate = new ZaikoHikiateImpl();
-    hikiate.hikiate(syohinCode, suryo);
-    // 受注を処理
-}
+<pre><code>// some code
+return "ok";
 </code></pre>
 
 <p>}
-```</p>
+%></p>
 
-<h3>DIにより依存を低めたクラス</h3>
+<p>```</p>
+
+<p>参考サイトはこちら：
+<a href="http://www.site-cooler.com/java/j2ee/04_02.htm#3">http://www.site-cooler.com/java/j2ee/04_02.htm#3</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java：List操作時のUnsupportedOperationExceptionについて]]></title>
+    <link href="http://kinopyo.com/blog/java-unsupportedoperationexception-when-manipulate-java-list"/>
+    <updated>2010-04-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/java-unsupportedoperationexception-when-manipulate-java-list</id>
+    <content type="html"><![CDATA[<p>久々にJavaを書いたので、表題のExceptionにハマっちゃいました。
+こんなコードでした。</p>
 
 <p>```java
-public class JuchuImpl implements Juchu {</p>
+String** array = {"a", "b", "c"};</p>
 
-<pre><code>private ZaikoHikiate hikiate;
+<p>List<String> list = Arrays.asList(array);</p>
 
-public void setHikiate(ZaikoHikiate hikiate) {
-    this.hikiate = hikiate;
-}
-public void juchu(Integer syohinCode, Integer suryo) {
-    hikiate.hikiate(syohinCode, suryo);
-    // 受注を処理
-}
-</code></pre>
+<p>list.add("d");</p>
 
-<p>}
-```</p>
+<p>```</p>
 
-<p>JuchuクラスはZaikoHikiateImplクラスが完成していなくても
-ZaikoHikiateインターフェイスを実装したモックオブジェクトを
-DIコンテナにセットしてJuchuImplの単体テストを実行できます。</p>
+<p>ちょこっとググッてみたらasListで作ったListに
+add()で要素を追加すると上記のExceptionになるそうです。
+asListのJavadocでの記載は
+<blockquote><p></p></p><p><p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p></p><p><p></p></blockquote></p>
+
+<p>なるほど。。。
+とりあえず深く考えずに下記のように書き換えて回避しました。</p>
+
+<p>```java
+String** array = {"a", "b", "c"};</p>
+
+<p>List<String> list = new ArrayList<String>();</p>
+
+<p>list.addAll(Arrays.asList(array));</p>
+
+<p>list.add("d");</p>
+
+<p>```</p>
 ]]></content>
   </entry>
   

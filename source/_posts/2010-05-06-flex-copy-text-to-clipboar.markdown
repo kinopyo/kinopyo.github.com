@@ -5,7 +5,7 @@ date: 2010-5-6
 wordpress_id: 1109
 permalink: /blog/flex-copy-text-to-clipboar
 comments: true
-categories: [nil]
+categories: Flex
 ---
 テキストをクリップボードにコピーするコードです。
 *System.setClipboard*の第一引数にテキストを渡せばOKです。

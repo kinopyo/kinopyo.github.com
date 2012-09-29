@@ -5,7 +5,7 @@ date: 2009-11-27
 wordpress_id: 323
 permalink: /blog/iphone-bookmarklet-navigate-to-page-bottom
 comments: true
-categories: [nil]
+categories: iPhone
 ---
 
 ### ブックマークレット(Bookmarklet)とは

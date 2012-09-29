@@ -5,9 +5,8 @@ date: 2009-10-10
 wordpress_id: 270
 permalink: /blog/thoughts-of-event-cross-iphone-x-android
 comments: true
-categories: [nil]
+categories: Diary
 ---
-<div class="section">
 <p>iPhoneの基礎知識、SDKにある程度理解しているため、</p>
 <p>今日のiPhoneについてのスピーチの６－７割は既にわかっているものにすぎませんでした。</p>
 <p>この場に来る人たちは多分そうであろうと私は思っていますが、</p>
@@ -49,4 +48,3 @@ categories: [nil]
 <p>iPhoneと同じ大きさのペッパーで行ったことです。</p>
 <p>それで実際のボタンの大きさや、レイアウトの問題に</p>
 <p>気づきやすいですよね。</p>
-</div>

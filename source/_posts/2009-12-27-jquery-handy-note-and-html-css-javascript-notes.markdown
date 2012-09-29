@@ -5,7 +5,7 @@ date: 2009-12-27
 wordpress_id: 689
 permalink: /blog/jquery-handy-note-and-html-css-javascript-notes
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 jQueryのAPIを一枚の紙にまとめたものです。
 ノートはPDFファイルで、ダウンロードすることができます。

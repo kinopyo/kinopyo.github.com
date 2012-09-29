@@ -8,7 +8,8 @@
 
 	
 	<meta name="description" content="知っておくべきこと ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない
-new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される IE のバージョンによっては、&#8221; &hellip;">
+new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される
+IE のバージョンによっては、&#8221; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,13 +74,14 @@ new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生�
 </header>
 	<div id="content" class="inner"><article class="post">
 	<h1 class="title">クライアント側のActiveXが有効か無効かを検出するJavaScript</h1>
-	<div class="entry-content"><div class="section">
-<h4>知っておくべきこと</h4>
+	<div class="entry-content"><h2>知っておくべきこと</h2>
+
 <ul>
 <li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
-<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される
+<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される</li>
+<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：
+
 <ul>
-<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：</li>
 <li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
 <li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
 <li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
@@ -88,10 +90,11 @@ new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生�
 </li>
 <li>もし生成できればActiveXコントロールは有効になっている</li>
 </ul>
-<br/>
-<h4>検出ソースコード</h4>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+
+<h2>検出ソースコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -100,20 +103,26 @@ new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生�
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synComment">// ブラウザがIEの場合&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">if&lt;/span> (&lt;span class="synStatement">window&lt;/span>.ActiveXObject) &lt;span class="synIdentifier">{&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">try&lt;/span> &lt;span class="synIdentifier">{&lt;/span>
-</span><span class='line'>&lt;span class="synComment">//IEのXMLHttpRequestオブジェクトを試しに生成&lt;/span>
-</span><span class='line'>&lt;span class="synIdentifier">var&lt;/span> xhr = &lt;span class="synStatement">new&lt;/span> ActiveXObject(&lt;span class="synConstant">&#34;Microsoft.XMLHTTP&#34;&lt;/span>);
-</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span> &lt;span class="synStatement">catch&lt;/span> (e) &lt;span class="synIdentifier">{&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">alert&lt;/span>(&lt;span class="synConstant">'ActiveXコントロールは無効になっています'&lt;/span>);
-</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span>
-</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ブラウザがIEの場合</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//IEのXMLHttpRequestオブジェクトを試しに生成</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ActiveXコントロールは無効になっています&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <br/>
-<h4>参考サイト</h4>
+
+
+<h2>参考サイト</h2>
+
 <p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
-</div>
 
 </div>
 
@@ -135,7 +144,7 @@ new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

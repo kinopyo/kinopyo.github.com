@@ -7,10 +7,13 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
-ずいぶん前一度使ったことがあります。
-スタンドアロンのJD-GUIツールと、
-Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。 &hellip;">
+	<meta name="description" content="EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。 1
+2
+3
+4
+5
+The Maven Integration required that Eclipse be running in a JDK,
+because a &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,6 +77,80 @@ Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required">EclipseにMavenプラグインインストール後のエラー: &#8220;Eclipse is running in a JRE, but a JDK is required&#8221;</a></h1>
+	<div class="entry-content">
+		<p>EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。</p>
+
+<p><a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The Maven Integration required that Eclipse be running in a JDK,
+</span><span class='line'>because a number of Maven core plugins are using jars from the JDK.
+</span><span class='line'>
+</span><span class='line'>Please make sure the -vm option in eclipse.ini is pointing to a JDK and
+</span><span class='line'>verify that Installed JREs are also using JDK installs.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使ってた環境は確かにJREのみがあってJDKはなかったんです。
+回避策としては
++  JDKをインストール
++  eclipse.iniに-vmオプションでインストールしたJDKと関連付ける</p>
+
+<h3>JDKのインストール</h3>
+
+<p>JDKのダウンロードはこちら:<a href="http://java.sun.com">Sun Java</a>
+インストール後JAVA_HOMEとPATH環境変数もあわせて編集
+エクスプローラ→マイコンピュータ→右クリック→プロパティ→詳細設定タブ→環境変数ボタン</p>
+
+<h3>eclipse.iniの編集</h3>
+
+<p>jdkのパスはインストール先に合わせて下記内容を追記
+vmの後に<strong>改行が必要</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> -vm
+</span><span class='line'>C:\Java\jdk1.6.0_18\bin\javaw.exe
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで再起動したらエラーメッセージは出なくなりました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-20T00:00:00+09:00" pubdate data-updated="true">2010-01-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/eclipse/'>Eclipse</a>, <a class='category' href='/blog/categories/editor/'>Editor</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -183,7 +260,7 @@ jarファイルもサポートされているようです。</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>
@@ -242,7 +319,7 @@ jarファイルもサポートされているようです。</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -296,7 +373,7 @@ jarファイルもサポートされているようです。</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/java/'>Java</a>
 
 
 </div>
@@ -370,7 +447,7 @@ No More Countdowns - Automatic Downloads.</p></li>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
 
 
 </div>
@@ -566,7 +643,7 @@ block_given?を使って、ブロックがあるかどうかを確認できま�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>
@@ -612,7 +689,7 @@ block_given?を使って、ブロックがあるかどうかを確認できま�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -672,7 +749,7 @@ block_given?を使って、ブロックがあるかどうかを確認できま�
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>
@@ -728,65 +805,6 @@ block_given?を使って、ブロックがあるかどうかを確認できま�
 
 
 	<a class='category' href='/blog/categories/mac/'>mac</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/eclipse-install-tomcat-plugin">EclipseにTomcatプラグインをインストール</a></h1>
-	<div class="entry-content">
-		<ul>
-<li><p><a href="http://www.eclipsetotale.com/tomcatPlugin.html#A4">Eclipse Tomcat Pluginダウンロードページ</a>でzipファイルをダウンロード
-現時点の最新版はtomcatPluginV321.zipです。</p></li>
-<li><p>your_Eclipse_Home/pluginsに解凍</p></li>
-<li>Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず</li>
-</ul>
-
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-toolbar-icon.jpg" title="tomcat-toolbar-icon" ></p>
-
-<ul>
-<li>下記のようにTomcatバージョンとTomcatホームを設定</li>
-</ul>
-
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-home-path.jpg" title="tomcat-settings-home-path" ></p>
-
-<ul>
-<li>下記のようにTomcat用のJVM SettingでJREバージョンを選択</li>
-</ul>
-
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-jre-version.jpg" title="tomcat-settings-jre-version" ></p>
-
-<p>私の場合デフォルトがJRE1.4になっていたため、これを1.5の変えました。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

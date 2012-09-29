@@ -5,7 +5,7 @@ date: 2010-7-19
 wordpress_id: 1257
 permalink: /blog/sqlite-common-comman
 comments: true
-categories: [nil]
+categories: SQLite
 ---
 ## SQLiteの起動、データベースの選択/作成
 sqlite DB_NAME

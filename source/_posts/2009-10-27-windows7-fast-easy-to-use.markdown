@@ -5,7 +5,7 @@ date: 2009-10-27
 wordpress_id: 283
 permalink: /blog/windows7-fast-easy-to-use
 comments: true
-categories: [nil]
+categories: Diary
 ---
 <div class="section">
 <p>インストール先のCドライブをあっさりフォーマットしてから</p>

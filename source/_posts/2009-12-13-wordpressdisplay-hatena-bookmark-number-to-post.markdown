@@ -5,7 +5,7 @@ date: 2009-12-13
 wordpress_id: 427
 permalink: /blog/wordpressdisplay-hatena-bookmark-number-to-post
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 WordPress記事にはてなブックマーク数を表示する方法です。
 プラグインのわざわざインストールする必要はなく、

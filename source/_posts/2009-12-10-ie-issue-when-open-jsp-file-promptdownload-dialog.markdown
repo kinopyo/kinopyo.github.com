@@ -5,7 +5,7 @@ date: 2009-12-10
 wordpress_id: 475
 permalink: /blog/ie-issue-when-open-jsp-file-promptdownload-dialog
 comments: true
-categories: [nil]
+categories: IE
 ---
 秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。
 

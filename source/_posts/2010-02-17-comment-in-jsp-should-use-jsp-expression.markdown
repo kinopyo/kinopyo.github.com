@@ -5,7 +5,7 @@ date: 2010-2-17
 wordpress_id: 942
 permalink: /blog/comment-in-jsp-should-use-jsp-expression
 comments: true
-categories: [nil]
+categories: Java
 ---
 ## 基本
 多分ほとんどの人は分かっていると思いますが、

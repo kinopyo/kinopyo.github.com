@@ -5,9 +5,8 @@ date: 2009-10-26
 wordpress_id: 282
 permalink: /blog/most-ppl-just-buy-one-juice-once
 comments: true
-categories: [nil]
+categories: Design
 ---
-<div class="section">
 <p>たまたまこういうテーマの<a target="_blank" href="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/01.html" title="記事">記事</a>を読みました。</p>
 <p>とても感動しました。</p>
 <p>3年前の記事ですが、未だ見ても全く言う通りです。</p>
@@ -35,4 +34,3 @@ categories: [nil]
 <p>確かに確率が下がってると思います。</p>
 <p>ユーザインタフェース設計する時は、ぜひこの<a target="_blank" href="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/01.html" title="記事">記事</a>をご覧ください。</p>
 <p>絶対役に立ちます。</p>
-</div>

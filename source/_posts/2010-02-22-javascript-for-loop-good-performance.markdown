@@ -5,7 +5,7 @@ date: 2010-2-22
 wordpress_id: 1008
 permalink: /blog/javascript-for-loop-good-performance
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 面白いかと思ったのでメモしときます。
 

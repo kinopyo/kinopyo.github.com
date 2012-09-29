@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Diary | Yet Another Kinopyo Blog]]></title>
+  <title><![CDATA[Category: diary | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/diary/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,85 +14,168 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My One Year Anniversary at COOKPAD]]></title>
-    <link href="http://kinopyo.com/blog/my-one-year-anniversary-at-cookpad/"/>
-    <updated>2012-09-16T19:52:00+09:00</updated>
-    <id>http://kinopyo.com/blog/my-one-year-anniversary-at-cookpad</id>
-    <content type="html"><![CDATA[<h2>My "Thank You" Mails</h2>
+    <title type="html"><![CDATA[My New Blog with Octopress]]></title>
+    <link href="http://kinopyo.com/blog/my-new-blog-with-octopress/"/>
+    <updated>2012-08-31T22:49:00+09:00</updated>
+    <id>http://kinopyo.com/blog/my-new-blog-with-octopress</id>
+    <content type="html"><![CDATA[<p>Finally migrated all my posts from Wordpress to Octopress. I think it's quite popular among hackers and geeks these days, if you don't know it just google it, tons of results.</p>
 
-<p>Yesterday was my one year anniversary at Cookpad, and I came up with an idea to send a couple of mails to my friends inside and outside the company, who have helped me to join it, just want to say thanks to them in person.</p>
+<p>There're still a lot of works to do, like some posts with messy format or broken links, Disqus comments need to be migrated, categories are nonsense etc, but I'll announce this anyway. Done is better than perfect right?</p>
 
-<p>I wrote in the order of the people I've met. First starts with my headhunter who introduced cookpad to me, then my first and second interviewer, etc. I didn't write to everyone I've met in the company, that will be too overwhelming and lose the point.</p>
+<p>I'm not gonna mention any migration details here, I'd like to look back and have a summary or something now.</p>
 
-<p>It ended up with 13 mails, since yesterday was Saturday and I sent to our company email address, I didn't expect any replies until next business day. But surprisingly someone already replied and seems like they love this idea, and many positive feedbacks!</p>
+<h1>Over 300 posts since 2009/10/07</h1>
 
-<h2>WOW your friends</h2>
+<p>I'm really surprised by myself. I was not aware of that I've done so many writings, and these're only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related.</p>
 
-<p>Since one of my purpose is to WOW(a verb I learned from the book: Delivering Happiness) those my friends so to be honest, if everything works fine, and it should, I wouldn't be surprised by these positive feedbacks. But still, after reading their sweet words, it made me feel very very happy.I'm so glad that I made it. In my daily life I never feel lack of ideas to WOW someone but I never really execute in actions.</p>
+<p>It's so easy now to "execute" an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential "things" here, as part of my life.</p>
 
-<p>When I was reading the book, one story is about how Tony enjoyed organising a party and make a WOW experience to his friends. At that time I didn't quite understand why he thought that way, but now I think I get it. It's really a very amazing experience. It also reminded me that back in the days when I setup or prepared a surprise for my girlfriend, no need to go expensive or fancy, just something that a little bit weird and out of the box, then I will see the most beautiful smile in the world. This is a mindset and life style which I've decided to follow up. To make this world a better place, first step is to ensure you make your family and friends around you happier, right?</p>
+<h1>Japanese, English and Chinese</h1>
 
-<p>So this is my way to say thank you to my friends, some of the mails maybe even contain less than 10 phrases but it's important to do it, and say it loud.</p>
+<p>There was a time I was trying to write down every single post in these 3 languages. I believe the plugin I used in Wordpress is called <em>qTranslate</em>, which let you write with each language or all of them.</p>
 
-<h2>Reconnecting, A Really Unrelated Story</h2>
+<p>After a while I noticed it was too hard for me. Translating same contents into a different language is boring and wasting of time, at least I tried and found out it doesn't work for me. So this time, I want this blog to be an English mainly blog, with occasional different language posts. My plan is writing emotional feelings in Chinese, and social activities or something related to Japan in Japanese.</p>
 
-<p>Oh, one more thing need to be mentioned. Yesterday I also got a message from my Senpai(先輩, Japanese, like one's mentor) which I lost his contact 3 years ago. Every time when I reconnect with someone through Internet, I really appreciate what a good job it has done to make our life better. He was my first Senpai when I graduated and step into the whole adult society, even at that time he seemed really strict to me, it turns out it was worthwhile and I'd learned a lot from him. Not like how to write down each code, but in a much higher “Macro” point of view how to work, how to think. Sometimes I'm very surprised by this Japanese <a href="http://en.wikipedia.org/wiki/Senpai_and_k%C5%8Dhai">Senpai and kōhai</a> connection. This is really a word you have to self experience in Japanese society.</p>
+<p>I'm still keeping those language mixed posts here even though I think it's not useful to my "readers", not sure how many I got, I'd like to take those posts as old-days foot prints. "あの時がんばったな！ー" hehe.</p>
+
+<h1>About the priority or weight of each language</h1>
+
+<p>I want to be a top player in this programming field. In order to achieve that English is a MUST condition. I still remember when I first time read a programming book in English, it was so difficult that I hardly understood the meanings. But I keep trying and trying, now I'm very comfortable with it and believe it's more natural than any other language in programming field.</p>
+
+<p>Besides the effort I put in English, I also want to start writing in my native language, Chinese. Although English is more friendly to me than before, it's still difficult to describe my feelings and emotions precisely. I need more vocabularies. I need to look back to think about if there is a grammar mistake. So when I think about some topics such as meanings of life, or what I want to left to the world, am I making this world a little bit better, etc. In these cases I need to grab my most familiar weapon :)</p>
+
+<p>For Japanese, hmmm.. I'll leave it for now :)</p>
+
+<h1>Google Adsense</h1>
+
+<p>If you're an old readers of me, I hope you are, you may notice that there's no ads anymore. Yeah I used to put those ads for experiment. With 500-600 daily PVs, it gave me around 4,000￥ every month. Not that much but it's better than nothing, so I kept ads for a long time. But to be honest, as a personal blog it's just annoying. I didn't like it personally, and it's for sure it gives people bad impression, I don't like to miss a job opportunity if some head hunters open my blog and leave with a "WTF?!..".</p>
+
+<p>Let's just be simple and clean.</p>
+
+<p>That's it~ see you next time.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Amazon Kindle Press Conference(Video) and My Thoughts]]></title>
-    <link href="http://kinopyo.com/blog/amazon-kindle-press-conference-video-and-my-thoughts/"/>
-    <updated>2012-09-08T14:12:00+09:00</updated>
-    <id>http://kinopyo.com/blog/amazon-kindle-press-conference-video-and-my-thoughts</id>
-    <content type="html"><![CDATA[<p>Here is the video of Amazon Kindle Press Conference, hold on September 6, 2012. This article does not intend to cover all the hardware details but just something worth for me to write down.</p>
+    <title type="html"><![CDATA[採用観点から見たいいブログとは]]></title>
+    <link href="http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view"/>
+    <updated>2012-01-01T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/good-blog-in-the-head-hunter-point-of-view</id>
+    <content type="html"><![CDATA[<p>この間仕事の関係でたくさんの技術者のブログを見たことがあって、自見ですが、採用の観点から見たときにどういうブログがよかったのか、正確に言うと採用に欲しい情報が探しやすいのかを整理したいと思いいます。</p>
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/VYi1jZXz9Kg" frameborder="0" allowfullscreen></iframe>
+<p>私自身はエンジニアで採用関連の仕事はほとんど未経験なので、プロの意見ではなく、あくまで自分が仕事の中で感じたことを書いただけです。ご参考までに。</p>
 
+<h1>レイアウト</h1>
 
-<h2>Why video?</h2>
+<p>ブログにアクセスしたときは私はまず「About」ページを見つけようとしました。実際の記事とかサイドバーの内容とかよりも、一般的には「About」ページでより詳しい、採用観点からの欲しい情報が得られるからです。なのでこの「自己紹介」のページへのリンクが見やすいかどうかが重要だと思います。</p>
 
-<p>I really don't like just check the new hardware's specs and see the numbers bumped up from this level to that level. I'd always like to watch the press videos, to enjoy the process, to feel the revolutionary stories behind this. Of course part of it kind of depends on how the CEO did the presentation.</p>
+<p>下にスクロールせずに見られる場所、例えばトップのタブバーとかにあれば助かります。</p>
 
-<h2>KDP - Kindle Direct Publishing</h2>
+<h1>Aboutページ</h1>
 
-<p>During watching the viode I found something new, something amazed me. That is <a href="https://kdp.amazon.com/self-publishing/signin">KDP - Kindle Direct Publishing</a></p>
+<p>多分ブロガーは誰もがこのAboutページを持っていると思いますが、「誰に向けて発信しているか？」が明確でないとなかなかいい文章にはならないと思います。</p>
 
-<blockquote><p>With Kindle Direct Publishing (KDP) you can self-publish your books on the Amazon Kindle Store. It's free, fast, and easy. Books self-published through KDP can participate in the 70% royalty program and are available for purchase on Kindle devices and Kindle apps for iPad, iPhone, iPod touch, PC, Mac, BlackBerry, and Android-based devices. With KDP, you can self-publish books in many languages and specify pricing in US Dollars, Pounds Sterling, and Euros.</p></blockquote>
+<p>私も今まで自分のAboutページを本当適当に書いていて、「どうせ誰も見てないだろう」と思ってずっと更新すらしなかったですが、今回の仕事でわかったのが「採用/転職のチャンスを見逃したかも」ってことです。準備すらしなければ、実際チャンスにめぐり合った時もそのまま捕まえることができないです。</p>
 
-<p>I really think it's a good job, good job Amazon. There is a also a video clip interviewing the authors who have published and succeeded through KDP. Jeff Bezos, the CEO of Amazon, also mentioned some numbers about this business, apparently it's going well and actually helping people. To be honest, suddenly it occurs to me that maybe one day I can publish my own book, if it's really just a matter of whether I can finish it, and no need to consider about the publisher.</p>
+<p>自分のAboutページは実際Google Analyticsで見たときはちょこちょこクリック率があることはわかってますが、本当に手抜き状態にしたまま。。too lazyですね！</p>
 
-<h2>Audio books</h2>
+<h2>Aboutページで必要な情報</h2>
 
-<p>I bought Steven Job's biography audio book last year, which is the first time I ever tried an audio book. Despite my English skill it was still a pretty good experience. I really encourage you to try at least once. If you keep saying, "Oh no I can never understand those English" and stop trying or improving yourself, you can never get that place. Just my opinion.</p>
+<p>ではこのAboutページで一体どんな情報があればいいのか？
++  簡単な自己紹介
++  言語（できれば英語版のも欲しい）
++  今の居場所（意外と重要）
++  スキル
++  今までの作品や成果、オープンソースへの貢献など
++  どういうことに興味があるか？どんなものが作りたいのか？
++  ソーシャルアカウント(Linkedin, Twitter, Github)
++  連絡先（メールアドレス）</p>
 
-<h3>Narration</h3>
+<p>自分の母国語以外に英語バージョンのも用意して欲しいですね。グローバル採用の流れで、本人も世界を目指すならばできれば絶対英語をオススメします。記事はまだ母国語でもいいですが。
+Linkedinへのリンクがあれば一番助かります。
+Githubでは持っているリポジトリ（Forkしたのも大丈夫）でどんな分野の技術に興味が有るのかをチェックして、フォローされた数も参考にしました。
+Facebookは逆にあっても全然チェックする気がないです。
+今の居場所は実際にFace to Faceで話したい時に会える距離であるかの参考になります。</p>
 
-<p>I never cared about who was narrating the book to me, until I heard this:</p>
+<h1>ブログ記事については</h1>
 
-<blockquote><p>They're getting people like Susan Sarandon, Colin Firth Anne Hathaway to narrate these books.</p></blockquote>
+<p>ブログ記事は一個一個チェックしないですが、あまりにも更新がない（年に3〜4回とか）ブログは「あれ？放棄状態？」な心配がありそこの情報が信用できるかが疑われます。</p>
 
-<p>So what's the big deal? I think it's better to know it's not someone who is cold heart just do his/her jobs to READ the book, but it's someone you know like big movie stars, narrating the story, vividly. I want to know the details behind the scenes if I'm really into something. So it's different for me.</p>
+<h1>オススメトール</h1>
 
-<h3>Whispersync for Voice</h3>
+<p><a href="http://about.me">http://about.me</a>のサイトがありますが、ブログのAboutページをこれにしてもいいと思います。見た目が綺麗ですし、ソーシャルアカウントへのリンクも簡単に付けられて書く側も見る側も楽です。</p>
 
-<p>Listen to your audio book on the way home, when you get home, pick up the "book" and start reading. Keep the place between the two media formats. I love this idea, and it becomes true.</p>
+<p>さて、この記事を読んで自分のブログを見直したい方はいらっしゃるのかな？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[楽天、アマゾン、Yahooなどを一括検索できるサイト]]></title>
+    <link href="http://kinopyo.com/blog/search-for-rakuten-amazon-yahoo"/>
+    <updated>2011-11-14T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/search-for-rakuten-amazon-yahoo</id>
+    <content type="html"><![CDATA[<p>使ったことはないけど、とりあえずリストアップ。</p>
 
-<h2>Reading time</h2>
+<ul>
+<li><a href="http://all-search.biz/index.php">http://all-search.biz/index.php</a></li>
+<li><a href="http://www.tsukaerusite.com/">http://www.tsukaerusite.com/</a></li>
+<li><a href="http://www.shopping-tool.com/">http://www.shopping-tool.com/</a></li>
+<li><a href="http://aucfan.com/">http://aucfan.com/</a></li>
+<li><a href="http://psearch.yahoo.co.jp/search/advanced">http://psearch.yahoo.co.jp/search/advanced</a></li>
+</ul>
 
-<p>I almost forgot about this. Now kindle can show you how many times do you need to finish the current chapter, or the entire book. And it's based on <strong>your</strong> speed. Isn't that amazing!?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone水没記、液晶交換で復活]]></title>
+    <link href="http://kinopyo.com/blog/iphone-dropped-in-water"/>
+    <updated>2011-06-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/iphone-dropped-in-water</id>
+    <content type="html"><![CDATA[<p>一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。</p>
 
-<h2>When We Make Money?</h2>
+<p>液晶が点灯しなかったものの、まだ生きてます。
+急いで電源を切りました。スワイプのジェスチャーがなかなか効かないので何回かやったんです。</p>
 
-<p>In the end, Jeff also mentioned about alignment of amazon.</p>
+<p>そこでググってみてこんな措置をとりました。
++  本体は振ってはいけない
++  ドライヤーで乾かす
++  米に埋める(乾燥剤がなかった)
++  乾燥剤とiPhoneをジップロックに入れて待つ！
++  毎晩一回起動して様子を観察</p>
 
-<blockquote><p>We want to make money when people <strong>use</strong> our devices, not when they <strong>buy</strong> our devices.</p></blockquote>
+<p>それで、ほぼ4-5日経って特に変わりがなかったです。
+(まだ液晶が点灯しない、バッテリとかその他は問題ない)
+画面が暗いまま1週間使い続けてもう待てないと思って
+ソフトバンクの店舗にいって正直に言いました。
+思ったとおり検査で水没のセンサは反応あり、
+修理はできず22,800¥で交換するしかないと言われました。</p>
 
-<p>I appreciate this. I'm sure we all know that it is the place where you are supposed to say something beautiful to the public. But I still love it, and I bought it.</p>
+<p>そんな時にTwitter<a href="https://twitter.com/#!/spdshinjuku">スマートフォンドクター新宿店</a>から連絡がきましたので、
+お店にいって液晶だけ交換することにしました。
+その場でTwitterでつぶやけばツイッター割があります。
+合わせて8,800¥でした。ありがとうございました。</p>
 
-<p>It let me look back the "common" flow of my daily work. There was a time when we were told like this: "We need to make xxx money by the end of xxx, so we have to release the product before xxx! So do it and do it harder!". Ok I may extragerate too much but you got the point. I admit it's neccessary to have a <strong>business plan</strong>, including numbers, to run a <strong>business</strong>. But it would be thankful if we and our managers and BOSS stop talking about how many money we're gonna make or should make, and think about how much it's gonna be helpful and valuable to our users. You don't need to say it loud every single day, but at least consider about this in your heart.</p>
+<p>今まで問題なく使いました。大事にしないと。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Evernote,Twitterとブログ]]></title>
+    <link href="http://kinopyo.com/blog/evernote-twitter-and-blog"/>
+    <updated>2011-04-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/evernote-twitter-and-blog</id>
+    <content type="html"><![CDATA[<p>Evernote使い始めたのは結構前ですが、ちゃんとノートブックを整理してライフログ始めたのはまだこの二ヶ月の話です。
+それからなかなかブログ更新するきっかけが少なくなりましたね。ただ教訓としてメモするのは基本Evernoteに蓄積してるし、普段思いついたものやストレス、情報共有とかは随時Twitterにつぶやくようになりました。</p>
 
-<p>I want to make money when people use my products, although I'm just an employee now.</p>
+<p>まあ、Evernote書いたメモって共有する価値はあるといえばありますが、何だかんだ重複作業になるような気がして抑えてはいます。またEvernoteって、基本自分向けなので気軽に書けるメリットもありますし、仕事が忙しくなったら本当にEvernoteに書くのも精一杯になりますからね。
+と言ってもブログ書かないのは、それなりのインプットがないことと思いますよ。この業界で働いているなら、絶対これだけたみんなに伝えたいくらいの出来事はあるでしょうと思います。自分と同じような誤りや遠回しは避けて欲しいぐらい。
+そういう意味ではちゃんと反省しないといけないと思いますよ、ここ最近の仕事とプライベートを。ただ疲れたを言い訳にしてないか、あるいは勉強不足でインプットが足りないかって。</p>
+
+<p>酒飲んで調子に乗っていろいろ書いたけど、本当反省&amp;改善したい。</p>
+
+<p>最後に、
+この記事もiPhone FastEverって書いてます。いや〜本当に便利！チェックなしで発信！</p>
 ]]></content>
   </entry>
   

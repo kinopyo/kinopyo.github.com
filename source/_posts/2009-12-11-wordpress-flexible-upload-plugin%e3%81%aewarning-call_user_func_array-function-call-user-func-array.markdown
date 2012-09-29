@@ -5,7 +5,7 @@ date: 2009-12-11
 wordpress_id: 495
 permalink: /blog/wordpress-flexible-upload-plugin%e3%81%aewarning-call_user_func_array-function-call-user-func-array
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 ## エラー詳細
 Flexible uploadのプラグインを使うときに出たエラー内容です。

@@ -11,8 +11,8 @@
 idに**が付いてますね。 1
 2
 3
-&lt;input id=&quot;foo*0*&quot; type=&quot;text&quot; /&gt;
-&lt;input id=&quot;foo*1*&quot; type=&quot;text&quot &hellip;">
+&lt;input id=&quot;foo0&quot; type=&quot;text&quot; /&gt;
+&lt;input id=&quot;foo1&quot; type=&quot;text&quot; /& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,9 +83,9 @@ idに**が付いてますね。</p>
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo*0*&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo*1*&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo*2*&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo0&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo1&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo2&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -93,14 +93,14 @@ idに**が付いてますね。</p>
 普通の#付きのjQueryセレクタでは選択できません。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo*0*&quot;</span><span class="p">);</span>    <span class="c1">// 取れません</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo0&quot;</span><span class="p">);</span>    <span class="c1">// 取れません</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>属性フィルタ<em>attribute=value</em>でとるのが正解です。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;*id=&#39;foo[0]&#39;*&quot;</span><span class="p">);</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;id=&#39;foo[0]&#39;&quot;</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -110,7 +110,7 @@ idに**が付いてますね。</p>
 上記の例で言うと</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input*id=&#39;foo[0]&#39;*&quot;</span><span class="p">);</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;inputid=&#39;foo[0]&#39;&quot;</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -135,7 +135,7 @@ idに**が付いてますね。</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

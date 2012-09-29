@@ -5,15 +5,15 @@ date: 2010-3-3
 wordpress_id: 1012
 permalink: /blog/jquery-select-id-with-square
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 こんなHTMLがあるとします。
 idに**が付いてますね。
 
 ```html
-<input id="foo*0*" type="text" />
-<input id="foo*1*" type="text" />
-<input id="foo*2*" type="text" />
+<input id="foo0" type="text" />
+<input id="foo1" type="text" />
+<input id="foo2" type="text" />
 
 ```
 
@@ -21,14 +21,14 @@ idに**が付いてますね。
 普通の#付きのjQueryセレクタでは選択できません。
 
 ```javascript
-$("#foo*0*");    // 取れません
+$("#foo0");    // 取れません
 
 ```
 
 属性フィルタ*attribute=value*でとるのが正解です。
 
 ```javascript
-$("*id='foo[0]'*");
+$("id='foo[0]'");
 
 ```
 
@@ -38,7 +38,7 @@ $("*id='foo[0]'*");
 上記の例で言うと
 
 ```javascript
-$("input*id='foo[0]'*");
+$("inputid='foo[0]'");
 
 ```
 

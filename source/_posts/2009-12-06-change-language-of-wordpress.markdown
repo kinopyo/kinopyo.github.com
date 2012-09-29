@@ -5,7 +5,7 @@ date: 2009-12-6
 wordpress_id: 337
 permalink: /blog/change-language-of-wordpress
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 <div class="section">
 <p>最初はわざと英語版を入れましたが、日本語に簡単に切り替えるかと思って検索してみたんです。こんなに簡単に変更できるんだ。さすがWordPressだ！</p>

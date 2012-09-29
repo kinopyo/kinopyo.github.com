@@ -5,7 +5,7 @@ date: 2009-12-30
 wordpress_id: 732
 permalink: /blog/eclipse-install-tomcat-plugin
 comments: true
-categories: [nil]
+categories: Eclipse Editor
 ---
 +  [Eclipse Tomcat Pluginダウンロードページ](http://www.eclipsetotale.com/tomcatPlugin.html#A4)でzipファイルをダウンロード
 現時点の最新版はtomcatPluginV321.zipです。

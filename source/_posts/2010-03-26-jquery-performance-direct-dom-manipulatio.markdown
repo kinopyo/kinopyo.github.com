@@ -5,7 +5,7 @@ date: 2010-3-26
 wordpress_id: 1053
 permalink: /blog/jquery-performance-direct-dom-manipulatio
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 DOM操作を避けてjQueryのパフォーマンスを改善する掟です。
 こんなコードがあるとしましょう。

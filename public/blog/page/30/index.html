@@ -7,7 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ブログをキャリアの礎にしようと思っている方へ - GoTheDistanceこういうすてきな記事を見つかりました。 自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣ &hellip;">
+	<meta name="description" content="argumentsは配列じゃないため、配列のメソッドは
+使えません。ということは本を読んだとき当たり前だと思ったんですが、
+実際コードに落としたときは
+自然とargument.slice()を書いちゃいました。
+argumentsで配列のメソッドを使うには
+Array.prototype.&# &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,35 +79,47 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/something-come-to-mind-when-writing-blog">ブログを書いて気づいた｢嫌い or 好き｣の方向性</a></h1>
+	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
 	<div class="entry-content">
 		<div class="section">
-<p><a href="http://d.hatena.ne.jp/gothedistance/20090928/1254140260" target="_blank">ブログをキャリアの礎にしようと思っている方へ - GoTheDistance</a>こういうすてきな記事を見つかりました。</p>
-<blockquote>
-<p>自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣の方向性が見えてくるようになります。</p>
-</blockquote>
+<p>argumentsは配列じゃないため、配列のメソッドは</p>
+<p>使えません。ということは本を読んだとき当たり前だと思ったんですが、</p>
+<p>実際コードに落としたときは</p>
+<p>自然とargument.slice()を書いちゃいました。</p>
+<h4>argumentsで配列のメソッドを使うには</h4>
+<p><span style="color:#0000FF;">Array.prototype.&#60;配列のメソッド&#62;.call(arguments,&#60;パラメータ&#62;)</span></p>
+{% codeblock %}
+
+<span class="synType">Array</span>.prototype.slice.call(<span class="synIdentifier">arguments</span>,2)
+{% endcodeblock %}
+<p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
+<h4>argumentsはarray-likeオブジェクト</h4>
+<p>ここでちょっとargumentsの基本知識を復習します。</p>
+<p>length属性もあるし、[]でindex指定のオブジェクトを参照できますけど、</p>
+<p>argumentsは配列に似ているオブジェクトだけです。</p>
+<h5>予約語</h5>
+<p>Technically, argumentsは予約語ではないですが、</p>
+<p>予約語として認識してよいです。</p>
+<p>つまりargumentsという変数は作成しないでってことです。</p>
 <br/>
-<p>特にこの言葉に感じたことが多かったのです。</p>
-<p>最近仕事の関係で、よくIE6~IE8とFirefoxでのJavaScript、CSSの不具合を調査したり、悩んだりしました。</p>
-<p>特定のブラウザで画面が崩れるのは本当に嫌だなと</p>
-<p>痛感しました。</p>
-<p>これがウェブ開発の現状なんですかと？</p>
-<p>なぜ自分はもっと立派なプログラムの問題と戦うのではなく、</p>
-<p>ブラウザと戦わなきゃならないのか？</p>
-<p>なぜActiveXの無効を前提とするユーザがいるのか？</p>
-<p>なぜIEがアップグレードするたびに新たな不具合を招くのか？</p>
-<p>なぜマイクロソフトはもっと強制的にユーザにIEのバージョンをアップグレードさせないのか？</p>
-<p>もしChrome、Opera、Safariなどの市場シェアが大きくなったら、それらも対応するとの要求が出てくるのか？</p>
-<p>なぜお客さんは低いバージョンのIEを未だも使っているのか？Firefoxに切り替えるのはそんなに不現実の話なのか？</p>
-<br/>
-<p>こんなのは嫌です。</p>
-<p>そもそもFlexを勉強しよと思ったきっかけは</p>
-<p>会社の先輩のサイトを見て、</p>
-<p>デザインやアニメーションがすごいきれで聞いたら、</p>
-<p>「Flexならこんなの簡単に作れるよ、ブラウザと関係ないし」の言葉でした。</p>
-<p>自分の好きの方向性というのはこんなことでしょう。</p>
-<p>ブラウザのわがままを避けたい、</p>
-<p>純粋なプログラミングがしたいです。</p>
+<pre class="syntax-highlight">
+<span class="synIdentifier">function</span> foo(x)<span class="synIdentifier">{</span>
+<span class="synStatement">alert</span>(x);
+<span class="synIdentifier">var</span> <span class="synIdentifier">arguments</span>;
+<span class="synIdentifier">arguments[</span>0<span class="synIdentifier">]</span> = <span class="synStatement">null</span>;    <span class="synComment">//xの値が変更されちゃう</span>
+<span class="synStatement">alert</span>(x); <span class="synComment">// null が出力される</span>
+<span class="synIdentifier">}</span>
+{% endcodeblock %}
+<h5>callee Property</h5>
+<p>Refers to the function that is currently being executed.</p>
+<p>今実行中のファクションを参照しています。</p>
+<pre class="syntax-highlight">
+<span class="synIdentifier">function</span>(x) <span class="synIdentifier">{</span>
+<span class="synStatement">if</span> (x &#60;= 1) <span class="synStatement">return</span> 1;
+<span class="synStatement">return</span> x * <span class="synIdentifier">arguments</span>.callee(x-1);
+<span class="synIdentifier">}</span>
+
+{% endcodeblock %}
 <br/>
 <p>　</p>
 </div>
@@ -126,11 +143,11 @@
   
 
 
-<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/diary/'>diary</a>
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>
@@ -139,49 +156,80 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/javascript-to-check-is-activex-enabled-in-client">クライアント側のActiveXが有効か無効かを検出するJavaScript</a></h1>
+	<h1 class="title"><a href="/blog/something-come-to-mind-when-writing-blog">ブログを書いて気づいた｢嫌い or 好き｣の方向性</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<h4>知っておくべきこと</h4>
-<ul>
-<li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
-<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される
-<ul>
-<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：</li>
-<li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
-<li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
-<li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
-<li>&#8220;Msxml2.XMLHTTP&#8221;</li>
-</ul>
-</li>
-<li>もし生成できればActiveXコントロールは有効になっている</li>
-</ul>
-<br/>
-<h4>検出ソースコード</h4>
+		<p><a href="http://d.hatena.ne.jp/gothedistance/20090928/1254140260" target="_blank">ブログをキャリアの礎にしようと思っている方へ - GoTheDistance</a>こういうすてきな記事を見つかりました。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synComment">// ブラウザがIEの場合&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">if&lt;/span> (&lt;span class="synStatement">window&lt;/span>.ActiveXObject) &lt;span class="synIdentifier">{&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">try&lt;/span> &lt;span class="synIdentifier">{&lt;/span>
-</span><span class='line'>&lt;span class="synComment">//IEのXMLHttpRequestオブジェクトを試しに生成&lt;/span>
-</span><span class='line'>&lt;span class="synIdentifier">var&lt;/span> xhr = &lt;span class="synStatement">new&lt;/span> ActiveXObject(&lt;span class="synConstant">&#34;Microsoft.XMLHTTP&#34;&lt;/span>);
-</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span> &lt;span class="synStatement">catch&lt;/span> (e) &lt;span class="synIdentifier">{&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">alert&lt;/span>(&lt;span class="synConstant">'ActiveXコントロールは無効になっています'&lt;/span>);
-</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span>
-</span><span class='line'>&lt;span class="synIdentifier">}&lt;/span></span></code></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣の方向性が見えてくるようになります。</p>
+</blockquote>
+
 
 <br/>
-<h4>参考サイト</h4>
-<p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
-</div>
+
+
+<p>特にこの言葉に感じたことが多かったのです。</p>
+
+
+<p>最近仕事の関係で、よくIE6~IE8とFirefoxでのJavaScript、CSSの不具合を調査したり、悩んだりしました。</p>
+
+
+<p>特定のブラウザで画面が崩れるのは本当に嫌だなと</p>
+
+
+<p>痛感しました。</p>
+
+
+<p>これがウェブ開発の現状なんですかと？</p>
+
+
+<p>なぜ自分はもっと立派なプログラムの問題と戦うのではなく、</p>
+
+
+<p>ブラウザと戦わなきゃならないのか？</p>
+
+
+<p>なぜActiveXの無効を前提とするユーザがいるのか？</p>
+
+
+<p>なぜIEがアップグレードするたびに新たな不具合を招くのか？</p>
+
+
+<p>なぜマイクロソフトはもっと強制的にユーザにIEのバージョンをアップグレードさせないのか？</p>
+
+
+<p>もしChrome、Opera、Safariなどの市場シェアが大きくなったら、それらも対応するとの要求が出てくるのか？</p>
+
+
+<p>なぜお客さんは低いバージョンのIEを未だも使っているのか？Firefoxに切り替えるのはそんなに不現実の話なのか？</p>
+
+
+<br/>
+
+
+<p>こんなのは嫌です。</p>
+
+
+<p>そもそもFlexを勉強しよと思ったきっかけは</p>
+
+
+<p>会社の先輩のサイトを見て、</p>
+
+
+<p>デザインやアニメーションがすごいきれで聞いたら、</p>
+
+
+<p>「Flexならこんなの簡単に作れるよ、ブラウザと関係ないし」の言葉でした。</p>
+
+
+<p>自分の好きの方向性というのはこんなことでしょう。</p>
+
+
+<p>ブラウザのわがままを避けたい、</p>
+
+
+<p>純粋なプログラミングがしたいです。</p>
 
 
 		
@@ -206,7 +254,91 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-to-check-is-activex-enabled-in-client">クライアント側のActiveXが有効か無効かを検出するJavaScript</a></h1>
+	<div class="entry-content">
+		<h2>知っておくべきこと</h2>
+
+<ul>
+<li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
+<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される</li>
+<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：
+
+<ul>
+<li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP&#8221;</li>
+</ul>
+</li>
+<li>もし生成できればActiveXコントロールは有効になっている</li>
+</ul>
+
+
+<h2>検出ソースコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ブラウザがIEの場合</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//IEのXMLHttpRequestオブジェクトを試しに生成</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ActiveXコントロールは無効になっています&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>
@@ -217,20 +349,36 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/add-mycomputer-zone-to-ie-security">IEセキュリティにマイコンピュータゾーンを追加する方法</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<h4>概要</h4>
+		<h2>概要</h2>
+
 <p>ローカルのファイルを参照する際のセキュリティを変更したとします。</p>
+
+
 <p>IEの[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブでは</p>
+
+
 <p>ローカルのマイコンピュータのセキュリティゾーンがデフォルトでは非表示になっています。</p>
+
+
 <p>それを表示させるにはレジストリを編集する必要があります。</p>
-<h4>動作環境</h4>
+
+
+<h2>動作環境</h2>
+
 <p>以下の環境で動作確認済みです。</p>
+
+
 <p>その他の環境についてはマイクロソフトのサポートヘルプを参照してください。</p>
+
+
 <ul>
 <li>OS: Win XP</li>
 <li>IE: IE8</li>
 </ul>
-<h4>方法</h4>
+
+
+<h2>方法</h2>
+
 <blockquote title="http://support.microsoft.com/kb/315933" cite="http://support.microsoft.com/kb/315933">
 <p>警告 : レジストリ エディタの使い方を誤ると、深刻な問題が発生することがあります。</p>
 <br/>
@@ -238,7 +386,6 @@
 <p>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0</p>
 <p>Flags 値は DWORD 値です。Flags 値のデータ値を 47 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが表示されるようになります。Flags 値のデータ値を 21 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが非表示になります。 </p>
 <cite><a href="http://support.microsoft.com/kb/315933" target="_blank">http://support.microsoft.com/kb/315933</a></cite></blockquote>
-</div>
 
 
 		
@@ -263,7 +410,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/ie/'>IE</a>
 
 
 </div>
@@ -274,26 +421,63 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/jquery-reverse-lookup-reference-of-selector">jQuery逆引きレファレンス、セレクタ編(@ITより)</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<p>@IT新しい連載:jQuery逆引きリファレンスが始まりました。</p>
+		<p>@IT新しい連載:jQuery逆引きリファレンスが始まりました。</p>
+
+
 <p>既に一ヶ月前になりますが、</p>
+
+
 <p>自己テスト用でもいいともいます。</p>
+
+
 <p>私は自信がない項目が結構ありました。</p>
+
+
 <br/>
+
+
 <p>jQueryで使ったシンタックス英単語は</p>
+
+
 <p>ほとんど簡単な単語で</p>
+
+
 <p>ぱっと見たら分かるような気がするけど、</p>
+
+
 <p>本気で使おうとしたらまたいろいろ調べないと</p>
+
+
 <p>と感じました。</p>
+
+
 <p>例えば:containのフィルタにはテキスト(case-sensitive)</p>
+
+
 <p>しか入りません。</p>
+
+
 <p>逆に:hasにはセレクタ分が使えるなど</p>
+
+
 <p>意味合い的には似てますが、</p>
+
+
 <p>使い方がまったく違うところが</p>
+
+
 <p>落とし穴だと思います。</p>
+
+
 <br/>
+
+
 <p>以下がセレクタ編のタイトルです。</p>
+
+
 <p>自信があるのは何項目ですか？</p>
+
+
 <blockquote title="指定されたページは存在しません" cite="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html">
 <p>    * id値で要素を特定するには？</p>
 <p>    * タグ名で要素を特定するには？</p>
@@ -320,9 +504,12 @@
 <p>    * フォーム要素やヘッダ要素を取得するには？</p>
 <p>    * 特定の状態にある要素のみを取得するには？</p>
 <cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html" target="_blank">第1回 セレクタ編 － ＠IT</a></cite></blockquote>
+
+
 <p>これをきっかけに曖昧なところをいったん全部整理しようと思います。</p>
+
+
 <p>後の記事でまた詳しく書きます。</p>
-</div>
 
 
 		
@@ -347,7 +534,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -358,17 +545,31 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/what-did-you-do-this-weekend">週末の過ごし方？</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<p>プログラマ、あるいはIT技術者の週末はどう過ごしていますか？</p>
+		<p>プログラマ、あるいはIT技術者の週末はどう過ごしていますか？</p>
+
+
 <p>技術の記事をメインとした私のブログは</p>
+
+
 <p>週末になるとアクセス数が普段の60%しかありません。。。</p>
+
+
 <p>多分平日はみんな仕事でいろいろと検索していると思います。</p>
+
+
 <p>週末はやはり余裕を持ってリラックスしていますよね。</p>
+
+
 <br/>
+
+
 <p>やはり週末の直前はエンターテーメントの記事を書こうと思ってます。</p>
+
+
 <p>自分もリラックスが必要だし、</p>
+
+
 <p>それにあわせた気持ちを記事の形で残してもいいですよね。</p>
-</div>
 
 
 		
@@ -393,7 +594,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/diary/'>diary</a>
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
 
 
 </div>
@@ -451,7 +652,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
 
 
 </div>
@@ -462,44 +663,92 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/basic-of-ajax-xmlhttprequest">今更のAjax基本：XMLHttpRequestについて</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<h4>前記</h4>
+		<h2>前記</h2>
+
 <p>恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、</p>
+
+
 <p>実際はただjQueryの便利なAPIを使っただけで</p>
+
+
 <p>Ajaxそのものの仕組みも分かっていません。</p>
+
+
 <br/>
+
+
 <p>今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように</p>
+
+
 <p>自分が理解したことをメモとして残したいです。</p>
+
+
 <br/>
-<h4>XMLHttpRequestとは</h4>
+
+
+<h2>XMLHttpRequestとは</h2>
+
 <blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
 <p>JavaScriptなどのウェブブラウザ搭載のスクリプト言語で、サーバとのHTTP通信を行うための組み込みオブジェクト（API）である。</p>
 <p>すでに読み込んだページからさらにHTTPリクエストを発することができ、ページ遷移することなしにデータを送受信できるAjaxの基幹技術である。</p>
 <cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+
+
 <p>なるほど、これがAjaxを支える基幹ですね。</p>
+
+
 <p>JavaScriptのオブジェクトです。</p>
+
+
 <p>名前にXMLがついていますが、XML以外のデータも扱うことができます。</p>
-<h4>XMLHttpRequestの歴史</h4>
+
+
+<h2>XMLHttpRequestの歴史</h2>
+
 <blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
 <p>XMLHttpRequestは、マイクロソフトがOutlook Web Access 2000のダイナミックHTMLによるウェブインターフェースに活用するため、1999年公開のInternet Explorer 5においてActiveXオブジェクトとして実装したのが始まりである[1]。その後、2001年にMozillaプロジェクトがこれと互換性のある組み込みオブジェクトをMozilla 0.9.7およびNetscape 7で実装し、アップルも2004年にSafari 1.2でMozillaと同様の組み込みオブジェクトを実装し始めた[2]。</p>
 <p>このように徐々にInternet Explorer以外のブラウザにも実装されていったXMLHttpRequestは、2005年にAjaxによって一躍有名になった。</p>
 <cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+
+
 <p>ようは各ブラウザが先にXMLHttpRequestオブジェクトを実装した、</p>
+
+
 <p>そして偉い人がAjaxを提唱してから一気に有名になった訳ですよね。</p>
+
+
 <br/>
-<h4>XMLHttpRequestの仕組み</h4>
+
+
+<h2>XMLHttpRequestの仕組み</h2>
+
 <p>AllAboutの記事に載ってた仕組みを自分で書きました。</p>
+
+
 <p><a href="http://f.hatena.ne.jp/kinopyo/20091114023141" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091114/20091114023141.jpg" alt="f:id:kinopyo:20091114023141j:image" title="f:id:kinopyo:20091114023141j:image" class="hatena-fotolife"></a></p>
+
+
 <p>XMLHttpRequestのメソッドやプロパティは多分これからも使うことはありませんが、</p>
+
+
 <p>一応図で見て大体把握しておきましょう。</p>
+
+
 <p>openメソッドはイニシャライズみたいな感じで、GETかPOSTか、URLなどのパラメータを受け取ります。</p>
+
+
 <p>そしてsendメソッドによるサーバに送信する前に、onreadystatechangeイベントのコールバックでステータスを判断しresponseTextやresponseXML プロパティのデータを返す流れですね。</p>
+
+
 <blockquote>
 <p>拡張機能から XMLHttpRequest を使いたい場合は、非同期でロードするようにすべきです。</p>
 <p>非同期の使用法では、データを受け取ったときにコールバックを受け取ります。</p>
 <p>そのため、リクエストが発生している間はブラウザは通常どおりに動き続けます。 </p>
 </blockquote>
-<h4>XMLHttpRequestの宣言</h4>
+
+
+<h2>XMLHttpRequestの宣言</h2>
+
 <blockquote title="http://ponpon-village.net/ajax/xmlhttp.htm" cite="http://ponpon-village.net/ajax/xmlhttp.htm">
 <p>ブラウザにより異なる。</p>
 <p>IE では、ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;) を使用。</p>
@@ -507,7 +756,10 @@
 <p>ActiveXObject(&#8220;Msxml2.XMLHTTP.3.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP&#8221;) なども使用出来る。</p>
 <p>Mozilla 系ブラウザでは、XMLHttpRequest() を使用。</p>
 <cite><a href="http://ponpon-village.net/ajax/xmlhttp.htm" target="_blank">http://ponpon-village.net/ajax/xmlhttp.htm</a></cite></blockquote>
-<h4>非同期通信のサンプルコード</h4>
+
+
+<h2>非同期通信のサンプルコード</h2>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -547,26 +799,54 @@
 </span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </span><span class='line'>  <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 <p>req.statusはHTTPレスポンスコードで200はOK、404はよく見るNot Foundです。</p>
+
+
 <br/>
-<h4>注意点</h4>
+
+
+<h2>注意点</h2>
+
 <ul>
 <li>file:/// および ftp:// は HTTP ステータスを返しません。そのため、status についてはゼロが、statusText については空文字列を返されます。</li>
 <li>XMLHttpRequestは、セキュリティを考慮して、リクエストを送信できるのは同一ドメイン内に制限されています。</li>
 </ul>
+
+
 <br/>
+
+
 <p>とりあえず自分が気になった点を書きました。</p>
+
+
 <p>肝心なところはonreadystatechangeでのコールバックだと思います。</p>
-<h4>次回</h4>
+
+
+<h2>次回</h2>
+
 <p>XMLHttpRequestは同一ドメイン内に制限されていますね。</p>
+
+
 <p>別のドメインとのやり取りはどう行うのかを次のテーマにします。</p>
+
+
 <p>なんかJSONPとかクロスドメインなどのキーワードがよく見えますが、</p>
+
+
 <p>その辺をはっきりしようと思います。</p>
-<h4>参考サイト：</h4>
+
+
+<h2>参考サイト：</h2>
+
 <p><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></p>
+
+
 <p><a href="https://developer.mozilla.org/Ja/XMLHttpRequest" target="_blank">XMLHttpRequest - MDC</a></p>
+
+
 <p><a href="http://allabout.co.jp/internet/javascript/closeup/CU20050515A" target="_blank">Ajaxはじめの一歩　XMLHttpRequest - ［JavaScript］All About</a></p>
-</div>
 
 
 		
@@ -591,7 +871,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/ajax/'>AJAX</a>
 
 
 </div>
@@ -602,27 +882,53 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder">Flex3: trace()ログ出力の設定、Windowsの隠しフォルダに注意</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<p>Flexのtrace()はログ出力の機能です。</p>
+		<p>Flexのtrace()はログ出力の機能です。</p>
+
+
 <p>Javaに慣れましたので、trace()もてっきりコンソールにも</p>
+
+
 <p>出力すると思っちゃいましたが、</p>
+
+
 <p>実はそうではありません。</p>
+
+
 <p>trace()を使うにはまず設定が必要です。</p>
-<h4>バージョン情報</h4>
+
+
+<h2>バージョン情報</h2>
+
 <ul>
 <li>Flex3 Builder: Version 3.0 (build 3.0.2.214193)</li>
 <li>Flash Player: 9,0,124,0</li>
 </ul>
-<h4>デバッガ版のFlash Player</h4>
+
+
+<h2>デバッガ版のFlash Player</h2>
+
 <p>Flex3 Builderをダウンロードしそこに含んだ</p>
+
+
 <p>for IE, FirefoxなどのFlash Playerを全部インストールしてください。</p>
+
+
 <p>そのほうが万全で楽です。</p>
+
+
 <p>既にFlash Playerがインストールされたとしても、</p>
+
+
 <p>それがデバッガ版じゃないとダメですよ。</p>
-<h4>設定ファイルの作成</h4>
+
+
+<h2>設定ファイルの作成</h2>
+
 <ul>
-<li><span style="color:#0000FF;">mm.cfg</span>という設定ファイルを下記場所に作成</li>
+<li><code>mm.cfg</code>という設定ファイルを下記場所に作成</li>
 </ul>
+
+
 <table>
 <tr><th>オペレーティングシステム</th><th>ファイルの作成場所</th></tr>
 <tr><td>Macintosh OS X</td><td>/Library/Application Support/Macromedia </td></tr>
@@ -631,23 +937,43 @@
 <tr><td>Windows 95/98/ME</td><td>%HOMEDRIVE%\%HOMEPATH% </td></tr>
 <tr><td>Linux</td><td>/home/username </td></tr>
 </table>
-<h4>設定ファイルの編集</h4>
+
+
+<h2>設定ファイルの編集</h2>
+
 <p>作成したmm.cfgファイルを下記のように編集すれば、エラーのレポートとトレースログが有効になります。</p>
+
+
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>ErrorReportingEnable=1
 </span><span class='line'>TraceOutputFileEnable=1</span></code></pre></td></tr></table></div></figure>
 
+
+
+
 <p>TraceOutputFileNameというログファイルの名前と出力先を指定するプロパティもありますが、</p>
+
+
 <blockquote title="Adobe Flex3 ヘルプ" cite="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337">
 <p>Flash Player 9 Update 以降では、TraceOutputFileName プロパティは無視され、</p>
 <p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
 <cite><a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex3 ヘルプ</a></cite></blockquote>
+
+
 <p>との懸念もあり、各自の環境を確認した上でお使いください。</p>
+
+
 <p>私のFLex3 Builder, Flash 9では無効でした。</p>
-<h4>ログファイルの場所</h4>
+
+
+<h2>ログファイルの場所</h2>
+
 <p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+
+
 <table>
 <tr><th>オペレーティングシステム</th><th>ログファイルの場所</th></tr>
 <tr><td>Macintosh OS X</td><td>/Users/username/Library/Preferences/Macromedia/Flash Player/Logs/  </td></tr>
@@ -655,12 +981,20 @@
 <tr><td>Windows 95/98/ME/2000/XP</td><td>C:\Documents and Settings\username\Application Data\Macromedia\Flash Player\Logs </td></tr>
 <tr><td>Linux</td><td>/home/username/.macromedia/Flash_Player/Logs/ </td></tr>
 </table>
-<p>Windowsの方は特に隠しフォルダに注意してください。</p>
-<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
-<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
-<h4>テストコード</h4>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+
+<p>Windowsの方は特に隠しフォルダに注意してください。</p>
+
+
+<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
+
+
+<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
+
+
+<h2>テストコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -671,38 +1005,65 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>?xml version&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;1.0&#34;&lt;/span> encoding&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;utf-8&#34;&lt;/span>?&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Application xmlns:mx&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;http://www.adobe.com/2006/mxml&#34;&lt;/span>
-</span><span class='line'>layout&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;absolute&#34;&lt;/span> creationComplete&lt;span class="synStatement">=&lt;/span>&lt;span class="synConstant">&#34;init()&#34;&lt;/span>&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;&lt;/span>![CDATA[
-</span><span class='line'>&lt;span class="synType">private&lt;/span> &lt;span class="synStatement">function&lt;/span> init():void{
-</span><span class='line'>trace(&lt;span class="synConstant">&#34;Hello World&#34;&lt;/span>);
-</span><span class='line'>}
-</span><span class='line'>]]&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Script&lt;span class="synStatement">&#62;&lt;/span>
-</span><span class='line'>&lt;span class="synStatement">&#60;/&lt;/span>mx:Application&lt;span class="synStatement">&#62;&lt;/span></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span><span class="nt">&lt;/span&gt;</span>?xml version=<span class="ni">&amp;#34;</span>1.0<span class="ni">&amp;#34;</span> encoding=<span class="ni">&amp;#34;</span>utf-8<span class="ni">&amp;#34;</span>?<span class="ni">&amp;#62;</span>
+</span><span class='line'><span class="nt">&lt;mx:Application</span> <span class="na">xmlns:mx=</span><span class="s">&amp;#34;http://www.adobe.com/2006/mxml&amp;#34;</span>
+</span><span class='line'><span class="na">layout=</span><span class="s">&amp;#34;absolute&amp;#34;</span> <span class="na">creationComplete=</span><span class="s">&amp;#34;init()&amp;#34;&amp;#62;</span>
+</span><span class='line'><span class="err">&lt;</span><span class="na">mx:Script</span><span class="err">&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span><span class='line'><span class="err">&lt;![</span><span class="na">CDATA</span><span class="err">[</span>
+</span><span class='line'><span class="err">&lt;</span><span class="na">private</span> <span class="na">function</span> <span class="na">init</span><span class="err">()</span><span class="na">:void</span><span class="err">{</span>
+</span><span class='line'><span class="na">trace</span><span class="err">(&amp;#</span><span class="na">34</span><span class="err">;</span><span class="na">Hello</span> <span class="na">World</span><span class="err">&amp;#</span><span class="na">34</span><span class="err">;);</span>
+</span><span class='line'><span class="err">}</span>
+</span><span class='line'><span class="err">]]&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span><span class='line'><span class="err">&lt;/</span><span class="na">mx:Script</span><span class="err">&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span><span class='line'><span class="err">&lt;/</span><span class="na">mx:Application</span><span class="err">&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <p>これでログファイルには「Hello World」と出力されるはずです。</p>
-<h4>特記事項</h4>
-<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
-<p>自分でもう一回書こうと全然思わなかったのですが、</p>
-<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
-<p>私が最初見つかった幾つかのサイトでの書き方では</p>
-<p>どう設定してもまったくログが出力されなかったのです。</p>
-<p>アンインストールしたり、設定ファイルのエンコードまで</p>
-<p>神経質になってしまいました。</p>
-<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
-<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
-<p>私もこれからは注意します。</p>
-<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
-</div>
 
+
+<h2>特記事項</h2>
+
+<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
+
+
+<p>自分でもう一回書こうと全然思わなかったのですが、</p>
+
+
+<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
+
+
+<p>私が最初見つかった幾つかのサイトでの書き方では</p>
+
+
+<p>どう設定してもまったくログが出力されなかったのです。</p>
+
+
+<p>アンインストールしたり、設定ファイルのエンコードまで</p>
+
+
+<p>神経質になってしまいました。</p>
+
+
+<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
+
+
+<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
+
+
+<p>私もこれからは注意します。</p>
+
+
+<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
+
+
+<p></div></p>
 
 <div class="footnote">
 <p class="footnote"><a href="/kinopyo/#fn1" name="f1">*1</a>：AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み</p>
 <p class="footnote"><a href="/kinopyo/#fn2" name="f2">*2</a>：AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み</p>
-</div>
 
 
 		
@@ -727,7 +1088,7 @@
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
 
 
 </div>
@@ -738,489 +1099,110 @@
     <article class="post">
 	<h1 class="title"><a href="/blog/jquery-pass-data-to-bind-function">jQuery bindバインド時にデータを渡す</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<h4>誤った使い方</h4>
-<p>例えばbind時にname変数に格納された情報を渡したい</p>
-{% codeblock %}
+		<h2>誤った使い方</h2>
 
-<span class="synIdentifier">var</span> name = <span class="synConstant">&#34;kinopyo&#34;</span>;
-$(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConstant">&#34;click&#34;</span>,<span class="synIdentifier">function</span>(name)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(name);
-<span class="synIdentifier">}</span>);
-{% endcodeblock %}
+<p>例えばbind時にname変数に格納された情報を渡したい</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var name = "kinopyo";
+</span><span class='line'>$(":button").bind("click", function(name){
+</span><span class='line'>  alert(name);
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <p>これは誤った使い方です。</p>
-<a name="seemore"></a>
+
+
 <p>alertでは望まれた「kinopyo」の文字列は表示されません。</p>
+
+
 <p>私は最初jQueryに触れたときはこんな書き方をしたんです。</p>
+
+
 <br/>
+
+
 <p>もちろんname変数とbindのコールバックは同じスコープなのでfunctionから直接name変数を参照できますが、</p>
+
+
 <p>ここではあえて誤った使い方にしました。</p>
+
+
 <br/>
+
+
 <p>実際alertでは[object Object]と表示されました。</p>
+
+
 <p>firebugで中身をのぞいてみるとこんな感じのオブジェクトです。</p>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091111222209" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091111/20091111222209.jpg" alt="f:id:kinopyo:20091111222209j:image" title="f:id:kinopyo:20091111222209j:image" class="hatena-fotolife"></a></p>
+
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091111/20091111222209.jpg" alt="" /></p>
+
 <p>このnameは一体何のか、答えはjQueryのEventオブジェクトです。</p>
+
+
 <p>Eventオブジェクトについてはこの記事<a href="http://d.hatena.ne.jp/kinopyo/20091111/1257946561">「jQuery Eventオブジェクトの詳細、バブリングの仕組み」</a>を参照してください。</p>
-<h4>bindのAPI</h4>
-<p><span style="font-weight:bold;font-size:x-large;">bind(type, [data], fn)</span></p>
+
+
+<h2>bindのAPI</h2>
+
+<p>**bind(type, [data], fn)**</p>
+
+
 <ul>
 <li>type：click, dbclick,mousedown&#8230;などトリガーとなるイベントタイプ</li>
-<li>[data]：<span style="color:#0000FF;">第三パラメータのハンドラにデータを渡す。括弧は配列の意味ではなく、省略可の意味</li>
-<li>fn：イベントハンドラ</span>
-<ul>
+<li>[data]：第三パラメータのハンドラにデータを渡す。括弧は配列の意味ではなく、省略可の意味</li>
+<li>fn：イベントハンドラ</li>
 <li>パラメータ：jQueryのEventオブジェクト、event.dataで第二引数の[data]を参照できる</li>
 </ul>
-</li>
-</ul>
+
+
 <p>jQueryは第二パラメータに対してdataかfunctionか自動判断してます。</p>
+
+
 <p>普段使い慣れたのはdataを省略したものでしょう。</p>
+
+
 <p>さっきの例を修正すると、正しく「kinopyo」が表示されます。</p>
-<pre class="syntax-highlight">
-<span class="synIdentifier">var</span> name = <span class="synConstant">&#34;kinopyo&#34;</span>;
-$(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConstant">&#34;click&#34;</span>,name,<span class="synIdentifier">function</span>(<span class="synStatement">event</span>)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(<span class="synStatement">event</span>.data);
-<span class="synIdentifier">}</span>);
-
-{% endcodeblock %}
-<p><span style="color:#0033FF;">渡されるのはJavaScriptのオブジェクトです。</span>。</p>
-<p>つまり配列も、キー値ペアのオブジェクトも全部渡されます</p>
-<br/>
-<h4>参考サイト</h4>
-<p><a href="http://docs.jquery.com/Events/bind">公式サイトのbindドキュメント</a></p>
-<p><a href="http://stacktrace.jp/jquery/api/events/bind.html">StackTraceサイト</a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
 
 
 
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-11T00:00:00+09:00" pubdate data-updated="true">2009-11-11</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-detail-of-event-object-structure-of-bubbling">jQuery Eventオブジェクトの詳細、バブリングの仕組み</a></h1>
-	<div class="entry-content">
-		<p>jQueryのEventオブジェクトには</p>
-
-<p>いくつかのプロパティとメソッドがありますが、</p>
-
-<p>それらの定義より、実際どの場面に使えるかを重点として紹介したいと思います。</p>
-
-<h4>dataプロパティ</h4>
-
-
-<p>bind時に渡されたデータを保持します。</p>
-
-<p>こちらの記事<a href="http://d.hatena.ne.jp/kinopyo/20091111/1257946002">「jQuery bindバインド時にデータを渡す」</a>をごらんください。</p>
-
-<h4>currentTargetとtargetプロパティ</h4>
-
-
-<p>最初currentTargetはイベントが発生したDOM要素だと理解していましたが、</p>
-
-<p>jQueryのドキュメントを見ると似た名前でtargetの属性もあります。</p>
-
-<p>そしてcurrentTargetには「バブリング」のキーワードが出てきましたので、</p>
-
-<p>詳しく書きたいと思います。</p>
-
-<p><a name="seemore"></a></p>
-
-<p>サンプル：</p>
-
-<p>一番大きいdiv範囲内をクリックするとそのdivのclass属性の値を返すJavaScriptです。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-<span class='line-number'>119</span>
-<span class='line-number'>120</span>
-<span class='line-number'>121</span>
-<span class='line-number'>122</span>
-<span class='line-number'>123</span>
-<span class='line-number'>124</span>
-<span class='line-number'>125</span>
-<span class='line-number'>126</span>
-<span class='line-number'>127</span>
-<span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
-<span class='line-number'>143</span>
-<span class='line-number'>144</span>
-<span class='line-number'>145</span>
-<span class='line-number'>146</span>
-<span class='line-number'>147</span>
-<span class='line-number'>148</span>
-<span class='line-number'>149</span>
-<span class='line-number'>150</span>
-<span class='line-number'>151</span>
-<span class='line-number'>152</span>
-<span class='line-number'>153</span>
-<span class='line-number'>154</span>
-<span class='line-number'>155</span>
-<span class='line-number'>156</span>
-<span class='line-number'>157</span>
-<span class='line-number'>158</span>
-<span class='line-number'>159</span>
-<span class='line-number'>160</span>
-<span class='line-number'>161</span>
-<span class='line-number'>162</span>
-<span class='line-number'>163</span>
-<span class='line-number'>164</span>
-<span class='line-number'>165</span>
-<span class='line-number'>166</span>
-<span class='line-number'>167</span>
-<span class='line-number'>168</span>
-<span class='line-number'>169</span>
-<span class='line-number'>170</span>
-<span class='line-number'>171</span>
-<span class='line-number'>172</span>
-<span class='line-number'>173</span>
-<span class='line-number'>174</span>
-<span class='line-number'>175</span>
-<span class='line-number'>176</span>
-<span class='line-number'>177</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.big&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">className</span><span class="p">);</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;:button&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 </span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="err">そして</span><span class="nx">HTML</span><span class="err">コードは以こんな感じです。</span><span class="nx">CSS</span><span class="err">の部分は省略しました。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">直接画像を参照してください。</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">codeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;big&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">a</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;hatena-fotolife&quot;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://f.hatena.ne.jp/kinopyo/20091111223232&quot;</span> <span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span><span class="o">&gt;&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;hatena-fotolife&quot;</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;f:id:kinopyo:20091111223232j:image&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091111/20091111223232.jpg&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;f:id:kinopyo:20091111223232j:image&quot;</span> <span class="o">/&gt;&lt;</span><span class="err">/a&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">alert</span><span class="err">部分の</span><span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="err">と</span><span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="err">を入れ替えて検証します。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">黄色の部分をクリック</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">target</span><span class="err">：</span><span class="nx">small</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">緑色の部分をクリック</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">target</span><span class="err">：</span><span class="nx">medium</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">青色の部分をクリック</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">target</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="err">結果：</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">currentTarget</span><span class="err">は常に</span><span class="nx">big</span><span class="err">を表示するに対し、</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">target</span><span class="err">は子要素まで「精確」表示する</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">どうですか、あたり？はずれ？</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">ここでもう一回</span><span class="nx">jQuery</span><span class="err">のドキュメントを見てみましょう。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">blockquote</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold;font-size:x-large;&quot;</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">The</span> <span class="nx">current</span> <span class="nx">DOM</span> <span class="nx">element</span> <span class="nx">within</span> <span class="nx">the</span> <span class="nx">event</span> <span class="nx">bubbling</span> <span class="nx">phase</span><span class="p">.</span><span class="nx">This</span> <span class="nx">attribute</span> <span class="nx">will</span> <span class="nx">always</span> <span class="nx">be</span> <span class="nx">equal</span> <span class="nx">to</span> <span class="k">this</span> <span class="nx">of</span> <span class="nx">the</span> <span class="kd">function</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/blockquote&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">blockquote</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold;font-size:x-large;&quot;</span><span class="o">&gt;</span><span class="nx">target</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">Contains</span> <span class="nx">the</span> <span class="nx">DOM</span> <span class="nx">element</span> <span class="nx">that</span> <span class="nx">issued</span> <span class="nx">the</span> <span class="nx">event</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">This</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">the</span> <span class="nx">element</span> <span class="nx">that</span> <span class="nx">registered</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">event</span> <span class="nx">or</span> <span class="nx">a</span> <span class="nx">child</span> <span class="nx">of</span> <span class="nx">it</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/blockquote&gt;</span>
-</span><span class='line'><span class="nx">currentTarget</span><span class="err">は実際</span><span class="nx">bind</span><span class="err">時の要素を指して、</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">target</span><span class="err">はその要素および子要素まで全部含んでいると私は理解しましたが、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">「バブリングフェーズ」の言葉については未だ曖昧な感じです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">そして</span><span class="nx">currentTarget</span><span class="err">は常にハンドラ内の</span><span class="k">this</span><span class="err">と同じことも覚えておきましょう。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">クロージャを使う際に例えば</span><span class="k">this</span><span class="err">がほかのオブジェクトを指しても</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="err">でイベントにバインドされた要素を使えます。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">pageX</span><span class="err">、</span><span class="nx">pageY</span><span class="err">プロパティ</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">定義：イベント発生時のマウス座標</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="err">この「マウス座標」に興味があり、本当にイベント発生時のマウス座標か、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">それともイベントが発生時の</span><span class="nx">DOM</span><span class="err">要素の座標かを試しました。</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">jQuery</span><span class="err">サンプルのソースを使いました。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Current mouse position: &quot;</span>
-</span><span class='line'>      <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageY</span><span class="p">);</span>
-</span><span class='line'><span class="p">})</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">マウスでクリック：「</span><span class="nx">Current</span> <span class="nx">mouse</span> <span class="nx">position</span><span class="o">:</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">312</span><span class="err">」</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">リンクに</span><span class="nx">Tab</span><span class="err">でフォーカスし</span><span class="nx">Enter</span><span class="err">：「</span><span class="nx">Current</span> <span class="nx">mouse</span> <span class="nx">position</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="err">」</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="err">本当にマウスによるイベントでしか座標が取れないみたいです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">応用としてはツールチップなどのプラグインで、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">マウス現在の座標でオフセットして表示するイメージです。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">stopPropagation</span><span class="p">()</span><span class="err">メソッド</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="err">これはバブリングに対してよく使われる用語ですね。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">バブリングは言語に制限せずイベントに関する制御では必ず出てきます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">最近見た</span><span class="nx">Flex3</span><span class="err">でもバブリングがあったし、</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">iPhone</span><span class="err">の開発でも</span><span class="nx">responder</span> <span class="nx">chain</span><span class="err">の用語があり、その中身も実際はバブリングの話です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">一回だけ徹底で勉強すればどの場面でも使えるんです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">ここまで書いてちょっと疲れましたが、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">自分もちゃんと決着をつけたいので、やはり書きましょう！</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">利用するサンプルはやはりさっきの大中小</span><span class="nx">DIV</span><span class="err">です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">JavaScript</span><span class="err">のほうのみ修正します。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.big&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;big&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.medium&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.small&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">evt</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">黄色部分をクリックすると</span><span class="nx">small</span><span class="err">のみが出力される</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h5</span><span class="o">&gt;</span><span class="err">解釈</span><span class="o">&lt;</span><span class="err">/h5&gt;</span>
-</span><span class='line'><span class="err">もし</span><span class="nx">stopPropagation</span><span class="err">がなかったら</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">そもそもの動きとしてはまずイベントが発生した要素</span><span class="nx">small</span><span class="err">のイベントハンドラが処理を行います。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">そしてその</span><span class="nx">small</span><span class="err">要素が属している親要素にイベント終了とのことを伝播し、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">もしその親要素も該当イベントにバインドされたら、親のイベントハンドラが実行します。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">こんな形でどんどん親にイベントを伝播するイメージがまさにバブリングという単語の意味です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">stopPropagation</span><span class="err">が実行されるとそのバブリングフェーズが終了した時点で親に対しての伝播を中止します。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">自分もよくわからない「バブリングフェーズ」の用語を使っちゃいました。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">なぜかって言うと、次のサンプルを先に見てみましょう。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">さっきの</span><span class="nx">JavaScript</span><span class="err">を元に一つの処理だけを追加しました。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.big&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;big&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.medium&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.small&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">evt</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.small&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;small2&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="err">これで</span><span class="nx">small</span><span class="err">の黄色部分をクリックするとどうなるでしょうか？</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">small2</span><span class="err">は表示されますか？</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">答えは、表示されます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">なぜならさっき言ったように</span><span class="nx">stopPropagation</span><span class="err">は親に対しての伝播を中止するだけで、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">同じ要素に対しての処理には影響がないとのことです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">もし同じ要素に対しても処理を中止したい場合は</span><span class="nx">stopPropagation</span><span class="p">()</span><span class="err">の代わりに、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">これは使います。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">event</span><span class="p">.</span><span class="nx">stopImmediatePropagation</span><span class="p">();</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>これならさっきの例で言うと、small2は出力されません。</p>
-
-<p>イベントオブジェクトについてはとりあえずこの辺で終わります。</p>
-
-<h4>参考サイト</h4>
 
 
-<p><a href="http://docs.jquery.com/Events/jQuery.Event">公式サイトのEventオブジェクトドキュメント</a></p>
+<p>渡されるのはJavaScriptのオブジェクトです。。</p>
 
-<p><a href="http://stacktrace.jp/jquery/api/events/event_object.html">StackTraceサイト</a></p>
+
+<p>つまり配列も、キー値ペアのオブジェクトも全部渡されます</p>
+
+
+<br/>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://docs.jquery.com/Events/bind">公式サイトのbindドキュメント</a></p>
+
+
+<p><a href="http://stacktrace.jp/jquery/api/events/bind.html">StackTraceサイト</a></p>
+
 
 		
 		
@@ -1244,7 +1226,7 @@ $(<span class="synConstant">&#34;:button&#34;</span>).bind(<span class="synConst
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

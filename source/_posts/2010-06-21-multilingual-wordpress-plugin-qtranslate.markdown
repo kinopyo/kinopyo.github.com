@@ -5,7 +5,7 @@ date: 2010-6-21
 wordpress_id: 1163
 permalink: /blog/multilingual-wordpress-plugin-qtranslate
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 <a href="http://www.qianqin.de/qtranslate/">qTranslate</a>を試しました。
 ブログを多言語に対応する上でとても便利なプラグインです。

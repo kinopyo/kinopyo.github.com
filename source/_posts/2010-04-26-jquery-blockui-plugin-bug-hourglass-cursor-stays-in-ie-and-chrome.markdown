@@ -5,7 +5,7 @@ date: 2010-4-26
 wordpress_id: 1084
 permalink: /blog/jquery-blockui-plugin-bug-hourglass-cursor-stays-in-ie-and-chrome
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 下記のURLで試してみればすぐ分かりますが、
 表題の通りblockUIで制御したところは解除した後にマウスのカーソルがおかしいです。

@@ -5,7 +5,7 @@ date: 2010-4-19
 wordpress_id: 1080
 permalink: /blog/jquery-source-siblings-children
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 よく出来ていると思います。
 勉強になります。

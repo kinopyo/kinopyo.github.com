@@ -5,7 +5,7 @@ date: 2012-1-1
 wordpress_id: 2569
 permalink: /blog/goal-for-2012
 comments: true
-categories: ["diary"]
+categories: Diary
 ---
 Nettus+の記事:[10 New Year’s Resolutions Every Web Developer Should Make](http://net.tutsplus.com/articles/general/ten-new-years-resolutions-every-web-developer-should-make/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+nettuts+%28Nettuts%2B%29)がとても素晴らしかったので、それに乗って2012の目標をできるだけ数字化で評価しやすいように設定しようと思います。
 

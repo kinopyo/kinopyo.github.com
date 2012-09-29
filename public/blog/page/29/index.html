@@ -7,11 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="現象 まず画像を見てみましょう。
-最初の二つ白い背景のエリアに注目してください。
-一番目は背景色を白い色(#FFFFFF)に設定したもので、
-二番目が背景色をnullに設定したものです。
-白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。 またIE8の開発ツール( &hellip;">
+	<meta name="description" content="Apache
+ダウンロード＆インストール Welcome! - The Apache HTTP Server Projectから最新版を入手
+インストールファイルを実行、下記2点注意すればOK
+[Network Domain]と[Server Name]のところはlocalhostと記入
+[ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -78,51 +78,67 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/css-issue-in-ie8-background-color">IE8でbackground-colorが白とその値がnullとの表示が微妙に違う</a></h1>
+	<h1 class="title"><a href="/blog/install-php5-and-apache2-2-in-windows">PHP5とApache2.2をWindowsにインストール</a></h1>
 	<div class="entry-content">
 		<div class="section">
-<h4>現象</h4>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091124235949" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091124/20091124235949.jpg" alt="f:id:kinopyo:20091124235949j:image" title="f:id:kinopyo:20091124235949j:image" class="hatena-fotolife"></a></p>
-<p>まず画像を見てみましょう。</p>
-<p>最初の二つ白い背景のエリアに注目してください。</p>
-<p>一番目は背景色を白い色(#FFFFFF)に設定したもので、</p>
-<p>二番目が背景色をnullに設定したものです。</p>
-<p>白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。</p>
+<h4>Apache</h4>
+<h5>ダウンロード＆インストール</h5>
+<ul>
+<li><a href="http://httpd.apache.org" target="_blank">Welcome! - The Apache HTTP Server Project</a>から最新版を入手</li>
+<li>インストールファイルを実行、下記2点注意すればOK</li>
+<li>[Network Domain]と[Server Name]のところはlocalhostと記入</li>
+<li>[Custom]インストールでインストール先が指定できる</li>
+</ul>
+<h5>設定</h5>
+<p>[Apache Home]\conf\httpd.confを開いて下記のパスを自分の環境にあわせて</p>
+<p>設定してください。このパスはサーバが立ち上がった際のrootとして使います。</p>
+<ul>
+<li>DocumentRoot &#8220;D:/www&#8221;</li>
+<li>&#60;Directory &#8220;D:/www&#8221;&#62;</li>
+</ul>
+<h4>PHP</h4>
+<ul>
+<li><a href="http://www.php.net/downloads.php" target="_blank">PHP: Downloads</a>から入手
+<ul>
+<li>Windows BinariesからPHP 5.2.11 zip packageをダウンロード</li>
+</ul>
+</li>
+</ul>
+<p>拡張子がMSIのinstaller版もあるが、マニュアルでのインストールがすすめられる</p>
+<ul>
+<li>zipファイルを適当な場所に解凍。今回はd:\phpに。</li>
+<li>Windowsの環境変数pathに設定</li>
+<li>コマンドプロンプトで下記コマンドでインストール成功かを確認</li>
+</ul>
+<blockquote>
+<p>php -v</p>
+</blockquote>
+<h4>php.ini</h4>
+<ul>
+<li>php.ini-recommendedをphp.iniにリネーム</li>
+<li>doc_rootを検索し内容を編集</li>
+</ul>
+<blockquote>
+<p>doc_root = d:\www</p>
+</blockquote>
+<p>Apacheサーバと同じルート(httpd.confの DocumentRoot)</p>
+<h4>ApacheサーバとPHPの連携</h4>
+<p>httpd.confの修正</p>
+<blockquote>
+<p>LoadModule php5_module d:/php/php5apache2_2.dll</p>
+<p>AddType application/x-httpd-php .php</p>
+<p>PHPIniDir &#8220;d:/php&#8221;</p>
+</blockquote>
+<p>ディレクトリは自分の環境に合わせて修正してください。</p>
 <br/>
-<p>またIE8の開発ツール(F12で呼ばれる、Firebugと似たデバッグツール)で見ても</p>
-<p>background-colorが#ffffffになってる以外に、何の余計なスタイルもありませんでした。</p>
-<p>なのでやはりbackground-colorが指定してないものと#ffffffに指定したものには差異が存在してます。</p>
-<br/>
-<h4>サンプルコード</h4>
-{% codeblock %}
-
-<span class="synIdentifier">&#60;</span><span class="synStatement">div</span><span class="synIdentifier">&#62;</span>
-<span class="synIdentifier">&#60;</span><span class="synStatement">input</span><span class="synIdentifier"> </span><span class="synType">id</span><span class="synIdentifier">=</span><span class="synConstant">&#34;foo&#34;</span><span class="synIdentifier"> </span><span class="synType">type</span><span class="synIdentifier">=</span><span class="synConstant">&#34;text&#34;</span><span class="synIdentifier"> /&#62;</span>
-<span class="synIdentifier">&#60;</span><span class="synStatement">input</span><span class="synIdentifier"> </span><span class="synType">id</span><span class="synIdentifier">=</span><span class="synConstant">&#34;bar&#34;</span><span class="synIdentifier"> </span><span class="synType">type</span><span class="synIdentifier">=</span><span class="synConstant">&#34;text&#34;</span><span class="synIdentifier"> /&#62;</span>
-<span class="synIdentifier">&#60;/</span><span class="synStatement">div</span><span class="synIdentifier">&#62;</span>
-<span class="synIdentifier">&#60;</span><span class="synStatement">div</span><span class="synIdentifier">&#62;</span>
-<span class="synIdentifier">&#60;</span><span class="synStatement">input</span><span class="synIdentifier"> </span><span class="synType">id</span><span class="synIdentifier">=</span><span class="synConstant">&#34;hoge&#34;</span><span class="synIdentifier"> </span><span class="synType">class</span><span class="synIdentifier">=</span><span class="synConstant">&#34;gray&#34;</span><span class="synIdentifier"> </span><span class="synType">type</span><span class="synIdentifier">=</span><span class="synConstant">&#34;text&#34;</span><span class="synIdentifier"> /&#62;</span>
-<span class="synIdentifier">&#60;</span><span class="synStatement">input</span><span class="synIdentifier"> </span><span class="synType">class</span><span class="synIdentifier">=</span><span class="synConstant">&#34;gray&#34;</span><span class="synIdentifier"> </span><span class="synType">type</span><span class="synIdentifier">=</span><span class="synConstant">&#34;text&#34;</span><span class="synIdentifier"> /&#62;</span>
-<span class="synIdentifier">&#60;/</span><span class="synStatement">div</span><span class="synIdentifier">&#62;</span>
-{% endcodeblock %}
-<pre class="syntax-highlight">
-$(<span class="synStatement">document</span>).ready(<span class="synIdentifier">function</span>()<span class="synIdentifier">{</span>
-　　<span class="synComment">// 元の背景色を保持</span>
-<span class="synIdentifier">var</span> original = $(<span class="synConstant">&#34;#foo&#34;</span>).css(<span class="synConstant">&#34;background-color&#34;</span>);
-<span class="synStatement">alert</span>(original);  <span class="synComment">// output is &#34;ffffff&#34;</span>
-　　<span class="synComment">// 元の背景色を再設定、値は同じはず</span>
-$(<span class="synConstant">&#34;#foo&#34;</span>).css(<span class="synConstant">&#34;background-color&#34;</span>,original);
-<span class="synComment">// 他の背景色はこんな現象がないみたい</span>
-<span class="synComment">// あるとしても発見しづらい    </span>
-　　<span class="synIdentifier">var</span> hogeColor = $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant">&#34;background-color&#34;</span>);
-<span class="synStatement">alert</span>(hogeColor); <span class="synComment">// output is &#34;gray&#34;</span>
-$(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant">&#34;background-color&#34;</span>,hogeColor);
-<span class="synIdentifier">}</span>);
-
-{% endcodeblock %}
-<br/>
-<br/>
-<p>　</p>
+<h4>動作確認</h4>
+<p>d:/phpにtest.phpというファイルを作ります。内容は下記になります。</p>
+<p><?php phpinfo();?></p>
+<p>注意！！<? phpinfo();?>は動かない！</p>
+<p>Apacheサーバを再起動し、<a href="http://localhost/test.php" target="_blank">http://localhost/test.php</a>を叩いてPHPのページが表示されればOKです。</p>
+<h4>参考サイト</h4>
+<p><a href="http://blog.cheki.net/archives/250" target="_blank">  Apache2 + PHP5をWindowsXPにインストール</a></p>
+<p><a href="http://www.adminweb.jp/apache/php/index3.html" target="_blank">php.iniの配置場所の指定(PHPIniDir) - PHP利用のための設定 - Apache入門</a></p>
 </div>
 
 
@@ -148,7 +164,124 @@ $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/css-issue-in-ie8-background-color">IE8でbackground-colorが白とその値がnullとの表示が微妙に違う</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091124/20091124235949.jpg" alt="" /></p>
+
+<p>まず画像を見てみましょう。</p>
+
+
+<p>最初の二つ白い背景のエリアに注目してください。</p>
+
+
+<p>一番目は背景色を白い色(#FFFFFF)に設定したもので、</p>
+
+
+<p>二番目が背景色をnullに設定したものです。</p>
+
+
+<p>白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。</p>
+
+
+<br/>
+
+
+<p>またIE8の開発ツール(F12で呼ばれる、Firebugと似たデバッグツール)で見ても</p>
+
+
+<p>background-colorが#ffffffになってる以外に、何の余計なスタイルもありませんでした。</p>
+
+
+<p>なのでやはりbackground-colorが指定してないものと#ffffffに指定したものには差異が存在してます。</p>
+
+
+<br/>
+
+
+<h2>サンプルコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;hoge&quot;</span> <span class="na">class=</span><span class="s">&quot;gray&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;gray&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// 元の背景色を保持</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">original</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">original</span><span class="p">);</span>  <span class="c1">// output is &quot;ffffff&quot;</span>
+</span><span class='line'><span class="err">　</span><span class="c1">// 元の背景色を再設定、値は同じはず</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="nx">original</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// 他の背景色はこんな現象がないみたい</span>
+</span><span class='line'>  <span class="c1">// あるとしても発見しづらい</span>
+</span><span class='line'><span class="err">　</span><span class="kd">var</span> <span class="nx">hogeColor</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hoge&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">hogeColor</span><span class="p">);</span> <span class="c1">// output is &quot;gray&quot;</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hoge&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="nx">hogeColor</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
 
 
 </div>
@@ -214,7 +347,7 @@ $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/jquery-tips-live-not-support-all-event">jQuery Tips: live関数はすべてのイベントに有効じゃない、その他...</a></h1>
+	<h1 class="title"><a href="/blog/jquery-tips-live-not-support-all-event">jQuery Tips: live関数はすべてのイベントに有効じゃない、その他&#8230;</a></h1>
 	<div class="entry-content">
 		<div class="section">
 <p>今までjQueryを使ってきたtipsをメモします。</p>
@@ -330,7 +463,7 @@ $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -433,7 +566,7 @@ $(<span class="synConstant">&#34;#hoge&#34;</span>).css(<span class="synConstant
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -545,7 +678,7 @@ Googleで検索すると似たようなものはありましたが、
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
@@ -718,48 +851,88 @@ callback( <span class="synIdentifier">{</span> <span class="synConstant">&#34;na
     <article class="post">
 	<h1 class="title"><a href="/blog/javascript-message-of-access-denied-in-ie">IE JavaScript実行した際の「アクセスが拒否されました」メッセージ</a></h1>
 	<div class="entry-content">
-		<div class="section">
-<h4>経緯</h4>
+		<h2>経緯</h2>
+
 <p>iframeで動的に画面を読み込む際URL不正などによる通信エラーが起こした場合の</p>
+
+
 <p>エラーハンドラを追加したかったので判断するロジックが必要でした。</p>
+
+
 <p>わざと誤ったURLを渡して検証しましたが、以下のコードはだめでした。</p>
-<br/>
-{% codeblock %}
 
-<span class="synComment">// documentがnullかと思ってそれで判断しようとしたんです。</span>
-<span class="synStatement">if</span> (<span class="synIdentifier">this</span>.contentWindow.<span class="synStatement">document</span>) <span class="synIdentifier">{}</span>
-{% endcodeblock %}
-<h4>現象</h4>
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// documentがnullかと思ってそれで判断しようとしたんです。</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">)</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>現象</h2>
+
 <p>あるプロパティは存在しているのに、アクセスができない。コードで書くと</p>
-<pre class="syntax-highlight">
-<span class="synComment">// プロパティがオブジェクトに存在するかを判断</span>
-<span class="synComment">// ここはアラーとが出した、つまり存在したってこと</span>
-<span class="synStatement">if</span> (<span class="synConstant">&#34;aProperty&#34;</span> <span class="synStatement">in</span> obj) <span class="synStatement">alert</span>(<span class="synConstant">'obj has aProperty'</span>);
-<span class="synComment">// 次にそのオブジェクトにアクセスしようとすると</span>
-<span class="synComment">// エラーになった</span>
-obj.aProperty
-{% endcodeblock %}
-<p>IE8の開発ツールで見たら「アクセスが拒否されました」と書いてある。</p>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091119133655" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091119/20091119133655.jpg" alt="f:id:kinopyo:20091119133655j:image" title="f:id:kinopyo:20091119133655j:image" class="hatena-fotolife"></a></p>
-<br/>
-<h4>エラーをcatch</h4>
-<p>判断のロジックをtry-catch文に書けばいいです。</p>
-<pre class="syntax-highlight">
-<span class="synStatement">try</span> <span class="synIdentifier">{</span>
-<span class="synIdentifier">this</span>.contentWindow.<span class="synStatement">document</span>;
-<span class="synIdentifier">}</span> <span class="synStatement">catch</span> (e) <span class="synIdentifier">{</span>
-<span class="synStatement">if</span> (e.<span class="synType">number</span> == -2147024891) <span class="synIdentifier">{</span>
-<span class="synComment">//アクセスが拒否されました。</span>
-<span class="synStatement">alert</span>(e.message);
-<span class="synIdentifier">}</span> <span class="synStatement">else</span> <span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(<span class="synConstant">&#34;別のメッセージ&#34;</span>);
-<span class="synIdentifier">}</span>
-<span class="synIdentifier">}</span>
 
-{% endcodeblock %}
-<br/>
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プロパティがオブジェクトに存在するかを判断</span>
+</span><span class='line'><span class="c1">// ここはアラーとが出した、つまり存在したってこと</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="s2">&quot;aProperty&quot;</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;obj has aProperty&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// 次にそのオブジェクトにアクセスしようとすると</span>
+</span><span class='line'><span class="c1">// エラーになった</span>
+</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">aProperty</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>IE8の開発ツールで見たら「アクセスが拒否されました」と書いてある。</p>
+
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091119/20091119133655.jpg" alt="" /></p>
+
+<h2>エラーをcatch</h2>
+
+<p>判断のロジックをtry-catch文に書けばいいです。</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">number</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2147024891</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//アクセスが拒否されました。</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;別のメッセージ&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <p>参考サイト：<a href="http://sei.qee.jp/docs/freetalk/2009/02.html" target="_blank">http://sei.qee.jp/docs/freetalk/2009/02.html</a></p>
-</div>
 
 
 		
@@ -784,7 +957,7 @@ obj.aProperty
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/ie/'>IE</a>, <a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>
@@ -846,84 +1019,7 @@ obj.aProperty
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>argumentsは配列じゃないため、配列のメソッドは</p>
-<p>使えません。ということは本を読んだとき当たり前だと思ったんですが、</p>
-<p>実際コードに落としたときは</p>
-<p>自然とargument.slice()を書いちゃいました。</p>
-<h4>argumentsで配列のメソッドを使うには</h4>
-<p><span style="color:#0000FF;">Array.prototype.&#60;配列のメソッド&#62;.call(arguments,&#60;パラメータ&#62;)</span></p>
-{% codeblock %}
-
-<span class="synType">Array</span>.prototype.slice.call(<span class="synIdentifier">arguments</span>,2)
-{% endcodeblock %}
-<p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
-<h4>argumentsはarray-likeオブジェクト</h4>
-<p>ここでちょっとargumentsの基本知識を復習します。</p>
-<p>length属性もあるし、[]でindex指定のオブジェクトを参照できますけど、</p>
-<p>argumentsは配列に似ているオブジェクトだけです。</p>
-<h5>予約語</h5>
-<p>Technically, argumentsは予約語ではないですが、</p>
-<p>予約語として認識してよいです。</p>
-<p>つまりargumentsという変数は作成しないでってことです。</p>
-<br/>
-<pre class="syntax-highlight">
-<span class="synIdentifier">function</span> foo(x)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(x);
-<span class="synIdentifier">var</span> <span class="synIdentifier">arguments</span>;
-<span class="synIdentifier">arguments[</span>0<span class="synIdentifier">]</span> = <span class="synStatement">null</span>;    <span class="synComment">//xの値が変更されちゃう</span>
-<span class="synStatement">alert</span>(x); <span class="synComment">// null が出力される</span>
-<span class="synIdentifier">}</span>
-{% endcodeblock %}
-<h5>callee Property</h5>
-<p>Refers to the function that is currently being executed.</p>
-<p>今実行中のファクションを参照しています。</p>
-<pre class="syntax-highlight">
-<span class="synIdentifier">function</span>(x) <span class="synIdentifier">{</span>
-<span class="synStatement">if</span> (x &#60;= 1) <span class="synStatement">return</span> 1;
-<span class="synStatement">return</span> x * <span class="synIdentifier">arguments</span>.callee(x-1);
-<span class="synIdentifier">}</span>
-
-{% endcodeblock %}
-<br/>
-<p>　</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/ie/'>IE</a>
 
 
 </div>

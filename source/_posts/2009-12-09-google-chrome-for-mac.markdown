@@ -5,7 +5,7 @@ date: 2009-12-9
 wordpress_id: 413
 permalink: /blog/google-chrome-for-mac
 comments: true
-categories: [nil]
+categories: Chrome
 ---
 <br/>
 Google ChromeついにMacに登場しました。

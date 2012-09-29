@@ -5,7 +5,7 @@ date: 2009-11-18
 wordpress_id: 310
 permalink: /blog/turn-off-warnings-of-activex-in-ie
 comments: true
-categories: [nil]
+categories: IE
 ---
 <div class="section">
 <p>開発においてローカルでいろいろテストすることが多いでしょう。</p>

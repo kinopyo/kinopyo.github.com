@@ -7,8 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="下記ソースコードに英語コメントで書いてますが、日本語で解釈してみます。 # Object#instance_eval()
-p Object.instance_methods.grep(/instance_eval/) # evaluates a block in the context of &hellip;">
+	<meta name="description" content=" Google ChromeのExtensionです。
+http://www.suekichi.org/blog/google-calendar-color-extension/
+の日曜始まり版をダウンロードしインストールすればOKです。 2011-09-16 Chrome, Google ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -72,6 +73,43 @@ p Object.instance_methods.grep(/instance_eval/) # evaluates a block in the conte
 
 </header>
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/set-weekend-color-in-google-calendar">Google Calendarで土日のカラムを色付け</a></h1>
+	<div class="entry-content">
+		<p>Google ChromeのExtensionです。
+<a href="http://www.suekichi.org/blog/google-calendar-color-extension/">http://www.suekichi.org/blog/google-calendar-color-extension/</a>
+の<a href="http://www.suekichi.org/download/GoogleCalendarColorSunday.crx">日曜始まり版</a>をダウンロードしインストールすればOKです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-16T00:00:00+09:00" pubdate data-updated="true">2011-09-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/google/'>Google</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -775,67 +813,6 @@ $ date
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/date/'>date</a>, <a class='category' href='/blog/categories/server/'>server</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mysql-oracle-group-by-date">MySQL, OracleのGroup by date, 日付別で集計</a></h1>
-	<div class="entry-content">
-		<p>これが既存データで、同じ日に複数のデータがある。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" alt="Example data" /></p>
-
-<p>期望結果はこれ、つまり日付別で集計したい場合</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" alt="Expected result" /></p>
-
-<h2>MySQLではDATE関数を使う</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Oracleではto_char関数を使う</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(*) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>参考</h2>
-
-<ul>
-<li><a href="http://blog.asial.co.jp/209">ちょっと使えるMySQLの小技5つ+1 : アシアルブログ</a></li>
-<li><a href="http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406">第104回 Oracleのお勉強 GROUP BY の罠 - bingo_nakanishiの他言語出身者のためのPerl入門</a></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-17T00:00:00+09:00" pubdate data-updated="true">2011-08-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
 
 
 </div>

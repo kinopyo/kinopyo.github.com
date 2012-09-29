@@ -5,7 +5,7 @@ date: 2009-12-10
 wordpress_id: 432
 permalink: /blog/jquery-live-pass-data-will-be-implemented-in-1-3-3
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 今のlive関数は二番目の引数にデータを渡すことができません。
 bindとliveのシグネチャーは以下になります。

@@ -5,7 +5,7 @@ date: 2009-11-23
 wordpress_id: 316
 permalink: /blog/jquery-reverse-lookup-reference-attribute
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 <div class="section">
 <p><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_00.html" target="_blank">@IT連載：jQuery逆引きリファレンスの第二回</a>のテーマは属性＆コンテンツです。</p>

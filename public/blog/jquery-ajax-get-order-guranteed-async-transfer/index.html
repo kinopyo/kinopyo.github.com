@@ -118,9 +118,9 @@ ajax通信が終わってない段階でalertが出るかもです。
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">])</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">],[</span><span class="nx">returnType</span><span class="p">])</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">url</span><span class="p">,[</span><span class="nx">data</span><span class="p">],[</span><span class="nx">callback</span><span class="p">])</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">[</span><span class="nx">data</span><span class="p">],</span> <span class="p">[</span><span class="nx">callback</span><span class="p">])</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">[</span><span class="nx">data</span><span class="p">],</span> <span class="p">[</span><span class="nx">callback</span><span class="p">],</span> <span class="p">[</span><span class="nx">returnType</span><span class="p">])</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">[</span><span class="nx">data</span><span class="p">],</span> <span class="p">[</span><span class="nx">callback</span><span class="p">])</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -259,17 +259,17 @@ optionにはglobalというフラグがあり、デフォルトはtrueになっ�
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 </pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">option1</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">global</span> <span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="nx">global</span><span class="o">:</span> <span class="kc">false</span>
 </span><span class='line'>  <span class="c1">// ほかのurlなどの設定</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">var</span> <span class="nx">option2</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">global</span> <span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="nx">global</span><span class="o">:</span> <span class="kc">false</span>
 </span><span class='line'>  <span class="c1">// ほかのurlなどの設定</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">var</span> <span class="nx">option3</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">global</span> <span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'>  <span class="nx">global</span><span class="o">:</span> <span class="kc">true</span>
 </span><span class='line'>  <span class="c1">// ほかのurlなどの設定</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
@@ -325,16 +325,16 @@ completeは完了した際のコールバックです。</p>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">option1</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option2</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">complete</span><span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option2</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">var</span> <span class="nx">option2</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option3</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">complete</span><span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">option3</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">var</span> <span class="nx">option3</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>              <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax all complete&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">complete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ajax all complete&#39;</span><span class="p">);</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
@@ -465,7 +465,7 @@ shift() は array の最初の要素を削除します。</p>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/nil/'>nil</a>
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

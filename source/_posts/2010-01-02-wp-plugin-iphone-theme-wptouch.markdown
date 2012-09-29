@@ -5,7 +5,7 @@ date: 2010-1-2
 wordpress_id: 741
 permalink: /blog/wp-plugin-iphone-theme-wptouch
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
 12月で1.68%でした。

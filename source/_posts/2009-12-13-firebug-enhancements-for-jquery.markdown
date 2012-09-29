@@ -5,7 +5,7 @@ date: 2009-12-13
 wordpress_id: 498
 permalink: /blog/firebug-enhancements-for-jquery
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 FireQueryはFirebugを拡張したアドオンで、jQueryをよりよくサポートできるんです。
 jQueryのオブジェクトをコンソールで確認したり、マウスオーバーで画面上のレーヤーで表示されたりして

@@ -5,7 +5,7 @@ date: 2010-5-6
 wordpress_id: 1105
 permalink: /blog/define-method-in-js
 comments: true
-categories: [nil]
+categories: Java
 ---
 <strong><&amp;!～&amp;></strong>宣言部でメソッドを定義することができます。
 

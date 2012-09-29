@@ -5,7 +5,7 @@ date: 2009-12-11
 wordpress_id: 482
 permalink: /blog/firerainbow-syntax-highlight-in-firebug
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 FirebugのJavaScript、HTML、CSSをシンタクスハイライトするアドオンです。
 

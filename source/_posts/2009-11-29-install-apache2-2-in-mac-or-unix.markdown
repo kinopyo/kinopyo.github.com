@@ -5,7 +5,7 @@ date: 2009-11-29
 wordpress_id: 326
 permalink: /blog/install-apache2-2-in-mac-or-unix
 comments: true
-categories: [nil]
+categories: Apache Mac
 ---
 <div class="section">
 <p>一番デフォルトでのインストール手順です。</p>

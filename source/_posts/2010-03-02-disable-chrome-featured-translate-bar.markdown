@@ -5,7 +5,7 @@ date: 2010-3-2
 wordpress_id: 1014
 permalink: /blog/disable-chrome-featured-translate-bar
 comments: true
-categories: [nil]
+categories: Chrome
 ---
 すべての言語でAutomatic Translationを無効にしたい人のために。
 

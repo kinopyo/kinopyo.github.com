@@ -5,7 +5,7 @@ date: 2010-5-14
 wordpress_id: 1134
 permalink: /blog/flex-bench-amf-json-xml-html
 comments: true
-categories: [nil]
+categories: Flex
 ---
 <a href="http://www.jamesward.com/2007/12/12/blazebench-why-you-want-amf-and-blazeds/">James Wardさんのブログ</a>から見たものです。
 

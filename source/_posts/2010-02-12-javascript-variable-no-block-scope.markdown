@@ -5,7 +5,7 @@ date: 2010-2-12
 wordpress_id: 974
 permalink: /blog/javascript-variable-no-block-scope
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 JavaをやってからJavascriptを触ったので、
 Javascript変数にブロックレベルのスコープがないことにビックリしました。

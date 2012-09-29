@@ -5,7 +5,7 @@ date: 2010-4-16
 wordpress_id: 1077
 permalink: /blog/java-number-format-exception-when-parseint
 comments: true
-categories: [nil]
+categories: Java
 ---
 ハマっちゃったException第二弾です。
 実際はハマったワケではありませんが、

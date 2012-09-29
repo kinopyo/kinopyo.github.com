@@ -5,7 +5,7 @@ date: 2010-7-3
 wordpress_id: 1244
 permalink: /blog/sync-iphone-apps-to-itunes
 comments: true
-categories: [nil]
+categories: iPhone
 ---
 iPhoneでアプリケーションを購入して普通はそのままiTunesに同期できるはずですが、時々iTunesがやってくれないです。
 あるいはiPhoneで一杯アプリを購入したり削除したりして、パソコンのiTunesとの差分が紛らわしくなったこともあります。その場合はiTunesのアプリを一旦全部削除して下記の方法で一気に同期すればOKです。

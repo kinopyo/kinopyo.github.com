@@ -5,7 +5,7 @@ date: 2010-1-27
 wordpress_id: 915
 permalink: /blog/meta-tag-sequence-in-head-section
 comments: true
-categories: [nil]
+categories: SEO
 ---
 HTMLのheadセクションにはタイトルといろんなMetaタグが記述されているが、
 その記述順番に気になったことはありますか?

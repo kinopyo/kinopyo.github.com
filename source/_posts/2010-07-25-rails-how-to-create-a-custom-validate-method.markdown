@@ -5,7 +5,7 @@ date: 2010-7-25
 wordpress_id: 1280
 permalink: /blog/rails-how-to-create-a-custom-validate-method
 comments: true
-categories: [nil]
+categories: Rails
 ---
 [http://railscasts.com/episodes/211-validations-in-rails-3](http://railscasts.com/episodes/211-validations-in-rails-3)で学んだ技です。
 Rails 3.0 beta4を利用しています。

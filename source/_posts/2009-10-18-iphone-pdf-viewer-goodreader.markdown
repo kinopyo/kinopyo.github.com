@@ -5,7 +5,7 @@ date: 2009-10-18
 wordpress_id: 276
 permalink: /blog/iphone-pdf-viewer-goodreader
 comments: true
-categories: [nil]
+categories: iPhone
 ---
 <div class="section">
 <p>PDFの本をiPhoneに同期し、帰り道やカフェーで読みのが今一番楽しいことです。</p>

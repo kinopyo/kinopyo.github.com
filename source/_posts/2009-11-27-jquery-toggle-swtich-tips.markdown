@@ -5,7 +5,7 @@ date: 2009-11-27
 wordpress_id: 324
 permalink: /blog/jquery-toggle-swtich-tips
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 toggle()の普通の使い方は多分皆さんご存知だと思います。
 該当要素をクリックするたびに表示/非表示を切り替えます。

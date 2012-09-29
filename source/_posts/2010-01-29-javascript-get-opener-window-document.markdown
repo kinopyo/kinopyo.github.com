@@ -5,7 +5,7 @@ date: 2010-1-29
 wordpress_id: 928
 permalink: /blog/javascript-get-opener-window-document
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 window.open()で新規開いた小窓ウィンドウで親ウィンドウのdocumentを取得するには
 下記のプロパティを使います。

@@ -5,7 +5,7 @@ date: 2010-7-7
 wordpress_id: 1249
 permalink: /blog/view-hidden-files-on-mac
 comments: true
-categories: [nil]
+categories: Mac
 ---
 Macではドット"."で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
 Finderで表示する方法を紹介します。

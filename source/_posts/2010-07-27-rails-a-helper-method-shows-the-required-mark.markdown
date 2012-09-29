@@ -5,7 +5,7 @@ date: 2010-7-27
 wordpress_id: 1285
 permalink: /blog/rails-a-helper-method-shows-the-required-mark
 comments: true
-categories: [nil]
+categories: Rails
 ---
 一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの"# "を出力します。
 

@@ -5,9 +5,8 @@ date: 2009-11-17
 wordpress_id: 307
 permalink: /blog/something-come-to-mind-when-writing-blog
 comments: true
-categories: ["diary"]
+categories: Diary
 ---
-<div class="section">
 <p><a href="http://d.hatena.ne.jp/gothedistance/20090928/1254140260" target="_blank">ブログをキャリアの礎にしようと思っている方へ - GoTheDistance</a>こういうすてきな記事を見つかりました。</p>
 <blockquote>
 <p>自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣の方向性が見えてくるようになります。</p>
@@ -34,6 +33,3 @@ categories: ["diary"]
 <p>自分の好きの方向性というのはこんなことでしょう。</p>
 <p>ブラウザのわがままを避けたい、</p>
 <p>純粋なプログラミングがしたいです。</p>
-<br/>
-<p>　</p>
-</div>

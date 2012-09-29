@@ -5,7 +5,7 @@ date: 2009-11-23
 wordpress_id: 317
 permalink: /blog/jquery-tips-live-not-support-all-event
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 <div class="section">
 <p>今までjQueryを使ってきたtipsをメモします。</p>

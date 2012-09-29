@@ -5,7 +5,7 @@ date: 2009-10-14
 wordpress_id: 273
 permalink: /blog/the-efficiency-of-meeting
 comments: true
-categories: ["diary"]
+categories: Diary
 ---
 <div class="section">
 <p>今のプロジェクトは基本設計段階で毎週お客さんと定例会を実施している状態。</p>

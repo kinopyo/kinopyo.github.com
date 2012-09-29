@@ -5,7 +5,7 @@ date: 2010-4-4
 wordpress_id: 1064
 permalink: /blog/jquery1-3-2-memory-leak-when-bind-with-namespace-in-ie6
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 表題の通り、IE6 + jQuery1.3.2の状態でbindする時に
 jQueryのnamespaceを使うと確実にメモリリークが発生します。

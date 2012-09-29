@@ -5,7 +5,7 @@ date: 2010-6-22
 wordpress_id: 1174
 permalink: /blog/eclipse-3-6-helios-6-23-releas
 comments: true
-categories: [nil]
+categories: Eclipse Editor
 ---
 <img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
 [http://wiki.eclipse.org/Helios_Simultaneous_Release](http://wiki.eclipse.org/Helios_Simultaneous_Release)

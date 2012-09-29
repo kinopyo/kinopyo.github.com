@@ -5,7 +5,7 @@ date: 2009-12-10
 wordpress_id: 445
 permalink: /blog/jquery-expr-context-parameter
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 今まで平気に$(expression)を使ってきましたが、
 この二番目のcontextパラメータでセレクタの範囲を決まることができます。

@@ -5,7 +5,7 @@ date: 2009-12-1
 wordpress_id: 332
 permalink: /blog/my-site-and-wordpress
 comments: true
-categories: [nil]
+categories: Wordpress
 ---
 <div class="section">
 <p>いつも自分のサイトを作りたいけど、なかなか時間的余裕がないし、技術の面でもまだまだの感じで、躊躇ばかりしていて先に進めませんでした。</p>

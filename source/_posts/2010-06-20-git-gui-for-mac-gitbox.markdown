@@ -5,7 +5,7 @@ date: 2010-6-20
 wordpress_id: 1156
 permalink: /blog/git-gui-for-mac-gitbox
 comments: true
-categories: [nil]
+categories: Git
 ---
 <a href="http://gitbox.pierlis.com/">Gitbox</a>はGitバージョンコントロールのGUIトールです。
 表題の通りFor Macです。

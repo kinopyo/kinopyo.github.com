@@ -5,7 +5,7 @@ date: 2010-2-3
 wordpress_id: 935
 permalink: /blog/to-find-out-ruby-object-class
 comments: true
-categories: [nil]
+categories: Ruby
 ---
 Rubyでは変数の型を宣言しないです。
 そのため、オブジェクトは実際に何型かがわからない時が多いです。

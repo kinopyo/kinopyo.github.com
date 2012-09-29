@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Eclipse | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/eclipse/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -23,6 +23,121 @@
 <p>ショットカットキーは<strong>CTRL + ALT + Z</strong>です。覚えておきましょう！</p>
 
 <p><a href="http://www.flickr.com/photos/fantasyday/5217626114/" title="Eclipse fullscreen plugin by kinopyo, on Flickr"><img src="http://farm6.static.flickr.com/5161/5217626114_1af74ae1dd.jpg" width="500" height="313" alt="Eclipse fullscreen plugin" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse 3.6 Helios 23/6 release]]></title>
+    <link href="http://kinopyo.com/blog/eclipse-3-6-helios-6-23-releas"/>
+    <updated>2010-06-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/eclipse-3-6-helios-6-23-releas</id>
+    <content type="html"><![CDATA[<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
+<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
+
+<p>RC1 Friday, May 21
+RC2 Friday, May 28
+RC3 Friday, June 4
+RC4 Friday, June 11
+<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
+Release Wednesday, June 23</p>
+
+<p>23日正式リリースだそうです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
+
+<h1>English</h1>
+
+<p><img src="http://wiki.eclipse.org/skins/eclipsenova/eclipse.png" alt="eclipse" />
+<a href="http://wiki.eclipse.org/Helios_Simultaneous_Release">http://wiki.eclipse.org/Helios_Simultaneous_Release</a></p>
+
+<p>RC1 Friday, May 21
+RC2 Friday, May 28
+RC3 Friday, June 4
+RC4 Friday, June 11
+<a href="http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/helios/R/"><em>Final Builds Friday, June 18</em></a>
+Release Wednesday, June 23</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-helios.jpg" title="eclipse-helios" ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/eclipse-tomcat-7.jpg" title="eclipse-tomcat-7" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[EclipseにMavenプラグインインストール後のエラー: "Eclipse is running in a JRE, but a JDK is required"]]></title>
+    <link href="http://kinopyo.com/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required"/>
+    <updated>2010-01-20T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required</id>
+    <content type="html"><![CDATA[<p>EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。</p>
+
+<p><a title="Maven Integration for Eclipse JDK Warning" rel="lightbox*pics834*" href="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg"><img class="attachment wp-att-835 " src="http://kinopyo.com/wp-content/uploads/2010/01/MavenIntegrationforEclipseJDKWarning.jpg" alt="Maven Integration for Eclipse JDK Warning" width="441" height="181" /></a>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The Maven Integration required that Eclipse be running in a JDK,
+</span><span class='line'>because a number of Maven core plugins are using jars from the JDK.&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Please make sure the -vm option in eclipse.ini is pointing to a JDK and
+</span><span class='line'>verify that Installed JREs are also using JDK installs.</span></code></pre></td></tr></table></div></figure></notextile></div>
+使ってた環境は確かにJREのみがあってJDKはなかったんです。
+回避策としては
++  JDKをインストール
++  eclipse.iniに-vmオプションでインストールしたJDKと関連付ける</p>
+
+<h3>JDKのインストール</h3>
+
+<p>JDKのダウンロードはこちら:<a href="http://java.sun.com">Sun Java</a>
+インストール後JAVA_HOMEとPATH環境変数もあわせて編集
+エクスプローラ→マイコンピュータ→右クリック→プロパティ→詳細設定タブ→環境変数ボタン</p>
+
+<h3>eclipse.iniの編集</h3>
+
+<p>jdkのパスはインストール先に合わせて下記内容を追記
+vmの後に<strong>改行が必要</strong></p>
+
+<p>```plain
+ -vm
+C:\Java\jdk1.6.0_18\bin\javaw.exe</p>
+
+<p>```
+これで再起動したらエラーメッセージは出なくなりました。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[EclipseにTomcatプラグインをインストール]]></title>
+    <link href="http://kinopyo.com/blog/eclipse-install-tomcat-plugin"/>
+    <updated>2009-12-30T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/eclipse-install-tomcat-plugin</id>
+    <content type="html"><![CDATA[<ul>
+<li><p><a href="http://www.eclipsetotale.com/tomcatPlugin.html#A4">Eclipse Tomcat Pluginダウンロードページ</a>でzipファイルをダウンロード
+現時点の最新版はtomcatPluginV321.zipです。</p></li>
+<li><p>your_Eclipse_Home/pluginsに解凍</p></li>
+<li>Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-toolbar-icon.jpg" title="tomcat-toolbar-icon" ></p>
+
+<ul>
+<li>下記のようにTomcatバージョンとTomcatホームを設定</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-home-path.jpg" title="tomcat-settings-home-path" ></p>
+
+<ul>
+<li>下記のようにTomcat用のJVM SettingでJREバージョンを選択</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-jre-version.jpg" title="tomcat-settings-jre-version" ></p>
+
+<p>私の場合デフォルトがJRE1.4になっていたため、これを1.5の変えました。</p>
 ]]></content>
   </entry>
   

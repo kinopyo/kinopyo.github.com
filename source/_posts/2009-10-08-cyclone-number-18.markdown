@@ -5,7 +5,7 @@ date: 2009-10-8
 wordpress_id: 269
 permalink: /blog/cyclone-number-18
 comments: true
-categories: ["diary"]
+categories: Diary
 ---
 <p><a href="http://f.hatena.ne.jp/kinopyo/20091008091000" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091008/20091008091000.jpg" alt="f:id:kinopyo:20091008091000j:image" title="f:id:kinopyo:20091008091000j:image" class="hatena-fotolife"></a></p>
 <p>朝の電車の調子です。</p>

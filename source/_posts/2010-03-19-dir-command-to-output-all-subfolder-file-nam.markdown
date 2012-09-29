@@ -5,7 +5,7 @@ date: 2010-3-19
 wordpress_id: 1045
 permalink: /blog/dir-command-to-output-all-subfolder-file-nam
 comments: true
-categories: [nil]
+categories: Windows
 ---
 dir /s /b >file.txt
 

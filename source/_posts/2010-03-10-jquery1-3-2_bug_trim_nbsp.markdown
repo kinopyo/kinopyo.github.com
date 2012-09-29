@@ -5,7 +5,7 @@ date: 2010-3-10
 wordpress_id: 1034
 permalink: /blog/jquery1-3-2_bug_trim_nbsp
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 jQuery 1.4.2ではこれは治ったようです。
 jQuery最新版をお使いの方は下記のようなバグはもう発生しません。

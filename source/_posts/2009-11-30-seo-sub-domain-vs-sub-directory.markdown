@@ -5,7 +5,7 @@ date: 2009-11-30
 wordpress_id: 329
 permalink: /blog/seo-sub-domain-vs-sub-directory
 comments: true
-categories: [nil]
+categories: SEO
 ---
 <div class="section">
 <p><a href="http://f.hatena.ne.jp/kinopyo/20091128134914" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134914.gif" alt="f:id:kinopyo:20091128134914g:image:right" title="f:id:kinopyo:20091128134914g:image:right" class="hatena-fotolife hatena-image-right"></a></p>

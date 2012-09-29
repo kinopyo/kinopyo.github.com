@@ -5,7 +5,7 @@ date: 2009-10-11
 wordpress_id: 271
 permalink: /blog/install-sqlite-in-mac
 comments: true
-categories: [nil]
+categories: SQLite
 ---
 <div class="section">
 <h4>インストール</h4>

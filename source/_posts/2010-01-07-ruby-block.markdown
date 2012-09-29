@@ -5,7 +5,7 @@ date: 2010-1-7
 wordpress_id: 760
 permalink: /blog/ruby-block
 comments: true
-categories: [nil]
+categories: Ruby
 ---
 ## ブロックとは？
 Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。

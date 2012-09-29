@@ -5,7 +5,7 @@ date: 2010-1-20
 wordpress_id: 834
 permalink: /blog/maven-error-message-eclipse-is-running-in-a-jre-but-a-jdk-is-required
 comments: true
-categories: [nil]
+categories: Eclipse Editor
 ---
 EclipseにMavenのプラグインをインストールした後にEclipseを起動したら以下のエラーメッセージが出ました。
 

@@ -5,7 +5,7 @@ date: 2010-3-2
 wordpress_id: 1022
 permalink: /blog/javascript-get-scrollbar-to-bottom
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 スクロールバーを最下部に移動するJavascriptです。
 
@@ -13,28 +13,20 @@ categories: [nil]
 
 ```javascript
 function go_bottom(targetId){
-
     var obj = document.getElementById(targetId);
-
     if(!obj) return;
-
     obj.scrollTop = obj.scrollHeight;
 }
-
 ```
 
 完全にjQueryで書くとこんな感じ
 
 ```javascript
 function go_bottom(targetId){
-
    var $obj = $("#" + targetId);
-
     if($obj.length == 0) return;
-
     $obj.scrollTop($obj*0*.scrollHeight);
 }
-
 ```
 
 <br>

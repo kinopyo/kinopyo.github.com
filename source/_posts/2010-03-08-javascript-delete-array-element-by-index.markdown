@@ -5,7 +5,7 @@ date: 2010-3-8
 wordpress_id: 1032
 permalink: /blog/javascript-delete-array-element-by-index
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 今まで全然気付かなかったんです、
 JavascriptのArrayにはdeleteみたいなAPIがないことに。

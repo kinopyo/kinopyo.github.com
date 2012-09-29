@@ -4,7 +4,7 @@
   <title><![CDATA[Category: nil | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/nil/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,403 +14,216 @@
 
   
   <entry>
-    <title type="html"><![CDATA[TextMate Bundler, NetBeans Plugin for HAML]]></title>
-    <link href="http://kinopyo.com/blog/textmate-bundler-netbeans-plugin-for-haml"/>
-    <updated>2010-07-30T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/textmate-bundler-netbeans-plugin-for-haml</id>
-    <content type="html"><![CDATA[<h2>TextMate Bundler：</h2>
+    <title type="html"><![CDATA[MagicMouseを買いました]]></title>
+    <link href="http://kinopyo.com/blog/magic-mouse"/>
+    <updated>2010-02-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/magic-mouse</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=fantasyday-22&o=9&p=8&l=as1&m=amazon&f=ifr&md=1X69VDGQCMF7Z30FM082&asins=B002TOJHB8" style="width:120px;height:240px;float:right;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" ></iframe>
 
-<p><a href="http://github.com/handcrafted/handcrafted-haml-textmate-bundle">http://github.com/handcrafted/handcrafted-haml-textmate-bundle</a></p>
 
-<h2>NetBeans plugin:</h2>
+<p>マルチタッチがサポートされているマジックマウス、
+ついに購入しました。
+今のところはまだクリックとスクロールだけデフォルトで使えますが、
+そのうちフルパワーを発揮したいと思います。</p>
 
-<p><a href="http://wiki.netbeans.org/FaqPluginInstall">http://wiki.netbeans.org/FaqPluginInstall</a>
-It's really a simple plugin just for highlight the syntax.
-No auto-complete,and you cannot see the see the reference of  ruby code in haml.</p>
+<br/>
 
-<h1>日本語</h1>
 
-<h2>TextMateのBundlerはこちら：</h2>
+<p>マルチタッチ以外でBluetoothが使えるのも私にとって大きなポイントです。
+今はACアダブタ以外にMacに接続する線などがなくなり
+整然とした感じです。
+ちなみにクリーニングも大変便利になりそうです。
+毛が立ってない布を使って表面を掃除できます。</p>
 
-<p><a href="http://github.com/handcrafted/handcrafted-haml-textmate-bundle">http://github.com/handcrafted/handcrafted-haml-textmate-bundle</a></p>
+<br/>
 
-<h2>NetBeansのプラグインはこちらでダウンロード：</h2>
 
-<p><a href="http://wiki.netbeans.org/FaqPluginInstall">http://wiki.netbeans.org/FaqPluginInstall</a>
-ほぼハイライト以外は何の機能もないです。
-HAMLでRubyコードを書いても入力補完も、リファレンスも出ませんでした。</p>
+<p>あとはゲームでもマルチタッチが使えるなら最高。。。</p>
+
+<p>以下写真を御覧下さい。
+<em>gallery link="file"</em></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[ID + Slug name in URL in Rails]]></title>
-    <link href="http://kinopyo.com/blog/rails-id-slug-name-in-url"/>
-    <updated>2010-07-29T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/rails-id-slug-name-in-url</id>
-    <content type="html"><![CDATA[<p>This is about how to customize the url to the form like "id + post.title", which can be simply overriding the<em> to_param</em> method in your model class.</p>
+    <title type="html"><![CDATA[Yahooアドパートナー利用時サイトURLの"wwwあり"と"wwwなし"に注意]]></title>
+    <link href="http://kinopyo.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix"/>
+    <updated>2010-01-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix</id>
+    <content type="html"><![CDATA[<p>この間<a href="http://webowner.yahoo.co.jp/siteincome/adpartner/">Yahooアドパートナー</a>を申請しました。
+<a href="http://webowner.yahoo.co.jp/siteincome/adpartner/">Yahooアドパートナー</a>とはあなたのサイトに広告を掲載し、
+閲覧もしくはクリックされたことで報酬がもらえるサービスです。
+GoogleのAdSenseに相当するものです(しかし広告の質はまだまだ)。</p>
 
-<p>Here is the example.</p>
+<br/>
 
-<p>```ruby
-  class Person</p>
 
-<pre><code>def to_param
-  "#{id}-#{name.parameterize}"
-end
-</code></pre>
+<p>申請してから一度も使った事なかったのですが、
+今日広告のコードを貼りつけたら表示されませんでした。
+いろいろ探してみたらサイトURLに"wwwあり"と"wwwなし"が問題となったようです。
+Yahooに申請するときは"wwwあり"のwww.kinopyo.comで申請したのですが、
+このブログでは今までずっと"wwwなし"のkinopyo.comで利用してました。
+その違いで広告は表示されないのです。</p>
 
-<p>  end</p>
+<br/>
 
-<p>  @person = Person.find(1)
-  # => #<Person id: 1, name: "Donald E. Knuth"></p>
 
-<p>  &lt;%= link_to(@person.name, person_path(@person)) %>
-  # => <a href="http://kinopyo.com/person/1-donald-e-knuth">Donald E. Knuth</a></p>
+<h2>解決策</h2>
 
-<p>```
-The <em>parameterize</em> is a method that replaces special characters in a string so that it may be used as part of a ‘pretty’ URL.
-Rails is smart enough to extract this back into the plain id when you access your controller action.
-You can access the url '/person/1-kinopyo' or '/person/1', both ok.</p>
+<ul>
+<li>Wordpressの一般設定でブログのURLを"wwwあり"に明確に設定</li>
+<li>SEO対策の一環として"wwwなし"のURLを"wwwあり"にリダイレクト</li>
+</ul>
 
-<p>If you want to know more, here is a good article: <a href="http://augustl.heroku.com/blog/styling-rails-urls">http://augustl.heroku.com/blog/styling-rails-urls</a>.</p>
 
-<h1>日本語</h1>
-
-<p>slugはurlをより綺麗に表示するためのものです。例えばこの記事のpermanent urlは"rails-id-slug-name-in-url"にしています。英語世界になるんですが、これのようにurlを見ただけでそのurl先の内容が大体わかるようにするのがslugです。</p>
-
-<p>この記事ではRailsで"id + post.title"のような形のURLを作る方法を紹介します。</p>
-
-<h2>方法</h2>
-
-<p>モデルクラス内に<em>to_param</em>メソッドをオーバーライドするだけです。
-例として</p>
-
-<p>```ruby
-  class Person</p>
-
-<pre><code>def to_param
-  "#{id}-#{name.parameterize}"
-end
-</code></pre>
-
-<p>  end</p>
-
-<p>  #controller
-  @person = Person.find(1)
-  # => #<Person id: 1, name: "Donald E. Knuth"></p>
-
-<p>  #view
-  &lt;%= link_to(@person.name, person_path(@person)) %>
-  # => <a href="http://kinopyo.com/person/1-donald-e-knuth">Donald E. Knuth</a></p>
-
-<p>```
-上記のようにmodelクラスを修正するだけで、他の影響はないです。URL: '/person/1-kinopyo'と'/person/1'はどっちでも使えます。
-<em>parameterize</em>はRailsのビルトインのメソッドでurlに使う文字列に変換してくれるんです。<strong>しかし日本語などは完全にブランクに変換するので要注意です。</strong></p>
-
-<p>もしurlを"/person/kinopyo"のようにperson.nameにカスタムしたい場合はこれより少し複雑になります。興味のある方は下記リンク(英語)を参照してください。 <a href="http://augustl.heroku.com/blog/styling-rails-urls">http://augustl.heroku.com/blog/styling-rails-urls</a>.</p>
+<p>SEO対策の具体的内容はまた今度まとめます。</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Rails: a helper method shows the required mark]]></title>
-    <link href="http://kinopyo.com/blog/rails-a-helper-method-shows-the-required-mark"/>
-    <updated>2010-07-27T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/rails-a-helper-method-shows-the-required-mark</id>
-    <content type="html"><![CDATA[<p>一つのHelperメソッドを作って、Modelに必須チェックが入ってるプロパティに対して必須マークの"# "を出力します。</p>
+    <title type="html"><![CDATA[Javaの.classファイルからソースを見れるツール：Java Decompiler]]></title>
+    <link href="http://kinopyo.com/blog/java-decompiler-see-source-from-class-file"/>
+    <updated>2010-01-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/java-decompiler-see-source-from-class-file</id>
+    <content type="html"><![CDATA[<p>Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
+ずいぶん前一度使ったことがあります。
+スタンドアロンのJD-GUIツールと、
+Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
+スタンドアロンはJRE環境が必要とせずインストールだけで使えます。
+jarファイルもサポートされているようです。</p>
 
-<p>まずapplicaton_helperにmark_requiredのメソッドを作ります。第一引数にはオブジェクト、第二引数はそのクラスのプロパティを渡します。</p>
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/java-decompiler.png" title="java-decompiler" ></p>
 
-<p>```ruby</p>
-
-<h1>application_helper.rb</h1>
-
-<p>def mark_required(object, attribute)
-  "# " if object.class.validators_on(attribute).map(&amp;:class).include? ActiveModel::Validations::PresenceValidator
-end</p>
-
-<p>```</p>
-
-<p>viewのerbには下記のように@userインスタンス変数と:nameを渡します。もしUserモデルに:nameに対して必須バリデーションが存在すれば必須マークが出力されます。</p>
-
-<p>```ruby
-  <div class="field"></p>
-
-<pre><code>&lt;%= f.label :name %&gt;&lt;%=mark_required(@user, :name) %&gt;&lt;br /&gt;
-&lt;%= f.text_field :name %&gt;
-</code></pre>
-
-<p>  </div></p>
-
-<p>```</p>
-
-<p>参考リンク：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
-
-<h2>20110704更新</h2>
-
-<p>もしhtmlタグも一緒に出力したいときは、タグがエスケープされてしまいます。</p>
-
-<p>```ruby</p>
-
-<p>module ApplicationHelper
-  def mark_required(object, attribute)</p>
-
-<pre><code>mark = "&lt;span class='require_mark'&gt;# &lt;/span&gt;"
-mark if object.class.validators_on(attribute).map(&amp;:class).include? ActiveModel::Validations::PresenceValidator
-</code></pre>
-
-<p>  end
-end</p>
-
-<p>```</p>
-
-<p>```ruby
-  <div class="field"></p>
-
-<pre><code>&lt;%= f.label :name %&gt;&lt;%=raw mark_required(@user, :name) %&gt;&lt;br /&gt;
-&lt;%= f.text_field :name %&gt;
-</code></pre>
-
-<p>  </div></p>
-
-<p>```</p>
-
-<p>この場合はrawを書けばエスケープされずにちゃんとHTMLタグが出力します。</p>
-
-<h1>中文</h1>
-
-<p>我们将创建一个Helper方法来输出"# "表示必须项目。
-（原谅我这蹩脚的汉语，实在是不知道这些术语用中文该怎么叫）</p>
-
-<p>首先在application_helper里创建一个叫mark_required的方法。他的第一个参数为对象，第二个参数接收的是对象的属性。</p>
-
-<p>```ruby</p>
-
-<h1>application_helper.rb</h1>
-
-<p>def mark_required(object, attribute)
-  "# " if object.class.validators_on(attribute).map(&amp;:class).include? ActiveModel::Validations::PresenceValidator
-end</p>
-
-<p>```</p>
-
-<p>然后在View里我们只要把@user和:name传过去即可。如果你的User Model对:name进行了必须验证(presence validator)，"# "就会显示出来。</p>
-
-<p>```ruby
-  <div class="field"></p>
-
-<pre><code>&lt;%= f.label :name %&gt;&lt;%= mark_required(@user, :name) %&gt;&lt;br /&gt;
-&lt;%= f.text_field :name %&gt;
-</code></pre>
-
-<p>  </div></p>
-
-<p>```</p>
-
-<p>链接：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
-
-<h1>English</h1>
-
-<p>Let's make a helper method that shows a required mark "# " when the attribute of the object has a presence validator.</p>
-
-<p>First, create a mark_required method in the application_helper, pass the object as 1st parameter, the attribute as the second one.</p>
-
-<p>```ruby</p>
-
-<h1>application_helper.rb</h1>
-
-<p>def mark_required(object, attribute)
-  "# " if object.class.validators_on(attribute).map(&amp;:class).include? ActiveModel::Validations::PresenceValidator
-end</p>
-
-<p>```</p>
-
-<p>Then, just call the custom method in the erb view file. In this sample we pass the @user instance variable and the :name attribute symbol. So if your User model has a presence validator on the :name attribute, the required-mark "# " will show up.</p>
-
-<p>```ruby
-  <div class="field"></p>
-
-<pre><code>&lt;%= f.label :name %&gt;&lt;%= mark_required(@user, :name) %&gt;&lt;br /&gt;
-&lt;%= f.text_field :name %&gt;
-</code></pre>
-
-<p>  </div></p>
-
-<p>```</p>
-
-<p>I learned from this site：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a></p>
+<p>公式サイト：<a href="http://java.decompiler.free.fr/">JD | Java Decompiler</a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Rails: How to create a custom validate method]]></title>
-    <link href="http://kinopyo.com/blog/rails-how-to-create-a-custom-validate-method"/>
-    <updated>2010-07-25T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/rails-how-to-create-a-custom-validate-method</id>
-    <content type="html"><![CDATA[<p><a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>で学んだ技です。
-Rails 3.0 beta4を利用しています。</p>
+    <title type="html"><![CDATA[文字コードとは？エンコードとは？なぜ文字化けするのか？]]></title>
+    <link href="http://kinopyo.com/blog/what-is-character-set-and-encode"/>
+    <updated>2009-11-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/what-is-character-set-and-encode</id>
+    <content type="html"><![CDATA[<div class="section">
+<p>文字コードが何なのか、エンコードは何なのか、何で文字化けするかはっきり分かっていませんでした。月刊DBマガジンの2010/JANの徹底研究に文字コードの内容が載せていて、とても分かりやすく説明してくれたので、勉強メモを書きます。</p>
+<h4>文字コードとは</h4>
+<p>文字コードは「文字集合」と「エンコード方式」の二つの概念があります。</p>
+<h5>文字集合(Character Set)：表現したい文字の集まり</h5>
+<p>つまりどんな文字が使いたいかの集合体です。</p>
+<p>英数字の他に、各国の文字や、機種固有文字が含まれています。</p>
+<h5>エンコード方式</h5>
+<p>コンピュータは数で処理を行っています。人間が分かりやすいように見た目だけが文字や記号に表示しているだけで、で実は裏で対応している数値があります。US-ASCII文字コード表によれば、英語の'A'の数値は0x41です。</p>
+<br/>
+<p>どの文字がどのビット列に割り当てるのかを決めるのがエンコード方式です。エンコードとも読んでます。</p>
+<p><a href="http://ja.wikipedia.org/wiki/ASCII#ASCII.E5.88.B6.E5.BE.A1.E6.96.87.E5.AD.97" target="_blank">ASCII - Wikipedia</a>に詳細な文字コード表があります。0x41は16進の表示方法です。</p>
+<br/>
+<h4>代表的な文字集合とエンコード方式</h4>
+<table>
+<tr><th>文字集合</th><th>含まれる文字</th></tr>
+<tr><td>US-ASCII</td><td>英数字、半角記号</td></tr>
+<tr><td>ISO/IEC 646</td><td>英数字、半角記号</td></tr>
+<tr><td>JIS X 0201</td><td>英数字、半角記号、半角カナ</td></tr>
+<tr><td>JIS X 0208</td><td>英数字、半角記号、半角カナ、平仮名、片仮名、第一水準漢字、第二水準漢字、全角記号</td></tr>
+<tr><td>JIS X 0212</td><td>JIS X 0208に加えて、補助感じ</td></tr>
+<tr><td>Unicode</td><td>各言語文字</td></tr>
+</table>
+<table>
+<tr><th>エンコード</th><th>対象とする文字集合</th></tr>
+<tr><td>ISO-2022-JP</td><td>ASCII、JIS X 0201、JIS X 0208</td></tr>
+<tr><td>Shift_JIS</td><td>ASCII、JIS X 0201、JIS X 0208</td></tr>
+<tr><td>EUC-JP</td><td>ASCII、JIS X 0208、JIS X 0212</td></tr>
+<tr><td>UTF-8</td><td>Unicode</td></tr>
+</table>
+<p>ISO-2022-JPはE-Mail標準で、EUC-JPはUNIXプラットフォームで、Shift_JISはWindowsプラットフォームで、というようにそれぞれの特徴に対応した形で利用されています。</p>
+<br/>
+<h5>MS932は何？</h5>
+<p>厳密にいうとWindowsが扱う文字コードは、Shift_JISではなく、MS932です。または、Microsoftコードページ CP932ともいいます。MS932は、マイクロソフトがShift_JISを拡張して定義したコード体系です。Shift_JIS + 拡張した分 = MS932なので、範囲から言うとMS932 &#62; Shift_JISです。</p>
+<h4>文字化け</h4>
+<p>Unicodeが現れる前の各エンコードは統一されていなかったため、同じ文字でも異なった数値(コード)になったり、同じ数値(コード)異なった文字になったりしました。これで他の文字コードに変更したときの数値の違いで文字化けになってしまったのです。Unicodeはその背景で誕生し、文字に対応する数値(コード)重複しないように、エンコードを決めました。</p>
+<br/>
+<p>英数字がほぼ文字化けにならないのはASCIIがほぼすべてのエンコードに入っているから、そこは自然に統一された感じです。</p>
+</div>
 
-<p>カスタムバリデーションメソッドを作成する方法を紹介します。
-こんなコードがあるとします。Userモデルのemailに対して妥当性チェックは普通こう書きます。</p>
-
-<p>```ruby
-class User &lt; ActiveRecord::Base
-  validates :email,  :format => { :with => /\A(*<sup>@\s]+)@((?:[-a-z0-9]+.)+[a-z*{2,})\Z/i</sup> }
-end</p>
-
-<p>```</p>
-
-<p>ここの:format => の部分を抽出してemail_validateというバリデーションメソッドを作ります。</p>
-
-<h2>方法</h2>
-
-<p>libフォルダにemail_format_validator.rbというファイルを新規作成します。</p>
-
-<p>```ruby</p>
-
-<h1>lib/email_format_validator.rb</h1>
-
-<p>class EmailFormatValidator &lt; ActiveModel::EachValidator
-  def validate_each(object, attribute, value)</p>
-
-<pre><code>unless value =~ /\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i
-  object.errors*attribute] &lt;&lt; (options[:message* || "is invalid")
-end
-</code></pre>
-
-<p>  end
-end</p>
-
-<p>```</p>
-
-<p>そしてUser.rbのソースを下記のように修正します。</p>
-
-<p>```ruby</p>
-
-<h1>User.rb</h1>
-
-<p>class User &lt; ActiveRecord::Base
-  validates :email, :email_format => true
-end</p>
-
-<p>```</p>
-
-<p>:email_formatは自動的にEmailFormatValidatorにマッピングします。</p>
-
-<h1>中文</h1>
-
-<p>从这里学到的东西：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>，算是作个笔记吧。
-我用的是Rails 3.0 beta4。
-假设你有一个User Model，要对期email属性尽兴验证。</p>
-
-<p>```ruby
-class User &lt; ActiveRecord::Base
-  validates :email,  :format => { :with => /\A(*<sup>@\s]+)@((?:[-a-z0-9]+.)+[a-z*{2,})\Z/i</sup> }
-end</p>
-
-<p>```</p>
-
-<p>这里用:format =>的一窜代码显得很不美观，我们就把这段代码抽出来单独做成一个方法。</p>
-
-<h2>方法</h2>
-
-<p>在lib文件夹下创建email_format_validator.rb的文件。</p>
-
-<p>```ruby</p>
-
-<h1>lib/email_format_validator.rb</h1>
-
-<p>class EmailFormatValidator &lt; ActiveModel::EachValidator
-  def validate_each(object, attribute, value)</p>
-
-<pre><code>unless value =~ /\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i
-  object.errors*attribute] &lt;&lt; (options[:message* || "is invalid")
-end
-</code></pre>
-
-<p>  end
-end</p>
-
-<p>```</p>
-
-<p>然后修改User.rb，使用我们新建的方法:email_format</p>
-
-<p>```ruby</p>
-
-<h1>User.rb</h1>
-
-<p>class User &lt; ActiveRecord::Base
-  validates :email, :email_format => true
-end</p>
-
-<p>```</p>
-
-<p>注意这里的:email_format会自动去寻找EmailFormatValidator这个class。</p>
-
-<h1>English</h1>
-
-<p>I learned this from here: <a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>
-In this post, I'll introduce how to make a custom validate methods.Actually it's a kind of memo for me.
-BTW, I'm using Rails 3.0 beta4.</p>
-
-<p>Let's say you have a User model that contains a email property to validate. In common case it maybe written like this:</p>
-
-<p>```ruby
-class User &lt; ActiveRecord::Base
-  validates :email,  :format => { :with => /\A(*<sup>@\s]+)@((?:[-a-z0-9]+.)+[a-z*{2,})\Z/i</sup> }
-end</p>
-
-<p>```</p>
-
-<p>So we will extract the :format => part to a custom validate method called email_validate.</p>
-
-<h2>Solution</h2>
-
-<p>Create a file in the lib folder, named email_format_validator.rb</p>
-
-<p>```ruby</p>
-
-<h1>lib/email_format_validator.rb</h1>
-
-<p>class EmailFormatValidator &lt; ActiveModel::EachValidator
-  def validate_each(object, attribute, value)</p>
-
-<pre><code>unless value =~ /\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i
-  object.errors*attribute] &lt;&lt; (options[:message* || "is invalid")
-end
-</code></pre>
-
-<p>  end
-end</p>
-
-<p>```</p>
-
-<p>And change User model like this:</p>
-
-<p>```ruby</p>
-
-<h1>User.rb</h1>
-
-<p>class User &lt; ActiveRecord::Base
-  validates :email, :email_format => true
-end</p>
-
-<p>```</p>
-
-<p>Note that the :email_format symbol is refer to EmailFormatValidator class automatically.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[はてなブックマークエントリをブログに設置]]></title>
-    <link href="http://kinopyo.com/blog/setup-blogparts-hatena-bookmark-entry"/>
-    <updated>2010-07-21T00:00:00+09:00</updated>
-    <id>http://kinopyo.com/blog/setup-blogparts-hatena-bookmark-entry</id>
-    <content type="html"><![CDATA[<p><a href="http://b.hatena.ne.jp/guide/blogparts">http://b.hatena.ne.jp/guide/blogparts</a>にて自分のサイトの人気エントリーをブログパーツとして設置できます。
-手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。</p>
+    <title type="html"><![CDATA[最近のIT業界動向]]></title>
+    <link href="http://kinopyo.com/blog/it-news-these-days"/>
+    <updated>2009-11-26T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/it-news-these-days</id>
+    <content type="html"><![CDATA[<div class="section">
 
-<p>できたらこんな感じです。なぜか画像が暗くなっちゃいました。</p>
+専門家ではないので記事のテーマがちょっとでかすぎるかもしれませんが、
 
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg" title="hatena-bookmark-entry" ></p>
+最近気になったニュースをベースにざっと述べようと思います。
+<h4>2010年注目の資格、一位が仮想化技術</h4>
+これは@ITの記事による結果です。
+
+仮想化といえばVMWareくらいは知ってますけど、
+
+Mac上でWindowsのアプリをたまたま実行する時に使ってました。
+
+「運用コスト削減のためのサーバ統合やクラウドの活用」などのことにどう繋いでいるのか全然イメージできません。。。
+
+少し興味はあるんで、後で勉強しとこう。
+
+関連の資格は以下のようです。
+<ul>
+    <li>ヴイエムウェアの「VCP」（VMware Certified Professional）</li>
+    <li>マイクロソフトの「Hyper-V仮想化検定」「MCP」（Microsoft Certification Program）</li>
+    <li>シトリックスの「CCEA」（Citrix XenServerのCitrix Certified Enterprise Administrator）</li>
+</ul>
+<h4>クラウド</h4>
+このキーワードもITユースから頻繁に出てきますが、
+
+どのようにプログラマのキャリアに影響するか、
+
+知りたいですね。
+<h4>JDK 7 Milestone 5 build</h4>
+Java7のニュースはずっと聞いてたんですが、
+
+なかなか使ってみる時間がないですね。
+
+今日雑誌でちらっと読んだのですが、
+
+モジュール化、多言語の対応などの機能が追加されたそうです。
+
+特にモジュールのサポートは「JAR HELL」(Jarの地獄)から救う有力な機能だそうです。これからクラスパスなど特に気にしなくてモジュール単位になりますと。
+
+またコレクション周りの使い方も強化されましたね。
+
+実は一番気に入ったのがswitch文がやっとString文字列をサポートしたことです。
+
+今までJavaのswtich文があんまり使えないなと何となく感じましたが、
+
+Java7になるとやっと文字列できましたね！
+```java
+
+String s = "...";
+switch (s) {
+case "quux":
+    processQuux(s);
+    // fall-through
+case "foo":
+case "bar":
+    processFooOrBar(s);
+    break;
+case "baz":
+    processBaz(s);
+    // fall-through
+default:
+    processDefault(s);
+    break;
+}
+
+```
+<h4>In the end..</h4>
+ということでIT業界どんどん進化していきます。
+
+Java7,,,やってみたいっす！
+
+</div>
+
 ]]></content>
   </entry>
   

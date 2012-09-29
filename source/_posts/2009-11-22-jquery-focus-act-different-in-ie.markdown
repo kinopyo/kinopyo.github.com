@@ -5,7 +5,7 @@ date: 2009-11-22
 wordpress_id: 314
 permalink: /blog/jquery-focus-act-different-in-ie
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 <div class="section">
 

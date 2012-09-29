@@ -11,9 +11,10 @@ Google Readerでフィードに100以上のアイテムがある場合途中ま�
 
 現時点で使ってるFirefoxは5.0.1です。
 
-## 手順
-+[https://addons.mozilla.org/ja/firefox/addon/greasemonkey/](https://addons.mozilla.org/ja/firefox/addon/greasemonkey/)でGreasemonkeyをインストールし、Firefoxを再起動
-+[http://userscripts.org/scripts/show/47830](http://userscripts.org/scripts/show/47830)右上のInstallをクリック
-+Google Readerを開けば"Mark below as read"と"Mark above as read"ボタンが上のツールバーに現れる
-+一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す
-+ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong>
+## 手順 ##
+
+- [https://addons.mozilla.org/ja/firefox/addon/greasemonkey/](https://addons.mozilla.org/ja/firefox/addon/greasemonkey/)でGreasemonkeyをインストールし、Firefoxを再起動
+- [http://userscripts.org/scripts/show/47830](http://userscripts.org/scripts/show/47830)右上のInstallをクリック
+- Google Readerを開けば"Mark below as read"と"Mark above as read"ボタンが上のツールバーに現れる
+- 一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す
+- ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong>

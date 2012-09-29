@@ -5,9 +5,8 @@ date: 2009-10-31
 wordpress_id: 290
 permalink: /blog/the-qualified-english-level-in-it
 comments: true
-categories: ["diary"]
+categories: Diary
 ---
-<div class="section">
 <p>仕事でいろいろとお世話になった先輩がいます。</p>
 <p>技術でどのような難題があっても絶対解決できる、ものすごい技術者です。</p>
 <p>そんな先輩はなぜか英語がぜんぜん読めないですよ。</p>
@@ -41,4 +40,3 @@ categories: ["diary"]
 <br/>
 <p>とはいっても基本的な英語は覚えといて損はないでしょう。</p>
 <p>少なくともメソッド名を見て大体の役割が想像できるくらいは。。。</p>
-</div>

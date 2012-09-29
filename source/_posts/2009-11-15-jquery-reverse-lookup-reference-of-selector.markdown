@@ -5,9 +5,8 @@ date: 2009-11-15
 wordpress_id: 305
 permalink: /blog/jquery-reverse-lookup-reference-of-selector
 comments: true
-categories: [nil]
+categories: jQuery
 ---
-<div class="section">
 <p>@IT新しい連載:jQuery逆引きリファレンスが始まりました。</p>
 <p>既に一ヶ月前になりますが、</p>
 <p>自己テスト用でもいいともいます。</p>
@@ -55,4 +54,3 @@ categories: [nil]
 <cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html" target="_blank">第1回 セレクタ編 － ＠IT</a></cite></blockquote>
 <p>これをきっかけに曖昧なところをいったん全部整理しようと思います。</p>
 <p>後の記事でまた詳しく書きます。</p>
-</div>

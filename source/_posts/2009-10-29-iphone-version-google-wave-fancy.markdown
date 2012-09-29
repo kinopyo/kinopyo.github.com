@@ -5,7 +5,7 @@ date: 2009-10-29
 wordpress_id: 285
 permalink: /blog/iphone-version-google-wave-fancy
 comments: true
-categories: [nil]
+categories: iPhone
 ---
 <p><object height="364" width="445"><param value="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1" name="movie" ></param><param value="true" name="allowFullScreen" ></param><param value="always" name="allowscriptaccess" ></param><embed height="364" width="445" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1"></embed></object></p>
 <p>Google Waveはみんなご存知だと思います。</p>

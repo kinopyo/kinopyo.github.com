@@ -5,7 +5,7 @@ date: 2009-12-3
 wordpress_id: 335
 permalink: /blog/commanly-used-application-name-of-windows
 comments: true
-categories: [nil]
+categories: Windows
 ---
 <div class="section">
 <p>よくWindowsで「Win + R」で実行のダイアログを開いて、「cmd」でコマンドプロンプトを実行してきました。</p>

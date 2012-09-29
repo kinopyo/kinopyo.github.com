@@ -5,7 +5,7 @@ date: 2011-5-25
 wordpress_id: 1793
 permalink: /blog/cute-cats
 comments: true
-categories: ["diary"]
+categories: Diary
 ---
 
 ![](http://www.kinopyo.com/wp-content/uploads/2011/05/2b66f92cfa4414c3bc7d158c7a6885cb.jpeg)

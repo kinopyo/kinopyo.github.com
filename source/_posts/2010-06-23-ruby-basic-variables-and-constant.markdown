@@ -5,7 +5,7 @@ date: 2010-6-23
 wordpress_id: 1184
 permalink: /blog/ruby-basic-variables-and-constant
 comments: true
-categories: [nil]
+categories: Ruby
 ---
 ## 変数
 ### 例1

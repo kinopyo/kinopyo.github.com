@@ -5,7 +5,7 @@ date: 2010-5-8
 wordpress_id: 1116
 permalink: /blog/merge-images-and-icons-into-one-file-and-use-background-positon-to-select
 comments: true
-categories: [nil]
+categories: CSS
 ---
 まずGoogleが実際使っている画像ファイルを見てみましょう。
 

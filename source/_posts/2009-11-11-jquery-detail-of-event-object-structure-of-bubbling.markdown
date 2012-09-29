@@ -5,7 +5,7 @@ date: 2009-11-11
 wordpress_id: 299
 permalink: /blog/jquery-detail-of-event-object-structure-of-bubbling
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 jQueryのEventオブジェクトには
 

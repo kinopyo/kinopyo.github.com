@@ -5,7 +5,7 @@ date: 2010-1-9
 wordpress_id: 768
 permalink: /blog/mac-chrome-extension-available
 comments: true
-categories: [nil]
+categories: Chrome
 ---
 本日Mac ChromeのDev版が更新されエクステンションが使えるようになりました。
 [Chrome Dev版をダウンロード](http://dev.chromium.org/getting-involved/dev-channel)

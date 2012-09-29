@@ -5,7 +5,7 @@ date: 2010-1-7
 wordpress_id: 683
 permalink: /blog/jquery-disable-right-click
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 jQueryでマウス右クリックを無効にする方法です。
 "contextmenu"のイベントはjQueryのドキュメントには乗ってませんが、

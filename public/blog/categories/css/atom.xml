@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CSS | Yet Another Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/css/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2012-09-29T01:26:08+09:00</updated>
+  <updated>2012-09-29T21:21:12+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -85,6 +85,35 @@
 <p>実機ではこんなふうになります。2.0, 1.5, 1.0の3つのサンプルです。</p>
 
 <p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/scale-checkbox-in-iphone-safari.jpg" alt="" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[各画像を一つにまとめてbackground-positionで指定するのは？]]></title>
+    <link href="http://kinopyo.com/blog/merge-images-and-icons-into-one-file-and-use-background-positon-to-select"/>
+    <updated>2010-05-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/merge-images-and-icons-into-one-file-and-use-background-positon-to-select</id>
+    <content type="html"><![CDATA[<p>まずGoogleが実際使っている画像ファイルを見てみましょう。</p>
+
+<p><img src="http://www.google.co.jp/images/srpr/nav_logo13.png" alt="Googleの各アイコン" /></p>
+
+<p>いろんな画像、アイコンが混じっていますね。
+そして実際使うときはCSSのbackground-positionで表示するモノを指定しているようです。
+例えば検索結果の星マークのCSSを見ると</p>
+
+<p><code>html
+background-position: -117px -117px;
+</code></p>
+
+<p>Webサーバとのコネクションが1回で済むので、
+それが狙いですね。</p>
+
+<p>background-positionに関しての説明は：
+<a href="http://www.htmq.com/style/background-position.shtml">http://www.htmq.com/style/background-position.shtml</a></p>
+
+<p>ちなみにこういることをやってくれるライブラリもあるようです。
+使ったことはまだないですけど。
+<a href="http://csssprites.org/">http://csssprites.org/</a></p>
 ]]></content>
   </entry>
   

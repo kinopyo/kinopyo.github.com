@@ -5,7 +5,7 @@ date: 2010-1-26
 wordpress_id: 912
 permalink: /blog/rails-useful-constants
 comments: true
-categories: [nil]
+categories: Rails
 ---
 ## RAILS_ENV
 現在動作している環境。開発終わって、テスト環境でテストしたい場合、この変数を修正すればOKです。

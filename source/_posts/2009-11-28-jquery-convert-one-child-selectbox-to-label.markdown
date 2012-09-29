@@ -5,7 +5,7 @@ date: 2009-11-28
 wordpress_id: 325
 permalink: /blog/jquery-convert-one-child-selectbox-to-label
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 htmlにoptionが一つしかないselectboxがあるとします。
 このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。

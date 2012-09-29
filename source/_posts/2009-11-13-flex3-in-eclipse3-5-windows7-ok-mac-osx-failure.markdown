@@ -5,7 +5,7 @@ date: 2009-11-13
 wordpress_id: 303
 permalink: /blog/flex3-in-eclipse3-5-windows7-ok-mac-osx-failure
 comments: true
-categories: [nil]
+categories: Flex
 ---
 <div class="section">
 <p>Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。</p>

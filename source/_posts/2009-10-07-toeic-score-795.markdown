@@ -5,9 +5,8 @@ date: 2009-10-7
 wordpress_id: 268
 permalink: /blog/toeic-score-795
 comments: true
-categories: [nil]
+categories: Diary
 ---
-<div class="section">
 <p>意外！</p>
 <p>ネットで試験結果を見た時、うれしかった！</p>
 <p>事前準備も特にせずに、ほとんど勘で答えたので、</p>
@@ -21,4 +20,3 @@ categories: [nil]
 <p>今回のリスニングはやはり普段見てたアメリカのドラマが役に立ったと思うわ。</p>
 <p>これがコツとでも言いましょう。</p>
 <p>仕事が落ち着いたら次は英会話のクラスに！</p>
-</div>

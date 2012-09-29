@@ -5,7 +5,7 @@ date: 2009-12-20
 wordpress_id: 634
 permalink: /blog/jquery-select-multy-element-with-same-id
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 そもそもIDというのは一つのページ内でユニークなはずですが、
 何らかの理由で同じIDを持つ形になったとしましょう。

@@ -5,7 +5,7 @@ date: 2010-5-17
 wordpress_id: 1139
 permalink: /blog/jquery-selector-performance-elem-vs-i
 comments: true
-categories: [nil]
+categories: jQuery
 ---
 elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
 <strong>"先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ"</strong>

@@ -5,7 +5,7 @@ date: 2009-11-24
 wordpress_id: 320
 permalink: /blog/memo-of-flash-json-cross-domain
 comments: true
-categories: [nil]
+categories: Flash
 ---
 gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の<a href="http://gihyo.jp/dev/serial/01/web20sec/0004" target="_blank">第4回：「Flash，JSONでのクロスドメインアクセス」の</a>勉強メモです。
 

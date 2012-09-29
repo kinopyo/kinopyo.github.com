@@ -5,7 +5,7 @@ date: 2009-11-8
 wordpress_id: 296
 permalink: /blog/adobe-flex3-air-certification-9a0-082
 comments: true
-categories: [nil]
+categories: Flex
 ---
 <div class="section">
 <p>本気でFlex3を勉強しようと決めました。</p>

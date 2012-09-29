@@ -5,7 +5,7 @@ date: 2009-12-2
 wordpress_id: 333
 permalink: /blog/firebug-bug-failed-to-load-source-for-sourcefile-top-level
 comments: true
-categories: [nil]
+categories: Javascript
 ---
 <div class="section">
 <h4>現象</h4>

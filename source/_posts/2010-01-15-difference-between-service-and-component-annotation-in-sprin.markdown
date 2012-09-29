@@ -5,7 +5,7 @@ date: 2010-1-15
 wordpress_id: 789
 permalink: /blog/difference-between-service-and-component-annotation-in-sprin
 comments: true
-categories: [nil]
+categories: Java
 ---
 @ComponentアノテーションはJavaのクラスにつけるもので
 このクラスをコンテナが管理するBeanとして登録する機能です。
