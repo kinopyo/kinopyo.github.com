@@ -154,3 +154,13 @@ article{
 	padding: 15px 0;
 	@include border-shadow();
 }
+
+@media only screen and (max-device-width: 480px) {
+	article code,
+	article pre {
+		.line {
+			font-size: 0.7em !important;
+			color: red;
+		}
+	}
+}

@@ -16,7 +16,6 @@
     {text: 'Give someone a program, you frustrate them for a day; teach them how to program, you frustrate them for a lifetime.', author: 'David Leinweber'},
     {text: '小时候，以为世界围着自己转。长大才看清，世界是一台把你越吹越远的电风扇。', author: 'Unknown'},
     {text: '当一个男人说他忘了的时候，只有三种可能：一种是他傻逼了，另一种是因为女人，还有一种是因为女人而傻逼了。', author: 'Unknown'},
-    {text: 'Give someone a program, you frustrate them for a day; teach them how to program, you frustrate them for a lifetime.', author: 'David Leinweber'},
     {text: 'おれはこの先剣士と名乗る野郎には、たった一度でも負ける訳にはいかねェんだ!!', author: 'ゾロ'},
     {text: '三本でもおれとお前の剣の、一本の重みは同じじゃねェよ!!!!!', author: 'ゾロ'},
     {text: '日子过得真快，尤其对于中年以后的人，十年八年都好象是指顾间的事。可是对于年轻人，三年五载就可以是一生一世。', author: '张爱玲'},

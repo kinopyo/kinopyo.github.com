@@ -53,3 +53,9 @@
 		}
 	}
 }
+@media only screen and (max-device-width: 480px) {
+	#quotes .container .feed li {
+		font-size: 12px;
+		line-height: 15px;
+	}
+}
