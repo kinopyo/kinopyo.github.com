@@ -8,7 +8,9 @@ categories: [Diary, News]
 
 Here is the video of Amazon Kindle Press Conference, hold on September 6, 2012. This article does not intend to cover all the hardware details but just something worth for me to write down.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/VYi1jZXz9Kg" frameborder="0" allowfullscreen></iframe>
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/VYi1jZXz9Kg" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## Why video?
 I really don't like just check the new hardware's specs and see the numbers bumped up from this level to that level. I'd always like to watch the press videos, to enjoy the process, to feel the revolutionary stories behind this. Of course part of it kind of depends on how the CEO did the presentation.
