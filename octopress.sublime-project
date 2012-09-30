@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/kinopyo/Dropbox/code/octopress",
+      "folder_exclude_patterns": ["_deploy", "public/blog"]
+		}
+	]
+}
