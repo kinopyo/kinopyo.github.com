@@ -1,0 +1,12 @@
+<div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="{{ root_url }}/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
