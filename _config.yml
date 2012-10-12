@@ -97,3 +97,6 @@ google_analytics_tracking_id: UA-33226278-1
 
 # Facebook Like
 facebook_like: true
+
+# Slash theme settings
+slash_avatar_url: http://www.gravatar.com/avatar/9100faec8b9af029823b0a0ff208b942
