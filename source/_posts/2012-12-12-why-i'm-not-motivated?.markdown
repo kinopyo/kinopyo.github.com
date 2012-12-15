@@ -3,6 +3,7 @@ layout: post
 title: "Why I'm Not Motivated?"
 date: 2012-12-12 14:37
 categories: Diary
+comments: true
 ---
 
 These days work is extremly boring.

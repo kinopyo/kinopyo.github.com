@@ -3,6 +3,7 @@ layout: post
 title: "SublimeText2 Rails Snippet for Model Find Code"
 date: 2012-11-25 22:49
 categories: SublimeText
+comments: true
 ---
 If you find yourself typing these kind of similar codes very often, and want a snippet to save your time, this is it.
 

@@ -3,6 +3,7 @@ layout: post
 title: "Introduce My Hobby Project Quoty"
 date: 2012-12-15 23:33
 categories: Diary
+comments: true
 ---
 
 This is the README file of this quoty project in [github](https://github.com/kinopyo/quoty), so if you already knows about it you can totally ignore this post. I just want to mention it once in my blog.
