@@ -1,4 +1,4 @@
-$font-default: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-default: "caecilia", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
 
 $font-icon: FontAwesome;
@@ -14,4 +14,9 @@ $font-icon-path: "/font/fontawesome-webfont";
 		url('#{$font-icon-path}.svg#FontAwesomeRegular') format('svg');
 	font-weight: normal;
 	font-style: normal;
+}
+
+@font-face {
+  font-family: 'caecilia';
+  src: url('/font/CaeciliaLTStd-Roman.ttf');
 }
