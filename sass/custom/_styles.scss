@@ -2,4 +2,14 @@
 // Add styles here to make changes without digging in too much
 article {
   font-size: 18px;
+
+  .entry-content{
+    p {
+      margin-top: 1em;
+    }
+  }
+}
+
+body {
+  color: #2c2c2c;
 }
