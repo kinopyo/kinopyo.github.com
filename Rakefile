@@ -9,6 +9,9 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = true
 deploy_default = "push"
+# rsync_delete   = false
+# rsync_args     = ""  # Any extra arguments to pass to rsync
+# deploy_default = "rsync"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
@@ -153,7 +156,7 @@ task :new_page, :filename do |t, args|
 end
 
 # usage rake isolate[my-post]
-desc "Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much quicker."
+desc "Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly."
 task :isolate, :filename do |t, args|
   stash_dir = "#{source_dir}/#{stash_dir}"
   FileUtils.mkdir(stash_dir) unless File.exist?(stash_dir)
@@ -239,7 +242,7 @@ task :rsync do
     exclude = "--exclude-from '#{File.expand_path('./rsync-exclude')}'"
   end
   puts "## Deploying website via Rsync"
-  ok_failed system("rsync -avze 'ssh -p #{ssh_port}' #{exclude} #{"--delete" unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}")
+  ok_failed system("rsync -avze 'ssh -p #{ssh_port}' #{exclude} #{rsync_args} #{"--delete" unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}")
 end
 
 desc "deploy public directory to github pages"
@@ -301,7 +304,7 @@ task :setup_github_pages, :repo do |t, args|
   if args.repo
     repo_url = args.repo
   else
-    puts "Enter the read/write url for your repository" 
+    puts "Enter the read/write url for your repository"
     puts "(For example, 'git@github.com:your_username/your_username.github.com)"
     repo_url = get_stdin("Repository url: ")
   end
