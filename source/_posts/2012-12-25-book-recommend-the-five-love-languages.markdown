@@ -1,0 +1,106 @@
+---
+layout: post
+title: "Book Recommend: The Five Love Languages"
+date: 2012-12-25 21:56
+comments: true
+categories: Diary Book Recommend
+---
+![The Five Love Languages](http://cdn.kinopyo.com/images/the_five_love_languages.jpg)
+
+## Contents ##
+
+
+1. Prologue
+2. The Five Love Language
+3. Misunderstanding and Misguidance
+  - Model of Marriage from Family
+  - Say Thank You To Family Members
+  - Sins of Current Media
+4. Negative Words
+5. My Little Contributes
+
+## Prologue ##
+
+[The Five Love Languages](http://www.amazon.com/The-Five-Love-Languages-ebook/dp/B0032CVAQQ/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1356448046&sr=1-1&keywords=the+five+love+languages) is such a great book. When I was reading, from time to time I have to stop and think back, review my last relationship and imagine what if at that time I have done something different...
+
+As you guessed in this book we're talking about love. Don't be shy, don't think "oh come on I'm a man who will read that kind of book". You will learn something very important here. It doesn't teach you any tricks to "manipulate" your mate to let her/him love you more while you just sit there spending tiny little efforts but can enjoy being loved. It doesn't work that way.
+
+Actually I was so hesitate if I should write this post, because I haven't really cleared my mind yet. When I look back, I find out I had made so many obvious mistakes just like any other guys in the book, too many to organise them nicely and logically. Even at this moment I don't know what am I gonna write, normally if I can't figure out the agenda I would not start. Also I don't want  you miss this great book because of my poor writing. But this time I'll just follow my fingers.
+
+## The Five Love Language ##
+
+The author, Garry D Chapman, is a relationship counselor. His theory about love is very similar to natural language, like English, Chinese and Japanese, we all have a primary(native) language, and then maybe we will choose to learn a secondary language. Every single person has his/her own primary language, he divided those to 5 categories, which are:
+
+1. Words of Affirmation
+2. Quality Time
+3. Receiving Gifts
+4. Acts of Service
+5. Physical Touch
+
+You may feel a little confusing at this point. Now ask yourself, in which way your mate acts toward you will make you feel be loved most? If you are really happy when she tells you how she loves you, how important you are, and how you've done great work to keep the family functions well, then your primary love language is Words of Affirmation.
+
+If you just want to spend time with her together, taking a walk after meal hand in hand, having conversation in dinner not just eat in silence, don't spend all the time in TV shows or computers, instead you want to talk about how you feel from work today, how your boss pissed you off, etc. Then it's Quality Time. It's totally fine to ignore these terms for now.
+
+If you are in trouble in the relationship, in cases you will hear something like "I don't know how much you love me, I don't know if you love me at all, am I important to you? Why I can't feel it?!", while you feel you are so sincere and serious about the relationship and you think you've done your job correctly yet still get negative feedbacks. If you're sincere that's good, but that's absolutely not enough. The key point here is, you have to speak her primary language, treat her respect her in the way she can feel the love. Most of time people have different primary love language, even it's same language it can have different dialects.
+
+## Misunderstanding and Misguidance ##
+
+What's your attitude to love? How many would you "sacrifice" for  her? Would you change yourself for her even if something is so against you, you think that's your bottom line, your principle, if you change that you'll not be yourself anymore?
+
+No one teach you what's love and how to love, in school we forbid any kind of love. Even not allowed to talk about it. I think there are 2 primary ways we get the idea what is love when we grow up, one is from **our family**, the other one is through **media**: books, music, movies, etc. I could be wrong.
+
+### Model of Marriage from Family
+
+I think this could be the root reason to how we think what marriage is.
+
+From my experience, my parents had a very terrible marriage. In my childhood, I don't remember any intimate scenes of them being together. Since I can remember things, all I remember is they just do their own things and never spend time together. My father was so into electronic, every night I woke up I saw him sitting in front of the desk reading books and making things, our first TV was made by him. And my mother was busy taking care of me, besides that she also had to do the housework, in her rest time she will watch love story TV shows. I didn't see any joint of them. 
+
+They argued a lot, sometimes very big, they broke dishes and furnitures, life itself was threatened as well. To be honest, I really wanted them separate, I wanted them to find their own happiness and perhaps a different family. Fortunately and unfortunately, they both loved me and they still wanted to give a complete, unbroken family. So they tried so hard to keep it, but eventually they divorced. Actually I felt relief.
+
+All my relatives "seems" have their happy family at that time, but as I grow up I started to realize each family has its own issues. They just don't show you, but it exists.
+
+Although I received the love from my parents respectively, neither did I learn what a happy marriage is from them, nor from  my relatives or friends. But I did remember when my father was studying and my mom was watching TV, they both doing their own things, that was the most peaceful time in that house. Maybe that's the one model I've followed so far.
+
+### Say Thank You To Family Members
+
+When I was still in high school, many times I would be invited to several friends' home to help them solve some computer issues. There was one friend I remembered very well, it was such a different experience. Because that's the first time I hear the family members say "thank you" to each other, so frequently, full of smiles. At that time it was a little strange to me, why would they do that? Shouldn't we only say "thank you" to friends, relatives, teachers or even strangers but not family members? It never happened in my family, I didn't get used to it, although it didn't mean I don't feel thankful for them. No wonder why that friend behaves so different from us, very polite, well educated, I can tell.
+
+### Sins of Current Media
+
+I feel current media is trying so hard to implant the idea of how great love is, why we come to the world is to find true love, looking for prince or princess. It's a very profitable business, people are driving under the temptation of money, they tend to create something people tend to buy. Love fits it.
+
+Well love is great, but the way it presented is, I think is a little "harmful" in some points of views. Too dreamy, not practical.
+
+Most of love stories either end when they be together or be separated for ever. Not that many will describe the issues after they get together, people have to believe in those beautiful things, in fairy tale prince and princesses never argue, that's true love, when they finally be together they will just be happy   forever. So this kind of technic make youth naive, "if we're meant to be together, we'll be together", I'm not gonna deny it, I still have some beliefs in it, but that doesn't mean you can use that as an excuse and stop putting efforts in love.
+
+Desperate Housewives, the American TV show is quite different. It describes the very details after people get together, after they married, shows you how happy they were when they were "in love" and how they've been experienced different kinds of difficulties during the marriage. Love, hurt, anger, frustrate, hate, regret, choose to love again. That's life. I do hope there will be more TV shows like this to "educate" how hard love is to the public. Maybe majority won't buy it, maybe they already suffered enough in their real life now they just want to charge some hope or believe to keep moving, but I do consider myself lack of these lessons.
+
+## The Real World
+
+> Welcome to the real world of marriage, where hairs are always on the sink and little white spots cover the mirror, where arguments center on which way the toilet paper comes off and whether the lid should be up or down. It is a world where shoes do not walk to the closet and drawers do not close themselves, where coats do not like hangers and shoes go AWOL during laundry. In this world, a look can hurt and a word can crush. Intimate lovers can becomes enemies, and marriage a battlefield.
+
+Maybe all the writings till this point will give you a negative feeling, but actually I don't feel that way. If you were already in trouble with your relationship, you should read this book. For those who are still enjoying their intimate "in love" experiences, I just want to give you a heads up, a warning. 
+
+In the book it says there are 2 phases in love. The "in love" phase is like driving in the high way, excited all the time, both of you love each other and feel be loved. This should be very easy to understand, we've all experienced it. But normally after 2 years people will be off that high way, and most of the time it's asynchronous, maybe you're still thinking everything is perfect but she already feels empty of love.
+
+So that's why I want you to be prepared, at least mentally. There are many real world examples in the book, read it you will find people with exactly the same problems as you do. When you think your love "fade off", when you are hesitate about if this one is "true love", go find this book, [The Five Love Language](http://www.amazon.com/The-Five-Love-Languages-ebook/dp/B0032CVAQQ/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1356448046&sr=1-1&keywords=the+five+love+languages).
+
+## Negative Words
+
+"maintain", "sacrifice" these words may sound negative when we talk about true love. Isn't true love means they are perfect match, no matter what they do they just can be connected, know each other's thought without talking at all? Admit we are 2 individuals doesn't mean your love is less "true", we all come from different families, with different education and background, what we experienced construct our personalities, we may get different beliefs. When we do something purely to make our mates happy, to see their smiling faces, isn't that love more pure and great?
+
+Actually I was very surprised that none of theses words were used in the book. I don't know if it's intentional but it does explain what a healthy, positive attitude we should have toward love.
+
+## My Little Contributes
+
+**I'd like to gift this book for you if you're interested**. The book is not expensive, the kindle version is just around $6. I'm sure everyone can afford it, but just in case you're not sure if this  is the right book for you, I will be very glad to help.
+
+**Just send an email to fantasyday at_mark gmail.com, or leave a comment below.** My only request is after you read the book please send me a feedback :)
+
+> Most Kindle books available for purchase in the Kindle Store can be given as a gift to anyone with an e-mail address. You do not need a Kindle device to send or receive Kindle book gifts, and the recipient can read their gift on a registered Kindle device or any free Kindle reading application.
+
+I don't think I have many readers and guess no one can read the whole post, set a limitation seems not necessary. But I'll consider it success if can deliver 10~20 books.
+
+Hope you all had a good christmas.
+
+Hope you got some companions yesterday, sorry I can't be there.
