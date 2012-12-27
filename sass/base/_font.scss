@@ -20,3 +20,9 @@ $font-icon-path: "/font/fontawesome-webfont";
   font-family: 'caecilia';
   src: url('/font/CaeciliaLTStd-Roman.ttf');
 }
+
+@font-face {
+  font-family: 'caecilia';
+  src: url('/font/CaeciliaLTStd-Bold.ttf');
+  font-weight: bold;
+}
