@@ -1,0 +1,134 @@
+---
+layout: post
+title: "飘雪，歌词很美"
+date: 2013-01-19 11:25
+comments: true
+categories: Lyrics
+---
+<script type="text/javascript" src="/javascripts/jplayer/jquery.jplayer.min.js">
+</script>
+<link href="/stylesheets/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
+
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div id="jp_container_1" class="jp-audio">
+  <div class="jp-type-single">
+    <div class="jp-gui jp-interface">
+      <ul class="jp-controls">
+        <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+        <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+        <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+        <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+        <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+        <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+      </ul>
+      <div class="jp-progress">
+        <div class="jp-seek-bar">
+          <div class="jp-play-bar"></div>
+        </div>
+      </div>
+      <div class="jp-volume-bar">
+        <div class="jp-volume-bar-value"></div>
+      </div>
+      <div class="jp-time-holder">
+        <div class="jp-current-time"></div>
+        <div class="jp-duration"></div>
+        <ul class="jp-toggles">
+          <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+          <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="jp-no-solution">
+      <span>Update Required</span>
+      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#jquery_jplayer_1").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "http://cdn.kinopyo.com/musics/飘雪.mp3"
+        });
+      },
+      swfPath: "/javascripts/jplayer",
+      supplied: "mp3"
+    });
+  });
+</script>
+
+原曲是中岛美嘉的雪之华，这是中文翻唱。留意到歌词很美就顺便记录下来了。<br />
+看来我有必要去一趟伊豆啊 =_=;;
+
+## 飘雪 歌词 ##
+
+![](http://img.xiami.com/images/album/img93/1593/88591314675786.jpg)
+
+作词：林海<br />
+演唱者：韩雪<br />
+作曲：松本良喜<br />
+<br />
+<div class="lyrics">
+忧郁的一片天 飘着纷飞的雪<br />
+这一泓伊豆的温泉 浸湿我孤单的思念<br />
+飘零的一片叶 就像你我的终结<br />
+这一泓伊豆的温泉 盛满温暖的从前<br />
+<br />
+你的手 曾经拥着我的肩<br />
+呢喃着 爱我直到永远<br />
+雪花 像绽放的礼花<br />
+天地间肆意地飘洒<br />
+纵情在一刹那<br />
+<br />
+为何现在只剩下 风吹乱我的发<br />
+撕开我记忆的伤疤<br />
+让往事像雾气慢慢地蒸发<br />
+让我知道什么叫放不下<br />
+<br />
+为何我的泪 会不停地流下<br />
+滑过你曾经亲吻的脸颊<br />
+所有的对错在顷刻崩塌<br />
+<br />
+忧郁的一片天 飘着纷飞的雪<br />
+这一泓伊豆的温泉 浸湿我孤单的思念<br />
+飘零的一片叶 就像你我的终结<br />
+这一泓伊豆的温泉 盛满温暖的从前<br />
+<br />
+你的手 曾经拥着我的肩<br />
+呢喃着 爱我直到永远<br />
+雪花 像绽放的礼花<br />
+天地间肆意地飘洒<br />
+纵情在一刹那<br />
+<br />
+为何现在只剩下 风吹乱我的发<br />
+撕开我记忆的伤疤<br />
+让往事像雾气慢慢地蒸发<br />
+让我知道什么叫放不下<br />
+<br />
+为何我的泪会不停地流下<br />
+滑过你曾经亲吻的脸颊<br />
+所有的对错在顷刻崩塌<br />
+<br />
+原来你带走了我生命的暖春盛夏<br />
+就连秋的果实也只在梦境里悬挂<br />
+原来寻找的是我自己难了的牵挂<br />
+这泓伊豆的温泉是天给的 惩罚<br />
+<br />
+如果知道结局我们还会相爱吗<br />
+我猜不到你的回答<br />
+冰雪中的誓言是真心的吗<br />
+怎么此刻什么也没留下<br />
+<br />
+现在只剩下风吹乱我的发<br />
+雪掩埋记忆的伤疤<br />
+往事就像雾气慢慢地蒸发<br />
+痛到麻木也许就放得下<br />
+<br />
+就让我的泪不停地去冲刷<br />
+冲刷你曾经亲吻的脸颊<br />
+伸出手像留住一样的冰雪<br />
+那瞬间的融化仿佛在<br />
+祭奠你和我的爱情童话<br />
+</div>
