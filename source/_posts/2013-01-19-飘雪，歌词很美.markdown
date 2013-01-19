@@ -50,7 +50,7 @@ categories: Lyrics
     $("#jquery_jplayer_1").jPlayer({
       ready: function () {
         $(this).jPlayer("setMedia", {
-          mp3: "http://cdn.kinopyo.com/musics/飘雪.mp3"
+          mp3: "http://cdn.kinopyo.com/musics/piaoxue.mp3"
         });
       },
       swfPath: "/javascripts/jplayer",
@@ -61,6 +61,11 @@ categories: Lyrics
 
 原曲是中岛美嘉的雪之华，这是中文翻唱。留意到歌词很美就顺便记录下来了。<br />
 看来我有必要去一趟伊豆啊 =_=;;
+
+> 为何我的泪 会不停地流下
+> 滑过你曾经亲吻的脸颊
+> 所有的对错在顷刻崩塌
+
 
 ## 飘雪 歌词 ##
 
