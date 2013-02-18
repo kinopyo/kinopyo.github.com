@@ -7,27 +7,31 @@ permalink: /blog/jquery-select-multy-element-with-same-id
 comments: true
 categories: jQuery
 ---
+
 そもそもIDというのは一つのページ内でユニークなはずですが、
 何らかの理由で同じIDを持つ形になったとしましょう。
 その場合普通のjQueryの#idセレクタでは一つの要素(順番的に最初に合致した要素)しか選択できません。
-そこで*id=xx*の形で属性フィルタで全ての選択することができます。
+そこで[id=xx]の形で属性フィルタで全ての選択することができます。
 以下サンプルコードです。
 
 ```javascript
-
 $("#foo").css("background-color","gray");
-$("*id=bar*").css("background-color","green");
-{% endcodeblock %}
+$("[id=bar]").css("background-color","green");
+```
 
-<pre class="brush:html">
-<p>use #id selector</p>
+```html
+<h2>use #id selector</h2>
 <input type="text" id="foo" value="Text1" />
 <input type="text" id="foo" value="Text2" />
-<p>use attribute selector *id=xx*</p>
+<h2>use attribute selector *id=xx*</h2>
 <input type="text" id="bar" value="Text3" />
 <input type="text" id="bar" value="Text4" />
 <input type="text" id="bar" value="Text5" />
-
 ```
 
 {% img http://kinopyo.com/wp-content/uploads/2009/12/jQuerySelectorByID.jpg jQuerySelectorByID %}
+
+## Demo
+以下のjsfiddleで実際実行してみてくださいー
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/kinopyo/T36Xt/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
