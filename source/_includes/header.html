@@ -46,8 +46,5 @@
 		<input class="alignright" type="text" name="q" results="0">
 		<input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}">
 	</form>
-	{% if site.slash_avatar_url %}
-	<img src="{{ site.slash_avatar_url }}" class="user-avatar" alt="kinopyo avatar">
-	{% endif %}
 </nav>
 {% include custom/header.html %}

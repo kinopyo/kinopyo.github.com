@@ -378,9 +378,4 @@ $header-height: 30px;
 			}
 		}
 	}
-	.user-avatar {
-		width: 35px;
-		@include border-radius(50%);
-		margin-left: 20px;
-	}
 }
