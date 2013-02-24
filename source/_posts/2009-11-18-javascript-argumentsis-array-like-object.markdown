@@ -13,11 +13,12 @@ categories: Javascript
 <p>実際コードに落としたときは</p>
 <p>自然とargument.slice()を書いちゃいました。</p>
 <h4>argumentsで配列のメソッドを使うには</h4>
-<p><span style="color:#0000FF;">Array.prototype.&#60;配列のメソッド&#62;.call(arguments,&#60;パラメータ&#62;)</span></p>
-{% codeblock %}
+<p>Array.prototype.<配列のメソッド>.call(arguments,<パラメータ>)</p>
 
-<span class="synType">Array</span>.prototype.slice.call(<span class="synIdentifier">arguments</span>,2)
-{% endcodeblock %}
+```js
+Array.prototype.slice.call(arguments, 2)
+```
+
 <p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
 <h4>argumentsはarray-likeオブジェクト</h4>
 <p>ここでちょっとargumentsの基本知識を復習します。</p>
@@ -28,24 +29,25 @@ categories: Javascript
 <p>予約語として認識してよいです。</p>
 <p>つまりargumentsという変数は作成しないでってことです。</p>
 <br/>
-<pre class="syntax-highlight">
-<span class="synIdentifier">function</span> foo(x)<span class="synIdentifier">{</span>
-<span class="synStatement">alert</span>(x);
-<span class="synIdentifier">var</span> <span class="synIdentifier">arguments</span>;
-<span class="synIdentifier">arguments[</span>0<span class="synIdentifier">]</span> = <span class="synStatement">null</span>;	<span class="synComment">//xの値が変更されちゃう</span>
-<span class="synStatement">alert</span>(x);	<span class="synComment">// null が出力される</span>
-<span class="synIdentifier">}</span>
-{% endcodeblock %}
+
+```js
+function foo(x){
+  alert(x);
+  var arguments;
+  arguments[0] = null;  //xの値が変更されちゃう
+  alert(x);	// null が出力される
+}
+```
+
 <h5>callee Property</h5>
 <p>Refers to the function that is currently being executed.</p>
 <p>今実行中のファクションを参照しています。</p>
-<pre class="syntax-highlight">
-<span class="synIdentifier">function</span>(x) <span class="synIdentifier">{</span>
-<span class="synStatement">if</span> (x &#60;= 1) <span class="synStatement">return</span> 1;
-<span class="synStatement">return</span> x * <span class="synIdentifier">arguments</span>.callee(x-1);
-<span class="synIdentifier">}</span>
 
-{% endcodeblock %}
-<br/>
-<p>　</p>
+```js
+function(x) {
+  if (x <= 1) return 1;
+  return x * arguments.callee(x-1);
+}
+
+```
 </div>
