@@ -3,7 +3,22 @@
 
 <body>
 	<header id="header" class="inner">{% include header.html %}</header>
-  {% include quotes.html %}
+  {% if page.url == '/index.html' %}
+    <header id='about_me' class="inner">
+      <div class="photo">
+        <img src="http://cdn.kinopyo.com/images/profile.jpg" alt="Photo - Qihuan Piao">
+      </div>
+      <h3>Hi I'm Qihuan Piao, I'm a Rails developer and I like to make stuff.</h3>
+      <p>
+        Here I share articles and tips about web development, inpirations and thoughts I get from books and daily life.
+      </p>
+      <p>I believe that English is a <strong>MUST</strong> skill for me to become a great engineer, so I’m trying to to write posts in it these days.</p>
+    </header>
+
+  {% else %}
+    {% include quotes.html %}
+  {% endif %}
+
 	<div id="content" class="inner">{{ content | expand_urls: root_url }}</div>
 	<footer id="footer" class="inner">{% include footer.html %}</footer>
 	{% include after_footer.html %}
