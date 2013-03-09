@@ -46,3 +46,19 @@ body {
     }
   }
 }
+
+
+// fix .gist embed style
+.line-data {
+  text-align: left !important;
+}
+
+table.lines.highlight {
+  margin-top: 0;
+  width: 100%;
+}
+
+.line-numbers .line-number,
+.line-pre .line {
+  line-height: 25px;
+}
