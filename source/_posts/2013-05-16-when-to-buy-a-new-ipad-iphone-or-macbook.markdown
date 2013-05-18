@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "When to Buy a New iPhone"
+title: "When to Buy a New iPad, iPhone or Macbook"
 date: 2013-05-16 21:50
 comments: true
 categories: Apple
