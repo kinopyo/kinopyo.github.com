@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: octopress | Kinopyo Blog]]></title>
+  <title><![CDATA[Category: Octopress | Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-03-01T01:48:02+09:00</updated>
+  <updated>2014-03-01T02:27:24+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,32 +14,57 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Escape square brackets by default in zsh]]></title>
-    <link href="http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh/"/>
-    <updated>2012-07-08T18:45:00+09:00</updated>
-    <id>http://kinopyo.com/blog/escape-square-bracket-by-default-in-zsh</id>
-    <content type="html"><![CDATA[<h2>Square brackets in zsh</h2>
+    <title type="html"><![CDATA[Recover Your Local Octopress Repository]]></title>
+    <link href="http://kinopyo.com/blog/recover-your-local-octopress-repository/"/>
+    <updated>2014-03-01T01:52:00+09:00</updated>
+    <id>http://kinopyo.com/blog/recover-your-local-octopress-repository</id>
+    <content type="html"><![CDATA[<p>Here I'll show you how to recover or restore your local octopress
+repository, for instance you're on a new machine, or just lost your
+local copy of it.</p>
 
-<p>Square brackets in zsh have special meanings but in MOST circumstances maybe you just have to escape them by putting <code>\</code>(backslash) before them.</p>
+<p>It requries you to have a repository on github that you've deployed your
+octopress posts.</p>
 
-<h3>Here is a example for generating a new octopress post</h3>
+<p>First I recommend that you read this post: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a>, the <strong>Recreating a local Octopress repository</strong> section.</p>
 
-<p>```bash
-rake new_post["Escape square bracket by default in zsh"]
-zsh: no matches found: new_post[Escape square bracket by default in zsh]</p>
+<p>And here is what worked for me, please replace <code>kinopyo</code> with your user
+name.</p>
 
-<p>rake new_post["Escape square bracket by default in zsh"]
-mkdir -p source/<em>posts
-Creating new post: source/</em>posts/2012-07-08-escape-square-bracket-by-default-in-zsh.markdown
+<p>```
+git clone -b source git@github.com:kinopyo/kinopyo.github.com.git octopress
+cd octopress</p>
+
+<p>gem install bundler
+bundle install</p>
+
+<p>rake preview
+open http://localhost:4000
 ```</p>
 
-<h2>How to escape by default?</h2>
+<h2>Tips on Converting HTML to Markdown</h2>
 
-<p>Just setup this alias in your <code>.zshrc</code>.</p>
+<p>Somehow the latest 3 posts are still missing after I git cloned my
+remote repository. I checked in advance and saved those copies as html.
+And after I restored my octopress repository I used <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> to convert those html to markdown.</p>
 
-<p><code>bash
-alias rake='noglob rake'
+<p>It works like:</p>
+
+<p><code>
+pandoc -f html -t markdown your_html_file.html
 </code></p>
+
+<h2>Thoughts on Disaster</h2>
+
+<p>p.s. I stored my blog octopress repository on Dropbox and somehow it
+just all gone, it really shocked me. Probably it was my fault not
+theirs, but still I always thought Dropbox is a safe place, but I don't
+even have a clue why it happended and somehow could't see the history and
+restore from their website. After I noticed it everytime I came up with
+something to write I've had used it as an excuse, or maybe I was not in
+the mood to deal with it(also I didn't know how...).</p>
+
+<p>So I need a fallback solution about Dropbox, every disaster changes you to rethink
+about current seems comfortable situation. And hope I'll write more often :)</p>
 ]]></content>
   </entry>
   

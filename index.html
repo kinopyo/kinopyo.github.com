@@ -7,9 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Lots of big changes happened in my life recently, one of them is my
-workplace. Lucky enough, now I got a chance to embrace the modern
-style of work &hellip;">
+	<meta name="description" content="Here I&#8217;ll show you how to recover or restore your local octopress
+repository, for instance you&#8217;re on a new machine, or just lost your &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +88,94 @@ style of work &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/recover-your-local-octopress-repository/">Recover Your Local Octopress Repository</a></h1>
+	<div class="entry-content">
+		<p>Here I&#8217;ll show you how to recover or restore your local octopress
+repository, for instance you&#8217;re on a new machine, or just lost your
+local copy of it.</p>
+
+<p>It requries you to have a repository on github that you&#8217;ve deployed your
+octopress posts.</p>
+
+<p>First I recommend that you read this post: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a>, the <strong>Recreating a local Octopress repository</strong> section.</p>
+
+<p>And here is what worked for me, please replace <code>kinopyo</code> with your user
+name.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone -b source git@github.com:kinopyo/kinopyo.github.com.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>
+</span><span class='line'>gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'>rake preview
+</span><span class='line'>open http://localhost:4000</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Tips on Converting HTML to Markdown</h2>
+
+<p>Somehow the latest 3 posts are still missing after I git cloned my
+remote repository. I checked in advance and saved those copies as html.
+And after I restored my octopress repository I used <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> to convert those html to markdown.</p>
+
+<p>It works like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pandoc -f html -t markdown your_html_file.html</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Thoughts on Disaster</h2>
+
+<p>p.s. I stored my blog octopress repository on Dropbox and somehow it
+just all gone, it really shocked me. Probably it was my fault not
+theirs, but still I always thought Dropbox is a safe place, but I don&#8217;t
+even have a clue why it happended and somehow could&#8217;t see the history and
+restore from their website. After I noticed it everytime I came up with
+something to write I&#8217;ve had used it as an excuse, or maybe I was not in
+the mood to deal with it(also I didn&#8217;t know how&#8230;).</p>
+
+<p>So I need a fallback solution about Dropbox, every disaster changes you to rethink
+about current seems comfortable situation. And hope I&#8217;ll write more often :)</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T01:52:00+09:00" pubdate data-updated="true">2014-03-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -972,58 +1059,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 	<a class='category' href='/blog/categories/apple/'>Apple</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/one-photo-and-one-video-about-innovation/">One Photo And One Video About Innovation</a></h1>
-	<div class="entry-content">
-		<h2>The Photo: Apple 2005-2013</h2>
-
-<p><img src="http://cdn.kinopyo.com/images/2005-2013-apple.jpg" alt="Apple 2005 and 2013" /></p>
-
-<p><strong>2005</strong>. I was still in college. The phone I had was just a &#8220;pure&#8221; phone to call and text people, and even didn&#8217;t have a camera.</p>
-
-<p><strong>2013</strong>. Now I have Macbook, iPhone, iPad, Kindle, all &#8220;rich&#8221; devices. With 3G network I can connect to Internet anytime anywhere. Life&#8217;s been changed so much.</p>
-
-<h2>The Video: Samsung GALAXY S4</h2>
-
-<div class="video-container">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/2LHv1FPd1Ec?rel=0" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
-<p>I never had a Samsung GALAXY phone, but after watched this video I was surprised by some of the new features. I&#8217;ve been using iPhone for 3 or 4 years, I&#8217;m so used to it and sometimes it makes me blind to see other innovations.</p>
-
-<p>The video is 4:30 long, please take a look when you have time.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-16T14:30:00+09:00" pubdate data-updated="true">2013-03-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/technology/'>Technology</a>
 
 
 </div>

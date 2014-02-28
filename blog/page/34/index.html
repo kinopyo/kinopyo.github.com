@@ -7,7 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ブログをキャリアの礎にしようと思っている方へ - GoTheDistanceこういうすてきな記事を見つかりました。 自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣ &hellip;">
+	<meta name="description" content="argumentsは配列じゃないため、配列のメソッドは
+使えません。ということは本を読んだとき当たり前だと思ったんですが、
+実際コードに落としたときは
+自然とargument.slice()を書いちゃいました。
+argumentsで配列のメソッドを使うには
+Array.prototype.. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +94,92 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>argumentsは配列じゃないため、配列のメソッドは</p>
+<p>使えません。ということは本を読んだとき当たり前だと思ったんですが、</p>
+<p>実際コードに落としたときは</p>
+<p>自然とargument.slice()を書いちゃいました。</p>
+<h4>argumentsで配列のメソッドを使うには</h4>
+<p>Array.prototype.<配列のメソッド>.call(arguments,<パラメータ>)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
+<h4>argumentsはarray-likeオブジェクト</h4>
+<p>ここでちょっとargumentsの基本知識を復習します。</p>
+<p>length属性もあるし、[]でindex指定のオブジェクトを参照できますけど、</p>
+<p>argumentsは配列に似ているオブジェクトだけです。</p>
+<h5>予約語</h5>
+<p>Technically, argumentsは予約語ではないですが、</p>
+<p>予約語として認識してよいです。</p>
+<p>つまりargumentsという変数は作成しないでってことです。</p>
+<br/>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">arguments</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  <span class="c1">//xの値が変更されちゃう</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// null が出力される</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h5>callee Property</h5>
+<p>Refers to the function that is currently being executed.</p>
+<p>今実行中のファクションを参照しています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">(</span><span class="nx">x</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1139,437 +1230,6 @@
 
 <p><a href="http://stacktrace.jp/jquery/api/events/bind.html">StackTraceサイト</a></p>
 
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-11T00:00:00+09:00" pubdate data-updated="true">2009-11-11</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-detail-of-event-object-structure-of-bubbling">jQuery Eventオブジェクトの詳細、バブリングの仕組み</a></h1>
-	<div class="entry-content">
-		<p>jQueryのEventオブジェクトには</p>
-
-<p>いくつかのプロパティとメソッドがありますが、</p>
-
-<p>それらの定義より、実際どの場面に使えるかを重点として紹介したいと思います。</p>
-
-<h4>dataプロパティ</h4>
-
-
-<p>bind時に渡されたデータを保持します。</p>
-
-<p>こちらの記事<a href="http://d.hatena.ne.jp/kinopyo/20091111/1257946002">「jQuery bindバインド時にデータを渡す」</a>をごらんください。</p>
-
-<h4>currentTargetとtargetプロパティ</h4>
-
-
-<p>最初currentTargetはイベントが発生したDOM要素だと理解していましたが、</p>
-
-<p>jQueryのドキュメントを見ると似た名前でtargetの属性もあります。</p>
-
-<p>そしてcurrentTargetには「バブリング」のキーワードが出てきましたので、</p>
-
-<p>詳しく書きたいと思います。</p>
-
-<p><a name="seemore"></a></p>
-
-<p>サンプル：</p>
-
-<p>一番大きいdiv範囲内をクリックするとそのdivのclass属性の値を返すJavaScriptです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-<span class='line-number'>119</span>
-<span class='line-number'>120</span>
-<span class='line-number'>121</span>
-<span class='line-number'>122</span>
-<span class='line-number'>123</span>
-<span class='line-number'>124</span>
-<span class='line-number'>125</span>
-<span class='line-number'>126</span>
-<span class='line-number'>127</span>
-<span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
-<span class='line-number'>143</span>
-<span class='line-number'>144</span>
-<span class='line-number'>145</span>
-<span class='line-number'>146</span>
-<span class='line-number'>147</span>
-<span class='line-number'>148</span>
-<span class='line-number'>149</span>
-<span class='line-number'>150</span>
-<span class='line-number'>151</span>
-<span class='line-number'>152</span>
-<span class='line-number'>153</span>
-<span class='line-number'>154</span>
-<span class='line-number'>155</span>
-<span class='line-number'>156</span>
-<span class='line-number'>157</span>
-<span class='line-number'>158</span>
-<span class='line-number'>159</span>
-<span class='line-number'>160</span>
-<span class='line-number'>161</span>
-<span class='line-number'>162</span>
-<span class='line-number'>163</span>
-<span class='line-number'>164</span>
-<span class='line-number'>165</span>
-<span class='line-number'>166</span>
-<span class='line-number'>167</span>
-<span class='line-number'>168</span>
-<span class='line-number'>169</span>
-<span class='line-number'>170</span>
-<span class='line-number'>171</span>
-<span class='line-number'>172</span>
-<span class='line-number'>173</span>
-<span class='line-number'>174</span>
-<span class='line-number'>175</span>
-<span class='line-number'>176</span>
-<span class='line-number'>177</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.big&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">className</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="err">そして</span><span class="nx">HTML</span><span class="err">コードは以こんな感じです。</span><span class="nx">CSS</span><span class="err">の部分は省略しました。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">直接画像を参照してください。</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">codeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;big&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">a</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;hatena-fotolife&quot;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://f.hatena.ne.jp/kinopyo/20091111223232&quot;</span> <span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span><span class="o">&gt;&lt;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;hatena-fotolife&quot;</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;f:id:kinopyo:20091111223232j:image&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091111/20091111223232.jpg&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;f:id:kinopyo:20091111223232j:image&quot;</span> <span class="o">/&gt;&lt;</span><span class="err">/a&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">alert</span><span class="err">部分の</span><span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="err">と</span><span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="err">を入れ替えて検証します。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">黄色の部分をクリック</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">target</span><span class="err">：</span><span class="nx">small</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">緑色の部分をクリック</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">target</span><span class="err">：</span><span class="nx">medium</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">青色の部分をクリック</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">target</span><span class="err">：</span><span class="nx">big</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="err">結果：</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">currentTarget</span><span class="err">は常に</span><span class="nx">big</span><span class="err">を表示するに対し、</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">target</span><span class="err">は子要素まで「精確」表示する</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">どうですか、あたり？はずれ？</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">ここでもう一回</span><span class="nx">jQuery</span><span class="err">のドキュメントを見てみましょう。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">blockquote</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold;font-size:x-large;&quot;</span><span class="o">&gt;</span><span class="nx">currentTarget</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">The</span> <span class="nx">current</span> <span class="nx">DOM</span> <span class="nx">element</span> <span class="nx">within</span> <span class="nx">the</span> <span class="nx">event</span> <span class="nx">bubbling</span> <span class="nx">phase</span><span class="p">.</span><span class="nx">This</span> <span class="nx">attribute</span> <span class="nx">will</span> <span class="nx">always</span> <span class="nx">be</span> <span class="nx">equal</span> <span class="nx">to</span> <span class="k">this</span> <span class="nx">of</span> <span class="nx">the</span> <span class="kd">function</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/blockquote&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">blockquote</span><span class="o">&gt;&lt;</span><span class="nx">span</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;font-weight:bold;font-size:x-large;&quot;</span><span class="o">&gt;</span><span class="nx">target</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">Contains</span> <span class="nx">the</span> <span class="nx">DOM</span> <span class="nx">element</span> <span class="nx">that</span> <span class="nx">issued</span> <span class="nx">the</span> <span class="nx">event</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">This</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">the</span> <span class="nx">element</span> <span class="nx">that</span> <span class="nx">registered</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">event</span> <span class="nx">or</span> <span class="nx">a</span> <span class="nx">child</span> <span class="nx">of</span> <span class="nx">it</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/blockquote&gt;</span>
-</span><span class='line'><span class="nx">currentTarget</span><span class="err">は実際</span><span class="nx">bind</span><span class="err">時の要素を指して、</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">target</span><span class="err">はその要素および子要素まで全部含んでいると私は理解しましたが、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">「バブリングフェーズ」の言葉については未だ曖昧な感じです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">そして</span><span class="nx">currentTarget</span><span class="err">は常にハンドラ内の</span><span class="k">this</span><span class="err">と同じことも覚えておきましょう。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">クロージャを使う際に例えば</span><span class="k">this</span><span class="err">がほかのオブジェクトを指しても</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="err">でイベントにバインドされた要素を使えます。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">pageX</span><span class="err">、</span><span class="nx">pageY</span><span class="err">プロパティ</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">定義：イベント発生時のマウス座標</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="err">この「マウス座標」に興味があり、本当にイベント発生時のマウス座標か、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">それともイベントが発生時の</span><span class="nx">DOM</span><span class="err">要素の座標かを試しました。</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">jQuery</span><span class="err">サンプルのソースを使いました。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Current mouse position: &quot;</span>
-</span><span class='line'>      <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageY</span><span class="p">);</span>
-</span><span class='line'><span class="p">})</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">マウスでクリック：「</span><span class="nx">Current</span> <span class="nx">mouse</span> <span class="nx">position</span><span class="o">:</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">312</span><span class="err">」</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">リンクに</span><span class="nx">Tab</span><span class="err">でフォーカスし</span><span class="nx">Enter</span><span class="err">：「</span><span class="nx">Current</span> <span class="nx">mouse</span> <span class="nx">position</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="err">」</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="err">本当にマウスによるイベントでしか座標が取れないみたいです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">応用としてはツールチップなどのプラグインで、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">マウス現在の座標でオフセットして表示するイメージです。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">stopPropagation</span><span class="p">()</span><span class="err">メソッド</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="err">これはバブリングに対してよく使われる用語ですね。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">バブリングは言語に制限せずイベントに関する制御では必ず出てきます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">最近見た</span><span class="nx">Flex3</span><span class="err">でもバブリングがあったし、</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">iPhone</span><span class="err">の開発でも</span><span class="nx">responder</span> <span class="nx">chain</span><span class="err">の用語があり、その中身も実際はバブリングの話です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">一回だけ徹底で勉強すればどの場面でも使えるんです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">ここまで書いてちょっと疲れましたが、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">自分もちゃんと決着をつけたいので、やはり書きましょう！</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">利用するサンプルはやはりさっきの大中小</span><span class="nx">DIV</span><span class="err">です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">JavaScript</span><span class="err">のほうのみ修正します。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.big&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;big&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.medium&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.small&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">evt</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="err">黄色部分をクリックすると</span><span class="nx">small</span><span class="err">のみが出力される</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h5</span><span class="o">&gt;</span><span class="err">解釈</span><span class="o">&lt;</span><span class="err">/h5&gt;</span>
-</span><span class='line'><span class="err">もし</span><span class="nx">stopPropagation</span><span class="err">がなかったら</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">そもそもの動きとしてはまずイベントが発生した要素</span><span class="nx">small</span><span class="err">のイベントハンドラが処理を行います。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">そしてその</span><span class="nx">small</span><span class="err">要素が属している親要素にイベント終了とのことを伝播し、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">もしその親要素も該当イベントにバインドされたら、親のイベントハンドラが実行します。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">こんな形でどんどん親にイベントを伝播するイメージがまさにバブリングという単語の意味です。</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">stopPropagation</span><span class="err">が実行されるとそのバブリングフェーズが終了した時点で親に対しての伝播を中止します。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">自分もよくわからない「バブリングフェーズ」の用語を使っちゃいました。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">なぜかって言うと、次のサンプルを先に見てみましょう。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">さっきの</span><span class="nx">JavaScript</span><span class="err">を元に一つの処理だけを追加しました。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.big&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;big&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.medium&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.small&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">evt</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.small&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;small2&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="err">これで</span><span class="nx">small</span><span class="err">の黄色部分をクリックするとどうなるでしょうか？</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">small2</span><span class="err">は表示されますか？</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">答えは、表示されます。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">なぜならさっき言ったように</span><span class="nx">stopPropagation</span><span class="err">は親に対しての伝播を中止するだけで、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">同じ要素に対しての処理には影響がないとのことです。</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">もし同じ要素に対しても処理を中止したい場合は</span><span class="nx">stopPropagation</span><span class="p">()</span><span class="err">の代わりに、</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">これは使います。</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">event</span><span class="p">.</span><span class="nx">stopImmediatePropagation</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これならさっきの例で言うと、small2は出力されません。</p>
-
-<p>イベントオブジェクトについてはとりあえずこの辺で終わります。</p>
-
-<h4>参考サイト</h4>
-
-
-<p><a href="http://docs.jquery.com/Events/jQuery.Event">公式サイトのEventオブジェクトドキュメント</a></p>
-
-<p><a href="http://stacktrace.jp/jquery/api/events/event_object.html">StackTraceサイト</a></p>
 
 		
 		

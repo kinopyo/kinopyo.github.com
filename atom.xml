@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-03-01T01:48:02+09:00</updated>
+  <updated>2014-03-01T02:27:24+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Recover Your Local Octopress Repository]]></title>
+    <link href="http://kinopyo.com/blog/recover-your-local-octopress-repository/"/>
+    <updated>2014-03-01T01:52:00+09:00</updated>
+    <id>http://kinopyo.com/blog/recover-your-local-octopress-repository</id>
+    <content type="html"><![CDATA[<p>Here I&#8217;ll show you how to recover or restore your local octopress
+repository, for instance you&#8217;re on a new machine, or just lost your
+local copy of it.</p>
+
+<p>It requries you to have a repository on github that you&#8217;ve deployed your
+octopress posts.</p>
+
+<p>First I recommend that you read this post: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a>, the <strong>Recreating a local Octopress repository</strong> section.</p>
+
+<p>And here is what worked for me, please replace <code>kinopyo</code> with your user
+name.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone -b source git@github.com:kinopyo/kinopyo.github.com.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>
+</span><span class='line'>gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'>rake preview
+</span><span class='line'>open http://localhost:4000</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Tips on Converting HTML to Markdown</h2>
+
+<p>Somehow the latest 3 posts are still missing after I git cloned my
+remote repository. I checked in advance and saved those copies as html.
+And after I restored my octopress repository I used <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> to convert those html to markdown.</p>
+
+<p>It works like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pandoc -f html -t markdown your_html_file.html</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Thoughts on Disaster</h2>
+
+<p>p.s. I stored my blog octopress repository on Dropbox and somehow it
+just all gone, it really shocked me. Probably it was my fault not
+theirs, but still I always thought Dropbox is a safe place, but I don&#8217;t
+even have a clue why it happended and somehow could&#8217;t see the history and
+restore from their website. After I noticed it everytime I came up with
+something to write I&#8217;ve had used it as an excuse, or maybe I was not in
+the mood to deal with it(also I didn&#8217;t know how&#8230;).</p>
+
+<p>So I need a fallback solution about Dropbox, every disaster changes you to rethink
+about current seems comfortable situation. And hope I&#8217;ll write more often :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Remote Work, Day One: Trust]]></title>
@@ -930,157 +992,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 <p>The movie is directed by 王家卫(<a href="http://www.imdb.com/name/nm0939182/">Kar Wai Wong</a>), my favorite director, his movies are always full of deep, inspiring words. It&#8217;s a movie, but taste like a novel. I&#8217;m so glad that I read Chinese so that I could fully enjoy the good work.</p>
 
 <p>Another thing is, I was a little confused about how to make quoty, what it is, where it goes. But this experience, after watching a great movie then upload those quotes and photos, I can really recapture all the great moments in the movie, feels so good. Besides, be capable to improve the tool I&#8217;m using is another way to enjoy the life.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[飘雪，歌词很美]]></title>
-    <link href="http://kinopyo.com/blog/%E9%A3%98%E9%9B%AA%EF%BC%8C%E6%AD%8C%E8%AF%8D%E5%BE%88%E7%BE%8E/"/>
-    <updated>2013-01-19T11:25:00+09:00</updated>
-    <id>http://kinopyo.com/blog/飘雪，歌词很美</id>
-    <content type="html"><![CDATA[<script type="text/javascript" src="http://kinopyo.com/javascripts/jplayer/jquery.jplayer.min.js">
-</script>
-
-
-<p><link href="http://kinopyo.com/stylesheets/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css"></p>
-
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-
-
-<div id="jp_container_1" class="jp-audio">
-  <div class="jp-type-single">
-    <div class="jp-gui jp-interface">
-      <ul class="jp-controls">
-        <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-        <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-        <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-        <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-        <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-        <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-      </ul>
-      <div class="jp-progress">
-        <div class="jp-seek-bar">
-          <div class="jp-play-bar"></div>
-        </div>
-      </div>
-      <div class="jp-volume-bar">
-        <div class="jp-volume-bar-value"></div>
-      </div>
-      <div class="jp-time-holder">
-        <div class="jp-current-time"></div>
-        <div class="jp-duration"></div>
-        <ul class="jp-toggles">
-          <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-          <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="jp-no-solution">
-      <span>Update Required</span>
-      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-    </div>
-  </div>
-</div>
-
-
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#jquery_jplayer_1").jPlayer({
-      ready: function () {
-        $(this).jPlayer("setMedia", {
-          mp3: "http://cdn.kinopyo.com/musics/piaoxue.mp3"
-        });
-      },
-      swfPath: "/javascripts/jplayer",
-      supplied: "mp3"
-    });
-  });
-</script>
-
-
-<p>原曲是中岛美嘉的雪之华，这是中文翻唱。留意到歌词很美就顺便记录下来了。<br />
-看来我有必要去一趟伊豆啊 =_=;;</p>
-
-<blockquote><p>为何我的泪 会不停地流下
-滑过你曾经亲吻的脸颊
-所有的对错在顷刻崩塌</p></blockquote>
-
-<h2>飘雪 歌词</h2>
-
-<p><img src="http://img.xiami.com/images/album/img93/1593/88591314675786.jpg" alt="" /></p>
-
-<p>作词：林海<br />
-演唱者：韩雪<br />
-作曲：松本良喜<br /></p>
-
-<br />
-
-
-<div class="lyrics">
-忧郁的一片天 飘着纷飞的雪<br />
-这一泓伊豆的温泉 浸湿我孤单的思念<br />
-飘零的一片叶 就像你我的终结<br />
-这一泓伊豆的温泉 盛满温暖的从前<br />
-<br />
-你的手 曾经拥着我的肩<br />
-呢喃着 爱我直到永远<br />
-雪花 像绽放的礼花<br />
-天地间肆意地飘洒<br />
-纵情在一刹那<br />
-<br />
-为何现在只剩下 风吹乱我的发<br />
-撕开我记忆的伤疤<br />
-让往事像雾气慢慢地蒸发<br />
-让我知道什么叫放不下<br />
-<br />
-为何我的泪 会不停地流下<br />
-滑过你曾经亲吻的脸颊<br />
-所有的对错在顷刻崩塌<br />
-<br />
-忧郁的一片天 飘着纷飞的雪<br />
-这一泓伊豆的温泉 浸湿我孤单的思念<br />
-飘零的一片叶 就像你我的终结<br />
-这一泓伊豆的温泉 盛满温暖的从前<br />
-<br />
-你的手 曾经拥着我的肩<br />
-呢喃着 爱我直到永远<br />
-雪花 像绽放的礼花<br />
-天地间肆意地飘洒<br />
-纵情在一刹那<br />
-<br />
-为何现在只剩下 风吹乱我的发<br />
-撕开我记忆的伤疤<br />
-让往事像雾气慢慢地蒸发<br />
-让我知道什么叫放不下<br />
-<br />
-为何我的泪会不停地流下<br />
-滑过你曾经亲吻的脸颊<br />
-所有的对错在顷刻崩塌<br />
-<br />
-原来你带走了我生命的暖春盛夏<br />
-就连秋的果实也只在梦境里悬挂<br />
-原来寻找的是我自己难了的牵挂<br />
-这泓伊豆的温泉是天给的 惩罚<br />
-<br />
-如果知道结局我们还会相爱吗<br />
-我猜不到你的回答<br />
-冰雪中的誓言是真心的吗<br />
-怎么此刻什么也没留下<br />
-<br />
-现在只剩下风吹乱我的发<br />
-雪掩埋记忆的伤疤<br />
-往事就像雾气慢慢地蒸发<br />
-痛到麻木也许就放得下<br />
-<br />
-就让我的泪不停地去冲刷<br />
-冲刷你曾经亲吻的脸颊<br />
-伸出手像留住一样的冰雪<br />
-那瞬间的融化仿佛在<br />
-祭奠你和我的爱情童话<br />
-</div>
-
 ]]></content>
   </entry>
   

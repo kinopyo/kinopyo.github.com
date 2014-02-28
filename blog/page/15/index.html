@@ -7,16 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="1
-2
-3
-4
-5
-6
-7
-// 47 -&gt; 047
-sprintf(&quot;%03d&quot;, 47); // or // parameter: string $input , int $pad_length,
-str_pad(47, 3, &#39;0&#39;, &hellip;">
+	<meta name="description" content="2011/09/30更新 現時点の最新版(15.0.874.54 beta)のChromeに更新したらTrackpadでは2本指スワイプ、MagicMouseでは1本指スワイプでページのBack/Forward遷移できるようになりました！もうBetterTouchToolに頼らなくてもいいですよ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +89,69 @@ str_pad(47, 3, &#39;0&#39;, &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-set-gesture-for-chrome-to-swipe-back-and-forth-in-lion">【更新】Mac Lion: Chromeのページ遷移back/forwardするジェスチャー設定</a></h1>
+	<div class="entry-content">
+		<h1>2011/09/30更新</h1>
+
+<p>現時点の最新版(15.0.874.54 beta)のChromeに更新したらTrackpadでは2本指スワイプ、MagicMouseでは1本指スワイプでページのBack/Forward遷移できるようになりました！もうBetterTouchToolに頼らなくてもいいですよ〜</p>
+
+<hr/>
+
+
+<p>Lionにアップグレードして、新しいジェスチャーをONにしたらChromeでの2本/3本指での左右スワイプによるブラウザのback/forwardのページ遷移が効かなくなりました。少し調べたので、その結果をまとめます。</p>
+
+<h2>1. Three finger dragを使わない前提</h2>
+
+<p>このThree finger dragは自分は大好きですが、もしこれを使わない方でしたら解決は速いです。
+システム設定のトラックパッドを開き、More Gestureタブの<strong>Swipe between pages</strong>のジェスチャーを3本指或いは2本/3本指に設定。
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/swipe_between_pages.jpg" title="swipe_between_pages" ></p>
+
+<p>これでChromeで3本指左右スワイプが効きます。2本指はまだ認識できないっぽいですが、Safariではどっちでもうまく対応できてしかもアニメーションでページ遷移ができます。</p>
+
+<p>こうすればThree finger dragは自動でオフになります。
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Three_finger_drag_off.jpg" title="Three_finger_drag_off" ></p>
+
+<h2>2. Three finger dragも使いたいならBetterTouchToolを使う</h2>
+
+<p>BetterTouchToolでこのようにChrome専用のジェスチャーを設定します。
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/BetterTouchTool.jpg" title="BetterTouchTool" ></p>
+
+<p>2本指のスワイプのアクションを⌘(Command) + {と⌘(Command) + }に設定します。これはChromeでのページ遷移のショットカットキーです。実際使ってみたら使い心地はあまりよくないですが。。</p>
+
+<p>他のジェスチャー設定は<a href="http://www.kinopyo.com/blog/setup-trackpad-after-upgrade-to-lion">MacをLionにアップグレードして最初に設定したのはトラックパッド</a>を御覧ください。
+BetterTouchToolはトラックパッドを便利にするためのツールです。詳しい使い方はこの記事<a href="http://nori510.com/archives/4208">http://nori510.com/archives/4208</a>を参考してください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-24T00:00:00+09:00" pubdate data-updated="true">2011-07-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/lion/'>Lion</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1235,51 +1289,6 @@ Embed GitHub Gistはgistから内容を取得して本文に出力するためRS
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/zshrc-tab-to-autocomplete-case-insensitive">zshrc Tabで大文字を無視して自動補完できるように</a></h1>
-	<div class="entry-content">
-		<p>下記を.zshrcに記述すればtabで大文字を無視して補完ができるようになります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>## Case-insensitive completion
-</span><span class='line'>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
-</span><span class='line'>zstyle ':completion:# ' menu select=1</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-01T00:00:00+09:00" pubdate data-updated="true">2011-07-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/zshrc/'>zshrc</a>
 
 
 </div>

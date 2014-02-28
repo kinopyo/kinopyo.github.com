@@ -1,0 +1,244 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Recover Your Local Octopress Repository - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="Here I&#8217;ll show you how to recover or restore your local octopress
+repository, for instance you&#8217;re on a new machine, or just lost your &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Recover Your Local Octopress Repository</h1>
+	<div class="entry-content"><p>Here I&#8217;ll show you how to recover or restore your local octopress
+repository, for instance you&#8217;re on a new machine, or just lost your
+local copy of it.</p>
+
+<p>It requries you to have a repository on github that you&#8217;ve deployed your
+octopress posts.</p>
+
+<p>First I recommend that you read this post: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a>, the <strong>Recreating a local Octopress repository</strong> section.</p>
+
+<p>And here is what worked for me, please replace <code>kinopyo</code> with your user
+name.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone -b source git@github.com:kinopyo/kinopyo.github.com.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>
+</span><span class='line'>gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'>rake preview
+</span><span class='line'>open http://localhost:4000</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Tips on Converting HTML to Markdown</h2>
+
+<p>Somehow the latest 3 posts are still missing after I git cloned my
+remote repository. I checked in advance and saved those copies as html.
+And after I restored my octopress repository I used <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> to convert those html to markdown.</p>
+
+<p>It works like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pandoc -f html -t markdown your_html_file.html</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Thoughts on Disaster</h2>
+
+<p>p.s. I stored my blog octopress repository on Dropbox and somehow it
+just all gone, it really shocked me. Probably it was my fault not
+theirs, but still I always thought Dropbox is a safe place, but I don&#8217;t
+even have a clue why it happended and somehow could&#8217;t see the history and
+restore from their website. After I noticed it everytime I came up with
+something to write I&#8217;ve had used it as an excuse, or maybe I was not in
+the mood to deal with it(also I didn&#8217;t know how&#8230;).</p>
+
+<p>So I need a fallback solution about Dropbox, every disaster changes you to rethink
+about current seems comfortable situation. And hope I&#8217;ll write more often :)</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T01:52:00+09:00" pubdate data-updated="true">2014-03-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/recover-your-local-octopress-repository/';
+        var disqus_url = 'http://kinopyo.com/blog/recover-your-local-octopress-repository/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

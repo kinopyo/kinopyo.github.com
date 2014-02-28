@@ -7,8 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Nokogiriでurlをparseするときは普通こんなコードになります。 1
-doc = Nokogiri::HTML(open(&#39;http://example.com/&#39;)) しかし接続先のプロトコールがhttpsの場合はNo such file or &hellip;">
+	<meta name="description" content="下記を.zshrcに記述すればtabで大文字を無視して補完ができるようになります。 1
+2
+3
+## Case-insensitive completion
+zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
+zstyle ': &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +94,51 @@ doc = Nokogiri::HTML(open(&#39;http://example.com/&#39;)) しかし接続先の�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/zshrc-tab-to-autocomplete-case-insensitive">zshrc Tabで大文字を無視して自動補完できるように</a></h1>
+	<div class="entry-content">
+		<p>下記を.zshrcに記述すればtabで大文字を無視して補完ができるようになります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>## Case-insensitive completion
+</span><span class='line'>zstyle ':completion:# ' matcher-list 'm:{a-z}={A-Z}'
+</span><span class='line'>zstyle ':completion:# ' menu select=1</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-01T00:00:00+09:00" pubdate data-updated="true">2011-07-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/zshrc/'>zshrc</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -554,49 +603,6 @@ doc = Nokogiri::HTML(open(&#39;http://example.com/&#39;)) しかし接続先の�
 
 
 	<a class='category' href='/blog/categories/ipad/'>iPad</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/ipad/'>ipad</a>, <a class='category' href='/blog/categories/ipad2/'>ipad2</a>, <a class='category' href='/blog/categories/rss/'>rss</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/inkstagram-show-photos-you-have-liked-on-instagram">自分がLikeした画像が見れるInstagram Web App - Inkstagram</a></h1>
-	<div class="entry-content">
-		<blockquote><p>Inkstagram is also a web app for browsing Instagram photos. You can view photos in small, medium or full sizes while browsing your feed, popular photos or your own photos.</p><p>We especially appreciate the &#8220;My Likes&#8221; view which showcases all of the photos that you&#8217;ve liked on Instagram.</p></blockquote>
-
-
-<p>目玉機能というえばこの&#8221;My Likes&#8221;ですね！自分が&#8221;Like&#8221;した画像が一覧で見れます！ちょっとこういうの欲しかったー！
-<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-30-at-19.01.59.png" title="Inkstagram &quot;My Likes&quot;" ></p>
-
-<p>他にも写真へのコメントや、Like、Popular Feedの表示など、写真アップロードを除いて全部できます。</p>
-
-<p>サイトはこちら：<a href="http://inkstagram.com/">http://inkstagram.com/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-30T00:00:00+09:00" pubdate data-updated="true">2011-05-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/instagram/'>instagram</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
 
 
 </div>

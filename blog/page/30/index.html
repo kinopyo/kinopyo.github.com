@@ -7,10 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="FireQueryはFirebugを拡張したアドオンで、jQueryをよりよくサポートできるんです。
-jQueryのオブジェクトをコンソールで確認したり、マウスオーバーで画面上のレーヤーで表示されたりして
-大変便利になります。
-これ以外でもjQuerifyというやつがあって、 &hellip;">
+	<meta name="description" content="Wordpressブログにはてな記法を適用するプラグインを紹介します。
+はてな記法に慣れたら結構手軽にブログを書けます。
+Wordpressにそのはてな記法のプラグインがあります。 インストール WordPressにはてな記法を導入するプラグインにてダウンロード
+サーバにアップロード(wp- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +92,61 @@ jQueryのオブジェクトをコンソールで確認したり、マウスオ�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-plugin-hatena-notation">WordPressにはてな記法を適用するプラグイン</a></h1>
+	<div class="entry-content">
+		<p>Wordpressブログにはてな記法を適用するプラグインを紹介します。
+はてな記法に慣れたら結構手軽にブログを書けます。
+Wordpressにそのはてな記法のプラグインがあります。</p>
+
+<h2>インストール</h2>
+
+<ul>
+<li><a href="http://rewish.org/wp/hatena_notation_plugin">WordPressにはてな記法を導入するプラグイン</a>にてダウンロード</li>
+<li>サーバにアップロード(wp-content/pluginsフォルダに)</li>
+<li>ダッシュボード→プラグイン→インストール済みでアクティブすればOK</li>
+<li>設定画面の「Posts -> WP HatenaNotation」で適用する時間範囲を決める、するとその時間以降の記事に対して有効になる</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/hatena-notation-plugin.jpg" title="hatena-notation-plugin" ></p>
+
+<p>この例で言うと、2009年11月30日以前のはてな記法で書かれて記事は対象外となる意味です。</p>
+
+<h2>まだ対応してない機能</h2>
+
+<p>http記法の<em>[http://～～]</em>は現時点まだ対応予定の状態です。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -658,101 +713,6 @@ Googleらしき風土ですね。どれくらいお菓子食ったのも統計�
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-permalink-settings-for-seo">WordPressパーマリンクのSEO対策</a></h1>
-	<div class="entry-content">
-		<p>最適なSEOになるためのWordPressのパーマリンク設定方法について書きたいと思います。</p>
-
-<h2>パーマリンク</h2>
-
-<p>簡単に言うとURLのことです。例えば下記のようなURLです。
-http://example.com/?p=N
-これはWordPressのデフォルトで、実によくない設定です。
-基本のものは<a href="http://wpdocs.sourceforge.jp/%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">パーマリンクの使い方</a>を参照してください。</p>
-
-<h2>SEOに最適なパーマリンク</h2>
-
-<p>いろんなサイトを参考しました。結構の情報量で、どこまで通用するかはやはりご自分の判断でお願いします。
-+  URLにスペースを入れないのはさいやく、アンダースコアはちょっとマシ、ハイフンは一番(in URLs, no spaces are worst, underscore are better, dashes or hyphens are best.)
-+  %postname%で始まるのはパフォーマンス的によくないが、2.0バージョン以降はOKになった</p>
-
-<pre><code>-(Starting Permalinks with %postname% is strongly not recommended for performance reasons.. ###  Note - this has been changed and is ok to do since ver. 2.0)
-</code></pre>
-
-<ul>
-<li>%category%、%tag%で始まるのはパフォーマンスの原因でやめてほしい
- -(Starting Permalinks with %category%,%tag% is strongly not recommended for performance reasons. )</li>
-<li>日本語のパーマリンクにするのはよろしくない</li>
-</ul>
-
-
-<h2>結論</h2>
-
-<ul>
-<li>%postname%</li>
-<li>あるいは%year%/%postname%
-にしようかと私は思ってます。</li>
-</ul>
-
-
-<br/>
-
-
-<p>まず、%postname%が改善されたため、これを使うのが一番いいSEO対策になってます。
-ただし日本語をパーマリンクにするのはよくしくないと思うので、
-そこは手動で毎回毎回変えるしかないです。
-手間かかると思う方はやはり年月日+post_idを選択したほうがいいかもです。
-ただパーマリンクに無意味なpost_idをつけるのがちょっと抵抗があるので、
-私は別に英語の意味に翻訳するのも大丈夫かと思います。</p>
-
-<br/>
-
-
-<h2>パーマリンクをリダイレクトするプラグイン</h2>
-
-<p>これはあるようです。
-パーマリンクの形式を変更した場合このプラグインで
-簡単リダイレクトができるそうです。
-<a href="http://scott.yang.id.au/code/permalink-redirect">Permalink Redirect WordPress Plugin</a></p>
-
-<h2>参考サイト</h2>
-
-<p><a href="http://wpdocs.sourceforge.jp/%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">パーマリンクの使い方</a>
-<a href="http://wphacks.com/how-to-setting-up-your-wordpress-permalink-structure">How To: Setting Up Your WordPress Permalink Structure</a>
-<a href="http://openplay.org/2009/04/18/140.html">WordPressで日本語のパーマリンクにするのはよろしくない</a>
-<a href="http://ja.forums.wordpress.org/topic/2048">WordPress のアドレスに日本語を含むURLが使えない</a>
-<a href="http://coliss.com/articles/blog/wordpress/plugin/wordpress-plugin-permalink-edirect.html">パーマリンクの変更後、旧アドレスでもアクセスできるWordPressのプラグイン</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-07T00:00:00+09:00" pubdate data-updated="true">2009-12-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/seo/'>SEO</a>, <a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>
