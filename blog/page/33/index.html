@@ -7,13 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="今までjQueryを使ってきたtipsをメモします。
-Tipsの定義とおり知っていればちょっと便利になるけど、
-知らなくても特に問題ないですね。
-ただしlive関数においてはすべてのイベントに有効じゃないのは
-知っておいてほしいです。
-live関数
-liveはすべてのイベントに対応していない。 &hellip;">
+	<meta name="description" content="gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の第2回：「Same-Originポリシーと迂回技術」の勉強メモです。
+定義
+他のドメインのサイトへはリクエストを送信できない制限のことをSame-Originポリシーと呼びます。同じドメインであってもポート番号やプロトコル（ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +91,63 @@ liveはすべてのイベントに対応していない。 &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/memo-of-same-origin-policy">Same-Originポリシー勉強メモ</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の第2回：<a href="http://gihyo.jp/dev/serial/01/web20sec/0002" target="_blank">「Same-Originポリシーと迂回技術」</a>の勉強メモです。</p>
+<h4>定義</h4>
+<p>他のドメインのサイトへはリクエストを送信できない制限のことをSame-Originポリシーと呼びます。同じドメインであってもポート番号やプロトコル（HTTPとHTTPSなど）が異なれば，異なるサイト（クロスドメイン）とみなされアクセスできません。クロスドメインアクセスは機能として実装されていないのではなく，セキュリティ上の理由から禁止されているそうです。</p>
+<h4>必要性</h4>
+<p><img alt="" src="http://image.gihyo.co.jp/assets/images/dev/serial/01/web20sec/0002/thumb/TH400_fig02.png"></p>
+<p>俺があの黒の攻撃者とし、攻撃目標がユーザのメールアカウント情報だとします。もしクロスドメインにアクセスする制限がなければ、事前に用意したスクリプトで(urlをメールサーバに設定)メールアカウントの情報が取得できるようになってしまいます。(この辺りはCookieの話が出てきます)</p>
+<h4>ウェブの基本ルール</h4>
+<p>Ajaxだけではなく、フレームやサブウインドウの情報にアクセスする場合などにも存在する</p>
+<h4>クロスドメインでデータを取得する方法</h4>
+<p>    * リバースPorxy</p>
+<p>    * SCRIPTタグ（JSONP）</p>
+<p>    * Flash</p>
+<p>    * 画像</p>
+<p>    * スタイルシート</p>
+<h4>リバースProxy</h4>
+<p><img alt="" src="http://image.gihyo.co.jp/assets/images/dev/serial/01/web20sec/0002/thumb/TH400_fig03.png"></p>
+<p>データ提供サーバにとってユーザの身元は隠れているため、攻撃者に利用しやすい</p>
+<p>ユーザの身元を確認しようとすると、ユーザ情報を扱わなければならない</p>
+<p>ユーザ情報&#8211;&#62;サーバ&#8211;&#62;データ提供サーバ</p>
+<p>　</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -993,90 +1046,6 @@ Googleで検索すると似たようなものはありましたが、
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-to-check-is-activex-enabled-in-client">クライアント側のActiveXが有効か無効かを検出するJavaScript</a></h1>
-	<div class="entry-content">
-		<h2>知っておくべきこと</h2>
-
-<ul>
-<li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
-<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される</li>
-<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：
-
-<ul>
-<li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
-<li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
-<li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
-<li>&#8220;Msxml2.XMLHTTP&#8221;</li>
-</ul>
-</li>
-<li>もし生成できればActiveXコントロールは有効になっている</li>
-</ul>
-
-
-<h2>検出ソースコード</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ブラウザがIEの場合</span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">try</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">//IEのXMLHttpRequestオブジェクトを試しに生成</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ActiveXコントロールは無効になっています&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<br/>
-
-
-<h2>参考サイト</h2>
-
-<p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

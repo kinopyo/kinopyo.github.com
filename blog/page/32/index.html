@@ -7,7 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="サイトの引越しなどであるURLから別のURLへ転送する場合の話です。例えば JavaScript を利用して転送したり、HTMLの機能で転送させたりするかもしれません。 しかしトップページでリダイレクトしてみても、別のページに直リンクしていた場合は旧ページが表示されることになります。 &hellip;">
+	<meta name="description" content="一番デフォルトでのインストール手順です。
+インストール
+1. Download - The Apache HTTP Server ProjectでUNIX Sourceをダウンロード
+2. 解凍し、ターミナルを開いてそのディレクトリに移動
+3. 次のコマンドを実行、&#8211;prefix &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +93,113 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-apache2-2-in-mac-or-unix">Mac(UNIX)でApache2.2サーバをインストール</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>一番デフォルトでのインストール手順です。</p>
+<h4>インストール</h4>
+<p>1. <a href="http://httpd.apache.org/download.cgi" target="_blank">Download - The Apache HTTP Server Project</a>でUNIX Sourceをダウンロード</p>
+<p>2. 解凍し、ターミナルを開いてそのディレクトリに移動</p>
+<p>3. 次のコマンドを実行、&#8211;prefix=&#8221;インストール先&#8221;を指定。省略された場合は/usr/local/apache2になる。他にモジュールとかの設定も可能。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./configure --prefix=/users/kinopyo/develop/apache</span></code></pre></td></tr></table></div></figure>
+
+<p>4. ビルド、インストール</p>
+<p>次のコマンドを実行、それぞれ時間がすこしかかる</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make
+</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+<p>これでインストールは完了です。</p>
+<h4>カスタマイズ：httpd.confを編集</h4>
+<p>ここからはプラットフォームとは関係なく単純なApacheの世界です。</p>
+<p>前回の記事を参照してください：</p>
+<p><a href="http://d.hatena.ne.jp/kinopyo/20091124/1259017666" target="_blank">PHP5とApache2.2をWindowsにインストール - kinopyoの日記 </a></p>
+<h5>補足</h5>
+<p>Windowsはインストールウィザードでインストール時</p>
+<p>ServerAdminとServerNameの編集ダイアログがあります。</p>
+<p>一方MacはGUIのインストールではないため、</p>
+<p>手動でhttpd.confに上記二つのプロパティを設定する必要があります。</p>
+<h4>テスト</h4>
+<p>サーバの起動：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ インストール先のディレクトリ/bin/apachectl -k start</span></code></pre></td></tr></table></div></figure>
+
+<p>サーバの停止：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ インストール先のディレクトリ/bin/apachectl -k stop</span></code></pre></td></tr></table></div></figure>
+
+<p>これでブラウザで<a href="http://localhost:80" target="_blank">http://localhost:80</a>にアクセスすればページが表示されるはずです。</p>
+<h5>トラブルにあった！</h5>
+<p>上記コマンドを打つディレクトリはApacheサーバがインストールされたディレクトリです。</p>
+<p>例えば/users/kinopyo/develop/apacheにインストールされたとして、</p>
+<ol>
+<li>まずはcd /users/kinopyo/develop/apacheに移動</li>
+<li>次に/bin/apachectl -k startで実行</li>
+</ol>
+<p>もし第一歩でbinディレクトリまで移動し、直接apachectl -k startを実行したら、</p>
+<p>下記のようなエラーメッセージが出て、起動失敗になります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(13)Permission denied: make_sock: could not bind to address [::]:80
+</span><span class='line'>(13)Permission denied: make_sock: could not bind to address 0.0.0.0:80
+</span><span class='line'>no listening sockets available, shutting down
+</span><span class='line'>Unable to open logs</span></code></pre></td></tr></table></div></figure>
+
+<br/>
+<p>ちなみにこのメッセージが出るもう一つのパターンはポート番号が既に使われている場合です。</p>
+<p>その時は下記コマンドで検出するし、使っているアプリを停止するか</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>netstat -na | grep 8082</span></code></pre></td></tr></table></div></figure>
+
+<p>httpd.confのListenとServerNameのポート番号を新たに設定する必要があります。</p>
+<br/>
+<p>参考サイト：</p>
+<p><a href="http://httpd.apache.org/docs/2.2/install.html" target="_blank">Compiling and Installing - Apache HTTP Server</a></p>
+<p><a href="http://lists.freebsd.org/pipermail/freebsd-questions/2003-November/025576.html" target="_blank"> apache install problem   </a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-29T00:00:00+09:00" pubdate data-updated="true">2009-11-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -857,63 +968,6 @@ Java7,,,やってみたいっす！
 
 
 	<a class='category' href='/blog/categories/ie/'>IE</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/memo-of-same-origin-policy">Same-Originポリシー勉強メモ</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の第2回：<a href="http://gihyo.jp/dev/serial/01/web20sec/0002" target="_blank">「Same-Originポリシーと迂回技術」</a>の勉強メモです。</p>
-<h4>定義</h4>
-<p>他のドメインのサイトへはリクエストを送信できない制限のことをSame-Originポリシーと呼びます。同じドメインであってもポート番号やプロトコル（HTTPとHTTPSなど）が異なれば，異なるサイト（クロスドメイン）とみなされアクセスできません。クロスドメインアクセスは機能として実装されていないのではなく，セキュリティ上の理由から禁止されているそうです。</p>
-<h4>必要性</h4>
-<p><img alt="" src="http://image.gihyo.co.jp/assets/images/dev/serial/01/web20sec/0002/thumb/TH400_fig02.png"></p>
-<p>俺があの黒の攻撃者とし、攻撃目標がユーザのメールアカウント情報だとします。もしクロスドメインにアクセスする制限がなければ、事前に用意したスクリプトで(urlをメールサーバに設定)メールアカウントの情報が取得できるようになってしまいます。(この辺りはCookieの話が出てきます)</p>
-<h4>ウェブの基本ルール</h4>
-<p>Ajaxだけではなく、フレームやサブウインドウの情報にアクセスする場合などにも存在する</p>
-<h4>クロスドメインでデータを取得する方法</h4>
-<p>    * リバースPorxy</p>
-<p>    * SCRIPTタグ（JSONP）</p>
-<p>    * Flash</p>
-<p>    * 画像</p>
-<p>    * スタイルシート</p>
-<h4>リバースProxy</h4>
-<p><img alt="" src="http://image.gihyo.co.jp/assets/images/dev/serial/01/web20sec/0002/thumb/TH400_fig03.png"></p>
-<p>データ提供サーバにとってユーザの身元は隠れているため、攻撃者に利用しやすい</p>
-<p>ユーザの身元を確認しようとすると、ユーザ情報を扱わなければならない</p>
-<p>ユーザ情報&#8211;&#62;サーバ&#8211;&#62;データ提供サーバ</p>
-<p>　</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
 
 
 </div>

@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Overview In order to sync SublimeText2 settings with Dropbox, you need to symlink these folders of SublimeText to your dropbox. Packages
-Installed &hellip;">
+	<meta name="description" content="If you&#8217;re using SublimeText and also a fan of iA Writer , you may want to check this plugin called MarkdownEditing. It provides a iA Writer- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,66 @@ Installed &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/markdownediting-sublimetext-plugin-to-make-your-markdown-looks-like-ia-writer/">MarkdownEditing - SublimeText plugin to make your markdown looks like iA Writer</a></h1>
+	<div class="entry-content">
+		<p>If you&#8217;re using SublimeText and also a fan of <a href="http://www.iawriter.com/">iA Writer</a> , you may want to check this plugin called <a href="https://github.com/ttscoff/MarkdownEditing">MarkdownEditing</a>. It provides a iA Writer-like interface to your SublimeText.</p>
+
+<h2>How does it look like?</h2>
+
+<p>A picture is worth a thousand words:</p>
+
+<p><img src="http://kinopyo.com/wp-content/MarkdownEditing.png" alt="MarkdownEditing" /></p>
+
+<h2>Install</h2>
+
+<p>Use <code>cmd+shift+P</code> then Package <code>Control: Install Package</code>, type <code>MarkdownEditing</code> to install it, then any markdown file will get associated.</p>
+
+<h2>Other Features</h2>
+
+<p>Besides iA Writer-like UI it also has many other features like:</p>
+
+<ul>
+<li>Asterisks, underscores and parenthesis are auto paired and will wrap selected text</li>
+<li>⌘⌥V will paste the contents of the clipboard as an inline link on selected text</li>
+<li>⌘⌥K inserts a standard inline link, ⌘⇧K inserts an inline image</li>
+<li>⌘⌥B and ⌘⌥I are bound to bold and italics (Markdown).</li>
+<li>&#8230;</li>
+</ul>
+
+
+<p>So, how do you think?</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-22T15:35:00+09:00" pubdate data-updated="true">2012-09-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -669,97 +728,6 @@ Installed &hellip;">
 
 
 <time datetime="2012-08-23T12:55:00+09:00" pubdate data-updated="true">2012-08-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>rails</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/">Finding an array of ids while keeping the order with Rails</a></h1>
-	<div class="entry-content">
-		<h2>The order may different</h2>
-
-<p>Suppose you&#8217;re retrieving records using array of <code>ids</code>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
-</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; [1, 6, 100]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The order of the data may different from <code>ids</code> array, <strong>what if you want to keep its order</strong>?</p>
-
-<h2>for MySQL</h2>
-
-<p>There is a function in mysql called <a href="http://dev.mysql.com/doc/refman/5.0/en/string-functions.html#function%5Ffield">FIELD()</a></p>
-
-<blockquote><p> FIELD(str,str1,str2,str3,&#8230;)
-Returns the index (position) of str in the str1, str2, str3, &#8230; list. Returns 0 if str is not found.</p></blockquote>
-
-<p>So by combing this <code>FIELD()</code> function, here is the code.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
-</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;field(id, </span><span class="si">#{</span><span class="n">ids</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; [100, 1, 6]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will generate SQL below:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span> <span class="k">WHERE</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">field</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>for other databases</h2>
-
-<p>I didn&#8217;t dig too much but most of google results suggest just sort it manually using ruby.
-Here is just an example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
-</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span>
-</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="n">users</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span> <span class="p">}</span> <span class="p">}</span>
-</span><span class='line'><span class="n">users</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; [100, 1, 6]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-14T15:13:00+09:00" pubdate data-updated="true">2012-08-14</time></div>
 	<div class="tags">
 
 

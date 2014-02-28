@@ -3,22 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Install Ruby 1.9.3 on Mavericks - Kinopyo Blog</title>
+	<title>Install capybara-webkit on Mavericks - Kinopyo Blog</title>
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Problem 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-$ rvm install 1.9.3 Searching for binary rubies, this might take some time.
-Found remote file https://rvm.io/binaries/ &hellip;">
+	<meta name="description" content="I got a brand new Mac Air recently, when I tried to install
+capybara-webkit I encountered some problems. The Error Got this error when bundle install &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -100,8 +90,13 @@ Found remote file https://rvm.io/binaries/ &hellip;">
   
 
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Install Ruby 1.9.3 on Mavericks</h1>
-	<div class="entry-content"><h2>Problem</h2>
+	<h1 class="title">Install capybara-webkit on Mavericks</h1>
+	<div class="entry-content"><p>I got a brand new Mac Air recently, when I tried to install
+capybara-webkit I encountered some problems.</p>
+
+<h2>The Error</h2>
+
+<p>Got this error when bundle install one rails app.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -113,19 +108,22 @@ Found remote file https://rvm.io/binaries/ &hellip;">
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvm install 1.9.3
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Installing capybara-webkit (0.12.1)
+</span><span class='line'>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
 </span><span class='line'>
-</span><span class='line'>Searching for binary rubies, this might take some time.
-</span><span class='line'>Found remote file https://rvm.io/binaries/osx/10.9/x86_64/ruby-1.9.3-p448.tar.bz2
-</span><span class='line'>Checking requirements for osx.
-</span><span class='line'>Installing requirements for osx.
-</span><span class='line'>Updating system - using Zsh, can not show progress, be patient...
-</span><span class='line'>Error running 'requirements_osx_brew_update_system ruby-1.9.3-p448',
-</span><span class='line'>please read /Users/qihuan-piao/.rvm/log/1383014621_ruby-1.9.3-p448/update_system.log
-</span><span class='line'>Requirements installation failed with status: 1.</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>    /Users/qihuan-piao/.rvm/rubies/ruby-2.0.0-p247/bin/ruby extconf.rb
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1 for inspection.
+</span><span class='line'>Results logged to /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1/./gem_make.out
+</span><span class='line'>
+</span><span class='line'>An error occurred while installing capybara-webkit (0.12.1), and Bundler cannot continue.
+</span><span class='line'>Make sure that `gem install capybara-webkit -v '0.12.1'` succeeds before bundling.
+</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Solution</h2>
+<p>Tried <code>brew install qt</code> didn’t get luck, raised this error:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -135,19 +133,47 @@ Found remote file https://rvm.io/binaries/ &hellip;">
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gcc -v
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install qt4 --build-from-source
+</span><span class='line'>==&gt; Downloading http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz
+</span><span class='line'>Already downloaded: /Library/Caches/Homebrew/qt-4.8.5.tar.gz
+</span><span class='line'>==&gt; ./configure -prefix /usr/local/Cellar/qt/4.8.5 -system-zlib -confirm-license -opensource -nomake demos -nomake examples -cocoa -fast -release -no-3dnow -L/opt/X11/lib -I/opt/X11/include -pl
+</span><span class='line'>==&gt; make
+</span><span class='line'>                                   ^
+</span><span class='line'>7 errors generated.
+</span><span class='line'>make[2]: *** [.obj/release-shared/qdrawhelper_ssse3.o] Error 1
+</span><span class='line'>make[1]: *** [release] Error 2
+</span><span class='line'>make: *** [sub-gui-make_default-ordered] Error 2
 </span><span class='line'>
-</span><span class='line'>Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
-</span><span class='line'>Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
-</span><span class='line'>Target: x86_64-apple-darwin13.0.0
-</span><span class='line'>Thread model: posix
+</span><span class='line'>READ THIS: https://github.com/mxcl/homebrew/wiki/troubleshooting
 </span><span class='line'>
-</span><span class='line'>rvm install 1.9.3 --with-gcc=clang</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>These open issues may also help:
+</span><span class='line'>    https://github.com/mxcl/homebrew/pull/22283
+</span><span class='line'>    https://github.com/mxcl/homebrew/issues/23480</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Reference</h2>
+<h2>Solution</h2>
 
-<p>http://stackoverflow.com/questions/8139138/how-can-i-install-ruby-1-9-3-in-mac-os-x-lion</p>
+<p>Checked all those links and tried several things, eventually downloading
+qt installer from the qt-project website solved my problem.</p>
+
+<p><a href="http://qt-project.org/downloads"><img src="http://cdn.kinopyo.com/images/download_qt4.8_for_mac-3.png" alt="" /></a>
+<a href="http://qt-project.org/downloads">Download link</a></p>
+
+<p>Just install the debug libraries, qt libraries then bundle install
+again.</p>
+
+<h2>Note</h2>
+
+<p>If you already got qt installed and capybara-webkit worked before
+upgrade to Mavericks, then it’s probably gonna work as well.</p>
 </div>
 
 
@@ -164,11 +190,11 @@ Found remote file https://rvm.io/binaries/ &hellip;">
   
 
 
-<time datetime="2013-10-29T11:00:00+09:00" pubdate data-updated="true">2013-10-29</time></div>
+<time datetime="2013-10-29T12:00:00+09:00" pubdate data-updated="true">2013-10-29</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/ruby/'>ruby</a>
+	<a class='category' href='/blog/categories/capybara/'>Capybara</a>
 
 
 </div>
@@ -216,8 +242,8 @@ Found remote file https://rvm.io/binaries/ &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks/';
-        var disqus_url = 'http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks/';
+        var disqus_identifier = 'http://kinopyo.com/blog/install-capybara-webkit-on-mavericks/';
+        var disqus_url = 'http://kinopyo.com/blog/install-capybara-webkit-on-mavericks/';
         var disqus_script = 'embed.js';
       
     (function () {

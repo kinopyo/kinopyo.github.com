@@ -1566,14 +1566,18 @@
     </url>
     <url>
         <loc>http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks/</loc>
-        <lastmod>2014-03-01T01:22:55+09:00</lastmod>
+        <lastmod>2014-03-01T01:34:14+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kinopyo.com/blog/install-capybara-webkit-on-mavericks/</loc>
+        <lastmod>2014-03-01T01:33:38+09:00</lastmod>
     </url>
     <url>
         <loc>http://kinopyo.com/blog/archives/</loc>
-        <lastmod>2014-03-01T01:22:55+09:00</lastmod>
+        <lastmod>2014-03-01T01:34:14+09:00</lastmod>
     </url>
     <url>
         <loc>http://kinopyo.com/</loc>
-        <lastmod>2014-03-01T01:22:55+09:00</lastmod>
+        <lastmod>2014-03-01T01:34:14+09:00</lastmod>
     </url>
 </urlset>

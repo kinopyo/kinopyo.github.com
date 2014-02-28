@@ -7,7 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" cmd + 0 in mac :) If you click the tool icon on the right of the address bar, you can also check the current zoom rate. 2012-08-03 Chrome ">
+	<meta name="description" content="The order may different Suppose you&#8217;re retrieving records using array of ids. 1
+2
+3
+ids = [100, 1, 6]
+User.where(:id =&gt; ids).map(&amp;:id &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +93,97 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/finding-an-array-of-ids-while-keeping-the-order-with-rails/">Finding an array of ids while keeping the order with Rails</a></h1>
+	<div class="entry-content">
+		<h2>The order may different</h2>
+
+<p>Suppose you&#8217;re retrieving records using array of <code>ids</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; [1, 6, 100]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The order of the data may different from <code>ids</code> array, <strong>what if you want to keep its order</strong>?</p>
+
+<h2>for MySQL</h2>
+
+<p>There is a function in mysql called <a href="http://dev.mysql.com/doc/refman/5.0/en/string-functions.html#function%5Ffield">FIELD()</a></p>
+
+<blockquote><p> FIELD(str,str1,str2,str3,&#8230;)
+Returns the index (position) of str in the str1, str2, str3, &#8230; list. Returns 0 if str is not found.</p></blockquote>
+
+<p>So by combing this <code>FIELD()</code> function, here is the code.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;field(id, </span><span class="si">#{</span><span class="n">ids</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; [100, 1, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will generate SQL below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span> <span class="k">WHERE</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">field</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>for other databases</h2>
+
+<p>I didn&#8217;t dig too much but most of google results suggest just sort it manually using ruby.
+Here is just an example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ids</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">)</span>
+</span><span class='line'><span class="n">users</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="n">users</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'><span class="n">users</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; [100, 1, 6]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-14T15:13:00+09:00" pubdate data-updated="true">2012-08-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -590,54 +685,6 @@
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rack/'>rack</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/safari-display-favicon-to-tab">SafariのTabにFaviconを表示する</a></h1>
-	<div class="entry-content">
-		<p>Safariは開いたタブが多くなるとFaviconがなく文字だけのため、ちょっと見にくいと思います。
-Chromeと同じようにタブにFaviconを表示する方法を紹介します。<a href="http://www.machangout.com">glims</a>というプラグインです！</p>
-
-<p>上記のリンクからダウンロードしインストールすれば完了です。Safariの再起動は必要になります。</p>
-
-<p>再起動すればSafariのタブにFaviconが表示されます！こんな感じになります〜♪
-<img src="http://www.kinopyo.com/wp-content/uploads/2012/03/Screen-Shot-2012-03-21-at-12.29.46.png" title="Safari Display Tab Favicon" ></p>
-
-<p>その他にもいろいろ機能があって、例えばGoogleやYahooの検索結果にサムネールを表示したり最後に閉じたタブを表示したり…
-日本語版もあるみたいですよ〜
-機能一覧：</p>
-
-<blockquote><p>Adds thumbnails to Google/Yahoo/Bing search results<br/>Adds search engines to the default Safari&#8217;s search tab<br/>Adds Favicons to tab labels<br/>Adds keyword search from address bar<br/>Adds new tab position option (right/left/leftmost/rightmost)<br/>Adds tab closing using middle mouse button (or CMD-Click)<br/>Focus last selected tab<br/>Type-ahead support (auto cmd-f)<br/>Sets the focus on the search field when opening a new window<br/>Adds Amazon&#8217;s information banner on Google/Yahoo/Bing search results<br/>Adds a &#8220;Max Window Size&#8221; menu item to resize the Safari window<br/>Autocomplete search phrase<br/>Adds bookmark separator<br/>Adds bookmark actions<br/>Dated download folders<br/>Auto-Closes download window<br/>Undo &#8220;Close Tab&#8221; (cmd-z)<br/>Localized to Japanese, French, Polish, German, Spanish, Italian, and Korean</p></blockquote>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-21T00:00:00+09:00" pubdate data-updated="true">2012-03-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/safari/'>Safari</a>, <a class='category' href='/blog/categories/favicon/'>favicon</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
 
 
 </div>

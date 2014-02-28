@@ -7,8 +7,14 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="jQueryのappendやafterは全部DOM Manipulation、つまりDOM操作のメソッドであります。どう違うかは下記ソースコードを見るのが一番速いでしょう。 append(prepend,appendTo,prependTo)は要素内に、子供要素として貼り付ける 1
-$(&#39 &hellip;">
+	<meta name="description" content="一つ以上の項目がPKとなったケースでHibernateはどう設定すればいいのかを説明します。
+ずいぶん昔のメモになります。 こんなテーブルがあるとします。 1
+2
+3
+4
+5
+6
+create table Account ( code varchar(255) not null, number &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +96,459 @@ $(&#39 &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-setup-annotation-for-multiple-column-pk-in-hibernate">Hibernate：複数項目のPKに対応するアノテーションの記述方法</a></h1>
+	<div class="entry-content">
+		<p>一つ以上の項目がPKとなったケースでHibernateはどう設定すればいいのかを説明します。
+ずいぶん昔のメモになります。</p>
+
+<p>こんなテーブルがあるとします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">create</span> <span class="k">table</span> <span class="n">Account</span> <span class="p">(</span>
+</span><span class='line'>  <span class="n">code</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+</span><span class='line'>  <span class="nb">number</span> <span class="nb">integer</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">description</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+</span><span class='line'>  <span class="k">primary</span> <span class="k">key</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">number</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>PKは&#8217;code&#8217;と&#8217;number&#8217;です。</p>
+
+<h2>方法は三つあります</h2>
+
+<p>まずPKを表すクラスを作ります。PKクラスは以下の条件を満足しなければなりません。
++publicクラス
++デフォルトのコンストラクタ
++シリアライズを実装
++hashCode()とequals()を実装</p>
+
+<p>そしてエンティティクラスは以下の三つの方法のうちどれかで実装します。
++  PKクラスを@Embeddableアノテーションで記述し、エンティティクラスのプロパティとして書いて@Idとマーク
++  PKクラスをエンティティクラスにプロパティとして書いて@EmbeddableIdとマーク
++  PKを表す全ての項目をエンティティクラスのプロパティとして登録し@Idとマーク</p>
+
+<p>それぞれのソースコードをリストします。</p>
+
+<h2>一番目@Embeddable</h2>
+
+<p>ここはAccountとそのPKを表すクラスAccountPkを作成しました。
+メリットはPKクラスを再利用できるところです。
+もっとも自然的なアプローチだそうです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">sample</span><span class="o">.</span><span class="na">annotations</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Embeddable</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@Entity</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Account</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">AccountPk</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Account</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">protected</span> <span class="nf">Account</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Id</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">AccountPk</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">id</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">AccountPk</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDescription</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Embeddable</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">AccountPk</span> <span class="kd">implements</span> <span class="n">Serializable</span><span class="o">{</span>
+</span><span class='line'>      <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+</span><span class='line'>      <span class="kd">private</span> <span class="n">Integer</span> <span class="n">number</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="nf">AccountPk</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCode</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">code</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getNumber</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">number</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNumber</span><span class="o">(</span><span class="n">Integer</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">this</span><span class="o">.</span><span class="na">number</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="kt">int</span> <span class="n">hashCode</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+</span><span class='line'>              <span class="n">hashCode</span> <span class="o">^=</span> <span class="n">code</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+</span><span class='line'>          <span class="k">if</span> <span class="o">(</span><span class="n">number</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+</span><span class='line'>              <span class="n">hashCode</span> <span class="o">^=</span> <span class="n">number</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">hashCode</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">if</span> <span class="o">(!(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">AccountPk</span><span class="o">))</span>
+</span><span class='line'>              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>          <span class="n">AccountPk</span> <span class="n">target</span> <span class="o">=</span> <span class="o">(</span><span class="n">AccountPk</span><span class="o">)</span> <span class="n">obj</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="o">((</span><span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">code</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">:</span> <span class="k">this</span><span class="o">.</span><span class="na">code</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">code</span><span class="o">))</span>
+</span><span class='line'>                  <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="k">this</span><span class="o">.</span><span class="na">number</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">number</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+</span><span class='line'>                          <span class="o">:</span> <span class="k">this</span><span class="o">.</span><span class="na">number</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">number</span><span class="o">));</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>検証するクラスを作成しました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">sample</span><span class="o">.</span><span class="na">annotations</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.hibernate.Session</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.hibernate.SessionFactory</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.hibernate.cfg.AnnotationConfiguration</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sample.annotations.Account.AccountPk</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAccount</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">**</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">SessionFactory</span> <span class="n">sessionFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfiguration</span><span class="o">()</span>
+</span><span class='line'>              <span class="o">.</span><span class="na">configure</span><span class="o">().</span><span class="na">buildSessionFactory</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">(</span><span class="s">&quot;This is the first type.&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// construct pk value</span>
+</span><span class='line'>      <span class="n">AccountPk</span> <span class="n">accountPk</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AccountPk</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">accountPk</span><span class="o">.</span><span class="na">setCode</span><span class="o">(</span><span class="s">&quot;kinopyo001&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">accountPk</span><span class="o">.</span><span class="na">setNumber</span><span class="o">(</span><span class="mi">12345</span><span class="o">);</span>
+</span><span class='line'>      <span class="c1">// set pk</span>
+</span><span class='line'>      <span class="n">account</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">accountPk</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// save</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">account</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Commit&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// load</span>
+</span><span class='line'>      <span class="n">List</span> <span class="n">list</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="s">&quot;from Account&quot;</span><span class="o">).</span><span class="na">list</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">Iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+</span><span class='line'>      <span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Account</span> <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">Account</span><span class="o">)</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;code: &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="na">getId</span><span class="o">().</span><span class="na">getCode</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;, number: &quot;</span>
+</span><span class='line'>                  <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="na">getId</span><span class="o">().</span><span class="na">getNumber</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;  Description: &quot;</span>
+</span><span class='line'>                  <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>設定が正しければこんなログが出るはずです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Commit</span>
+</span><span class='line'><span class="nl">code:</span> <span class="n">kinopyo001</span><span class="o">,</span> <span class="nl">number:</span> <span class="mi">12345</span>  <span class="nl">Description:</span> <span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">first</span> <span class="n">type</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>二番目@EmbeddableId(抜粋)</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@EmbeddedId</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">AccountPk</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">id</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>三番目@IdClass(抜粋)</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Entity</span>
+</span><span class='line'><span class="nd">@IdClass</span><span class="o">(</span><span class="n">Account</span><span class="o">.</span><span class="na">AccountPk</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Account</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">Integer</span> <span class="n">number</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Account</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">protected</span> <span class="nf">Account</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Id</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCode</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">code</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Id</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getNumber</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">number</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDescription</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNumber</span><span class="o">(</span><span class="n">Integer</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">number</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">AccountPk</span> <span class="o">{</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-03T00:00:00+09:00" pubdate data-updated="true">2010-12-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/annotation/'>annotation</a>, <a class='category' href='/blog/categories/hibernate/'>hibernate</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -742,139 +1201,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-memcache-in-windows-setup-php">Windowsにmemcacheをインストール、PHPの設定</a></h1>
-	<div class="entry-content">
-		<h2>My環境</h2>
-
-<p>XAMPP1.7.3 + WinXP
-ダウンロードは<a href="http://www.apachefriends.org/en/xampp-windows.html">こちら</a></p>
-
-<h2>memcache側の設定</h2>
-
-<h3>memcacheのインストール手順</h3>
-
-<ul>
-<li><a href="http://code.jellycan.com/memcached/">http://code.jellycan.com/memcached/</a>より<strong>memcached 1.2.6 => win32 binary</strong>バージョンのファイルをダウンロード
-+zipファイルを適当な場所(例えばc:\memcached)に解凍
-+コマンドプロンプトから下記コマンドを叩く、Windowsサービスとしてインストール。これで今度Windowsが起動すると自動でmemcacheサーバが起動してくれる。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached.exe -d install</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>memcacheの起動(初回のみ)</h3>
-
-<p>コマンドプロンプト</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>c:\memcached\memcached.exe -d start</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>php側</h2>
-
-<h3>php.iniの設定</h3>
-
-<p>XAMPPのパス/php/php.iniを編集：下記コードを追加</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>extension = php_memcache.dll</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ここはLinux環境と違い拡張子が.soではなく.dll。</p>
-
-<h3>php_memcache.dllのダウンロード</h3>
-
-<p><a href="http://downloads.php.net/pierre/">http://downloads.php.net/pierre/</a>から&#8217;memcache&#8217;を検索して正しいバージョンのファイルをダウンロード。
-そしてxampp/php/extに入れる。</p>
-
-<br/>
-
-
-<p>ここで問題！正しいバージョンはなんなのか？間違ってダウンロードすると後でApacheサーバを立ち上がるときエラーが出るよ。私の環境だと<b>php_memcache-cvs-20090703-5.3-VC6-x86.zip</b>のファイルが正しいけど、今時点で上記URLには載せていない。結構ググって見ても結局古い結果で、しょうがなく友人からそのファイル貰った。。。ここにアップしたので、必要な方はダウンロードしてください。ウイルススキャンしてね。。
-<a href='http://www.kinopyo.com/wp-content/uploads/2010/11/php_memcache-cvs-20090703-5.3-VC6-x86.zip'>php_memcache-cvs-20090703-5.3-VC6-x86</a></p>
-
-<h2>動作確認</h2>
-
-<p>xamppでapacheサーバを起動、下記内容をphpファイルと保存してサーバのDocumentパス(デフォルトではXAMPP/htdocs)に置く。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'>    <span class="nv">$memcache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memcache</span><span class="p">;</span> <span class="c1">// instantiating memcache extension class</span>
-</span><span class='line'>    <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="mi">11211</span><span class="p">);</span> <span class="c1">// try 127.0.0.1 instead of localhost</span>
-</span><span class='line'>                                           <span class="c1">// if it is not working</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">echo</span> <span class="s2">&quot;Server&#39;s version: &quot;</span> <span class="o">.</span> <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">getVersion</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">// we will create an array which will be stored in cache serialized</span>
-</span><span class='line'>    <span class="nv">$testArray</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$tmp</span>       <span class="o">=</span> <span class="nb">serialize</span><span class="p">(</span><span class="nv">$testArray</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="nv">$tmp</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">echo</span> <span class="s2">&quot;Data from the cache:&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nb">print_r</span><span class="p">(</span><span class="nb">unserialize</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)));</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>おまけ：memcacheメモリの調整</h2>
-
-<blockquote><p>Memcached, by default, loads with 64mb of memory for it’s use which is low for most applications. To change this to something else, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server in your registry, find the ImagePath entry and change it to look something like this:</p><p>“C:\memcached\memcached.exe” -d runservice -m 512</p></blockquote>
-
-
-<h2>参考</h2>
-
-<p><a href="http://www.codeforest.net/how-to-install-memcached-on-windows-machine">http://www.codeforest.net/how-to-install-memcached-on-windows-machine</a>
-<a href="http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/">http://pureform.wordpress.com/2008/01/10/installing-memcache-on-windows-for-php/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-26T00:00:00+09:00" pubdate data-updated="true">2010-11-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

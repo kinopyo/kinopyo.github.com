@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-03-01T01:25:38+09:00</updated>
+  <updated>2014-03-01T01:35:49+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -14,9 +14,100 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Install capybara-webkit on Mavericks]]></title>
+    <link href="http://kinopyo.com/blog/install-capybara-webkit-on-mavericks/"/>
+    <updated>2013-10-29T12:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/install-capybara-webkit-on-mavericks</id>
+    <content type="html"><![CDATA[<p>I got a brand new Mac Air recently, when I tried to install
+capybara-webkit I encountered some problems.</p>
+
+<h2>The Error</h2>
+
+<p>Got this error when bundle install one rails app.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Installing capybara-webkit (0.12.1)
+</span><span class='line'>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+</span><span class='line'>
+</span><span class='line'>    /Users/qihuan-piao/.rvm/rubies/ruby-2.0.0-p247/bin/ruby extconf.rb
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1 for inspection.
+</span><span class='line'>Results logged to /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1/./gem_make.out
+</span><span class='line'>
+</span><span class='line'>An error occurred while installing capybara-webkit (0.12.1), and Bundler cannot continue.
+</span><span class='line'>Make sure that `gem install capybara-webkit -v '0.12.1'` succeeds before bundling.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Tried <code>brew install qt</code> didn’t get luck, raised this error:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install qt4 --build-from-source
+</span><span class='line'>==&gt; Downloading http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz
+</span><span class='line'>Already downloaded: /Library/Caches/Homebrew/qt-4.8.5.tar.gz
+</span><span class='line'>==&gt; ./configure -prefix /usr/local/Cellar/qt/4.8.5 -system-zlib -confirm-license -opensource -nomake demos -nomake examples -cocoa -fast -release -no-3dnow -L/opt/X11/lib -I/opt/X11/include -pl
+</span><span class='line'>==&gt; make
+</span><span class='line'>                                   ^
+</span><span class='line'>7 errors generated.
+</span><span class='line'>make[2]: *** [.obj/release-shared/qdrawhelper_ssse3.o] Error 1
+</span><span class='line'>make[1]: *** [release] Error 2
+</span><span class='line'>make: *** [sub-gui-make_default-ordered] Error 2
+</span><span class='line'>
+</span><span class='line'>READ THIS: https://github.com/mxcl/homebrew/wiki/troubleshooting
+</span><span class='line'>
+</span><span class='line'>These open issues may also help:
+</span><span class='line'>    https://github.com/mxcl/homebrew/pull/22283
+</span><span class='line'>    https://github.com/mxcl/homebrew/issues/23480</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Solution</h2>
+
+<p>Checked all those links and tried several things, eventually downloading
+qt installer from the qt-project website solved my problem.</p>
+
+<p><a href="http://qt-project.org/downloads"><img src="http://cdn.kinopyo.com/images/download_qt4.8_for_mac-3.png" alt="" /></a>
+<a href="http://qt-project.org/downloads">Download link</a></p>
+
+<p>Just install the debug libraries, qt libraries then bundle install
+again.</p>
+
+<h2>Note</h2>
+
+<p>If you already got qt installed and capybara-webkit worked before
+upgrade to Mavericks, then it’s probably gonna work as well.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Install Ruby 1.9.3 on Mavericks]]></title>
     <link href="http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks/"/>
-    <updated>2013-10-29T00:00:00+09:00</updated>
+    <updated>2013-10-29T11:00:00+09:00</updated>
     <id>http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks</id>
     <content type="html"><![CDATA[<h2>Problem</h2>
 
@@ -975,22 +1066,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 <p>So my new habit will be: Getting up at 8 am every weekdays and before 9 am on weekends. Ever since high school I&#8217;ve never made it, and I still have this thought or &#8216;fantasy&#8217; that by getting up early I can make a difference in some aspects of my life. Every morning is in a rush now, sometimes I have to drop breakfast and dash into the station to catch up the train. I do not memorize many peaceful mornings in my life.</p>
 
 <p>Time to reread some parts of the book: <a href="http://www.amazon.com/The-Two-Minute-Challenge-Reach-Finish/dp/1452888892/ref=sr_1_1?ie=UTF8&amp;qid=1358247919&amp;sr=8-1&amp;keywords=charles+abbott+goal">The Two-Minute Challenge: How to Reach Goals and Finish What You Start</a> written by my friend Charles, it has very good strategies of making and keeping your goals.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Countdown to 2013 at Zoujyouji Temple]]></title>
-    <link href="http://kinopyo.com/blog/countdown-to-2013-at-zoujyouji-temple/"/>
-    <updated>2013-01-01T12:28:00+09:00</updated>
-    <id>http://kinopyo.com/blog/countdown-to-2013-at-zoujyouji-temple</id>
-    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/2013_tokyotower.jpg" alt="Counter down to at Zoujyouji Temple" /></p>
-
-<div class="video-container">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/V5lG710fxbc" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
-<p>Good bye 2012, happy new year.</p>
 ]]></content>
   </entry>
   

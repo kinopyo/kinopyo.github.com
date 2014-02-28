@@ -7,11 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="インストール先のCドライブをあっさりフォーマットしてから
-Windows 7をインストールしました。
-さすがVistaの失敗からやりなおしたマイクロソフト、
-今回の新作は何年ぶりの傑作だと思います。 インストールは特に問題なし、そのまま進みました。
-完了したら、 &hellip;">
+	<meta name="description" content="今回紹介するのは読書メーターです。簡単にいうと、読書を記録、管理するサイトです。 FC2のブログアプリケーションにも似た感じの読書カレンダーがありますが、比較してみて、やはり読書メーターのほうが機能も充実し、面白いと思います。まずユーザ登録はFC2や、はてな、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +89,53 @@ Windows 7をインストールしました。
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/record-manage-your-books">読書を記録、管理：読書メーター</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>今回紹介するのは<a target="_blank" href="http://book.akahoshitakuya.com/" title="読書メーター">読書メーター</a>です。<br/>簡単にいうと、読書を記録、管理するサイトです。<br/></p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091026235301" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091026/20091026235301.jpg" alt="f:id:kinopyo:20091026235301j:image" title="f:id:kinopyo:20091026235301j:image" class="hatena-fotolife"></a></p>
+<p><br/><br/>FC2のブログアプリケーションにも似た感じの<a target="_blank" href="http://book.orfeon.jp/" title="読書カレンダー">読書カレンダー</a>がありますが、<br/>比較してみて、やはり<a target="_blank" href="http://book.akahoshitakuya.com/" title="読書メーター">読書メーター</a>のほうが機能も充実し、面白いと思います。<br/><br/>まずユーザ登録はFC2や、はてな、そしてmixiのIDでそのままログインできます。<br/>そして自分が読んだ本をどんどん登録すると、面白いグラフができてますよ。<br/><br/>本の追加は以下の4種類あり、自分が今までの「実績」がすぐわかります。<br/><br/></p>
+<p><ul>
+<li>読んだ本に追加</li>
+<li>読んでる本に追加</li>
+<li>積読本に追加 ※持っているけど読んでいない本など</li>
+<li>読みたい本に追加 ※持っていない読みたい本など</li>
+</ul></p>
+<p>コメントはもちろん入力でき、さらに本を読んでる、読んだ人の人数まで数えてくれます。<br/>本の追加、コメントする時は自動でTwitterにも投稿できます。<br/><br/>本はページ数まで把握して、グラフで自分がどれほどのページを読み終わったかも見れます。<br/>私はログインしてから一気に全部の本を追加しました。<br/><br/>ほかにも読友、相性、職本、お気に入り、コミュニティ、ブログパーツなどの<br/>機能が充実してます。<br/>相性や職本などのジャンルはなかなかアイディアのいい機能じゃないですか。<br/>ぜひ試してみてください。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-28T00:00:00+09:00" pubdate data-updated="true">2009-10-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -734,408 +777,6 @@ JavaScriptには通用しない。</p>
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-basic-principal-to-develop-plugins">jQuery pluginの開発規約について</a></h1>
-	<div class="entry-content">
-		<p>本文(英語)のアドレス：
-<a href="http://www.learningjquery.com/2007/10/a-plugin-development-pattern">A Plugin Development Pattern » Learning jQuery - Tips, Techniques, Tutorials</a></p>
-
-<h2>結論から</h2>
-
-<p>まず、<strong>要点</strong>と<strong>規約</strong>に沿ったソースを先頭に置きます。</p>
-
-<blockquote><ol>
-<li>Claim only a single name in the jQuery namespace</li>
-<li>Accept an options argument to control plugin behavior</li>
-<li>Provide public access to default plugin settings</li>
-<li>Provide public access to secondary functions (as applicable)</li>
-<li>Keep private functions private</li>
-<li>Support the Metadata Plugin</li>
-</ol>
-</blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// create closure</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// プラグインの宣言</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">debug</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class='line'>    <span class="c1">// build main options before element iteration</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
-</span><span class='line'>    <span class="c1">// iterate and reformat each matched element</span>
-</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class='line'>      <span class="c1">// build element specific options</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">meta</span> <span class="o">?</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">opts</span><span class="p">,</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">())</span> <span class="o">:</span> <span class="nx">opts</span><span class="p">;</span>
-</span><span class='line'>      <span class="c1">// update element styles</span>
-</span><span class='line'>      <span class="nx">$this</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span>
-</span><span class='line'>        <span class="nx">backgroundColor</span><span class="o">:</span> <span class="nx">o</span><span class="p">.</span><span class="nx">background</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">color</span><span class="o">:</span> <span class="nx">o</span><span class="p">.</span><span class="nx">foreground</span>
-</span><span class='line'>      <span class="p">});</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">();</span>
-</span><span class='line'>      <span class="c1">// call our format function</span>
-</span><span class='line'>      <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
-</span><span class='line'>      <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="c1">// private function for debugging</span>
-</span><span class='line'>  <span class="kd">function</span> <span class="nx">debug</span><span class="p">(</span><span class="nx">$obj</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
-</span><span class='line'>      <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hilight selection count: &#39;</span> <span class="o">+</span> <span class="nx">$obj</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="c1">// define and expose our format function</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">txt</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s1">&#39;&lt;strong&gt;&#39;</span> <span class="o">+</span> <span class="nx">txt</span> <span class="o">+</span> <span class="s1">&#39;&lt;/strong&gt;&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="c1">// plugin defaults</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="c1">//</span>
-</span><span class='line'><span class="c1">// end of closure</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解読</h2>
-
-<h3>1. Claim only a single name in the jQuery namespace</h3>
-
-<ul>
-<li>目的：jQueryの名前空間にファンクション(メソッド)を一つのみ追加。</li>
-</ul>
-
-
-<p>プラグイン目的の純粋化と思われます。</p>
-
-<ul>
-<li>実装例</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プラグインの宣言</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// Our plugin implementation code goes here.</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>使い方：</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myDiv&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これはダメなパターンです。こうするなら二つのプラグインに分けるか、目的をもっと明確にしろうってことです。</p>
-
-<ul>
-<li>実装例</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">oneFunction</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">anotherFunction</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. Accept an options argument to control plugin behavior</h3>
-
-<ul>
-<li>目的：オプションをつけることでより柔軟なAPIをユーザに提供</li>
-<li>実装例</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プラグインの宣言</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'> <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
-</span><span class='line'> <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="c1">// Extend our default options with those provided.</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
-</span><span class='line'>  <span class="c1">// Our plugin implementation code goes here.</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>使い方</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myDiv&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;blue&#39;</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. Provide public access to default plugin settings</h3>
-
-<ul>
-<li>目的：デフォルトの設定を変更できるようにする。</li>
-<li>実装例</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// プラグインの宣言</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// Extend our default options with those provided.</span>
-</span><span class='line'>  <span class="c1">// Note that the first arg to extend is an empty object -</span>
-</span><span class='line'>  <span class="c1">// this is to keep from overriding our &quot;defaults&quot; object.</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
-</span><span class='line'>  <span class="c1">// Our plugin implementation code goes here.</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="c1">// plugin defaults - added as a property on our plugin function</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>使い方：全体のデフォルト設定を変更することもできるし、個別にオーバーライドすることも可能</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// override plugin default foreground color</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">foreground</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// ...</span>
-</span><span class='line'><span class="c1">// invoke plugin using new defaults</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.hilightDiv&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">();</span>
-</span><span class='line'><span class="c1">// ...</span>
-</span><span class='line'><span class="c1">// override default by passing options to plugin method</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#green&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;green&#39;</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>4. Provide public access to secondary functions (as applicable)</h3>
-
-<ul>
-<li>目的：プラグイン開発者、または使い側がより簡単に拡張できる</li>
-<li>方法：jQueryの名前空間に登録したファンクションにプロパティとして一個追加することで実現可能です。</li>
-<li>実装例：</li>
-</ul>
-
-
-<p>例えば文字列をフォーマットするファンクション&#8221;format&#8221;があるとします。
-ここでは単純に強調表示するだけですが、誰でも簡単に変更できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// プラグインの宣言</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// iterate and reformat each matched element</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'> <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class='line'> <span class="c1">// ...</span>
-</span><span class='line'> <span class="kd">var</span> <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">();</span>
-</span><span class='line'> <span class="c1">// call our format function</span>
-</span><span class='line'> <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
-</span><span class='line'> <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="c1">// define our format function</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">txt</span><span class="p">)</span> <span class="p">{</span><span class="s1">&#39;</span>
-</span><span class='line'><span class="s1">  return &#39;</span><span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="s1">&#39; + txt + &#39;</span><span class="o">&lt;</span><span class="err">/strong&gt;&#39;;</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>5. Keep private functions private</h3>
-
-<ul>
-<li>目的：単純にprivateなファンクションをprivate化にするだけ</li>
-<li>方法：javascriptのクロージャで全体を囲む</li>
-<li>実装例：</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// create closure</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// プラグインの宣言</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'> <span class="nx">debug</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class='line'> <span class="c1">// ...</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="c1">// private function for debugging</span>
-</span><span class='line'>  <span class="kd">function</span> <span class="nx">debug</span><span class="p">(</span><span class="nx">$obj</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
-</span><span class='line'>   <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hilight selection count: &#39;</span> <span class="o">+</span> <span class="nx">$obj</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'> <span class="c1">//  ...</span>
-</span><span class='line'><span class="c1">// end of closure</span>
-</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>6. Support the Metadata Plugin</h3>
-
-<p><a href="http://docs.jquery.com/Plugins/Metadata/metadata">Plugins/Metadata/metadata - jQuery Wiki</a></p>
-
-<ul>
-<li>目的：</li>
-</ul>
-
-
-<p>これはMetadataというプラグインがあるそうで、
-なおかつたくさん人が使っていることを前提(或いは現状)としたため、
-自分が作ったプラグインはMetadataにも対応するべきという結論になったわけです。</p>
-
-<ul>
-<li>TODO：</li>
-</ul>
-
-
-<p>私もまだMetadataプラグインが何か全然わからないため、
-ここはTODOとして残します。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-13T00:00:00+09:00" pubdate data-updated="true">2009-10-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

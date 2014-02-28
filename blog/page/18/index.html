@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
-So I encountered this problem when I synced my evernote in Mac OS. Can&#8217;t synchronize error, Content &hellip;">
+	<meta name="description" content="Evernote使い始めたのは結構前ですが、ちゃんとノートブックを整理してライフログ始めたのはまだこの二ヶ月の話です。
+それからなかなかブログ更新するきっかけが少なくなりましたね。ただ教訓としてメモするのは基本Evernoteに蓄積してるし、普段思いついたものやストレス、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,51 @@ So I encountered this problem when I synced my evernote in Mac OS. Can&#8217;t s
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/evernote-twitter-and-blog">Evernote,Twitterとブログ</a></h1>
+	<div class="entry-content">
+		<p>Evernote使い始めたのは結構前ですが、ちゃんとノートブックを整理してライフログ始めたのはまだこの二ヶ月の話です。
+それからなかなかブログ更新するきっかけが少なくなりましたね。ただ教訓としてメモするのは基本Evernoteに蓄積してるし、普段思いついたものやストレス、情報共有とかは随時Twitterにつぶやくようになりました。</p>
+
+<p>まあ、Evernote書いたメモって共有する価値はあるといえばありますが、何だかんだ重複作業になるような気がして抑えてはいます。またEvernoteって、基本自分向けなので気軽に書けるメリットもありますし、仕事が忙しくなったら本当にEvernoteに書くのも精一杯になりますからね。
+と言ってもブログ書かないのは、それなりのインプットがないことと思いますよ。この業界で働いているなら、絶対これだけたみんなに伝えたいくらいの出来事はあるでしょうと思います。自分と同じような誤りや遠回しは避けて欲しいぐらい。
+そういう意味ではちゃんと反省しないといけないと思いますよ、ここ最近の仕事とプライベートを。ただ疲れたを言い訳にしてないか、あるいは勉強不足でインプットが足りないかって。</p>
+
+<p>酒飲んで調子に乗っていろいろ書いたけど、本当反省&amp;改善したい。</p>
+
+<p>最後に、
+この記事もiPhone FastEverって書いてます。いや〜本当に便利！チェックなしで発信！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-22T00:00:00+09:00" pubdate data-updated="true">2011-04-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -755,64 +800,6 @@ php.iniを開いて<strong>error_reporting</strong>で検索します。
 
 
 	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/web/'>Web</a>, <a class='category' href='/blog/categories/gadget/'>gadget</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ajax-and-pageview">Ajaxとアクセス解析PVの関係</a></h1>
-	<div class="entry-content">
-		<p>AJAXでのアクセスはPVにカウントされない、というのをこの間にミーティングで知りました。考えてみりゃ当たり前のことですが、考えたことはなかったです。。でどうするか、とのことでちょっとぐぐってみました。</p>
-
-<p>結論からいうと<strong>ダミーのページを指定するようにJavascript側で書く</strong>（Google Analytics前提）</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">urchinTracker</span><span class="p">();</span> <span class="c1">// デフォルト</span>
-</span><span class='line'><span class="nx">urchinTracker</span><span class="p">(</span><span class="s2">&quot;/hogehoge&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">urchinTracker</span><span class="p">(</span><span class="s2">&quot;/hogehoge/hege&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>みたいな感じです。urchinTrackerはGoogle Analyticsが提供してくれるファンクションです。
-ダミーページに階層式にするのは後で統計しやすいような工夫だそうです。</p>
-
-<p>原理はこちらを参照してください：<a href="http://markezine.jp/article/detail/1243">http://markezine.jp/article/detail/1243</a>
-ちょっと長いですが、細かく解説した文章です。</p>
-
-<p>こちらも役に立つかと思います。<a href="http://creazy.net/2007/06/ajax_access_analyze.html">http://creazy.net/2007/06/ajax_access_analyze.html</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-23T00:00:00+09:00" pubdate data-updated="true">2011-02-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/ajax/'>ajax</a>, <a class='category' href='/blog/categories/pageview/'>pageview</a>, <a class='category' href='/blog/categories/アクセス解析/'>アクセス解析</a>
 
 
 </div>
