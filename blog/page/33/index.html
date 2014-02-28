@@ -1,0 +1,1081 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="@IT連載：jQuery逆引きリファレンスの第二回のテーマは属性＆コンテンツです。
+目次は以下になります。 * 属性値を取得するには？ * 属性値を設定するには？ * 複数の属性値をまとめて設定するには？ * 関数の結果によって動的に属性値を設定するには？ * 属性値を削除するには？ * &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-reverse-lookup-reference-attribute">jQuery逆引きレファレンス、属性＆コンテンツ編(@ITより)</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_00.html" target="_blank">@IT連載：jQuery逆引きリファレンスの第二回</a>のテーマは属性＆コンテンツです。</p>
+<p>目次は以下になります。</p>
+<blockquote>
+<p>    * 属性値を取得するには？</p>
+<p>    * 属性値を設定するには？</p>
+<p>    * 複数の属性値をまとめて設定するには？</p>
+<p>    * 関数の結果によって動的に属性値を設定するには？</p>
+<p>    * 属性値を削除するには？</p>
+<p>    * スタイル・クラスを追加／削除するには？</p>
+<p>    * スタイル・クラスが適用されているかを判定するには？</p>
+<p>    * スタイル・クラスの適用／解除を交互に行うには？</p>
+<p>    * 要素に適用されたスタイル情報を取得するには？</p>
+<p>    * 要素に特定のスタイルを適用するには？</p>
+<p>    * 複数のスタイル・プロパティをまとめて設定するには？</p>
+<p>    * 要素の表示位置を取得するには？</p>
+<p>    * ページのスクロール位置を取得／設定するには？</p>
+<p>    * 要素の高さや幅を取得するには？</p>
+<p>    * 要素の高さや幅を設定するには？</p>
+<p>    * 要素のテキストを取得するには？</p>
+<p>    * 要素のテキストを設定するには？</p>
+<p>    * フォーム要素の値を取得／設定するには？</p>
+</blockquote>
+<h4>勉強メモ</h4>
+<h5>text()とhtml()の違い</h5>
+<blockquote title="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html" cite="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html">
+<p>（1）取得する対象</p>
+<p>　要素セット（jQueryオブジェクト）が複数の要素を含んでいる場合、htmlメソッドは先頭要素の内容だけを取得しますが、textメソッドはすべての要素の内容を結合したものを取得します。</p>
+<p>（2）取得する内容</p>
+<p>　名前のとおり、htmlメソッドは要素の内容をHTML文字列として取得しますが、textメソッドは純粋なテキストだけを取得します。</p>
+<p>（3）対応する形式</p>
+<p>　textメソッドはHTML／XMLいずれの形式でも動作しますが、htmlメソッドはHTML（XHTMLを含む）形式でしか動作しません。このサンプルでは扱っていませんが、textメソッドをXML形式で利用する方法については、あらためてAjax編で紹介する予定です。</p>
+<cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html" target="_blank">http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html</a></cite></blockquote>
+<h5>height(val)、width(val)</h5>
+<p>引数valには数値、もしくは「em」や「%」などの単位付きの数値を指定できます（単なる数値の場合はピクセル値として認識します）。</p>
+<h5>要素の高さや幅を取得するには？</h5>
+<p>－ height()、width()、innerHeight()、innerWidth()、outerHeight()、outerWidth()</p>
+<table>
+<tr><td>関数</td><th>padding</th><th>border-width</th><th>margin</th></tr>
+<tr><td>height、width</td><td>x</td><td>x</td><td>x</td></tr>
+<tr><td>innerHeight、innerWidth</td><td>o</td><td>x</td><td>x</td></tr>
+<tr><td>outerHeight、outerWidth</td><td>o</td><td>o</td><td>x</td></tr>
+<tr><td>outerHeight、outerWidth（true</td><td>o</td><td>o</td><td>o</td></tr>
+</table>
+<br/>
+<h5>関数の結果によって動的に属性値を設定するには？</h5>
+<p>－ attr(name, fnc) －</p>
+<p>コールバック関数の戻り値を用いて設定。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;li &gt; img&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span>
+</span><span class='line'>          <span class="s1">&#39;src&#39;</span><span class="p">,</span>
+</span><span class='line'>          <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="k">return</span> <span class="s2">&quot;http://www.wings.msn.to/books/&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+</span><span class='line'>                      <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;_logo.jpg&quot;</span><span class="p">;</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+<br/>
+<p> </p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-focus-act-different-in-ie">jQuery focus()によるIEとFirefox動きの違い</a></h1>
+	<div class="entry-content">
+		<div class="section">
+
+jQueryのfocus()はデフォルトのフォーカス動作とそのエレメントにバインドされたイベントが実行されます。
+
+しかしIE8とFirefoxではこのfocus()の動作が多少違います。
+<h4>現象</h4>
+例えば複数のinput要素があって、それぞれfocusイベントとblurイベントがバインドされたとします。
+
+focus()を実行する前はelem1にフォーカスしていて、要素$(&#8216;elem2&#8217;).focus()を実行すると
+<ul>
+    <li>Firefox 3.5.5ではelem1のblurイベントが実行した後に、elem2のfocusイベントが実行する</li>
+    <li>IE8ではelem1のblurイベントは実行されますが、elem2には2回フォーカスするように動作します。つまり下記の動きです。
+<ol>
+    <li>elem1のblurイベント</li>
+    <li>elem2のfocusイベント</li>
+    <li><strong>elem2のblurイベント</strong></li>
+    <li><strong>elem2のfocusイベント</strong></li>
+</ol>
+</li>
+</ul>
+普通に考えたらFirefoxの動きが正しいはずですよね。
+上記の3と4は余計な処理になります。
+<h4>サンプルコード</h4>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;form :input&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;focus&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// ログを出力</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#result&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot; focus event triggered.&lt;br&gt;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;blur&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// ログを出力</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#result&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot; blur event triggered.&lt;br&gt;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">focusBar</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">focusBar</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;blur&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#bar&quot;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:html&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">Foo</span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="o">/&gt;</span>
+</span><span class='line'><span class="nx">Bar</span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="o">/&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;result&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+先にfooテキストエリアにフォーカスしてくささい。
+
+3秒後にbarテキストエリアにfocus()メソッドでフォーカスします。
+
+その時の出力ログを見てください。
+<h4>回避策</h4>
+まだいい方法はつかんでません。
+
+Googleで検索すると似たようなものはありましたが、
+
+回避策はまだないようです。
+
+<a href="http://www.mail-archive.com/jquery-en@googlegroups.com/msg88436.html" target="_blank">[jQuery] Focus event firing twice in Internet Explorer</a></div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-22T00:00:00+09:00" pubdate data-updated="true">2009-11-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jsonp-pricipal-using-jsonp-with-jquery">JSONPの動作原理、jQueryでJSONPを利用</a></h1>
+	<div class="entry-content">
+		<p>前回の記事の続きとしてJSONPを勉強しました。</p>
+
+<p>XMLHttpRequestはセキュリティ上の制限により、</p>
+
+<p>クロスドメインの通信ができないです。</p>
+
+<p>でもウェブサービスのようなどうしてもクロスドメインで通信したい場合があります。</p>
+
+<p>その時の手段してあげられるのがこのScriptタグです。</p>
+
+<p>(他の手段としてiframeやflashとリバースプロキシがあるそうです)</p>
+
+<h2>JSONPとは</h2>
+
+<blockquote><p>JSON with paddingの略</p>
+
+<p>Javascriptの非同期通信でよく使われるXMLHttpRequestオブジェクトにはSame-Originポリシーが存在し、クロスドメインアクセスができない。</p>
+
+<p>一方，scriptタグを用いると，ドメインの異なるサーバに置いているスクリプトファイルを読み込むことができる。この仕組みを利用し、scriptタグのsrcに、データを取得できるAPIのURLを指定し，ドメインの異なるサーバからデータを取得する仕組みの総称として、JSOPという言葉が使われる。JSONP用のAPIでは、関数名＋取得データをjson形式で表記して引数とした形式(例.callbackFunc({id:1000,name:aaa}))のレスポンスが一般的で、APIから返されるコールバック関数と同じ名前の関数(callbackFunc(jsonData))をクライアント側で定義しておけば、データを読み込んだ際にそのコールバック関数が実行される。動的にscriptのDOMを生成することで、非同期でデータが取得できるようになる。</p>
+
+<p>ただし、Same-Originポリシーが存在しないため、機密情報をAPIに含める際には十分な注意が必要である。</p></blockquote>
+
+<h2>動作原理</h2>
+
+<p>やはりソースコードで読むほうが早いだと思います。</p>
+
+<p>以下gihyo.netからのサンプルコードです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script&gt;</span>
+</span><span class='line'>      <span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// コールバック関数を定義</span>
+</span><span class='line'>        <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://mail.example.com/json.dat&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>データ提供サーバ側が用意したJSON</h3>
+
+<p>json.datの中身</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">callback</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Fukumori&quot;</span> <span class="p">}</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>簡単まとめ</h3>
+
+<p>要はクライアント側で先にデータを扱うコールバック関数を定義</p>
+
+<p>その名はデータの提供側とのコールバック関数名と一致する必要がある</p>
+
+<p>scriptタグでデータ提供サーバのデータをインポート</p>
+
+<p>すると先に用意したコールバック関数が走ってデータを処理する</p>
+
+<p>もっと詳しい動作原理とセキュリティはgihyoの特集を参照してください。
+とても分かりやすいです。おすすめ！</p>
+
+<p><a href="http://gihyo.jp/dev/serial/01/web20sec/0003?page=1">第3回　JSONPでのクロスドメインアクセス：ここが危ない！Web2.0のセキュリティ｜gihyo.jp … 技術評論社</a></p>
+
+<h2>jQueryでJSONPを使う</h2>
+
+<p>jQueryのAjaxメソッドには$.getJSONがあります。</p>
+
+<p>このメソッドはjQuery1.2からJSONPも対応したようです。</p>
+
+<blockquote><p>As of jQuery 1.2, you can load JSON data located on another domain if you specify a JSONP callback.</p></blockquote>
+
+<p>利用方法はurlの最後に”?”付きのコールバックパラメータを追加することです。</p>
+
+<p>例えば”example.com?callback=?”こんな感じです。</p>
+
+<p>callbackの値は指定しなくてもよいみたい、</p>
+
+<p>jQueryが自動で変換してくれます。</p>
+
+<p>ただしコールバックのパラメータ名はデータ提供側によって異なるかもしれません。</p>
+
+<p>例えばヤフーPipesは”_callback=?”を要求してるそうです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-21T00:00:00+09:00" pubdate data-updated="true">2009-11-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/man-watch-this-movie-hang-over">Man ! Watch this movie! [Hang Over]</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><object width="425" height="336"><param name="movie" value="http://www.youtube.com/v/vhFVZsk3XEs"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/vhFVZsk3XEs" type="application/x-shockwave-flash" wmode="transparent" width="425" height="336" FlashVars="movie_url=http://d.hatena.ne.jp/video/youtube/vhFVZsk3XEs"></embed></object>
+<a href="http://d.hatena.ne.jp/video/youtube/vhFVZsk3XEs" alt="この動画を含む日記"><img src="/images/d_entry.gif" alt="D" border="0" style="vertical-align: bottom;" title="この動画を含む日記"></a></p>
+<p>If you are a Man, no matter you are lonely now, or married.</p>
+<p>You should watch this, trust me.</p>
+<p>It&#8217;s about freedom, wild, excited.</p>
+<p>I think English is more powerful than Japanese this moment,</p>
+<p>I really love it.</p>
+<p>You, should watch this, seriously.</p>
+<p>And if you like it, you should check the soundtrack CD below too.</p>
+<p>It&#8217;s really cool.</p>
+<div class="hatena-asin-detail">
+<a href="http://d.hatena.ne.jp/asin/B00274SIJW/fantasyday-22"><img src="http://ecx.images-amazon.com/images/I/51Ryt4%2B4WbL._SL160_.jpg" class="hatena-asin-detail-image" alt="The Hangover" title="The Hangover"></a>
+<div class="hatena-asin-detail-info">
+<p class="hatena-asin-detail-title"><a href="http://d.hatena.ne.jp/asin/B00274SIJW/fantasyday-22">The Hangover</a></p>
+<ul>
+<li><span class="hatena-asin-detail-label">アーティスト:</span> <a href="http://d.hatena.ne.jp/keyword/Original%20Soundtrack" class="keyword">Original Soundtrack</a></li>
+<li><span class="hatena-asin-detail-label">出版社/メーカー:</span> <a href="http://d.hatena.ne.jp/keyword/New%20Line" class="keyword">New Line</a></li>
+<li><span class="hatena-asin-detail-label">発売日:</span> 2009/06/23</li>
+<li><span class="hatena-asin-detail-label">メディア:</span> CD</li>
+<li><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00274SIJW/fantasyday-22/" target="_blank">Amazon.co.jpで詳細を見る</a></li>
+</ul>
+</div>
+<div class="hatena-asin-detail-foot"></div>
+</div>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-20T00:00:00+09:00" pubdate data-updated="true">2009-11-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-message-of-access-denied-in-ie">IE JavaScript実行した際の「アクセスが拒否されました」メッセージ</a></h1>
+	<div class="entry-content">
+		<h2>経緯</h2>
+
+<p>iframeで動的に画面を読み込む際URL不正などによる通信エラーが起こした場合の</p>
+
+
+<p>エラーハンドラを追加したかったので判断するロジックが必要でした。</p>
+
+
+<p>わざと誤ったURLを渡して検証しましたが、以下のコードはだめでした。</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// documentがnullかと思ってそれで判断しようとしたんです。</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">)</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>現象</h2>
+
+<p>あるプロパティは存在しているのに、アクセスができない。コードで書くと</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プロパティがオブジェクトに存在するかを判断</span>
+</span><span class='line'><span class="c1">// ここはアラーとが出した、つまり存在したってこと</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="s2">&quot;aProperty&quot;</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;obj has aProperty&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// 次にそのオブジェクトにアクセスしようとすると</span>
+</span><span class='line'><span class="c1">// エラーになった</span>
+</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">aProperty</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>IE8の開発ツールで見たら「アクセスが拒否されました」と書いてある。</p>
+
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091119/20091119133655.jpg" alt="" /></p>
+
+<h2>エラーをcatch</h2>
+
+<p>判断のロジックをtry-catch文に書けばいいです。</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">number</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2147024891</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//アクセスが拒否されました。</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;別のメッセージ&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>参考サイト：<a href="http://sei.qee.jp/docs/freetalk/2009/02.html" target="_blank">http://sei.qee.jp/docs/freetalk/2009/02.html</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-19T00:00:00+09:00" pubdate data-updated="true">2009-11-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>, <a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/turn-off-warnings-of-activex-in-ie">IEのActiveXコントロールに関する警告を非表示にするには</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>開発においてローカルでいろいろテストすることが多いでしょう。</p>
+<p>その時ブラウザを開くと「セキュリティ保護のため、このコンピューターにアクセスする可能性のあるスクリプトやActiveXコントロールを実行しないよう、IEで制限されています。オプションを表示するには、ここをクリックしてください」という警告がそのたびに出て、気分が悪くなっちゃいます。IEの[セキュリティ]タブをいじってもファイルはローカルなので、効きません。</p>
+<br/>
+<h4>解決方法</h4>
+<ul>
+<li>[マイコンピュータ内のファイルでのアクティブコンテンツの実行を許可する*]をチェックしIEを再起動(<span style="font-weight:bold;">*がついてるので再起動は絶対必要とされている</span>)</li>
+</ul>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012539" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012539.jpg" alt="f:id:kinopyo:20091117012539j:image:right" title="f:id:kinopyo:20091117012539j:image:right" class="hatena-fotolife hatena-image-right"></a></p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/kinopyo/20091116/1258379152" target="_blank">IEセキュリティにマイコンピュータゾーンを追加する方法 - kinopyoの日記 </a>で紹介する方法でセキュリティにマイコンピュータのゾーンを追加</li>
+<li>IEの[ツール] → [インターネット オプション] → [セキュリティ] タブをクリックし、[レベルのカスタマイズ] をクリックします。</li>
+<li>「ActiveXコントロールとプラグインの実行」をチェック</li>
+</ul>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012540" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012540.jpg" alt="f:id:kinopyo:20091117012540j:image" title="f:id:kinopyo:20091117012540j:image" class="hatena-fotolife"></a></p>
+<ul>
+<li>「スクリプトを実行しても安全とマークされているActiveXコントロールのスクリプトの許可」をチェック</li>
+</ul>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091117012541" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091117/20091117012541.jpg" alt="f:id:kinopyo:20091117012541j:image" title="f:id:kinopyo:20091117012541j:image" class="hatena-fotolife"></a></p>
+<h4>バージョン情報</h4>
+<ul>
+<li>OS: Windows XP</li>
+<li>IE: IE8</li>
+</ul>
+<br/>
+<p>参考サイト：<a href="http://stackoverflow.com/questions/394298/how-to-disable-activex-control-may-be-unsafe-popup" target="_blank">How to disable &#34;ActiveX Control May Be Unsafe&#34; popup - Stack Overflow</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>argumentsは配列じゃないため、配列のメソッドは</p>
+<p>使えません。ということは本を読んだとき当たり前だと思ったんですが、</p>
+<p>実際コードに落としたときは</p>
+<p>自然とargument.slice()を書いちゃいました。</p>
+<h4>argumentsで配列のメソッドを使うには</h4>
+<p>Array.prototype.<配列のメソッド>.call(arguments,<パラメータ>)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
+<h4>argumentsはarray-likeオブジェクト</h4>
+<p>ここでちょっとargumentsの基本知識を復習します。</p>
+<p>length属性もあるし、[]でindex指定のオブジェクトを参照できますけど、</p>
+<p>argumentsは配列に似ているオブジェクトだけです。</p>
+<h5>予約語</h5>
+<p>Technically, argumentsは予約語ではないですが、</p>
+<p>予約語として認識してよいです。</p>
+<p>つまりargumentsという変数は作成しないでってことです。</p>
+<br/>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">arguments</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  <span class="c1">//xの値が変更されちゃう</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// null が出力される</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h5>callee Property</h5>
+<p>Refers to the function that is currently being executed.</p>
+<p>今実行中のファクションを参照しています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">(</span><span class="nx">x</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/something-come-to-mind-when-writing-blog">ブログを書いて気づいた｢嫌い or 好き｣の方向性</a></h1>
+	<div class="entry-content">
+		<p><a href="http://d.hatena.ne.jp/gothedistance/20090928/1254140260" target="_blank">ブログをキャリアの礎にしようと思っている方へ - GoTheDistance</a>こういうすてきな記事を見つかりました。</p>
+
+
+<blockquote>
+<p>自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣の方向性が見えてくるようになります。</p>
+</blockquote>
+
+
+<br/>
+
+
+<p>特にこの言葉に感じたことが多かったのです。</p>
+
+
+<p>最近仕事の関係で、よくIE6~IE8とFirefoxでのJavaScript、CSSの不具合を調査したり、悩んだりしました。</p>
+
+
+<p>特定のブラウザで画面が崩れるのは本当に嫌だなと</p>
+
+
+<p>痛感しました。</p>
+
+
+<p>これがウェブ開発の現状なんですかと？</p>
+
+
+<p>なぜ自分はもっと立派なプログラムの問題と戦うのではなく、</p>
+
+
+<p>ブラウザと戦わなきゃならないのか？</p>
+
+
+<p>なぜActiveXの無効を前提とするユーザがいるのか？</p>
+
+
+<p>なぜIEがアップグレードするたびに新たな不具合を招くのか？</p>
+
+
+<p>なぜマイクロソフトはもっと強制的にユーザにIEのバージョンをアップグレードさせないのか？</p>
+
+
+<p>もしChrome、Opera、Safariなどの市場シェアが大きくなったら、それらも対応するとの要求が出てくるのか？</p>
+
+
+<p>なぜお客さんは低いバージョンのIEを未だも使っているのか？Firefoxに切り替えるのはそんなに不現実の話なのか？</p>
+
+
+<br/>
+
+
+<p>こんなのは嫌です。</p>
+
+
+<p>そもそもFlexを勉強しよと思ったきっかけは</p>
+
+
+<p>会社の先輩のサイトを見て、</p>
+
+
+<p>デザインやアニメーションがすごいきれで聞いたら、</p>
+
+
+<p>「Flexならこんなの簡単に作れるよ、ブラウザと関係ないし」の言葉でした。</p>
+
+
+<p>自分の好きの方向性というのはこんなことでしょう。</p>
+
+
+<p>ブラウザのわがままを避けたい、</p>
+
+
+<p>純粋なプログラミングがしたいです。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-to-check-is-activex-enabled-in-client">クライアント側のActiveXが有効か無効かを検出するJavaScript</a></h1>
+	<div class="entry-content">
+		<h2>知っておくべきこと</h2>
+
+<ul>
+<li>ActiveXはIE専用のものと理解してよい、Firefoxなどでは存在しない</li>
+<li>new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)でIEのXMLHttpRequestが生成される</li>
+<li>IE のバージョンによっては、&#8221;Microsoft.XMLHTTP&#8221;の代わりにこれらも使用できるそうです：
+
+<ul>
+<li>&#8220;Msxml2.XMLHTTP.5.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.4.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP.3.0&#8221;</li>
+<li>&#8220;Msxml2.XMLHTTP&#8221;</li>
+</ul>
+</li>
+<li>もし生成できればActiveXコントロールは有効になっている</li>
+</ul>
+
+
+<h2>検出ソースコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ブラウザがIEの場合</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//IEのXMLHttpRequestオブジェクトを試しに生成</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;ActiveXコントロールは無効になっています&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://deztec.jp/x/05/faireal/faireal-5-20-index.html#d20503a" target="_blank">動画をHTMLに埋め込むヒント - faireal.net</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/add-mycomputer-zone-to-ie-security">IEセキュリティにマイコンピュータゾーンを追加する方法</a></h1>
+	<div class="entry-content">
+		<h2>概要</h2>
+
+<p>ローカルのファイルを参照する際のセキュリティを変更したとします。</p>
+
+
+<p>IEの[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブでは</p>
+
+
+<p>ローカルのマイコンピュータのセキュリティゾーンがデフォルトでは非表示になっています。</p>
+
+
+<p>それを表示させるにはレジストリを編集する必要があります。</p>
+
+
+<h2>動作環境</h2>
+
+<p>以下の環境で動作確認済みです。</p>
+
+
+<p>その他の環境についてはマイクロソフトのサポートヘルプを参照してください。</p>
+
+
+<ul>
+<li>OS: Win XP</li>
+<li>IE: IE8</li>
+</ul>
+
+
+<h2>方法</h2>
+
+<blockquote title="http://support.microsoft.com/kb/315933" cite="http://support.microsoft.com/kb/315933">
+<p>警告 : レジストリ エディタの使い方を誤ると、深刻な問題が発生することがあります。</p>
+<br/>
+<p>[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブにマイ コンピュータのセキュリティ ゾーンを表示するかどうかは、次のレジストリ キー内にある Flags 値によって設定できます。</p>
+<p>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0</p>
+<p>Flags 値は DWORD 値です。Flags 値のデータ値を 47 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが表示されるようになります。Flags 値のデータ値を 21 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが非表示になります。 </p>
+<cite><a href="http://support.microsoft.com/kb/315933" target="_blank">http://support.microsoft.com/kb/315933</a></cite></blockquote>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-16T00:00:00+09:00" pubdate data-updated="true">2009-11-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/32/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/34/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

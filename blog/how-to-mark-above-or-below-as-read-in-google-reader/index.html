@@ -1,0 +1,203 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Google Readerで以上/以下のアイテムを既読にする方法(要firefox) - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。 現時点で使ってるFirefoxは5.0.1です。 手順 https://addons.mozilla.org/ja/firefox/ &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Google Readerで以上/以下のアイテムを既読にする方法(要firefox)</h1>
+	<div class="entry-content"><p>Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。</p>
+
+<p>現時点で使ってるFirefoxは5.0.1です。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/greasemonkey/">https://addons.mozilla.org/ja/firefox/addon/greasemonkey/</a>でGreasemonkeyをインストールし、Firefoxを再起動</li>
+<li><a href="http://userscripts.org/scripts/show/47830">http://userscripts.org/scripts/show/47830</a>右上のInstallをクリック</li>
+<li>Google Readerを開けば&#8221;Mark below as read&#8221;と&#8221;Mark above as read&#8221;ボタンが上のツールバーに現れる</li>
+<li>一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す</li>
+<li>ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong></li>
+</ul>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-21T00:00:00+09:00" pubdate data-updated="true">2011-07-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/firefox/'>Firefox</a>, <a class='category' href='/blog/categories/rss/'>rss</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader';
+        var disqus_url = 'http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Use HTTP Caching in Heroku with Cloudflare - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="TL;DR Heroku doesn’t provide HTTP caching by default
+Use CDN like Cloudflare or Amazon CloudFront Clouldflare has free plan, takes you less than 3 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Use HTTP Caching in Heroku with Cloudflare</h1>
+	<div class="entry-content"><h1>TL;DR</h1>
+
+<ul>
+<li>Heroku doesn’t provide HTTP caching by default</li>
+<li>Use CDN like <a href="http://www.cloudflare.com/">Cloudflare</a> or <a href="http://aws.amazon.com/cloudfront/">Amazon CloudFront</a>
+
+<ul>
+<li>Clouldflare has free plan, takes you less than 3 minutes to setup.</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>HTTP Caching</h1>
+
+<p>Just a quick example of HTTP caching.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/http_caching_example.jpg" alt="HTTP caching example" /></p>
+
+<p>You can really feel the difference after you enabled it. Since most of your static assets, like js, css and image files, are gonna use browser cache without hitting your rails application, the user experience is improved a lot.</p>
+
+<p>In my hobboy project <a href="http://quoty.me">quoty.me</a>, user had to download the black colored background image(22k) every time they visit a page, so there was a time lag to notice the background changed from white to black, which bothered me a lot. And that was why I noticed the HTTP caching is not enabled in Heroku.</p>
+
+<h1>Heroku&#8217;s HTTP Caching</h1>
+
+<blockquote><p>Heroku doesn’t provide HTTP caching by default. In order to take advantage of HTTP caching, you’ll need to configure your application to set the appropriate HTTP cache control headers and use a content delivery network (CDN) or other external caching service.</p></blockquote>
+
+<p>I&#8217;m using cedar stack in Heroku, but I have to use &#8220;external&#8221;(oppose to add-ons or solutions provided by Heroku) stuff to make HTTP caching work.</p>
+
+<p>I&#8217;ve also tried <a href="http://rtomayko.github.io/rack-cache/">Rack::Cache</a> with Memcache but somehow it didn&#8217;t work for me.</p>
+
+<h1>Setup Cloudflare</h1>
+
+<p>This time I decided to give Cloudflare a try. It&#8217;s free, easy to setup, and just work.</p>
+
+<p>I&#8217;ll cut off how to setup Cloudflare, as the tutorial in its website is realy excellent. Just go to <a href="https://www.cloudflare.com/">https://www.cloudflare.com/</a> and follow the instructions, within 3-4 steps you&#8217;re done.</p>
+
+<p>The other thing you have to do is to update your nameserver to the one provided by Cloundflare, like &#8220;IAN.NS.CLOUDFLARE.COM&#8221;. I&#8217;m using <a href="http://www.godaddy.com/">GoDaddy</a> for my quoty.me domain, the link to setup nameserver looks like this.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/godaddy_nameserver.jpg" alt="GoDaddy Nameserver setup link" /></p>
+
+<h1>Further Reading</h1>
+
+<ul>
+<li><a href="https://devcenter.heroku.com/articles/http-caching">HTTP Caching | Heroku Dev Center</a>
+<a href="https://devcenter.heroku.com/articles/increasing-application-%20-performance-with-http-cache-headers">Increasing Application Performance with HTTP Cache Headers | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/http-caching-ruby-rails">HTTP Caching in Ruby with Rails | Heroku Dev Center</a></li>
+<li><a href="http://railscasts.com/episodes/321-http-caching">#321 HTTP Caching (pro) - RailsCasts</a></li>
+<li><a href="http://www.bestechvideos.com/2009/03/21/railslab-scaling-rails-episode-11--%20advanced-http-caching">RailsLab Scaling Rails: Episode #11 - Advanced HTTP Caching</a></li>
+</ul>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-14T08:51:00+09:00" pubdate data-updated="true">2013-07-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/cache/'>Cache</a>, <a class='category' href='/blog/categories/heroku-/'>Heroku,</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/use-http-caching-in-heroku-with-cloudflare/';
+        var disqus_url = 'http://kinopyo.com/blog/use-http-caching-in-heroku-with-cloudflare/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Flex | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/flex/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Flex AMFはJSON、XML、HTMLより遥かに速い]]></title>
+    <link href="http://kinopyo.com/blog/flex-bench-amf-json-xml-html"/>
+    <updated>2010-05-14T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/flex-bench-amf-json-xml-html</id>
+    <content type="html"><![CDATA[<p><a href="http://www.jamesward.com/2007/12/12/blazebench-why-you-want-amf-and-blazeds/">James Wardさんのブログ</a>から見たものです。</p>
+
+<p>結果から言うとAMF（リモートオブジェクト）での通信は
+ほかのJSONとか、XMLより遥かに速いです。
+下記がその結果のスクリーンショットです。</p>
+
+<p><img src="http://www.jamesward.org/wordpress/wp-content/uploads/2007/12/blazebench.jpg" alt="Benchmark AFM vs JSON vs HTML" width="490" height="385"/></p>
+
+<p>また<a href="http://www.jamesward.com/census/">各通信手段のParse time, Render time, Request timeなど見れるページ</a>も公開されましたので、
+使ってみてください。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flex：カスタムイベントクラスのパッケージ名をeventにするのは避けましょう]]></title>
+    <link href="http://kinopyo.com/blog/flex-do-not-use-event-as-a-package-name"/>
+    <updated>2010-05-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/flex-do-not-use-event-as-a-package-name</id>
+    <content type="html"><![CDATA[<p>カスタムイベントのパッケージ名を"event"にしました。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_package_event.jpg" title="flex_package_event" ></p>
+
+<p>結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
+例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
+この"event"続いてドット(.)を叩いて出たのは各eventパッケージしたのクラスになります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_confused.jpg" title="flex_autocomplete_confused" ></p>
+
+<p>イベントハンドラの変数を"event"以外にすれば回避できますが、
+ハンドラの自動生成は結構便利なものなので
+やはりパッケージ名を"events"などに変えたほうがいいと思います。</p>
+
+<p>これで自動補完はちゃんと出ます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_correct.jpg" title="flex_autocomplete_correct" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flexでシステムクリップボードに内容をコピーするには]]></title>
+    <link href="http://kinopyo.com/blog/flex-copy-text-to-clipboar"/>
+    <updated>2010-05-06T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/flex-copy-text-to-clipboar</id>
+    <content type="html"><![CDATA[<p>テキストをクリップボードにコピーするコードです。
+<em>System.setClipboard</em>の第一引数にテキストを渡せばOKです。</p>
+
+<p>```java
+System.setClipboard(text);</p>
+
+<p>```</p>
+
+<p><a href="http://blog.flexexamples.com/2008/01/30/copying-text-to-the-operating-system-clipboard-in-flex/">ここにいいDEMOがあります。</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flex3 in Eclipse3.5( Windows7 OK, Mac OSX 失敗)]]></title>
+    <link href="http://kinopyo.com/blog/flex3-in-eclipse3-5-windows7-ok-mac-osx-failure"/>
+    <updated>2009-11-13T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/flex3-in-eclipse3-5-windows7-ok-mac-osx-failure</id>
+    <content type="html"><![CDATA[<div class="section">
+<p>Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。</p>
+<p>しかしFlex Builder 3.0.2 Professional Plug-Inは Eclipse3.2.2、3.3、3.4しか対応していません。</p>
+<p>Eclipse3.5に載せる場合はFlexのインストール完了後</p>
+<p>以下のように設定してください。</p>
+<br/>
+<ul>
+<li>Eclipseルートディレクトリ\linksフォルダにあるcom.adobe.flexbuilder.feature.core.linkファイルを開く</li>
+<li>path=&#60;Flex Builder 3 Plug-inのディレクトリ&#62;　に編集
+<ul>
+<li>デフォルトではpath=以降のディレクトリが書いてあるはずなので、"path="だけを追加すればOK</li>
+</ul>
+</li>
+<li>Eclipseを再起動し、パースペクティブにはFlex開発を選択</li>
+</ul>
+<br/>
+<p>Windows7でOKでした。MacOS Xで同じやり方ではダメでした。</p>
+<p>ネットでもいろいろ検索しましたが、</p>
+<p>やはりMacではうまく動作してくれないみたいで、</p>
+<p>しょうがなくスタンドアロンをインストールしました。</p>
+<br/>
+<p>参考サイト：<a href="http://tpfields.xrea.jp/tips/develop-air-with-flex-builder-3-plugin-and-eclipse-35-galileo.html" target="_blank">  Flex Builder 3 Plug-in: &#8220;Eclipse 3.5 Galileo&#8221;でFlex開発 | t.p.fields - web+tech info</a></p>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flex3: trace()ログ出力の設定、Windowsの隠しフォルダに注意]]></title>
+    <link href="http://kinopyo.com/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder"/>
+    <updated>2009-11-12T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder</id>
+    <content type="html"><![CDATA[<p>Flexのtrace()はログ出力の機能です。</p>
+
+
+<p>Javaに慣れましたので、trace()もてっきりコンソールにも</p>
+
+
+<p>出力すると思っちゃいましたが、</p>
+
+
+<p>実はそうではありません。</p>
+
+
+<p>trace()を使うにはまず設定が必要です。</p>
+
+
+<h2>バージョン情報</h2>
+
+<ul>
+<li>Flex3 Builder: Version 3.0 (build 3.0.2.214193)</li>
+<li>Flash Player: 9,0,124,0</li>
+</ul>
+
+
+<h2>デバッガ版のFlash Player</h2>
+
+<p>Flex3 Builderをダウンロードしそこに含んだ</p>
+
+
+<p>for IE, FirefoxなどのFlash Playerを全部インストールしてください。</p>
+
+
+<p>そのほうが万全で楽です。</p>
+
+
+<p>既にFlash Playerがインストールされたとしても、</p>
+
+
+<p>それがデバッガ版じゃないとダメですよ。</p>
+
+
+<h2>設定ファイルの作成</h2>
+
+<ul>
+<li><code>mm.cfg</code>という設定ファイルを下記場所に作成</li>
+</ul>
+
+
+<table>
+<tr><th>オペレーティングシステム</th><th>ファイルの作成場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Library/Application Support/Macromedia </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="http://kinopyo.com/kinopyo/#f1" name="fn1" title="AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み">*1</a></span></td><td>C:\Users\username </td></tr>
+<tr><td>Windows 2000/XP</td><td>C:\Documents and Settings\username </td></tr>
+<tr><td>Windows 95/98/ME</td><td>%HOMEDRIVE%\%HOMEPATH% </td></tr>
+<tr><td>Linux</td><td>/home/username </td></tr>
+</table>
+
+
+<h2>設定ファイルの編集</h2>
+
+<p>作成したmm.cfgファイルを下記のように編集すれば、エラーのレポートとトレースログが有効になります。</p>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorReportingEnable=1
+</span><span class='line'>TraceOutputFileEnable=1</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>TraceOutputFileNameというログファイルの名前と出力先を指定するプロパティもありますが、</p>
+
+
+<blockquote title="Adobe Flex3 ヘルプ" cite="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337">
+<p>Flash Player 9 Update 以降では、TraceOutputFileName プロパティは無視され、</p>
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+<cite><a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex3 ヘルプ</a></cite></blockquote>
+
+
+<p>との懸念もあり、各自の環境を確認した上でお使いください。</p>
+
+
+<p>私のFLex3 Builder, Flash 9では無効でした。</p>
+
+
+<h2>ログファイルの場所</h2>
+
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+
+
+<table>
+<tr><th>オペレーティングシステム</th><th>ログファイルの場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Users/username/Library/Preferences/Macromedia/Flash Player/Logs/  </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="http://kinopyo.com/kinopyo/#f2" name="fn2" title="AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み">*2</a></span></td><td>C:\Users\username\AppData\Roaming\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Windows 95/98/ME/2000/XP</td><td>C:\Documents and Settings\username\Application Data\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Linux</td><td>/home/username/.macromedia/Flash_Player/Logs/ </td></tr>
+</table>
+
+
+<p>Windowsの方は特に隠しフォルダに注意してください。</p>
+
+
+<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
+
+
+<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
+
+
+<h2>テストコード</h2>
+
+<p><code>html
+&lt;&lt;/span&gt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;#62;
+&lt;mx:Application xmlns:mx=&amp;#34;http://www.adobe.com/2006/mxml&amp;#34;
+layout=&amp;#34;absolute&amp;#34; creationComplete=&amp;#34;init()&amp;#34;&amp;#62;
+&lt;mx:Script&amp;#62;
+&lt;![CDATA[
+&lt;private function init():void{
+trace(&amp;#34;Hello World&amp;#34;);
+}
+]]&amp;#62;
+&lt;/mx:Script&amp;#62;
+&lt;/mx:Application&amp;#62;
+</code></p>
+
+<p>これでログファイルには「Hello World」と出力されるはずです。</p>
+
+
+<h2>特記事項</h2>
+
+<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
+
+
+<p>自分でもう一回書こうと全然思わなかったのですが、</p>
+
+
+<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
+
+
+<p>私が最初見つかった幾つかのサイトでの書き方では</p>
+
+
+<p>どう設定してもまったくログが出力されなかったのです。</p>
+
+
+<p>アンインストールしたり、設定ファイルのエンコードまで</p>
+
+
+<p>神経質になってしまいました。</p>
+
+
+<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
+
+
+<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
+
+
+<p>私もこれからは注意します。</p>
+
+
+<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
+
+
+<p></div></p>
+
+<div class="footnote">
+<p class="footnote"><a href="http://kinopyo.com/kinopyo/#fn1" name="f1">*1</a>：AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み</p>
+<p class="footnote"><a href="http://kinopyo.com/kinopyo/#fn2" name="f2">*2</a>：AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み</p>
+
+]]></content>
+  </entry>
+  
+</feed>

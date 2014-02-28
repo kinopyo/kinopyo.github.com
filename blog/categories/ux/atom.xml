@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: UX | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/ux/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How do you help your user "Get Started"?]]></title>
+    <link href="http://kinopyo.com/blog/how-do-you-help-your-user-get-started/"/>
+    <updated>2012-12-21T19:17:00+09:00</updated>
+    <id>http://kinopyo.com/blog/how-do-you-help-your-user-get-started</id>
+    <content type="html"><![CDATA[<p>There was a discussion in my team about how to increase the user engagement, we want more and more users to register account, participate in several ways, use our service, etc.</p>
+
+<p>But then we realized that we didn't really do anything to help them get started, basically after they registered we just left them alone, live or die. Because we always have to build some "major" features we consider more important.</p>
+
+<p>With that in mind, when I browse website or try new services, I keep an eye on how they respond to new users. And I'd like to share some screenshots to demonstrate my point.</p>
+
+<h2>Linkedin</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/20121221/linkedin.png" alt="" /></p>
+
+<p>I guess this is quite familiar to you. There is a huge "attention" textbox with random questions to help you complete your profile. Often to fill out a "complete" resume needs lots of time and people are too lazy to do that, but I don't mind just answer one simple question.</p>
+
+<p>And the progress bar tutorial on the right side shows the progress, and gives your links to jump directly to that action.</p>
+
+<h2>App.net</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/20121221/appdotnet.png" alt="" /></p>
+
+<p>It's more like checklist to help you get started, it appears on the top of the main action: postiong a tweet. As you guess once you completed all it will disappear.</p>
+
+<h2>UserVoice</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/20121221/uservoice.png" alt="" /></p>
+
+<p>To be honest I was very confused about what's next when I registered the account, the UI contains too many information. But the "Getting Started" button with a counter badge helped me. Every time when I'm lost, I'll click that and it will show the actions with details information.</p>
+
+<p>Also the "Need help?" block in the right side feels very user friendly. Support email address, demos, phone calls(though it's said "for sales"), basically everything you need when you are lost.</p>
+
+<h3>Emails</h3>
+
+<p><img src="http://cdn.kinopyo.com/images/20121221/uservoice_email.png" alt="" /></p>
+
+<p>The email came the next day I registered, "Ted Choper", "I'm always here to help", feels like there is a person rather than an automachine can help me, nice impression, I didn't just look for the "unsubscribe" link for this one.</p>
+
+<h2>In Conclusion</h2>
+
+<p>Of course there are some other ways to help your users, but I think the key point is think more about your users, don't just be busy making new giant features.</p>
+
+<p>I'd like to use this quote to end of this entry.</p>
+
+<blockquote><p>We want to make money when people use our devices, not when they buy our devices.</p></blockquote>
+
+<p>Jeff Bezos, the CEO of Amazon, in Amazon Kindle Press Conference.</p>
+
+<p>Ad: This one is also on <a href="http://quoty.me/quotes/20">quoty</a>!</p>
+]]></content>
+  </entry>
+  
+</feed>

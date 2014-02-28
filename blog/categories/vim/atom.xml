@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: vim | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vimビープ音を消す]]></title>
+    <link href="http://kinopyo.com/blog/set-vim-beep-alarm-off"/>
+    <updated>2010-10-16T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/set-vim-beep-alarm-off</id>
+    <content type="html"><![CDATA[<p>ビープ音を消す。</p>
+
+<p>vi ~/.inputrc
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set bell-style none</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>vi ~/.vimrc
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set noerrorbells
+</span><span class='line'>set vb t_vb=</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

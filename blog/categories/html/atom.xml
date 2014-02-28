@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: HTML | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/html/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTML Formの間隔(余白)をmarginで調整]]></title>
+    <link href="http://kinopyo.com/blog/adjust-html-form-blank-with-margin"/>
+    <updated>2009-11-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/adjust-html-form-blank-with-margin</id>
+    <content type="html"><![CDATA[<h2>目的</h2>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224149.gif" alt="" /></p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224150.gif" alt="" /></p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224151.gif" alt="" /></p>
+
+<p>見たの通りform前後の余白を消しました。</p>
+
+
+<p>これはフォームがテーブルなどを跨がる場合に</p>
+
+
+<p>レイアウトを調整するのに非常に役に立ちます。</p>
+
+
+<h2>方法</h2>
+
+<p><strong>formのmarginを0px</strong>に設定します。</p>
+
+<p><code>html
+&lt;form style="margin: 0px;"&gt;
+</code></p>
+
+<p>またmargin-topやmargin-bottomでなどで詳しく指定できます。</p>
+
+
+<p>マイナス値も入力でき、さらに間隔を縮むめることができます。</p>
+
+
+<p>参考となったサイト：<a href="http://www.1uphp.com/con1/form/form1style.html" target="_blank">http://www.1uphp.com/con1/form/form1style.html</a></p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: API | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/api/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PHPで他のJSON形式APIをコールするサンプルコード]]></title>
+    <link href="http://kinopyo.com/blog/php-call-json-api-sample-code"/>
+    <updated>2011-03-07T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/php-call-json-api-sample-code</id>
+    <content type="html"><![CDATA[<p>file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。</p>
+
+<p>```php
+// APIコール
+$api_url = 'http://example.com/api/';
+$api_ret = file_get_contents($api_url);</p>
+
+<p>// JSONにデコード
+$api_result = json_decode($api_ret,true);</p>
+
+<p>// APIエラーチェック: 何かしらの成功フラグでチェック
+if(isset($api_result<em>'success']) &amp;&amp; $api_result['success'</em> == 0)
+{</p>
+
+<pre><code>// 処理
+</code></pre>
+
+<p>}
+else
+{</p>
+
+<pre><code>// handle error
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

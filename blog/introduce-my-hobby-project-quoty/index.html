@@ -1,0 +1,274 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Introduce My Hobby Project Quoty - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="This is the README file of this quoty project in github, so if you already knows about it you can totally ignore this post. I just want to mention it &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Introduce My Hobby Project Quoty</h1>
+	<div class="entry-content"><p>This is the README file of this quoty project in <a href="https://github.com/kinopyo/quoty">github</a>, so if you already knows about it you can totally ignore this post. I just want to mention it once in my blog.</p>
+
+<h2>What is Quoty?</h2>
+
+<p><a href="http://quoty.me">http://quoty.me</a></p>
+
+<p><strong>Quoty</strong> - A place where people can share and save the most touching and inspiring quotes or words, in a <em>modern</em> way.</p>
+
+<p>One of my hobby projects build with Rails, deployed on Heroku, <a href="http://quoty.me">try it</a>.</p>
+
+<h2>The Vision</h2>
+
+<h3>The Problems</h3>
+
+<p>If you search for any famous quotes on google, you may find lots of  sites with disturbing ads, messy layouts, unreadable fonts. Once you looked, closed the tab, and that&#8217;s it. Nothing more happens.</p>
+
+<h3>What I want to create</h3>
+
+<p>Quoty, well it&#8217;s still a temporary name, <strong>doesn&#8217;t aim to be the biggest quotes website</strong>. Instead, I want to create a community who loves the essence of human intelligence, which I believe is our language, the words, quotes, conversations, or even jokes. Besides those quotes from some &#8220;Big Giants&#8221;, not trying to deny them here but they are not a MUST condition to make a quote classic and lasts forever, our parents, friends, wife/husband, anyone can say something very touching, warming words. <strong>If there is a story about it, if it means something to you and you really want to &#8220;save&#8221; that moment, I hope you can find here is the right place. At least that&#8217;s what I&#8217;m trying to build.</strong></p>
+
+<p>So the general/traditional quotes are really not everything here. Tweets, video clips, lines from some movies, words from friends or family members, just post it. I&#8217;ll try to find the right way to keep the original taste and flavour. And that&#8217;s why I said Quoty is a temporary name, because it emphasize &#8220;quotes&#8221; too much.</p>
+
+<p>Oh I won&#8217;t put any ads on it. Try to make it clean and simple. A peaceful place. (I may need some design help to really create the visual feelings about it.)</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Rails 3.2+</li>
+<li>Ruby 1.9.3+</li>
+<li>RVM</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>In most cases:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:kinopyo/quoty.git
+</span><span class='line'>cd quoty
+</span><span class='line'>bundle
+</span><span class='line'>rake db:setup
+</span><span class='line'>rails s
+</span><span class='line'>open "http://localhost:3000"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you need twitter or facebook integration, you have to setup your own keys to <code>config/initializers/omniauth.rb</code>.</p>
+
+<h2>TODO</h2>
+
+<p>https://www.pivotaltracker.com/projects/697543</p>
+
+<p>Also I&#8217;m using github <a href="https://github.com/kinopyo/quoty/issues?state=closed">issues</a> as a diary or blog tool, when building any mentionable features I&#8217;ll sent a pull request to my self, write down the timestamp and upload a very cute emoji. Please take a look :)</p>
+
+<h2>Contributing</h2>
+
+<p>Currently Quoty is still under construction, it lacks of many very basic stuff(UI design and functions). Although I bought a domain and told some frinds about it, I still consider it&#8217;s a alhpa version website. If you found something you want to have, please open an issue to tell me, with your pull requests would make it perfect. Thanks in advance for your help!</p>
+
+<p>I&#8217;ll put your name into the contributors list ^_^</p>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+
+<h2>Contributors</h2>
+
+<ul>
+<li>Designed and built by <a href="https://github.com/kinopyo">@kinopyo</a></li>
+<li>First pull request sent by <a href="https://github.com/gueorgui">@gueorgui</a></li>
+</ul>
+
+
+<h2>License</h2>
+
+<p><a href="http://opensource.org/licenses/MIT">MIT License</a>. Copyright (c) 2012 Qihuan Piao</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-15T23:33:00+09:00" pubdate data-updated="true">2012-12-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/introduce-my-hobby-project-quoty/';
+        var disqus_url = 'http://kinopyo.com/blog/introduce-my-hobby-project-quoty/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

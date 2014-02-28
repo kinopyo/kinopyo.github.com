@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tool | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/tool/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mouse Locator for Mac、マウスがスクリーンのどこにあるかを知りたい時]]></title>
+    <link href="http://kinopyo.com/blog/mouse-locator-for-mac"/>
+    <updated>2011-11-08T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mouse-locator-for-mac</id>
+    <content type="html"><![CDATA[<p><img src="http://www.2point5fish.com/img/MLLogo.png" alt="Mouse Locator for Mac" /></p>
+
+<p>自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
+ホットキーを押せば大きい緑色の圓でマウスポインタを示しので、すぐに分かります。</p>
+
+<p><a href="http://www.2point5fish.com/">http://www.2point5fish.com/</a></p>
+
+<p>さらに素晴らしいことはパソコンロック解除されたときに自動でアクティブになるんです！ユーザエクスペリエンス！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gmailを常に全員返信に設定]]></title>
+    <link href="http://kinopyo.com/blog/reply-to-all-always-in-gmail"/>
+    <updated>2011-07-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/reply-to-all-always-in-gmail</id>
+    <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
+
+<p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google Readerで以上/以下のアイテムを既読にする方法(要firefox)]]></title>
+    <link href="http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader"/>
+    <updated>2011-07-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/how-to-mark-above-or-below-as-read-in-google-reader</id>
+    <content type="html"><![CDATA[<p>Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。</p>
+
+<p>現時点で使ってるFirefoxは5.0.1です。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/greasemonkey/">https://addons.mozilla.org/ja/firefox/addon/greasemonkey/</a>でGreasemonkeyをインストールし、Firefoxを再起動</li>
+<li><a href="http://userscripts.org/scripts/show/47830">http://userscripts.org/scripts/show/47830</a>右上のInstallをクリック</li>
+<li>Google Readerを開けば"Mark below as read"と"Mark above as read"ボタンが上のツールバーに現れる</li>
+<li>一つのアイテムを選択し(展開/折り畳みのどちらでもOK)、ボタンを押す</li>
+<li>ショートカットは<strong>q 下のアイテムを既読に</strong>と<strong>w 上のアイテムを既読に</strong></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[10分でWordPressにコメントシステムDisqusを導入]]></title>
+    <link href="http://kinopyo.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues"/>
+    <updated>2011-05-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/install-disqus-comment-system-to-wordpress-in-10-minitues</id>
+    <content type="html"><![CDATA[<h2>Disqusの概要</h2>
+
+<p>Disqusを導入すると一切のコーディングなしでユーザがFacebook, Twitter, OpenIDでコメントすることができます。このように：</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.18.14.png" title="Disqus Login with Twitter, Facebook, etc." ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-13.23.02.png" title="Disqus Comment system" ></p>
+
+<h2>導入手順</h2>
+
+<p>実際の導入フローはとても簡単なので、流れだけ書きます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-20-at-11.57.25.png" title="Disqus comment system site" ></p>
+
+<ul>
+<li><a href="http://disqus.com/">Disqus</a>でアカウント登録</li>
+<li>ブログサイトの情報、メインライター、導入ブログタイプ（ここはWordpress）などの設定</li>
+<li>自分のWordpressブログの管理画面でプラグインをインストール：Disqus Comment System</li>
+<li>Disqusプラグインの設定画面でさっき<a href="http://disqus.com/">Disqus</a>で登録したアカウントでログイン</li>
+<li>必要でなれば今までのコメントをエクスポートすることもできる</li>
+</ul>
+
+
+<br/>
+
+
+<h2>既存コメントのエクスポート</h2>
+
+<p>既存コメントのエクスポートは時間がかかりそうで、すぐには反映しないようです。
+Disqusの管理画面で確認したらステータスが"Queued for import"になってます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Import-Tools-for-kinopyoblog-DISQUS.jpg" alt="DISQUS Admin page - tools - Import/export" /></p>
+
+<p>すると翌日にインポートできましたよというメールがきました。管理画面でチェック：</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-25-at-19.09.04.png" title="Disqus-comment-import-complete" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Evernote x Mac: Cant synchronize error, Content is not valid.]]></title>
+    <link href="http://kinopyo.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid"/>
+    <updated>2011-04-18T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid</id>
+    <content type="html"><![CDATA[<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
+So I encountered this problem when I synced my evernote in Mac OS.</p>
+
+<p><blockquote><p>Can't synchronize error, Content is not valid.</p></blockquote></p>
+
+<p>I googled and found this in the evernote support forum.
+<blockquote><p>One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p></p><p><p>On my 10.6.6 box, that command is 65072 bytes:</p></p><p><p>~ $ ls -al <code>which tidy</code><br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p></p><p><p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote></p>
+
+<p>It seems like that ruby gems in mac did a mess that replaced the /usr/bin/tidy command unintentionally.
+So if your <code>tidy</code> file size does not match 65072 bytes, just copy on from other Mac OS, and chmod it.</p>
+
+<h1>日本語</h1>
+
+<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。</p>
+
+<p>公式サイトのサポートでこんな回答を見つかったので共有します。
+<blockquote><p>One of the Ruby gems replaces the built-in 'tidy' command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p></p><p><p>On my 10.6.6 box, that command is 65072 bytes:</p></p><p><p>~ $ ls -al <code>which tidy</code><br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p></p><p><p>Once you've fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote></p>
+
+<p>MacのRuby gemsが勝手に<code>/usr/bin/tidy</code>コマンドをリプレースしてしまったそうです。</p>
+
+<p><code>``
+~ $ ls -al</code>which tidy`
++  rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p>
+
+<p>```
+上記の65072バイトサイズが正しいです。
+もしサイズが異なるなら他のMacでそのファイルをコピーしてきて、
+chmodで他のファイルと同じ権限にしなければいけませんよ。</p>
+]]></content>
+  </entry>
+  
+</feed>

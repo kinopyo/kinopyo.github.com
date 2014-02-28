@@ -1,0 +1,916 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="スクロールバーを最下部に移動するJavascriptです。 普通のJavascriptで書くと 1
+2
+3
+4
+5
+function go_bottom(targetId){ var obj = document.getElementById(targetId); if(!obj) return &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-get-scrollbar-to-bottom">スクロールを最下部に移動するJavascript</a></h1>
+	<div class="entry-content">
+		<p>スクロールバーを最下部に移動するJavascriptです。</p>
+
+<p>普通のJavascriptで書くと</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">go_bottom</span><span class="p">(</span><span class="nx">targetId</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">targetId</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">obj</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>完全にjQueryで書くとこんな感じ</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">go_bottom</span><span class="p">(</span><span class="nx">targetId</span><span class="p">){</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">$obj</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="nx">targetId</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">$obj</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$obj</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">(</span><span class="nx">$obj</span><span class="o">*</span><span class="mi">0</span><span class="o">*</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br>
+
+
+<p>これ以外はhiddenのinput項目を最下部に置いといて、
+それをfocusするような技もありけど、、</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-02T00:00:00+09:00" pubdate data-updated="true">2010-03-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/disable-chrome-featured-translate-bar">Chromeの内蔵翻訳ツールバーを無効にする方法</a></h1>
+	<div class="entry-content">
+		<p>すべての言語でAutomatic Translationを無効にしたい人のために。</p>
+
+<ul>
+<li>C:\Users\（ユーザ名）\AppData\Local\Google\Chrome\User Data\Defaultへアクセスします。
+ -WinXPはC:\Documents and Settings\（ユーザ名）\Local Settings\Application Data\Google\Chrome\User Data\Default</li>
+<li><p>「Preferences」ってファイルがあります。</p></li>
+<li><p>「translate」で検索すると、最後あたりでこのような文字列があるはずです。
+<img src="http://www.kinopyo.com/wp-content/uploads/2010/03/chrome_preference.jpg" title="chrome_preference" ></p></li>
+<li><p>translate_language_blacklistを、以下コードに書き換える。</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"translate_language_blacklist": * "en", "de", "zh-TW", "it", "af", "sq", "ar", "be", "bg", "ca", "zh-CN", "hr", "cs", "da", "nl", "et", "tl", "fi", "fr", "gl", "el", "he", "hi", "hu", "is", "ja", "ko", "lv", "lt", "mk", "ms", "mt", "no", "fa", "pl", "pt", "ro", "ru", "sr", "sk", "sl", "es", "sw", "sv", "th", "tr", "uk", "vi", "cy", "yi" *,
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>修正完了
+<img src="http://www.kinopyo.com/wp-content/uploads/2010/03/chrome_preference_modified.jpg" title="chrome_preference_modified" ></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-02T00:00:00+09:00" pubdate data-updated="true">2010-03-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-for-loop-good-performance">Javascriptのforループのパフォーマンスのいい書き方</a></h1>
+	<div class="entry-content">
+		<p>面白いかと思ったのでメモしときます。</p>
+
+<h2>普通の書き方</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;newclass&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>効率のいい書き方</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">row</span><span class="p">;</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">rows</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">row</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;newclass&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">row</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考サイト：<a href="http://www.javaeye.com/topic/455376">http://www.javaeye.com/topic/455376</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-22T00:00:00+09:00" pubdate data-updated="true">2010-02-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/comment-in-jsp-should-use-jsp-expression">jsp内のコメントアウトはjsp式の記述で</a></h1>
+	<div class="entry-content">
+		<h2>基本</h2>
+
+<p>多分ほとんどの人は分かっていると思いますが、
+jspファイル内のコメントの記述は以下になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%-- JSPのコメント --%&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてHTMLのコメントの記述は</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="ni">&amp;lt;</span>!-- HTMLのコメント --&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>問題</h2>
+
+<p>SP内でもHTMLのコメント記述が使えますが、
+コメントアウトした部分にJavaプログラムが埋め込んだ場合
+そのコードは実はコンパイルされてしまいます。
+例えば、</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!-- コメントアウト
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getNotExistMethod() %&gt;&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'> --&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここでは全く存在しないJavaのメソッドを書きました。
+このままだとJSPがコンパイルエラーになります。
+&#8220;The method getNotExistMethod() is undefined for the type HttpServletRequest&#8221;というメッセージです。</p>
+
+<h2>正しい方法</h2>
+
+<p>Javaプログラムが埋め込んだコードをコメントアウトするには
+JSPのコメント式を記述します。
+上記の例で言うとこうなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%-- JSPコメントアウト
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getNotExistMethod() %&gt;&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  -%&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>補足</h2>
+
+<p>下記のようなコンパイルが通るJavaコードが書かれた場合は、
+もちろんエラーは出ないし、 HTMLの部分もコメントアウトされたため画面には何も表示されません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!-- コメントアウト
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getContextPath() %&gt;&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  -&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-17T00:00:00+09:00" pubdate data-updated="true">2010-02-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/magic-mouse">MagicMouseを買いました</a></h1>
+	<div class="entry-content">
+		<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=fantasyday-22&o=9&p=8&l=as1&m=amazon&f=ifr&md=1X69VDGQCMF7Z30FM082&asins=B002TOJHB8" style="width:120px;height:240px;float:right;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" ></iframe>
+
+
+<p>マルチタッチがサポートされているマジックマウス、
+ついに購入しました。
+今のところはまだクリックとスクロールだけデフォルトで使えますが、
+そのうちフルパワーを発揮したいと思います。</p>
+
+<br/>
+
+
+<p>マルチタッチ以外でBluetoothが使えるのも私にとって大きなポイントです。
+今はACアダブタ以外にMacに接続する線などがなくなり
+整然とした感じです。
+ちなみにクリーニングも大変便利になりそうです。
+毛が立ってない布を使って表面を掃除できます。</p>
+
+<br/>
+
+
+<p>あとはゲームでもマルチタッチが使えるなら最高。。。</p>
+
+<p>以下写真を御覧下さい。
+<em>gallery link=&#8221;file&#8221;</em></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-16T00:00:00+09:00" pubdate data-updated="true">2010-02-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/is-cross-linking-websites-bad">クロスサイトのリンクはいいか悪いか</a></h1>
+	<div class="entry-content">
+		<h2>Question</h2>
+
+<p>If I have 3 websites, Is there a problem to cross link websites?</p>
+
+<h2>Answer by Google Webmaster Central</h2>
+
+<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
+
+
+<p>要はサイト間の&#8221;関連性&#8221;が一番大事です。
+関連性があればOKで、なければ無意味って感じです。</p>
+
+<h3>「海外SEO情報ブログ」からの訳文</h3>
+
+<blockquote><p>サイト同士に何らかの関連性があるかが問題だね。</p><p>1つがドライクリーニングのサイト、もう1つが古美術のサイト、もう1つが携帯レビューのサイトだとしたら、ページの下にリンクがあるのは奇妙だ。<br/>漫画のサイトを見ていたのに、ページの最後に行ったら自動車保険やコーヒーテーブルのサイトへのリンクが突然出てくるのは、何にも関係がない。</p><p>「どのくらい関連性があるのか」をまず先に考えてほしい。</p><p>3つのサイトで相互リンクしてもたいした数じゃないから、大きな問題にはならないと思う。<br/>でも、30サイト、300サイトでクロスリンクしていたら、「何の関係があるんだろうか」と一般のユーザーも競合も不思議に思うだろう。</p><p>紳士洋服・婦人洋服・子供洋服がクロスリンクしあうのは、関連があるから完全に理由がある。<br/>同じ企業傘下にある会社同士も、正当な理由があるから問題があるとは思えない。<br/>少ない数だったらまだいいかもしれないけど、サイトの規模が大きくなるに連れてページの下に大量のリンクが出現するのは良くないね。</p></blockquote>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-15T00:00:00+09:00" pubdate data-updated="true">2010-02-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-variable-no-block-scope">Javascript変数にブロックスコープはない</a></h1>
+	<div class="entry-content">
+		<p>JavaをやってからJavascriptを触ったので、
+Javascript変数にブロックレベルのスコープがないことにビックリしました。
+if文ブロックか、forループブロックか関係なく、
+function内に定義された変数は全て同じスコープ：functionのスコープになります。</p>
+
+<br/>
+
+
+<p>例えば</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                      <span class="c1">// i is defined throughout function</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">o</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                  <span class="c1">// j is defined everywhere, not just block</span>
+</span><span class='line'>        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// k is defined everywhere, not just loop</span>
+</span><span class='line'>            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>          <span class="c1">// k is still defined: prints 10</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>              <span class="c1">// j is defined, but may not be initialized</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>変数kとjはそれぞれif文のブロック、forループのブロック内に定義されたが、
+実はfunctionのスコープとなりfunction内ならどこでも参照できます。</p>
+
+<br/>
+
+
+<p>これをしっかり理解しないと以下のようなミスが起こしやすいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;undefined&quot;, not &quot;global&quot;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>  <span class="c1">// Variable initialized here, but defined everywhere</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>         <span class="c1">// Displays &quot;local&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">test</span><span class="p">(</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>一番目のalertは&#8221;global&#8221;だと思ったらこの記事を読む価値はあるでしょう。
+一番目のalertは&#8221;undefined&#8221;を表示します。
+なぜならさっき言ったように変数のスコープはfunction内に跨るのです。
+varで宣言する位置、順番と関係ありません。</p>
+
+<br/>
+
+
+<p>ここではfunction内で同じ名前でscopeという変数が宣言され、
+&#8220;global&#8221;の値を持つグローバル変数は上書きされました。
+そして一番目のalert時のscopeは初期化されていないため、undefinedとなってしまいます。</p>
+
+<br/>
+
+
+<p>上記のコードを書き換えると以下と同じです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">scope</span><span class="p">;</span>       <span class="c1">// Local variable is declared at the start of the function</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// It exists here, but still has &quot;undefined&quot; value</span>
+</span><span class='line'>    <span class="nx">scope</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span> <span class="c1">// Now we initialize it and give it a value</span>
+</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">scope</span><span class="p">);</span>    <span class="c1">// And here it has a value</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>誤解を招かないように変数の宣言はfunctionの先頭に置くのが大事ですね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-12T00:00:00+09:00" pubdate data-updated="true">2010-02-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/to-find-out-ruby-object-class">Ruby オブジェクトのクラスを調べるには？</a></h1>
+	<div class="entry-content">
+		<p>Rubyでは変数の型を宣言しないです。
+そのため、オブジェクトは実際に何型かがわからない時が多いです。
+オブジェクトのクラスを調べるには以下の三つの方法があります。</p>
+
+<h2>class</h2>
+
+<p>オブジェクトのクラスを調べられます。
+返された結果はクラス名です。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">class</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>出力結果：string</p>
+
+<h2>kind_of?</h2>
+
+<p>オブジェクトは特定のクラス又はそのサブクラスのインスタンスかどうかを調べられます。
+モジュールに関しても、調べられます。
+返された結果はtrue又はflaseです。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">kind_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>出力結果：true</p>
+
+<p>ちなみに、is_a？メソッドもあります。kind_of？の使い方と同じです。</p>
+
+<h2>instance_of?</h2>
+
+<p>オブジェクトは特定のクラスのインスタンスかどうかを調べられます。
+kind_of?との区別は、サブクラスを含まらないことです。
+つまり、kind_of?はサブクラスまで調べられますが、
+instance_of?は特定のクラスだけ、サブクラスを調べられないです。
+返された結果はtrue又はflaseです。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">instance_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>出力結果：true</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-03T00:00:00+09:00" pubdate data-updated="true">2010-02-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-get-opener-window-document">Javascript window.openで開いたページで親ウィンドウのdocumentを取得には</a></h1>
+	<div class="entry-content">
+		<p>window.open()で新規開いた小窓ウィンドウで親ウィンドウのdocumentを取得するには
+下記のプロパティを使います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nb">document</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで親ウィンドウの値を取得するだけではなく、
+値を編集することもできます。</p>
+
+<br/>
+
+
+<p>例えば下記のコードは親ウィンドwのフォーム内のテキストをAAAに変更します。
+新規開いたページに記述します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">FORM1</span><span class="p">.</span><span class="nx">TEXT1</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="s2">&quot;AAA&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.tohoho-web.com/js/window.htm#open">とほほのJavascriptレファレンス：ウィンドウオブジェクト</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-29T00:00:00+09:00" pubdate data-updated="true">2010-01-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/meta-tag-sequence-in-head-section">headには一番最初にMETAタグで文字コードを指定するのが望ましい</a></h1>
+	<div class="entry-content">
+		<p>HTMLのheadセクションにはタイトルといろんなMetaタグが記述されているが、
+その記述順番に気になったことはありますか?
+そしてそれがどのような影響があるかぐぐってみました。</p>
+
+<blockquote><p>headセクション内のタグの記述順に特に決まりはないが、&#8221;charset&#8221;で示す文字コード指定のタグは、titleタグやmeta description/keywordsタグよりも先に記述することが推奨される。の中身がまさに、文字で書かれ、文字コード判定が必要だからです。</p></blockquote>
+
+
+<p>そういえばWordpressを使ってからこの辺全然気にしてないので
+早速自分のサイトのheadセクションを確認しました。
+下記のようなものです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; dir=&quot;ltr&quot; lang=&quot;en-US&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>head profile=&quot;http://gmpg.org/xfn/11&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>Kinopyo<span class="ni">&amp;amp;</span>#039;s Blog<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なるほど、、metaタグでcharsetがUTF-8になってるから
+titleのところのシングルクォーテーションがUTF-8の#039になったわけですね。
+考えてみれば当たり前のことだけれど。。。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.google.com/support/forum/p/webmasters/thread?tid=43832eca33833101&amp;amp;hl=ja">MetaタグとTitleタグの位置関係について</a>
+<a href="http://web-tan.forum.impressrd.jp/e/2010/01/08/7139">ブラックなSEOで人生を失った悲惨な男の物語 など10記事（海外&amp;国内SEO情報）</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-27T00:00:00+09:00" pubdate data-updated="true">2010-01-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/25/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/27/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

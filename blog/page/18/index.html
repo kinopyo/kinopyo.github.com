@@ -1,0 +1,874 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="ターミナルで
+sudo visudo そして次のラインを追加。(&#8220;kinopyo&#8221;は自分のユーザ名に変更してください) 1
+kinopyo ALL=(ALL) NOPASSWD: ALL 中文 先在Terminal输入
+sudo visudo 接着插入下面的代码。(&# &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sudo%e3%81%a7%e3%83%91%e3%82%b9%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%aa%e3%81%84%e6%96%b9%e6%b3%95">Sudo without password on Ubuntu</a></h1>
+	<div class="entry-content">
+		<p>ターミナルで
+sudo visudo</p>
+
+<p>そして次のラインを追加。(&#8220;kinopyo&#8221;は自分のユーザ名に変更してください)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kinopyo ALL=(ALL) NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>中文</h1>
+
+<p>先在Terminal输入
+sudo visudo</p>
+
+<p>接着插入下面的代码。(&#8220;kinopyo&#8221;是你的用户名)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kinopyo ALL=(ALL) NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>English</h1>
+
+<p>Type this command first.
+sudo visudo</p>
+
+<p>Then add this line at the end (change “kinopyo” to your username):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kinopyo ALL=(ALL) NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00+09:00" pubdate data-updated="true">2011-04-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/sudo/'>sudo</a>, <a class='category' href='/blog/categories/unix/'>unix</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/be-careful-when-using-http-build-query-in-php">http_build_queryを使うときの注意点：URLパラメータ区切りがエスケープされる(XAMPP要注意)</a></h1>
+	<div class="entry-content">
+		<h2>障害</h2>
+
+<p>http_build_queryを使ってurlのパラメータを作るときにパラメータがこうなりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>foo=bar&amp;amp;baz=boo&amp;amp;hoge=hoge
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記のように複数のパラメータがある時に<strong>;</strong>であるべきのところが<strong>&amp;</strong>となってしまいました。</p>
+
+<p>これはPHPの設定ファイル、php.iniのarg_separator.outputで制御されてて、XAMPPの場合インストールされたデフォルトでは、「&amp;」となるそうです。</p>
+
+<h2>解決方法</h2>
+
+<p>なので、php.iniの「arg_separator.output」の値を「&amp;」から「&amp;」に変更する</p>
+
+<h2>参考</h2>
+
+<p>http_build_queryを使うときの注意点(PHP)
+<a href="http://www.multiburst.net/sometime-php/2008/12/http_build_query/">http://www.multiburst.net/sometime-php/2008/12/http_build_query/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00+09:00" pubdate data-updated="true">2011-04-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/evernote-paste-without-formattingas-text">Evernote: Paste Without Formatting/as Text</a></h1>
+	<div class="entry-content">
+		<p>EvernoteでPlainText（スタイルなし）として貼りつけたときの方法です。</p>
+
+<p>Win: Edit-> Paste as Text (Ctrl+Shift+V)
+Mac: Edit -> Paste Without Formatting (Command + Shift + V)</p>
+
+<h1>中文</h1>
+
+<p>用以下热键可以使你粘贴纯文本。</p>
+
+<p>Win: Edit-> Paste as Text (Ctrl+Shift+V)
+Mac: Edit -> Paste Without Formatting (Command + Shift + V)</p>
+
+<h1>English</h1>
+
+<p>Here is the short cut key</p>
+
+<p>Win: Edit-> Paste as Text (Ctrl+Shift+V)
+Mac: Edit -> Paste Without Formatting (Command + Shift + V)</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-18T00:00:00+09:00" pubdate data-updated="true">2011-03-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication">PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication</a></h1>
+	<div class="entry-content">
+		<h2>問題</h2>
+
+<blockquote><p>新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”</p></blockquote>
+
+
+
+
+<blockquote><p>MacPortでインストールしたPHP5.3では、</p><p>mysqlnd(php5.3のmysql native client)が適用される。<br/>しかし、CentOSなどのyumでインストールできるMySQLサーバーとの相性がよろしくない。<br/>PHP Warning:  mysql_connect(): mysqlnd cannot connect to MySQL 4.1+ using old authentication<br/>というエラーが現れ、接続することができません。<br/>mysqlndを利用しないよう再コンパイルが必要となる。</p></blockquote>
+
+
+<h2>解決方法</h2>
+
+<p>portでインストールしたモジュールを確認、mysqlndがactiveなってるはず。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port installed
+</span><span class='line'>
+</span><span class='line'>php5-mysql @5.3.5_0+mysqlnd (active)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてmysql5のvariantsを指定で再インストール。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>% sudo port install php5-mysql +mysql5
+</span><span class='line'>
+</span><span class='line'>---&gt;  Computing dependencies for php5-mysql
+</span><span class='line'>---&gt;  Fetching php5-mysql
+</span><span class='line'>---&gt;  Verifying checksum(s) for php5-mysql
+</span><span class='line'>---&gt;  Extracting php5-mysql
+</span><span class='line'>---&gt;  Configuring php5-mysql
+</span><span class='line'>---&gt;  Building php5-mysql
+</span><span class='line'>---&gt;  Staging php5-mysql into destroot
+</span><span class='line'>---&gt;  Installing php5-mysql @5.3.5_0+mysql5
+</span><span class='line'>---&gt;  Deactivating php5-mysql @5.3.5_0+mysqlnd
+</span><span class='line'>---&gt;  Cleaning php5-mysql
+</span><span class='line'>---&gt;  Activating php5-mysql @5.3.5_0+mysql5
+</span><span class='line'>---&gt;  Cleaning php5-mysql
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>再度port installedで確認すればmysql5がactiveになるはず。これで解決。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>php5-mysql @5.3.5_0+mysqlnd
+</span><span class='line'>php5-mysql @5.3.5_0+mysql5 (active)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考</h2>
+
+<p>【php】mysqlndを使うとMySQLに接続できない
+<a href="http://www.softel.co.jp/blogs/tech/archives/2225">http://www.softel.co.jp/blogs/tech/archives/2225</a></p>
+
+<p>SnowLeopard + PHP5.3でのMySQLリモート接続
+<a href="http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html">http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html</a></p>
+
+<p>PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication
+<a href="http://www.bitshop.com/Blogs/tabid/95/EntryId/67/PHP-mysqlnd-cannot-connect-to-MySQL-4-1-using-old-authentication.aspx">http://www.bitshop.com/Blogs/tabid/95/EntryId/67/PHP-mysqlnd-cannot-connect-to-MySQL-4-1-using-old-authentication.aspx</a></p>
+
+<h2>おまけ</h2>
+
+<p>mysqlが古い16バイトのパスワードを使ってるかを確認する方法です。
+mysqlにログインして下記コマンドを実行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql&gt; select password('aa');
+</span><span class='line'>
+</span><span class='line'>+------------------+
+</span><span class='line'>| password('aa')         |
+</span><span class='line'>+------------------+
+</span><span class='line'>| 0123456789abcdef |
+</span><span class='line'>+------------------+
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>16位だっだら古いです。40位なら新しいってことです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-17T00:00:00+09:00" pubdate data-updated="true">2011-03-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cakephp-and-strict-standards">CakePHP, and Strict Standards</a></h1>
+	<div class="entry-content">
+		<p>MacportでPHPをインストールし、CakePHPを動かしたら「Strict Standards」エラーが出ました。
+当時のエラー本文は残ってませんので、Googleで検索したエラー本文を貼り付けます。パス以外は同じのはずです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/basics.php on line 279
+</span><span class='line'>Strict Standards: Redefining already defined constructor for class Object in /Applications/MAMP/htdocs/xxxx/cake/libs/object.php on line 65
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/object.php on line 92
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/inflector.php on line 65
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/configure.php on line 96
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/configure.php on line 154
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/cache.php on line 71
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/cache.php on line 157
+</span><span class='line'>Strict Standards: Non-static method Configure::getInstance() should not be called statically in /Applications/MAMP/htdocs/xxxx/cake/bootstrap.php on li
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決方法</h2>
+
+<p>これはCakePHPの問題ではなく、PHPのerror_reportingの設定問題だそうです。
+php.iniを開いて<strong>error_reporting</strong>で検索します。
+値を<strong>E_ALL</strong>に変更すれば解決です。</p>
+
+<p>ちなみにMacportでPHPをインストールしたときのphp.iniパスは<strong>/opt/local/etc/php5/php.ini</strong>になります。</p>
+
+<h2>参考リンク</h2>
+
+<p><a href="http://oldblog.awpny.com/2007/12/mamp-php5-cakephp-and-strict-standards/">http://oldblog.awpny.com/2007/12/mamp-php5-cakephp-and-strict-standards/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-17T00:00:00+09:00" pubdate data-updated="true">2011-03-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-call-json-api-sample-code">PHPで他のJSON形式APIをコールするサンプルコード</a></h1>
+	<div class="entry-content">
+		<p>file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">// APIコール</span>
+</span><span class='line'><span class="x">$api_url = &#39;http://example.com/api/&#39;;</span>
+</span><span class='line'><span class="x">$api_ret = file_get_contents($api_url);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// JSONにデコード</span>
+</span><span class='line'><span class="x">$api_result = json_decode($api_ret,true);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// APIエラーチェック: 何かしらの成功フラグでチェック</span>
+</span><span class='line'><span class="x">if(isset($api_result*&#39;success&#39;]) &amp;&amp; $api_result[&#39;success&#39;* == 0)</span>
+</span><span class='line'><span class="x">{</span>
+</span><span class='line'><span class="x">    // 処理</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">else</span>
+</span><span class='line'><span class="x">{</span>
+</span><span class='line'><span class="x">    // handle error</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-07T00:00:00+09:00" pubdate data-updated="true">2011-03-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/api/'>API</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/error-installing-rails-bundler-requires-rubygems-version-1-3-6">Error installing rails bundler requires RubyGems version >= 1.3.6</a></h1>
+	<div class="entry-content">
+		<p>sudo gem install railsでこんなエラーが出ちゃいました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Error installing rails bundler requires RubyGems version &gt;= 1.3.6
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>解決策は</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo gem update --system
+</span><span class='line'>
+</span><span class='line'>pdating RubyGems
+</span><span class='line'>Updating rubygems-update
+</span><span class='line'>Successfully installed rubygems-update-1.6.1
+</span><span class='line'>Updating RubyGems to 1.6.1
+</span><span class='line'>Installing RubyGems 1.6.1
+</span><span class='line'>RubyGems 1.6.1 installed
+</span><span class='line'>
+</span><span class='line'>=== 1.6.1 / 2011-03-03
+</span><span class='line'>
+</span><span class='line'>Bug Fixes:
+</span><span class='line'>
+</span><span class='line'>#  Installation no longer fails when a dependency from a version that won't be
+</span><span class='line'>  installed is unsatisfied.
+</span><span class='line'>#  README.rdoc now shows how to file tickets and get help.  Pull Request #40 by
+</span><span class='line'>  Aaron Patterson.
+</span><span class='line'>#  Gem files are cached correctly again.  Patch #29051 by Mamoru Tasaka.
+</span><span class='line'>#  Tests now pass with non-022 umask.  Patch #29050 by Mamoru Tasaka.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>------------------------------------------------------------------------------
+</span><span class='line'>
+</span><span class='line'>RubyGems installed the following executables:
+</span><span class='line'>  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/gem
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>を実行した後にsudo gem install railsでrailsをインストールすればOKです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-07T00:00:00+09:00" pubdate data-updated="true">2011-03-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/first-gadget-xml-with-igoogle">初めてのgadget.xml with iGoogle</a></h1>
+	<div class="entry-content">
+		<p>Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。<a href="http://code.google.com/apis/gadgets/docs/gs.html">http://code.google.com/apis/gadgets/docs/gs.html</a>を参照してください。</p>
+
+<h2>ソースを用意</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+</span><span class='line'><span class="nt">&lt;Module&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;ModulePrefs</span> <span class="na">title=</span><span class="s">&quot;Hello World!&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;Content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">      Hello, world!</span>
+</span><span class='line'><span class="cp">    ]]]]&gt;&lt;![CDATA[&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/Content&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Module&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-28T00:00:00+09:00" pubdate data-updated="true">2011-02-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/web/'>Web</a>, <a class='category' href='/blog/categories/gadget/'>gadget</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ajax-and-pageview">Ajaxとアクセス解析PVの関係</a></h1>
+	<div class="entry-content">
+		<p>AJAXでのアクセスはPVにカウントされない、というのをこの間にミーティングで知りました。考えてみりゃ当たり前のことですが、考えたことはなかったです。。でどうするか、とのことでちょっとぐぐってみました。</p>
+
+<p>結論からいうと<strong>ダミーのページを指定するようにJavascript側で書く</strong>（Google Analytics前提）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">urchinTracker</span><span class="p">();</span> <span class="c1">// デフォルト</span>
+</span><span class='line'><span class="nx">urchinTracker</span><span class="p">(</span><span class="s2">&quot;/hogehoge&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">urchinTracker</span><span class="p">(</span><span class="s2">&quot;/hogehoge/hege&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>みたいな感じです。urchinTrackerはGoogle Analyticsが提供してくれるファンクションです。
+ダミーページに階層式にするのは後で統計しやすいような工夫だそうです。</p>
+
+<p>原理はこちらを参照してください：<a href="http://markezine.jp/article/detail/1243">http://markezine.jp/article/detail/1243</a>
+ちょっと長いですが、細かく解説した文章です。</p>
+
+<p>こちらも役に立つかと思います。<a href="http://creazy.net/2007/06/ajax_access_analyze.html">http://creazy.net/2007/06/ajax_access_analyze.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-23T00:00:00+09:00" pubdate data-updated="true">2011-02-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/ajax/'>ajax</a>, <a class='category' href='/blog/categories/pageview/'>pageview</a>, <a class='category' href='/blog/categories/アクセス解析/'>アクセス解析</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-install-oracle-instant-client-on-xampp-for-windows">Windows XAMPPにOracle Instantclientをインストール</a></h1>
+	<div class="entry-content">
+		<p>Oracle Instantclientをインストールすることで、PHPからOracleデータベースへの接続が可能になります。</p>
+
+<p>XAMPPのデフォルトインストールではそれが無効となっています。確認方法はphpinfoのページから&#8217;oci8&#8217;を検索して何もなかったらつまり接続できてないことです。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li>php.ini(XAMPP/phpのパスにある)の中から;extension=php_oci8.dllを検索して、セミコロン(;)を削除。</li>
+<li>Oracleから“Instant Client Package – Basic” for Windowsをダウンロードし、任意の場所に解凍。ここではc:\instantclient_11_1とする。</li>
+<li>Windowsの環境変数pathに上記instantclientが解凍されたパスを追加(c:\instantclient_11_1)</li>
+<li>そしてWindowsを再起動！</li>
+<li>Apacheを再起動</li>
+</ul>
+
+
+<br/>
+
+
+<h2>確認</h2>
+
+<p>phpinfoのページからoci8を検索してあれば成功！</p>
+
+<br/>
+
+
+<h2>その他</h2>
+
+<ul>
+<li>ORACLE_HOMEやORACLE_SIDなどの環境変数はInstant Clientでは必要ないから設定しなくても大丈夫だそう。</li>
+<li>パス設定後Windowsを再起動しないと、&#8221;unable to load dynamic library php_oci8.dll&#8221;のようなエラーが出た。</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-18T00:00:00+09:00" pubdate data-updated="true">2011-02-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/xampp/'>XAMPP</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/17/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/19/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

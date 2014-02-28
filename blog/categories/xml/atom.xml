@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xml | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/xml/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cakephp XML to Array]]></title>
+    <link href="http://kinopyo.com/blog/cakephp-xml-to-array"/>
+    <updated>2011-05-15T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/cakephp-xml-to-array</id>
+    <content type="html"><![CDATA[<p>CakephpでXMLを配列に変換するのはとても簡単です。
+下記のファンクションを使えば一発でできます。</p>
+
+<p><code>php
+uses('Xml');
+$xml = new Xml("/path/to/xml");
+$xml_array = Set::reverse($xml);
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

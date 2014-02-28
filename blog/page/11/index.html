@@ -1,0 +1,649 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1283896&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt; 日本語 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rspec-shared_context-sample-code">rspec shared context sample code</a></h1>
+	<div class="entry-content">
+		<div><script src='https://gist.github.com/1283896.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1283896&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<h1>日本語</h1>
+
+<p>shared_context はその名前の通りコンテキスト (テストを行なうときの状況) を共有するための機能です。
+shared_context を使うことで複数箇所にちらばる同一処理をまとめることができます。shared_context は shared_context が書かれたファイルを require することでも使えるようになるので別のスペックファイルでも使うことができます。</p>
+
+<div><script src='https://gist.github.com/1283896.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1283896&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-13T00:00:00+09:00" pubdate data-updated="true">2011-10-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/best-practice/'>best_practice</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/shared-context/'>shared_context</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/textmate-auto-refresh-browers-when-saving-file">TextMate Auto-refresh your browsers when saving file in Textmate</a></h1>
+	<div class="entry-content">
+		<h2>Overview</h2>
+
+<p>This is a tip to auto refresh your browser(s) when you hit Command + S(means saving file) in Textmate.</p>
+
+<h2>Steps</h2>
+
+<p>Open Bundle Editor, look for HTML, there will be a snippet called &#8216;Refresh Running Browser(s)&#8217;.</p>
+
+<p>The code in the right side is very easy to understand. First it checks if one browser is opened, if yes, refresh it. By default it supports all the major browsers.</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" title="Bundle Editor Refresh Running Browsers" ></p>
+
+<p><strong>Set the Activation Key Equivalent to Command + S, and delete those file type in Scope Selector.</strong>
+This way when you hit Command + S, text mate will save the file first and refresh all your opened browser.</p>
+
+<p>If you want to just refresh a specific browser, like Safari, you can copy the snippet related to your browser.
+Below is a sample for Safari.</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" title="Textmate auto refresh safari" ></p>
+
+<h1>日本語</h1>
+
+<h2>目的</h2>
+
+<p>Textmateでファイルを保存（Command + S）したら自動でブラウザをリフレッシュしてくれる。</p>
+
+<h2>手順</h2>
+
+<p>Bundle Editorを開いて、HTMLのセクションの中の「Refresh Running Browser(s)」をクリックします。</p>
+
+<p>右側のコードはわかりやすいです。まずそのブラウザが起動しているかをチェックして、リフレッシュします。デフォルトではFirefox、ChromeやSafariなど全部対応しています。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Bundle-Editor-Refresh-Running-Browsers-450x325.jpg" title="Bundle Editor Refresh Running Browsers" ></p>
+
+<p><strong>Activation Key EquivalentをCommand + Sに変更して下のScope Selectorを空にします</strong>
+これでCommand + Sでファイルを保存した場合起動中のブラウザは全部リフレッシュされるはずです。</p>
+
+<p>もし特定のブラウザだけリフレッシュしたい場合は、コピペーで新規にSnippetを作成し、該当のブラウザのコードだけを貼ればいいです。以下はSafariの例です。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Textmate-auto-refresh-safari-450x334.png" title="Textmate auto refresh safari" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/textmate/'>TextMate</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/editor/'>editor</a>, <a class='category' href='/blog/categories/safari/'>safari</a>, <a class='category' href='/blog/categories/textmate/'>textmate</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-custom-log-file">Railsでcustom log(file)の作り方</a></h1>
+	<div class="entry-content">
+		<h2>Overview</h2>
+
+<p>rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます</p>
+
+<h2>ソースコード</h2>
+
+<div><script src='https://gist.github.com/1278448.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1278448&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<h2>参考</h2>
+
+<p><a href="http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/">http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/</a>
+<a href="http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/">http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/log/'>log</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-move-keyboard-focus-between-windows-and-dialogs">Mac Tabであらゆるダイアログのフォーカスを移動</a></h1>
+	<div class="entry-content">
+		<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don&#8217;t Save, Cancel, Save&#8230;」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
+
+<p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Keyboard-All-controls.jpg" title="Keyboard All controls" ></p>
+
+<p>そこでの説明文の通り「In windows and dialogs, press Tab to move keyboard focus between All controls」、Tabであらゆるウィンドウやダイアログのキーボードフォーカスを移動することができます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Control-using-tab-focus.jpg" title="Control using tab focus" ></p>
+
+<p>上記のようなダイアログが出るとしたら、Tab(Shift + Tab)で薄青色のフォーカスを移動して、スペースキーで該当の操作を実行できます。通常の青色はフォーカスの位置と関係なくreturnキーで操作を実行できます。</p>
+
+<p>これでマウスなしでらくらく。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/shortcut/'>shortcut</a>, <a class='category' href='/blog/categories/tab/'>tab</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/git-what-to-do-when-merge-conflict">Git コンフリクトになった場合の対処</a></h1>
+	<div class="entry-content">
+		<p>git pullとかgit mergeでコンフリクトとなったファイルを編集して、git add、git commitすればいいです。コミットメッセージも必要です。
+git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
+￼
+コミットログはこんな感じです。SVNとは違ってコミットログに残るのが何か慣れないです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git log --oneline
+</span><span class='line'>63bc3d1 fixed merge conflict
+</span><span class='line'>bbfdd9e edit in master
+</span><span class='line'>3dcfb2f edit in work
+</span><span class='line'>9eedc58 made a</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/conflict/'>conflict</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/merge/'>merge</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/remembering-steve-jobs">Remembering Steve Jobs</a></h1>
+	<div class="entry-content">
+		<p>Let&#8217;s remember the day Steve Jobs passed away.</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Apple-Steve-Jobs.jpg" title="Apple Steve Jobs" ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Screen-Shot-2011-10-06-at-11.03.50.png" title="Steve Jobs passed away" ></p>
+
+<p>I do write a mail to rememberingsteve@apple.com, did you?</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-06T00:00:00+09:00" pubdate data-updated="true">2011-10-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/apple/'>apple</a>, <a class='category' href='/blog/categories/steve-jobs/'>steve jobs</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/change-safari-useragent">SafariのUserAgentを変更</a></h1>
+	<div class="entry-content">
+		<p>SafariのPreferences-> Advancedタブで&#8221;Show Develop menu in menu bar&#8221;をチェックします。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg" title="Safari-show-develop-menu-in-menu-bar" ></p>
+
+<p>これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg" title="Safari-change-useragent" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-30T00:00:00+09:00" pubdate data-updated="true">2011-09-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/safari/'>Safari</a>, <a class='category' href='/blog/categories/useragent/'>UserAgent</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/change-checkbox-size-in-iphone-safari">iPhone safari(webkit-base browser)のcheckboxのサイズを調整</a></h1>
+	<div class="entry-content">
+		<p>Webkit-baseのブラウザ(Safari, Google Chrome)に適用します。</p>
+
+<p>普通のcheckboxはiphoneのようなスマートフォンで見るときとても小さいです。checkboxはcssでheightやwidthを指定しても効かないため、ちょっとしたトリックが必要です。</p>
+
+<div><script src='https://gist.github.com/1252946.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1252946&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<p>実機ではこんなふうになります。2.0, 1.5, 1.0の3つのサンプルです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/scale-checkbox-in-iphone-safari.jpg" alt="" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-30T00:00:00+09:00" pubdate data-updated="true">2011-09-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>CSS</a>, <a class='category' href='/blog/categories/checkbox/'>checkbox</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts">Rails3.1 Capistranoでデプロイする時にpublic/images, stylesheets, javascriptsのNo such file or directoryエラー</a></h1>
+	<div class="entry-content">
+		<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。</p>
+
+<blockquote><p>#  executing &#8220;find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} &#8216;;&#8217;; true&#8221;<br/>    servers: *&#8221;176.32.95.168&#8221;*<br/>    *176.32.95.168* executing command<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/images&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/javascripts&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*</p></blockquote>
+
+
+<p><a href="https://github.com/capistrano/capistrano/issues/79#issuecomment-1767135" title="Githubにも載ってました。" target="_blank">Githubにも載ってました</a>エラーは無視しても大丈夫そうですが、下記の一行をdeploy.rbに追記すればエラー出なくなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/deploy.rb</span>
+</span><span class='line'><span class="n">set</span> <span class="ss">:normalize_asset_timestamps</span><span class="p">,</span> <span class="kp">false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-25T00:00:00+09:00" pubdate data-updated="true">2011-09-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200">Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
+発生バージョンはRails 3.1。</p>
+
+<h2>解決策</h2>
+
+<p>app/tmp/cacheを削除し、rake assets:precompileをもう一回実行。
+ブラウザキャッシュを消してリロード。</p>
+
+<h2>調査経緯</h2>
+
+<p>assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部チェックしましたが、全然ダメでした。
+最後はgithubの<a href="https://gist.github.com/rails/rails/issues/2299" title="このスレ" target="_blank">このスレ</a>の方法で解決になりました。</p>
+
+<p>問題となったrails applicationはRails 3.1.rc1から作っていたもので、そのままrc4, rc5, stableに更新してきました。githubで議論されたのはrc4からrc5になったときにこのような現象があったようです。恐らくtmp/cacheが変な動きをして手動で削除しない限り古いバージョンのものがずっと残されたかもしれません。</p>
+
+<h2>おまけ</h2>
+
+<p>Asset Pipelineの周りの設定ファイルを一応貼っておきます。</p>
+
+<div><script src='https://gist.github.com/1239153.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1239153&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<p>Githubでのスレ：<a href="https://gist.github.com/rails/rails/issues/2299">https://gist.github.com/rails/rails/issues/2299</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-24T00:00:00+09:00" pubdate data-updated="true">2011-09-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/asset-pipeline/'>Asset Pipeline</a>, <a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/10/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/12/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

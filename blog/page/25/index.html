@@ -1,0 +1,987 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="久々にJavaを書いたので、表題のExceptionにハマっちゃいました。
+こんなコードでした。 1
+2
+3
+4
+5
+String** array = {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}; List&lt;String&gt; list &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-unsupportedoperationexception-when-manipulate-java-list">Java：List操作時のUnsupportedOperationExceptionについて</a></h1>
+	<div class="entry-content">
+		<p>久々にJavaを書いたので、表題のExceptionにハマっちゃいました。
+こんなコードでした。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">**</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;a&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">,</span> <span class="s">&quot;c&quot;</span><span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;d&quot;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちょこっとググッてみたらasListで作ったListに
+add()で要素を追加すると上記のExceptionになるそうです。
+asListのJavadocでの記載は</p>
+
+<blockquote><p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p></blockquote>
+
+
+<p>なるほど。。。
+とりあえず深く考えずに下記のように書き換えて回避しました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">**</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;a&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">,</span> <span class="s">&quot;c&quot;</span><span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;d&quot;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T00:00:00+09:00" pubdate data-updated="true">2010-04-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-number-format-exception-when-parseint">Java：Integer.parseInt時のNumberFormatExceptionについて</a></h1>
+	<div class="entry-content">
+		<p>ハマっちゃったException第二弾です。
+実際はハマったワケではありませんが、
+一応こんなExceptionがあると。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">blank</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">blank</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで余裕に下記のExceptionが出ます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java.lang.NumberFormatException: For input string: ""</span></code></pre></td></tr></table></div></figure>
+
+
+<p>何も考えずにあるJavascriptの処理をJavaに書き換える作業で発生したんです。
+JavascriptはブランクをparseIntするとNaN(Not a Number)になるが、
+Javaは完全におちますね。。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T00:00:00+09:00" pubdate data-updated="true">2010-04-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery1-3-2-memory-leak-when-bind-with-namespace-in-ie6">jQuery1.3.2 bind時にnamespaceを使うとIE6ではメモリリーク</a></h1>
+	<div class="entry-content">
+		<p>表題の通り、IE6 + jQuery1.3.2の状態でbindする時に
+jQueryのnamespaceを使うと確実にメモリリークが発生します。
+jQuery1.4.2では発生しないことを確認しました。</p>
+
+<h2>メモリリークが発生するコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change.abc&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記&#8221;change.abc&#8221;のabcがnamespaceです。
+それをなくすことでメモリリークは解消されます。
+イベントハンドラの中身とは関係ありません。</p>
+
+<h2>メモリリークは発生しない</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これはjQueryのbugとして上げられましたが、
+完全に修正できなかったみたいです。
+<a href="http://dev.jquery.com/ticket/4241">http://dev.jquery.com/ticket/4241</a>で
+当時の担当者のコメントを見ると</p>
+
+<blockquote><p>I had a really difficult time getting a reliable test case to verify this actually solves the memory leak. r6321 appears to have fixed this issue</p></blockquote>
+
+
+<p>「時間ないからちゃんとテストしてない、r6321の対応で解決できたように見える」と、
+ずいぶん適当な回答ですよね。。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-04T00:00:00+09:00" pubdate data-updated="true">2010-04-04</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-init-map-with-data">Java: Mapをnewした時に値を入れて初期化するコード</a></h1>
+	<div class="entry-content">
+		<p>表題の通り、Mapをnewしたときに値を入れて
+初期化するコード方法です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">put</span><span class="o">(</span><span class="s">&quot;one&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-31T00:00:00+09:00" pubdate data-updated="true">2010-03-31</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-performance-direct-dom-manipulatio">jQueryパフォーマンス：DOM操作について</a></h1>
+	<div class="entry-content">
+		<p>DOM操作を避けてjQueryのパフォーマンスを改善する掟です。
+こんなコードがあるとしましょう。</p>
+
+<h2>パフォーマンスの悪い例</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="o">*</span><span class="p">....</span><span class="o">*</span><span class="p">;</span>    <span class="c1">// 長さ100の配列とする</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">li</span><span class="p">)</span>
+</span><span class='line'>       <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">)</span>
+</span><span class='line'>       <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">list</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>改善したコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="o">*</span><span class="p">....</span><span class="o">*</span><span class="p">;</span>    <span class="c1">// 長さ100の配列とする</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">li</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li id=&#39;li&quot;</span> <span class="o">+</span> <span class="nx">i</span> <span class="s2">&quot;&#39;&gt;&quot;</span> <span class="o">+</span> <span class="nx">list</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span> <span class="o">+</span> <span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li>document.createElementの代わりにHTMLの文字列を作る</li>
+<li>jQueryオブジェクトに属性やテキストを設定するのではなく、直接HTML文字列に書く</li>
+<li>for文内毎回appendの代わりにhtml()を使う</li>
+</ul>
+
+
+<p>実際のプロジェクトでやってみたら10倍以上は速くなりました。
+とは言ってもこれはIE6でのパフォーマンスで、
+FirefoxやIE8だと悪い例のコードても遅いとは実感できないくらいでした。</p>
+
+<p>ちなみに
+$(li).attr(&#8230;).val(&#8230;).text(&#8230;)の方は読みやすいので結構気に入ったんですけど。。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-26T00:00:00+09:00" pubdate data-updated="true">2010-03-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-basic-variables-datatypes-operators-constant">PHP Basic - Variables, Datatypes, Operators and Constants</a></h1>
+	<div class="entry-content">
+		<h2>Declare a variable</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$my_variable;</span>
+</span><span class='line'><span class="x">$my_variable = 3;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Name it in your script, when PHP first sees a variable&#8217;s name in a script, it automatically creates the variable at that point.
+If you don&#8217;t initialize a variable in PHP, it&#8217;s given the default value of null.</p>
+
+<h2>Data Types</h2>
+
+<h3>Special Data Type</h3>
+
+<p>NULL : May only contain &#8216;null&#8217; as a value, meaning the variable explicitly does not contain any value
+Resource : Contains a reference to an external resource, such as a file or database</p>
+
+<p>Be careful, NULL is a data type.</p>
+
+<h3>Testing the Type of a Variable</h3>
+
+<ul>
+<li><p>gettype($x)
+It returns as a string.</p></li>
+<li><p>is_int( value )</p></li>
+<li>is_string( value )</li>
+<li>is_float( value )</li>
+<li>is_bool( value )</li>
+<li>is_array( value )</li>
+<li>is_object( value )</li>
+<li>is_resource( value )</li>
+<li>is_null( value )</li>
+</ul>
+
+
+<p>Returns true or false.</p>
+
+<h2>Changing a Variable&#8217;s Data Type</h2>
+
+<p>To use settype() , pass in the name of the variable you want to
+alter, followed by the type to change the variable to (in quotation marks).
+Assigning different values to the variable can also change the variable&#8217;s data type.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$test_var = 8.23;</span>
+</span><span class='line'><span class="x">settype( $test_var, &quot;string&quot; );</span>
+</span><span class='line'><span class="x">settype( $test_var, &quot;boolean&quot; );</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>after converting $test_var to a Boolean, it contains the value true
+(which PHP displays as 1 ). This is because PHP converts a non-zero number to the Boolean value true.</p>
+
+<h3>Changing Type by Casting</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$test_var</span> <span class="o">=</span> <span class="mf">8.23</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">boolean</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;1&quot;</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also cast a value to an integer,
+floating-point, or string value using three PHP functions:
+|# Functions|# Description|
+|intval( value )|Returns value cast to an integer|
+|floatval( value )|Returns value cast to a float|
+|strval( value )|Returns value cast to a string|</p>
+
+<p>intval() has another use: converting from a non?base-10 integer to a base-10 integer.
+For example, this code convert base-16 number &#8220;ff&#8221; to base-10 number.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo intval(&quot;ff&quot;, 16); // Displays &quot;255&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Operator</h2>
+
+<h3>Assignment Operators</h3>
+
+<p>For concatenation strings, using &#8220;.=&#8221; instead of &#8220;.+&#8221;.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$a = &quot;Start a sentence&quot;;</span>
+</span><span class='line'><span class="x">$b = &quot;and finish it.&quot;;</span>
+</span><span class='line'><span class="x">$a .= $b; // $a now contains &quot;Start a sentence and finish it.&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bitwise Operators</h3>
+
+<p>passed&#8230;</p>
+
+<h3>Comparison Operators</h3>
+
+<ul>
+<li><p>=== (identical)
+true if $x equals $y and they are of the
+same type; false otherwise</p></li>
+<li><p>!== (not identical)
+true if $x does not equal $y or they are not
+of the same type; false otherwise</p></li>
+</ul>
+
+
+<h3>Logical Operators</h3>
+
+<p>PHP considers the following values to be false :
++  The literal value false
++  The integer zero ( 0 )
++  The float zero ( 0.0 )
++  An empty string ( &#8221; &#8221; )
++  The string zero ( &#8220;0&#8221; )
++  An array with zero elements
++  The special type null (including any unset variables)
++  A SimpleXML object that is created from an empty XML tag (more on SimpleXML in -Chapter 19 )
+All other values are considered true in a Boolean context.</p>
+
+<p>Addtion to the &#8220;traditional&#8221; logical operators such as &#8220;&amp;&amp;&#8221; and &#8220;||&#8221;,
+PHP also have &#8220;and&#8221;, &#8220;or&#8221; and &#8220;xor&#8221;.
++  xor
+true if $x or $y (but not both) evaluates to true ; false
+otherwise</p>
+
+<h3>String Operators</h3>
+
+<p>There ’ s really only one string operator, and that ’ s the concatenation operator - .(dot).This operator simply
+takes two string values, and joins the right - hand string onto the left - hand one to make a longer string.</p>
+
+<h2>Operator Precedence</h2>
+
+<p>Almost the same except that the logical operator: &#8220;and&#8221; > &#8220;xor&#8221; > &#8220;or&#8221;
+has the lowest precedence.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$x = false || true; // $x is true</span>
+</span><span class='line'><span class="x">$x = false or true; // $x is false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the second line, the &#8220;=&#8221; has higher precedence than &#8220;or&#8221;.</p>
+
+<h2>Constants</h2>
+
+<p>Constants may only contain scalar values such as Boolean, integer, float, and string (not values such as arrays and objects).</p>
+
+<p>Constants do not start with the dollar sign</p>
+
+<p>To define a constant, use the define() function.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">define(&quot;MY_CONSTANT&quot;,&quot;19&quot;); // MY_CONSTANT always has the string value &quot;19&quot;</span>
+</span><span class='line'><span class="x">echo MY_CONSTANT; // Displays &quot;19&quot; (note this is a string, not an integer)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-24T00:00:00+09:00" pubdate data-updated="true">2010-03-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/dir-command-to-output-all-subfolder-file-nam">dirコマンドでサブフォルダにあるファイル一覧を出力</a></h1>
+	<div class="entry-content">
+		<p>dir /s /b >file.txt</p>
+
+<p><strong>/s</strong>指定されたディレクトリおよびそのサブディレクトリのすべてのファイルを表示します。
+<strong>/b</strong>は拡張子とディレクト付きのファイル名を表示します。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T00:00:00+09:00" pubdate data-updated="true">2010-03-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/windows/'>Windows</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery1-3-2_bug_trim_nbsp">jQuery1.3.2のバグ?IEで&nbsp;を$.trimするとき変な結果に</a></h1>
+	<div class="entry-content">
+		<p>jQuery 1.4.2ではこれは治ったようです。
+jQuery最新版をお使いの方は下記のようなバグはもう発生しません。</p>
+
+<h2>サンプル</h2>
+
+<p>※jQuery 1.3.2で発生する問題※</p>
+
+<h3>HTML</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option&gt;</span>11<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option&gt;</span>22<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;tr</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/tr&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Javascript</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">optionText</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// firefoxは0、IEは1</span>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;select optionタグの をtrimした後のlength: &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">optionText</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">trText</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#bar&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// firefoxは0、IEも0！</span>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;trタグの をtrimした後のlength: &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">trText</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>結果</h2>
+
+<p>selectのoptionタグのテキストにある<span>&#8220;&amp;nbsp;&#8221;</span>に
+$.trimをかけて見ると
+Firefoxはちゃんとtrimしてlengthが0になったが、
+IEはtrimできずlengthが1のままです。</p>
+
+<p>しかしtrタグのテキストにある&#8221;&amp;nbsp;&#8221;をtrimすると
+IEも正しくtrimしてlengthが0になるんです。。。</p>
+
+<h2>DEMO</h2>
+
+<p><a href="http://www.kinopyo.com/demo/jquery/jQuery1.3.2_trim_nbsp.html" target="_blank">jQuery最新版(1.4.2)を使うDEMO</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-10T00:00:00+09:00" pubdate data-updated="true">2010-03-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-delete-array-element-by-index">Javascript index指定で配列の要素を削除するには</a></h1>
+	<div class="entry-content">
+		<p>今まで全然気付かなかったんです、
+JavascriptのArrayにはdeleteみたいなAPIがないことに。
+配列の要素をindex指定で削除したい場合は代わりにsplice関数を使います。</p>
+
+<h2>splice関数</h2>
+
+<p>とほほからのレファレンスでは</p>
+
+<blockquote><p>array.splice(start, n, e1, e2, &#8230;) (N4)<br/>0 から数えて、start 番目から n 個の要素を削除し、その代わりに e1, e2, &#8230;を値とする要素を埋め込みます。戻り値は JavaScript のバージョンによって異なります。</p></blockquote>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">xx</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">xx</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">);</span>   <span class="c1">// &quot;C&quot;, &quot;D&quot;, &quot;E&quot; が小文字になります</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>indexで配列の要素を削除するには</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">myArray</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>indexは削除する要素のindex、1はこの一つだけを削除する意味で
+他のパラメータはいらないです。
+またsplice後は配列そのものが変更されます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-08T00:00:00+09:00" pubdate data-updated="true">2010-03-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-select-id-with-square">jQuery IDに括弧がついたオブジェクトを取るには</a></h1>
+	<div class="entry-content">
+		<p>こんなHTMLがあるとします。
+idに**が付いてますね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo0&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo1&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo2&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こういうIDに括弧が付いたモノに対して
+普通の#付きのjQueryセレクタでは選択できません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo0&quot;</span><span class="p">);</span>    <span class="c1">// 取れません</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>属性フィルタ<em>attribute=value</em>でとるのが正解です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;id=&#39;foo[0]&#39;&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>0311更新：
+もし具体的なタグがわかってあれば、
+それを指定することでパフォーマンスを向上できます。
+上記の例で言うと</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;inputid=&#39;foo[0]&#39;&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このほうが速いです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-03T00:00:00+09:00" pubdate data-updated="true">2010-03-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/24/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/26/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: japan | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/japan/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在日外国人ビザ更新必要書類]]></title>
+    <link href="http://kinopyo.com/blog/how-to-update-visa-in-japan"/>
+    <updated>2011-10-28T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/how-to-update-visa-in-japan</id>
+    <content type="html"><![CDATA[<h2>個人で準備する書類</h2>
+
+<ul>
+<li>パスポート</li>
+<li>外国人登録証明書</li>
+<li>前年分納税証明書 (区役所で300円)</li>
+<li>前年分課税証明書 (区役所で300円)</li>
+<li>転職した場合退職証明書 (必要項目は 在職期間、退職理由、在職時の業務内容、と名前生年月日など、一社以上転職した場合は全部必要)</li>
+<li>在留期間更新申請書（技術ビザの場合は１，２ページが個人が書く）</li>
+</ul>
+
+
+<br/>
+
+
+<h2>会社側で用意してもらう書類:</h2>
+
+<ul>
+<li>雇用証明書（あるいは労働契約書）</li>
+<li>登記謄本 (写し)</li>
+<li>去年分の源泉徴収票の法定調書合計表（上場企業の場合は不要）</li>
+<li>パンフレット（あればもっといいくらい）</li>
+<li>在留期間更新申請書（技術ビザの場合３，４ページが会社が書く）</li>
+</ul>
+
+
+<p>上記のうち、パスポートと外国人登録証明書以外は取り戻せないです。会社が出すものは写しでOK。</p>
+]]></content>
+  </entry>
+  
+</feed>

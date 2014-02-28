@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: memcached | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/memcached/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HerokuとRails,Sinatraで使えるMemcached Gem Dalli]]></title>
+    <link href="http://kinopyo.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra"/>
+    <updated>2011-06-23T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/memcached-gem-dalli-with-heroku-rails-sinatra</id>
+    <content type="html"><![CDATA[<p>昨日の記事<a href="http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread">http://www.kinopyo.com/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread</a>にも簡単に述べましたが、DalliはHerokuでお勧められているMemcachedのGemです。正確にはpure ruby memcache-clientです。</p>
+
+<p>インストールと使い方をGistで公開しています。</p>
+
+<p><div><script src='https://gist.github.com/1039656.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1039656&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
+
+<p>参考サイト：
+<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a>
+<a href="https://github.com/mperham/dalli">https://github.com/mperham/dalli</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP:環境構築時に使う接続テストコードまとめ MySQL/Oracle/Memcache/Memcached]]></title>
+    <link href="http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
+    <updated>2011-06-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
+    <content type="html"><![CDATA[<p>環境構築時に接続テスト用のコードをまとめました。</p>
+
+<script type="text/javascript" src="scripts/gist.js"></script>
+
+
+<script type="text/javascript">gist()</script>
+
+]]></content>
+  </entry>
+  
+</feed>

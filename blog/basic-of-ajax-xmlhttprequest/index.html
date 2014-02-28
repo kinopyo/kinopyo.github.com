@@ -1,0 +1,374 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>今更のAjax基本：XMLHttpRequestについて - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="前記 恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、 実際はただjQueryの便利なAPIを使っただけで Ajaxそのものの仕組みも分かっていません。 今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように 自分が理解したことをメモとして残したいです。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">今更のAjax基本：XMLHttpRequestについて</h1>
+	<div class="entry-content"><h2>前記</h2>
+
+<p>恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、</p>
+
+
+<p>実際はただjQueryの便利なAPIを使っただけで</p>
+
+
+<p>Ajaxそのものの仕組みも分かっていません。</p>
+
+
+<br/>
+
+
+<p>今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように</p>
+
+
+<p>自分が理解したことをメモとして残したいです。</p>
+
+
+<br/>
+
+
+<h2>XMLHttpRequestとは</h2>
+
+<blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
+<p>JavaScriptなどのウェブブラウザ搭載のスクリプト言語で、サーバとのHTTP通信を行うための組み込みオブジェクト（API）である。</p>
+<p>すでに読み込んだページからさらにHTTPリクエストを発することができ、ページ遷移することなしにデータを送受信できるAjaxの基幹技術である。</p>
+<cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+
+
+<p>なるほど、これがAjaxを支える基幹ですね。</p>
+
+
+<p>JavaScriptのオブジェクトです。</p>
+
+
+<p>名前にXMLがついていますが、XML以外のデータも扱うことができます。</p>
+
+
+<h2>XMLHttpRequestの歴史</h2>
+
+<blockquote title="XMLHttpRequest:title - Wikipedia" cite="http://ja.wikipedia.org/wiki/XMLHttpRequest">
+<p>XMLHttpRequestは、マイクロソフトがOutlook Web Access 2000のダイナミックHTMLによるウェブインターフェースに活用するため、1999年公開のInternet Explorer 5においてActiveXオブジェクトとして実装したのが始まりである[1]。その後、2001年にMozillaプロジェクトがこれと互換性のある組み込みオブジェクトをMozilla 0.9.7およびNetscape 7で実装し、アップルも2004年にSafari 1.2でMozillaと同様の組み込みオブジェクトを実装し始めた[2]。</p>
+<p>このように徐々にInternet Explorer以外のブラウザにも実装されていったXMLHttpRequestは、2005年にAjaxによって一躍有名になった。</p>
+<cite><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></cite></blockquote>
+
+
+<p>ようは各ブラウザが先にXMLHttpRequestオブジェクトを実装した、</p>
+
+
+<p>そして偉い人がAjaxを提唱してから一気に有名になった訳ですよね。</p>
+
+
+<br/>
+
+
+<h2>XMLHttpRequestの仕組み</h2>
+
+<p>AllAboutの記事に載ってた仕組みを自分で書きました。</p>
+
+
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091114023141" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091114/20091114023141.jpg" alt="f:id:kinopyo:20091114023141j:image" title="f:id:kinopyo:20091114023141j:image" class="hatena-fotolife"></a></p>
+
+
+<p>XMLHttpRequestのメソッドやプロパティは多分これからも使うことはありませんが、</p>
+
+
+<p>一応図で見て大体把握しておきましょう。</p>
+
+
+<p>openメソッドはイニシャライズみたいな感じで、GETかPOSTか、URLなどのパラメータを受け取ります。</p>
+
+
+<p>そしてsendメソッドによるサーバに送信する前に、onreadystatechangeイベントのコールバックでステータスを判断しresponseTextやresponseXML プロパティのデータを返す流れですね。</p>
+
+
+<blockquote>
+<p>拡張機能から XMLHttpRequest を使いたい場合は、非同期でロードするようにすべきです。</p>
+<p>非同期の使用法では、データを受け取ったときにコールバックを受け取ります。</p>
+<p>そのため、リクエストが発生している間はブラウザは通常どおりに動き続けます。 </p>
+</blockquote>
+
+
+<h2>XMLHttpRequestの宣言</h2>
+
+<blockquote title="http://ponpon-village.net/ajax/xmlhttp.htm" cite="http://ponpon-village.net/ajax/xmlhttp.htm">
+<p>ブラウザにより異なる。</p>
+<p>IE では、ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;) を使用。</p>
+<p>IE のバージョンによっては、ActiveXObject(&#8220;Msxml2.XMLHTTP.5.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP.4.0&#8221;) ,</p>
+<p>ActiveXObject(&#8220;Msxml2.XMLHTTP.3.0&#8221;) , ActiveXObject(&#8220;Msxml2.XMLHTTP&#8221;) なども使用出来る。</p>
+<p>Mozilla 系ブラウザでは、XMLHttpRequest() を使用。</p>
+<cite><a href="http://ponpon-village.net/ajax/xmlhttp.htm" target="_blank">http://ponpon-village.net/ajax/xmlhttp.htm</a></cite></blockquote>
+
+
+<h2>非同期通信のサンプルコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="kd">var</span> <span class="nx">req</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;MSXML2.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.example.com/contents.txt&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>req.statusはHTTPレスポンスコードで200はOK、404はよく見るNot Foundです。</p>
+
+
+<br/>
+
+
+<h2>注意点</h2>
+
+<ul>
+<li>file:/// および ftp:// は HTTP ステータスを返しません。そのため、status についてはゼロが、statusText については空文字列を返されます。</li>
+<li>XMLHttpRequestは、セキュリティを考慮して、リクエストを送信できるのは同一ドメイン内に制限されています。</li>
+</ul>
+
+
+<br/>
+
+
+<p>とりあえず自分が気になった点を書きました。</p>
+
+
+<p>肝心なところはonreadystatechangeでのコールバックだと思います。</p>
+
+
+<h2>次回</h2>
+
+<p>XMLHttpRequestは同一ドメイン内に制限されていますね。</p>
+
+
+<p>別のドメインとのやり取りはどう行うのかを次のテーマにします。</p>
+
+
+<p>なんかJSONPとかクロスドメインなどのキーワードがよく見えますが、</p>
+
+
+<p>その辺をはっきりしようと思います。</p>
+
+
+<h2>参考サイト：</h2>
+
+<p><a href="http://ja.wikipedia.org/wiki/XMLHttpRequest" target="_blank">XMLHttpRequest - Wikipedia</a></p>
+
+
+<p><a href="https://developer.mozilla.org/Ja/XMLHttpRequest" target="_blank">XMLHttpRequest - MDC</a></p>
+
+
+<p><a href="http://allabout.co.jp/internet/javascript/closeup/CU20050515A" target="_blank">Ajaxはじめの一歩　XMLHttpRequest - ［JavaScript］All About</a></p>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ajax/'>AJAX</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/basic-of-ajax-xmlhttprequest';
+        var disqus_url = 'http://kinopyo.com/blog/basic-of-ajax-xmlhttprequest';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

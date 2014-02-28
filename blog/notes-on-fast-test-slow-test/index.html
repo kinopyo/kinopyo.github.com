@@ -1,0 +1,245 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Notes on Fast Test, Slow Test - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Notes on Fast Test, Slow Test</h1>
+	<div class="entry-content"><p>Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work on a very large scale rails app. But it also introduces me to some very bad tests. Sometimes I found myself so difficult to add any spec, as it needs lots of extra efforts to make the fixture data, also one model got too many dependencies and collaborators, etc. I know it’s wrong, the code smells, just don’t know where to start.</p>
+
+<p>So when I watched this video “Fast Test, Slow Test” by <a href="https://twitter.com/garybernhardt">@garybernhardt</a>, who also runs <a href="https://www.destroyallsoftware.com/screencasts">DestroyAllSoftware screencast</a>, I found it very helpful and wanted to take some notes on it.</p>
+
+<div class="video-container">
+<iframe width="640" height="480" src="http://www.youtube.com/embed/RAxiiRPHS9k?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h1>Three Goals in Testing</h1>
+
+<ul>
+<li>Prevent Regression</li>
+<li>Prevent Fear</li>
+<li>Prevent Bad Design</li>
+</ul>
+
+
+<h1>How to Fail in Testing</h1>
+
+<ul>
+<li>Selenium as primary testing</li>
+<li>“Units Test” are too large</li>
+<li>Fine-grained tests around legacy code</li>
+</ul>
+
+
+<blockquote><p>What you’re saying here is that we acknowledge that this code sucks, so we’re going to go in and write tight tests around it that solidifies interface and just bake the badness forever. <strong>This is the worst way to do unit testing, go in your legacy system and write test around bad code.</strong></p></blockquote>
+
+<h1>Too many dependencies in test</h1>
+
+<blockquote><p>You end up with a test suite where it tends to either completely succeed or completely fail. It doesn’t give you any fine-grained feedback about what has actually gone wrong it just tells you you broke something. And you are left to dig these stack traces. <strong>In the ideal test suite you don’t have to dig through stack traces because ideally once test fails it will tell you exactly was broken (of course you never achieve that)</strong></p></blockquote>
+
+<h1>More than 8 lines for a model test</h1>
+
+<blockquote><p>I would ask myself why do I need to setup so much of the world to test this one small piece of behavior. That causes me to decompose it which causes better system design.</p></blockquote>
+
+<h1>10% System/Acceptance Test, 90% Unit Test</h1>
+
+<p>(in terms of test cases, not lines of code)</p>
+
+<blockquote><p>That applies to mostly object heavy system like web app, that have a lot of logic and not a lot of boundaries.</p></blockquote>
+
+<h1>Advice on models that very tied to database</h1>
+
+<h2>Question</h2>
+
+<blockquote><p>If you&#8217;re working with model objects that they&#8217;re very tied to the database specifically things like you have to save that one object before you can associate with the other object and that means hitting the database. What&#8217;s your advice in terms of writing fast unit test?</p></blockquote>
+
+<h2>Answer</h2>
+
+<blockquote><p>Take all of that behavior that&#8217;s on your model objects and pull out of their into service classes that are stateless, that interact with the model objects. So view calls a service, service contains the intelligence and the service manipulates the model objects.</p>
+
+<p>You can still have methods on your model objects do things like wrap specific queries in class methods, or wrap specific mutations when multiple fields are commonly manipulated together.</p>
+
+<p>It&#8217;s okay to have those on your model object and then have the service use those but if you pull the behavior of the system out into the service, and you control the boundary between the service in the model by those methods you&#8217;ve written on the model, then you can mock out more easily and safely.</p></blockquote>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-30T21:56:00+09:00" pubdate data-updated="true">2013-05-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/testing/'>Testing</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/notes-on-fast-test-slow-test/';
+        var disqus_url = 'http://kinopyo.com/blog/notes-on-fast-test-slow-test/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

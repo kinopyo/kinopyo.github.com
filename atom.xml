@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Use HTTP Caching in Heroku with Cloudflare]]></title>
+    <link href="http://kinopyo.com/blog/use-http-caching-in-heroku-with-cloudflare/"/>
+    <updated>2013-07-14T08:51:00+09:00</updated>
+    <id>http://kinopyo.com/blog/use-http-caching-in-heroku-with-cloudflare</id>
+    <content type="html"><![CDATA[<h1>TL;DR</h1>
+
+<ul>
+<li>Heroku doesn’t provide HTTP caching by default</li>
+<li>Use CDN like <a href="http://www.cloudflare.com/">Cloudflare</a> or <a href="http://aws.amazon.com/cloudfront/">Amazon CloudFront</a>
+
+<ul>
+<li>Clouldflare has free plan, takes you less than 3 minutes to setup.</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>HTTP Caching</h1>
+
+<p>Just a quick example of HTTP caching.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/http_caching_example.jpg" alt="HTTP caching example" /></p>
+
+<p>You can really feel the difference after you enabled it. Since most of your static assets, like js, css and image files, are gonna use browser cache without hitting your rails application, the user experience is improved a lot.</p>
+
+<p>In my hobboy project <a href="http://quoty.me">quoty.me</a>, user had to download the black colored background image(22k) every time they visit a page, so there was a time lag to notice the background changed from white to black, which bothered me a lot. And that was why I noticed the HTTP caching is not enabled in Heroku.</p>
+
+<h1>Heroku&#8217;s HTTP Caching</h1>
+
+<blockquote><p>Heroku doesn’t provide HTTP caching by default. In order to take advantage of HTTP caching, you’ll need to configure your application to set the appropriate HTTP cache control headers and use a content delivery network (CDN) or other external caching service.</p></blockquote>
+
+<p>I&#8217;m using cedar stack in Heroku, but I have to use &#8220;external&#8221;(oppose to add-ons or solutions provided by Heroku) stuff to make HTTP caching work.</p>
+
+<p>I&#8217;ve also tried <a href="http://rtomayko.github.io/rack-cache/">Rack::Cache</a> with Memcache but somehow it didn&#8217;t work for me.</p>
+
+<h1>Setup Cloudflare</h1>
+
+<p>This time I decided to give Cloudflare a try. It&#8217;s free, easy to setup, and just work.</p>
+
+<p>I&#8217;ll cut off how to setup Cloudflare, as the tutorial in its website is realy excellent. Just go to <a href="https://www.cloudflare.com/">https://www.cloudflare.com/</a> and follow the instructions, within 3-4 steps you&#8217;re done.</p>
+
+<p>The other thing you have to do is to update your nameserver to the one provided by Cloundflare, like &#8220;IAN.NS.CLOUDFLARE.COM&#8221;. I&#8217;m using <a href="http://www.godaddy.com/">GoDaddy</a> for my quoty.me domain, the link to setup nameserver looks like this.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/godaddy_nameserver.jpg" alt="GoDaddy Nameserver setup link" /></p>
+
+<h1>Further Reading</h1>
+
+<ul>
+<li><a href="https://devcenter.heroku.com/articles/http-caching">HTTP Caching | Heroku Dev Center</a>
+<a href="https://devcenter.heroku.com/articles/increasing-application-%20-performance-with-http-cache-headers">Increasing Application Performance with HTTP Cache Headers | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/http-caching-ruby-rails">HTTP Caching in Ruby with Rails | Heroku Dev Center</a></li>
+<li><a href="http://railscasts.com/episodes/321-http-caching">#321 HTTP Caching (pro) - RailsCasts</a></li>
+<li><a href="http://www.bestechvideos.com/2009/03/21/railslab-scaling-rails-episode-11--%20advanced-http-caching">RailsLab Scaling Rails: Episode #11 - Advanced HTTP Caching</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[夜型の僕が早起きを31日間頑張って思ったこと]]></title>
+    <link href="http://kinopyo.com/blog/me-as-a-nightowl-become-a-morning-person-for-31-days/"/>
+    <updated>2013-06-21T21:45:00+09:00</updated>
+    <id>http://kinopyo.com/blog/me-as-a-nightowl-become-a-morning-person-for-31-days</id>
+    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/morning_person.JPG" alt="僕とチームメートのテーブルの間にポスト・イットを貼って早起きした日数を刻んでました。" /></p>
+
+<h2>TL;DR</h2>
+
+<ul>
+<li>早起きしたいと自ら望むこと</li>
+<li>やれば絶対誰でもできる（事実）</li>
+<li>柔軟に軌道修正</li>
+</ul>
+
+
+<h2>はじめに</h2>
+
+<p>5/22から早起きを頑張りました。
+&#8220;何時に起きてるの？&#8221;
+&#8220;8時です&#8221;
+&#8220;えー全然早くね～じゃん&#8221;
+と即行で鼻で笑われたりしました。</p>
+
+<p>はい、ここ数年は大体夜2時前後に寝て朝9時半起きだった僕にとっては
+もうこれが大きな一歩です。
+何より、全然できないといつも思ってたからです。
+また今はいろいろ試行錯誤で8時にしただけで、
+しようと思えば6〜7時にもできる自信が付いたんです。</p>
+
+<p>この一ヶ月で頑張ったこと、思ったことをの共有したいと思います。</p>
+
+<h2>きっかけ</h2>
+
+<p>段々年をとると、よほどインパクのでかい物事が起きないと
+今までの生活習慣を変えるのは大変かなと思ってます。
+その中でも早起きはずっとしたかったんです。
+ちょうどチームの友達とこの話をしたら彼も同じことを考えるので
+2人で頑張ろうという流れに何となくなりました。
+できるかどうか、半信半疑の感じで始めたのですが、</p>
+
+<ul>
+<li>約束を破りたくない</li>
+<li>そして何より負けたくない</li>
+</ul>
+
+
+<p>の2つの見えないチカラが背中をずっと押してくれました。
+（前半は↑ですね、大体途中でもう早起きが習慣になってきました）</p>
+
+<h2>早起きするために</h2>
+
+<h3>まず&#8221;心の準備&#8221;</h3>
+
+<h4>自発的に早起きしたい気持ち</h4>
+
+<ul>
+<li>周りの家族や友達、上司に言われてから</li>
+<li>朝ミーティングがあるから</li>
+</ul>
+
+
+<p>のような感じですと絶対長続きできないです。
+自発的に”そういう人になりたい”と思わないと。</p>
+
+<h4>Be aware of yourself</h4>
+
+<p>自分の一日の行動、気持ち、体調などに気を配ることです。
+効率は上がったのか？いつが一番眠いのか？気持ちいいと感じるのか？
+などなどどんどん自分に質問を投げて、軌道修正する。</p>
+
+<h4>メリットを感じなければやめる</h4>
+
+<p>実際早起きして得することはあったのか？
+無駄に疲れて、ストレスが溜まるばかりにいいことは全然なかった。
+特にメリットを感じなければやめて</p>
+
+<h3>具体的な試み</h3>
+
+<p>極めてシンプルです、簡単とは言えないですが。</p>
+
+<ol>
+<li>監督しあう仲間を探す</li>
+<li>朝食の時間を楽しむ</li>
+<li>睡眠時間は削らない</li>
+<li>運動して無理やり早寝する</li>
+</ol>
+
+
+<h4>監督(supervise)しあう仲間を探す</h4>
+
+<p>自分と同じくらいのレベルで同じ挑戦をしたい人を見つかればベストですが、
+そうじゃなくても自分が一番信頼できる人に自分のプランをコミットするのも全然ありです。
+こういう手法は今まで何度も聞きましたが、やってみて思ったのが
+本当に一番効率のいい方法で、僕の性格にもぴったりの感じです。</p>
+
+<h4>朝食を楽しむ</h4>
+
+<p>早起きしたら朝食は絶対抜けないと自分で決めました。
+たまには外で食べながら本を読んだり、単純にぼっとしたりして
+自分なりで朝を楽しんでました。
+余裕のある朝なんて贅沢すぎる！</p>
+
+<p>また初めて最初の土日が一番ピーク（起きたくない）かもしれませんが、
+あえて朝に予定を入れたり、起きたらとりあえず
+一杯のコーヒーを飲んだりするなど自分なりで
+乗り越える方法を事前に考えて起きたらいいです。</p>
+
+<h4>睡眠時間は削らない</h4>
+
+<p>早起きした分仕事も早めにスタートできるので、
+夜は今までと比べて早めに退勤することができて、
+帰って料理したり本読んだりすれば自然に11時くらいから
+もう寝るモードに入ります。
+逆に睡眠時間を削ると本末転倒なことになるので、
+疲れたり眠くなったりするしかないですね。</p>
+
+<h4>運動して無理やり早寝する</h4>
+
+<p>最初の二三日は僕はいつもランニングして”無理やり”
+早寝を促進してます。
+体がちょうど良い感じに疲れてその流れで寝れば
+自然に早起きのサイクルになります。</p>
+
+<h4>その他のInspiration</h4>
+
+<p><a href="http://michaelhyatt.com/053-how-to-become-a-morning-person-podcast.html">#053: How to Become a Morning Person [Podcast] | Michael Hyatt</a></p>
+
+<blockquote><p>You said, “I’m a night person or a night owl by nature.” It’s my own personal belief that people aren’t morning people or evening people by nature.
+I don’t think there is anything biologically or physiologically that you can point to that would suggest that is somehow predetermined. We may have a preference and we may have a set of practices that have been conditioned into a habit over a long period of time, but these are things I believe that with focus and intention can be changed.</p></blockquote>
+
+<h2>最後に</h2>
+
+<p>紹介した方法以外の目覚めし時計をどう設定するとか、
+部屋の照明を暗くするとかは全部マイナーの問題にすぎないです。</p>
+
+<p>新しいことを21日間続ければ習慣になるそうですが、
+僕の場合大体10日でもう慣れた実感がしました。
+ライフサイクルが改善されて、電車の中でも本が読める気力があって
+オフで勉強したことが仕事にもいいフィードバックと刺激になったと思います。
+この際隣の人と試してみてはどうですか？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Let's Make Testing Fun Again]]></title>
+    <link href="http://kinopyo.com/blog/notes-on-lets-make-testing-fun-again/"/>
+    <updated>2013-06-01T15:18:00+09:00</updated>
+    <id>http://kinopyo.com/blog/notes-on-lets-make-testing-fun-again</id>
+    <content type="html"><![CDATA[<h2>The talk</h2>
+
+<p><a href="http://lanyrd.com/2012/windycityrails/sxqbt/">Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd</a></p>
+
+<script async class="speakerdeck-embed" data-id="5048ea4bb8fe2d0002020475" data-ratio="1.2994923857868" src="http://kinopyo.com//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<div class='video-container'>
+<iframe src="http://player.vimeo.com/video/49525644" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+
+
+<h2>Communication</h2>
+
+<blockquote><p>Tests give you about the code. This happens over time, where you find that tests have become hard to write, the tests are becoming complicated and bogged down.</p>
+
+<p>Rather than use it as an opportunity to blame the test or to blame testing, <strong>you should use it as an opportunity to learn something about your code, that there is a dependency that could potentially be simplified, or something you could be doing better.</strong></p></blockquote>
+
+<h2>Keep relevant setup close</h2>
+
+<blockquote><p>This is something that &#8220;relative good&#8221;(in terms of &#8220;absolute good&#8221;). It&#8217;s generally good to keep the setup of your tests close to the tests where it is.</p>
+
+<p>What you want to avoid is the case where some sort of <code>before</code> setup way at the top of the file and you have stuff, and more stuff, and more stuff, and eventually in the end, what&#8217;s the <code>@user.name</code>? I don&#8217;t remember.</p></blockquote>
+
+<h3>An Example</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;uses the user&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="c1"># i don&#39;t remember</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is where you see sometimes people say &#8220;You should never have setup outside your original test&#8221;.</p>
+
+<h3>What to do about duplications and complicate shared setups</h3>
+
+<blockquote><p>I think a lot of times if you need a complicated setup to test code, that often means your code is too complicated you need to start working out to move your dependencies. <strong>I tend to have a higher tolerance for duplication in my tests</strong> than I do in my regular code, specifically because <strong>I&#8217;m more interested in having the communication close</strong>, and less interested in maybe being clever about extracting setups in my tests. Sometimes I do if there&#8217;s a piece of stuff that&#8217;s really tightly coupled, and I can give it a descriptive enough name that I still feel like I have the benefit of keeping the setup close in the actual test.</p></blockquote>
+
+<h2>Test Simple Values</h2>
+
+<p>By using literal in check, when the spec fails, the error message is much easier to understand.</p>
+
+<h2>Spy, don&#8217;t mock</h2>
+
+<p>A <a href="http://pivotal.github.io/jasmine/">jasmine</a>
+ test example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">cheeseburger</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">cheeses</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Ajax call to cheese server</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spies on the cheese server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">spyOn</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">,</span> <span class="s1">&#39;cheeses&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Readability advantage</li>
+<li>Easy to find where actually fails</li>
+</ul>
+
+
+<p>BTW, if in spec, we need write like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s1">&#39;spies on the cheese server&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># in the reversed order</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:cheeses</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">cheeses</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>More about Spy on Ruby and Rails</h3>
+
+<p><a href="https://github.com/thoughtbot/bourne">thoughtbot/bourne</a> gem can let you have the rspec-like test spies syntax.</p>
+
+<p><a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a>, good explanation on what is test spy the benefit of it.</p>
+
+<h2>What Do We Love?</h2>
+
+<p>These are quite frank and interesting questions.</p>
+
+<ol>
+<li>Do we still love writing tests?</li>
+<li>Or do we just love having written tests?</li>
+<li>Or do we just love saying that we&#8217;ve written tests?</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Fast Test, Slow Test]]></title>
+    <link href="http://kinopyo.com/blog/notes-on-fast-test-slow-test/"/>
+    <updated>2013-05-30T21:56:00+09:00</updated>
+    <id>http://kinopyo.com/blog/notes-on-fast-test-slow-test</id>
+    <content type="html"><![CDATA[<p>Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work on a very large scale rails app. But it also introduces me to some very bad tests. Sometimes I found myself so difficult to add any spec, as it needs lots of extra efforts to make the fixture data, also one model got too many dependencies and collaborators, etc. I know it’s wrong, the code smells, just don’t know where to start.</p>
+
+<p>So when I watched this video “Fast Test, Slow Test” by <a href="https://twitter.com/garybernhardt">@garybernhardt</a>, who also runs <a href="https://www.destroyallsoftware.com/screencasts">DestroyAllSoftware screencast</a>, I found it very helpful and wanted to take some notes on it.</p>
+
+<div class="video-container">
+<iframe width="640" height="480" src="http://www.youtube.com/embed/RAxiiRPHS9k?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h1>Three Goals in Testing</h1>
+
+<ul>
+<li>Prevent Regression</li>
+<li>Prevent Fear</li>
+<li>Prevent Bad Design</li>
+</ul>
+
+
+<h1>How to Fail in Testing</h1>
+
+<ul>
+<li>Selenium as primary testing</li>
+<li>“Units Test” are too large</li>
+<li>Fine-grained tests around legacy code</li>
+</ul>
+
+
+<blockquote><p>What you’re saying here is that we acknowledge that this code sucks, so we’re going to go in and write tight tests around it that solidifies interface and just bake the badness forever. <strong>This is the worst way to do unit testing, go in your legacy system and write test around bad code.</strong></p></blockquote>
+
+<h1>Too many dependencies in test</h1>
+
+<blockquote><p>You end up with a test suite where it tends to either completely succeed or completely fail. It doesn’t give you any fine-grained feedback about what has actually gone wrong it just tells you you broke something. And you are left to dig these stack traces. <strong>In the ideal test suite you don’t have to dig through stack traces because ideally once test fails it will tell you exactly was broken (of course you never achieve that)</strong></p></blockquote>
+
+<h1>More than 8 lines for a model test</h1>
+
+<blockquote><p>I would ask myself why do I need to setup so much of the world to test this one small piece of behavior. That causes me to decompose it which causes better system design.</p></blockquote>
+
+<h1>10% System/Acceptance Test, 90% Unit Test</h1>
+
+<p>(in terms of test cases, not lines of code)</p>
+
+<blockquote><p>That applies to mostly object heavy system like web app, that have a lot of logic and not a lot of boundaries.</p></blockquote>
+
+<h1>Advice on models that very tied to database</h1>
+
+<h2>Question</h2>
+
+<blockquote><p>If you&#8217;re working with model objects that they&#8217;re very tied to the database specifically things like you have to save that one object before you can associate with the other object and that means hitting the database. What&#8217;s your advice in terms of writing fast unit test?</p></blockquote>
+
+<h2>Answer</h2>
+
+<blockquote><p>Take all of that behavior that&#8217;s on your model objects and pull out of their into service classes that are stateless, that interact with the model objects. So view calls a service, service contains the intelligence and the service manipulates the model objects.</p>
+
+<p>You can still have methods on your model objects do things like wrap specific queries in class methods, or wrap specific mutations when multiple fields are commonly manipulated together.</p>
+
+<p>It&#8217;s okay to have those on your model object and then have the service use those but if you pull the behavior of the system out into the service, and you control the boundary between the service in the model by those methods you&#8217;ve written on the model, then you can mock out more easily and safely.</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My Take on Google I/O 2013 Keynote]]></title>
+    <link href="http://kinopyo.com/blog/my-take-on-google-io-2013-keynote/"/>
+    <updated>2013-05-19T07:52:00+09:00</updated>
+    <id>http://kinopyo.com/blog/my-take-on-google-io-2013-keynote</id>
+    <content type="html"><![CDATA[<div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Can&#8217;t believe that I watched the 3.5 hours long keynote video of Google I/O 2013 <a href="https://t.co/mBj3E6pB4q" title="https://developers.google.com/events/io/">developers.google.com/events/io/</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/335721881887989760">2013年5月18日</a></blockquote>
+<script async src="http://kinopyo.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+
+<p>Yesterday I was trying to catch up with the Google I/O 2013 to see what’s new. After I read some wrap up articles like <a href="http://thenextweb.com/insider/2013/05/15/everything-announced-at-the-google-io-2013-keynote-in-one-handy-list/">Everything announced at the Google I/O 2013 keynote in one handy list - The Next Web</a>, I was very intrigued and ended up watching the whole 3.5 hours long keynote video.</p>
+
+<p>Given that I’m not an Android user or developer, I still felt the improvements on Android system quite impressive. But my biggest inspriation is not on any specific topic, it’s how Google thinks of solving problem in the terms of technolodgy, not just web or mobile, they always think in a big picture. Much bigger than I do.</p>
+
+<p>I’ve been a web developer for over 5 years and now I do feel I’ve got a handy toolkit to solve some problems. But I also feel I’ve constrained myself to this area, limited my imagination. Anything that can’t solve with the skills I’ve got is impossible. Web is bigger than I perceived, and yet it is just a part of technolodgy. We all know that it’s just a tool to solve problems, not the only way to do it.</p>
+
+<p>I need to think out of the box. It’s too comfortable to just sit there and see their innovations, instead of trying to be the guy on the stage to amaze people with your innovations. I’ve spent less and less time on predicting the future of the technolodgy, but more and more on reality issues, like where to live, when to get married or so. I guess that’s the inevitable trend as you getting old but at least I shouldn’t let what I’ve learned blind myself. Keep looking, don’t settle.</p>
+
+<p>I’d like to end this post with the quote of Steve Jobs.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/stay_hungry_stay_foolish.jpg" alt="Stay hungry, stay foolish" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[When to Buy a New iPad, iPhone or Macbook]]></title>
+    <link href="http://kinopyo.com/blog/when-to-buy-a-new-ipad-iphone-or-macbook/"/>
+    <updated>2013-05-16T21:50:00+09:00</updated>
+    <id>http://kinopyo.com/blog/when-to-buy-a-new-ipad-iphone-or-macbook</id>
+    <content type="html"><![CDATA[<p>I gave my iPad to my mom when I went back to China during the golden week, so I&#8217;m wondering if now is a good timing to buy a new iPad? Are they going to release a new model soon? &#8220;Buy or wait&#8221;, that&#8217;s the only options for me every time when I think about any product of Apple.</p>
+
+<h2>Macrumors Buyers Guide</h2>
+
+<p>Then I found this <a href="http://buyersguide.macrumors.com/">buyersguide</a> by Macrumors. I know Macrumors website for a long time and used to subscribe to their RSS feeds, but I never noticed they have a this website.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/macrumors_buyers_guide.png" alt="Macrumors Buyers Guide" /></p>
+
+<p>Here you can see each Apple model with red or yellow round buttons. I guess there&#8217;ll be green ones once the &#8220;timing&#8221; is right to buy that product. As it says:</p>
+
+<blockquote><p>provide our best recommendations regarding current product cycles, and to provide a summary of currently available rumors for each model. This page is based on rumors and speculation and we provide no guarantee to its accuracy.</p></blockquote>
+
+<h2>When to Buy a New iPad</h2>
+
+<p>If you click the iPad link you&#8217;ll see this:</p>
+
+<p><img src="http://cdn.kinopyo.com/images/when_to_buy_a_new_ipad.png" alt="When to Buy a New iPad" /></p>
+
+<p>You can see the last release was October 23, 2012. Average
+release cycles is 311 days so statistically there are still around 100 days left, but judging from the recent releases it could be next month! Recent rumors might be helpful, to at least give you something to fill in the blankness of waiting.</p>
+
+<p>Maybe this time I&#8217;ll give iPad mini a try.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[One Photo And One Video About Innovation]]></title>
+    <link href="http://kinopyo.com/blog/one-photo-and-one-video-about-innovation/"/>
+    <updated>2013-03-16T14:30:00+09:00</updated>
+    <id>http://kinopyo.com/blog/one-photo-and-one-video-about-innovation</id>
+    <content type="html"><![CDATA[<h2>The Photo: Apple 2005-2013</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/2005-2013-apple.jpg" alt="Apple 2005 and 2013" /></p>
+
+<p><strong>2005</strong>. I was still in college. The phone I had was just a &#8220;pure&#8221; phone to call and text people, and even didn&#8217;t have a camera.</p>
+
+<p><strong>2013</strong>. Now I have Macbook, iPhone, iPad, Kindle, all &#8220;rich&#8221; devices. With 3G network I can connect to Internet anytime anywhere. Life&#8217;s been changed so much.</p>
+
+<h2>The Video: Samsung GALAXY S4</h2>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/2LHv1FPd1Ec?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>I never had a Samsung GALAXY phone, but after watched this video I was surprised by some of the new features. I&#8217;ve been using iPhone for 3 or 4 years, I&#8217;m so used to it and sometimes it makes me blind to see other innovations.</p>
+
+<p>The video is 4:30 long, please take a look when you have time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google Calendar Working hours options]]></title>
+    <link href="http://kinopyo.com/blog/google-calendar-working-hours-option/"/>
+    <updated>2013-03-14T21:45:00+09:00</updated>
+    <id>http://kinopyo.com/blog/google-calendar-working-hours-option</id>
+    <content type="html"><![CDATA[<p>Have you ever noticed this option in Google Calendar?</p>
+
+<p><img src="http://cdn.kinopyo.com/images/google_calendar_working_hours_option.png" alt="Working hours options" /></p>
+
+<p>I guess this is more helpful for those who use a flex time for their work. I wonder what will the warning message look like.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Does Your Blog Header In Top Page And Post Page Look The Same?]]></title>
+    <link href="http://kinopyo.com/blog/does-your-blog-header-in-top-page-and-post-page-look-the-same/"/>
+    <updated>2013-02-23T14:25:00+09:00</updated>
+    <id>http://kinopyo.com/blog/does-your-blog-header-in-top-page-and-post-page-look-the-same</id>
+    <content type="html"><![CDATA[<p>As you see below, this was how my blog header looks like before I write this post. There was no differece between top page(or home page, landing page) and the post page. If put into rails term, these are the <code>#index</code> and <code>#show</code> page, they&#8217;re sharing the exactly same header partial.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/my_blog_header.png" alt="old blog header" class="image_with_border"></p>
+
+<h2>Thinking About My Target</h2>
+
+<p>Based on the data from Google Analytics, around 85% of the access are from search engines like Google or Yahoo, so for them the contents I provided should be most important.</p>
+
+<p>But for the direct access to the top page, they could be my friends, could be the headhunters, my future boss or colleague, or just some random strangers, anyway these people are my target who I really want to pay more attentions to, make them impressive, show a little  different things from the other audience.</p>
+
+<h2>A Good Example</h2>
+
+<p>Ryan Singer from 37signals, one day I happened to visit <a href="http://feltpresence.com/">his blog</a>, the moment I saw the page I knew this is one thing I also want to have in my blog!</p>
+
+<p>Let’s take a look.</p>
+
+<p><img class="image_with_border" src="http://cdn.kinopyo.com/images/ryan_singer_blog_index.png" alt="Rayn Singer’s blog, top page"></p>
+
+<p><img src="http://cdn.kinopyo.com/images/ryan_singer_blog_show.png" alt="Rayn Singer’s blog, post page" class="image_with_border"></p>
+
+<p>As you can see, the header in top page and every post page is different. Yes it’s low techy techy, easy to implement, not challenging at all, but it still matters.</p>
+
+<h2>Time for Action!</h2>
+
+<p>I’m sure every web developer understand this and every product they built must have a more beatiful and well designed landing page to catch people’s eyes. But do you apply the same principle to your own blog? You may use Wordpress or Octopress or any other blog generate tools to build your blog, and perhaps you even made a good <strong>About me</strong> page, but did you take one more step further to care about this detail? If you were aware of this and chose not to do it, it’s perfectly fine but to me, I don&#8217;t like to miss this detail.</p>
+
+<p>Anyway here is my new blog header, just a simple introduction, I may add some more info later.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/new_blog_header_for_top_page.png" alt="New blog header for top page" class="image_with_border"></p>
+
+<p>I guess this post may be nonsense to some of you. <strong>But if this is one thing that represent myself, at least I&#8217;d like to put more efforts to make it a little more “me”.</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[なぜ電車に乗ると眠くなるのか]]></title>
+    <link href="http://kinopyo.com/blog/%E3%81%AA%E3%81%9B%E3%82%99%E9%9B%BB%E8%BB%8A%E3%81%AB%E4%B9%97%E3%82%8B%E3%81%A8%E7%9C%A0%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%8B/"/>
+    <updated>2013-02-21T21:05:00+09:00</updated>
+    <id>http://kinopyo.com/blog/なぜ電車に乗ると眠くなるのか</id>
+    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/sleepy_on_the_train.jpg" alt="" /></p>
+
+<p>最近はよく8時間寝ても朝電車に乗るとまた眠くなっちゃうんですよ。なぜなのかな？自分の精神力が弱い？それとも科学的に説明できる一般的な現象？というのを少し調べたのでここで簡単にまとめたいと思います。</p>
+
+<h2>ゆりかご</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/yurikago.jpg" alt="" /></p>
+
+<p>ネットでは結構な回答がありますが、やはり<strong>ゆりかご</strong>というのが原因らしいです。</p>
+
+<blockquote><p>単発の振動は脳には刺激を与えますが、周期的な振動は脳が慣れてしまうのでゆりかごに近い状態になるんですね</p></blockquote>
+
+<p>　</p>
+
+<blockquote><p>電車の中で眠くなる、というのは普通です。よく、赤ちゃんを寝かしつけるときなんかに背中を一定のリズムでトントン叩いてあげますね。あの「一定のリズムでくる刺激」というのは、人間だけでなく胎生哺乳類全般に眠りを呼び起こすもののようです（うちの猫も、眠そうにしてるときに背中をトントン叩くといっぺんに寝ちゃいます）。
+これはわたしの推測ですが、母親の胎内にいたときに聞いていた、母親の心臓の鼓動に似たリズムが安心感を呼び起こし、眠くなるんじゃないでしょうか。
+同じ意味で、むずがる赤ちゃんにＴＶの砂嵐の音を聞かせるといっぺんに静かになる、というのがあります（これは胎内で聞いていた母親の血流音と、砂嵐の音が似ているためだそうです）。</p></blockquote>
+
+<p>これが一番論理的な説明かな。</p>
+
+<blockquote><p>体は乗り物の振動に合わせて揺れ、それを追いかけるようにして内臓も揺れます。この二つの揺れ方の波が奇跡的に一致する振動が、電車のあのガタンゴトンなのだそうです。体と内臓は、コップとその中の水とお考えください。</p>
+
+<p>たとえば落下するジェットコースターだと、体だけ先に落ちてしまい内臓が取り残されて吐き気がしますし、悪路の自動車だと震度が小刻みすぎて、体と内臓が別々にシェイクされてしまい、不快になる。ところが電車だと、車両と体と内臓の三者が一体となって動くのだそうです。揺れているのに不快ではない、最高の揺りかごです。</p></blockquote>
+
+<p>本当にこれだけで人間は眠くなるものなのか。。？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[I Like The Idea of Amazon Verified Purchase in Reviews Section]]></title>
+    <link href="http://kinopyo.com/blog/i-like-the-idea-of-amazon-verified-purchase-in-reviews-section/"/>
+    <updated>2013-02-17T12:02:00+09:00</updated>
+    <id>http://kinopyo.com/blog/i-like-the-idea-of-amazon-verified-purchase-in-reviews-section</id>
+    <content type="html"><![CDATA[<p>If you browse amazon reviews chances are you already saw this <strong>Amazon Verified Purchase</strong> label. This is not a new feature, I think it&#8217;s been there for a while but I just want to point that out.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/amazon_verified_purchase.png" alt="Amazon Verified Purchase" /></p>
+
+<p>It&#8217;s easy to understand, it means the reviewer purchased that item at Amazon, could highly increase the credibility of the review.</p>
+
+<p>I think it&#8217;s easy to implement, the logic is simple but it&#8217;s a good indicator for users to decide if they should follow or trust the review.</p>
+
+<p>Also I tried it myself. When I click to write a review for the book I bought on Amazon, I get this option to choose if I&#8217;d like to label myself as purchased the item.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/amazon_write_review.png" alt="Amazon Write Review Options" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Being Aware of Self Improvements]]></title>
+    <link href="http://kinopyo.com/blog/being-aware-of-self-improvements/"/>
+    <updated>2013-02-16T20:40:00+09:00</updated>
+    <id>http://kinopyo.com/blog/being-aware-of-self-improvements</id>
+    <content type="html"><![CDATA[<p>When I was reading book this afternoon, not directly related to the its content but somehow it inspired me to realize some of self improvements I&#8217;ve accomplished through past couple of months or the past year. Most of them were changed subconsciously, like a good &#8220;by-product&#8221; thing.</p>
+
+<h2>Improvements</h2>
+
+<ul>
+<li>Taking stairs(mentioned before)</li>
+<li>No more junk food, do more cooking</li>
+<li>Sleep earlier, resist to temptation</li>
+<li>Reading more often(thanks to Kindle Paperwhite)</li>
+<li>No games at all(I&#8217;d like to have some)</li>
+</ul>
+
+
+<h2>No More Junk Food</h2>
+
+<p>I can&#8217;t remember the last time I grabbed a burger at McDonalds. Maybe for you it doesn&#8217;t sound like a big deal, but for me it&#8217;s totally a different story.</p>
+
+<p>When I was still a poor student in China, having a McDonalds burger is like a &#8220;highs in the month&#8221; event. It was quite expensive compared to the salary, or the pin money I could get from my dad. Plus it was, and still is so so delicious, way better than Japan. So at that time, my image of an ideal life was I can at least afford to have McDonalds every day.</p>
+
+<p>Then after graduated from university, I came to Japan to work as a full-time software engineer. My salary was good enough to have    as many burgers as I want. Even though I knew people call it junk food, but for me it was not. I could eat McDonalds for one week straight.</p>
+
+<p>I enjoyed it, I was happy. It seemed like that this was one thing impossible to change, not to mention I was not willing to change at all.</p>
+
+<p>But what really changed me was after I joined cookpad, my current company. The company&#8217;s goal is to make cooking more fun, make people healthier. So more or less I got the point of why processed food is bad, then one day my boss sent me a link to <a href="http://www.ted.com/talks/jamie_oliver.html">Jamie Oliver&#8217;s talk in TED</a>. That 20 minutes talk was amazing. Then I searched him in Youtube about his &#8220;Food Revolution&#8221;, and I watched all of them. That thing really changed my mind.</p>
+
+<p>So from that moment, I started to review my pst, I found myself willing to change the habit of eating junk food.</p>
+
+<h2>Do More Cooking</h2>
+
+<p>But change is never easy. Even though I wanted to do more cooking, work fatigue, working overtime and a failed relationship made me feel extremely drained, exhausted and frustrated. Every time I got home I felt so powerless that I&#8217;d rather just skip the dinner. Shopping ingredients, looking for a simple enough newbie  friendly recipe and cook it felt so unreal.</p>
+
+<p>But thanks to some good books I&#8217;ve read, I adjusted my attitudes toward work and relationships, I managed to keep myself stay positive and made some changes in working environment. Now I go home earlier than before, rarely any overtime, I&#8217;m still a little tired after  I open the door but I get the energy to go shopping and cook. Even though my cooking skill is not good, I can only cook several recipes and sometimes the taste is awful, I enjoyed it, I&#8217;m happy to serve myself, understand more about foods, balance diet nutritions from various ingredients, try out some new recipes in the weekend, etc. I feel content.</p>
+
+<p>And what amazed me is that this change was much easier than I expected, especially judging from my past diet habit and &#8220;dreams&#8221;. I didn&#8217;t track my activities and mark them on a calendar. More like happened subconsciously, so, congret to myself! (But I&#8217;m still uncomfortable to cook with someones else cuz I&#8217;m clumsy and slow in the kitchen >_&lt;)</p>
+
+<h2>A Must Watch Video</h2>
+
+<p>OK I&#8217;ll stop here today but I want to share a very touching video with you. I&#8217;m 100% sure it&#8217;s worth watching so don&#8217;t miss it! You won&#8217;t regret! No spoiler here~</p>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/JGL9a2PLxpk?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learned 2 new Japanese Kanji: 炙り, 挽肉]]></title>
+    <link href="http://kinopyo.com/blog/learned-2-new-japanese-kanji%3A-%E7%82%99%E3%82%8A%2C-%E6%8C%BD%E8%82%89/"/>
+    <updated>2013-02-14T13:24:00+09:00</updated>
+    <id>http://kinopyo.com/blog/learned-2-new-japanese-kanji:-炙り,-挽肉</id>
+    <content type="html"><![CDATA[<p>When my friends and I went out for lunch today, I was asked about these 2 Japanese kanji: &#8220;炙り&#8221;, &#8220;挽肉&#8221;, since I&#8217;m Chinese and I&#8217;m supposed to be the &#8220;Kanji Reader&#8221; in the Gaijin group.</p>
+
+<p>Hmm, but I let them down.. What I said was &#8220;I don&#8217;t know because we don&#8217;t have those kanji in Chinese&#8221;. But I was wrong! We do have &#8220;炙&#8221; and &#8220;挽&#8221; in Chinese, it&#8217;s just these kanji have highly fixed usages so I couldn&#8217;t recognise them in when they combined with Japanese Hiragana.</p>
+
+<p>Any here are the meanings:</p>
+
+<ul>
+<li>炙り(あぶり) - grill</li>
+<li>挽肉(ひきにく) - ground meat</li>
+</ul>
+
+
+<p>Even though I&#8217;ve lived in Japan for over 5 years, I still find myself rarely know any Japanese vocabularies related to cooking or food.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ビブリア古書堂の事件手帖の漫画を買った]]></title>
+    <link href="http://kinopyo.com/blog/%E3%83%92%E3%82%99%E3%83%95%E3%82%99%E3%83%AA%E3%82%A2%E5%8F%A4%E6%9B%B8%E5%A0%82%E3%81%AE%E4%BA%8B%E4%BB%B6%E6%89%8B%E5%B8%96%E3%81%AE%E6%BC%AB%E7%94%BB%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/"/>
+    <updated>2013-02-12T23:40:00+09:00</updated>
+    <id>http://kinopyo.com/blog/ビブリア古書堂の事件手帖の漫画を買った</id>
+    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/biblia_bookstore.jpg" alt="ビブリア古書堂の事件手帖" /></p>
+
+<p>昨日本屋に行って表紙に惹かれつい買ってしまった。</p>
+
+<p>第一巻はもう読み終わって結構ハマっちゃったので引き続き第二巻も買う予定ですｗ</p>
+
+<p><img src="http://cdn.kinopyo.com/images/biblia_drama.jpg" alt="ビブリア古書堂の事件手帖 ドラマ化" /></p>
+
+<p>ちなみにドラマ化になったのはよしとして、この女優さんはあまりにも似てないじゃないですか？！！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[LINK: The first step is to start]]></title>
+    <link href="http://kinopyo.com/blog/link%3A-the-first-step-is-to-start/"/>
+    <updated>2013-02-10T01:42:00+09:00</updated>
+    <id>http://kinopyo.com/blog/link:-the-first-step-is-to-start</id>
+    <content type="html"><![CDATA[<h2>Off the topic</h2>
+
+<p>Sometimes when I find something in the internet that is really interesting and inspiring, normally I&#8217;d like to write a blog post about it, but then I may get lazy and just somehow give up or totally forget it. That&#8217;s one thing I want to improve.</p>
+
+<p>So from today I&#8217;m gonna try this &#8220;light weight&#8221; post, just share a link and perhaps plus one phrase of my comment. Sure it could be done in a tweet, but I just wanna keep it in my blog.</p>
+
+<h2>The first step is to start</h2>
+
+<p><a href="http://37signals.com/svn/posts/2538-the-first-step-is-to-start">The first step is to start by Jason Z. of 37signals</a></p>
+
+<blockquote><p>Many times the reasons we don’t start something have nothing to do with lack of skills, materials, or facilities. The real blockers are self-criticism and excuses.</p></blockquote>
+
+<p>Totally non related to the quote above&#8230;but if you read the link you&#8217;ll understand what am I talking about next..</p>
+
+<p>When I was a child I used to draw a lot, I still remember an afternoon in Summer I just sit there and kept drawing for 5 hours, I was completely in the &#8220;flow&#8221;, if I put it in the current popular terms, and totally forgot how could time pass so fast. I also organized an event to get my friends together in a weekend to draw together, at that time I was trying to draw my own manga story of Doraemon. But when passing into adolescence I didn&#8217;t remember why but somehow I stopped drawing.</p>
+
+<p>Oops that is more than &#8220;one phrase&#8221; =_=;;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My New Experience on Quoty]]></title>
+    <link href="http://kinopyo.com/blog/my-new-experience-on-quoty/"/>
+    <updated>2013-02-08T13:14:00+09:00</updated>
+    <id>http://kinopyo.com/blog/my-new-experience-on-quoty</id>
+    <content type="html"><![CDATA[<p>Recently I added photo uploading feature to <a href="http://quoty.me">quoty.me</a>, then yesterday after I watched a Chinese movie 一代宗师(<a href="http://www.imdb.com/title/tt1462900/">The Grandmaster</a>) I uploaded some quotes with photos. It looks pretty good!</p>
+
+<p>Here is a screenshot of it.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/quoty_screenshot.png" alt="list view" />
+<img src="http://cdn.kinopyo.com/images/quoty_screenshot2.png" alt="single quote view" /></p>
+
+<p>The movie is directed by 王家卫(<a href="http://www.imdb.com/name/nm0939182/">Kar Wai Wong</a>), my favorite director, his movies are always full of deep, inspiring words. It&#8217;s a movie, but taste like a novel. I&#8217;m so glad that I read Chinese so that I could fully enjoy the good work.</p>
+
+<p>Another thing is, I was a little confused about how to make quoty, what it is, where it goes. But this experience, after watching a great movie then upload those quotes and photos, I can really recapture all the great moments in the movie, feels so good. Besides, be capable to improve the tool I&#8217;m using is another way to enjoy the life.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[飘雪，歌词很美]]></title>
+    <link href="http://kinopyo.com/blog/%E9%A3%98%E9%9B%AA%EF%BC%8C%E6%AD%8C%E8%AF%8D%E5%BE%88%E7%BE%8E/"/>
+    <updated>2013-01-19T11:25:00+09:00</updated>
+    <id>http://kinopyo.com/blog/飘雪，歌词很美</id>
+    <content type="html"><![CDATA[<script type="text/javascript" src="http://kinopyo.com/javascripts/jplayer/jquery.jplayer.min.js">
+</script>
+
+
+<p><link href="http://kinopyo.com/stylesheets/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css"></p>
+
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+
+<div id="jp_container_1" class="jp-audio">
+  <div class="jp-type-single">
+    <div class="jp-gui jp-interface">
+      <ul class="jp-controls">
+        <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+        <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+        <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+        <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+        <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+        <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+      </ul>
+      <div class="jp-progress">
+        <div class="jp-seek-bar">
+          <div class="jp-play-bar"></div>
+        </div>
+      </div>
+      <div class="jp-volume-bar">
+        <div class="jp-volume-bar-value"></div>
+      </div>
+      <div class="jp-time-holder">
+        <div class="jp-current-time"></div>
+        <div class="jp-duration"></div>
+        <ul class="jp-toggles">
+          <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+          <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="jp-no-solution">
+      <span>Update Required</span>
+      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#jquery_jplayer_1").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "http://cdn.kinopyo.com/musics/piaoxue.mp3"
+        });
+      },
+      swfPath: "/javascripts/jplayer",
+      supplied: "mp3"
+    });
+  });
+</script>
+
+
+<p>原曲是中岛美嘉的雪之华，这是中文翻唱。留意到歌词很美就顺便记录下来了。<br />
+看来我有必要去一趟伊豆啊 =_=;;</p>
+
+<blockquote><p>为何我的泪 会不停地流下
+滑过你曾经亲吻的脸颊
+所有的对错在顷刻崩塌</p></blockquote>
+
+<h2>飘雪 歌词</h2>
+
+<p><img src="http://img.xiami.com/images/album/img93/1593/88591314675786.jpg" alt="" /></p>
+
+<p>作词：林海<br />
+演唱者：韩雪<br />
+作曲：松本良喜<br /></p>
+
+<br />
+
+
+<div class="lyrics">
+忧郁的一片天 飘着纷飞的雪<br />
+这一泓伊豆的温泉 浸湿我孤单的思念<br />
+飘零的一片叶 就像你我的终结<br />
+这一泓伊豆的温泉 盛满温暖的从前<br />
+<br />
+你的手 曾经拥着我的肩<br />
+呢喃着 爱我直到永远<br />
+雪花 像绽放的礼花<br />
+天地间肆意地飘洒<br />
+纵情在一刹那<br />
+<br />
+为何现在只剩下 风吹乱我的发<br />
+撕开我记忆的伤疤<br />
+让往事像雾气慢慢地蒸发<br />
+让我知道什么叫放不下<br />
+<br />
+为何我的泪 会不停地流下<br />
+滑过你曾经亲吻的脸颊<br />
+所有的对错在顷刻崩塌<br />
+<br />
+忧郁的一片天 飘着纷飞的雪<br />
+这一泓伊豆的温泉 浸湿我孤单的思念<br />
+飘零的一片叶 就像你我的终结<br />
+这一泓伊豆的温泉 盛满温暖的从前<br />
+<br />
+你的手 曾经拥着我的肩<br />
+呢喃着 爱我直到永远<br />
+雪花 像绽放的礼花<br />
+天地间肆意地飘洒<br />
+纵情在一刹那<br />
+<br />
+为何现在只剩下 风吹乱我的发<br />
+撕开我记忆的伤疤<br />
+让往事像雾气慢慢地蒸发<br />
+让我知道什么叫放不下<br />
+<br />
+为何我的泪会不停地流下<br />
+滑过你曾经亲吻的脸颊<br />
+所有的对错在顷刻崩塌<br />
+<br />
+原来你带走了我生命的暖春盛夏<br />
+就连秋的果实也只在梦境里悬挂<br />
+原来寻找的是我自己难了的牵挂<br />
+这泓伊豆的温泉是天给的 惩罚<br />
+<br />
+如果知道结局我们还会相爱吗<br />
+我猜不到你的回答<br />
+冰雪中的誓言是真心的吗<br />
+怎么此刻什么也没留下<br />
+<br />
+现在只剩下风吹乱我的发<br />
+雪掩埋记忆的伤疤<br />
+往事就像雾气慢慢地蒸发<br />
+痛到麻木也许就放得下<br />
+<br />
+就让我的泪不停地去冲刷<br />
+冲刷你曾经亲吻的脸颊<br />
+伸出手像留住一样的冰雪<br />
+那瞬间的融化仿佛在<br />
+祭奠你和我的爱情童话<br />
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Establishing A New Habit]]></title>
+    <link href="http://kinopyo.com/blog/establishing-a-new-habit/"/>
+    <updated>2013-01-15T23:25:00+09:00</updated>
+    <id>http://kinopyo.com/blog/establishing-a-new-habit</id>
+    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/gangnam_stairs.jpg" alt="" /></p>
+
+<h2>Taking the Stairs</h2>
+
+<p>Around 1 month ago I started this new habit: Taking the stairs instead of elevators. A simple habit to help me at least have some &#8220;exercise&#8221; every day, I&#8217;ve been &#8220;sitting&#8221; too long. With only 2 exceptions:
+- when on the way to work, always feel sleepy and powerless in the morning, maybe that&#8217;s an execuse or lack of motivation
+- when with other people, just trying to fit in, although I raise my hand for tea or juice in a drinking party&#8230;</p>
+
+<p><img src="http://cdn.kinopyo.com/images/taking_the_stairs.jpg" alt="My Life Activities" /></p>
+
+<p>I use <a href="http://lift.do/">Lift</a> app to track my progress, even though it was not a 30-day streak(forgot to check-in some days or had no out-door activities on the weekends), still I&#8217;m happy for the last 1 month. Feel stronger than before, wouldn&#8217;t be out of breath after climbing a long long stairs, and most important thing is I&#8217;ve established this mindset to always seek and choose stairs rather than elevators, this &#8220;choosing&#8221; process never occurs actually, since I&#8217;ve repeated so many times my initial response is just to find the stairs.</p>
+
+<h2>Tiny Achievement</h2>
+
+<p>This habit doesn&#8217;t require many efforts like other activities such as reading, running or practicing an instrument. But still I consider this a tiny achievement for myself. When I look back the past days or months, I can&#8217;t see myself making progress in neither professional nor personal life. I&#8217;m still kind of struggling with life. Compared with my past I spent less time on learning new things, writing blogs or even playing games.</p>
+
+<p>Been thinking a lot recently and just like everyone I want to improve myself in various aspects but never really put them into actions. Thus I&#8217;m glad at least this habit made me realize there&#8217;s still things I can accomplish.</p>
+
+<h2>Next Habit</h2>
+
+<p>I want to commit myself to create a new habit every week, and if it works for me I&#8217;ll keep doing it. By &#8220;works for me&#8221; I mean like &#8220;get up early&#8221; can work for somebody but not for everyone.</p>
+
+<p>I think this 1 week interval should work for me. It reminds me of the &#8220;1 percent improvement per day&#8221; method but finding out what improvement should I do today could be difficult, and what I&#8217;ve learned is repetition really matters. <strong>Define it, do it, repeat it.</strong> Your body would reflect that way without going through your brain.</p>
+
+<p>So my new habit will be: Getting up at 8 am every weekdays and before 9 am on weekends. Ever since high school I&#8217;ve never made it, and I still have this thought or &#8216;fantasy&#8217; that by getting up early I can make a difference in some aspects of my life. Every morning is in a rush now, sometimes I have to drop breakfast and dash into the station to catch up the train. I do not memorize many peaceful mornings in my life.</p>
+
+<p>Time to reread some parts of the book: <a href="http://www.amazon.com/The-Two-Minute-Challenge-Reach-Finish/dp/1452888892/ref=sr_1_1?ie=UTF8&amp;qid=1358247919&amp;sr=8-1&amp;keywords=charles+abbott+goal">The Two-Minute Challenge: How to Reach Goals and Finish What You Start</a> written by my friend Charles, it has very good strategies of making and keeping your goals.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Countdown to 2013 at Zoujyouji Temple]]></title>
+    <link href="http://kinopyo.com/blog/countdown-to-2013-at-zoujyouji-temple/"/>
+    <updated>2013-01-01T12:28:00+09:00</updated>
+    <id>http://kinopyo.com/blog/countdown-to-2013-at-zoujyouji-temple</id>
+    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/2013_tokyotower.jpg" alt="Counter down to at Zoujyouji Temple" /></p>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/V5lG710fxbc" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>Good bye 2012, happy new year.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fruit Ninjia in Real Life and Flying Kittens]]></title>
+    <link href="http://kinopyo.com/blog/fruit-ninjia-in-real-life-and-flying-kittens/"/>
+    <updated>2012-12-27T23:40:00+09:00</updated>
+    <id>http://kinopyo.com/blog/fruit-ninjia-in-real-life-and-flying-kittens</id>
+    <content type="html"><![CDATA[<p>Just wanna share 2 youtube videos I watched today, so funny.</p>
+
+<p><a href="http://www.youtube.com/watch?v=w-llZmPPNwU">Fruit Ninja in Real Life</a></p>
+
+<div class="video-container">
+<iframe width="560" height="315" src="http://www.youtube.com/embed/w-llZmPPNwU?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p><a href="http://www.youtube.com/watch?v=3oem-M2tQU4">Cute Kittens Fly in Slow Motion</a></p>
+
+<div class="video-container">
+<iframe width="560" height="315" src="http://www.youtube.com/embed/3oem-M2tQU4?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

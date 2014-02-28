@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: oauth | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/oauth/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mixiモバイルアプリ：フォームPost時のOAuth Signature検証失敗について]]></title>
+    <link href="http://kinopyo.com/blog/mixi-mobile-oauth-signature-failure-when-posting-form"/>
+    <updated>2011-08-10T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mixi-mobile-oauth-signature-failure-when-posting-form</id>
+    <content type="html"><![CDATA[<h2>現象</h2>
+
+<p>MixiモバイルアプリのフォームからPOSTするとOAuth Signatureが不一致で検証が通らない。</p>
+
+<h2>デバッグ</h2>
+
+<p>フォームをPOSTするときはフォーム内のデータがOAuthのBase StringのNormalize Request Parametersに含まれます。
+これはOAuthに仕様に準じてます（<a href="http://oauth.net/core/1.0a/#anchor13">http://oauth.net/core/1.0a/#anchor13</a>）が、
+なぜかMixiだと通れないです。</p>
+
+<p>```html
+<form action="?guid=ON&url=http%3A%2F%2Fexample.com%2Ffoo%2F" method="post">
+  <input name="field1" type="text" value="value1" />
+  <input type="submit" value="送信" />
+</form></p>
+
+<p>```</p>
+
+<p>こんなフォームがあるとして、中のfield1がNormalize Request Parametersに存在するとダメだってことが検証でわかりました。</p>
+
+<h2>回避方法</h2>
+
+<p>フォームPOSTする箇所を特定して、その場合はOAuth Signatureを検証しないようにしました。</p>
+
+<h2>参考リンク</h2>
+
+<p>同じ現象にあった方がいました:</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/phantasmist/20110224">Mixi OAuth POST時のシグネチャ検証 - phantasmistの日記</a></li>
+<li><a href="http://developer.mixi.co.jp/appli/spec/mob/validate-oauth-signature/">OAuth Signatureの検証方法について &lt;&lt; mixi Developer Center (ミクシィ デベロッパーセンター)</a></li>
+<li><a href="http://developer.mixi.co.jp/appli/spec/mob/pages_api/">ページ遷移とAPIアクセス &lt;&lt; mixi Developer Center (ミクシィ デベロッパーセンター)</a></li>
+<li><a href="http://oauth.net/core/1.0/#rfc.section.A.5.1">OAuth Core 1.0</a></li>
+<li><a href="http://oauth.net/core/1.0a/#anchor13">OAuth Core 1.0a</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Facebookからのメール：you may be allowing authentication data to be passed to 3rd parties]]></title>
+    <link href="http://kinopyo.com/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties"/>
+    <updated>2011-05-20T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties</id>
+    <content type="html"><![CDATA[<p>Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties.</p>
+
+<p>ここ最近Facebookから”認証情報をサードパーティに渡している可能性がある、48時間内に修正しろ”みたいなメールが届いた人が多いと思います。
+メール本文です：</p>
+
+<blockquote>
+Dear Developer of xxxxxx {your app name} xxxxx,
+
+Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties. Allowing user ids and access tokens to be passed to 3rd parties, even inadvertently, could allow these 3rd parties to access the data the user made available to your site. This violates our policies and undermines user trust in your site and Facebook Platform.
+
+In every case that we have examined, this information is passed via the HTTP Referer Header by the user’s browser. This can happen when using our legacy authentication system and including &lt;iframe&gt;, &lt;img&gt; or &lt;script&gt; content from 3rd parties in the page that receives authentication data from Facebook. Our legacy mechanism passes authentication information in the URL query string which, if handled incorrectly, can be passed to 3rd parties by the browser. Our current OAuth 2.0 authentication system, released over a year ago, passes this information in the URL fragment, which is not passed to 3rd parties by the browser.
+
+Please ensure that you are not allowing this data to be passed immediately. Accessing your site as a test user while running a HTTP proxy/monitor like Charles or Fiddler is the best way to determine if you are allowing this information to be passed. If you discover the issue, you can do one of two things:
+
+1. Migrate your site to use our OAuth 2.0 authentication system. We are requiring all apps and sites to update to this mechanism by Sept. 1, 2011. Migrating now will address this issue and ensure that you are one of the first to meet the deadline. For more details, please see our Authentication Guide.
+
+2. Create and use an interstitial page to remove the authentication data before redirecting to your page with 3rd party content. This approach is used by many of our largest developers today (although they are all migrating to OAuth 2.0 shortly). This is a simple and straightforwardchange that should have minimal impact on your site. For more details on this approach, see our Legacy Connect Auth doc.
+
+Because of the importance of ensuring user trust and privacy, we are asking you to complete one of the above steps in the next 48 hours. If you fail to do so, your site may be subject to one of the enforcement actions outlined in our policies.
+
+If you have any questions or believe you have received this message in error, please contact us.
+
+Facebook Developer Relations
+</blockquote>
+
+
+<p>多分認証システムが古い（OAuth 2.0を使ってない）かつ、該当のページに&lt;iframe&gt;などのタグがあるのを条件としてFacebook側が検知してたと思います、別にサードパーティにどうこうした訳ではなく。</p>
+
+<h2>ソースの確認</h2>
+
+<p>まずユーザ認証のところのソースを確認しましょう。
+古い認証システムを使う場合これに似てるはずです。
+ソースはFacebookの<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>より。</p>
+
+<p>```php
+ $api_key = "YOUR_API_KEY";
+ $interstitial_page = "YOUR_SECURE_URL"; //URL with no 3rd party apps</p>
+
+<p> $url='http://www.facebook.com/login.php?api_key=' . $app_id
+   . '&amp;session_version=3&amp;next=' . urlencode($interstitial_page)
+   . '&amp;v=1.0&amp;return_session=1&amp;fbconnect=1'
+   . '&amp;cancel_url=' . urlencode($interstitial_page);</p>
+
+<p> echo "Welcome to the Old Auth flow";
+ echo "<p>";</p>
+
+<p> echo("<a href='" . $url . "'>"
+   . "<img src='http://static.ak.facebook.com/images/"
+   . "devsite/facebook_login.gif'></a>");</p>
+
+<p>```</p>
+
+<p>この場合nextパラメータで指定したページに行く時、URLパラメータでuidとかaccess_tokenが渡されますので、危ないと。</p>
+
+<p><a href="http://developers.facebook.com/attachment/request_img.png"><img alt="" src="http://developers.facebook.com/attachment/request_img.png" title="古い認証システムでは情報をパラメータ文字列で返す" class="alignnone" width="480" height="100" /></a></p>
+
+<p>OAuth 2.0を使ったログインURLはこうです。</p>
+
+<p>```plain
+https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&amp;redirect_uri=YOUR_URL&amp;scope=email,read_stream</p>
+
+<p>```</p>
+
+<h2>改修</h2>
+
+<p>メールで書かれた通り一つはOAuth2.0に移行する、一つは「中間ページ」挟んでユーザ情報をセッションに保持して隠蔽する。</p>
+
+<p>OAuthについては<a href="https://developers.facebook.com/docs/authentication/">https://developers.facebook.com/docs/authentication/</a>で詳しく説明しています。</p>
+
+<p>後者の場合は<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>の最後でサンプルコードがあるので参考できます。</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SublimeText | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/sublimetext/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SublimeText2 Rails Snippet for Model Find Code]]></title>
+    <link href="http://kinopyo.com/blog/sublimetext2-rails-snippet-for-model-find-code/"/>
+    <updated>2012-11-25T22:49:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sublimetext2-rails-snippet-for-model-find-code</id>
+    <content type="html"><![CDATA[<p>If you find yourself typing these kind of similar codes very often, and want a snippet to save your time, this is it.</p>
+
+<p><code>ruby
+@topic = Topic.find(params[:topic_id])
+@car_item = CarItem.find(params[:car_item_id])
+@user = User.find(params[:id])
+</code></p>
+
+<p>It maps the variable name to its model name by converting the first character or the character after a underscore to uppercase, which is a convention in Rails framework.</p>
+
+<h2>Demo Video</h2>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/jGbvBn801Ao" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>The Snippet</h2>
+
+<p>I put it and named as <code>SublimeText/Packages/User/Snippets/model_find.sublime-snippet</code>.</p>
+
+<p><code>xml
+&lt;snippet&gt;
+  &lt;content&gt;&lt;![CDATA[
+@${1} = ${1/^(.)|_(.)/\U\1\2/g}.find(params[:${2:${1}_}id])
+]]&gt;&lt;/content&gt;
+  &lt;tabTrigger&gt;mf&lt;/tabTrigger&gt;
+  &lt;scope&gt;meta.rails.controller&lt;/scope&gt;
+&lt;/snippet&gt;
+</code>
+So now I just have to hit <code>mf</code> -> <code>tab</code> to trigger it.</p>
+
+<h2>SublimeText Document</h2>
+
+<p>Here I'm using the <a href="http://docs.sublimetext.info/en/latest/extensibility/snippets.html#substitutions">Substitutions</a> feature of SublimeText 2 snippet.</p>
+
+<p>The substitution syntax has the following syntaxes:</p>
+
+<blockquote><ul>
+<li><code>${var_name/regex/format_string/}</code></li>
+<li><code>${var_name/regex/format_string/options}</code></li>
+</ul>
+</blockquote>
+
+<p>e.g.</p>
+
+<p>```
+Original: ${1:Hey, Joe!}
+Transformation: ${1/./=/g}</p>
+
+<h1>Output:</h1>
+
+<pre><code>  Original: Hey, Joe!
+</code></pre>
+
+<p>Transformation: =========
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SourceCodePro font + Nil color scheme]]></title>
+    <link href="http://kinopyo.com/blog/sourcecodepro-font-plus-nil-color-scheme/"/>
+    <updated>2012-09-29T20:50:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sourcecodepro-font-plus-nil-color-scheme</id>
+    <content type="html"><![CDATA[<p>This week <a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">Adobe Announced Source Code Pro</a>, a open source font. I didn't try it until my friend recommend it to me.</p>
+
+<p>Here is what it looks like, really amazing!</p>
+
+<p><img src="http://cdn.kinopyo.com/images/source_code_pro_font_nil_color_scheme_example.png" alt="" /></p>
+
+<p>I'm using the <code>SourceCodePro-Light</code> font and <a href="https://github.com/nilium/st2-nil-theme">Nil Color theme for SublimeText</a>. They're perfect couples. Key point here is use that <code>Light</code> version instead of regular one.</p>
+
+<p>The more I look at it, the more I like it. Look how beautiful the single quotation is!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MarkdownEditing - SublimeText plugin to make your markdown looks like iA Writer]]></title>
+    <link href="http://kinopyo.com/blog/markdownediting-sublimetext-plugin-to-make-your-markdown-looks-like-ia-writer/"/>
+    <updated>2012-09-22T15:35:00+09:00</updated>
+    <id>http://kinopyo.com/blog/markdownediting-sublimetext-plugin-to-make-your-markdown-looks-like-ia-writer</id>
+    <content type="html"><![CDATA[<p>If you're using SublimeText and also a fan of <a href="http://www.iawriter.com/">iA Writer</a> , you may want to check this plugin called <a href="https://github.com/ttscoff/MarkdownEditing">MarkdownEditing</a>. It provides a iA Writer-like interface to your SublimeText.</p>
+
+<h2>How does it look like?</h2>
+
+<p>A picture is worth a thousand words:</p>
+
+<p><img src="http://kinopyo.com/wp-content/MarkdownEditing.png" alt="MarkdownEditing" /></p>
+
+<h2>Install</h2>
+
+<p>Use <code>cmd+shift+P</code> then Package <code>Control: Install Package</code>, type <code>MarkdownEditing</code> to install it, then any markdown file will get associated.</p>
+
+<h2>Other Features</h2>
+
+<p>Besides iA Writer-like UI it also has many other features like:</p>
+
+<ul>
+<li>Asterisks, underscores and parenthesis are auto paired and will wrap selected text</li>
+<li>⌘⌥V will paste the contents of the clipboard as an inline link on selected text</li>
+<li>⌘⌥K inserts a standard inline link, ⌘⇧K inserts an inline image</li>
+<li>⌘⌥B and ⌘⌥I are bound to bold and italics (Markdown).</li>
+<li>...</li>
+</ul>
+
+
+<p>So, how do you think?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sync SublimeText2 Settings with Dropbox]]></title>
+    <link href="http://kinopyo.com/blog/sync-sublimetext2-settings-with-dropbox/"/>
+    <updated>2012-09-22T15:04:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sync-sublimetext2-settings-with-dropbox</id>
+    <content type="html"><![CDATA[<h2>Overview</h2>
+
+<p>In order to sync SublimeText2 settings with Dropbox, you need to symlink these folders of SublimeText to your dropbox.</p>
+
+<ul>
+<li>Packages</li>
+<li>Installed Packages</li>
+<li>Pristine Packages</li>
+</ul>
+
+
+<h2>On your main machine</h2>
+
+<p>cd to your dropbox folder where your want to symlink to.</p>
+
+<p><code>bash
+cd ~/Dropbox/99_Sync/SublimeText
+ln -s "/Users/your_user_name/Library/Application Support/Sublime Text 2/Packages/" Packages
+ln -s "/Users/your_user_name/Library/Application Support/Sublime Text 2/Installed Packages/" 'Installed Packages'
+ln -s "/Users/your_user_name/Library/Application Support/Sublime Text 2/Pristine Packages/" 'Pristine Packages'
+</code></p>
+
+<h2>On your second machine</h2>
+
+<p><code>bash
+cd "/Users/your_user_name/Library/Application Support/Sublime Text 2"
+rm -rf Installed\ Packages
+rm -rf Packages
+rm -rf Pristine\ Packages
+ln -s ~/Dropbox/99_Sync/SublimeText/Installed\ Packages 'Installed Packages'
+ln -s ~/Dropbox/99_Sync/SublimeText/Pristine\ Packages 'Pristine Packages'
+ln -s ~/Dropbox/99_Sync/SublimeText/Packages Packages
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text Build without Saving - Anypreter]]></title>
+    <link href="http://kinopyo.com/blog/sublimetext-build-without-saving-anypreter/"/>
+    <updated>2012-09-06T19:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sublimetext-build-without-saving-anypreter</id>
+    <content type="html"><![CDATA[<h2>Sublimetext2 Build System</h2>
+
+<p>Sublimetext2 ships with its Build System. You can run a ruby file by <em>Cmd + B</em> (or through Tools -> Build menu). Here is an example.</p>
+
+<p><img src="https://img.skitch.com/20120906-484u6864itytf4hwsajdaq1qy.jpg" title="Sublimetext Build System" ></p>
+
+<p>One thing bothers me is you have to <strong>SAVE</strong> that file first, you can't run "untitled" ruby code even you specified which build system (language) to use. This was the reason I still keep Textmate in my Mac, thanks to this plugin called <a href="https://github.com/PhilippSchaffrath/Anypreter">Anypreter</a> I can finally say goodbye to Textmate.</p>
+
+<h2>About Anypreter</h2>
+
+<p>You can install it through Package Control. It supports PHP, Python and Ruby.</p>
+
+<p>After specify the language (suppose you haven't saved it), <code>Ctrl + Shift + X</code> to run and check the result. Rightclick in the document works too.</p>
+
+<h2>Futher Reading</h2>
+
+<ul>
+<li><a href="http://docs.sublimetext.info/en/latest/reference/build_systems.html">Build Systems — Sublime Text Unofficial Documentation</a></li>
+<li><a href="http://addyosmani.com/blog/custom-sublime-text-build-systems-for-popular-tools-and-languages/">Custom Sublime Text Build Systems For Popular Tools And Languages</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

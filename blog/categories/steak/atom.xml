@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: steak | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/steak/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cucumberのいいところをこう語った：Delay The Solution ]]></title>
+    <link href="http://kinopyo.com/blog/about-cucumber-delay-the-solution"/>
+    <updated>2011-02-04T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/about-cucumber-delay-the-solution</id>
+    <content type="html"><![CDATA[<p>全文：
+<a href="http://iain.nl/2011/01/cucumber-vs-steak">http://iain.nl/2011/01/cucumber-vs-steak</a></p>
+
+<p><blockquote><p>Also, the natural language is closer to your understanding of the problem you’re trying to solve. When I write in code, my programmer side becomes active. My programmer side is focussed on solutions. But I want to <strong>delay the solution </strong>as long as I can, until we have a decent understanding of the problem. So by not writing in code, you can focus more on the problem, rather than on the solution.</p></blockquote></p>
+
+<p>ここの「ソリューションをディレー」するところに共感しました。
+Cucumberでは自然言語で書けるため、実装から離れた視点でいろんな「Problem」にぶつかりやすい！というのが最もの魅力ですね。
+時には本当に実装から離れてプロデューサの目でやりたいことをを考えたいです。そうできないと、いつも「ソリューション」だけに力入れて考えて、もっと重要な「目的」を失うかもしれませんと思います。
+もしSteakのような実装の観点から書いたテストコードだとnullとかblankとか、書いてるうちに視野がどんどん狭くなりがちかなと。もちろんそういうテストも重要ですが、「そもそもこんな仕様で大丈夫？ここで何をすべきか？」のような問題にぶつかるためには、やはりCucumberのような自然言語が有利ですね。</p>
+
+<p>あ～いつRoRの仕事ができるかなー</p>
+]]></content>
+  </entry>
+  
+</feed>

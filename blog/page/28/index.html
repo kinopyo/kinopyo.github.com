@@ -1,0 +1,919 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="@ComponentアノテーションはJavaのクラスにつけるもので
+このクラスをコンテナが管理するBeanとして登録する機能です。
+@Serviceアノテーションも現状では@Componentと違いはありませんが、
+通常サービス層のコンポネントは@Serviceアノテーションをつけます。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/difference-between-service-and-component-annotation-in-sprin">Spring: @Serviceと@Componentの区別は？</a></h1>
+	<div class="entry-content">
+		<p>@ComponentアノテーションはJavaのクラスにつけるもので
+このクラスをコンテナが管理するBeanとして登録する機能です。
+@Serviceアノテーションも現状では@Componentと違いはありませんが、
+通常<strong>サービス層</strong>のコンポネントは@Serviceアノテーションをつけます。
+その理由は主に以下の二つです。
++  コンポーネントがサービス層のコンポーネントを明確にする意味で
++  今後@Serviceアノテーションを付与したBeanには自動的にトランザクション管理の機能が付与されるなどの機能拡張も期待される</p>
+
+<br/>
+
+
+<p>Spring3.0のリリースノートを見たところ特に@Serviceに関する変更はないみたいです。
+なのでサービス層のクラスに対して@Componentか@Serviceか悩んでるんだっだら
+@Serviceをつけた方がいいでしょう。</p>
+
+<br/>
+
+
+<p>参考サイト：
+<a href="http://www.infoq.com/jp/articles/spring2.5-1">Spring 2.5の新機能を使ってアプリケーションを作る(その1)</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-chrome-extension-available">MacのChromeエクステンションついに登場！</a></h1>
+	<div class="entry-content">
+		<p>本日Mac ChromeのDev版が更新されエクステンションが使えるようになりました。
+<a href="http://dev.chromium.org/getting-involved/dev-channel">Chrome Dev版をダウンロード</a>
+不安定とは言ってるものの、やはり使いたいです！</p>
+
+<br/>
+
+
+<p>早速ですが、以下のエクステンションを入れました。
+Chromeの再起動が必要なく、インストールするだけで使えます。</p>
+
+<h3>とりあえずこんなエクステンションを入れた</h3>
+
+<ul>
+<li><p><a href="https://chrome.google.com/extensions/detail/jaikcnhlohebodlpkmjepipngegjbfpg">Drag and Go</a>
+Drag and Go</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/jpkfjicglakibpenojifdiepckckakgk"> Chrome Gestures</a>
+Chrome Mouse Gestures</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/ajpgkpeckebdhofmmjfgcjjiiejpodla">Xmarks Bookmarks Sync</a>
+Backup and sync your bookmarks across computers and browsers. Xmarks is also available for Firefox, Safari and IE.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/mihcahmgecmbnbcchbopgniflfhgnkff">Google Mail Checker</a>
+Displays the number of unread messages in your Google Mail inbox. You can also click the button to open your inbox.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/pgphcomnlaojlmmcjmiddhdapjpbgeoc"> Send from Gmail (by Google) </a>
+Makes Gmail your default email application and provides a button to compose a Gmail message to quickly share a link via email</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/anlkjppofaicbdanhhpbbogknfodfhfm"> Chromium Delicious plugin</a>
+Extension to work with delicious.com</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/kbmipnjdeifmobkhgogdnomkihhgojep"> Shareaholic for Google Chrome</a>
+Share, save or email any web page with your friends right from the page you are on using Twitter, Facebook, GMail, and many more!</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/galfofdpepkcahkfobimileafiobdplb"> Tab Menu</a>
+Select, close, rearrange, and search your tabs in a vertical menu! Extras: merge windows, keyboard shortcut, and tab counter!</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/nlbjncdgjeocebhnmkbbbdekmmmcbfjd">RSS Subscription Extension (by Google)</a>
+Adds one-click subscription to your toolbar.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/ggkljdkflooidjlkahdnfgodflkelkai"> Fast YouTube Search</a>
+Fast YouTube Search - Search in YouTube with a single click.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/pbadgdglepgngpoeijdgicjccomadekm"> TwitterBar</a>
+Post to Twitter from the Google Chrome toolbar.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/leekjckogogidfhpejjmaaekecplpdcg"> MegaUpload DownloadHelper</a>
+No More Countdowns - Automatic Downloads.</p></li>
+<li><p><a href="https://chrome.google.com/extensions/detail/afpbkpjjkfakdcakapanjoeijlphieei"> RapidShare DownloadHelper</a>:No More Countdowns - Automatic Downloads.</p></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-09T00:00:00+09:00" pubdate data-updated="true">2010-01-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-block">Rubyブロック</a></h1>
+	<div class="entry-content">
+		<h2>ブロックとは？</h2>
+
+<p>Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
+メソッドに渡された処理はブロックといいます。</p>
+
+<h2>ブロックを渡すには？</h2>
+
+<p>ブロックを渡すには、二つの方法があります。
++ ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>②メソッドの最後にdo..endで囲んだコードを渡す。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブロックの使い方？</h2>
+
+<p>ブロックは使ってもらわないと、意味がありません。
+使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。
+メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of method&#39;</span>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of method&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Start of method
+</span><span class='line'>In the block
+</span><span class='line'>End of method</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブロックにはパラメータを渡す？</h2>
+
+<p>ブロックにはパラメータを渡せますか？もちろんです。
+パラメータの定義はブロックで、
+yieldでブロックを実行する際には、パラメータを渡します。
+ブロックは渡されたパラメータを受け取って、処理します。
+文字の説明だけで、わからないかもしれません。
+実はメソッドの定義とほとんど変わらないです。
+サンプルを見てみましょう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block_pramater</span>
+</span><span class='line'>  <span class="k">yield</span><span class="p">(</span><span class="s1">&#39;helloworld&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">call_block</span> <span class="p">{</span><span class="o">|</span><span class="n">str</span><span class="p">,</span> <span class="n">num</span><span class="o">|</span> <span class="nb">puts</span> <span class="s1">&#39;Ruby sample:&#39;</span><span class="o">+</span><span class="n">str</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※注意点：ブロックでは、||でパラメータを受け取っています。</p>
+
+<h2>渡されたブロックをさらに別のメソッドを渡すには？</h2>
+
+<p>渡されたブロックをさらに内部で使っているメソッドに渡すことができます。
+引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of test_block&#39;</span>
+</span><span class='line'>  <span class="n">test_block_paramater</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of test_block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">test_block_paramater</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of test_block_paramater&#39;</span>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>  <span class="nb">puts</span><span class="s1">&#39;End of test_block_paramater&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Start of test_block
+</span><span class='line'>Start of test_block_paramater
+</span><span class='line'>In the block
+</span><span class='line'>End of test_block_paramater
+</span><span class='line'>End of test_block</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</p>
+
+<h2>ブロックが渡されたか調べるには？</h2>
+
+<p>yieldを実行する時、ブロックが渡されるかどうかを確認することができます。
+block_given?を使って、ブロックがあるかどうかを確認できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of method&#39;</span>
+</span><span class='line'>  <span class="k">yield</span> <span class="k">if</span> <span class="nb">block_given?</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of method&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-disable-right-click">jQueryで右クリックを無効にする方法</a></h1>
+	<div class="entry-content">
+		<p>jQueryでマウス右クリックを無効にする方法です。
+&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
+それのハンドラでreturn falseすることで簡単に実現できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;contextmenu&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wp-plugin-iphone-theme-wptouch">iPhoneで閲覧に最適にしてくれるWPプラグイン - WPTouch</a></h1>
+	<div class="entry-content">
+		<p>iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
+12月で1.68%でした。
+僅かな割合なんですが、それでもうれしいです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/Blog-Browsers-and-OS.jpg" title="Blog-Browsers-and-OS" ></p>
+
+<h2>WPTouch</h2>
+
+<p>WPTouchはiPhone閲覧に最適にしてくれるWPプラグインです。
+インストールするだけでもうOKです。
+設定メニューも簡単で、とても使い易いです。</p>
+
+<br/>
+
+
+<p>以下iPhoneでこのブログを見る際のスクリーンショットです。
+今のところFollow Meのプラグインがうまく表示されませんが、
+これはFlashがiPhoneではサポートされてないからです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_lists.jpg" title="初期画面：記事一覧" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_preview.jpg" title="記事概要" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_detail.jpg" title="記事詳細" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_metadata.jpg" title="カテゴリ、タグ、コメント" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-02T00:00:00+09:00" pubdate data-updated="true">2010-01-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-tomcat-install">MacでTomcatをインストール</a></h1>
+	<div class="entry-content">
+		<h3>ダウンロード</h3>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-download.jpg" title="tomcat-download" ></p>
+
+<p><a href="http://tomcat.apache.org/download-60.cgi">Tomcat公式サイトダウンロードページ</a>で上記ファイルをダウンロード</p>
+
+<h3>インストール</h3>
+
+<p>ただ適当な場所に解凍するだけです。</p>
+
+<h3>起動/終了</h3>
+
+<p>ターミナルを起動しTOMCAT/binに移動する
++  起動  ./startup.shを実行
++  終了  ./shutdown.sh
+<strong>&#8221;./&#8221;は必須です。</strong>
+ターミナルで使われるUNIXコマンドはイマイチなので、もっと便利な使い方はあると思います。</p>
+
+<h3>検証</h3>
+
+<p>http://localhost:8080</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>mac</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/eclipse-install-tomcat-plugin">EclipseにTomcatプラグインをインストール</a></h1>
+	<div class="entry-content">
+		<ul>
+<li><p><a href="http://www.eclipsetotale.com/tomcatPlugin.html#A4">Eclipse Tomcat Pluginダウンロードページ</a>でzipファイルをダウンロード
+現時点の最新版はtomcatPluginV321.zipです。</p></li>
+<li><p>your_Eclipse_Home/pluginsに解凍</p></li>
+<li>Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-toolbar-icon.jpg" title="tomcat-toolbar-icon" ></p>
+
+<ul>
+<li>下記のようにTomcatバージョンとTomcatホームを設定</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-home-path.jpg" title="tomcat-settings-home-path" ></p>
+
+<ul>
+<li>下記のようにTomcat用のJVM SettingでJREバージョンを選択</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-settings-jre-version.jpg" title="tomcat-settings-jre-version" ></p>
+
+<p>私の場合デフォルトがJRE1.4になっていたため、これを1.5の変えました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/eclipse/'>Eclipse</a>, <a class='category' href='/blog/categories/editor/'>Editor</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/spring-improve-unit-test">Springによる単体テストの促進</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.atmarkit.co.jp/fjava/rensai3/springdi04/springdi04_3.html">なぜDIコンテナを使うのか</a>の勉強メモです。</p>
+
+<blockquote><p>SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります。DIコンテナを利用すればDIコンテナが設定ファイルの記述に従ってインターフェイスの実装クラスをセットします。そのため、設定ファイルの内容を切り替えることで単体テスト用のモックオブジェクト（ダミーオブジェクト）に切り替えることができます。</p></blockquote>
+
+
+<h2>サンプル</h2>
+
+<p>JuchuImplクラスはZaikoHikiateImplクラスに依存しています。
+そのためJuchuImpl単体のテストを行おうとしても、
+ZaikoHikiateImplクラスのhikiate()メソッドにバグがある場合テストができませんでした。</p>
+
+<h3>単体テストを行いにくいクラス</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">juchu</span><span class="o">(</span><span class="n">Integer</span> <span class="n">syohinCode</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">suryo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">ZaikoHikiate</span> <span class="n">hikiate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZaikoHikiateImpl</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">hikiate</span><span class="o">.</span><span class="na">hikiate</span><span class="o">(</span><span class="n">syohinCode</span><span class="o">,</span> <span class="n">suryo</span><span class="o">);</span>
+</span><span class='line'>        <span class="c1">// 受注を処理</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>DIにより依存を低めたクラス</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">ZaikoHikiate</span> <span class="n">hikiate</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHikiate</span><span class="o">(</span><span class="n">ZaikoHikiate</span> <span class="n">hikiate</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">hikiate</span> <span class="o">=</span> <span class="n">hikiate</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">juchu</span><span class="o">(</span><span class="n">Integer</span> <span class="n">syohinCode</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">suryo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">hikiate</span><span class="o">.</span><span class="na">hikiate</span><span class="o">(</span><span class="n">syohinCode</span><span class="o">,</span> <span class="n">suryo</span><span class="o">);</span>
+</span><span class='line'>        <span class="c1">// 受注を処理</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>JuchuクラスはZaikoHikiateImplクラスが完成していなくても
+ZaikoHikiateインターフェイスを実装したモックオブジェクトを
+DIコンテナにセットしてJuchuImplの単体テストを実行できます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-28T00:00:00+09:00" pubdate data-updated="true">2009-12-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-handy-note-and-html-css-javascript-notes">jQuery APIを一枚の紙にまとめたノート。他にもHTML、CSS、JavaScriptノートが満載</a></h1>
+	<div class="entry-content">
+		<p>jQueryのAPIを一枚の紙にまとめたものです。
+ノートはPDFファイルで、ダウンロードすることができます。
+<a href="http://www.javascripttoolbox.com/jquery/cheatsheet/JQueryCheatSheet-1.3.2.pdf">jQuery APIノート</a></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jQuery-api-note.jpg" title="jQuery-api-note" ></p>
+
+<br/>
+
+
+<p>作者はMattさんです。ありがとうございました。</p>
+
+<br/>
+
+
+<p>他にもHTML、CSS、JavaScript、PHP、Mac、Windows、Photoshop、Browserなどのノートが満載です。
+<a href="http://www.smashapps.org/2009/12/html-css-php-javascript-and-more-cheat.html">HTML, CSS, PHP, Javascript And More Cheat Sheets</a>
+興味のある方は直接作者のサイトを参照してください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-27T00:00:00+09:00" pubdate data-updated="true">2009-12-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/movie-avatar-the-inside-story-and-games">映画：アバター脚本はタイタニック前もできた、ゲームがiPhone、PS3、XBOX、DSに登場</a></h1>
+	<div class="entry-content">
+		<p>映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/wallpaper_01_1280x1024.jpg" title="アバターポスタ" ></p>
+
+<p>映画館でアバターを見ました。最高です。
+ストリー、3Dの表現力、監督が創った世界：パンドラ。
+素晴らしかったとしか言えません。
+<a href="http://microsites2.foxinternational.com/jp/avatar/">映画アバター公式サイト</a></p>
+
+<h3>iPhone/iPodにもアバターゲームが登場</h3>
+
+<p><a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store"><img alt="ジェームズ・キャメロン　アバター " src="http://a1.phobos.apple.com/us/r1000/017/Purple/07/ad/bf/mzl.qhbrhmbb.175x175-75.jpg" /></a></p>
+
+<p><a href="http://click.linksynergy.com/fs-bin/stat?id=tQ0EdYjdamw&offerid=94348&type=3&subid=0&tmpid=2192&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fjp%252Fapp%252Fid343687281%253Fmt%253D8%2526uo%253D6%2526partnerId%253D30" target="itunes_store">AppStoreでチェック</a>
+<a href="http://www.youtube.com/watch?v=73XttXv11io">Youtubeでチェック</a></p>
+
+<p><img src="http://a1.phobos.apple.com/us/r1000/057/Purple/98/e9/33/mzl.zkolxplp.480x480-75.jpg" alt="iPhoneゲーム：アバター" /></p>
+
+<p>AppStoreでのレーティングもレビューも大好評です。
+私も買いたい。。</p>
+
+<h3>ジェームズ・キャメロン、「アバター」のビジョンを語る</h3>
+
+<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/LYoOFm-RoH4&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/LYoOFm-RoH4&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
+
+
+<p>実際はタイタニックよりも前でアバターの脚本ができたんです。
+ただし当時の映画レベルではキャメロン監督が創造に応えなかったので
+テクノロジーが進化するまでずっと10何年間も待ってたそうです。</p>
+
+<h3>映画『アバター』をゲーム化、米国では間もなく発売</h3>
+
+<p>プレーステーション3、XBOX360、ニンテンドーDSにて1月7日発売予定だそうです。
+<a href="http://www.youtube.com/watch?v=i5jzSM4ihtE">Youtubeで実際の開発現場をチェック</a>
+<a href="http://avatargame.us.ubi.com/">アバターの公式ゲームサイト</a></p>
+
+<h3>いくつか面白い記事</h3>
+
+<ul>
+<li><a href="http://news.walkerplus.com/2009/1222/11/">驚愕の『アバター』映画館で観るべき“3つの理由</a></li>
+<li><a href="http://news.walkerplus.com/2009/1222/3/">キャメロン監督『アバター』2作目、3作目構想を明かす</a></li>
+<li><a href="http://news.walkerplus.com/2009/1223/8/">『アバター』出演女優ゾーイ・サルダナはスタントも軽々こなす万能女優</a></li>
+<li><a href="http://getnews.jp/archives/40882">オンラインゲーム好きは絶対に観た方がいい映画『アバター』</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-24T00:00:00+09:00" pubdate data-updated="true">2009-12-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/27/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/29/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

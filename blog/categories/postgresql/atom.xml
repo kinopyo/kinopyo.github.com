@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: postgresql | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/postgresql/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails RSpec: Postgresqlでrake specするとNOTICEの警告がいっぱい出た]]></title>
+    <link href="http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice"/>
+    <updated>2012-03-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rails-rspec-postgresql-turn-offrake-spec-warnings-notice</id>
+    <content type="html"><![CDATA[<p><a href="http://d.hatena.ne.jp/arcright/20110623/1308796154">PostgresSQLでrake specするとNOTICEがいっぱいでる</a>が大変参考になった。</p>
+
+<p><blockquote><p>NOTICE:  CREATE TABLE will create implicit sequence "peroperos_id_seq" for serial column "peroperos.id"<br/>NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "peroperos_pkey" for table "peroperos"<br/>～略～</p></blockquote>
+の警告をシャットダウンする方法です。</p>
+
+<p><div><script src='https://gist.github.com/2232851.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/2232851&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

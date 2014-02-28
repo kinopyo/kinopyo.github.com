@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Funny | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/funny/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fruit Ninjia in Real Life and Flying Kittens]]></title>
+    <link href="http://kinopyo.com/blog/fruit-ninjia-in-real-life-and-flying-kittens/"/>
+    <updated>2012-12-27T23:40:00+09:00</updated>
+    <id>http://kinopyo.com/blog/fruit-ninjia-in-real-life-and-flying-kittens</id>
+    <content type="html"><![CDATA[<p>Just wanna share 2 youtube videos I watched today, so funny.</p>
+
+<p><a href="http://www.youtube.com/watch?v=w-llZmPPNwU">Fruit Ninja in Real Life</a></p>
+
+<div class="video-container">
+<iframe width="560" height="315" src="http://www.youtube.com/embed/w-llZmPPNwU?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p><a href="http://www.youtube.com/watch?v=3oem-M2tQU4">Cute Kittens Fly in Slow Motion</a></p>
+
+<div class="video-container">
+<iframe width="560" height="315" src="http://www.youtube.com/embed/3oem-M2tQU4?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Capistrano | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/capistrano/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Capistrano Callback Order and Recipe Brief Explanations]]></title>
+    <link href="http://kinopyo.com/blog/capistrano-callback-order-and-recipe-brief-explanations/"/>
+    <updated>2012-10-25T00:50:00+09:00</updated>
+    <id>http://kinopyo.com/blog/capistrano-callback-order-and-recipe-brief-explanations</id>
+    <content type="html"><![CDATA[<p>I'm not familiar with <code>capistrano</code> at all, I kind of use it in daily base  but what I'm capable of is just the one major command: <code>ca deploy</code>, heh that's all I got.</p>
+
+<h2>Capistrano Callback Order</h2>
+
+<p>If you like me always get confused by the callback orders, image is really gonna help you out.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/Capistrano%20Execution%20Path.jpeg" alt="" /></p>
+
+<h2>Capistrano Task explanation</h2>
+
+<p><a href="http://capitate.rubyforge.org/recipes/deploy.html">Capistrano recipes: deploy</a> is brief explanations of each task, same in the source code I think, highly recommend you go through them once.</p>
+
+<p>Another good resource is <a href="https://github.com/capistrano/capistrano/blob/master/lib/capistrano/recipes/deploy.rb">capistrano recipes source code</a></p>
+
+<p>```ruby
+task :update do
+  transaction do</p>
+
+<pre><code>update_code
+create_symlink
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Like this <code>:update</code> task is easy to guess: run <code>update_code</code> and <code>create_symlink</code> in a transaction.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails3.1 Capistranoでデプロイする時にpublic/images, stylesheets, javascriptsのNo such file or directoryエラー]]></title>
+    <link href="http://kinopyo.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts"/>
+    <updated>2011-09-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts</id>
+    <content type="html"><![CDATA[<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。
+<blockquote><p>#  executing "find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} ';'; true"</p></p><p><pre><code>servers: *"176.32.95.168"*<br/>*176.32.95.168* executing command<br/></code></pre></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/images'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><h3><em>err :: 176.32.95.168</em> find:</h3></p><p><h3><em>err :: 176.32.95.168</em> `/home/rails_apps/todo31/releases/20110912141706/public/javascripts'</h3></p><p><h3><em>err :: 176.32.95.168</em> : No such file or directory</h3></p><p><h3><em>err :: 176.32.95.168</em></h3></p><p><p></p></blockquote></p>
+
+<p><a href="https://github.com/capistrano/capistrano/issues/79#issuecomment-1767135" title="Githubにも載ってました。" target="_blank">Githubにも載ってました</a>エラーは無視しても大丈夫そうですが、下記の一行をdeploy.rbに追記すればエラー出なくなります。</p>
+
+<p>```ruby</p>
+
+<h1>in config/deploy.rb</h1>
+
+<p>set :normalize_asset_timestamps, false</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに]]></title>
+    <link href="http://kinopyo.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200"/>
+    <updated>2011-09-24T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200</id>
+    <content type="html"><![CDATA[<h2>現象</h2>
+
+<p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
+発生バージョンはRails 3.1。</p>
+
+<h2>解決策</h2>
+
+<p>app/tmp/cacheを削除し、rake assets:precompileをもう一回実行。
+ブラウザキャッシュを消してリロード。</p>
+
+<h2>調査経緯</h2>
+
+<p>assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部チェックしましたが、全然ダメでした。
+最後はgithubの<a href="https://gist.github.com/rails/rails/issues/2299" title="このスレ" target="_blank">このスレ</a>の方法で解決になりました。</p>
+
+<p>問題となったrails applicationはRails 3.1.rc1から作っていたもので、そのままrc4, rc5, stableに更新してきました。githubで議論されたのはrc4からrc5になったときにこのような現象があったようです。恐らくtmp/cacheが変な動きをして手動で削除しない限り古いバージョンのものがずっと残されたかもしれません。</p>
+
+<h2>おまけ</h2>
+
+<p>Asset Pipelineの周りの設定ファイルを一応貼っておきます。</p>
+
+<p><div><script src='https://gist.github.com/1239153.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1239153&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
+
+<p>Githubでのスレ：<a href="https://gist.github.com/rails/rails/issues/2299">https://gist.github.com/rails/rails/issues/2299</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,762 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="今のlive関数は二番目の引数にデータを渡すことができません。
+bindとliveのシグネチャーは以下になります。 1
+2
+bind(type, *data*, fn)
+live(type, fn) いざ使おうと思って単純にbindをliveに変換したところアプリは動かなくなっちゃいました。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-live-pass-data-will-be-implemented-in-1-3-3">jQuery liveにデータを渡すのは1.3.3で実現</a></h1>
+	<div class="entry-content">
+		<p>今のlive関数は二番目の引数にデータを渡すことができません。
+bindとliveのシグネチャーは以下になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">bind</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="o">*</span><span class="nx">data</span><span class="o">*</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
+</span><span class='line'><span class="nx">live</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>いざ使おうと思って単純にbindをliveに変換したところアプリは動かなくなっちゃいました。
+回避方法はいろいろありますが、以下の記事によりますと
+jQuery 1.3.3ではliveにもdataを渡すことができるそうです。
+作者はjQueryのコアコントリビュートだそうです。
+<a href="http://brandonaaron.net/blog/2009/05/8/jquery-edge-live-events-now-with-data">jQuery Edge: Live Events now with Data</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-expr-context-parameter">jQueryの$(expr, context)、今まで気づいてなかったcontextパラメータ</a></h1>
+	<div class="entry-content">
+		<p>今まで平気に$(expression)を使ってきましたが、
+この二番目のcontextパラメータでセレクタの範囲を決まることができます。
+この関数はjQueryのコア関数で幅広く使われ、
+もっとも一般的な使い方はcontextを省略したものでしょう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>contextパラメータ</h2>
+
+<blockquote><p>contextが何も指定されなければ、$()関数は現在のHTMLのDOMエレメントを検索する。<br/>逆にDOMエレメントやjQueryオブジェクトなどのcontextが指定されれば、expressionはそのcontextに対して合致するものを捜します。</p></blockquote>
+
+
+<p>簡単にいうとfind()関数と似ています。
+実践でいうと以下の二つは同じ機能をしています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div,body&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://semooh.jp/jquery/api/core/jQuery/expression,+context/">jQuery(expression, context) - jQuery 1.3.2 日本語リファレンス</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ie-issue-when-open-jsp-file-promptdownload-dialog">IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る</a></h1>
+	<div class="entry-content">
+		<p>秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。</p>
+
+<h2>回避方法</h2>
+
+<p>関連付けを決断！
+- エクスプローラの「ツール→フォルダ オプション→ファイルの種類→拡張子」にJSPを捜し、「詳細設定」を開いてopenアクションを削除。
+- あるいはファイルの種類のタブの中の「削除」ボタンで削除</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/file_associate.JPG" title="JSPファイルの関連付け" ></p>
+
+<p>秀丸が悪いのか、何が悪いのかは調べてないです。
+とにかくこれで一応解決。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-select-and-deselec-text-of-an-input-box">テキストボックスの文字列を選択(色逆転)、取り消すには</a></h1>
+	<div class="entry-content">
+		<p>テキストボックスの文字を選択された状態にする方法とその解除方法です。
+IEの場合selectボックスにselect()関数を使うとJavaScriptエラーになります。
+Firefoxは大丈夫です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">selectFocusText</span><span class="p">(</span><span class="nx">element</span><span class="p">){</span>
+</span><span class='line'>  <span class="c1">// for IE</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">nodeName</span> <span class="o">==</span> <span class="s2">&quot;SELECT&quot;</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">element</span><span class="p">.</span><span class="nx">select</span><span class="p">();</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">unselectFocusText</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// for IE</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">.</span><span class="nx">empty</span><span class="p">();</span>
+</span><span class='line'>  <span class="c1">// for Firefox</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">removeAllRanges</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/hidemaru-convert-multiple-files-encode">秀丸で複数ファイルのエンコードを一括変換</a></h1>
+	<div class="entry-content">
+		<p>便利な秀丸マクロです。</p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="http://hide.maruo.co.jp/lib/macro/encode_change.html">秀まるおのホームページ(サイトー企画)－ファイルエンコードバッチ変換</a></p>
+
+<h2>利用方法</h2>
+
+<p>秀丸のマクロに登録した後に実行すれば
+プロンプトのウィザードで手軽に操作できます。
+ただし変換元ファイルのエンコードは正しく入力しなければなりません。</p>
+
+<h2>特徴</h2>
+
+<ul>
+<li>サブフォルダにも効く</li>
+<li>ファイルパスと拡張子指定にワイルドカードが有効</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/google-chrome-for-mac"> Google Chrome for Mac Released</a></h1>
+	<div class="entry-content">
+		<br/>
+
+
+<p>Google ChromeついにMacに登場しました。
+早速使ってみました。
+「速い、速い、速すぎる」のがすべてです。
+そしてMacらしきのアニメーションで「綺麗」に動作してます。
+タブを開いたり閉じたり、フォーム入力中の画面を閉じる際の確認プロンプトなど
+とても使い易いです。</p>
+
+<h2>インストール</h2>
+
+<p><a href="http://www.google.com/chrome">http://www.google.com/chrome</a>
+Macを使うなら普通にインストールされます。
+Firefoxのブックマークや履歴など簡単にインポートされました。</p>
+
+<h2>Gmailからメールが来た</h2>
+
+<p>深夜の2時41分、Mac版Chromeリリースのメールがきました。
+このメールにはChrome for Macチームがどれだけ頑張ったかの内容も載っていたので、
+一緒に見てみたいと思います。</p>
+
+<blockquote><p>73,804 lines of Mac-specific code written<br/>29 developer builds<br/>1,177 Mac-specific bugs fixed<br/>12 external committers and bug editors to the Google Chrome for Mac code base, 48 external code contributors<br/>64 Mac Minis doing continuous builds and tests<br/>8,760 cups of soft drinks and coffee consumed<br/>4,380 frosted mini-wheats eaten</p></blockquote>
+
+
+<p>印象的なのは8760カップのコーヒと4380のfrosted mini-wheatsです。
+このfrosted mini-wheatsはこんなもののアメリカンフードです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/frostedminiwheats.jpg" title="frosted mini-wheats" >
+Googleらしき風土ですね。どれくらいお菓子食ったのも統計されてます。</p>
+
+<h2>不具合が。。</h2>
+
+<p>WordPressで書きながら、いきなりWPが動かなくなりました。
+いったん閉じて再開すると改善できたので、
+相性がわるいか、早速のバグかまだ分かりません。</p>
+
+<h2>スクリーンショット</h2>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-6.jpg" title="Mac版Chromeダウンロード" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-8.jpg" title="Chromeインターフェース" >
+<img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-7.jpg" title="設定画面" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-09T00:00:00+09:00" pubdate data-updated="true">2009-12-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-permalink-settings-for-seo">WordPressパーマリンクのSEO対策</a></h1>
+	<div class="entry-content">
+		<p>最適なSEOになるためのWordPressのパーマリンク設定方法について書きたいと思います。</p>
+
+<h2>パーマリンク</h2>
+
+<p>簡単に言うとURLのことです。例えば下記のようなURLです。
+http://example.com/?p=N
+これはWordPressのデフォルトで、実によくない設定です。
+基本のものは<a href="http://wpdocs.sourceforge.jp/%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">パーマリンクの使い方</a>を参照してください。</p>
+
+<h2>SEOに最適なパーマリンク</h2>
+
+<p>いろんなサイトを参考しました。結構の情報量で、どこまで通用するかはやはりご自分の判断でお願いします。
++  URLにスペースを入れないのはさいやく、アンダースコアはちょっとマシ、ハイフンは一番(in URLs, no spaces are worst, underscore are better, dashes or hyphens are best.)
++  %postname%で始まるのはパフォーマンス的によくないが、2.0バージョン以降はOKになった</p>
+
+<pre><code>-(Starting Permalinks with %postname% is strongly not recommended for performance reasons.. ###  Note - this has been changed and is ok to do since ver. 2.0)
+</code></pre>
+
+<ul>
+<li>%category%、%tag%で始まるのはパフォーマンスの原因でやめてほしい
+ -(Starting Permalinks with %category%,%tag% is strongly not recommended for performance reasons. )</li>
+<li>日本語のパーマリンクにするのはよろしくない</li>
+</ul>
+
+
+<h2>結論</h2>
+
+<ul>
+<li>%postname%</li>
+<li>あるいは%year%/%postname%
+にしようかと私は思ってます。</li>
+</ul>
+
+
+<br/>
+
+
+<p>まず、%postname%が改善されたため、これを使うのが一番いいSEO対策になってます。
+ただし日本語をパーマリンクにするのはよくしくないと思うので、
+そこは手動で毎回毎回変えるしかないです。
+手間かかると思う方はやはり年月日+post_idを選択したほうがいいかもです。
+ただパーマリンクに無意味なpost_idをつけるのがちょっと抵抗があるので、
+私は別に英語の意味に翻訳するのも大丈夫かと思います。</p>
+
+<br/>
+
+
+<h2>パーマリンクをリダイレクトするプラグイン</h2>
+
+<p>これはあるようです。
+パーマリンクの形式を変更した場合このプラグインで
+簡単リダイレクトができるそうです。
+<a href="http://scott.yang.id.au/code/permalink-redirect">Permalink Redirect WordPress Plugin</a></p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://wpdocs.sourceforge.jp/%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">パーマリンクの使い方</a>
+<a href="http://wphacks.com/how-to-setting-up-your-wordpress-permalink-structure">How To: Setting Up Your WordPress Permalink Structure</a>
+<a href="http://openplay.org/2009/04/18/140.html">WordPressで日本語のパーマリンクにするのはよろしくない</a>
+<a href="http://ja.forums.wordpress.org/topic/2048">WordPress のアドレスに日本語を含むURLが使えない</a>
+<a href="http://coliss.com/articles/blog/wordpress/plugin/wordpress-plugin-permalink-edirect.html">パーマリンクの変更後、旧アドレスでもアクセスできるWordPressのプラグイン</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-07T00:00:00+09:00" pubdate data-updated="true">2009-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>, <a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/concentrate-editor-ommwriter">集中力向上のテキストエディタOmmwriter：見た目と背景音楽で陶酔</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>Mac向けのソフトです。同じ集中力アップのWriteroomと似てますが、</p>
+<p>使ってみると結構こっちが陶酔するくらい美しいです。</p>
+<p>音楽が流されて、何かを書くこと自体が癒されるプロセスになります。</p>
+<p>下記DEMOをぜひ御覧下さい。</p>
+<p><object width="400" height="225"><param name="allowfullscreen" value="true" ></param><param name="allowscriptaccess" value="always" ></param><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=7670108&#38;server=vimeo.com&#38;show_title=0&#38;show_byline=0&#38;show_portrait=0&#38;color=ffffff&#38;fullscreen=1" ></param><embed src="http://vimeo.com/moogaloop.swf?clip_id=7670108&#38;server=vimeo.com&#38;show_title=0&#38;show_byline=0&#38;show_portrait=0&#38;color=ffffff&#38;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="225"></embed></object><p><a href="http://vimeo.com/7670108">Ommwriter</a> from <a href="http://vimeo.com/user1619595">Herraiz Soto</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+<h4>ダウンロード</h4>
+<p><a href="http://www.ommwriter.com/en/" target="_blank">Welcome - Ommwriter</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-07T00:00:00+09:00" pubdate data-updated="true">2009-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/editor/'>Editor</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/change-language-of-wordpress">WordPress言語の変更</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>最初はわざと英語版を入れましたが、日本語に簡単に切り替えるかと思って検索してみたんです。こんなに簡単に変更できるんだ。さすがWordPressだ！</p>
+<h4>日本語リソースのインストール</h4>
+<ol>
+<li><a href="http://ja.wordpress.org/install-ja/" target="_blank">WordPress | 日本語 &#187; 日本語リソースのインストール</a>から ja.mo、continents-cities-ja.mo をダウンロード</li>
+<li>サーバのWordPressフォルダのwp-content 以下に languages ディレクトリを作成</li>
+<li>ダウンロードした2つの .mo ファイルを languages ディレクトリにアップロード</li>
+<li>WordPress ルート直下の wp-config.php ファイルを開き、「WPLANG」の箇所を次のように設定</li>
+</ol>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>define ('WPLANG', 'ja');</span></code></pre></td></tr></table></div></figure>
+
+<p>他にインストールしたい言語があれば該当リソースをWPにインストールして、</p>
+<p>wp-config.phpを編集すればOKです。</p>
+<p>参考サイト：</p>
+<p><a href="http://www.wordpress-skin.com/wordpress/?p=7" target="_blank">WordPressの言語を切り替えてみよう（日本語・英語・中国語…）  -  wordpressのテンプレート wpskinのブログ</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-06T00:00:00+09:00" pubdate data-updated="true">2009-12-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/movie-up">映画レビュー：カールじいさんの空飛ぶ家</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>大人になって、年をとってから気づいた昔の自分を失ったあなたに、</p>
+<p>幸せな恋と結婚を求めているあなたに、</p>
+<p>この映画をおすすめします、</p>
+<br/>
+<p><object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/hUuM5IGWgoE&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/hUuM5IGWgoE&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
+<br/>
+<p>映画は本当に良く出来てます。</p>
+<p>宣伝よりも優れたものです。</p>
+<p>幼なじみの二人が恋人になって、結婚して、年をとって、</p>
+<p>子ともができなくて悲しくなっても、お互い支えて生きて、やがて離れを迎えた。。。</p>
+<p>わずか数分で幸せの二人の一生の生活を描きましたが、</p>
+<p>とても印象的です。</p>
+<p>特に妻が夫にネクタイをつけるシンは男にとって最高の幸せじゃないかなと思います。</p>
+<br/>
+<p>妻を失ってから段々社会と離れてゆくカールじいさん、</p>
+<p>他の人からはただの頑固爺にしか見えないだろう。</p>
+<p>それは妻との思い出がいっぱいの家を守るためです。</p>
+<p>それだけで必死でしたカールじいさんは</p>
+<p>映画の最後でもっと大切な何かに気づき、その家を諦めました。</p>
+<p>それはなんだろう？それが人生の一番重要なことではないでしょうか。</p>
+<br/>
+<p>明日から公開です。</p>
+<p><a href="http://movie.goo.ne.jp/contents/movies/MOVCSTD14480/index.html" target="_blank">カールじいさんの空飛ぶ家 - goo 映画</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00+09:00" pubdate data-updated="true">2009-12-04</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/29/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/31/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

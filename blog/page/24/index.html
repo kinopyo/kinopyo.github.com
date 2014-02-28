@@ -1,0 +1,743 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
+&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;
+vs
+&#8220;直接jQueryのidセレクタでとるやつ&#8221;。 コードで言うと
+$( &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-selector-performance-elem-vs-i">jQueryセレクタのパフォーマンス：elem vs id</a></h1>
+	<div class="entry-content">
+		<p>elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
+<strong>&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;</strong>
+vs
+<strong>&#8220;直接jQueryのidセレクタでとるやつ&#8221;。</strong></p>
+
+<br/>
+
+
+<p>コードで言うと
+<strong>$(document.getElementById(&#8220;foo&#8221;))</strong>
+vs
+<strong>$(&#8220;#foo&#8221;)</strong></p>
+
+<br/>
+
+
+<p>普通前者が勝だろうと思うだろう、
+どれくらいの差かを確認したくて。</p>
+
+<h2>結果</h2>
+
+<p>一万回ループでとった結果です。</p>
+
+<ul>
+<li>IE8: 187 vs 344</li>
+<li>IE6: 203 vs 453</li>
+<li>Firefox×(3.6.3):  21 vs 63</li>
+<li>Chrome(4.1.xx):  9 vs 39</li>
+</ul>
+
+
+<h2>サンプルコード</h2>
+
+<p><a href="http://www.kinopyo.com/demo/jquery/selector_performance.html" target="_blank" >デモページへ</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">t0</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;直接elementを渡す時間は：&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t1</span><span class="o">-</span><span class="nx">t0</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; , ID指定でとる時間は：&quot;</span><span class="o">+</span> <span class="p">(</span><span class="nx">t2</span><span class="o">-</span><span class="nx">t1</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-17T00:00:00+09:00" pubdate data-updated="true">2010-05-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex-bench-amf-json-xml-html">Flex AMFはJSON、XML、HTMLより遥かに速い</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.jamesward.com/2007/12/12/blazebench-why-you-want-amf-and-blazeds/">James Wardさんのブログ</a>から見たものです。</p>
+
+<p>結果から言うとAMF（リモートオブジェクト）での通信は
+ほかのJSONとか、XMLより遥かに速いです。
+下記がその結果のスクリーンショットです。</p>
+
+<p><img src="http://www.jamesward.org/wordpress/wp-content/uploads/2007/12/blazebench.jpg" alt="Benchmark AFM vs JSON vs HTML" width="490" height="385"/></p>
+
+<p>また<a href="http://www.jamesward.com/census/">各通信手段のParse time, Render time, Request timeなど見れるページ</a>も公開されましたので、
+使ってみてください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-14T00:00:00+09:00" pubdate data-updated="true">2010-05-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex-do-not-use-event-as-a-package-name">Flex：カスタムイベントクラスのパッケージ名をeventにするのは避けましょう</a></h1>
+	<div class="entry-content">
+		<p>カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_package_event.jpg" title="flex_package_event" ></p>
+
+<p>結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
+例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
+この&#8221;event&#8221;続いてドット(.)を叩いて出たのは各eventパッケージしたのクラスになります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_confused.jpg" title="flex_autocomplete_confused" ></p>
+
+<p>イベントハンドラの変数を&#8221;event&#8221;以外にすれば回避できますが、
+ハンドラの自動生成は結構便利なものなので
+やはりパッケージ名を&#8221;events&#8221;などに変えたほうがいいと思います。</p>
+
+<p>これで自動補完はちゃんと出ます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_correct.jpg" title="flex_autocomplete_correct" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-09T00:00:00+09:00" pubdate data-updated="true">2010-05-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/merge-images-and-icons-into-one-file-and-use-background-positon-to-select">各画像を一つにまとめてbackground-positionで指定するのは？</a></h1>
+	<div class="entry-content">
+		<p>まずGoogleが実際使っている画像ファイルを見てみましょう。</p>
+
+<p><img src="http://www.google.co.jp/images/srpr/nav_logo13.png" alt="Googleの各アイコン" /></p>
+
+<p>いろんな画像、アイコンが混じっていますね。
+そして実際使うときはCSSのbackground-positionで表示するモノを指定しているようです。
+例えば検索結果の星マークのCSSを見ると</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>background-position: -117px -117px;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Webサーバとのコネクションが1回で済むので、
+それが狙いですね。</p>
+
+<p>background-positionに関しての説明は：
+<a href="http://www.htmq.com/style/background-position.shtml">http://www.htmq.com/style/background-position.shtml</a></p>
+
+<p>ちなみにこういることをやってくれるライブラリもあるようです。
+使ったことはまだないですけど。
+<a href="http://csssprites.org/">http://csssprites.org/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-08T00:00:00+09:00" pubdate data-updated="true">2010-05-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>CSS</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex-copy-text-to-clipboar">Flexでシステムクリップボードに内容をコピーするには</a></h1>
+	<div class="entry-content">
+		<p>テキストをクリップボードにコピーするコードです。
+<em>System.setClipboard</em>の第一引数にテキストを渡せばOKです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">setClipboard</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://blog.flexexamples.com/2008/01/30/copying-text-to-the-operating-system-clipboard-in-flex/">ここにいいDEMOがあります。</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-06T00:00:00+09:00" pubdate data-updated="true">2010-05-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/define-method-in-js">jspにメソッドを定義するには</a></h1>
+	<div class="entry-content">
+		<p><strong>&lt;&amp;!～&amp;></strong>宣言部でメソッドを定義することができます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;%!</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="nf">myMethod</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// some code</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s">&quot;ok&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考サイトはこちら：
+<a href="http://www.site-cooler.com/java/j2ee/04_02.htm#3">http://www.site-cooler.com/java/j2ee/04_02.htm#3</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-06T00:00:00+09:00" pubdate data-updated="true">2010-05-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/chrome-plugin-getflash-download-flash">FlashをダウンロードするChrome Plugin：GetFlash</a></h1>
+	<div class="entry-content">
+		<p><a href="http://ruzanow.ru/extensions/getflash.crx">http://ruzanow.ru/extensions/getflash.crx</a></p>
+
+<p>インストール後Flashがあるサイトに接続すると
+アドレスバーの一番右にFlashのアイコンが表示され、
+クリックするとサイト内のFlashの上にDownloadのリンクが表示されます。
+そのリンクでダウンロードできます。</p>
+
+<p>公式サイトは多分これです。
+<a href="http://www.chromeplugins.org/google/chrome-plugins/ext-getflash-8721.html">http://www.chromeplugins.org/google/chrome-plugins/ext-getflash-8721.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-28T00:00:00+09:00" pubdate data-updated="true">2010-04-28</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/security-alert-when-connect-ssl-using-iframe-with-no-src-attribute-in-ie6">IE6でSSL(https)に接続する時、src属性なしのiframeを使うとセキュリティの警告が出る</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p>IE6を使ってSSL(https)経由で接続する時に以下の警告が出るなら
+iframeのsrc属性をまずチェックしてください。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/04/security-info.png" title="security-info" ></p>
+
+<blockquote><p>このページにはセキュリティで保護されている項目と保護されていない項目が含まれています。</p></blockquote>
+
+<h2>ダメな書き方</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決策</h2>
+
+<p>src属性にちゃんと値を設定するか、javascriptでfalseを指定する</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;/dummy.html&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">srec=</span><span class="s">&quot;javascript:false&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>存在しないファイルを指定するとサーバ側のログにエラーが出るかもしれないので、
+設定する場合は実際存在するファイルを設定してください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-27T00:00:00+09:00" pubdate data-updated="true">2010-04-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-blockui-plugin-bug-hourglass-cursor-stays-in-ie-and-chrome">jQuery blockUI Pluginのバグ：unblock時にマウスカーソルが砂時計のまま(IE, Chrome)</a></h1>
+	<div class="entry-content">
+		<p>下記のURLで試してみればすぐ分かりますが、
+表題の通りblockUIで制御したところは解除した後にマウスのカーソルがおかしいです。
+IE,FirefoxとChromeでテストした結果、Firefoxは無事のようです。</p>
+
+<p><a href="http://malsup.com/jquery/block/position.html">http://malsup.com/jquery/block/position.html</a></p>
+
+<h2>解決策</h2>
+
+<p>jquery.blockUI.jsを開いてreset()のfunctionのところに以下のコードを追加</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">data</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cursor</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第三者のソースに手を加えるのはあまりやりたくないけど。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://groups.google.com/group/jquery-en/browse_thread/thread/c86671033a86be25/ebd5e710cc78885a?lnk=gst&amp;q=cursor#">http://groups.google.com/group/jquery-en/browse_thread/thread/c86671033a86be25/ebd5e710cc78885a?lnk=gst&amp;q=cursor#</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-26T00:00:00+09:00" pubdate data-updated="true">2010-04-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-source-siblings-children">jQuery siblings()とchildren()の内部ソースを見た</a></h1>
+	<div class="entry-content">
+		<p>よく出来ていると思います。
+勉強になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">siblings</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">sibling</span><span class="p">(</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">,</span> <span class="nx">elem</span> <span class="p">);</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'><span class="nx">children</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">sibling</span><span class="p">(</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">firstChild</span> <span class="p">);</span>
+</span><span class='line'><span class="p">},</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてjQuery.sibling()の中身です！
+nodeTypeが1の場合はelementノードの意味です。
+nはループに使われて、elemは除外する要素です。
+例えばsiblings()の場合は自分自身を除外しています。
+for文の書き方も覚えとこう、、
+javaでのIteratorのhasNext()関数みたいな動きをしていますね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>   <span class="nx">sibling</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="o">**</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span> <span class="p">;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">nextSibling</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span> <span class="p">(</span> <span class="nx">n</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">!==</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">r</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">n</span> <span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-19T00:00:00+09:00" pubdate data-updated="true">2010-04-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/23/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/25/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

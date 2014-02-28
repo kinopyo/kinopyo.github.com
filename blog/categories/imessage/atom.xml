@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iMessage | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/imessage/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone 4SメッセージでiMessageか普通のSMSかを見分ける方法]]></title>
+    <link href="http://kinopyo.com/blog/iphone4s-how-to-know-the-difference-between-imessage-and-normal-sms"/>
+    <updated>2011-10-31T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/iphone4s-how-to-know-the-difference-between-imessage-and-normal-sms</id>
+    <content type="html"><![CDATA[<p>iMessageの場合はダイアログやボタンが青色になります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/E1319641321511_2.jpeg" title="iMessage" ></p>
+
+<p>普通のSMSの場合は緑色のボタンになります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/E1319641321511_1.jpeg" title="normal-message" ></p>
+
+<p>相手がiMessageで送信出来る場合は優先的にiMessageになるようです。
+またインターネットに繋がらないとiMessageは使えないようです。</p>
+]]></content>
+  </entry>
+  
+</feed>

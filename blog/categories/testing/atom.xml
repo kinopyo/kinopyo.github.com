@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Testing | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/testing/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Let's Make Testing Fun Again]]></title>
+    <link href="http://kinopyo.com/blog/notes-on-lets-make-testing-fun-again/"/>
+    <updated>2013-06-01T15:18:00+09:00</updated>
+    <id>http://kinopyo.com/blog/notes-on-lets-make-testing-fun-again</id>
+    <content type="html"><![CDATA[<h2>The talk</h2>
+
+<p><a href="http://lanyrd.com/2012/windycityrails/sxqbt/">Let's Make Testing Fun Again at WindyCityRails 2012 | Lanyrd</a></p>
+
+<script async class="speakerdeck-embed" data-id="5048ea4bb8fe2d0002020475" data-ratio="1.2994923857868" src="http://kinopyo.com//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<div class='video-container'>
+<iframe src="http://player.vimeo.com/video/49525644" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+
+
+<h2>Communication</h2>
+
+<blockquote><p>Tests give you about the code. This happens over time, where you find that tests have become hard to write, the tests are becoming complicated and bogged down.</p>
+
+<p>Rather than use it as an opportunity to blame the test or to blame testing, <strong>you should use it as an opportunity to learn something about your code, that there is a dependency that could potentially be simplified, or something you could be doing better.</strong></p></blockquote>
+
+<h2>Keep relevant setup close</h2>
+
+<blockquote><p>This is something that "relative good"(in terms of "absolute good"). It's generally good to keep the setup of your tests close to the tests where it is.</p>
+
+<p>What you want to avoid is the case where some sort of <code>before</code> setup way at the top of the file and you have stuff, and more stuff, and more stuff, and eventually in the end, what's the <code>@user.name</code>? I don't remember.</p></blockquote>
+
+<h3>An Example</h3>
+
+<p>```ruby</p>
+
+<p>describe User do
+  before do</p>
+
+<pre><code>@user = Factory.build(:user)
+</code></pre>
+
+<p>  end</p>
+
+<p>  # and more stuff</p>
+
+<p>  # and more stuff</p>
+
+<p>  it "uses the user" do</p>
+
+<pre><code>@user.name.should == # i don't remember
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>This is where you see sometimes people say "You should never have setup outside your original test".</p>
+
+<h3>What to do about duplications and complicate shared setups</h3>
+
+<blockquote><p>I think a lot of times if you need a complicated setup to test code, that often means your code is too complicated you need to start working out to move your dependencies. <strong>I tend to have a higher tolerance for duplication in my tests</strong> than I do in my regular code, specifically because <strong>I'm more interested in having the communication close</strong>, and less interested in maybe being clever about extracting setups in my tests. Sometimes I do if there's a piece of stuff that's really tightly coupled, and I can give it a descriptive enough name that I still feel like I have the benefit of keeping the setup close in the actual test.</p></blockquote>
+
+<h2>Test Simple Values</h2>
+
+<p>By using literal in check, when the spec fails, the error message is much easier to understand.</p>
+
+<h2>Spy, don't mock</h2>
+
+<p>A <a href="http://pivotal.github.io/jasmine/">jasmine</a>
+ test example.</p>
+
+<p>```js
+var cheeseburger = {
+  cheeses: function() {</p>
+
+<pre><code>// Ajax call to cheese server
+</code></pre>
+
+<p>  }
+};</p>
+
+<p>it('spies on the cheese server', function() {
+  spyOn(cheeseburger, 'cheeses');
+  cheeseburger.cheeses();
+  expect(cheeseburger.cheeses).toHaveBeenCalled();
+});</p>
+
+<p>```</p>
+
+<ul>
+<li>Readability advantage</li>
+<li>Easy to find where actually fails</li>
+</ul>
+
+
+<p>BTW, if in spec, we need write like this:
+```ruby</p>
+
+<p>it 'spies on the cheese server' do
+  # in the reversed order
+  cheeseburger.should_receive(:cheeses)
+  cheeseburger.cheeses
+end
+```</p>
+
+<h3>More about Spy on Ruby and Rails</h3>
+
+<p><a href="https://github.com/thoughtbot/bourne">thoughtbot/bourne</a> gem can let you have the rspec-like test spies syntax.</p>
+
+<p><a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a>, good explanation on what is test spy the benefit of it.</p>
+
+<h2>What Do We Love?</h2>
+
+<p>These are quite frank and interesting questions.</p>
+
+<ol>
+<li>Do we still love writing tests?</li>
+<li>Or do we just love having written tests?</li>
+<li>Or do we just love saying that we've written tests?</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Fast Test, Slow Test]]></title>
+    <link href="http://kinopyo.com/blog/notes-on-fast-test-slow-test/"/>
+    <updated>2013-05-30T21:56:00+09:00</updated>
+    <id>http://kinopyo.com/blog/notes-on-fast-test-slow-test</id>
+    <content type="html"><![CDATA[<p>Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work on a very large scale rails app. But it also introduces me to some very bad tests. Sometimes I found myself so difficult to add any spec, as it needs lots of extra efforts to make the fixture data, also one model got too many dependencies and collaborators, etc. I know it’s wrong, the code smells, just don’t know where to start.</p>
+
+<p>So when I watched this video “Fast Test, Slow Test” by <a href="https://twitter.com/garybernhardt">@garybernhardt</a>, who also runs <a href="https://www.destroyallsoftware.com/screencasts">DestroyAllSoftware screencast</a>, I found it very helpful and wanted to take some notes on it.</p>
+
+<div class="video-container">
+<iframe width="640" height="480" src="http://www.youtube.com/embed/RAxiiRPHS9k?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h1>Three Goals in Testing</h1>
+
+<ul>
+<li>Prevent Regression</li>
+<li>Prevent Fear</li>
+<li>Prevent Bad Design</li>
+</ul>
+
+
+<h1>How to Fail in Testing</h1>
+
+<ul>
+<li>Selenium as primary testing</li>
+<li>“Units Test” are too large</li>
+<li>Fine-grained tests around legacy code</li>
+</ul>
+
+
+<blockquote><p>What you’re saying here is that we acknowledge that this code sucks, so we’re going to go in and write tight tests around it that solidifies interface and just bake the badness forever. <strong>This is the worst way to do unit testing, go in your legacy system and write test around bad code.</strong></p></blockquote>
+
+<h1>Too many dependencies in test</h1>
+
+<blockquote><p>You end up with a test suite where it tends to either completely succeed or completely fail. It doesn’t give you any fine-grained feedback about what has actually gone wrong it just tells you you broke something. And you are left to dig these stack traces. <strong>In the ideal test suite you don’t have to dig through stack traces because ideally once test fails it will tell you exactly was broken (of course you never achieve that)</strong></p></blockquote>
+
+<h1>More than 8 lines for a model test</h1>
+
+<blockquote><p>I would ask myself why do I need to setup so much of the world to test this one small piece of behavior. That causes me to decompose it which causes better system design.</p></blockquote>
+
+<h1>10% System/Acceptance Test, 90% Unit Test</h1>
+
+<p>(in terms of test cases, not lines of code)</p>
+
+<blockquote><p>That applies to mostly object heavy system like web app, that have a lot of logic and not a lot of boundaries.</p></blockquote>
+
+<h1>Advice on models that very tied to database</h1>
+
+<h2>Question</h2>
+
+<blockquote><p>If you're working with model objects that they're very tied to the database specifically things like you have to save that one object before you can associate with the other object and that means hitting the database. What's your advice in terms of writing fast unit test?</p></blockquote>
+
+<h2>Answer</h2>
+
+<blockquote><p>Take all of that behavior that's on your model objects and pull out of their into service classes that are stateless, that interact with the model objects. So view calls a service, service contains the intelligence and the service manipulates the model objects.</p>
+
+<p>You can still have methods on your model objects do things like wrap specific queries in class methods, or wrap specific mutations when multiple fields are commonly manipulated together.</p>
+
+<p>It's okay to have those on your model object and then have the service use those but if you pull the behavior of the system out into the service, and you control the boundary between the service in the model by those methods you've written on the model, then you can mock out more easily and safely.</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>

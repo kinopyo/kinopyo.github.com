@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: UserAgent | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/useragent/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SafariのUserAgentを変更]]></title>
+    <link href="http://kinopyo.com/blog/change-safari-useragent"/>
+    <updated>2011-09-30T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/change-safari-useragent</id>
+    <content type="html"><![CDATA[<p>SafariのPreferences-> Advancedタブで"Show Develop menu in menu bar"をチェックします。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-show-develop-menu-in-menu-bar.jpg" title="Safari-show-develop-menu-in-menu-bar" ></p>
+
+<p>これでSafariのメニューバーのDevelopメニューでUser Agentを切り替えることができます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Safari-change-useragent.jpg" title="Safari-change-useragent" ></p>
+]]></content>
+  </entry>
+  
+</feed>

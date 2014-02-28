@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: design | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/design/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Photoshopで画像の座標を取得]]></title>
+    <link href="http://kinopyo.com/blog/get-image-coordinate-with-photoshop"/>
+    <updated>2010-11-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/get-image-coordinate-with-photoshop</id>
+    <content type="html"><![CDATA[<p>仕事の事情であるPSDファイルにある画像の座標の情報が必要になって調べました。詳しく説明すると例えば背景が100x100のサイズで、その上に張り付いた違うレイヤーの画像の座標のことです。</p>
+
+<p>ショットカットキーはCTRL+Tです。
+<blockquote><p>メニューで「編集」->「自由変形」にすれば、レイヤーの４隅と中心座標の取得、数値入力による座標移動等ができます。</p></blockquote></p>
+
+<p>こんな感じです。メニューバーに表示してます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/11/coordinate.jpg" title="coordinate" ></p>
+
+<p>参考サイト：
+<a href="http://questionbox.jp.msn.com/qa5718320.html">http://questionbox.jp.msn.com/qa5718320.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

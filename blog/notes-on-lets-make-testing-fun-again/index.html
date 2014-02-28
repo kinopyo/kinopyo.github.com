@@ -1,0 +1,323 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Notes on Let's Make Testing Fun Again - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="The talk Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd Communication Tests give you about the code. This happens over time, &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Notes on Let's Make Testing Fun Again</h1>
+	<div class="entry-content"><h2>The talk</h2>
+
+<p><a href="http://lanyrd.com/2012/windycityrails/sxqbt/">Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd</a></p>
+
+<script async class="speakerdeck-embed" data-id="5048ea4bb8fe2d0002020475" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<div class='video-container'>
+<iframe src="http://player.vimeo.com/video/49525644" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+
+
+<h2>Communication</h2>
+
+<blockquote><p>Tests give you about the code. This happens over time, where you find that tests have become hard to write, the tests are becoming complicated and bogged down.</p>
+
+<p>Rather than use it as an opportunity to blame the test or to blame testing, <strong>you should use it as an opportunity to learn something about your code, that there is a dependency that could potentially be simplified, or something you could be doing better.</strong></p></blockquote>
+
+<h2>Keep relevant setup close</h2>
+
+<blockquote><p>This is something that &#8220;relative good&#8221;(in terms of &#8220;absolute good&#8221;). It&#8217;s generally good to keep the setup of your tests close to the tests where it is.</p>
+
+<p>What you want to avoid is the case where some sort of <code>before</code> setup way at the top of the file and you have stuff, and more stuff, and more stuff, and eventually in the end, what&#8217;s the <code>@user.name</code>? I don&#8217;t remember.</p></blockquote>
+
+<h3>An Example</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;uses the user&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="c1"># i don&#39;t remember</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is where you see sometimes people say &#8220;You should never have setup outside your original test&#8221;.</p>
+
+<h3>What to do about duplications and complicate shared setups</h3>
+
+<blockquote><p>I think a lot of times if you need a complicated setup to test code, that often means your code is too complicated you need to start working out to move your dependencies. <strong>I tend to have a higher tolerance for duplication in my tests</strong> than I do in my regular code, specifically because <strong>I&#8217;m more interested in having the communication close</strong>, and less interested in maybe being clever about extracting setups in my tests. Sometimes I do if there&#8217;s a piece of stuff that&#8217;s really tightly coupled, and I can give it a descriptive enough name that I still feel like I have the benefit of keeping the setup close in the actual test.</p></blockquote>
+
+<h2>Test Simple Values</h2>
+
+<p>By using literal in check, when the spec fails, the error message is much easier to understand.</p>
+
+<h2>Spy, don&#8217;t mock</h2>
+
+<p>A <a href="http://pivotal.github.io/jasmine/">jasmine</a>
+ test example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">cheeseburger</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">cheeses</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Ajax call to cheese server</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spies on the cheese server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">spyOn</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">,</span> <span class="s1">&#39;cheeses&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Readability advantage</li>
+<li>Easy to find where actually fails</li>
+</ul>
+
+
+<p>BTW, if in spec, we need write like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s1">&#39;spies on the cheese server&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># in the reversed order</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:cheeses</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">cheeses</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>More about Spy on Ruby and Rails</h3>
+
+<p><a href="https://github.com/thoughtbot/bourne">thoughtbot/bourne</a> gem can let you have the rspec-like test spies syntax.</p>
+
+<p><a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a>, good explanation on what is test spy the benefit of it.</p>
+
+<h2>What Do We Love?</h2>
+
+<p>These are quite frank and interesting questions.</p>
+
+<ol>
+<li>Do we still love writing tests?</li>
+<li>Or do we just love having written tests?</li>
+<li>Or do we just love saying that we&#8217;ve written tests?</li>
+</ol>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T15:18:00+09:00" pubdate data-updated="true">2013-06-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/testing/'>Testing</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/notes-on-lets-make-testing-fun-again/';
+        var disqus_url = 'http://kinopyo.com/blog/notes-on-lets-make-testing-fun-again/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

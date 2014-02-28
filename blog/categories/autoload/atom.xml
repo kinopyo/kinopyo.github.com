@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: autoload | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/autoload/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails libディレクトリのファイルをautoload]]></title>
+    <link href="http://kinopyo.com/blog/rails-autoload-lib-directory-file"/>
+    <updated>2011-11-05T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rails-autoload-lib-directory-file</id>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/591837.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/591837&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+サブディスプレイのautoloadが必要ない場合は一行目だけでOK.</p>
+]]></content>
+  </entry>
+  
+</feed>

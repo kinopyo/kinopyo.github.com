@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Twitter | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/twitter/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TwitterつぶやきのURLを取得する方法]]></title>
+    <link href="http://kinopyo.com/blog/get-twitter-post-url"/>
+    <updated>2011-11-14T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/get-twitter-post-url</id>
+    <content type="html"><![CDATA[<p>ポイントは<em>2 hours ago</em>のような時間のリンクをクリックすること。マウスオーバーしないとリンクのように見えないですが。。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/11/Twitter-status-link-1.jpg" title="Twitter status link" ></p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/11/twitter-individual-status-url-1.jpg" title="twitter individual status url-1" ></p>
+
+<p>参考：<a href="http://www.askdavetaylor.com/how_to_figure_out_individual_twitter_status_url_tweet_twhirl.html">http://www.askdavetaylor.com/how_to_figure_out_individual_twitter_status_url_tweet_twhirl.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,842 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="jQueryのeach()は関数のためcontinueやbreakなどのループ制御文は使えません。
+グーグル先生に聞いたら代わりの方法が見つかりました。 break : return false
+continue : return true 参考サイト：
+jQuery の each() の &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-continue-break-in-each-loop">jQuery each()関数内にcontinue/breakを使いたい時は</a></h1>
+	<div class="entry-content">
+		<p>jQueryのeach()は関数のためcontinueやbreakなどのループ制御文は使えません。
+グーグル先生に聞いたら代わりの方法が見つかりました。</p>
+
+<ul>
+<li>break : <strong>return false</strong></li>
+<li>continue : <strong>return true</strong></li>
+</ul>
+
+
+<p>参考サイト：
+<a href="http://blog.livedoor.jp/jimuguri/archives/51522193.html">jQuery の each() の continue / break は・・・</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-22T00:00:00+09:00" pubdate data-updated="true">2009-12-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-get-xml-document-from-iframe">jQueryでiFrame内のXML Documentを指定する方法</a></h1>
+	<div class="entry-content">
+		<p>iframeでXMLを読み込んた場合、XMLのdocumentを正しく指定すれば
+普通のDOM操作のようにXMLに対して操作できます。
+FirefoxとIEの取り方が異なるため、その方法を紹介します。</p>
+
+<br/>
+
+
+<h2>サンプル</h2>
+
+<p>こんなXMLファイルの中の各name要素のテキストを取るとします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=”1.0″ encoding=”utf-8″ ?&gt;</span>
+</span><span class='line'><span class="nt">&lt;games&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;game&gt;</span>World of Warcraft<span class="nt">&lt;/game&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;game&gt;</span>Warcraft III<span class="nt">&lt;/game&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;game&gt;</span>StarCraft<span class="nt">&lt;/game&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;game&gt;</span>Final Fantasy<span class="nt">&lt;/game&gt;</span>
+</span><span class='line'><span class="nt">&lt;/games&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>IEの場合XMLDocument</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;iframe&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="nx">xmlUrl</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">xmlDocument</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">XMLDocument</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">xmlDocument</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;game&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">game</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>       <span class="c1">// ほかの処理</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Firefoxの場合ActiveElement</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;iframe&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="nx">xmlUrl</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">xmlDocument</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">ActiveElement</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">xmlDocument</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;game&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">game</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>       <span class="c1">// ほかの処理</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>xmlUrlは実際XMLファイルのURLです。</p>
+
+<h2>参考サイト</h2>
+
+<p>下記の英語掲示板で見つけたんです。
+<a href="http://p2p.wrox.com/ajax/60159-how-get-xml-document-iframe.html#post204115">How to Get XML Document from iFrame</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-22T00:00:00+09:00" pubdate data-updated="true">2009-12-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-select-multy-element-with-same-id">jQuery #idでは一つし要素か選択できない、同じIDを持つ複数要素を選択するには</a></h1>
+	<div class="entry-content">
+		<p>そもそもIDというのは一つのページ内でユニークなはずですが、
+何らかの理由で同じIDを持つ形になったとしましょう。
+その場合普通のjQueryの#idセレクタでは一つの要素(順番的に最初に合致した要素)しか選択できません。
+そこで[id=xx]の形で属性フィルタで全ての選択することができます。
+以下サンプルコードです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;[id=bar]&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h2&gt;</span>use #id selector<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;Text1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;Text2&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;h2&gt;</span>use attribute selector *id=xx*<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text3&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text4&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text5&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jQuerySelectorByID.jpg" title="jQuerySelectorByID" ></p>
+
+<h2>Demo</h2>
+
+<p>以下のjsfiddleで実際実行してみてくださいー</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/kinopyo/T36Xt/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-20T00:00:00+09:00" pubdate data-updated="true">2009-12-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/gavatar-global-avatar-webservice">Gavatar - グローバルなアバターウェブサービス</a></h1>
+	<div class="entry-content">
+		<p>Gravatar とは、ブログに投稿したりコメントしたりした時に、
+どのサイトでもあなたの名前の横に表示される画像です。</p>
+
+<br/>
+
+
+<p>Gravatarはメールアドレスをキーとしたアバター管理Webサービスです。
+自分のアバターをGravatarに登録すれば他のサイトでも汎用的に使えるんです。
+サイトごとにアバターをアップロードする手間がなくなるので結構便利です。
+例えばこのブログでもGravatarが使えるので、
+コメントの際にメールアドレスを入力すればGravatarで登録したアバターが表示されます。</p>
+
+<h2>公式サイト</h2>
+
+<p><a href="http://www.gravatar.com">http://www.gravatar.com</a></p>
+
+<p>一回登録し、アバターをアップロードしてください。
+複数のアバターをアップロードした場合はどのアバターを使うか選択できます。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Gravatar.jpg" title="Gravatar" ></p>
+
+<p>良かったらGravatarに登録し、ここにコメントを入れてみてください。
+メールアドレスが同じであればGravatarに登録したアバターが表示されるはずです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-17T00:00:00+09:00" pubdate data-updated="true">2009-12-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpressdisplay-hatena-bookmark-number-to-post">WordPress記事に、はてなブックマーク数を表示</a></h1>
+	<div class="entry-content">
+		<p>WordPress記事にはてなブックマーク数を表示する方法です。
+プラグインのわざわざインストールする必要はなく、
+一行のコードで簡単に実現できるものです。</p>
+
+<h2>コード</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo get_permalink(); ?&gt;"&gt;&lt;img src="http://b.hatena.ne.jp/entry/image/&lt;?php echo get_permalink(); ?&gt;" alt="" /&gt;&lt;/a&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>挿入箇所</h2>
+
+<p>Word Pressの管理画面内「表示 -> テーマエディタ」で下記ファイルを修正します。
++  ブログホームページのファイル（index.php）
++  アーカイブ、カテゴリ、タグなどのファイル（archive.php）
++  単一記事のファイル（single.php）</p>
+
+<h2>サンプル</h2>
+
+<p>例えば記事のタイトルの横にブックマーク数を表示させたい場合は「title」キーワードを検索して、
+&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;の中に上記コードを貼りつければOKです。
+こんな感じに修正します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo get_permalink(); ?&gt;"&gt;&lt;img src="http://b.hatena.ne.jp/entry/image/&lt;?php echo get_permalink(); ?&gt;" alt="" /&gt;&lt;/a&gt;&lt;/h2&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-plugin-subscribe-to-comments-for-readers">記事にコメントが追加された際ブログの閲覧者にメールで通知するプラグイン</a></h1>
+	<div class="entry-content">
+		<p>閲覧者がコメントする際にチェックボックスにマークしておくことで、
+さらにコメントが追加された場合、メールで知らせてくれるプラグインです。
+閲覧者が自分のコメント以降に追加されたコメントを把握できるようになります。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/wordpress-plugin-subscribe-to-comments.jpg" title="wordpress-plugin-subscribe-to-comments" ></p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="http://txfx.net/wordpress-plugins/subscribe-to-comments/">http://txfx.net/wordpress-plugins/subscribe-to-comments/</a>でダウンロードか、
+WordPress管理画面から「subscribe-to-comments」を検索してインストールする</p>
+
+<h2>カスタマイズ</h2>
+
+<p>初期設定ではメールの本文が英語となっています。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_en.jpg"></p>
+
+<br/>
+
+
+<p>それを日本語にカスタマイズしてみました。
+管理画面でsubscribe-to-commentsプラグインを編集します。
+「There is a new comment on the post」で検索すれば一発で見つかります。
+そのあたりの英語を自分が好きな言葉に置換すればOKです。</p>
+
+<br/>
+
+
+<p>以下自分のサンプルです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:There is a new comment on the post:新規のコメントが投稿されました。
+</span><span class='line'>:See all comments on this post here:すべてのコメントを確認するには下記のリンクをクリックしてください
+</span><span class='line'>:Author:お名前
+</span><span class='line'>:Comment:コメント
+</span><span class='line'>:To manage your subscriptions or to block all notifications from this site, click the link below:コメント閲覧を管理、このサイトからの通知をブロックするには下記のリンクをクリックしてください</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>修正後のメール本文はこんな風になりました。
+<img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_jp.jpg" title="" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-plugin-hatena-notation">WordPressにはてな記法を適用するプラグイン</a></h1>
+	<div class="entry-content">
+		<p>Wordpressブログにはてな記法を適用するプラグインを紹介します。
+はてな記法に慣れたら結構手軽にブログを書けます。
+Wordpressにそのはてな記法のプラグインがあります。</p>
+
+<h2>インストール</h2>
+
+<ul>
+<li><a href="http://rewish.org/wp/hatena_notation_plugin">WordPressにはてな記法を導入するプラグイン</a>にてダウンロード</li>
+<li>サーバにアップロード(wp-content/pluginsフォルダに)</li>
+<li>ダッシュボード→プラグイン→インストール済みでアクティブすればOK</li>
+<li>設定画面の「Posts -> WP HatenaNotation」で適用する時間範囲を決める、するとその時間以降の記事に対して有効になる</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/hatena-notation-plugin.jpg" title="hatena-notation-plugin" ></p>
+
+<p>この例で言うと、2009年11月30日以前のはてな記法で書かれて記事は対象外となる意味です。</p>
+
+<h2>まだ対応してない機能</h2>
+
+<p>http記法の<em>[http://～～]</em>は現時点まだ対応予定の状態です。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/firebug-enhancements-for-jquery">FirefoxでjQueryを開発するならFireQueryを使ってみよう</a></h1>
+	<div class="entry-content">
+		<p>FireQueryはFirebugを拡張したアドオンで、jQueryをよりよくサポートできるんです。
+jQueryのオブジェクトをコンソールで確認したり、マウスオーバーで画面上のレーヤーで表示されたりして
+大変便利になります。
+これ以外でもjQuerifyというやつがあって、
+jQueryが適用されてないhtmlにもfirebugのコンソールで直接jQueryのコードを書いてそのまま動作確認ができます。</p>
+
+<h2>主な機能</h2>
+
+<ul>
+<li>jQuery expressions are intelligently presented in Firebug Console and DOM inspector</li>
+<li>attached jQuery data are first class citizens</li>
+<li>elements in jQuery collections are highlighted on hover</li>
+<li>jQuerify: enables you to inject jQuery into any page</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/FireQuery.png" title="FireQuery" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/FireQuery2.png" title="FireQuery2" ></p>
+
+<h2>jQuerifyを使おう！</h2>
+
+<ul>
+<li><p>まずfirebugのconsoleのjQuerifyをクリックします。するとjqueryが適用されたと表示されます。
+<img src="http://kinopyo.com/wp-content/uploads/2009/12/jquerify.jpg" title="jquerify" ></p></li>
+<li><p>次は「>>>」のところでjquery文を書けばOKです。</p></li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-61.jpg" title="fireQuery" ></p>
+
+<ul>
+<li>複数行のjqueryコードが書きたい場合は、右下にある「↑」ボタンをクリックし、コンソールの右フレームで書けます。</li>
+</ul>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jquery-runed.jpg" title="jquery-runed" ></p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="https://addons.mozilla.org/ja/firefox/addon/12632">FireQuery Download</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-flexible-upload-plugin%e3%81%aewarning-call_user_func_array-function-call-user-func-array">WordPress Flexible upload pluginのWarning: call_user_func_array() [function.call-user-func-array]</a></h1>
+	<div class="entry-content">
+		<h2>エラー詳細</h2>
+
+<p>Flexible uploadのプラグインを使うときに出たエラー内容です。</p>
+
+<blockquote><p>|
+Warning: call_user_func_array() <em>function.call-user-func-array</em>: First argument is expected to be a valid callback, &#8216;feed_links_extra&#8217; was given in ### /### /wp-includes/plugin.php on line 339
+|&lt;</p></blockquote>
+
+<h2>回避方法</h2>
+
+<p>wp-content/plugins/flexible-upload/flexible-upload-wp25.phpに以下のコードを追加</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">function media_admin_css() {</span>
+</span><span class='line'><span class="x">  wp_admin_css(&#39;css/media&#39;);</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>バージョン情報</h2>
+
+<ul>
+<li>WordPress : 2.8.6</li>
+<li>Flexible upload: 1.1.3</li>
+</ul>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://wb.corekuuma.com/archives/83">WordPress2.6のFlexible upload 1.13不具合解消</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-11T00:00:00+09:00" pubdate data-updated="true">2009-12-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/firerainbow-syntax-highlight-in-firebug">FireRainbow - FirebugのJavaScriptをシンタクスハイライト</a></h1>
+	<div class="entry-content">
+		<p>FirebugのJavaScript、HTML、CSSをシンタクスハイライトするアドオンです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/firerainbow-mainshot-full1.png" title="firewindow" ></p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/9603">FireRainbow Download</a></p>
+
+<h2>機能概要</h2>
+
+<blockquote><ul>
+<li>Mixed syntax highlighting powered by CodeMirror
+
+<ul>
+<li>Javascript</li>
+<li>HTML</li>
+<li>CSS</li>
+</ul>
+</li>
+<li>Advanced features:
+
+<ul>
+<li>Color theme can be modified using Firebug&#8217;s CSS panel</li>
+<li>Highlighting is applied incrementally (good performance)</li>
+<li>Color themes available on GitHub</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+
+<h2>追記</h2>
+
+<p>今まで使ったところブレークポイントが付けない不具合がありました。
+不具合発生時、firebug内のソースがハイライトしてないので疑いがあると判断し、
+いったんマウスホイルを一回回すとソースはハイライトされブレークポイントもつけるようになりました。
+これで一応回避できます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-11T00:00:00+09:00" pubdate data-updated="true">2009-12-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/28/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/30/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

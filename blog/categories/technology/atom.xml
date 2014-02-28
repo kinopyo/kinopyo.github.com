@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Technology | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/technology/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[One Photo And One Video About Innovation]]></title>
+    <link href="http://kinopyo.com/blog/one-photo-and-one-video-about-innovation/"/>
+    <updated>2013-03-16T14:30:00+09:00</updated>
+    <id>http://kinopyo.com/blog/one-photo-and-one-video-about-innovation</id>
+    <content type="html"><![CDATA[<h2>The Photo: Apple 2005-2013</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/2005-2013-apple.jpg" alt="Apple 2005 and 2013" /></p>
+
+<p><strong>2005</strong>. I was still in college. The phone I had was just a "pure" phone to call and text people, and even didn't have a camera.</p>
+
+<p><strong>2013</strong>. Now I have Macbook, iPhone, iPad, Kindle, all "rich" devices. With 3G network I can connect to Internet anytime anywhere. Life's been changed so much.</p>
+
+<h2>The Video: Samsung GALAXY S4</h2>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/2LHv1FPd1Ec?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>I never had a Samsung GALAXY phone, but after watched this video I was surprised by some of the new features. I've been using iPhone for 3 or 4 years, I'm so used to it and sometimes it makes me blind to see other innovations.</p>
+
+<p>The video is 4:30 long, please take a look when you have time.</p>
+]]></content>
+  </entry>
+  
+</feed>

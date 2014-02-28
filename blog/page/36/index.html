@@ -1,0 +1,1210 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="たまたまこういうテーマの記事を読みました。 とても感動しました。 3年前の記事ですが、未だ見ても全く言う通りです。 ウェブアプリケーションのインターアクションをどのように設計すべきかを議論する記事で、 今ウェブ上存在するユーザにとって「不親切」な例をどんどんあげて説明してくれました。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/most-ppl-just-buy-one-juice-once">多くのユーザーは 一度に1本しかジュースを買わない</a></h1>
+	<div class="entry-content">
+		<p>たまたまこういうテーマの<a target="_blank" href="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/01.html" title="記事">記事</a>を読みました。</p>
+
+
+<p>とても感動しました。</p>
+
+
+<p>3年前の記事ですが、未だ見ても全く言う通りです。</p>
+
+
+<p>ウェブアプリケーションのインターアクションをどのように設計すべきかを議論する記事で、</p>
+
+
+<p>今ウェブ上存在するユーザにとって「不親切」な例をどんどんあげて説明してくれました。</p>
+
+
+<p>以下抜粋した内容です。</p>
+
+
+<p><blockquote><p>インタラクションデザイナーはコモンケースを重視すべきなのです。起こりそうもない場合を考慮し過ぎて、起こるべきことの利便性を低下させてはいけません。</p></blockquote></p>
+
+
+<p><blockquote><p>例えば、多くのジュースの自動販売機では、1000円札を入れた場合に、ボタンを押して商品を1つ購入すると「続けて購入モード」に入ってしまうので、いちいち釣り銭レバーを押さないといけません。しかし（おそらく）ほとんどのケースでは、ユーザーは一度に1本しかジュースを購入しないのです。つまり釣り銭レバーを押すという余計な操作が膨大な回数行われていることになります。</p></blockquote></p>
+
+
+<p><blockquote><p>プログラマーはエッジケースを重視しますが、インタラクションデザイナーはコモンケースを重視すべきなのです。起こりそうもない場合を考慮し過ぎて、起こるべきことの利便性を低下させてはいけません。</p></blockquote></p>
+
+
+<p>こういうケースはウェブ上にたくさん存在していると思います。</p>
+
+
+<p>自販機の例では本当に身のまわりの話で、誰もが想像できるんだろう。</p>
+
+
+<p>私の場合、今までは全部1本購入してきました。</p>
+
+
+<p>1000円札入れる旅、釣り銭レバーを押さなければなりませんのは面倒の中の面倒です。</p>
+
+
+<p><hr style="width: 100%; height: 2px;"></p>
+
+
+<p>さらにもう一つの事例として、ユーザ登録時のメールアドレス入力についても指摘がありました。</p>
+
+
+<p><img alt="" src="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/usability_tips01_01.gif"></p>
+
+
+<p><blockquote><p>これはEメールアドレスを正確に入力させることを目的としていますが、ユーザーの行動を観察すると、非常に多くの場合、ユーザーは1つ目に入力した内容をコピーして2つ目にペーストしています。これでは単に手間が増えているだけ。</p>
+<p>　また、ほとんどの場合システムは、2つの値が一致しているかどうかをバリデートするだけで、そのアドレスが有効かどうかを調べているわけではありません。もし1つ目のフィールドに正しく入力できても、2つ目のフィールドで間違えればエラーになってしまいますし、逆の場合もエラーになります。人は正確な作業を繰り返すことが苦手ですから、かえってエラーを増やしていることになります。仮にユーザーが90％の確率で自分のアドレスを正しく入力できるとした場合、</p>
+<p>・フィールドが1つの場合、90％の確率で正しく登録できる</p>
+<p>・フィールドが2つの場合、81％の確率で正しく登録できる</p>
+<p>という計算ができ、フィールドを増やすことでかえって「登録する」という目的を達成するハードルが高くなってしまうといえるのです。</p></blockquote></p>
+
+
+<p>私の場合はいつも最初の一個目が絶対100%正しく登録してます。</p>
+
+
+<p>(いつも保存された記録があり、Tabキーで選択するのがほとんどでした)</p>
+
+
+<p>しかし、二つ目で誤って入力したケースは何回かありました。</p>
+
+
+<p>確かに確率が下がってると思います。</p>
+
+
+<p>ユーザインタフェース設計する時は、ぜひこの<a target="_blank" href="http://www.atmarkit.co.jp/fwcr/rensai/usabilitytips01/01.html" title="記事">記事</a>をご覧ください。</p>
+
+
+<p>絶対役に立ちます。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-26T00:00:00+09:00" pubdate data-updated="true">2009-10-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/design/'>Design</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/movie-butta-saitan">映画レビュー：　仏陀再誕</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><object height="290" width="470"><param name="movie" value="http://www.youtube.com/v/0aaJY_KeOsw&#38;hl=ja&#38;fs=1&#38;border=1" ></param><param name="allowFullScreen" value="true" ></param><param name="allowscriptaccess" value="always" ></param><embed height="290" width="470" src="http://www.youtube.com/v/0aaJY_KeOsw&#38;hl=ja&#38;fs=1&#38;border=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><ul><li>日時：　09年10月24日</li><li>場所：　シネマサンシャイン池袋</li><li>おすすめ度：　ゼロ、<span style="color: rgb(255, 0, 0);">絶対見ないでください</span></li><li>コメント：</li></ul></p>
+<p>こんなに気持ち悪い映画は生まれて初めて。</p>
+<p>神、あの世などのテーマのアニメや漫画、映画も今までたくさん見てきましたが、</p>
+<p>これほどひどいのはないだろう。</p>
+<p>ちゃんと科学を信じて、考えてる人に対して今までの人生が無駄だと言うのは何様のつもり？</p>
+<p>あの世のことを知らなければ成功できないとか、</p>
+<p>何が幸せ、何を求めてるとか、今から反省するほど俺らの人生はそんなに失敗していない！</p>
+<p>お説教はやめてほしい。見苦しいです。</p>
+<p><span style="color: rgb(0, 0, 255);">実際は1分間の予告編ほどすばらしくないです</span>。</p>
+<p>映画の途中でも次々と退場した人がたくさんいました。</p>
+<p>「これは何なんだ」、「これはないでしょう」との声もありました。</p>
+<p>人生最も無駄の2時間でした。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-25T00:00:00+09:00" pubdate data-updated="true">2009-10-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/javascript-there-is-no-overload">JavaScriptにオーバーロードはない</a></h1>
+	<div class="entry-content">
+		<p>javaをやってからJavaScriptにかえると、
+なかなかなれませんね。</p>
+
+<br/>
+
+
+<p>例えばJavaではオーバーロードができるが、
+JavaScriptには通用しない。</p>
+
+<br/>
+
+
+<p>すごく簡単に言うと、オーバーロードは多重定義の意味で、
+同じメソッド名で違う型、数のパラメータがある時、それぞれ一つのメソッドとして認められる。
+一方、JavaScriptでは後勝ちです。
+先に定義したものが無効になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="nx">func</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">func</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>同じfuncの名前で作られた関数で、一個目はparamというパラメータがついてる。
+二番目はパラメータがない。
+すると結果は： 1 1 になります。
+常に後で定義したものが勝ちます。</p>
+
+<br/>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">(</span><span class="nx">param</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これは「test undefined」になります。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-24T00:00:00+09:00" pubdate data-updated="true">2009-10-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-create-your-ringtones">iPhoneの着信音(Ringtones)の作成</a></h1>
+	<div class="entry-content">
+		<p>iTunes Storeより購入した曲はiTunesで右クリックして、着信音が作成できるようですが、それ以外の曲については残念ながら右クリックのメニューじゃ効かないです。なので、以下の手順で自作することができます。</p>
+
+<ol>
+<li>ライブラリから好きな曲を右クリックして、<code>Get Info</code>を選択。</li>
+<li><code>Option</code>タグで開始と終了の時間を設定し(必ず30秒以内に設定してください)、OKボタンを押す。</li>
+<li>曲を右クリックし、<code>Convert Selection to AAC</code>を選択(曲の長さは最大30秒ののため、転換はすぐ終わるはず)。</li>
+<li>iTunesライブラリで<code>新規作成した曲</code>を右クリックし、<code>Show in Finder</code>を選択。</li>
+<li>開いたFinder画面で曲の拡張子を<code>m4a</code>から<code>m4r</code>に変更。</li>
+<li>iTunesライブラリに戻って、新規作成した曲を削除し、<code>Keep File</code>を選択。</li>
+<li>最後に、Finderでさっき拡張し変更したファイルをダブルクリック。</li>
+</ol>
+
+
+<p>これで自動的にRingtonesカラムに分配されるはず。結構手間かかるように見えますが、熟練すればまあまあ簡単です。明日は自動変換してくれるソフトを探して紹介しましょう。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-23T00:00:00+09:00" pubdate data-updated="true">2009-10-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-where-is-the-note-synchronized-to">iPhoneメモ帳はパソコンのどこに同期されているか</a></h1>
+	<div class="entry-content">
+		<p>結果から言います。</p>
+
+
+<br/>
+
+
+<p>メールアプリケーション（Mac OS Xの「メール」や「Microsoft Outlook」など）と同期されます。</p>
+
+
+<br/>
+
+
+<p>iTunesではメモ帳を同期するように設定したのですが、</p>
+
+
+<p>どこを探せばいいかわからなかったので、調べました。</p>
+
+
+<br/>
+
+
+<p>言うまでもないことかもしれませんが、</p>
+
+
+<p>私のように知らない人もいると思って、一応書きました。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-18T00:00:00+09:00" pubdate data-updated="true">2009-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-pdf-viewer-goodreader">iPhoneのPDF Viewer：GoodReader</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>PDFの本をiPhoneに同期し、帰り道やカフェーで読みのが今一番楽しいことです。</p>
+<p>iPhoneの既存ビューアでもPDFは見れますが、</p>
+<p>あまりにも機能的に貧乏すぎます。</p>
+<p>私が求めているのは以下の2点です。</p>
+<ul>
+<li>横スクロールの固定。いったん横幅をPDFにあわせて調整したらあまり変更することはないでしょう。</li>
+<li>簡単にPCからPDFをおとす。これは言うまでもない日常的に非常に役に立つものです。</li>
+</ul>
+<p>いろいろ調べたらGoodReaderが出てきました。</p>
+<p>115円にとってはかなり使いやすいものです。</p>
+<p>購入はこちら：<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=306277111&mt=8" target="_blank">http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=306277111&#38;mt=8</a></p>
+<p>幾つかのスクリンショットで紹介しましょう。</p>
+<p>これが初期画面です。</p>
+<p>ファイルのインプットタイプでフォルダが分けています。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091017142914" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091017/20091017142914.png" alt="f:id:kinopyo:20091017142914p:image" title="f:id:kinopyo:20091017142914p:image" class="hatena-fotolife"></a></p>
+<p><br/></p>
+<p>ファイルの選択画面ですね。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091017142916" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091017/20091017142916.png" alt="f:id:kinopyo:20091017142916p:image" title="f:id:kinopyo:20091017142916p:image" class="hatena-fotolife"></a></p>
+<p><br/></p>
+<p>これが実際PDFを開いた時の画面です。</p>
+<p>内容検索、ブックマーク、ページ指定などの機能があります。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091017142917" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091017/20091017142917.png" alt="f:id:kinopyo:20091017142917p:image" title="f:id:kinopyo:20091017142917p:image" class="hatena-fotolife"></a></p>
+<p><br/></p>
+<p>赤い四角で囲まれたボタンは横向き/縦向きを転換します。</p>
+<p>赤い丸で囲まれたボタンは横スクロールをロックします。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091018010600" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091018/20091018010600.jpg" alt="f:id:kinopyo:20091018010600j:image" title="f:id:kinopyo:20091018010600j:image" class="hatena-fotolife"></a></p>
+<p><br/></p>
+<p>ファイルに対して基本の操作ができます。</p>
+<p>コピーだっだり、リネームだっだり、メールもできます。</p>
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091018010635" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091018/20091018010635.png" alt="f:id:kinopyo:20091018010635p:image" title="f:id:kinopyo:20091018010635p:image" class="hatena-fotolife"></a></p>
+<p><br/></p>
+<p>そしてiPhoneをパソコンにつなぐだけでファイルを転送するアプリがあります。</p>
+<p>GoodReaderUSBといいます。Mac,Windows両方対応してます。</p>
+<p>これが操作画面です。</p>
+<p><img alt="GoodReaderUSB" src="http://www.goodiware.com/images/grusbMacScreenshot.jpg" style="width : 100%"></p>
+<p>ダウンロード先はこちら：<a href="http://www.iphone-explorer.com/AppPages/GoodReader.html" target="_blank">http://www.iphone-explorer.com/AppPages/GoodReader.html</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-18T00:00:00+09:00" pubdate data-updated="true">2009-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/movie-the-final-destination">映画レビュー：ファイナルデッドサーキット3D</a></h1>
+	<div class="entry-content">
+		<p><object height="290" width="470"><param value="http://www.youtube.com/v/FeMPWn5kf3g&#38;hl=ja&#38;fs=1&#38;border=1" name="movie" ></param><param value="true" name="allowFullScreen" ></param><param value="always" name="allowscriptaccess" ></param><embed height="290" width="470" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/FeMPWn5kf3g&#38;hl=ja&#38;fs=1&#38;border=1"></embed></object></p>
+
+
+<p>17日池袋シネマサンシャインで鑑賞した。</p>
+
+
+<p>シリーズ第四部として、相変わらずの殺しのシーンがいっぱいありました。</p>
+
+
+<p>プラス3Dなので、かなりの迫力でした。</p>
+
+
+<p>しかし全くストーリが全く同じパターンなので、新鮮感がなくなりました。</p>
+
+
+<ul>
+<li>パターン</li>
+<li>主人公が死を予知できる</li>
+<li>幾つの人を救った</li>
+<li>元々の死の順番で彼らが死ぬ</li>
+<li>主人公と仲間達は死の連鎖を止めようとする</li>
+<li>いったん成功したようになった後、残りの三人あわせてエンディングで死ぬ</li>
+</ul>
+
+
+<p>シリーズ全くこの流れなので、もう勘弁してほしいです。</p>
+
+
+<p>人が死のシーンをわざわざと2000円も払って映画館で楽しむ何んて、</p>
+
+
+<p>自分のどこかが変態だと思っちゃいました。</p>
+
+
+<p>3Dの眼鏡は私の頭だと小さすぎます。</p>
+
+
+<p>着用するとかなりきついくらい、</p>
+
+
+<p>もらったその場で先に試着みてください。</p>
+
+
+<p><a target="_blank" href="http://movie.goo.ne.jp/contents/movies/MOVCSTD15052/index.html" title="ファイナル・デッドサーキット 3D - goo 映画">ファイナル・デッドサーキット 3D - goo 映画</a><br/></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-17T00:00:00+09:00" pubdate data-updated="true">2009-10-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/movie/'>movie</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/the-efficiency-of-meeting">打ち合わせの効率、集中できる場所は？</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>今のプロジェクトは基本設計段階で毎週お客さんと定例会を実施している状態。</p>
+<p>うちから参加するメンバーはPM、サブPM含めて四人です。</p>
+<p>って、戻ったら情報共有で参加しなかったメンバーに対して議事録を基に説明します。</p>
+<p>ですが、途中で議論がどんどん出てきていつになってもなかなか結果が出ません。</p>
+<p>結局会議が長続き、効率的ではないことは一目瞭然です。</p>
+<p><br/></p>
+<p>なぜこうなるのでしょうか？</p>
+<p>みんな定例会に参加したのになぜ受取りにこんなに差があるのでしょうか？</p>
+<p>後で思ったのはやはり<span style="font-weight:bold;">前提条件、あるいは先入観</span>せいだと思います。</p>
+<p>参加メンバーはプロジェクトに対しての理解にずいぶん差があり、</p>
+<p>お客さんの同じ言葉でも人それぞれ違う形で受け取ったかもしれません。</p>
+<p><br/></p>
+<p>逆に言うと、お客さんも何かを明確に話さないといけない気がします。</p>
+<p>日本で二年働いて感じたのは、お客さんの話が曖昧すぎる傾向があるということです。</p>
+<p>「お客さんの認識では。。。」という言葉がいつも出てきますが、</p>
+<p>こんな表現が出たところで、既にお互い明確に話し合ってないと思います。</p>
+<p>もちろんこれは日本文化の一つでもあり、特にビジネス上何もかも明確になってはいけないこともあります。</p>
+<p>とはいえ、誤解が生むまで曖昧するくらいなら納得できませんね。</p>
+<p><br/></p>
+<p>あるテレビのCMを思い出しました。</p>
+<p>「アイデアはどこで生まれる<a class="keyword" href="http://d.hatena.ne.jp/keyword/%a5%a2%a5%a4%a5%c7%a5%a2%a4%cf%a4%c9%a4%b3%a4%c7%c0%b8%a4%de%a4%ec%a4%eb?mode=edit" rel="nofollow">?</a>」というテーマで</p>
+<p>様々の場所でのパーセントを提示したCMです。</p>
+<p>最後はなんと会議室で0%とのシーンがあります。</p>
+<p>的中ですね。。。</p>
+<p>ちなみに「<a class="keyword" href="http://d.hatena.ne.jp/keyword/%a5%c8%a5%a4%a5%ec">トイレ</a>」で31%との結果は意外と高かったほうでした。</p>
+<p>私もいつもトイレでは集中できるので、</p>
+<p>自分だけがおかしいかなと思っちゃいました。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-14T00:00:00+09:00" pubdate data-updated="true">2009-10-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-basic-principal-to-develop-plugins">jQuery pluginの開発規約について</a></h1>
+	<div class="entry-content">
+		<p>本文(英語)のアドレス：
+<a href="http://www.learningjquery.com/2007/10/a-plugin-development-pattern">A Plugin Development Pattern » Learning jQuery - Tips, Techniques, Tutorials</a></p>
+
+<h2>結論から</h2>
+
+<p>まず、<strong>要点</strong>と<strong>規約</strong>に沿ったソースを先頭に置きます。</p>
+
+<blockquote><ol>
+<li>Claim only a single name in the jQuery namespace</li>
+<li>Accept an options argument to control plugin behavior</li>
+<li>Provide public access to default plugin settings</li>
+<li>Provide public access to secondary functions (as applicable)</li>
+<li>Keep private functions private</li>
+<li>Support the Metadata Plugin</li>
+</ol>
+</blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// create closure</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// プラグインの宣言</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">debug</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// build main options before element iteration</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// iterate and reformat each matched element</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>      <span class="c1">// build element specific options</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">meta</span> <span class="o">?</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">opts</span><span class="p">,</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">())</span> <span class="o">:</span> <span class="nx">opts</span><span class="p">;</span>
+</span><span class='line'>      <span class="c1">// update element styles</span>
+</span><span class='line'>      <span class="nx">$this</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">backgroundColor</span><span class="o">:</span> <span class="nx">o</span><span class="p">.</span><span class="nx">background</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">color</span><span class="o">:</span> <span class="nx">o</span><span class="p">.</span><span class="nx">foreground</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">();</span>
+</span><span class='line'>      <span class="c1">// call our format function</span>
+</span><span class='line'>      <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="c1">// private function for debugging</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">debug</span><span class="p">(</span><span class="nx">$obj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</span><span class='line'>      <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hilight selection count: &#39;</span> <span class="o">+</span> <span class="nx">$obj</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="c1">// define and expose our format function</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">txt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s1">&#39;&lt;strong&gt;&#39;</span> <span class="o">+</span> <span class="nx">txt</span> <span class="o">+</span> <span class="s1">&#39;&lt;/strong&gt;&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="c1">// plugin defaults</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'><span class="c1">//</span>
+</span><span class='line'><span class="c1">// end of closure</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解読</h2>
+
+<h3>1. Claim only a single name in the jQuery namespace</h3>
+
+<ul>
+<li>目的：jQueryの名前空間にファンクション(メソッド)を一つのみ追加。</li>
+</ul>
+
+
+<p>プラグイン目的の純粋化と思われます。</p>
+
+<ul>
+<li>実装例</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プラグインの宣言</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Our plugin implementation code goes here.</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>使い方：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myDiv&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これはダメなパターンです。こうするなら二つのプラグインに分けるか、目的をもっと明確にしろうってことです。</p>
+
+<ul>
+<li>実装例</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">oneFunction</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">anotherFunction</span><span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. Accept an options argument to control plugin behavior</h3>
+
+<ul>
+<li>目的：オプションをつけることでより柔軟なAPIをユーザに提供</li>
+<li>実装例</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プラグインの宣言</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+</span><span class='line'> <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="c1">// Extend our default options with those provided.</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// Our plugin implementation code goes here.</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>使い方</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myDiv&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;blue&#39;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. Provide public access to default plugin settings</h3>
+
+<ul>
+<li>目的：デフォルトの設定を変更できるようにする。</li>
+<li>実装例</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// プラグインの宣言</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Extend our default options with those provided.</span>
+</span><span class='line'>  <span class="c1">// Note that the first arg to extend is an empty object -</span>
+</span><span class='line'>  <span class="c1">// this is to keep from overriding our &quot;defaults&quot; object.</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// Our plugin implementation code goes here.</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="c1">// plugin defaults - added as a property on our plugin function</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">background</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>使い方：全体のデフォルト設定を変更することもできるし、個別にオーバーライドすることも可能</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// override plugin default foreground color</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">foreground</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="c1">// invoke plugin using new defaults</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.hilightDiv&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">();</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="c1">// override default by passing options to plugin method</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#green&#39;</span><span class="p">).</span><span class="nx">hilight</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">foreground</span><span class="o">:</span> <span class="s1">&#39;green&#39;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4. Provide public access to secondary functions (as applicable)</h3>
+
+<ul>
+<li>目的：プラグイン開発者、または使い側がより簡単に拡張できる</li>
+<li>方法：jQueryの名前空間に登録したファンクションにプロパティとして一個追加することで実現可能です。</li>
+<li>実装例：</li>
+</ul>
+
+
+<p>例えば文字列をフォーマットするファンクション&#8221;format&#8221;があるとします。
+ここでは単純に強調表示するだけですが、誰でも簡単に変更できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// プラグインの宣言</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// iterate and reformat each matched element</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'> <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'> <span class="c1">// ...</span>
+</span><span class='line'> <span class="kd">var</span> <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">();</span>
+</span><span class='line'> <span class="c1">// call our format function</span>
+</span><span class='line'> <span class="nx">markup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
+</span><span class='line'> <span class="nx">$this</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">markup</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="c1">// define our format function</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span><span class="p">.</span><span class="nx">format</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">txt</span><span class="p">)</span> <span class="p">{</span><span class="s1">&#39;</span>
+</span><span class='line'><span class="s1">  return &#39;</span><span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="s1">&#39; + txt + &#39;</span><span class="o">&lt;</span><span class="err">/strong&gt;&#39;;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>5. Keep private functions private</h3>
+
+<ul>
+<li>目的：単純にprivateなファンクションをprivate化にするだけ</li>
+<li>方法：javascriptのクロージャで全体を囲む</li>
+<li>実装例：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// create closure</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// プラグインの宣言</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hilight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">debug</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'> <span class="c1">// ...</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="c1">// private function for debugging</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">debug</span><span class="p">(</span><span class="nx">$obj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</span><span class='line'>   <span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hilight selection count: &#39;</span> <span class="o">+</span> <span class="nx">$obj</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'> <span class="c1">//  ...</span>
+</span><span class='line'><span class="c1">// end of closure</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>6. Support the Metadata Plugin</h3>
+
+<p><a href="http://docs.jquery.com/Plugins/Metadata/metadata">Plugins/Metadata/metadata - jQuery Wiki</a></p>
+
+<ul>
+<li>目的：</li>
+</ul>
+
+
+<p>これはMetadataというプラグインがあるそうで、
+なおかつたくさん人が使っていることを前提(或いは現状)としたため、
+自分が作ったプラグインはMetadataにも対応するべきという結論になったわけです。</p>
+
+<ul>
+<li>TODO：</li>
+</ul>
+
+
+<p>私もまだMetadataプラグインが何か全然わからないため、
+ここはTODOとして残します。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-13T00:00:00+09:00" pubdate data-updated="true">2009-10-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-sqlite-in-mac">Mac OSでsqliteをインストール</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>インストール</h4>
+<ul>
+<li>公式サイト(<a href="http://www.sqlite.org/download.html" target="_blank">http://www.sqlite.org/download.html</a>)でファイルをダウンロード。Macなら二番目の「sqlite-amalgamation-3.6.18.tar.gz」をダウンロードすればよい。</li>
+<li>Macのターミナルを起動し、上記解凍パスに移動する。</li>
+<li>下記コマンドを実行する。</li>
+</ul>
+<blockquote>
+<p>./configure &#8211;prefix=ここでインストールパスを指定</p>
+<p>make</p>
+<p>make install</p>
+</blockquote>
+<ul>
+<ul>
+<li>私の場合は&#8211;prefix=/users/user_name/Database/sqlite</li>
+</ul>
+</ul>
+<p>インストールの詳細は解凍先のドキュメントの「INSTALL」を参照してください。</p>
+<p>ここでは一番簡単(デフォルト)のコマンドを紹介します。</p>
+<p>英語ばかりでわかりづらいかもしれません。</p>
+<p><br/></p>
+<p>これでインストールは完了です。</p>
+<p>指定したインストール先には「bin」、「include」、「lib」の三つのフォルダがあるはずです。</p>
+<p>次にターミナルでbinフォルダに移動します。</p>
+<p>ここからはsqliteのシンタックスになります。</p>
+<h4>データベースの起動/作成</h4>
+<blockquote>
+<p>sqlite test.db;</p>
+</blockquote>
+<p>これでtestという名のデータベースにつながります。もしtest.dbのファイルがなければ自動で作成されます。</p>
+<p>こんなメッセージも出るはずです。</p>
+<blockquote>
+<p>SQLite version 3.4.0</p>
+<p>Enter &#8220;.help&#8221; for instructions</p>
+</blockquote>
+<h4>テーブルの作成</h4>
+<p>次に簡単なテーブルを作成し、データをINSERTしましょう。</p>
+<blockquote>
+<p>sqlite&#62; create table Employee(id int,name varchar(15));</p>
+<p>sqlite&#62; insert into Employee values (1,&#8217;Jim&#8217;);</p>
+<p>sqlite&#62; insert into Employee values (2,&#8217;Tom&#8217;);</p>
+<p>sqlite&#62; select * from Employee;</p>
+<p>1|Jim</p>
+<p>2|Tom</p>
+<p>sqlite&#62; </p>
+</blockquote>
+<h4>データベースのクローズ</h4>
+<blockquote>
+<p>.exit</p>
+</blockquote>
+<p>ちょっと探しましたが、このサイトで日本語の資料がたくさんあるようです。</p>
+<p><a href="http://www.dbonline.jp/sqlite/index.html" target="_blank">http://www.dbonline.jp/sqlite/index.html</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-11T00:00:00+09:00" pubdate data-updated="true">2009-10-11</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/sqlite/'>SQLite</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/35/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/37/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

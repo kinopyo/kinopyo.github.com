@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: webservice | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/webservice/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PayPal Here: スマーフォンでクレジットカードを読み込んで支払い]]></title>
+    <link href="http://kinopyo.com/blog/paypal-here-mobile-payments-solution"/>
+    <updated>2012-03-19T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/paypal-here-mobile-payments-solution</id>
+    <content type="html"><![CDATA[<p>PayPalもスマートフォンでクレジットカードを読み込み、それで支払いできるサービスを開始したようですね。その名は<a href="https://www.paypal.com/webapps/mpp/credit-card-reader" title="PayPal Here" target="_blank">PayPal Here</a>、時代はどんどん進化していきますね。。似たようなサービスは他にもありますが名前忘れました。。</p>
+
+<p><blockquote><p>PayPal Here is the world's first global mobile payments solution that allows small businesses to accept almost any form of payment. The service includes a free app and fully encrypted thumb-sized card reader, which turns any iPhone, and soon Android smartphone, into a mobile payment solution.</p></blockquote></p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/x5woIGSOLGk" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[d.me メール送るだけでDeliciousにブックマークできるようになった]]></title>
+    <link href="http://kinopyo.com/blog/mail-to-delicious-to-bookmart-a-page"/>
+    <updated>2011-11-14T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mail-to-delicious-to-bookmart-a-page</id>
+    <content type="html"><![CDATA[<p><div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>d.me メール送るだけでDeliciousにブックマークできるようになった<a href="http://t.co/9xoR5Yp8" title="http://www.avos.com/as-easy-as-d-me/">avos.com/as-easy-as-d-m…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/135953105501175811" data-datetime="2011-11-14T05:32:00+00:00">11月 14, 2011</a></blockquote>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gmailを常に全員返信に設定]]></title>
+    <link href="http://kinopyo.com/blog/reply-to-all-always-in-gmail"/>
+    <updated>2011-07-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/reply-to-all-always-in-gmail</id>
+    <content type="html"><![CDATA[<p>ビジネスでもWeb版のGmailを使えるようになりましたが、しょっちゅう「全員に返信」を忘れてしまいます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_reply_to_all.png" title="Gmail_reply_to_all" ></p>
+
+<p>それを防ぐために常に全員返信するように設定しておきましょう。Gmail右上の設定-> Labs-> <strong>常に全員に返信</strong> を有効にする で完了。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Gmail_setting_reply_to_all.png" title="Gmail_setting_reply_to_all" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[自分がLikeした画像が見れるInstagram Web App - Inkstagram]]></title>
+    <link href="http://kinopyo.com/blog/inkstagram-show-photos-you-have-liked-on-instagram"/>
+    <updated>2011-05-30T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/inkstagram-show-photos-you-have-liked-on-instagram</id>
+    <content type="html"><![CDATA[<p><blockquote><p>Inkstagram is also a web app for browsing Instagram photos. You can view photos in small, medium or full sizes while browsing your feed, popular photos or your own photos.</p></p><p><p>We especially appreciate the "My Likes" view which showcases all of the photos that you've liked on Instagram.</p></blockquote></p>
+
+<p>目玉機能というえばこの"My Likes"ですね！自分が"Like"した画像が一覧で見れます！ちょっとこういうの欲しかったー！
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-30-at-19.01.59.png" title="Inkstagram &quot;My Likes&quot;" ></p>
+
+<p>他にも写真へのコメントや、Like、Popular Feedの表示など、写真アップロードを除いて全部できます。</p>
+
+<p>サイトはこちら：<a href="http://inkstagram.com/">http://inkstagram.com/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gavatar - グローバルなアバターウェブサービス]]></title>
+    <link href="http://kinopyo.com/blog/gavatar-global-avatar-webservice"/>
+    <updated>2009-12-17T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/gavatar-global-avatar-webservice</id>
+    <content type="html"><![CDATA[<p>Gravatar とは、ブログに投稿したりコメントしたりした時に、
+どのサイトでもあなたの名前の横に表示される画像です。</p>
+
+<br/>
+
+
+<p>Gravatarはメールアドレスをキーとしたアバター管理Webサービスです。
+自分のアバターをGravatarに登録すれば他のサイトでも汎用的に使えるんです。
+サイトごとにアバターをアップロードする手間がなくなるので結構便利です。
+例えばこのブログでもGravatarが使えるので、
+コメントの際にメールアドレスを入力すればGravatarで登録したアバターが表示されます。</p>
+
+<h2>公式サイト</h2>
+
+<p><a href="http://www.gravatar.com">http://www.gravatar.com</a></p>
+
+<p>一回登録し、アバターをアップロードしてください。
+複数のアバターをアップロードした場合はどのアバターを使うか選択できます。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Gravatar.jpg" title="Gravatar" ></p>
+
+<p>良かったらGravatarに登録し、ここにコメントを入れてみてください。
+メールアドレスが同じであればGravatarに登録したアバターが表示されるはずです。</p>
+]]></content>
+  </entry>
+  
+</feed>

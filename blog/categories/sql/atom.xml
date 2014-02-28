@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sql | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/sql/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL, OracleのGroup by date, 日付別で集計]]></title>
+    <link href="http://kinopyo.com/blog/mysql-oracle-group-by-date"/>
+    <updated>2011-08-17T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mysql-oracle-group-by-date</id>
+    <content type="html"><![CDATA[<p>これが既存データで、同じ日に複数のデータがある。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" alt="Example data" /></p>
+
+<p>期望結果はこれ、つまり日付別で集計したい場合</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" alt="Expected result" /></p>
+
+<h2>MySQLではDATE関数を使う</h2>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Oracleではto_char関数を使う</h2>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(*) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>参考</h2>
+
+<ul>
+<li><a href="http://blog.asial.co.jp/209">ちょっと使えるMySQLの小技5つ+1 : アシアルブログ</a></li>
+<li><a href="http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406">第104回 Oracleのお勉強 GROUP BY の罠 - bingo_nakanishiの他言語出身者のためのPerl入門</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL: SQL文のテキストファイルを実行するには]]></title>
+    <link href="http://kinopyo.com/blog/mysql-execute-sql-from-text-file"/>
+    <updated>2010-12-07T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mysql-execute-sql-from-text-file</id>
+    <content type="html"><![CDATA[<p>1000件くらいのinsert文を用意して、それをコピって一気にmysqlのコマンドラインに貼りつけたらうまく行かなかったんです。sql文に文法的間違いがなくてもエラーとなったり、表示が崩れたりしました。数件なら多分まだいいんですけど、さすが1000件だと(コマンドラインに貼り付けるやり方では)処理が追えない気がします。</p>
+
+<p>それらのsql文をファイルに保存し実行すれば問題なかったので、以下がそのコマンドです。</p>
+
+<p><code>sql
+mysql&gt; source file_name
+--あるいは
+mysql&gt; \. file_name
+</code></p>
+
+<p>また下記文を書けば進捗情報が見れるとMySQLのレファレンスで書かれてますが、時間の関係上今回は試してませんでした。</p>
+
+<p><code>sql
+SELECT '&lt;info_to_display&gt;' AS ' ';
+</code></p>
+
+<p>参考：
+<a href="http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html">http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

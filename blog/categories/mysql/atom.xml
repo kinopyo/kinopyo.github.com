@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MySQL | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby MySQL Tutorial]]></title>
+    <link href="http://kinopyo.com/blog/ruby-mysql-tutorial"/>
+    <updated>2011-09-09T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/ruby-mysql-tutorial</id>
+    <content type="html"><![CDATA[<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
+
+<p><div><script src='https://gist.github.com/1205708.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1205708&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL, OracleのGroup by date, 日付別で集計]]></title>
+    <link href="http://kinopyo.com/blog/mysql-oracle-group-by-date"/>
+    <updated>2011-08-17T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mysql-oracle-group-by-date</id>
+    <content type="html"><![CDATA[<p>これが既存データで、同じ日に複数のデータがある。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/table_data.png" alt="Example data" /></p>
+
+<p>期望結果はこれ、つまり日付別で集計したい場合</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/08/expected-result.png" alt="Expected result" /></p>
+
+<h2>MySQLではDATE関数を使う</h2>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql> SELECT DATE(create_datetime), COUNT(*) FROM user_m GROUP BY DATE(create_datetime);</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Oracleではto_char関数を使う</h2>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT to_char(create_datetime, 'YYYY-MM-DD'), COUNT(*) FROM user_m GROUP BY to_char(create_datetime, 'YYYY-MM-DD');</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>参考</h2>
+
+<ul>
+<li><a href="http://blog.asial.co.jp/209">ちょっと使えるMySQLの小技5つ+1 : アシアルブログ</a></li>
+<li><a href="http://d.hatena.ne.jp/bingo_nakanishi_perl/20090530/1243649406">第104回 Oracleのお勉強 GROUP BY の罠 - bingo_nakanishiの他言語出身者のためのPerl入門</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP:環境構築時に使う接続テストコードまとめ MySQL/Oracle/Memcache/Memcached]]></title>
+    <link href="http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached"/>
+    <updated>2011-06-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/php-connection-test-code-for-mysql-oracle-memcache-memcached</id>
+    <content type="html"><![CDATA[<p>環境構築時に接続テスト用のコードをまとめました。</p>
+
+<script type="text/javascript" src="scripts/gist.js"></script>
+
+
+<script type="text/javascript">gist()</script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication]]></title>
+    <link href="http://kinopyo.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication"/>
+    <updated>2011-03-17T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/php-mysqlnd-cannot-connect-to-mysql-4-1-using-old-authentication</id>
+    <content type="html"><![CDATA[<h2>問題</h2>
+
+<p><blockquote><p>新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。 古い16バイトのパスワードを使うと、mysql_connect() 系の関数は次のようなエラーメッセージを生成します。”mysqlnd cannot connect to MySQL 4.1+ using old authentication”</p></blockquote></p>
+
+<p><blockquote><p>MacPortでインストールしたPHP5.3では、</p></p><p><p>mysqlnd(php5.3のmysql native client)が適用される。<br/>しかし、CentOSなどのyumでインストールできるMySQLサーバーとの相性がよろしくない。<br/>PHP Warning:  mysql_connect(): mysqlnd cannot connect to MySQL 4.1+ using old authentication<br/>というエラーが現れ、接続することができません。<br/>mysqlndを利用しないよう再コンパイルが必要となる。</p></blockquote></p>
+
+<h2>解決方法</h2>
+
+<p>portでインストールしたモジュールを確認、mysqlndがactiveなってるはず。</p>
+
+<p>```
+sudo port installed</p>
+
+<p>php5-mysql @5.3.5_0+mysqlnd (active)</p>
+
+<p>```</p>
+
+<p>そしてmysql5のvariantsを指定で再インストール。</p>
+
+<p>```
+% sudo port install php5-mysql +mysql5</p>
+
+<p>--->  Computing dependencies for php5-mysql
+--->  Fetching php5-mysql
+--->  Verifying checksum(s) for php5-mysql
+--->  Extracting php5-mysql
+--->  Configuring php5-mysql
+--->  Building php5-mysql
+--->  Staging php5-mysql into destroot
+--->  Installing php5-mysql @5.3.5_0+mysql5
+--->  Deactivating php5-mysql @5.3.5_0+mysqlnd
+--->  Cleaning php5-mysql
+--->  Activating php5-mysql @5.3.5_0+mysql5
+--->  Cleaning php5-mysql</p>
+
+<p>```</p>
+
+<p>再度port installedで確認すればmysql5がactiveになるはず。これで解決。</p>
+
+<p>```
+php5-mysql @5.3.5_0+mysqlnd
+php5-mysql @5.3.5_0+mysql5 (active)</p>
+
+<p>```</p>
+
+<h2>参考</h2>
+
+<p>【php】mysqlndを使うとMySQLに接続できない
+<a href="http://www.softel.co.jp/blogs/tech/archives/2225">http://www.softel.co.jp/blogs/tech/archives/2225</a></p>
+
+<p>SnowLeopard + PHP5.3でのMySQLリモート接続
+<a href="http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html">http://taikimen.blogspot.com/2010/10/snowleopard-php53mysql.html</a></p>
+
+<p>PHP: mysqlnd cannot connect to MySQL 4.1+ using old authentication
+<a href="http://www.bitshop.com/Blogs/tabid/95/EntryId/67/PHP-mysqlnd-cannot-connect-to-MySQL-4-1-using-old-authentication.aspx">http://www.bitshop.com/Blogs/tabid/95/EntryId/67/PHP-mysqlnd-cannot-connect-to-MySQL-4-1-using-old-authentication.aspx</a></p>
+
+<h2>おまけ</h2>
+
+<p>mysqlが古い16バイトのパスワードを使ってるかを確認する方法です。
+mysqlにログインして下記コマンドを実行：</p>
+
+<p>```
+mysql> select password('aa');</p>
+
+<p>+------------------+
+| password('aa')         |
++------------------+
+| 0123456789abcdef |
++------------------+</p>
+
+<p>```
+16位だっだら古いです。40位なら新しいってことです。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL autocommitでトランザクションを制御する]]></title>
+    <link href="http://kinopyo.com/blog/mysql-using-autocommit-to-control-transaction"/>
+    <updated>2010-12-07T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mysql-using-autocommit-to-control-transaction</id>
+    <content type="html"><![CDATA[<p>autocommitの値を持ちましてMySQLでのトランザクションを制御できます。</p>
+
+<p>```sql
+--暗黙(自動)コミットを無効に
+SET AUTOCOMMIT = 0;
+--トランザクション開始
+BEGIN;</p>
+
+<p>--SQL文をながす
+UPDATE...
+INSERT...</p>
+
+<p>--コミット
+COMMIT;
+--あるいはロールバック
+ROLLBACK;</p>
+
+<p>--暗黙(自動)コミットを有効に
+SET AUTOCOMMIT = 1;</p>
+
+<p>--暗黙(自動)コミットのステータスを確認
+SELECT @@AUTOCOMMIT;
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

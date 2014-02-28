@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: other | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Yahooアドパートナー利用時サイトURLの"wwwあり"と"wwwなし"に注意]]></title>
+    <link href="http://kinopyo.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix"/>
+    <updated>2010-01-22T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/yahoo-adpartner-be-careful-of-site-url-with-or-without-www-prefix</id>
+    <content type="html"><![CDATA[<p>この間<a href="http://webowner.yahoo.co.jp/siteincome/adpartner/">Yahooアドパートナー</a>を申請しました。
+<a href="http://webowner.yahoo.co.jp/siteincome/adpartner/">Yahooアドパートナー</a>とはあなたのサイトに広告を掲載し、
+閲覧もしくはクリックされたことで報酬がもらえるサービスです。
+GoogleのAdSenseに相当するものです(しかし広告の質はまだまだ)。</p>
+
+<br/>
+
+
+<p>申請してから一度も使った事なかったのですが、
+今日広告のコードを貼りつけたら表示されませんでした。
+いろいろ探してみたらサイトURLに"wwwあり"と"wwwなし"が問題となったようです。
+Yahooに申請するときは"wwwあり"のwww.kinopyo.comで申請したのですが、
+このブログでは今までずっと"wwwなし"のkinopyo.comで利用してました。
+その違いで広告は表示されないのです。</p>
+
+<br/>
+
+
+<h2>解決策</h2>
+
+<ul>
+<li>Wordpressの一般設定でブログのURLを"wwwあり"に明確に設定</li>
+<li>SEO対策の一環として"wwwなし"のURLを"wwwあり"にリダイレクト</li>
+</ul>
+
+
+<p>SEO対策の具体的内容はまた今度まとめます。</p>
+]]></content>
+  </entry>
+  
+</feed>

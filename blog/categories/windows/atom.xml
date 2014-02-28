@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Windows | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[さくらVPSに移行後wordpressで画像アップロードした時にサムネイルが生成されない件]]></title>
+    <link href="http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps"/>
+    <updated>2011-09-21T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/wordpress-not-create-thumbnail-image-in-uploading-after-migrate-to-sakura-vps</id>
+    <content type="html"><![CDATA[<p>Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。</p>
+
+<p>調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
+CentOSなのでyumを使ってインストールすれば解決です。</p>
+
+<p><code>bash
+sudo yum install php-gd
+sudo service httpd restart
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[dirコマンドでサブフォルダにあるファイル一覧を出力]]></title>
+    <link href="http://kinopyo.com/blog/dir-command-to-output-all-subfolder-file-nam"/>
+    <updated>2010-03-19T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/dir-command-to-output-all-subfolder-file-nam</id>
+    <content type="html"><![CDATA[<p>dir /s /b >file.txt</p>
+
+<p><strong>/s</strong>指定されたディレクトリおよびそのサブディレクトリのすべてのファイルを表示します。
+<strong>/b</strong>は拡張子とディレクト付きのファイル名を表示します。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Windowsでよく使ってるアプリのファイル名、Win + Rで簡単実行]]></title>
+    <link href="http://kinopyo.com/blog/commanly-used-application-name-of-windows"/>
+    <updated>2009-12-03T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/commanly-used-application-name-of-windows</id>
+    <content type="html"><![CDATA[<div class="section">
+<p>よくWindowsで「Win + R」で実行のダイアログを開いて、「cmd」でコマンドプロンプトを実行してきました。</p>
+<p>これしか覚えてなくて、ペイントなどを開こうとするに結構めんどうな操作が必要でした。</p>
+<p>(そんなにめんどうではないけどいちいちメニューから選択するのが嫌いだけです)</p>
+<p>ここでいったんよく使ってるWindowsアプリのファイル名をメモしときます。</p>
+<h4>リスト</h4>
+<dl>
+<dt>コマンドプロンプト</dt>
+<dd>cmd</dd>
+<dt>ペイント</dt>
+<dd>mspaint</dd>
+<dt>メモ帳</dt>
+<dd>notepad</dd>
+<dt>電卓</dt>
+<dd>calc</dd>
+<dt>リモートデスクトップ</dt>
+<dd>mstsc</dd>
+</dl>
+<p>注意：上記Windows XPに基づいてます。</p>
+<p>「Win + R」で実行のダイアログを開き、上記コマンドを叩けばアプリを開けます。</p>
+<h4>自分で調べる</h4>
+<ol>
+<li>「スタート→すべてのプログラム→アクセサリ」から調べたいアプリを右クリックして「プロパティ」を開く</li>
+<li>「リンク先」の「xxx.exe」のxxxの部分がファイル名になります。</li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

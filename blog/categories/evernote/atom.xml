@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Evernote | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/evernote/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Evernote 複数のノートを一気にタグを付けるる方法]]></title>
+    <link href="http://kinopyo.com/blog/evernote-add-tags-for-multiple-notes"/>
+    <updated>2011-10-31T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/evernote-add-tags-for-multiple-notes</id>
+    <content type="html"><![CDATA[<p>複数のノートに一気にタグをつける方法です。今まで知らなかったことにちょっとショックくらいです。。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Evernote-add-tags-for-multiple-notes.jpg" title="Evernote-add-tags-for-multiple-notes" ></p>
+
+<p>+先にCommandキーを押しながらノートを複数選択する
++付けたいタグを上記で選択したノートにドラッグする</p>
+
+<p>で完了です〜</p>
+
+<p>参考ページ：
+<a href="http://forum.evernote.com/phpbb/viewtopic.php?f=55&amp;t=17493">http://forum.evernote.com/phpbb/viewtopic.php?f=55&amp;t=17493</a>
+<a href="http://excel555.blog58.fc2.com/blog-entry-148.html">http://excel555.blog58.fc2.com/blog-entry-148.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

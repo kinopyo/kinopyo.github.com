@@ -1,0 +1,972 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="TL;DR Heroku doesn’t provide HTTP caching by default
+Use CDN like Cloudflare or Amazon CloudFront Clouldflare has free plan, takes you less than 3 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <header id='about_me' class="inner">
+      <div class="photo">
+        <img src="http://cdn.kinopyo.com/images/profile.jpg" alt="Photo - Qihuan Piao">
+      </div>
+      <h3>Hi I'm Qihuan Piao, I'm a Rails developer and I like to make stuff.</h3>
+      <p>
+        Here I share articles and tips about web development, inpirations and thoughts I get from books and daily life.
+      </p>
+      <p>I believe that English is a <strong>MUST</strong> skill for me to become a great engineer, so I’m trying to to write posts in it these days.</p>
+    </header>
+
+  
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/use-http-caching-in-heroku-with-cloudflare/">Use HTTP Caching in Heroku with Cloudflare</a></h1>
+	<div class="entry-content">
+		<h1>TL;DR</h1>
+
+<ul>
+<li>Heroku doesn’t provide HTTP caching by default</li>
+<li>Use CDN like <a href="http://www.cloudflare.com/">Cloudflare</a> or <a href="http://aws.amazon.com/cloudfront/">Amazon CloudFront</a>
+
+<ul>
+<li>Clouldflare has free plan, takes you less than 3 minutes to setup.</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>HTTP Caching</h1>
+
+<p>Just a quick example of HTTP caching.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/http_caching_example.jpg" alt="HTTP caching example" /></p>
+
+<p>You can really feel the difference after you enabled it. Since most of your static assets, like js, css and image files, are gonna use browser cache without hitting your rails application, the user experience is improved a lot.</p>
+
+<p>In my hobboy project <a href="http://quoty.me">quoty.me</a>, user had to download the black colored background image(22k) every time they visit a page, so there was a time lag to notice the background changed from white to black, which bothered me a lot. And that was why I noticed the HTTP caching is not enabled in Heroku.</p>
+
+<h1>Heroku&#8217;s HTTP Caching</h1>
+
+<blockquote><p>Heroku doesn’t provide HTTP caching by default. In order to take advantage of HTTP caching, you’ll need to configure your application to set the appropriate HTTP cache control headers and use a content delivery network (CDN) or other external caching service.</p></blockquote>
+
+<p>I&#8217;m using cedar stack in Heroku, but I have to use &#8220;external&#8221;(oppose to add-ons or solutions provided by Heroku) stuff to make HTTP caching work.</p>
+
+<p>I&#8217;ve also tried <a href="http://rtomayko.github.io/rack-cache/">Rack::Cache</a> with Memcache but somehow it didn&#8217;t work for me.</p>
+
+<h1>Setup Cloudflare</h1>
+
+<p>This time I decided to give Cloudflare a try. It&#8217;s free, easy to setup, and just work.</p>
+
+<p>I&#8217;ll cut off how to setup Cloudflare, as the tutorial in its website is realy excellent. Just go to <a href="https://www.cloudflare.com/">https://www.cloudflare.com/</a> and follow the instructions, within 3-4 steps you&#8217;re done.</p>
+
+<p>The other thing you have to do is to update your nameserver to the one provided by Cloundflare, like &#8220;IAN.NS.CLOUDFLARE.COM&#8221;. I&#8217;m using <a href="http://www.godaddy.com/">GoDaddy</a> for my quoty.me domain, the link to setup nameserver looks like this.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/godaddy_nameserver.jpg" alt="GoDaddy Nameserver setup link" /></p>
+
+<h1>Further Reading</h1>
+
+<ul>
+<li><a href="https://devcenter.heroku.com/articles/http-caching">HTTP Caching | Heroku Dev Center</a>
+<a href="https://devcenter.heroku.com/articles/increasing-application-%20-performance-with-http-cache-headers">Increasing Application Performance with HTTP Cache Headers | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/http-caching-ruby-rails">HTTP Caching in Ruby with Rails | Heroku Dev Center</a></li>
+<li><a href="http://railscasts.com/episodes/321-http-caching">#321 HTTP Caching (pro) - RailsCasts</a></li>
+<li><a href="http://www.bestechvideos.com/2009/03/21/railslab-scaling-rails-episode-11--%20advanced-http-caching">RailsLab Scaling Rails: Episode #11 - Advanced HTTP Caching</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-14T08:51:00+09:00" pubdate data-updated="true">2013-07-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/cache/'>Cache</a>, <a class='category' href='/blog/categories/heroku-/'>Heroku,</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/me-as-a-nightowl-become-a-morning-person-for-31-days/">夜型の僕が早起きを31日間頑張って思ったこと</a></h1>
+	<div class="entry-content">
+		<p><img src="http://cdn.kinopyo.com/images/morning_person.JPG" alt="僕とチームメートのテーブルの間にポスト・イットを貼って早起きした日数を刻んでました。" /></p>
+
+<h2>TL;DR</h2>
+
+<ul>
+<li>早起きしたいと自ら望むこと</li>
+<li>やれば絶対誰でもできる（事実）</li>
+<li>柔軟に軌道修正</li>
+</ul>
+
+
+<h2>はじめに</h2>
+
+<p>5/22から早起きを頑張りました。
+&#8220;何時に起きてるの？&#8221;
+&#8220;8時です&#8221;
+&#8220;えー全然早くね～じゃん&#8221;
+と即行で鼻で笑われたりしました。</p>
+
+<p>はい、ここ数年は大体夜2時前後に寝て朝9時半起きだった僕にとっては
+もうこれが大きな一歩です。
+何より、全然できないといつも思ってたからです。
+また今はいろいろ試行錯誤で8時にしただけで、
+しようと思えば6〜7時にもできる自信が付いたんです。</p>
+
+<p>この一ヶ月で頑張ったこと、思ったことをの共有したいと思います。</p>
+
+<h2>きっかけ</h2>
+
+<p>段々年をとると、よほどインパクのでかい物事が起きないと
+今までの生活習慣を変えるのは大変かなと思ってます。
+その中でも早起きはずっとしたかったんです。
+ちょうどチームの友達とこの話をしたら彼も同じことを考えるので
+2人で頑張ろうという流れに何となくなりました。
+できるかどうか、半信半疑の感じで始めたのですが、</p>
+
+<ul>
+<li>約束を破りたくない</li>
+<li>そして何より負けたくない</li>
+</ul>
+
+
+<p>の2つの見えないチカラが背中をずっと押してくれました。
+（前半は↑ですね、大体途中でもう早起きが習慣になってきました）</p>
+
+<h2>早起きするために</h2>
+
+<h3>まず&#8221;心の準備&#8221;</h3>
+
+<h4>自発的に早起きしたい気持ち</h4>
+
+<ul>
+<li>周りの家族や友達、上司に言われてから</li>
+<li>朝ミーティングがあるから</li>
+</ul>
+
+
+<p>のような感じですと絶対長続きできないです。
+自発的に”そういう人になりたい”と思わないと。</p>
+
+<h4>Be aware of yourself</h4>
+
+<p>自分の一日の行動、気持ち、体調などに気を配ることです。
+効率は上がったのか？いつが一番眠いのか？気持ちいいと感じるのか？
+などなどどんどん自分に質問を投げて、軌道修正する。</p>
+
+<h4>メリットを感じなければやめる</h4>
+
+<p>実際早起きして得することはあったのか？
+無駄に疲れて、ストレスが溜まるばかりにいいことは全然なかった。
+特にメリットを感じなければやめて</p>
+
+<h3>具体的な試み</h3>
+
+<p>極めてシンプルです、簡単とは言えないですが。</p>
+
+<ol>
+<li>監督しあう仲間を探す</li>
+<li>朝食の時間を楽しむ</li>
+<li>睡眠時間は削らない</li>
+<li>運動して無理やり早寝する</li>
+</ol>
+
+
+<h4>監督(supervise)しあう仲間を探す</h4>
+
+<p>自分と同じくらいのレベルで同じ挑戦をしたい人を見つかればベストですが、
+そうじゃなくても自分が一番信頼できる人に自分のプランをコミットするのも全然ありです。
+こういう手法は今まで何度も聞きましたが、やってみて思ったのが
+本当に一番効率のいい方法で、僕の性格にもぴったりの感じです。</p>
+
+<h4>朝食を楽しむ</h4>
+
+<p>早起きしたら朝食は絶対抜けないと自分で決めました。
+たまには外で食べながら本を読んだり、単純にぼっとしたりして
+自分なりで朝を楽しんでました。
+余裕のある朝なんて贅沢すぎる！</p>
+
+<p>また初めて最初の土日が一番ピーク（起きたくない）かもしれませんが、
+あえて朝に予定を入れたり、起きたらとりあえず
+一杯のコーヒーを飲んだりするなど自分なりで
+乗り越える方法を事前に考えて起きたらいいです。</p>
+
+<h4>睡眠時間は削らない</h4>
+
+<p>早起きした分仕事も早めにスタートできるので、
+夜は今までと比べて早めに退勤することができて、
+帰って料理したり本読んだりすれば自然に11時くらいから
+もう寝るモードに入ります。
+逆に睡眠時間を削ると本末転倒なことになるので、
+疲れたり眠くなったりするしかないですね。</p>
+
+<h4>運動して無理やり早寝する</h4>
+
+<p>最初の二三日は僕はいつもランニングして”無理やり”
+早寝を促進してます。
+体がちょうど良い感じに疲れてその流れで寝れば
+自然に早起きのサイクルになります。</p>
+
+<h4>その他のInspiration</h4>
+
+<p><a href="http://michaelhyatt.com/053-how-to-become-a-morning-person-podcast.html">#053: How to Become a Morning Person [Podcast] | Michael Hyatt</a></p>
+
+<blockquote><p>You said, “I’m a night person or a night owl by nature.” It’s my own personal belief that people aren’t morning people or evening people by nature.
+I don’t think there is anything biologically or physiologically that you can point to that would suggest that is somehow predetermined. We may have a preference and we may have a set of practices that have been conditioned into a habit over a long period of time, but these are things I believe that with focus and intention can be changed.</p></blockquote>
+
+<h2>最後に</h2>
+
+<p>紹介した方法以外の目覚めし時計をどう設定するとか、
+部屋の照明を暗くするとかは全部マイナーの問題にすぎないです。</p>
+
+<p>新しいことを21日間続ければ習慣になるそうですが、
+僕の場合大体10日でもう慣れた実感がしました。
+ライフサイクルが改善されて、電車の中でも本が読める気力があって
+オフで勉強したことが仕事にもいいフィードバックと刺激になったと思います。
+この際隣の人と試してみてはどうですか？</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-21T21:45:00+09:00" pubdate data-updated="true">2013-06-21</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/notes-on-lets-make-testing-fun-again/">Notes on Let&#8217;s Make Testing Fun Again</a></h1>
+	<div class="entry-content">
+		<h2>The talk</h2>
+
+<p><a href="http://lanyrd.com/2012/windycityrails/sxqbt/">Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd</a></p>
+
+<script async class="speakerdeck-embed" data-id="5048ea4bb8fe2d0002020475" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<div class='video-container'>
+<iframe src="http://player.vimeo.com/video/49525644" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+
+
+<h2>Communication</h2>
+
+<blockquote><p>Tests give you about the code. This happens over time, where you find that tests have become hard to write, the tests are becoming complicated and bogged down.</p>
+
+<p>Rather than use it as an opportunity to blame the test or to blame testing, <strong>you should use it as an opportunity to learn something about your code, that there is a dependency that could potentially be simplified, or something you could be doing better.</strong></p></blockquote>
+
+<h2>Keep relevant setup close</h2>
+
+<blockquote><p>This is something that &#8220;relative good&#8221;(in terms of &#8220;absolute good&#8221;). It&#8217;s generally good to keep the setup of your tests close to the tests where it is.</p>
+
+<p>What you want to avoid is the case where some sort of <code>before</code> setup way at the top of the file and you have stuff, and more stuff, and more stuff, and eventually in the end, what&#8217;s the <code>@user.name</code>? I don&#8217;t remember.</p></blockquote>
+
+<h3>An Example</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;uses the user&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="c1"># i don&#39;t remember</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is where you see sometimes people say &#8220;You should never have setup outside your original test&#8221;.</p>
+
+<h3>What to do about duplications and complicate shared setups</h3>
+
+<blockquote><p>I think a lot of times if you need a complicated setup to test code, that often means your code is too complicated you need to start working out to move your dependencies. <strong>I tend to have a higher tolerance for duplication in my tests</strong> than I do in my regular code, specifically because <strong>I&#8217;m more interested in having the communication close</strong>, and less interested in maybe being clever about extracting setups in my tests. Sometimes I do if there&#8217;s a piece of stuff that&#8217;s really tightly coupled, and I can give it a descriptive enough name that I still feel like I have the benefit of keeping the setup close in the actual test.</p></blockquote>
+
+<h2>Test Simple Values</h2>
+
+<p>By using literal in check, when the spec fails, the error message is much easier to understand.</p>
+
+<h2>Spy, don&#8217;t mock</h2>
+
+<p>A <a href="http://pivotal.github.io/jasmine/">jasmine</a>
+ test example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">cheeseburger</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">cheeses</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Ajax call to cheese server</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spies on the cheese server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">spyOn</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">,</span> <span class="s1">&#39;cheeses&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Readability advantage</li>
+<li>Easy to find where actually fails</li>
+</ul>
+
+
+<p>BTW, if in spec, we need write like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s1">&#39;spies on the cheese server&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># in the reversed order</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:cheeses</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">cheeses</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>More about Spy on Ruby and Rails</h3>
+
+<p><a href="https://github.com/thoughtbot/bourne">thoughtbot/bourne</a> gem can let you have the rspec-like test spies syntax.</p>
+
+<p><a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a>, good explanation on what is test spy the benefit of it.</p>
+
+<h2>What Do We Love?</h2>
+
+<p>These are quite frank and interesting questions.</p>
+
+<ol>
+<li>Do we still love writing tests?</li>
+<li>Or do we just love having written tests?</li>
+<li>Or do we just love saying that we&#8217;ve written tests?</li>
+</ol>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T15:18:00+09:00" pubdate data-updated="true">2013-06-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/testing/'>Testing</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/notes-on-fast-test-slow-test/">Notes on Fast Test, Slow Test</a></h1>
+	<div class="entry-content">
+		<p>Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work on a very large scale rails app. But it also introduces me to some very bad tests. Sometimes I found myself so difficult to add any spec, as it needs lots of extra efforts to make the fixture data, also one model got too many dependencies and collaborators, etc. I know it’s wrong, the code smells, just don’t know where to start.</p>
+
+<p>So when I watched this video “Fast Test, Slow Test” by <a href="https://twitter.com/garybernhardt">@garybernhardt</a>, who also runs <a href="https://www.destroyallsoftware.com/screencasts">DestroyAllSoftware screencast</a>, I found it very helpful and wanted to take some notes on it.</p>
+
+<div class="video-container">
+<iframe width="640" height="480" src="http://www.youtube.com/embed/RAxiiRPHS9k?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h1>Three Goals in Testing</h1>
+
+<ul>
+<li>Prevent Regression</li>
+<li>Prevent Fear</li>
+<li>Prevent Bad Design</li>
+</ul>
+
+
+<h1>How to Fail in Testing</h1>
+
+<ul>
+<li>Selenium as primary testing</li>
+<li>“Units Test” are too large</li>
+<li>Fine-grained tests around legacy code</li>
+</ul>
+
+
+<blockquote><p>What you’re saying here is that we acknowledge that this code sucks, so we’re going to go in and write tight tests around it that solidifies interface and just bake the badness forever. <strong>This is the worst way to do unit testing, go in your legacy system and write test around bad code.</strong></p></blockquote>
+
+<h1>Too many dependencies in test</h1>
+
+<blockquote><p>You end up with a test suite where it tends to either completely succeed or completely fail. It doesn’t give you any fine-grained feedback about what has actually gone wrong it just tells you you broke something. And you are left to dig these stack traces. <strong>In the ideal test suite you don’t have to dig through stack traces because ideally once test fails it will tell you exactly was broken (of course you never achieve that)</strong></p></blockquote>
+
+<h1>More than 8 lines for a model test</h1>
+
+<blockquote><p>I would ask myself why do I need to setup so much of the world to test this one small piece of behavior. That causes me to decompose it which causes better system design.</p></blockquote>
+
+<h1>10% System/Acceptance Test, 90% Unit Test</h1>
+
+<p>(in terms of test cases, not lines of code)</p>
+
+<blockquote><p>That applies to mostly object heavy system like web app, that have a lot of logic and not a lot of boundaries.</p></blockquote>
+
+<h1>Advice on models that very tied to database</h1>
+
+<h2>Question</h2>
+
+<blockquote><p>If you&#8217;re working with model objects that they&#8217;re very tied to the database specifically things like you have to save that one object before you can associate with the other object and that means hitting the database. What&#8217;s your advice in terms of writing fast unit test?</p></blockquote>
+
+<h2>Answer</h2>
+
+<blockquote><p>Take all of that behavior that&#8217;s on your model objects and pull out of their into service classes that are stateless, that interact with the model objects. So view calls a service, service contains the intelligence and the service manipulates the model objects.</p>
+
+<p>You can still have methods on your model objects do things like wrap specific queries in class methods, or wrap specific mutations when multiple fields are commonly manipulated together.</p>
+
+<p>It&#8217;s okay to have those on your model object and then have the service use those but if you pull the behavior of the system out into the service, and you control the boundary between the service in the model by those methods you&#8217;ve written on the model, then you can mock out more easily and safely.</p></blockquote>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-30T21:56:00+09:00" pubdate data-updated="true">2013-05-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/testing/'>Testing</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/my-take-on-google-io-2013-keynote/">My Take on Google I/O 2013 Keynote</a></h1>
+	<div class="entry-content">
+		<div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Can&#8217;t believe that I watched the 3.5 hours long keynote video of Google I/O 2013 <a href="https://t.co/mBj3E6pB4q" title="https://developers.google.com/events/io/">developers.google.com/events/io/</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/335721881887989760">2013年5月18日</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+
+<p>Yesterday I was trying to catch up with the Google I/O 2013 to see what’s new. After I read some wrap up articles like <a href="http://thenextweb.com/insider/2013/05/15/everything-announced-at-the-google-io-2013-keynote-in-one-handy-list/">Everything announced at the Google I/O 2013 keynote in one handy list - The Next Web</a>, I was very intrigued and ended up watching the whole 3.5 hours long keynote video.</p>
+
+<p>Given that I’m not an Android user or developer, I still felt the improvements on Android system quite impressive. But my biggest inspriation is not on any specific topic, it’s how Google thinks of solving problem in the terms of technolodgy, not just web or mobile, they always think in a big picture. Much bigger than I do.</p>
+
+<p>I’ve been a web developer for over 5 years and now I do feel I’ve got a handy toolkit to solve some problems. But I also feel I’ve constrained myself to this area, limited my imagination. Anything that can’t solve with the skills I’ve got is impossible. Web is bigger than I perceived, and yet it is just a part of technolodgy. We all know that it’s just a tool to solve problems, not the only way to do it.</p>
+
+<p>I need to think out of the box. It’s too comfortable to just sit there and see their innovations, instead of trying to be the guy on the stage to amaze people with your innovations. I’ve spent less and less time on predicting the future of the technolodgy, but more and more on reality issues, like where to live, when to get married or so. I guess that’s the inevitable trend as you getting old but at least I shouldn’t let what I’ve learned blind myself. Keep looking, don’t settle.</p>
+
+<p>I’d like to end this post with the quote of Steve Jobs.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/stay_hungry_stay_foolish.jpg" alt="Stay hungry, stay foolish" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-19T07:52:00+09:00" pubdate data-updated="true">2013-05-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/inspiration/'>Inspiration</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/when-to-buy-a-new-ipad-iphone-or-macbook/">When to Buy a New iPad, iPhone or Macbook</a></h1>
+	<div class="entry-content">
+		<p>I gave my iPad to my mom when I went back to China during the golden week, so I&#8217;m wondering if now is a good timing to buy a new iPad? Are they going to release a new model soon? &#8220;Buy or wait&#8221;, that&#8217;s the only options for me every time when I think about any product of Apple.</p>
+
+<h2>Macrumors Buyers Guide</h2>
+
+<p>Then I found this <a href="http://buyersguide.macrumors.com/">buyersguide</a> by Macrumors. I know Macrumors website for a long time and used to subscribe to their RSS feeds, but I never noticed they have a this website.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/macrumors_buyers_guide.png" alt="Macrumors Buyers Guide" /></p>
+
+<p>Here you can see each Apple model with red or yellow round buttons. I guess there&#8217;ll be green ones once the &#8220;timing&#8221; is right to buy that product. As it says:</p>
+
+<blockquote><p>provide our best recommendations regarding current product cycles, and to provide a summary of currently available rumors for each model. This page is based on rumors and speculation and we provide no guarantee to its accuracy.</p></blockquote>
+
+<h2>When to Buy a New iPad</h2>
+
+<p>If you click the iPad link you&#8217;ll see this:</p>
+
+<p><img src="http://cdn.kinopyo.com/images/when_to_buy_a_new_ipad.png" alt="When to Buy a New iPad" /></p>
+
+<p>You can see the last release was October 23, 2012. Average
+release cycles is 311 days so statistically there are still around 100 days left, but judging from the recent releases it could be next month! Recent rumors might be helpful, to at least give you something to fill in the blankness of waiting.</p>
+
+<p>Maybe this time I&#8217;ll give iPad mini a try.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-16T21:50:00+09:00" pubdate data-updated="true">2013-05-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apple/'>Apple</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/one-photo-and-one-video-about-innovation/">One Photo And One Video About Innovation</a></h1>
+	<div class="entry-content">
+		<h2>The Photo: Apple 2005-2013</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/2005-2013-apple.jpg" alt="Apple 2005 and 2013" /></p>
+
+<p><strong>2005</strong>. I was still in college. The phone I had was just a &#8220;pure&#8221; phone to call and text people, and even didn&#8217;t have a camera.</p>
+
+<p><strong>2013</strong>. Now I have Macbook, iPhone, iPad, Kindle, all &#8220;rich&#8221; devices. With 3G network I can connect to Internet anytime anywhere. Life&#8217;s been changed so much.</p>
+
+<h2>The Video: Samsung GALAXY S4</h2>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/2LHv1FPd1Ec?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>I never had a Samsung GALAXY phone, but after watched this video I was surprised by some of the new features. I&#8217;ve been using iPhone for 3 or 4 years, I&#8217;m so used to it and sometimes it makes me blind to see other innovations.</p>
+
+<p>The video is 4:30 long, please take a look when you have time.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-16T14:30:00+09:00" pubdate data-updated="true">2013-03-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/technology/'>Technology</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/google-calendar-working-hours-option/">Google Calendar Working hours options</a></h1>
+	<div class="entry-content">
+		<p>Have you ever noticed this option in Google Calendar?</p>
+
+<p><img src="http://cdn.kinopyo.com/images/google_calendar_working_hours_option.png" alt="Working hours options" /></p>
+
+<p>I guess this is more helpful for those who use a flex time for their work. I wonder what will the warning message look like.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-14T21:45:00+09:00" pubdate data-updated="true">2013-03-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/details/'>Details</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/does-your-blog-header-in-top-page-and-post-page-look-the-same/">Does Your Blog Header In Top Page And Post Page Look The Same?</a></h1>
+	<div class="entry-content">
+		<p>As you see below, this was how my blog header looks like before I write this post. There was no differece between top page(or home page, landing page) and the post page. If put into rails term, these are the <code>#index</code> and <code>#show</code> page, they&#8217;re sharing the exactly same header partial.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/my_blog_header.png" alt="old blog header" class="image_with_border"></p>
+
+<h2>Thinking About My Target</h2>
+
+<p>Based on the data from Google Analytics, around 85% of the access are from search engines like Google or Yahoo, so for them the contents I provided should be most important.</p>
+
+<p>But for the direct access to the top page, they could be my friends, could be the headhunters, my future boss or colleague, or just some random strangers, anyway these people are my target who I really want to pay more attentions to, make them impressive, show a little  different things from the other audience.</p>
+
+<h2>A Good Example</h2>
+
+<p>Ryan Singer from 37signals, one day I happened to visit <a href="http://feltpresence.com/">his blog</a>, the moment I saw the page I knew this is one thing I also want to have in my blog!</p>
+
+<p>Let’s take a look.</p>
+
+<p><img class="image_with_border" src="http://cdn.kinopyo.com/images/ryan_singer_blog_index.png" alt="Rayn Singer’s blog, top page"></p>
+
+<p><img src="http://cdn.kinopyo.com/images/ryan_singer_blog_show.png" alt="Rayn Singer’s blog, post page" class="image_with_border"></p>
+
+<p>As you can see, the header in top page and every post page is different. Yes it’s low techy techy, easy to implement, not challenging at all, but it still matters.</p>
+
+<h2>Time for Action!</h2>
+
+<p>I’m sure every web developer understand this and every product they built must have a more beatiful and well designed landing page to catch people’s eyes. But do you apply the same principle to your own blog? You may use Wordpress or Octopress or any other blog generate tools to build your blog, and perhaps you even made a good <strong>About me</strong> page, but did you take one more step further to care about this detail? If you were aware of this and chose not to do it, it’s perfectly fine but to me, I don&#8217;t like to miss this detail.</p>
+
+<p>Anyway here is my new blog header, just a simple introduction, I may add some more info later.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/new_blog_header_for_top_page.png" alt="New blog header for top page" class="image_with_border"></p>
+
+<p>I guess this post may be nonsense to some of you. <strong>But if this is one thing that represent myself, at least I&#8217;d like to put more efforts to make it a little more “me”.</strong></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-23T14:25:00+09:00" pubdate data-updated="true">2013-02-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/details/'>Details</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/%E3%81%AA%E3%81%9B%E3%82%99%E9%9B%BB%E8%BB%8A%E3%81%AB%E4%B9%97%E3%82%8B%E3%81%A8%E7%9C%A0%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%8B/">なぜ電車に乗ると眠くなるのか</a></h1>
+	<div class="entry-content">
+		<p><img src="http://cdn.kinopyo.com/images/sleepy_on_the_train.jpg" alt="" /></p>
+
+<p>最近はよく8時間寝ても朝電車に乗るとまた眠くなっちゃうんですよ。なぜなのかな？自分の精神力が弱い？それとも科学的に説明できる一般的な現象？というのを少し調べたのでここで簡単にまとめたいと思います。</p>
+
+<h2>ゆりかご</h2>
+
+<p><img src="http://cdn.kinopyo.com/images/yurikago.jpg" alt="" /></p>
+
+<p>ネットでは結構な回答がありますが、やはり<strong>ゆりかご</strong>というのが原因らしいです。</p>
+
+<blockquote><p>単発の振動は脳には刺激を与えますが、周期的な振動は脳が慣れてしまうのでゆりかごに近い状態になるんですね</p></blockquote>
+
+<p>　</p>
+
+<blockquote><p>電車の中で眠くなる、というのは普通です。よく、赤ちゃんを寝かしつけるときなんかに背中を一定のリズムでトントン叩いてあげますね。あの「一定のリズムでくる刺激」というのは、人間だけでなく胎生哺乳類全般に眠りを呼び起こすもののようです（うちの猫も、眠そうにしてるときに背中をトントン叩くといっぺんに寝ちゃいます）。
+これはわたしの推測ですが、母親の胎内にいたときに聞いていた、母親の心臓の鼓動に似たリズムが安心感を呼び起こし、眠くなるんじゃないでしょうか。
+同じ意味で、むずがる赤ちゃんにＴＶの砂嵐の音を聞かせるといっぺんに静かになる、というのがあります（これは胎内で聞いていた母親の血流音と、砂嵐の音が似ているためだそうです）。</p></blockquote>
+
+<p>これが一番論理的な説明かな。</p>
+
+<blockquote><p>体は乗り物の振動に合わせて揺れ、それを追いかけるようにして内臓も揺れます。この二つの揺れ方の波が奇跡的に一致する振動が、電車のあのガタンゴトンなのだそうです。体と内臓は、コップとその中の水とお考えください。</p>
+
+<p>たとえば落下するジェットコースターだと、体だけ先に落ちてしまい内臓が取り残されて吐き気がしますし、悪路の自動車だと震度が小刻みすぎて、体と内臓が別々にシェイクされてしまい、不快になる。ところが電車だと、車両と体と内臓の三者が一体となって動くのだそうです。揺れているのに不快ではない、最高の揺りかごです。</p></blockquote>
+
+<p>本当にこれだけで人間は眠くなるものなのか。。？</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-21T21:05:00+09:00" pubdate data-updated="true">2013-02-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/naruhodo/'>naruhodo</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+    
+        <a href="/blog/page/2/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

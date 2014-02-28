@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: delicious | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/delicious/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[d.me メール送るだけでDeliciousにブックマークできるようになった]]></title>
+    <link href="http://kinopyo.com/blog/mail-to-delicious-to-bookmart-a-page"/>
+    <updated>2011-11-14T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/mail-to-delicious-to-bookmart-a-page</id>
+    <content type="html"><![CDATA[<p><div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>d.me メール送るだけでDeliciousにブックマークできるようになった<a href="http://t.co/9xoR5Yp8" title="http://www.avos.com/as-easy-as-d-me/">avos.com/as-easy-as-d-m…</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/135953105501175811" data-datetime="2011-11-14T05:32:00+00:00">11月 14, 2011</a></blockquote>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div></p>
+]]></content>
+  </entry>
+  
+</feed>

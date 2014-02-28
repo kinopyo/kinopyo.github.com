@@ -1,0 +1,268 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自分のサイトURLを"wwwあり"か"wwwなし"に正規化する方法 - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="&#8220;wwwあり&#8221;か&#8221;wwwなし&#8221;はSEO的には優劣はありませんし、
+どっちを使うかはたいてい各人の好き嫌いで決まっています。
+例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
+私は&#8221; &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">自分のサイトURLを"wwwあり"か"wwwなし"に正規化する方法</h1>
+	<div class="entry-content"><p>&#8220;wwwあり&#8221;か&#8221;wwwなし&#8221;はSEO的には優劣はありませんし、
+どっちを使うかはたいてい各人の好き嫌いで決まっています。
+例えばこのサイトの場合www.kinopyo.comとkinopyo.comで全部アクセスできますが、
+私は&#8221;wwwあり&#8221;で正規化ています。
+この正規化というのは非常に重要で、検索エンジンに対しての知らせです。
+Googleのヘルプによると下記の解説になります。</p>
+
+<blockquote><p>使用するドメインとは、サイトのページをインデックスに登録する際に使用するドメインです。使用するドメインを http://www.example.com と指定すると、http://example.com の形式のリンクが検出された場合、Google ではそのリンクを http://www.example.com として処理します。また、検索結果に表示する URL は設定に基づいて決まります。</p></blockquote>
+
+
+<p>なので&#8221;wwwあり&#8221;と&#8221;wwwなし&#8221;が同じサイトであれば
+正規化する必要があります。</p>
+
+<h2>正規化する方法</h2>
+
+<p>.htaccessが使える環境では.htaccessを下記のように設定
+.htaccessファイルはサイトのルートディレクトリに置いてください。
+例えばこのブログのURLはwww.kinopyo.com/blogになっていますが、
+.htaccessファイルはwww.kinopyo.comのディレクトリに置いてあればOKです。
+設定に基づいてリダイレクトします。</p>
+
+<h3>wwwありに統一</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^example\.com [NC]
+</span><span class='line'>RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>wwwなしに統一</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^www.example\.com *NC*
+</span><span class='line'>RewriteRule ^(.# )$ http://example.com/$1 *R=301,L*</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※”example.com”は自分のドメイン名に置き換えてください。</p>
+
+<h2>Googleウェブマスターツールでの設定</h2>
+
+<p>Googleウェブマスターツールは自分のサイトとGoogle検索の関係いついて
+いろいろ設定できる支援ツールです。
+ここでは自分が&#8221;www有り無し&#8221;をGoogleに伝えるための設定をします。
+そうしないとGoogleは&#8221;www有り無し&#8221;をそれぞれ別のページへの異なる参照として処理されます。</p>
+
+<h3>Googleウェブマスターツール使うにはまずサイトを登録</h3>
+
+<p>サイトを正規化するためにはwwwありとwwwなしの両方を登録する必要があります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool.jpg" title="Googleウェブマスターツール" ></p>
+
+<p>Googleが提供するMetaデータをサイトのページに貼り付けることでサイトが確認されます。
+(具体的な認証方法はGoogleのヘルプを見てください)</p>
+
+<h3>使用するドメイン</h3>
+
+<p>登録完了後はサイトを選択し、「サイト設定→設定→使用するドメイン」で
+利用するドメイン、つまりwww有りなしを指定してください。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/01/google_webmaster_tool_setting.jpg" title="Googleウェブマスターツール" ></p>
+
+<h2>Wordpressお使いの方は注意を</h2>
+
+<p>Wordpressの「設定→一般」でサイトURLが正しく設定されるか確認してください。
+もし.htaccessでは&#8221;wwwあり&#8221;で指定しWordpressでは&#8221;wwwなし&#8221;と指定した場合は
+無限ループとなるため、サイトがエラーとなり表示できなくなります。
+Wordpressの仕様は調べていないが、どうやらWordpressの設定によりリダイレクトするように見えます。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.suzukikenichi.com/blog/which-do-you-prefer-www-or-non-www/">wwwあり／wwwなし、どちらを使用するか?</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-24T00:00:00+09:00" pubdate data-updated="true">2010-01-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/canonicalization-url-for-www-non-www';
+        var disqus_url = 'http://kinopyo.com/blog/canonicalization-url-for-www-non-www';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

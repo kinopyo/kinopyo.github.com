@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: keyboard | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/keyboard/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-03-01T01:13:09+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone Safariキーボードの"Return"のkeydownイベントをキャッチ]]></title>
+    <link href="http://kinopyo.com/blog/how-to-catch-return-keydown-event-of-iphone-safari"/>
+    <updated>2011-10-25T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/how-to-catch-return-keydown-event-of-iphone-safari</id>
+    <content type="html"><![CDATA[<h2>Situation</h2>
+
+<p>iPhone Safariを使うときにあるInput boxで何か入力後"return"キーのkeydownイベントをキャッチして、何かしらのアクションを行いたい、のが目的です。よくあるのがreturnキーでformをsubmitしたり、ボタンクリックのアクションを行ったり、キーボードを隠したりするところですかね。</p>
+
+<h2>Keydown event</h2>
+
+<p><div><script src='https://gist.github.com/.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+</p>
+
+<p><em>13</em>という数字がreturnキーのkeydown時のコードです。実はJavascript経験がある方ならすぐ分かると思いますが、<em>13</em>は<em>Enterキー</em>のコードでもあります。</p>
+
+<p>もう一つのTipはキーボードを隠したいときはjQueryの<em>blur()</em>を使えばOKです。</p>
+
+<p>参考：<a href="http://stackoverflow.com/questions/5932317/how-to-capture-the-keyboard-return-event-on-iphone-browser">http://stackoverflow.com/questions/5932317/how-to-capture-the-keyboard-return-event-on-iphone-browser</a></p>
+]]></content>
+  </entry>
+  
+</feed>
