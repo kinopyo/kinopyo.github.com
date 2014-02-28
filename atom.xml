@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-03-01T01:35:49+09:00</updated>
+  <updated>2014-03-01T01:43:43+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Remote Work, Day One/ Trust]]></title>
+    <link href="http://kinopyo.com/blog/remote-work-day-one-trust/"/>
+    <updated>2013-11-11T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/remote-work-day-one-trust</id>
+    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/Trust-is-everything-front-cover.jpg" alt="" /></p>
+
+<p>Lots of big changes happened in my life recently, one of them is my
+workplace. Lucky enough, now I got a chance to embrace the <em>modern</em>
+style of work, that is working remotely.</p>
+
+<p>I suppose you know more or less about remote. 37signals has published
+their new book, <a href="http://37signals.com/remote/">REMOTE: Office Not
+Required</a>, where all the benefits you can
+get from remote is described. I’m half way done of that book, and
+probably will write another post once I finished it and compared it to
+my real experience. So here I’m gonna talk about only one thing, a key
+thing, <strong>trust</strong>.</p>
+
+<p>I’m a true believer of remote work. As in the book says,</p>
+
+<blockquote><p>The bottom line is that you shouldn’t hire people you don’t trust, or
+work for bosses who don’t trust you. If you’re not trusted to work
+remotely, why are you trusted to do anything at all?</p></blockquote>
+
+<p>I totally agree with that. But in reality is, well at least the
+environment around me is even every single manager or boss is good and
+kind, we still fall into the traditional working style, 9:00 - 18:00+ in
+the office, that’s the norm, so dominant, I didn’t even try to convince
+anyone to change that.</p>
+
+<p>Fortunately I got a very unique opportunity to do remote work. After the
+first day, I should say the biggest and most important “get” is not
+about the productivity, freedom or flexibility, although they’re truly
+there, <strong>it’s about the trust I’ve never experienced at work.</strong></p>
+
+<p>“I trust you. So no matter what, when and where you do the work, I don’t
+care, as long as we’re moving forward.” That was pretty much the key
+conversation I had. It was a really warm feeling. I don’t know how to
+explain it in words exactly, to be honest I did see that remote work
+coming before I joined. But when it really happened, I was flattered!
+I’ve never got this kind of tremendous trust, it means a lot to me as a
+person. I’m sure I’m not gonna waste it.</p>
+
+<p><strong>Trust is the first step to remote work. It’s personal and
+fundamental.</strong> If you trust your teammate, with proper tools and
+communications I really think remote work will work!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install capybara-webkit on Mavericks]]></title>
@@ -1031,41 +1081,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 祭奠你和我的爱情童话<br />
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Establishing A New Habit]]></title>
-    <link href="http://kinopyo.com/blog/establishing-a-new-habit/"/>
-    <updated>2013-01-15T23:25:00+09:00</updated>
-    <id>http://kinopyo.com/blog/establishing-a-new-habit</id>
-    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/gangnam_stairs.jpg" alt="" /></p>
-
-<h2>Taking the Stairs</h2>
-
-<p>Around 1 month ago I started this new habit: Taking the stairs instead of elevators. A simple habit to help me at least have some &#8220;exercise&#8221; every day, I&#8217;ve been &#8220;sitting&#8221; too long. With only 2 exceptions:
-- when on the way to work, always feel sleepy and powerless in the morning, maybe that&#8217;s an execuse or lack of motivation
-- when with other people, just trying to fit in, although I raise my hand for tea or juice in a drinking party&#8230;</p>
-
-<p><img src="http://cdn.kinopyo.com/images/taking_the_stairs.jpg" alt="My Life Activities" /></p>
-
-<p>I use <a href="http://lift.do/">Lift</a> app to track my progress, even though it was not a 30-day streak(forgot to check-in some days or had no out-door activities on the weekends), still I&#8217;m happy for the last 1 month. Feel stronger than before, wouldn&#8217;t be out of breath after climbing a long long stairs, and most important thing is I&#8217;ve established this mindset to always seek and choose stairs rather than elevators, this &#8220;choosing&#8221; process never occurs actually, since I&#8217;ve repeated so many times my initial response is just to find the stairs.</p>
-
-<h2>Tiny Achievement</h2>
-
-<p>This habit doesn&#8217;t require many efforts like other activities such as reading, running or practicing an instrument. But still I consider this a tiny achievement for myself. When I look back the past days or months, I can&#8217;t see myself making progress in neither professional nor personal life. I&#8217;m still kind of struggling with life. Compared with my past I spent less time on learning new things, writing blogs or even playing games.</p>
-
-<p>Been thinking a lot recently and just like everyone I want to improve myself in various aspects but never really put them into actions. Thus I&#8217;m glad at least this habit made me realize there&#8217;s still things I can accomplish.</p>
-
-<h2>Next Habit</h2>
-
-<p>I want to commit myself to create a new habit every week, and if it works for me I&#8217;ll keep doing it. By &#8220;works for me&#8221; I mean like &#8220;get up early&#8221; can work for somebody but not for everyone.</p>
-
-<p>I think this 1 week interval should work for me. It reminds me of the &#8220;1 percent improvement per day&#8221; method but finding out what improvement should I do today could be difficult, and what I&#8217;ve learned is repetition really matters. <strong>Define it, do it, repeat it.</strong> Your body would reflect that way without going through your brain.</p>
-
-<p>So my new habit will be: Getting up at 8 am every weekdays and before 9 am on weekends. Ever since high school I&#8217;ve never made it, and I still have this thought or &#8216;fantasy&#8217; that by getting up early I can make a difference in some aspects of my life. Every morning is in a rush now, sometimes I have to drop breakfast and dash into the station to catch up the train. I do not memorize many peaceful mornings in my life.</p>
-
-<p>Time to reread some parts of the book: <a href="http://www.amazon.com/The-Two-Minute-Challenge-Reach-Finish/dp/1452888892/ref=sr_1_1?ie=UTF8&amp;qid=1358247919&amp;sr=8-1&amp;keywords=charles+abbott+goal">The Two-Minute Challenge: How to Reach Goals and Finish What You Start</a> written by my friend Charles, it has very good strategies of making and keeping your goals.</p>
 ]]></content>
   </entry>
   

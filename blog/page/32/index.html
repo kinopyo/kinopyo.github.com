@@ -7,11 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="一番デフォルトでのインストール手順です。
-インストール
-1. Download - The Apache HTTP Server ProjectでUNIX Sourceをダウンロード
-2. 解凍し、ターミナルを開いてそのディレクトリに移動
-3. 次のコマンドを実行、&#8211;prefix &hellip;">
+	<meta name="description" content="文字コードが何なのか、エンコードは何なのか、何で文字化けするかはっきり分かっていませんでした。月刊DBマガジンの2010/JANの徹底研究に文字コードの内容が載せていて、とても分かりやすく説明してくれたので、勉強メモを書きます。
+文字コードとは
+文字コードは「文字集合」と「エンコード方式」 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +91,80 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/what-is-character-set-and-encode">文字コードとは？エンコードとは？なぜ文字化けするのか？</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>文字コードが何なのか、エンコードは何なのか、何で文字化けするかはっきり分かっていませんでした。月刊DBマガジンの2010/JANの徹底研究に文字コードの内容が載せていて、とても分かりやすく説明してくれたので、勉強メモを書きます。</p>
+<h4>文字コードとは</h4>
+<p>文字コードは「文字集合」と「エンコード方式」の二つの概念があります。</p>
+<h5>文字集合(Character Set)：表現したい文字の集まり</h5>
+<p>つまりどんな文字が使いたいかの集合体です。</p>
+<p>英数字の他に、各国の文字や、機種固有文字が含まれています。</p>
+<h5>エンコード方式</h5>
+<p>コンピュータは数で処理を行っています。人間が分かりやすいように見た目だけが文字や記号に表示しているだけで、で実は裏で対応している数値があります。US-ASCII文字コード表によれば、英語の&#8217;A&#8217;の数値は0x41です。</p>
+<br/>
+<p>どの文字がどのビット列に割り当てるのかを決めるのがエンコード方式です。エンコードとも読んでます。</p>
+<p><a href="http://ja.wikipedia.org/wiki/ASCII#ASCII.E5.88.B6.E5.BE.A1.E6.96.87.E5.AD.97" target="_blank">ASCII - Wikipedia</a>に詳細な文字コード表があります。0x41は16進の表示方法です。</p>
+<br/>
+<h4>代表的な文字集合とエンコード方式</h4>
+<table>
+<tr><th>文字集合</th><th>含まれる文字</th></tr>
+<tr><td>US-ASCII</td><td>英数字、半角記号</td></tr>
+<tr><td>ISO/IEC 646</td><td>英数字、半角記号</td></tr>
+<tr><td>JIS X 0201</td><td>英数字、半角記号、半角カナ</td></tr>
+<tr><td>JIS X 0208</td><td>英数字、半角記号、半角カナ、平仮名、片仮名、第一水準漢字、第二水準漢字、全角記号</td></tr>
+<tr><td>JIS X 0212</td><td>JIS X 0208に加えて、補助感じ</td></tr>
+<tr><td>Unicode</td><td>各言語文字</td></tr>
+</table>
+<table>
+<tr><th>エンコード</th><th>対象とする文字集合</th></tr>
+<tr><td>ISO-2022-JP</td><td>ASCII、JIS X 0201、JIS X 0208</td></tr>
+<tr><td>Shift_JIS</td><td>ASCII、JIS X 0201、JIS X 0208</td></tr>
+<tr><td>EUC-JP</td><td>ASCII、JIS X 0208、JIS X 0212</td></tr>
+<tr><td>UTF-8</td><td>Unicode</td></tr>
+</table>
+<p>ISO-2022-JPはE-Mail標準で、EUC-JPはUNIXプラットフォームで、Shift_JISはWindowsプラットフォームで、というようにそれぞれの特徴に対応した形で利用されています。</p>
+<br/>
+<h5>MS932は何？</h5>
+<p>厳密にいうとWindowsが扱う文字コードは、Shift_JISではなく、MS932です。または、Microsoftコードページ CP932ともいいます。MS932は、マイクロソフトがShift_JISを拡張して定義したコード体系です。Shift_JIS + 拡張した分 = MS932なので、範囲から言うとMS932 &#62; Shift_JISです。</p>
+<h4>文字化け</h4>
+<p>Unicodeが現れる前の各エンコードは統一されていなかったため、同じ文字でも異なった数値(コード)になったり、同じ数値(コード)異なった文字になったりしました。これで他の文字コードに変更したときの数値の違いで文字化けになってしまったのです。Unicodeはその背景で誕生し、文字に対応する数値(コード)重複しないように、エンコードを決めました。</p>
+<br/>
+<p>英数字がほぼ文字化けにならないのはASCIIがほぼすべてのエンコードに入っているから、そこは自然に統一された感じです。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-29T00:00:00+09:00" pubdate data-updated="true">2009-11-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/encoding/'>encoding</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -851,123 +923,6 @@ Java7,,,やってみたいっす！
 
 
 	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/css-issue-in-ie8-background-color">IE8でbackground-colorが白とその値がnullとの表示が微妙に違う</a></h1>
-	<div class="entry-content">
-		<h2>現象</h2>
-
-<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091124/20091124235949.jpg" alt="" /></p>
-
-<p>まず画像を見てみましょう。</p>
-
-
-<p>最初の二つ白い背景のエリアに注目してください。</p>
-
-
-<p>一番目は背景色を白い色(#FFFFFF)に設定したもので、</p>
-
-
-<p>二番目が背景色をnullに設定したものです。</p>
-
-
-<p>白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。</p>
-
-
-<br/>
-
-
-<p>またIE8の開発ツール(F12で呼ばれる、Firebugと似たデバッグツール)で見ても</p>
-
-
-<p>background-colorが#ffffffになってる以外に、何の余計なスタイルもありませんでした。</p>
-
-
-<p>なのでやはりbackground-colorが指定してないものと#ffffffに指定したものには差異が存在してます。</p>
-
-
-<br/>
-
-
-<h2>サンプルコード</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;div&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;hoge&quot;</span> <span class="na">class=</span><span class="s">&quot;gray&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;gray&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>  <span class="c1">// 元の背景色を保持</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">original</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">original</span><span class="p">);</span>  <span class="c1">// output is &quot;ffffff&quot;</span>
-</span><span class='line'><span class="err">　</span><span class="c1">// 元の背景色を再設定、値は同じはず</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="nx">original</span><span class="p">);</span>
-</span><span class='line'>  <span class="c1">// 他の背景色はこんな現象がないみたい</span>
-</span><span class='line'>  <span class="c1">// あるとしても発見しづらい</span>
-</span><span class='line'><span class="err">　</span><span class="kd">var</span> <span class="nx">hogeColor</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hoge&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">hogeColor</span><span class="p">);</span> <span class="c1">// output is &quot;gray&quot;</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hoge&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="nx">hogeColor</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ie/'>IE</a>
 
 
 </div>

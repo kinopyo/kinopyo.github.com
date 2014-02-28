@@ -7,9 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="下記のURLで試してみればすぐ分かりますが、
-表題の通りblockUIで制御したところは解除した後にマウスのカーソルがおかしいです。
-IE,FirefoxとChromeでテストした結果、Firefoxは無事のようです。 http://malsup.com/jquery/block/ &hellip;">
+	<meta name="description" content="現象 IE6を使ってSSL(https)経由で接続する時に以下の警告が出るなら
+iframeのsrc属性をまずチェックしてください。 このページにはセキュリティで保護されている項目と保護されていない項目が含まれています。 ダメな書き方 1
+2
+&lt;iframe /&gt;
+&lt; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +93,71 @@ IE,FirefoxとChromeでテストした結果、Firefoxは無事のようです。
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/security-alert-when-connect-ssl-using-iframe-with-no-src-attribute-in-ie6">IE6でSSL(https)に接続する時、src属性なしのiframeを使うとセキュリティの警告が出る</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p>IE6を使ってSSL(https)経由で接続する時に以下の警告が出るなら
+iframeのsrc属性をまずチェックしてください。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/04/security-info.png" title="security-info" ></p>
+
+<blockquote><p>このページにはセキュリティで保護されている項目と保護されていない項目が含まれています。</p></blockquote>
+
+<h2>ダメな書き方</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決策</h2>
+
+<p>src属性にちゃんと値を設定するか、javascriptでfalseを指定する</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;/dummy.html&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">srec=</span><span class="s">&quot;javascript:false&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>存在しないファイルを指定するとサーバ側のログにエラーが出るかもしれないので、
+設定する場合は実際存在するファイルを設定してください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-27T00:00:00+09:00" pubdate data-updated="true">2010-04-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -826,102 +893,6 @@ has the lowest precedence.</p>
 
 
 	<a class='category' href='/blog/categories/windows/'>Windows</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery1-3-2_bug_trim_nbsp">jQuery1.3.2のバグ?IEで&nbsp;を$.trimするとき変な結果に</a></h1>
-	<div class="entry-content">
-		<p>jQuery 1.4.2ではこれは治ったようです。
-jQuery最新版をお使いの方は下記のようなバグはもう発生しません。</p>
-
-<h2>サンプル</h2>
-
-<p>※jQuery 1.3.2で発生する問題※</p>
-
-<h3>HTML</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;option</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/option&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;option&gt;</span>11<span class="nt">&lt;/option&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;option&gt;</span>22<span class="nt">&lt;/option&gt;</span>
-</span><span class='line'><span class="nt">&lt;/select&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;tr</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/tr&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Javascript</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">optionText</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// firefoxは0、IEは1</span>
-</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;select optionタグの をtrimした後のlength: &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">optionText</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">trText</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#bar&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// firefoxは0、IEも0！</span>
-</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;trタグの をtrimした後のlength: &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">trText</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>結果</h2>
-
-<p>selectのoptionタグのテキストにある<span>&#8220;&amp;nbsp;&#8221;</span>に
-$.trimをかけて見ると
-Firefoxはちゃんとtrimしてlengthが0になったが、
-IEはtrimできずlengthが1のままです。</p>
-
-<p>しかしtrタグのテキストにある&#8221;&amp;nbsp;&#8221;をtrimすると
-IEも正しくtrimしてlengthが0になるんです。。。</p>
-
-<h2>DEMO</h2>
-
-<p><a href="http://www.kinopyo.com/demo/jquery/jQuery1.3.2_trim_nbsp.html" target="_blank">jQuery最新版(1.4.2)を使うDEMO</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-10T00:00:00+09:00" pubdate data-updated="true">2010-03-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

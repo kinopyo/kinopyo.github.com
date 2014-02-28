@@ -7,8 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="GitboxはGitバージョンコントロールのGUIトールです。
-表題の通りFor Macです。 Gitbox is a Mac OS X graphical interface for Git version control system. In a single window you see &hellip;">
+	<meta name="description" content="qTranslateを試しました。
+ブログを多言語に対応する上でとても便利なプラグインです。
+これからは日本語、英語、中国語で記事を書いていきたいと思います。
+まだカスタマイズができてないので、
+整理できたら投入メモとか書きます。 中文 试了试qTranslate。
+好久不用中文写东西了有点生疏 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +94,59 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/multilingual-wordpress-plugin-qtranslate">Multilingual Wordpress Plugin : qTranslate</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.qianqin.de/qtranslate/">qTranslate</a>を試しました。
+ブログを多言語に対応する上でとても便利なプラグインです。
+これからは日本語、英語、中国語で記事を書いていきたいと思います。
+まだカスタマイズができてないので、
+整理できたら投入メモとか書きます。</p>
+
+<h1>中文</h1>
+
+<p>试了试<a href="http://www.qianqin.de/qtranslate/">qTranslate</a>。
+好久不用中文写东西了有点生疏。。
+今后博客将用中日英三语，
+英语的不分应该会不熟练吧，当是锻炼了。
+等把qTranslate使用明白以后再写一篇笔记。</p>
+
+<h1>English</h1>
+
+<p>I tried<a href="http://www.qianqin.de/qtranslate/">qTranslate</a>, a multilingual wordpress plugin.
+I&#8217;m going to write blogs in English, Chinese and Japanese.
+I will post a memo about qTranslate after I master it.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-21T00:00:00+09:00" pubdate data-updated="true">2010-06-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -587,71 +644,6 @@ vs
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/security-alert-when-connect-ssl-using-iframe-with-no-src-attribute-in-ie6">IE6でSSL(https)に接続する時、src属性なしのiframeを使うとセキュリティの警告が出る</a></h1>
-	<div class="entry-content">
-		<h2>現象</h2>
-
-<p>IE6を使ってSSL(https)経由で接続する時に以下の警告が出るなら
-iframeのsrc属性をまずチェックしてください。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/04/security-info.png" title="security-info" ></p>
-
-<blockquote><p>このページにはセキュリティで保護されている項目と保護されていない項目が含まれています。</p></blockquote>
-
-<h2>ダメな書き方</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;&quot;</span> <span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解決策</h2>
-
-<p>src属性にちゃんと値を設定するか、javascriptでfalseを指定する</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;/dummy.html&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;iframe</span> <span class="na">srec=</span><span class="s">&quot;javascript:false&quot;</span> <span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>存在しないファイルを指定するとサーバ側のログにエラーが出るかもしれないので、
-設定する場合は実際存在するファイルを設定してください。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-27T00:00:00+09:00" pubdate data-updated="true">2010-04-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ie/'>IE</a>
 
 
 </div>

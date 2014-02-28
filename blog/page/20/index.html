@@ -7,14 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="一つ以上の項目がPKとなったケースでHibernateはどう設定すればいいのかを説明します。
-ずいぶん昔のメモになります。 こんなテーブルがあるとします。 1
+	<meta name="description" content="DataSource Beanを定義する際applicationContext.xmlの書き方と、Javaで呼び出すコードのメモです。ずいぶん昔のメモです。。 こんなjdbc.propertiesファイルがクラスパスにあるとします。 1
 2
 3
 4
-5
-6
-create table Account ( code varchar(255) not null, number &hellip;">
+jdbc.driverClassName= &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +93,106 @@ create table Account ( code varchar(255) not null, number &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-define-spring-datasource-bean">Spring DataSource beanのメモ</a></h1>
+	<div class="entry-content">
+		<p>DataSource Beanを定義する際applicationContext.xmlの書き方と、Javaで呼び出すコードのメモです。ずいぶん昔のメモです。。</p>
+
+<p>こんなjdbc.propertiesファイルがクラスパスにあるとします。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>jdbc.driverClassName=org.h2.Driver
+</span><span class='line'>jdbc.url=jdbc:h2:~/test
+</span><span class='line'>jdbc.username=sa
+</span><span class='line'>jdbc.password=
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてSpringのapplicationContext.xmlにはこう書きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;context:property-placeholder</span> <span class="na">location=</span><span class="s">&quot;jdbc.properties&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;dataSource&quot;</span>
+</span><span class='line'>  <span class="na">class=</span><span class="s">&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;driverClassName&quot;</span> <span class="na">value=</span><span class="s">&quot;${jdbc.driverClassName}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;url&quot;</span> <span class="na">value=</span><span class="s">&quot;${jdbc.url}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">value=</span><span class="s">&quot;${jdbc.username}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="na">value=</span><span class="s">&quot;${jdbc.password}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;accountDao&quot;</span> <span class="na">class=</span><span class="s">&quot;test.dao.AccountDao&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">ref=</span><span class="s">&quot;dataSource&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/bean&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Javaでの呼び出し：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span>
+</span><span class='line'>      <span class="s">&quot;applicationContext.xml&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">AccountDao</span> <span class="n">accountDao</span> <span class="o">=</span> <span class="o">(</span><span class="n">AccountDao</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;accountDao&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// other code...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-06T00:00:00+09:00" pubdate data-updated="true">2010-12-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/spring/'>Spring</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1160,47 +1257,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/ui/'>UI</a>, <a class='category' href='/blog/categories/design/'>design</a>, <a class='category' href='/blog/categories/photoshop/'>photoshop</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/chrome-extension-flickr-upload">Chrome Extension: Flickr Upload右クリックで画像をアップロード</a></h1>
-	<div class="entry-content">
-		<p>Webページの画像を右クリックで簡単にFlickrにアップロードできるChromeエクステンションです。
-もしタイトルやタグなども編集できればもっどいいですけどね。</p>
-
-<p><a href="https://chrome.google.com/extensions/detail/nacmiiefmonpjkmcfhkajdhcgdnglaje">Flickr Upload Extensionをダウンロード</a></p>
-
-<p><img src="https://chrome.google.com/extensions/img/nacmiiefmonpjkmcfhkajdhcgdnglaje/1284778713.67/screenshot/6001" alt="Chrome extension:Flickr Upload" />
-<img src="https://chrome.google.com/extensions/img/nacmiiefmonpjkmcfhkajdhcgdnglaje/1284778713.67/screenshot/2001" alt="Chrome extension: Flickr Upload" /></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
 
 
 </div>

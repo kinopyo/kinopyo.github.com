@@ -7,9 +7,18 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="環境 IE6
-jQuery1.3.2 現象 IE7、IE8、Firefox上全部OKのアプリがなぜかIE6ではエラーが頻発しました。
-エラーの詳細もないので、原因がはっきりわかりません。 ソースは特に変な作り方をしてないと思うので、やはりIE6が主な原因と判断しググってみました。 調査結果 &hellip;">
+	<meta name="description" content="多重bind 検証：一つのボタンにイベントを多重バインドした時の動き 1
+2
+3
+4
+5
+6
+7
+8
+9
+$(input).bind(&#39;click&#39;, function() { alert(1);
+});
+$(input).bind(&#39;click&#39;, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +100,227 @@ jQuery1.3.2 現象 IE7、IE8、Firefox上全部OKのアプリがなぜかIE6で�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-bind-unbind-multy-bind-reference-and-namespace">jQuery bind, unbind：多重バインド、リファレンス、名前空間の利用</a></h1>
+	<div class="entry-content">
+		<h2>多重bind</h2>
+
+<ul>
+<li>検証：一つのボタンにイベントを多重バインドした時の動き</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>出力：inputのボタンをクリックするとalertで1,2,3が次々と出る</li>
+<li>結論：バインドされた順番どおり実行</li>
+</ul>
+
+
+<h2>一括unbind</h2>
+
+<ul>
+<li>検証：上記多数バインドされた要素に対し、一括でunbind</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>出力：なし</li>
+<li>結論：一括でunbindされた</li>
+</ul>
+
+
+<h2>特定のイベントのみunbind</h2>
+
+<ul>
+<li>検証：多数bindしたイベントの中で、特定のイベントのみunbind</li>
+</ul>
+
+
+<h3>バインド時のファンクションをそのまま記述(失敗)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>出力：1, 2, 3</li>
+<li>結論：失敗</li>
+</ul>
+
+
+<h3>ファンクションのリテラル(リファレンス)を通してunbind</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">out1</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">out2</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">out3</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out1</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out2</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out3</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">out2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>出力：1, 3</li>
+<li>結論：ファンクションのリテラル(リファレンス変数)を通して指定したイベントのみをunbindできる、しかしこれはあらかじめファンクションを定義しておかないと駄目</li>
+</ul>
+
+
+<h3>名前空間を用いてbind</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.2&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.3&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click.2&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>出力：1, 3</li>
+<li>結論：bindの第一引数でevent.namespaceと名前空間を使えばうまくunbindできる</li>
+</ul>
+
+
+<p>同じの名前空間で複数のイベントにbindされた際</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.namespace&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;blur.namespace&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;.namespace&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>結論：名前空間指定で一括でunbindできる</li>
+</ul>
+
+
+<h3>一つのイベントに複数の名前空間を登録</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;click.1.2&#39;</span><span class="p">,</span>  <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class='line'><span class="c1">// click.1.2の名前空間にたどり着ける</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;click.1&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// click.1.2名前空間にたどり着ける</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;click.2&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>結論：複数の名前空間のうち、任意の一つを使えばそのイベントを選択できる</li>
+</ul>
+
+
+<p>公式サイト(英語)：</p>
+
+<ul>
+<li><a href="http://docs.jquery.com/Events/bind#typedatafn">bind Events</a></li>
+<li><a href="http://docs.jquery.com/Namespaced_Events">Namespaced_Events</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-10T00:00:00+09:00" pubdate data-updated="true">2009-11-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>Javascript</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1384,78 +1614,6 @@ shift() は array の最初の要素を削除します。</p>
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/iphone-version-google-wave-fancy">iPhone版Google Wave(妄想)</a></h1>
-	<div class="entry-content">
-		<p><object height="364" width="445"><param value="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1" name="movie" ></param><param value="true" name="allowFullScreen" ></param><param value="always" name="allowscriptaccess" ></param><embed height="364" width="445" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ufMQyzUsaCE&#38;hl=ja&#38;fs=1&#38;border=1"></embed></object></p>
-
-
-<p>Google Waveはみんなご存知だと思います。</p>
-
-
-<p>5月発表以来今だテストの最中です。</p>
-
-
-<p><a target="_blank" href="http://wave.google.com" title="wave.google.com">wave.google.com</a>でテストの申請を出しているのですが、</p>
-
-
-<p>全然返事がこないです。。。</p>
-
-
-<br/>
-
-
-<p>さて、Google WaveはiPhoneでも使えるのを期待する人はたくさんいるでしょう。</p>
-
-
-<p>最近そのような記事も増えてきた一方</p>
-
-
-<p>Googleからは特に詳しい情報はあまりないですね。</p>
-
-
-<p>私も妄想してる最中、このYoutubeの動画を見つかりました。</p>
-
-
-<p>なんとこれはMacのKeynote(WindowsにおいてはPowerPoint見たいなソフト)で作ったらしい。</p>
-
-
-<p>iPhoneにどんなwaveが登場するかお楽しみですね。</p>
-
-
-<br/>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-29T00:00:00+09:00" pubdate data-updated="true">2009-10-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
 
 
 </div>
