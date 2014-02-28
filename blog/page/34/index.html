@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="@IT新しい連載:jQuery逆引きリファレンスが始まりました。 既に一ヶ月前になりますが、 自己テスト用でもいいともいます。 私は自信がない項目が結構ありました。 jQueryで使ったシンタックス英単語は ほとんど簡単な単語で ぱっと見たら分かるような気がするけど、 &hellip;">
+	<meta name="description" content="概要 ローカルのファイルを参照する際のセキュリティを変更したとします。 IEの[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブでは ローカルのマイコンピュータのセキュリティゾーンがデフォルトでは非表示になっています。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,78 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/add-mycomputer-zone-to-ie-security">IEセキュリティにマイコンピュータゾーンを追加する方法</a></h1>
+	<div class="entry-content">
+		<h2>概要</h2>
+
+<p>ローカルのファイルを参照する際のセキュリティを変更したとします。</p>
+
+
+<p>IEの[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブでは</p>
+
+
+<p>ローカルのマイコンピュータのセキュリティゾーンがデフォルトでは非表示になっています。</p>
+
+
+<p>それを表示させるにはレジストリを編集する必要があります。</p>
+
+
+<h2>動作環境</h2>
+
+<p>以下の環境で動作確認済みです。</p>
+
+
+<p>その他の環境についてはマイクロソフトのサポートヘルプを参照してください。</p>
+
+
+<ul>
+<li>OS: Win XP</li>
+<li>IE: IE8</li>
+</ul>
+
+
+<h2>方法</h2>
+
+<blockquote title="http://support.microsoft.com/kb/315933" cite="http://support.microsoft.com/kb/315933">
+<p>警告 : レジストリ エディタの使い方を誤ると、深刻な問題が発生することがあります。</p>
+<br/>
+<p>[インターネット オプション] ダイアログ ボックスの [セキュリティ] タブにマイ コンピュータのセキュリティ ゾーンを表示するかどうかは、次のレジストリ キー内にある Flags 値によって設定できます。</p>
+<p>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0</p>
+<p>Flags 値は DWORD 値です。Flags 値のデータ値を 47 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが表示されるようになります。Flags 値のデータ値を 21 (16 進) に設定すると、マイ コンピュータのセキュリティゾーンが非表示になります。 </p>
+<cite><a href="http://support.microsoft.com/kb/315933" target="_blank">http://support.microsoft.com/kb/315933</a></cite></blockquote>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-16T00:00:00+09:00" pubdate data-updated="true">2009-11-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1659,74 +1731,6 @@ IE6なんかもう早く下がってほしい。</p>
 
 
 	<a class='category' href='/blog/categories/ie/'>IE</a>, <a class='category' href='/blog/categories/javascript/'>Javascript</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/adobe-flex3-air-certification-9a0-082">Adobe® Flex 3 と AIR 認定試験(9A0-082)の情報整理</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>本気でFlex3を勉強しようと決めました。</p>
-<p>「何か勉強したなら資格の形で残したい」の方針で</p>
-<p>関連の資格をネットで調べました。</p>
-<p>その情報をいったん整理します。</p>
-<h4>基本情報</h4>
-<ul>
-<li>試験番号 ： 9A0-082</li>
-<li>受験言語 ： 日本語、英語</li>
-<li>合格点 ： 67%以上</li>
-<li>問題数 ： 50</li>
-<li>試験時間 ： 85分</li>
-<li>受験費用 ： 18,900円</li>
-<li>申し込み ：<a href="http://www.vue.com/japan/index.html">ピアソンVUE</a></li>
-<li>ガイド資料 ： <a href="http://partners.adobe.com/public/ja/ace/ACE_Exam_Guide_Flex3_JP.pdf">認定試験準備ガイド</a></li>
-</ul>
-<h4>試験に向けて</h4>
-<ul>
-<li>特に教材はないみたい</li>
-<li><a href="http://software.pxldesigns.com/attest/downloads">ATTEST(フリーの試験対策AIRアプリ)</a></li>
-<li>公式サイトのヘルプやドキュメントが使えるらしい</li>
-</ul>
-<h4>参考サイト</h4>
-<ul>
-<li><a href="http://jukenki.com/report/other/other/index.cgi?mode=view&no=160">受験記へのリンク</a></li>
-<li><a href="http://www.noridon.net/weblogs/archives/2009/04/adobe_flex_3_wi.html">ATTESTのレビュー</a></li>
-<li><a href="http://www.adobe.com/devnet/flex/articles/flex_certification.html">公式サイトの認定試験関連情報</a></li>
-<li><a href="http://groups.google.com/group/flex50">Google Group(英語): Flex Certification in 50 days</a></li>
-<li><a href="https://twitter.com/flex50">認定試験関連のツイター</a></li>
-<li><a href="http://flexcertification.wordpress.com">何かの英語サイト</a></li>
-<li><a href="http://eccojap.javaeye.com/category/61069?show_full=true">(中国語)勉強メモ</a></li>
-</ul>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-08T00:00:00+09:00" pubdate data-updated="true">2009-11-08</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/flex/'>Flex</a>
 
 
 </div>

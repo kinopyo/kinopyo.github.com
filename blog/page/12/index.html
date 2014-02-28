@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Wordpressで画像アップロード時にいつも3サイズのサムネイルが生成されたのですが、さくらVPSに移行後それができなくなったのです。 調べてみたらPHPの画像処理のライブラリであるgdがインストールしてないことがわかりました。
-CentOSなのでyumを使ってインストールすれば解決です。 1 &hellip;">
+	<meta name="description" content="現象 Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
+発生バージョンはRails 3.1。 解決策 app/tmp/ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,66 @@ CentOSなのでyumを使ってインストールすれば解決です。 1 &hell
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200">Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
+発生バージョンはRails 3.1。</p>
+
+<h2>解決策</h2>
+
+<p>app/tmp/cacheを削除し、rake assets:precompileをもう一回実行。
+ブラウザキャッシュを消してリロード。</p>
+
+<h2>調査経緯</h2>
+
+<p>assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部チェックしましたが、全然ダメでした。
+最後はgithubの<a href="https://gist.github.com/rails/rails/issues/2299" title="このスレ" target="_blank">このスレ</a>の方法で解決になりました。</p>
+
+<p>問題となったrails applicationはRails 3.1.rc1から作っていたもので、そのままrc4, rc5, stableに更新してきました。githubで議論されたのはrc4からrc5になったときにこのような現象があったようです。恐らくtmp/cacheが変な動きをして手動で削除しない限り古いバージョンのものがずっと残されたかもしれません。</p>
+
+<h2>おまけ</h2>
+
+<p>Asset Pipelineの周りの設定ファイルを一応貼っておきます。</p>
+
+<div><script src='https://gist.github.com/1239153.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1239153&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<p>Githubでのスレ：<a href="https://gist.github.com/rails/rails/issues/2299">https://gist.github.com/rails/rails/issues/2299</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-24T00:00:00+09:00" pubdate data-updated="true">2011-09-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/asset-pipeline/'>Asset Pipeline</a>, <a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -2002,45 +2062,6 @@ Please, don&#39;t. https://github.com/styleguide/templates/2.0
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/metaprogramming/'>metaprogramming</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-mysql-tutorial">Ruby MySQL Tutorial</a></h1>
-	<div class="entry-content">
-		<p>結果セットを操作するためにはeachとeach_hashがあります。</p>
-
-<div><script src='https://gist.github.com/1205708.js'></script>
-<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1205708&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-09T00:00:00+09:00" pubdate data-updated="true">2011-09-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
 
 
 </div>

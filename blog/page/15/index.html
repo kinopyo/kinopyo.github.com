@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Google Readerでフィードに100以上のアイテムがある場合途中まで読んで、読んだ分だけを既読にしたいですね。FIrefoxならそれが実現できます。 現時点で使ってるFirefoxは5.0.1です。 手順 https://addons.mozilla.org/ja/firefox/ &hellip;">
+	<meta name="description" content="System PreferencesのTrackPadを早速開きました。 Point &amp; Click Tab 最初のTap to clickはなかなか便利で、ずっとほしい機能でした。やっとMacbookのトラックパッドをクリックする音が消えました。
+そしてThree finger &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,68 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/setup-trackpad-after-upgrade-to-lion">MacをLionにアップグレードして最初に設定したのはトラックパッド</a></h1>
+	<div class="entry-content">
+		<p>System PreferencesのTrackPadを早速開きました。</p>
+
+<h2>Point &amp; Click Tab</h2>
+
+<p>最初の<strong>Tap to click</strong>はなかなか便利で、ずっとほしい機能でした。やっとMacbookの<strong>トラックパッドをクリックする音が消えました</strong>。
+そして<strong>Three finger drag</strong>は三本指でアプリの位置を移動したり、テキストを選択したり、Finderでファイルを選択したりして、いろんな機能があります。動作としては「クリックをホールディングしながらドラックする」感じなので、よく使えばだいぶ効率が上がりそうです。
+<img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Trackpad_point_click.jpg" title="Trackpad_point_click" ></p>
+
+<h2>Scroll &amp; Zoom</h2>
+
+<p>ここは<strong>Scroll direction:natural</strong>のチェックを外しました。デフォルトはチェックした状態なんですが、今まで(Lion以前)の動きと真逆なので全然慣れません。。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Trackpad_scroll_zoom.jpg" title="Trackpad_scroll_zoom" ></p>
+
+<h2>More Gestures</h2>
+
+<p>Lionの新しいジェスチャーを学びましょう。
++  四本指で左右スワイプはフルスクリーンアプリの切り替え
++  四本指で上スワイプはMission Control
+などなど</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Trackpad_more_gestures.jpg" title="Trackpad_more_gestures" ></p>
+
+<h2>まとめ</h2>
+
+<p>Tap to clickとThree finger dragは新しい、大変便利な機能でオススメです。
+Scroll direction:naturalは2本指スクロールが今までの動きと真逆なんで慣れない方はチェックを外してください。
+その他はMission ControlとLaunchpadを覚えておけばいいかと〜</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-21T00:00:00+09:00" pubdate data-updated="true">2011-07-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1200,69 +1263,6 @@ Embed GitHub Gistはgistから内容を取得して本文に出力するためRS
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/memcached/'>memcached</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/a-sintra-app-to-grab-funny-images-from-a-github-thread">githubの/usrが削除されたスレットが面白かった、Nokogiriで画像を拾うSinatra appを書いた</a></h1>
-	<div class="entry-content">
-		<h2>スレット経緯</h2>
-
-<p>bumblebeeというgithubのプロジェクトにinstall.shというファイルがありますが、
-実行するとrm -rf /usrのコマンドで/usrが全部削除されることで大騒ぎになったようです。
-<a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6f1dafc8beb84f2ac">githubのスレット</a></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/06/bumblebee-rm-rf-usr.png" title="bumblebee rm -rf :usr" ></p>
-
-<p>一個スペースが多かったですね。。</p>
-
-<p>でコメントに上がっている画像がとても面白かったので、それをNokogiriを使って拾うrubyコードを書きました。プログラマのヒューモア満載の画像ですね。</p>
-
-<p>Sinatra + Nokogiri + Herokuで作りました、キャッシュは<a href="https://github.com/mperham/dalli">dalli</a>というgemを使いました。</p>
-
-<h2>成果</h2>
-
-<p>下記iframeで表示しています。urlは<a href="http://kinopyo-omgmyusr.heroku.com">http://kinopyo-omgmyusr.heroku.com</a></p>
-
-<iframe src="http://kinopyo-omgmyusr.heroku.com/" scrolling="yes" width="480" height="720" >
-</iframe>
-
-
-<h2>ソースコード</h2>
-
-<p>githubに上げています。
-<a href="https://github.com/kinopyo/Funny-Images-in-bumblebee-rm--rf--usr-thread">https://github.com/kinopyo/Funny-Images-in-bumblebee-rm&#8211;rf&#8211;usr-thread</a></p>
-
-<p>参考になったリンク：
-<a href="http://devcenter.heroku.com/articles/memcache">http://devcenter.heroku.com/articles/memcache</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-21T00:00:00+09:00" pubdate data-updated="true">2011-06-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/nokogiri/'>nokogiri</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
 
 
 </div>

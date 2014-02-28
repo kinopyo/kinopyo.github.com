@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="環境情報 Mac OSX Snow Leopard 10.6.4
-XAMPP 1.7.3 手順書 1. Apple Developer Tools (Xcode)の最新版をインストール 2. XAMPP Developer Packageをインストール http://www. &hellip;">
+	<meta name="description" content="前提条件 memcacheとphp_memcache extensionがインストールされたこと。
+http://www.kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xamppを参考してください。 手順 1. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,125 @@ XAMPP 1.7.3 手順書 1. Apple Developer Tools (Xcode)の最新版をインス�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/setup-memcache-in-kohana">Kohana3でmemcacheを利用する方法</a></h1>
+	<div class="entry-content">
+		<h2>前提条件</h2>
+
+<p>memcacheとphp_memcache extensionがインストールされたこと。
+<a href="http://www.kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xampp">http://www.kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xampp</a>を参考してください。</p>
+
+<h2>手順</h2>
+
+<h3>1. application/bootstrap.phpを編集</h3>
+
+<p>Kohana::modulesのcacheのコメントを外します。
+<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/kohana-bootstrap-module-cache.jpg" title="Kohana active cache in bootstrap.php" ></p>
+
+<h3>2. 下記の内容でconfig/cache.phpを作成</h3>
+
+<p>場所はapplication/configでもいいしsystem/config、modules/configでもいいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">return</span> <span class="k">array</span>
+</span><span class='line'><span class="p">(</span>
+</span><span class='line'>  <span class="s1">&#39;default&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span>
+</span><span class='line'>  <span class="p">(</span>
+</span><span class='line'>      <span class="s1">&#39;driver&#39;</span>             <span class="o">=&gt;</span> <span class="s1">&#39;memcache&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="s1">&#39;default_expire&#39;</span>     <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
+</span><span class='line'>      <span class="c1">// Use Zlib compression (can cause issues with integers)</span>
+</span><span class='line'>      <span class="s1">&#39;compression&#39;</span>        <span class="o">=&gt;</span> <span class="k">FALSE</span><span class="p">,</span>
+</span><span class='line'>      <span class="s1">&#39;servers&#39;</span>            <span class="o">=&gt;</span> <span class="k">array</span>
+</span><span class='line'>      <span class="p">(</span>
+</span><span class='line'>          <span class="k">array</span>
+</span><span class='line'>          <span class="p">(</span>
+</span><span class='line'>              <span class="c1">// Memcache Server</span>
+</span><span class='line'>              <span class="s1">&#39;host&#39;</span>             <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+</span><span class='line'>              <span class="c1">// Memcache port number</span>
+</span><span class='line'>              <span class="s1">&#39;port&#39;</span>             <span class="o">=&gt;</span> <span class="mi">11211</span><span class="p">,</span>
+</span><span class='line'>              <span class="c1">// Persistent connection</span>
+</span><span class='line'>              <span class="s1">&#39;persistent&#39;</span>       <span class="o">=&gt;</span> <span class="k">FALSE</span><span class="p">,</span>
+</span><span class='line'>          <span class="p">),</span>
+</span><span class='line'>      <span class="p">),</span>
+</span><span class='line'>  <span class="p">),</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. 動作確認</h3>
+
+<p>まずはmemcacheを立ち上がってください。(ターミナルでmemcached -m 8 -l 127.0.0.1 -p 11211 -d  )
+そしてbootstrap.phpの最後にテスト用のコードを追記します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$cache = Cache::instance();</span>
+</span><span class='line'><span class="x">$cache-&gt;set(&#39;hello&#39;,&#39;world&#39;);</span>
+</span><span class='line'><span class="x">die(var_dump($cache-&gt;get(&#39;hello&#39;)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで任意のページを開いて下記の内容が表示されれば成功ってことです。
+string(5) &#8220;world&#8221;</p>
+
+<p>テスト成功したらbootstrap.phpからテスト用のコードを削除してください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-24T00:00:00+09:00" pubdate data-updated="true">2010-09-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1008,46 +1127,6 @@ BTW, I&#8217;m using Rails 3.0 beta4.</p>
 
 
 	<a class='category' href='/blog/categories/rails/'>Rails</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/setup-blogparts-hatena-bookmark-entry">はてなブックマークエントリをブログに設置</a></h1>
-	<div class="entry-content">
-		<p><a href="http://b.hatena.ne.jp/guide/blogparts">http://b.hatena.ne.jp/guide/blogparts</a>にて自分のサイトの人気エントリーをブログパーツとして設置できます。
-手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。</p>
-
-<p>できたらこんな感じです。なぜか画像が暗くなっちゃいました。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/07/hatena-bookmark-entry.jpg" title="hatena-bookmark-entry" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-21T00:00:00+09:00" pubdate data-updated="true">2010-07-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>

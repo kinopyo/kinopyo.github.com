@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-03-01T01:13:09+09:00</updated>
+  <updated>2014-03-01T01:25:38+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install Ruby 1.9.3 on Mavericks]]></title>
+    <link href="http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks/"/>
+    <updated>2013-10-29T00:00:00+09:00</updated>
+    <id>http://kinopyo.com/blog/install-ruby-1-dot-9-3-on-mavericks</id>
+    <content type="html"><![CDATA[<h2>Problem</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvm install 1.9.3
+</span><span class='line'>
+</span><span class='line'>Searching for binary rubies, this might take some time.
+</span><span class='line'>Found remote file https://rvm.io/binaries/osx/10.9/x86_64/ruby-1.9.3-p448.tar.bz2
+</span><span class='line'>Checking requirements for osx.
+</span><span class='line'>Installing requirements for osx.
+</span><span class='line'>Updating system - using Zsh, can not show progress, be patient...
+</span><span class='line'>Error running 'requirements_osx_brew_update_system ruby-1.9.3-p448',
+</span><span class='line'>please read /Users/qihuan-piao/.rvm/log/1383014621_ruby-1.9.3-p448/update_system.log
+</span><span class='line'>Requirements installation failed with status: 1.</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Solution</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gcc -v
+</span><span class='line'>
+</span><span class='line'>Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+</span><span class='line'>Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
+</span><span class='line'>Target: x86_64-apple-darwin13.0.0
+</span><span class='line'>Thread model: posix
+</span><span class='line'>
+</span><span class='line'>rvm install 1.9.3 --with-gcc=clang</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reference</h2>
+
+<p>http://stackoverflow.com/questions/8139138/how-can-i-install-ruby-1-9-3-in-mac-os-x-lion</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use HTTP Caching in Heroku with Cloudflare]]></title>
@@ -936,29 +991,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 <p>Good bye 2012, happy new year.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fruit Ninjia in Real Life and Flying Kittens]]></title>
-    <link href="http://kinopyo.com/blog/fruit-ninjia-in-real-life-and-flying-kittens/"/>
-    <updated>2012-12-27T23:40:00+09:00</updated>
-    <id>http://kinopyo.com/blog/fruit-ninjia-in-real-life-and-flying-kittens</id>
-    <content type="html"><![CDATA[<p>Just wanna share 2 youtube videos I watched today, so funny.</p>
-
-<p><a href="http://www.youtube.com/watch?v=w-llZmPPNwU">Fruit Ninja in Real Life</a></p>
-
-<div class="video-container">
-<iframe width="560" height="315" src="http://www.youtube.com/embed/w-llZmPPNwU?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
-<p><a href="http://www.youtube.com/watch?v=3oem-M2tQU4">Cute Kittens Fly in Slow Motion</a></p>
-
-<div class="video-container">
-<iframe width="560" height="315" src="http://www.youtube.com/embed/3oem-M2tQU4?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
-</div>
-
 ]]></content>
   </entry>
   

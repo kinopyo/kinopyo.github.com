@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="終電検索 いつもYahooで終電を検索するんですが、それがアテにならないことが分かりました。
-終電検索で深夜1時とか出発でただ乗換が多かったのを見てとりあえず帰れるって安心したんですが、あとで見ると実は二日目の朝4～5時の電車となってしまいました。 &hellip;">
+	<meta name="description" content="Compass A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:Compass CoreBlueprint960SusyYUINew &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,61 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/new-to-me-this-week-1025-1031">今週（10/25～10/31）新たに知ったもの</a></h1>
+	<div class="entry-content">
+		<h1>Compass</h1>
+
+<blockquote><p>A Sass-based CSS Meta-Framework that allows you to mix and match any of the following CSS frameworks:</p><p>Compass Core<br/>Blueprint<br/>960<br/>Susy<br/>YUI</p><p>New frameworks and extensions are tracked on the wiki as they are created.<br/>Other frameworks can be added relatively easily. Create your own!</p></blockquote>
+
+
+<p><a href="http://github.com/chriseppstein/compass/tree#readme">http://github.com/chriseppstein/compass/tree#readme</a>
+<a href="http://compass-style.org/docs/">http://compass-style.org/docs/</a></p>
+
+<h1>Rails Rumble</h1>
+
+<blockquote><p>The Rails Rumble is an annual 48 hour web application development competition in which teams of skilled web application developers get one weekend to design, develop, and deploy the best web property that they can, using the power of Ruby and Rails.</p></blockquote>
+
+
+<p><a href="http://railsrumble.com/">http://railsrumble.com/</a></p>
+
+<h1>Monospaced font</h1>
+
+<blockquote><p>A monospaced font, also called a fixed-pitch or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space.*1* This contrasts to variable-width fonts, where the letters differ in size to one another.<br/>The first monospaced typefaces were designed for typewriters, which could only move the same distance forward with each letter typed. This also meant that monospaced fonts need not be typeset like variable width fonts and were, arguably, easier to deal with.</p></blockquote>
+
+
+<p><a href="http://en.wikipedia.org/wiki/Monospaced_font">http://en.wikipedia.org/wiki/Monospaced_font</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-01T00:00:00+09:00" pubdate data-updated="true">2010-11-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uncategorized/'>Uncategorized</a>, <a class='category' href='/blog/categories/font/'>font</a>, <a class='category' href='/blog/categories/new/'>new</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -818,125 +872,6 @@ alt+ctrl+back_space</p>
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/setup-memcache-in-kohana">Kohana3でmemcacheを利用する方法</a></h1>
-	<div class="entry-content">
-		<h2>前提条件</h2>
-
-<p>memcacheとphp_memcache extensionがインストールされたこと。
-<a href="http://www.kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xampp">http://www.kinopyo.com/blog/install-memcache-and-php-extension-in-mac-xampp</a>を参考してください。</p>
-
-<h2>手順</h2>
-
-<h3>1. application/bootstrap.phpを編集</h3>
-
-<p>Kohana::modulesのcacheのコメントを外します。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/kohana-bootstrap-module-cache.jpg" title="Kohana active cache in bootstrap.php" ></p>
-
-<h3>2. 下記の内容でconfig/cache.phpを作成</h3>
-
-<p>場所はapplication/configでもいいしsystem/config、modules/configでもいいです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">return</span> <span class="k">array</span>
-</span><span class='line'><span class="p">(</span>
-</span><span class='line'>  <span class="s1">&#39;default&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span>
-</span><span class='line'>  <span class="p">(</span>
-</span><span class='line'>      <span class="s1">&#39;driver&#39;</span>             <span class="o">=&gt;</span> <span class="s1">&#39;memcache&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="s1">&#39;default_expire&#39;</span>     <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
-</span><span class='line'>      <span class="c1">// Use Zlib compression (can cause issues with integers)</span>
-</span><span class='line'>      <span class="s1">&#39;compression&#39;</span>        <span class="o">=&gt;</span> <span class="k">FALSE</span><span class="p">,</span>
-</span><span class='line'>      <span class="s1">&#39;servers&#39;</span>            <span class="o">=&gt;</span> <span class="k">array</span>
-</span><span class='line'>      <span class="p">(</span>
-</span><span class='line'>          <span class="k">array</span>
-</span><span class='line'>          <span class="p">(</span>
-</span><span class='line'>              <span class="c1">// Memcache Server</span>
-</span><span class='line'>              <span class="s1">&#39;host&#39;</span>             <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-</span><span class='line'>              <span class="c1">// Memcache port number</span>
-</span><span class='line'>              <span class="s1">&#39;port&#39;</span>             <span class="o">=&gt;</span> <span class="mi">11211</span><span class="p">,</span>
-</span><span class='line'>              <span class="c1">// Persistent connection</span>
-</span><span class='line'>              <span class="s1">&#39;persistent&#39;</span>       <span class="o">=&gt;</span> <span class="k">FALSE</span><span class="p">,</span>
-</span><span class='line'>          <span class="p">),</span>
-</span><span class='line'>      <span class="p">),</span>
-</span><span class='line'>  <span class="p">),</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. 動作確認</h3>
-
-<p>まずはmemcacheを立ち上がってください。(ターミナルでmemcached -m 8 -l 127.0.0.1 -p 11211 -d  )
-そしてbootstrap.phpの最後にテスト用のコードを追記します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$cache = Cache::instance();</span>
-</span><span class='line'><span class="x">$cache-&gt;set(&#39;hello&#39;,&#39;world&#39;);</span>
-</span><span class='line'><span class="x">die(var_dump($cache-&gt;get(&#39;hello&#39;)));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで任意のページを開いて下記の内容が表示されれば成功ってことです。
-string(5) &#8220;world&#8221;</p>
-
-<p>テスト成功したらbootstrap.phpからテスト用のコードを削除してください。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-24T00:00:00+09:00" pubdate data-updated="true">2010-09-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>

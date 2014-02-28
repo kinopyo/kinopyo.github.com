@@ -7,10 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Sinatraを試したところこのようなエラーになりました。 1
+	<meta name="description" content="Sinatra使って二日目ですが、サーバーを再起動しないと修正したコードが反映されないことに気づきました。これは不便なので、改善する方法を紹介します。 shotgunというgemを使えばOKです。インストールし、ruby -rubygemsではなくshotgunでサーバを起動します。 1
 2
-ruby -rubygems myapp.rb
-no such file to load -- ubygems (LoadError) ググッてみたらやはりPATHが間違ったっぽいです。 &hellip;">
+3 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +91,62 @@ no such file to load -- ubygems (LoadError) ググッてみたらやはりPATH�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sinatra-hot-deploy-without-restart-server">Sinatraサーバ起動せずに修正したソースを反映する方法(ホットデプロイ)</a></h1>
+	<div class="entry-content">
+		<p>Sinatra使って二日目ですが、サーバーを再起動しないと修正したコードが反映されないことに気づきました。これは不便なので、改善する方法を紹介します。</p>
+
+<p>shotgunというgemを使えばOKです。インストールし、ruby -rubygemsではなくshotgunでサーバを起動します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo gem install shotgun
+</span><span class='line'>$ shotgun myapp.rb
+</span><span class='line'>== Shotgun/WEBrick on http://127.0.0.1:9393/
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これでサーバを再起動せずにホットデプロイができるようになります。</p>
+
+<p>他にも<a href="https://github.com/rack/rack/blob/master/lib/rack/reloader.rb">Sinatra::Reloader</a>や<a href="https://github.com/rkh/sinatra-reloader">Sinatra::Reloader</a>が公式サイトで紹介されていますが、shotgunは一番簡単だそうです。</p>
+
+<p>参考サイト：
+<a href="http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server">http://stackoverflow.com/questions/5684266/can-i-do-sinatra-program-without-restart-server</a>
+<a href="http://www.sinatrarb.com/faq.html#reloading"> What happened to reloading in Sinatra</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T00:00:00+09:00" pubdate data-updated="true">2011-05-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -743,75 +798,6 @@ Generally if PHP says a function is undefined, it means you need to compile in s
 
 
 	<a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/evernote-x-mac-cant-synchronize-error-content-is-not-valid">Evernote x Mac: Cant synchronize error, Content is not valid.</a></h1>
-	<div class="entry-content">
-		<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。
-So I encountered this problem when I synced my evernote in Mac OS.</p>
-
-<blockquote><p>Can&#8217;t synchronize error, Content is not valid.</p></blockquote>
-
-
-<p>I googled and found this in the evernote support forum.</p>
-
-<blockquote><p>One of the Ruby gems replaces the built-in &#8216;tidy&#8217; command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p><p>On my 10.6.6 box, that command is 65072 bytes:</p><p>~ $ ls -al `which tidy`<br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p><p>Once you&#8217;ve fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote>
-
-
-<p>It seems like that ruby gems in mac did a mess that replaced the /usr/bin/tidy command unintentionally.
-So if your <code>tidy</code> file size does not match 65072 bytes, just copy on from other Mac OS, and chmod it.</p>
-
-<h1>日本語</h1>
-
-<p>なぜかMac Evernoteクライアントの同期で表題のようなエラーとなりました。</p>
-
-<p>公式サイトのサポートでこんな回答を見つかったので共有します。</p>
-
-<blockquote><p>One of the Ruby gems replaces the built-in &#8216;tidy&#8217; command in OS X (/usr/bin/tidy) with a broken script in the same location. You need to restore the original /usr/bin/tidy command that comes with OS X.</p><p>On my 10.6.6 box, that command is 65072 bytes:</p><p>~ $ ls -al `which tidy`<br/> rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy</p><p>Once you&#8217;ve fixed that broken part of the OS, Evernote should work ok. You may also want to file a bug with the Ruby folks, who absolutely should not be replacing this file with their own.</p></blockquote>
-
-
-<p>MacのRuby gemsが勝手に<code>/usr/bin/tidy</code>コマンドをリプレースしてしまったそうです。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>~ $ ls -al `which tidy`
-</span><span class='line'>+  rwxr-xr-x 1 root wheel 65072 Aug 31 2010 /usr/bin/tidy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記の65072バイトサイズが正しいです。
-もしサイズが異なるなら他のMacでそのファイルをコピーしてきて、
-chmodで他のファイルと同じ権限にしなければいけませんよ。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-18T00:00:00+09:00" pubdate data-updated="true">2011-04-18</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/tool/'>tool</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
 
 
 </div>
