@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Here I&#8217;ll show you how to recover or restore your local octopress
-repository, for instance you&#8217;re on a new machine, or just lost your &hellip;">
+	<meta name="description" content="I went to Rubykaigi 2014 last week, there were lots of great talks about ruby itself, rails tips and more. Here I’ll share 3 things I feel worth to &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -88,6 +87,122 @@ repository, for instance you&#8217;re on a new machine, or just lost your &helli
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rubykaigi-2014-3-good-talks-for-rails-developers/">RubyKaigi 2014 - 3 Good Talks for Rails Developers</a></h1>
+	<div class="entry-content">
+		<p>I went to <a href="http://rubykaigi.org/2014">Rubykaigi 2014</a> last week, there were lots of great talks about ruby itself, rails tips and more. Here I’ll share 3 things I feel worth to share for rails developers.</p>
+
+<h2>Synvert</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-RichardHuang">Speaker page on Rubykaigi2014</a></p>
+
+<blockquote><p>Synvert = syntax + convert, makes it easy to convert ruby code automatically</p></blockquote>
+
+<p>Synvert is a gem made by the same author of <a href="https://github.com/flyerhzm/bullet">bullet</a> gem. Using it you can convert your rails 3 <code>before_filter</code> to rails 4 syntax <code>before_action</code>, rspec <code>should have</code> to <code>expect(…).to have</code> or ruby 1.8 hash to 1.9 hash syntax with just one command, and it does support more. It’s well tested so no worry for human error.</p>
+
+<p>You could define your own rules to convert code, or use those built-in very common used snippets for rails, rspec and factory_girl.</p>
+
+<h3>Installation and usage</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">synvert</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># fetch snippets to ~/.synvert directory</span>
+</span><span class='line'><span class="n">synvert</span> <span class="o">--</span><span class="n">sync</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">synvert</span> <span class="o">-</span><span class="n">r</span> <span class="n">factory_girl</span><span class="o">/</span><span class="n">use_short_syntax</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run <code>git diff</code> I got</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gd">- user = FactoryGirl.create(:user)</span>
+</span><span class='line'><span class="gi">+ user = create(:user)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>How does it work</h3>
+
+<p>AST(Abstract Syntax Tree) is used internally, it parses your source code to meaningful structures. It’s like grammar in English, one phrase can be broken down to words and some are noun, some are verb, it’s like saying “let’s replace all the verb ‘walk’ to ‘run’”.  I highly recommend you to check out the slide if you want to learn more.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/attributes_for_ast_node.png" alt="Example of attributes for AST node" /></p>
+
+<p>For instance, it breaks a method call to receiver, message and arguments. A typical method call is a type of “send node”, class definition is “class node” and there is “block node”.</p>
+
+<p>Links</p>
+
+<ul>
+<li><a href="https://speakerdeck.com/flyerhzm/write-ruby-code-to-change-ruby-code">Write ruby code to change ruby code </a></li>
+<li><a href="https://github.com/xinminlabs/synvert">synvert gem</a></li>
+<li><a href="http://synvert-tools.herokuapp.com">synvert playground</a></li>
+</ul>
+
+
+<h2>Going the distance</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-RichardSchneeman">Speaker page on Rubykaigi2014</a></p>
+
+<p>To be honest I’m not sure I fully understand the algorithm of calculating distance between 2 words, but the great part is <a href="https://twitter.com/schneems">@ schneems</a> used it to improve rails generator command to suggest possible commands when you had a typo.</p>
+
+<p>Please see the pull request for details. <a href="https://github.com/rails/rails/pull/15497">Emit suggested generator names when not found #15497</a></p>
+
+<p>If you ever make a cli command, you could follow the same pattern, using the algorithm to suggest candidates instead of just showing plain error message.</p>
+
+<p>Good to see how how he adapted scientific algorithm to solve real world problem.</p>
+
+<h2>Speeding up Rails 4.2</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-AaronPatterson">Speaker page on Rubykaigi2014</a></p>
+
+<p>Interesting to see how <a href="https://twitter.com/tenderlove">@tenderlove</a> find room for optimization and how to measure it.</p>
+
+<p>Tools mentioned:</p>
+
+<ul>
+<li><a href="https://github.com/evanphx/benchmark-ips">benchmark-ips</a>, benchmarks a blocks iterations/second. For short snippits of code, ips automatically figures out how many times to run the code to get interesting data. No more guessing at random iteration counts!</li>
+<li><a href="https://github.com/ko1/allocation_tracer">allocation_tracer</a>, allows to trace object allocation.</li>
+</ul>
+
+
+<p><a href="https://speakerdeck.com/tenderlove/gao-du-nakodo">Slide on speakerdeck</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-23T18:21:00+09:00" pubdate data-updated="true">2014-09-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/event/'>Event</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1003,62 +1118,6 @@ I don’t think there is anything biologically or physiologically that you can p
 
 
 	<a class='category' href='/blog/categories/inspiration/'>Inspiration</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/when-to-buy-a-new-ipad-iphone-or-macbook/">When to Buy a New iPad, iPhone or Macbook</a></h1>
-	<div class="entry-content">
-		<p>I gave my iPad to my mom when I went back to China during the golden week, so I&#8217;m wondering if now is a good timing to buy a new iPad? Are they going to release a new model soon? &#8220;Buy or wait&#8221;, that&#8217;s the only options for me every time when I think about any product of Apple.</p>
-
-<h2>Macrumors Buyers Guide</h2>
-
-<p>Then I found this <a href="http://buyersguide.macrumors.com/">buyersguide</a> by Macrumors. I know Macrumors website for a long time and used to subscribe to their RSS feeds, but I never noticed they have a this website.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/macrumors_buyers_guide.png" alt="Macrumors Buyers Guide" /></p>
-
-<p>Here you can see each Apple model with red or yellow round buttons. I guess there&#8217;ll be green ones once the &#8220;timing&#8221; is right to buy that product. As it says:</p>
-
-<blockquote><p>provide our best recommendations regarding current product cycles, and to provide a summary of currently available rumors for each model. This page is based on rumors and speculation and we provide no guarantee to its accuracy.</p></blockquote>
-
-<h2>When to Buy a New iPad</h2>
-
-<p>If you click the iPad link you&#8217;ll see this:</p>
-
-<p><img src="http://cdn.kinopyo.com/images/when_to_buy_a_new_ipad.png" alt="When to Buy a New iPad" /></p>
-
-<p>You can see the last release was October 23, 2012. Average
-release cycles is 311 days so statistically there are still around 100 days left, but judging from the recent releases it could be next month! Recent rumors might be helpful, to at least give you something to fill in the blankness of waiting.</p>
-
-<p>Maybe this time I&#8217;ll give iPad mini a try.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-16T21:50:00+09:00" pubdate data-updated="true">2013-05-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/apple/'>Apple</a>
 
 
 </div>

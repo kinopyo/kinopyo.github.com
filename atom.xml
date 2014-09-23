@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-03-01T02:27:24+09:00</updated>
+  <updated>2014-09-23T18:28:21+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,96 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RubyKaigi 2014 - 3 Good Talks for Rails Developers]]></title>
+    <link href="http://kinopyo.com/blog/rubykaigi-2014-3-good-talks-for-rails-developers/"/>
+    <updated>2014-09-23T18:21:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rubykaigi-2014-3-good-talks-for-rails-developers</id>
+    <content type="html"><![CDATA[<p>I went to <a href="http://rubykaigi.org/2014">Rubykaigi 2014</a> last week, there were lots of great talks about ruby itself, rails tips and more. Here I’ll share 3 things I feel worth to share for rails developers.</p>
+
+<h2>Synvert</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-RichardHuang">Speaker page on Rubykaigi2014</a></p>
+
+<blockquote><p>Synvert = syntax + convert, makes it easy to convert ruby code automatically</p></blockquote>
+
+<p>Synvert is a gem made by the same author of <a href="https://github.com/flyerhzm/bullet">bullet</a> gem. Using it you can convert your rails 3 <code>before_filter</code> to rails 4 syntax <code>before_action</code>, rspec <code>should have</code> to <code>expect(…).to have</code> or ruby 1.8 hash to 1.9 hash syntax with just one command, and it does support more. It’s well tested so no worry for human error.</p>
+
+<p>You could define your own rules to convert code, or use those built-in very common used snippets for rails, rspec and factory_girl.</p>
+
+<h3>Installation and usage</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">synvert</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># fetch snippets to ~/.synvert directory</span>
+</span><span class='line'><span class="n">synvert</span> <span class="o">--</span><span class="n">sync</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">synvert</span> <span class="o">-</span><span class="n">r</span> <span class="n">factory_girl</span><span class="o">/</span><span class="n">use_short_syntax</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run <code>git diff</code> I got</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gd">- user = FactoryGirl.create(:user)</span>
+</span><span class='line'><span class="gi">+ user = create(:user)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>How does it work</h3>
+
+<p>AST(Abstract Syntax Tree) is used internally, it parses your source code to meaningful structures. It’s like grammar in English, one phrase can be broken down to words and some are noun, some are verb, it’s like saying “let’s replace all the verb ‘walk’ to ‘run’”.  I highly recommend you to check out the slide if you want to learn more.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/attributes_for_ast_node.png" alt="Example of attributes for AST node" /></p>
+
+<p>For instance, it breaks a method call to receiver, message and arguments. A typical method call is a type of “send node”, class definition is “class node” and there is “block node”.</p>
+
+<p>Links</p>
+
+<ul>
+<li><a href="https://speakerdeck.com/flyerhzm/write-ruby-code-to-change-ruby-code">Write ruby code to change ruby code </a></li>
+<li><a href="https://github.com/xinminlabs/synvert">synvert gem</a></li>
+<li><a href="http://synvert-tools.herokuapp.com">synvert playground</a></li>
+</ul>
+
+
+<h2>Going the distance</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-RichardSchneeman">Speaker page on Rubykaigi2014</a></p>
+
+<p>To be honest I’m not sure I fully understand the algorithm of calculating distance between 2 words, but the great part is <a href="https://twitter.com/schneems">@ schneems</a> used it to improve rails generator command to suggest possible commands when you had a typo.</p>
+
+<p>Please see the pull request for details. <a href="https://github.com/rails/rails/pull/15497">Emit suggested generator names when not found #15497</a></p>
+
+<p>If you ever make a cli command, you could follow the same pattern, using the algorithm to suggest candidates instead of just showing plain error message.</p>
+
+<p>Good to see how how he adapted scientific algorithm to solve real world problem.</p>
+
+<h2>Speeding up Rails 4.2</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-AaronPatterson">Speaker page on Rubykaigi2014</a></p>
+
+<p>Interesting to see how <a href="https://twitter.com/tenderlove">@tenderlove</a> find room for optimization and how to measure it.</p>
+
+<p>Tools mentioned:</p>
+
+<ul>
+<li><a href="https://github.com/evanphx/benchmark-ips">benchmark-ips</a>, benchmarks a blocks iterations/second. For short snippits of code, ips automatically figures out how many times to run the code to get interesting data. No more guessing at random iteration counts!</li>
+<li><a href="https://github.com/ko1/allocation_tracer">allocation_tracer</a>, allows to trace object allocation.</li>
+</ul>
+
+
+<p><a href="https://speakerdeck.com/tenderlove/gao-du-nakodo">Slide on speakerdeck</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Recover Your Local Octopress Repository]]></title>
@@ -974,24 +1064,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 <p>When I was a child I used to draw a lot, I still remember an afternoon in Summer I just sit there and kept drawing for 5 hours, I was completely in the &#8220;flow&#8221;, if I put it in the current popular terms, and totally forgot how could time pass so fast. I also organized an event to get my friends together in a weekend to draw together, at that time I was trying to draw my own manga story of Doraemon. But when passing into adolescence I didn&#8217;t remember why but somehow I stopped drawing.</p>
 
 <p>Oops that is more than &#8220;one phrase&#8221; =_=;;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My New Experience on Quoty]]></title>
-    <link href="http://kinopyo.com/blog/my-new-experience-on-quoty/"/>
-    <updated>2013-02-08T13:14:00+09:00</updated>
-    <id>http://kinopyo.com/blog/my-new-experience-on-quoty</id>
-    <content type="html"><![CDATA[<p>Recently I added photo uploading feature to <a href="http://quoty.me">quoty.me</a>, then yesterday after I watched a Chinese movie 一代宗师(<a href="http://www.imdb.com/title/tt1462900/">The Grandmaster</a>) I uploaded some quotes with photos. It looks pretty good!</p>
-
-<p>Here is a screenshot of it.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/quoty_screenshot.png" alt="list view" />
-<img src="http://cdn.kinopyo.com/images/quoty_screenshot2.png" alt="single quote view" /></p>
-
-<p>The movie is directed by 王家卫(<a href="http://www.imdb.com/name/nm0939182/">Kar Wai Wong</a>), my favorite director, his movies are always full of deep, inspiring words. It&#8217;s a movie, but taste like a novel. I&#8217;m so glad that I read Chinese so that I could fully enjoy the good work.</p>
-
-<p>Another thing is, I was a little confused about how to make quoty, what it is, where it goes. But this experience, after watching a great movie then upload those quotes and photos, I can really recapture all the great moments in the movie, feels so good. Besides, be capable to improve the tool I&#8217;m using is another way to enjoy the life.</p>
 ]]></content>
   </entry>
   

@@ -7,10 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Wordpressブログにはてな記法を適用するプラグインを紹介します。
-はてな記法に慣れたら結構手軽にブログを書けます。
-Wordpressにそのはてな記法のプラグインがあります。 インストール WordPressにはてな記法を導入するプラグインにてダウンロード
-サーバにアップロード(wp- &hellip;">
+	<meta name="description" content="閲覧者がコメントする際にチェックボックスにマークしておくことで、
+さらにコメントが追加された場合、メールで知らせてくれるプラグインです。
+閲覧者が自分のコメント以降に追加されたコメントを把握できるようになります。 ダウンロード http://txfx.net/wordpress-plugins/ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +91,89 @@ Wordpressにそのはてな記法のプラグインがあります。 インス�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-plugin-subscribe-to-comments-for-readers">記事にコメントが追加された際ブログの閲覧者にメールで通知するプラグイン</a></h1>
+	<div class="entry-content">
+		<p>閲覧者がコメントする際にチェックボックスにマークしておくことで、
+さらにコメントが追加された場合、メールで知らせてくれるプラグインです。
+閲覧者が自分のコメント以降に追加されたコメントを把握できるようになります。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/wordpress-plugin-subscribe-to-comments.jpg" title="wordpress-plugin-subscribe-to-comments" ></p>
+
+<h2>ダウンロード</h2>
+
+<p><a href="http://txfx.net/wordpress-plugins/subscribe-to-comments/">http://txfx.net/wordpress-plugins/subscribe-to-comments/</a>でダウンロードか、
+WordPress管理画面から「subscribe-to-comments」を検索してインストールする</p>
+
+<h2>カスタマイズ</h2>
+
+<p>初期設定ではメールの本文が英語となっています。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_en.jpg"></p>
+
+<br/>
+
+
+<p>それを日本語にカスタマイズしてみました。
+管理画面でsubscribe-to-commentsプラグインを編集します。
+「There is a new comment on the post」で検索すれば一発で見つかります。
+そのあたりの英語を自分が好きな言葉に置換すればOKです。</p>
+
+<br/>
+
+
+<p>以下自分のサンプルです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:There is a new comment on the post:新規のコメントが投稿されました。
+</span><span class='line'>:See all comments on this post here:すべてのコメントを確認するには下記のリンクをクリックしてください
+</span><span class='line'>:Author:お名前
+</span><span class='line'>:Comment:コメント
+</span><span class='line'>:To manage your subscriptions or to block all notifications from this site, click the link below:コメント閲覧を管理、このサイトからの通知をブロックするには下記のリンクをクリックしてください</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>修正後のメール本文はこんな風になりました。
+<img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_jp.jpg" title="" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -636,83 +718,6 @@ Firefoxは大丈夫です。</p>
 
 
 	<a class='category' href='/blog/categories/tool/'>tool</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/google-chrome-for-mac"> Google Chrome for Mac Released</a></h1>
-	<div class="entry-content">
-		<br/>
-
-
-<p>Google ChromeついにMacに登場しました。
-早速使ってみました。
-「速い、速い、速すぎる」のがすべてです。
-そしてMacらしきのアニメーションで「綺麗」に動作してます。
-タブを開いたり閉じたり、フォーム入力中の画面を閉じる際の確認プロンプトなど
-とても使い易いです。</p>
-
-<h2>インストール</h2>
-
-<p><a href="http://www.google.com/chrome">http://www.google.com/chrome</a>
-Macを使うなら普通にインストールされます。
-Firefoxのブックマークや履歴など簡単にインポートされました。</p>
-
-<h2>Gmailからメールが来た</h2>
-
-<p>深夜の2時41分、Mac版Chromeリリースのメールがきました。
-このメールにはChrome for Macチームがどれだけ頑張ったかの内容も載っていたので、
-一緒に見てみたいと思います。</p>
-
-<blockquote><p>73,804 lines of Mac-specific code written<br/>29 developer builds<br/>1,177 Mac-specific bugs fixed<br/>12 external committers and bug editors to the Google Chrome for Mac code base, 48 external code contributors<br/>64 Mac Minis doing continuous builds and tests<br/>8,760 cups of soft drinks and coffee consumed<br/>4,380 frosted mini-wheats eaten</p></blockquote>
-
-
-<p>印象的なのは8760カップのコーヒと4380のfrosted mini-wheatsです。
-このfrosted mini-wheatsはこんなもののアメリカンフードです。</p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/frostedminiwheats.jpg" title="frosted mini-wheats" >
-Googleらしき風土ですね。どれくらいお菓子食ったのも統計されてます。</p>
-
-<h2>不具合が。。</h2>
-
-<p>WordPressで書きながら、いきなりWPが動かなくなりました。
-いったん閉じて再開すると改善できたので、
-相性がわるいか、早速のバグかまだ分かりません。</p>
-
-<h2>スクリーンショット</h2>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-6.jpg" title="Mac版Chromeダウンロード" ></p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-8.jpg" title="Chromeインターフェース" >
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/Picture-7.jpg" title="設定画面" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-09T00:00:00+09:00" pubdate data-updated="true">2009-12-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
 
 
 </div>

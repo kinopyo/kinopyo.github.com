@@ -7,7 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="PostgresSQLでrake specするとNOTICEがいっぱいでるが大変参考になった。 NOTICE: CREATE TABLE will create implicit sequence &#8220;peroperos_id_seq&#8221; for serial column &hellip;">
+	<meta name="description" content="I was wondering why people explicitly specify table name in such a scope definition&#8230; 1
+2
+3
+class Answer &lt; ActiveRecord::Base scope :recent &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +92,64 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/explicitly-specify-table-name-in-scope-definition/">Explicitly specify table name in scope definition</a></h1>
+	<div class="entry-content">
+		<p>I was wondering why people explicitly specify table name in such a scope definition&#8230;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Answer</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">scope</span> <span class="ss">:recent</span><span class="p">,</span> <span class="n">order</span><span class="p">(</span><span class="s1">&#39;answers.created_at DESC&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Until I got this error today.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">Mysql2</span><span class="p">::</span><span class="n">Error</span><span class="p">:</span> <span class="k">Column</span> <span class="s1">&#39;created_at&#39;</span> <span class="k">in</span> <span class="k">order</span> <span class="n">clause</span> <span class="k">is</span> <span class="n">ambiguous</span><span class="p">:</span> <span class="k">SELECT</span>  <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">AS</span> <span class="n">count_id</span><span class="p">,</span> <span class="n">question_id</span> <span class="k">AS</span> <span class="n">question_id</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="o">`</span><span class="n">questions</span><span class="o">`</span> <span class="k">ON</span> <span class="o">`</span><span class="n">questions</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="o">=</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">question_id</span><span class="o">`</span> <span class="k">WHERE</span> <span class="p">(</span><span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="mi">87</span><span class="p">)</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">question_id</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">created_at</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I have a <code>recent</code> scope defined in both <code>Question</code> and <code>Answer</code> model. And when you chain those two models, rails don&#8217;t know the <code>recent</code> is associated to which one.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@answers</span> <span class="o">=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">answers</span><span class="o">.</span><span class="n">recent</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">:question_id</span><span class="p">)</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:question</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-29T15:56:00+09:00" pubdate data-updated="true">2012-06-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -515,91 +576,6 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 
 
 	<a class='category' href='/blog/categories/ipad/'>iPad</a>, <a class='category' href='/blog/categories/ipad/'>ipad</a>, <a class='category' href='/blog/categories/wifi/'>wifi</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/what-you-can-do-with-facebook-comments-social-plugin">What you can do with Facebook Comments Social Plugin</a></h1>
-	<div class="entry-content">
-		<h1>Goal</h1>
-
-<p>To use facebook comments integrated to your own site.</p>
-
-<h2>Requirements</h2>
-
-<p>Need a facebook application for your site(domain).</p>
-
-<p>For example:</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-05-at-14.21.25.png"></p>
-
-<h2>How to get it</h2>
-
-<p>Fill in the blank and click get code from <a href="https://developers.facebook.com/docs/reference/plugins/comments/">https://developers.facebook.com/docs/reference/plugins/comments/</a></p>
-
-<p>Then just paste that code to your site(page).</p>
-
-<h2>Functions</h2>
-
-<ul>
-<li><p>People who want to comment can choose if post to Facebook, there&#8217;s a checkbox.</p></li>
-<li><p>Comments posted to facebook are bidirectional. Threads stay synced across Facebook and on the Comments Box on your site regardless of where the comment was made.</p></li>
-<li><p>Sort comments by Social Ranking, Chronological(Time) order</p></li>
-<li><p>Boosting comments: Moderators can now ensure that high-quality comments appear at the top of the Comments Box</p></li>
-</ul>
-
-
-<p>&nbsp;</p>
-
-<p>Facebook doesn&#8217;t explain how the Social Ranking works, but I checked some real-world examples and I guess basically we can consider it sort by like counts.</p>
-
-<h2>Moderation Tools</h2>
-
-<p>Put this meta tag in the html.</p>
-
-<p><span style="color: #008080;"> &lt;meta property=&#8221;fb:admins&#8221; content=&#8221;{YOUR_FACEBOOK_USER_ID}&#8221;/&gt;</span></p>
-
-<p>Then if you log in with the owner of the application, you can access this url to control comments:</p>
-
-<p><a href="http://developers.facebook.com/tools/comments">http://developers.facebook.com/tools/comments</a></p>
-
-<p>or you can do it inside the Comments Box directly.</p>
-
-<p>There&#8217;re Moderate dropdown to Hide comment, Ban User or Boost comment. In the Settings page you have other options like add moderators or set blacklisted words, etc.</p>
-
-<p>Remember to check all the FAQ on the reference docs, very useful. I wonder why those go to the FAQ though.</p>
-
-<h1>Reference</h1>
-
-<p><a href="https://developers.facebook.com/docs/reference/plugins/comments/">https://developers.facebook.com/docs/reference/plugins/comments/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-05T00:00:00+09:00" pubdate data-updated="true">2012-01-05</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/comments/'>comments</a>, <a class='category' href='/blog/categories/social-plugin/'>social plugin</a>
 
 
 </div>

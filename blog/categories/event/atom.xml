@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Event | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/event/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2014-09-23T18:28:21+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RubyKaigi 2014 - 3 Good Talks for Rails Developers]]></title>
+    <link href="http://kinopyo.com/blog/rubykaigi-2014-3-good-talks-for-rails-developers/"/>
+    <updated>2014-09-23T18:21:00+09:00</updated>
+    <id>http://kinopyo.com/blog/rubykaigi-2014-3-good-talks-for-rails-developers</id>
+    <content type="html"><![CDATA[<p>I went to <a href="http://rubykaigi.org/2014">Rubykaigi 2014</a> last week, there were lots of great talks about ruby itself, rails tips and more. Here I’ll share 3 things I feel worth to share for rails developers.</p>
+
+<h2>Synvert</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-RichardHuang">Speaker page on Rubykaigi2014</a></p>
+
+<blockquote><p>Synvert = syntax + convert, makes it easy to convert ruby code automatically</p></blockquote>
+
+<p>Synvert is a gem made by the same author of <a href="https://github.com/flyerhzm/bullet">bullet</a> gem. Using it you can convert your rails 3 <code>before_filter</code> to rails 4 syntax <code>before_action</code>, rspec <code>should have</code> to <code>expect(…).to have</code> or ruby 1.8 hash to 1.9 hash syntax with just one command, and it does support more. It’s well tested so no worry for human error.</p>
+
+<p>You could define your own rules to convert code, or use those built-in very common used snippets for rails, rspec and factory_girl.</p>
+
+<h3>Installation and usage</h3>
+
+<p>```ruby
+gem install synvert</p>
+
+<h1>fetch snippets to ~/.synvert directory</h1>
+
+<p>synvert --sync</p>
+
+<p>synvert -r factory_girl/use_short_syntax
+```</p>
+
+<p>Run <code>git diff</code> I got</p>
+
+<p><code>diff
+- user = FactoryGirl.create(:user)
++ user = create(:user)
+</code></p>
+
+<h3>How does it work</h3>
+
+<p>AST(Abstract Syntax Tree) is used internally, it parses your source code to meaningful structures. It’s like grammar in English, one phrase can be broken down to words and some are noun, some are verb, it’s like saying “let’s replace all the verb ‘walk’ to ‘run’”.  I highly recommend you to check out the slide if you want to learn more.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/attributes_for_ast_node.png" alt="Example of attributes for AST node" /></p>
+
+<p>For instance, it breaks a method call to receiver, message and arguments. A typical method call is a type of “send node”, class definition is “class node” and there is “block node”.</p>
+
+<p>Links</p>
+
+<ul>
+<li><a href="https://speakerdeck.com/flyerhzm/write-ruby-code-to-change-ruby-code">Write ruby code to change ruby code </a></li>
+<li><a href="https://github.com/xinminlabs/synvert">synvert gem</a></li>
+<li><a href="http://synvert-tools.herokuapp.com">synvert playground</a></li>
+</ul>
+
+
+<h2>Going the distance</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-RichardSchneeman">Speaker page on Rubykaigi2014</a></p>
+
+<p>To be honest I’m not sure I fully understand the algorithm of calculating distance between 2 words, but the great part is <a href="https://twitter.com/schneems">@ schneems</a> used it to improve rails generator command to suggest possible commands when you had a typo.</p>
+
+<p>Please see the pull request for details. <a href="https://github.com/rails/rails/pull/15497">Emit suggested generator names when not found #15497</a></p>
+
+<p>If you ever make a cli command, you could follow the same pattern, using the algorithm to suggest candidates instead of just showing plain error message.</p>
+
+<p>Good to see how how he adapted scientific algorithm to solve real world problem.</p>
+
+<h2>Speeding up Rails 4.2</h2>
+
+<p><a href="http://rubykaigi.org/2014/presentation/S-AaronPatterson">Speaker page on Rubykaigi2014</a></p>
+
+<p>Interesting to see how <a href="https://twitter.com/tenderlove">@tenderlove</a> find room for optimization and how to measure it.</p>
+
+<p>Tools mentioned:</p>
+
+<ul>
+<li><a href="https://github.com/evanphx/benchmark-ips">benchmark-ips</a>, benchmarks a blocks iterations/second. For short snippits of code, ips automatically figures out how many times to run the code to get interesting data. No more guessing at random iteration counts!</li>
+<li><a href="https://github.com/ko1/allocation_tracer">allocation_tracer</a>, allows to trace object allocation.</li>
+</ul>
+
+
+<p><a href="https://speakerdeck.com/tenderlove/gao-du-nakodo">Slide on speakerdeck</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -7,8 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" dir /s /b >file.txt /s指定されたディレクトリおよびそのサブディレクトリのすべてのファイルを表示します。
-/bは拡張子とディレクト付きのファイル名を表示します。 2010-03-19 Windows ">
+	<meta name="description" content="Declare a variable 1
+2
+$my_variable;
+$my_variable = 3; Name it in your script, when PHP first sees a variable&#8217;s name in a script, it &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +92,216 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/php-basic-variables-datatypes-operators-constant">PHP Basic - Variables, Datatypes, Operators and Constants</a></h1>
+	<div class="entry-content">
+		<h2>Declare a variable</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$my_variable;</span>
+</span><span class='line'><span class="x">$my_variable = 3;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Name it in your script, when PHP first sees a variable&#8217;s name in a script, it automatically creates the variable at that point.
+If you don&#8217;t initialize a variable in PHP, it&#8217;s given the default value of null.</p>
+
+<h2>Data Types</h2>
+
+<h3>Special Data Type</h3>
+
+<p>NULL : May only contain &#8216;null&#8217; as a value, meaning the variable explicitly does not contain any value
+Resource : Contains a reference to an external resource, such as a file or database</p>
+
+<p>Be careful, NULL is a data type.</p>
+
+<h3>Testing the Type of a Variable</h3>
+
+<ul>
+<li><p>gettype($x)
+It returns as a string.</p></li>
+<li><p>is_int( value )</p></li>
+<li>is_string( value )</li>
+<li>is_float( value )</li>
+<li>is_bool( value )</li>
+<li>is_array( value )</li>
+<li>is_object( value )</li>
+<li>is_resource( value )</li>
+<li>is_null( value )</li>
+</ul>
+
+
+<p>Returns true or false.</p>
+
+<h2>Changing a Variable&#8217;s Data Type</h2>
+
+<p>To use settype() , pass in the name of the variable you want to
+alter, followed by the type to change the variable to (in quotation marks).
+Assigning different values to the variable can also change the variable&#8217;s data type.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$test_var = 8.23;</span>
+</span><span class='line'><span class="x">settype( $test_var, &quot;string&quot; );</span>
+</span><span class='line'><span class="x">settype( $test_var, &quot;boolean&quot; );</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>after converting $test_var to a Boolean, it contains the value true
+(which PHP displays as 1 ). This is because PHP converts a non-zero number to the Boolean value true.</p>
+
+<h3>Changing Type by Casting</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$test_var</span> <span class="o">=</span> <span class="mf">8.23</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
+</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">boolean</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;1&quot;</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also cast a value to an integer,
+floating-point, or string value using three PHP functions:
+|# Functions|# Description|
+|intval( value )|Returns value cast to an integer|
+|floatval( value )|Returns value cast to a float|
+|strval( value )|Returns value cast to a string|</p>
+
+<p>intval() has another use: converting from a non?base-10 integer to a base-10 integer.
+For example, this code convert base-16 number &#8220;ff&#8221; to base-10 number.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo intval(&quot;ff&quot;, 16); // Displays &quot;255&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Operator</h2>
+
+<h3>Assignment Operators</h3>
+
+<p>For concatenation strings, using &#8220;.=&#8221; instead of &#8220;.+&#8221;.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$a = &quot;Start a sentence&quot;;</span>
+</span><span class='line'><span class="x">$b = &quot;and finish it.&quot;;</span>
+</span><span class='line'><span class="x">$a .= $b; // $a now contains &quot;Start a sentence and finish it.&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bitwise Operators</h3>
+
+<p>passed&#8230;</p>
+
+<h3>Comparison Operators</h3>
+
+<ul>
+<li><p>=== (identical)
+true if $x equals $y and they are of the
+same type; false otherwise</p></li>
+<li><p>!== (not identical)
+true if $x does not equal $y or they are not
+of the same type; false otherwise</p></li>
+</ul>
+
+
+<h3>Logical Operators</h3>
+
+<p>PHP considers the following values to be false :
++  The literal value false
++  The integer zero ( 0 )
++  The float zero ( 0.0 )
++  An empty string ( &#8221; &#8221; )
++  The string zero ( &#8220;0&#8221; )
++  An array with zero elements
++  The special type null (including any unset variables)
++  A SimpleXML object that is created from an empty XML tag (more on SimpleXML in -Chapter 19 )
+All other values are considered true in a Boolean context.</p>
+
+<p>Addtion to the &#8220;traditional&#8221; logical operators such as &#8220;&amp;&amp;&#8221; and &#8220;||&#8221;,
+PHP also have &#8220;and&#8221;, &#8220;or&#8221; and &#8220;xor&#8221;.
++  xor
+true if $x or $y (but not both) evaluates to true ; false
+otherwise</p>
+
+<h3>String Operators</h3>
+
+<p>There ’ s really only one string operator, and that ’ s the concatenation operator - .(dot).This operator simply
+takes two string values, and joins the right - hand string onto the left - hand one to make a longer string.</p>
+
+<h2>Operator Precedence</h2>
+
+<p>Almost the same except that the logical operator: &#8220;and&#8221; > &#8220;xor&#8221; > &#8220;or&#8221;
+has the lowest precedence.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$x = false || true; // $x is true</span>
+</span><span class='line'><span class="x">$x = false or true; // $x is false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the second line, the &#8220;=&#8221; has higher precedence than &#8220;or&#8221;.</p>
+
+<h2>Constants</h2>
+
+<p>Constants may only contain scalar values such as Boolean, integer, float, and string (not values such as arrays and objects).</p>
+
+<p>Constants do not start with the dollar sign</p>
+
+<p>To define a constant, use the define() function.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">define(&quot;MY_CONSTANT&quot;,&quot;19&quot;); // MY_CONSTANT always has the string value &quot;19&quot;</span>
+</span><span class='line'><span class="x">echo MY_CONSTANT; // Displays &quot;19&quot; (note this is a string, not an integer)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-24T00:00:00+09:00" pubdate data-updated="true">2010-03-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -724,56 +936,6 @@ JSPのコメント式を記述します。
 
 
 	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/is-cross-linking-websites-bad">クロスサイトのリンクはいいか悪いか</a></h1>
-	<div class="entry-content">
-		<h2>Question</h2>
-
-<p>If I have 3 websites, Is there a problem to cross link websites?</p>
-
-<h2>Answer by Google Webmaster Central</h2>
-
-<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
-
-
-<p>要はサイト間の&#8221;関連性&#8221;が一番大事です。
-関連性があればOKで、なければ無意味って感じです。</p>
-
-<h3>「海外SEO情報ブログ」からの訳文</h3>
-
-<blockquote><p>サイト同士に何らかの関連性があるかが問題だね。</p><p>1つがドライクリーニングのサイト、もう1つが古美術のサイト、もう1つが携帯レビューのサイトだとしたら、ページの下にリンクがあるのは奇妙だ。<br/>漫画のサイトを見ていたのに、ページの最後に行ったら自動車保険やコーヒーテーブルのサイトへのリンクが突然出てくるのは、何にも関係がない。</p><p>「どのくらい関連性があるのか」をまず先に考えてほしい。</p><p>3つのサイトで相互リンクしてもたいした数じゃないから、大きな問題にはならないと思う。<br/>でも、30サイト、300サイトでクロスリンクしていたら、「何の関係があるんだろうか」と一般のユーザーも競合も不思議に思うだろう。</p><p>紳士洋服・婦人洋服・子供洋服がクロスリンクしあうのは、関連があるから完全に理由がある。<br/>同じ企業傘下にある会社同士も、正当な理由があるから問題があるとは思えない。<br/>少ない数だったらまだいいかもしれないけど、サイトの規模が大きくなるに連れてページの下に大量のリンクが出現するのは良くないね。</p></blockquote>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-15T00:00:00+09:00" pubdate data-updated="true">2010-02-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/seo/'>SEO</a>
 
 
 </div>
