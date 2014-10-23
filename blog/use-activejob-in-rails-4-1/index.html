@@ -1,0 +1,274 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Use ActiveJob in Rails 4.1 - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="ActiveJob is the headline feature in Rails 4.2, the Active Job Basics on RailsGuides explains the philosophy and usage very well, make sure you’ve &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Use ActiveJob in Rails 4.1</h1>
+	<div class="entry-content"><p>ActiveJob is <a href="http://weblog.rubyonrails.org/2014/8/20/Rails-4-2-beta1/">the headline feature in Rails 4.2</a>, the <a href="http://edgeguides.rubyonrails.org/active_job_basics.html">Active Job Basics on RailsGuides</a> explains the philosophy and usage very well, make sure you’ve checked that first. However there’re some gochas if you want to use it right now in your Rails 4.1 app. Here I’m gonna show you how to install it in 4.1, and things you need to take extra care of.</p>
+
+<h2>Install ActiveJob in Rails 4.1</h2>
+
+<p>Add <code>activejob</code> to your <code>Gemfile</code> then <code>bundle install</code>.</p>
+
+<p>Create a <code>active_job.rb</code> file under <code>config/initializers</code> and paste code below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;active_job&#39;</span>
+</span><span class='line'><span class="c1"># or any other supported backend such as :sidekiq or :delayed_job</span>
+</span><span class='line'><span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:inline</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should be abel to load ActiveJob in your rails app without error.</p>
+
+<p>Note that the one you installed is not <a href="https://github.com/rails/rails/tree/master/activejob">the one inside the rails repository</a>, that has a version of <a href="https://rubygems.org/gems/activejob/versions/4.2.0.beta2">4.2.0.beta2</a> same as Rails at the time of writing, the one you installed is <a href="https://rubygems.org/gems/activejob/versions/0">version 0</a>. You can find the archived source code from its <a href="https://github.com/rails/activejob">original repository</a>.</p>
+
+<h2>Creating a Job</h2>
+
+<p>To create a job, you have to manually create the <code>app/jobs</code> folder first, then follow the same naming convention to create your job class file like <code>app/jobs/guests_cleanup_job.rb</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">GuestsCleanupJob</span> <span class="o">&lt;</span> <span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'><span class="err">  </span><span class="n">queue_as</span> <span class="ss">:default</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">  </span><span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'><span class="err">    </span><span class="c1"># Do something later</span>
+</span><span class='line'><span class="err">  </span><span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Enqueuing the Job</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">GuestsCleanupJob</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</span><span class='line'><span class="no">GuestsCleanupJob</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Differences between latest ActiveJob</h2>
+
+<ul>
+<li>no rails generator for jobs.</li>
+<li>no callback mechanism like <code>before_enqueue</code>, <code>before_perform</code> etc.</li>
+<li>doesn’t load itself to rails app by default, that’s why you need a initializer to load it manually.</li>
+<li>enqueue syntax is slightly different, in Rails 4.2.beta2 <code>enqueue</code> has changed to <code>perform_later</code>.</li>
+<li>internally it’s using <a href="https://github.com/rails/activemodel-globalid">activemodel-globalid</a> instead of <a href="https://github.com/rails/globalid">GlobalID</a>(GlobalID is renamed from activemodel-globalid).</li>
+<li>setting backend syntax is slightly different</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Rails 4.2.beta2</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">active_job</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:delayed_job</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Rails 4.1</span>
+</span><span class='line'><span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:delayed_job</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>p.s. I haven’t checked ActionMailer. I’m currently using it with DelayedJob and so far so good.</p>
+
+<h2>Summary</h2>
+
+<p>ActiveJob is very convenient, it provides a unified interface for the job infrastructure that allows you to switch the backend easily.</p>
+
+<p>But as you can see there’re <strong>big diffs between the latest  developed version and the one now we’re able to install in Rails 4.1.</strong></p>
+
+<p>Is it worth it to make the effort to try it now, and push these small upcoming changes when you upgrade to Rails 4.2 to your mental stack? My suggestion is <strong>if you’re just right about to implement a queue system and willing to adapt to it, then it’s OK</strong>, otherwise maybe better just leave the current app running as is and wait for a more mature timing.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-22T18:16:00+09:00" pubdate data-updated="true">2014-10-22</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/use-activejob-in-rails-4-1/';
+        var disqus_url = 'http://kinopyo.com/blog/use-activejob-in-rails-4-1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

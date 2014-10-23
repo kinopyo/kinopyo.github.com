@@ -7,10 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="I was wondering why people explicitly specify table name in such a scope definition&#8230; 1
-2
-3
-class Answer &lt; ActiveRecord::Base scope :recent &hellip;">
+	<meta name="description" content="Overview If you wanna execute some ruby code in rails environment, say manipulate w/ model or something, you can always try rake task first. But &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +89,83 @@ class Answer &lt; ActiveRecord::Base scope :recent &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/run-ruby-script-in-rails-environment/">Run Ruby Script in Rails Environment</a></h1>
+	<div class="entry-content">
+		<h2>Overview</h2>
+
+<p>If you wanna execute some ruby code in rails environment, say manipulate w/ model or something, you can always try <code>rake task</code> first. But there&#8217;re circumstances you don&#8217;t want to use it, maybe it&#8217;s just a one-time script that you don&#8217;t want to save it to git, or whatever.</p>
+
+<p>I&#8217;ve found out there&#8217;re two simple ways to accomplish it.</p>
+
+<h2>require config/environment.rb</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># test.rb</span>
+</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;config/environment&quot;</span>
+</span><span class='line'><span class="nb">p</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in terminal</span>
+</span><span class='line'><span class="n">ruby</span> <span class="nb">test</span><span class="o">.</span><span class="n">rb</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>use rails runner</h2>
+
+<p><a href="http://guides.rubyonrails.org/command_line.html#rails-runner">Rails Guides about rails runner</a></p>
+
+<blockquote><p>runner runs Ruby code in the context of Rails non-interactively. For instance:</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="s2">&quot;p User.first&quot;</span>
+</span><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="n">some_ruby_script</span><span class="o">.</span><span class="n">rb</span>
+</span><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="o">-</span><span class="n">e</span> <span class="n">staging</span> <span class="s2">&quot;Model.long_running_method&quot;</span>
+</span><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="o">-</span><span class="n">h</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>You can also use the alias “r” to invoke the runner: <code>rails r</code>.</p></blockquote>
+
+<p>I failed to call <code>rails r</code> on Rails 3.0.10, maybe it&#8217;s above 3.1+.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-29T18:04:00+09:00" pubdate data-updated="true">2012-06-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/script/'>script</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -526,56 +600,6 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 
 
 	<a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/iphone4s/'>iphone4s</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ipad2-softbank-wifi-spot-2-year">iPad2とソフトバンクWi-Fiスポット(2years)</a></h1>
-	<div class="entry-content">
-		<p>iPad2でたまに駅とかでソフトバンクのWifiスポットへのアクセス画面が出てきて、気になって使えるかを調べたんです。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/20100606_softbankWifi.gif"></p>
-
-<h2>利用するには</h2>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2012/01/Screen-Shot-2012-01-08-at-下午11.43.39.jpg"></p>
-
-<blockquote><p>iPad Wi-Fiモデルを、ソフトバンクショップ、アップルストア、アップルオンラインストア並びに一部の量販店でご購入のお客さまには、最大2年間ソフトバンクWi-Fiスポットを無料で提供します。</p></blockquote>
-
-
-<p>自分場合当時アップルストアで購入したのですが、iPad2の個装底面にはシールがありませんでした。上記の説明の「一部の量販店」の部分が曖昧だっだので、ソフトバンクのスタッフに聞いたら、とりあえず<strong>ソフトバンクのショップで買わないとほとんどはwifiスポットを提供しない</strong>らしいです。また<strong>iPadのモデルがそもそも違うので他にWifi加入とかの申し込みも全然できない</strong>です。</p>
-
-<p>そこの説明文は全然嘘ということでした。</p>
-
-<p>関連リンク：<a href="http://mb.softbank.jp/mb/ipad/service/wi-fi/">http://mb.softbank.jp/mb/ipad/service/wi-fi/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-08T00:00:00+09:00" pubdate data-updated="true">2012-01-08</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ipad/'>iPad</a>, <a class='category' href='/blog/categories/ipad/'>ipad</a>, <a class='category' href='/blog/categories/wifi/'>wifi</a>
 
 
 </div>

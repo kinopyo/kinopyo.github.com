@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-09-23T18:28:21+09:00</updated>
+  <updated>2014-10-23T21:29:11+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Use ActiveJob in Rails 4.1]]></title>
+    <link href="http://kinopyo.com/blog/use-activejob-in-rails-4-1/"/>
+    <updated>2014-10-22T18:16:00+09:00</updated>
+    <id>http://kinopyo.com/blog/use-activejob-in-rails-4-1</id>
+    <content type="html"><![CDATA[<p>ActiveJob is <a href="http://weblog.rubyonrails.org/2014/8/20/Rails-4-2-beta1/">the headline feature in Rails 4.2</a>, the <a href="http://edgeguides.rubyonrails.org/active_job_basics.html">Active Job Basics on RailsGuides</a> explains the philosophy and usage very well, make sure you’ve checked that first. However there’re some gochas if you want to use it right now in your Rails 4.1 app. Here I’m gonna show you how to install it in 4.1, and things you need to take extra care of.</p>
+
+<h2>Install ActiveJob in Rails 4.1</h2>
+
+<p>Add <code>activejob</code> to your <code>Gemfile</code> then <code>bundle install</code>.</p>
+
+<p>Create a <code>active_job.rb</code> file under <code>config/initializers</code> and paste code below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;active_job&#39;</span>
+</span><span class='line'><span class="c1"># or any other supported backend such as :sidekiq or :delayed_job</span>
+</span><span class='line'><span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:inline</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should be abel to load ActiveJob in your rails app without error.</p>
+
+<p>Note that the one you installed is not <a href="https://github.com/rails/rails/tree/master/activejob">the one inside the rails repository</a>, that has a version of <a href="https://rubygems.org/gems/activejob/versions/4.2.0.beta2">4.2.0.beta2</a> same as Rails at the time of writing, the one you installed is <a href="https://rubygems.org/gems/activejob/versions/0">version 0</a>. You can find the archived source code from its <a href="https://github.com/rails/activejob">original repository</a>.</p>
+
+<h2>Creating a Job</h2>
+
+<p>To create a job, you have to manually create the <code>app/jobs</code> folder first, then follow the same naming convention to create your job class file like <code>app/jobs/guests_cleanup_job.rb</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">GuestsCleanupJob</span> <span class="o">&lt;</span> <span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'><span class="err">  </span><span class="n">queue_as</span> <span class="ss">:default</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">  </span><span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'><span class="err">    </span><span class="c1"># Do something later</span>
+</span><span class='line'><span class="err">  </span><span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Enqueuing the Job</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">GuestsCleanupJob</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</span><span class='line'><span class="no">GuestsCleanupJob</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Differences between latest ActiveJob</h2>
+
+<ul>
+<li>no rails generator for jobs.</li>
+<li>no callback mechanism like <code>before_enqueue</code>, <code>before_perform</code> etc.</li>
+<li>doesn’t load itself to rails app by default, that’s why you need a initializer to load it manually.</li>
+<li>enqueue syntax is slightly different, in Rails 4.2.beta2 <code>enqueue</code> has changed to <code>perform_later</code>.</li>
+<li>internally it’s using <a href="https://github.com/rails/activemodel-globalid">activemodel-globalid</a> instead of <a href="https://github.com/rails/globalid">GlobalID</a>(GlobalID is renamed from activemodel-globalid).</li>
+<li>setting backend syntax is slightly different</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Rails 4.2.beta2</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">active_job</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:delayed_job</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Rails 4.1</span>
+</span><span class='line'><span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:delayed_job</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>p.s. I haven’t checked ActionMailer. I’m currently using it with DelayedJob and so far so good.</p>
+
+<h2>Summary</h2>
+
+<p>ActiveJob is very convenient, it provides a unified interface for the job infrastructure that allows you to switch the backend easily.</p>
+
+<p>But as you can see there’re <strong>big diffs between the latest  developed version and the one now we’re able to install in Rails 4.1.</strong></p>
+
+<p>Is it worth it to make the effort to try it now, and push these small upcoming changes when you upgrade to Rails 4.2 to your mental stack? My suggestion is <strong>if you’re just right about to implement a queue system and willing to adapt to it, then it’s OK</strong>, otherwise maybe better just leave the current app running as is and wait for a more mature timing.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RubyKaigi 2014 - 3 Good Talks for Rails Developers]]></title>
@@ -903,9 +996,9 @@ release cycles is 311 days so statistically there are still around 100 days left
   
   <entry>
     <title type="html"><![CDATA[なぜ電車に乗ると眠くなるのか]]></title>
-    <link href="http://kinopyo.com/blog/%E3%81%AA%E3%81%9B%E3%82%99%E9%9B%BB%E8%BB%8A%E3%81%AB%E4%B9%97%E3%82%8B%E3%81%A8%E7%9C%A0%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%8B/"/>
+    <link href="http://kinopyo.com/blog/%E3%81%AA%E3%81%9C%E9%9B%BB%E8%BB%8A%E3%81%AB%E4%B9%97%E3%82%8B%E3%81%A8%E7%9C%A0%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%8B/"/>
     <updated>2013-02-21T21:05:00+09:00</updated>
-    <id>http://kinopyo.com/blog/なぜ電車に乗ると眠くなるのか</id>
+    <id>http://kinopyo.com/blog/なぜ電車に乗ると眠くなるのか</id>
     <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/sleepy_on_the_train.jpg" alt="" /></p>
 
 <p>最近はよく8時間寝ても朝電車に乗るとまた眠くなっちゃうんですよ。なぜなのかな？自分の精神力が弱い？それとも科学的に説明できる一般的な現象？というのを少し調べたのでここで簡単にまとめたいと思います。</p>
@@ -1027,9 +1120,9 @@ release cycles is 311 days so statistically there are still around 100 days left
   
   <entry>
     <title type="html"><![CDATA[ビブリア古書堂の事件手帖の漫画を買った]]></title>
-    <link href="http://kinopyo.com/blog/%E3%83%92%E3%82%99%E3%83%95%E3%82%99%E3%83%AA%E3%82%A2%E5%8F%A4%E6%9B%B8%E5%A0%82%E3%81%AE%E4%BA%8B%E4%BB%B6%E6%89%8B%E5%B8%96%E3%81%AE%E6%BC%AB%E7%94%BB%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/"/>
+    <link href="http://kinopyo.com/blog/%E3%83%93%E3%83%96%E3%83%AA%E3%82%A2%E5%8F%A4%E6%9B%B8%E5%A0%82%E3%81%AE%E4%BA%8B%E4%BB%B6%E6%89%8B%E5%B8%96%E3%81%AE%E6%BC%AB%E7%94%BB%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/"/>
     <updated>2013-02-12T23:40:00+09:00</updated>
-    <id>http://kinopyo.com/blog/ビブリア古書堂の事件手帖の漫画を買った</id>
+    <id>http://kinopyo.com/blog/ビブリア古書堂の事件手帖の漫画を買った</id>
     <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/biblia_bookstore.jpg" alt="ビブリア古書堂の事件手帖" /></p>
 
 <p>昨日本屋に行って表紙に惹かれつい買ってしまった。</p>
@@ -1039,31 +1132,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 <p><img src="http://cdn.kinopyo.com/images/biblia_drama.jpg" alt="ビブリア古書堂の事件手帖 ドラマ化" /></p>
 
 <p>ちなみにドラマ化になったのはよしとして、この女優さんはあまりにも似てないじゃないですか？！！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LINK: The first step is to start]]></title>
-    <link href="http://kinopyo.com/blog/link%3A-the-first-step-is-to-start/"/>
-    <updated>2013-02-10T01:42:00+09:00</updated>
-    <id>http://kinopyo.com/blog/link:-the-first-step-is-to-start</id>
-    <content type="html"><![CDATA[<h2>Off the topic</h2>
-
-<p>Sometimes when I find something in the internet that is really interesting and inspiring, normally I&#8217;d like to write a blog post about it, but then I may get lazy and just somehow give up or totally forget it. That&#8217;s one thing I want to improve.</p>
-
-<p>So from today I&#8217;m gonna try this &#8220;light weight&#8221; post, just share a link and perhaps plus one phrase of my comment. Sure it could be done in a tweet, but I just wanna keep it in my blog.</p>
-
-<h2>The first step is to start</h2>
-
-<p><a href="http://37signals.com/svn/posts/2538-the-first-step-is-to-start">The first step is to start by Jason Z. of 37signals</a></p>
-
-<blockquote><p>Many times the reasons we don’t start something have nothing to do with lack of skills, materials, or facilities. The real blockers are self-criticism and excuses.</p></blockquote>
-
-<p>Totally non related to the quote above&#8230;but if you read the link you&#8217;ll understand what am I talking about next..</p>
-
-<p>When I was a child I used to draw a lot, I still remember an afternoon in Summer I just sit there and kept drawing for 5 hours, I was completely in the &#8220;flow&#8221;, if I put it in the current popular terms, and totally forgot how could time pass so fast. I also organized an event to get my friends together in a weekend to draw together, at that time I was trying to draw my own manga story of Doraemon. But when passing into adolescence I didn&#8217;t remember why but somehow I stopped drawing.</p>
-
-<p>Oops that is more than &#8220;one phrase&#8221; =_=;;</p>
 ]]></content>
   </entry>
   

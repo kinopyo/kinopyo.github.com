@@ -7,7 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" Let&#8217;s remember the day Steve Jobs passed away. I do write a mail to rememberingsteve@apple.com, did you? 2011-10-06 Mac, apple, steve jobs ">
+	<meta name="description" content="git pullとかgit mergeでコンフリクトとなったファイルを編集して、git add、git commitすればいいです。コミットメッセージも必要です。
+git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
+￼
+コミットログはこんな感じです。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +92,58 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/git-what-to-do-when-merge-conflict">Git コンフリクトになった場合の対処</a></h1>
+	<div class="entry-content">
+		<p>git pullとかgit mergeでコンフリクトとなったファイルを編集して、git add、git commitすればいいです。コミットメッセージも必要です。
+git mergetoolでビジュアルのDiffソフトで差分を見れたり修正したりできます。
+￼
+コミットログはこんな感じです。SVNとは違ってコミットログに残るのが何か慣れないです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git log --oneline
+</span><span class='line'>63bc3d1 fixed merge conflict
+</span><span class='line'>bbfdd9e edit in master
+</span><span class='line'>3dcfb2f edit in work
+</span><span class='line'>9eedc58 made a</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/conflict/'>conflict</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/merge/'>merge</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -548,45 +603,6 @@ rvmでの紹介を引用しますと：</p>
 
 
 	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/chrome14-support-fullscreen-in-lion">Chrome14がLionのフルスクリーンを対応しました</a></h1>
-	<div class="entry-content">
-		<p>今までの全画面とは違い、Chrome14ではLionのフルスクリーンに対応しました。これは全画面対応アプリとして1枚の仮想スクリーンを占有することになり、左右の四本指スワイプで他の全画面アプリやデスクトップと楽に切り替えられます。</p>
-
-<p>また上にマウスオーバーするとPIN固定できるボタンがあります。クリックするとアドレスバーやタブバーなどが表示するように固定されます。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/chrome-full-screen-in-lion.jpg" title="chrome-full-screen-in-lion" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/lion/'>Lion</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
 
 
 </div>

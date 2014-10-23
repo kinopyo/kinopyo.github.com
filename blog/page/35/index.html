@@ -7,13 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="誤った使い方 例えばbind時にname変数に格納された情報を渡したい 1
-2
-3
-4
-var name = "kinopyo";
-$(":button").bind("click", function(name){ alert(name);
-}); これは誤った使い方です。 &hellip;">
+	<meta name="description" content="Flexのtrace()はログ出力の機能です。 Javaに慣れましたので、trace()もてっきりコンソールにも 出力すると思っちゃいましたが、 実はそうではありません。 trace()を使うにはまず設定が必要です。 バージョン情報 Flex3 Builder: Version 3.0 ( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +89,223 @@ $(":button").bind("click", function(name){ alert(name);
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex3-settings-trace-log-be-careful-of-windows-hidden-folder">Flex3: trace()ログ出力の設定、Windowsの隠しフォルダに注意</a></h1>
+	<div class="entry-content">
+		<p>Flexのtrace()はログ出力の機能です。</p>
+
+
+<p>Javaに慣れましたので、trace()もてっきりコンソールにも</p>
+
+
+<p>出力すると思っちゃいましたが、</p>
+
+
+<p>実はそうではありません。</p>
+
+
+<p>trace()を使うにはまず設定が必要です。</p>
+
+
+<h2>バージョン情報</h2>
+
+<ul>
+<li>Flex3 Builder: Version 3.0 (build 3.0.2.214193)</li>
+<li>Flash Player: 9,0,124,0</li>
+</ul>
+
+
+<h2>デバッガ版のFlash Player</h2>
+
+<p>Flex3 Builderをダウンロードしそこに含んだ</p>
+
+
+<p>for IE, FirefoxなどのFlash Playerを全部インストールしてください。</p>
+
+
+<p>そのほうが万全で楽です。</p>
+
+
+<p>既にFlash Playerがインストールされたとしても、</p>
+
+
+<p>それがデバッガ版じゃないとダメですよ。</p>
+
+
+<h2>設定ファイルの作成</h2>
+
+<ul>
+<li><code>mm.cfg</code>という設定ファイルを下記場所に作成</li>
+</ul>
+
+
+<table>
+<tr><th>オペレーティングシステム</th><th>ファイルの作成場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Library/Application Support/Macromedia </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f1" name="fn1" title="AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み">*1</a></span></td><td>C:\Users\username </td></tr>
+<tr><td>Windows 2000/XP</td><td>C:\Documents and Settings\username </td></tr>
+<tr><td>Windows 95/98/ME</td><td>%HOMEDRIVE%\%HOMEPATH% </td></tr>
+<tr><td>Linux</td><td>/home/username </td></tr>
+</table>
+
+
+<h2>設定ファイルの編集</h2>
+
+<p>作成したmm.cfgファイルを下記のように編集すれば、エラーのレポートとトレースログが有効になります。</p>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorReportingEnable=1
+</span><span class='line'>TraceOutputFileEnable=1</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>TraceOutputFileNameというログファイルの名前と出力先を指定するプロパティもありますが、</p>
+
+
+<blockquote title="Adobe Flex3 ヘルプ" cite="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337">
+<p>Flash Player 9 Update 以降では、TraceOutputFileName プロパティは無視され、</p>
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+<cite><a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex3 ヘルプ</a></cite></blockquote>
+
+
+<p>との懸念もあり、各自の環境を確認した上でお使いください。</p>
+
+
+<p>私のFLex3 Builder, Flash 9では無効でした。</p>
+
+
+<h2>ログファイルの場所</h2>
+
+<p>オペレーティングシステムごとに異なるハードコードされた場所に flashlog.txt ファイルが格納されます。</p>
+
+
+<table>
+<tr><th>オペレーティングシステム</th><th>ログファイルの場所</th></tr>
+<tr><td>Macintosh OS X</td><td>/Users/username/Library/Preferences/Macromedia/Flash Player/Logs/  </td></tr>
+<tr><td>Windows Vista/ <span style="color:#0000FF;">Windows7</span><span class="footnote"><a href="/kinopyo/#f2" name="fn2" title="AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み">*2</a></span></td><td>C:\Users\username\AppData\Roaming\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Windows 95/98/ME/2000/XP</td><td>C:\Documents and Settings\username\Application Data\Macromedia\Flash Player\Logs </td></tr>
+<tr><td>Linux</td><td>/home/username/.macromedia/Flash_Player/Logs/ </td></tr>
+</table>
+
+
+<p>Windowsの方は特に隠しフォルダに注意してください。</p>
+
+
+<p><span style="color:#0000FF;">Windows7のAppDataフォルダ、またその他WindowsのApplication Dataフォルダはデフォルトで隠しフォルダになっている</span>ため、</p>
+
+
+<p>先にフォルダ構成で隠しフォルダを表示させてから、ログファイルを確認してください。</p>
+
+
+<h2>テストコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span><span class="nt">&lt;/span&gt;</span>?xml version=<span class="ni">&amp;#34;</span>1.0<span class="ni">&amp;#34;</span> encoding=<span class="ni">&amp;#34;</span>utf-8<span class="ni">&amp;#34;</span>?<span class="ni">&amp;#62;</span>
+</span><span class='line'><span class="nt">&lt;mx:Application</span> <span class="na">xmlns:mx=</span><span class="s">&amp;#34;http://www.adobe.com/2006/mxml&amp;#34;</span>
+</span><span class='line'><span class="na">layout=</span><span class="s">&amp;#34;absolute&amp;#34;</span> <span class="na">creationComplete=</span><span class="s">&amp;#34;init()&amp;#34;&amp;#62;</span>
+</span><span class='line'><span class="err">&lt;</span><span class="na">mx:Script</span><span class="err">&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span><span class='line'><span class="err">&lt;![</span><span class="na">CDATA</span><span class="err">[</span>
+</span><span class='line'><span class="err">&lt;</span><span class="na">private</span> <span class="na">function</span> <span class="na">init</span><span class="err">()</span><span class="na">:void</span><span class="err">{</span>
+</span><span class='line'><span class="na">trace</span><span class="err">(&amp;#</span><span class="na">34</span><span class="err">;</span><span class="na">Hello</span> <span class="na">World</span><span class="err">&amp;#</span><span class="na">34</span><span class="err">;);</span>
+</span><span class='line'><span class="err">}</span>
+</span><span class='line'><span class="err">]]&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span><span class='line'><span class="err">&lt;/</span><span class="na">mx:Script</span><span class="err">&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span><span class='line'><span class="err">&lt;/</span><span class="na">mx:Application</span><span class="err">&amp;#</span><span class="na">62</span><span class="err">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>これでログファイルには「Hello World」と出力されるはずです。</p>
+
+
+<h2>特記事項</h2>
+
+<p>こういう記事はGoogleで検索すればいっぱい出てくるはずで、</p>
+
+
+<p>自分でもう一回書こうと全然思わなかったのですが、</p>
+
+
+<p>OSやFlash Playerのバージョンで設定内容が異なり、</p>
+
+
+<p>私が最初見つかった幾つかのサイトでの書き方では</p>
+
+
+<p>どう設定してもまったくログが出力されなかったのです。</p>
+
+
+<p>アンインストールしたり、設定ファイルのエンコードまで</p>
+
+
+<p>神経質になってしまいました。</p>
+
+
+<p>その記事を書いた方々に別に文句はありませんが、やはり</p>
+
+
+<p><span style="font-size:large;font-weight:bold;">技術記事はバージョン情報の提示を心がけましょう。</span></p>
+
+
+<p>私もこれからは注意します。</p>
+
+
+<p>参考サイト：<a href="http://livedocs.adobe.com/flex/3_jp/html/help.html?content=logging_04.html#78337" target="_blank">Adobe Flex 3 ヘルプ</a></p>
+
+
+<p></div></p>
+
+<div class="footnote">
+<p class="footnote"><a href="/kinopyo/#fn1" name="f1">*1</a>：AdobeのサイトにはWindows7は載ってません、ここは私個人で検証済み</p>
+<p class="footnote"><a href="/kinopyo/#fn2" name="f2">*2</a>：AdobeのサイトにはWindows7は載ってません、ここも私個人で検証済み</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00+09:00" pubdate data-updated="true">2009-11-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1471,179 +1682,6 @@ IE6なんかもう早く下がってほしい。</p>
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-be-careful-when-using-extend">jQueryの$.extendに注意：$.extend({},target,option)と$.extend(target,option)の違い</a></h1>
-	<div class="entry-content">
-		<p>jQueryの$.extendはとても便利な機能です。</p>
-
-
-<p>jQueryのプラグインを作成する場合は以下の二つを利用します。</p>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="c1">//jQueryそのものを拡張する</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="c1">//jQueryエレメントに新しいメソッドを追加する。</span>
-</span><span class='line'><span class="c1">//（典型的なjQueryプラグインの作成方法）</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<p>今回検討するのは第三の使い方です。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">option</span><span class="p">,...);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>これは第一のパラメータのオブジェクトをどんどん拡張する意味です。</p>
-
-
-<p>実際のプログラミングではこんな使い方が両方あります。</p>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">option</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<br/>
-
-
-<p>違いは何でしょうか？</p>
-
-
-<br/>
-
-
-<h2>$.extend(target, option);</h2>
-
-<p>これはtargetそのものを拡張する意味です。</p>
-
-
-<p>実行後targetオブジェクトは変更(拡張)されます。</p>
-
-
-<br/>
-
-
-<p>実例として、例えばプロジェクトにトップレベルの空のConstansクラスがあります。</p>
-
-
-<p>その下で各モジュール要のconstantsが定義されていて、</p>
-
-
-<p>それをトップのConstantsに拡張します。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">constants</span><span class="p">,</span><span class="nx">subConstants1</span><span class="p">,</span><span class="nx">subConstants2</span><span class="p">...);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>落とし穴：</p>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">defaults</span><span class="p">,</span><span class="nx">option</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記ではdefaultsが変更され、わざわざ変数optsに代入する意味もなくなります。</p>
-
-
-<br/>
-
-
-<h2>$.extend({}, target, option);</h2>
-
-<p>これは空のオブジェクトを拡張する意味です。</p>
-
-
-<p>実行後、targetもoptionもかわらりません。</p>
-
-
-<p>最も多く使われている実例は、jQueryのプラグインの開発です。</p>
-
-
-<p>あるデフォルトのoptionを定義し、</p>
-
-
-<p>ユーザが自分のニーズにあったoptionがあればそれを適用する感じです。</p>
-
-
-<p>ここで大事なのは定義したデフォルトのoptionはかわりたくないのです。</p>
-
-
-<p>なので、最初に空のオブジェクトを拡張しそれを何かの変数に</p>
-
-
-<p>リファレンスをアサインします。</p>
-
-
-<br/>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">option</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span><span class="nx">defaults</span><span class="p">,</span><span class="nx">option</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで変数optsは求めているデフォルトoptionとユーザが定義したoptionをマージ、拡張したものとなります。</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-01T00:00:00+09:00" pubdate data-updated="true">2009-11-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

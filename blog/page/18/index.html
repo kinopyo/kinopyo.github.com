@@ -7,13 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="CakephpでXMLを配列に変換するのはとても簡単です。
-下記のファンクションを使えば一発でできます。 1
-2
-3
-uses(&#39;Xml&#39;);
-$xml = new Xml(&quot;/path/to/xml&quot;);
-$xml_array = Set::reverse &hellip;">
+	<meta name="description" content="もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
+ブログのRSS登録者を50%増やすシンプルな6つの方法 | Last Day. jpを読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +90,62 @@ $xml_array = Set::reverse &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/using-wordpress-plugin-fo-my-social-bookmark-button">WP Social Bookmarking Lightでブログのソーシャルブックマークボタン</a></h1>
+	<div class="entry-content">
+		<p>もともと勉強の目的もあって当サイトのFacebookのLikeボタンやTwitterボタンを全部手書きで用意したのですが、
+<a href="http://www.lastday.jp/2011/05/16/increase-number-of-rss">ブログのRSS登録者を50%増やすシンプルな6つの方法 | Last Day. jp</a>を読んでmixiやグリーなども一応設置したほうがいいかもと思いまして実践しました。
+FacebookとTwitter、はてなはもちろん、グリー、EvernoteやDeliciousなどまで対応してて便利ですよ。</p>
+
+<p><a href="http://www.ninxit.com/blog/2010/06/13/wp-social-bookmarking-light/">WordPressにソーシャルブックマークボタンを楽々設置：WP Social Bookmarking Light | ninxit.blog</a></p>
+
+<h2>設定</h2>
+
+<p>設定方法はとても簡単です。WPの設定画面でWP Social Bookmarking Lightを選択肢
+下記のように必要なサービスを左にドラッグ＆ドロップすればOKです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-16-at-16.42.55.png" title="WP Social Bookmarking Light Settings" ></p>
+
+<h3>General Settingタブ</h3>
+
+<p>「Singular」がDisabledにすれば記事の一覧ページにもボタンが反映するようになりますが、そうすると画面の読み込みが結構重くなるようでデフォルトのEnableのままにしています。</p>
+
+<h3>Facebookタブ</h3>
+
+<p>LikeボタンのVersionはデフォルトは「XFBML」となっていますが、XFBMLはもう廃止予定なのでiFrameに変更します。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/WP-Social-Bookmarking-Light-Facebook-Setting.jpg" title="WP Social Bookmarking Light Facebook Setting" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-16T00:00:00+09:00" pubdate data-updated="true">2011-05-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>, <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/evernote/'>evernote</a>, <a class='category' href='/blog/categories/hatena/'>hatena</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -698,75 +749,6 @@ mysqlにログインして下記コマンドを実行：</p>
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/cakephp-and-strict-standards">CakePHP, and Strict Standards</a></h1>
-	<div class="entry-content">
-		<p>MacportでPHPをインストールし、CakePHPを動かしたら「Strict Standards」エラーが出ました。
-当時のエラー本文は残ってませんので、Googleで検索したエラー本文を貼り付けます。パス以外は同じのはずです。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/basics.php on line 279
-</span><span class='line'>Strict Standards: Redefining already defined constructor for class Object in /Applications/MAMP/htdocs/xxxx/cake/libs/object.php on line 65
-</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/object.php on line 92
-</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/inflector.php on line 65
-</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/configure.php on line 96
-</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/configure.php on line 154
-</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/cache.php on line 71
-</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/cache.php on line 157
-</span><span class='line'>Strict Standards: Non-static method Configure::getInstance() should not be called statically in /Applications/MAMP/htdocs/xxxx/cake/bootstrap.php on li
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解決方法</h2>
-
-<p>これはCakePHPの問題ではなく、PHPのerror_reportingの設定問題だそうです。
-php.iniを開いて<strong>error_reporting</strong>で検索します。
-値を<strong>E_ALL</strong>に変更すれば解決です。</p>
-
-<p>ちなみにMacportでPHPをインストールしたときのphp.iniパスは<strong>/opt/local/etc/php5/php.ini</strong>になります。</p>
-
-<h2>参考リンク</h2>
-
-<p><a href="http://oldblog.awpny.com/2007/12/mamp-php5-cakephp-and-strict-standards/">http://oldblog.awpny.com/2007/12/mamp-php5-cakephp-and-strict-standards/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-17T00:00:00+09:00" pubdate data-updated="true">2011-03-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>

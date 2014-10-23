@@ -7,10 +7,21 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Declare a variable 1
+	<meta name="description" content="DOM操作を避けてjQueryのパフォーマンスを改善する掟です。
+こんなコードがあるとしましょう。 パフォーマンスの悪い例 1
 2
-$my_variable;
-$my_variable = 3; Name it in your script, when PHP first sees a variable&#8217;s name in a script, it &hellip;">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+var list = *....*; // 長さ100の配列とする for (var i in list) { &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +103,114 @@ $my_variable = 3; Name it in your script, when PHP first sees a variable&#8217;s
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-performance-direct-dom-manipulatio">jQueryパフォーマンス：DOM操作について</a></h1>
+	<div class="entry-content">
+		<p>DOM操作を避けてjQueryのパフォーマンスを改善する掟です。
+こんなコードがあるとしましょう。</p>
+
+<h2>パフォーマンスの悪い例</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="o">*</span><span class="p">....</span><span class="o">*</span><span class="p">;</span>    <span class="c1">// 長さ100の配列とする</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">li</span><span class="p">)</span>
+</span><span class='line'>       <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">)</span>
+</span><span class='line'>       <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">list</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>改善したコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="o">*</span><span class="p">....</span><span class="o">*</span><span class="p">;</span>    <span class="c1">// 長さ100の配列とする</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">li</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li id=&#39;li&quot;</span> <span class="o">+</span> <span class="nx">i</span> <span class="s2">&quot;&#39;&gt;&quot;</span> <span class="o">+</span> <span class="nx">list</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span> <span class="o">+</span> <span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>まとめ</h2>
+
+<ul>
+<li>document.createElementの代わりにHTMLの文字列を作る</li>
+<li>jQueryオブジェクトに属性やテキストを設定するのではなく、直接HTML文字列に書く</li>
+<li>for文内毎回appendの代わりにhtml()を使う</li>
+</ul>
+
+
+<p>実際のプロジェクトでやってみたら10倍以上は速くなりました。
+とは言ってもこれはIE6でのパフォーマンスで、
+FirefoxやIE8だと悪い例のコードても遅いとは実感できないくらいでした。</p>
+
+<p>ちなみに
+$(li).attr(&#8230;).val(&#8230;).text(&#8230;)の方は読みやすいので結構気に入ったんですけど。。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-26T00:00:00+09:00" pubdate data-updated="true">2010-03-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -878,64 +997,6 @@ JSPのコメント式を記述します。
 
 
 	<a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/magic-mouse">MagicMouseを買いました</a></h1>
-	<div class="entry-content">
-		<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=fantasyday-22&o=9&p=8&l=as1&m=amazon&f=ifr&md=1X69VDGQCMF7Z30FM082&asins=B002TOJHB8" style="width:120px;height:240px;float:right;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" ></iframe>
-
-
-<p>マルチタッチがサポートされているマジックマウス、
-ついに購入しました。
-今のところはまだクリックとスクロールだけデフォルトで使えますが、
-そのうちフルパワーを発揮したいと思います。</p>
-
-<br/>
-
-
-<p>マルチタッチ以外でBluetoothが使えるのも私にとって大きなポイントです。
-今はACアダブタ以外にMacに接続する線などがなくなり
-整然とした感じです。
-ちなみにクリーニングも大変便利になりそうです。
-毛が立ってない布を使って表面を掃除できます。</p>
-
-<br/>
-
-
-<p>あとはゲームでもマルチタッチが使えるなら最高。。。</p>
-
-<p>以下写真を御覧下さい。
-<em>gallery link=&#8221;file&#8221;</em></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-16T00:00:00+09:00" pubdate data-updated="true">2010-02-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>
