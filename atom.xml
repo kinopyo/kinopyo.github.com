@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-10-23T21:29:11+09:00</updated>
+  <updated>2014-10-29T17:35:43+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -18,7 +18,7 @@
     <link href="http://kinopyo.com/blog/use-activejob-in-rails-4-1/"/>
     <updated>2014-10-22T18:16:00+09:00</updated>
     <id>http://kinopyo.com/blog/use-activejob-in-rails-4-1</id>
-    <content type="html"><![CDATA[<p>ActiveJob is <a href="http://weblog.rubyonrails.org/2014/8/20/Rails-4-2-beta1/">the headline feature in Rails 4.2</a>, the <a href="http://edgeguides.rubyonrails.org/active_job_basics.html">Active Job Basics on RailsGuides</a> explains the philosophy and usage very well, make sure you’ve checked that first. However there’re some gochas if you want to use it right now in your Rails 4.1 app. Here I’m gonna show you how to install it in 4.1, and things you need to take extra care of.</p>
+    <content type="html"><![CDATA[<p>ActiveJob is <a href="http://weblog.rubyonrails.org/2014/8/20/Rails-4-2-beta1/">the headline feature in Rails 4.2</a>, the <a href="http://edgeguides.rubyonrails.org/active_job_basics.html">Active Job Basics on RailsGuides</a> explains the philosophy and usage very well, make sure you’ve checked that first. However there’re some gotchas if you want to use it right now in your Rails 4.1 app. Here I’m gonna show you how to install it in 4.1, and things you need to take extra care of.</p>
 
 <h2>Install ActiveJob in Rails 4.1</h2>
 
