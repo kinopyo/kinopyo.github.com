@@ -7,10 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
-12月で1.68%でした。
-僅かな割合なんですが、それでもうれしいです。 WPTouch WPTouchはiPhone閲覧に最適にしてくれるWPプラグインです。
-インストールするだけでもうOKです。 &hellip;">
+	<meta name="description" content="jQueryでマウス右クリックを無効にする方法です。
+&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
+それのハンドラでreturn falseすることで簡単に実現できます。 1
+2
+3
+$(&quot;document&quot;). &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +94,52 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-disable-right-click">jQueryで右クリックを無効にする方法</a></h1>
+	<div class="entry-content">
+		<p>jQueryでマウス右クリックを無効にする方法です。
+&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
+それのハンドラでreturn falseすることで簡単に実現できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;contextmenu&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -712,63 +760,6 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/gavatar-global-avatar-webservice">Gavatar - グローバルなアバターウェブサービス</a></h1>
-	<div class="entry-content">
-		<p>Gravatar とは、ブログに投稿したりコメントしたりした時に、
-どのサイトでもあなたの名前の横に表示される画像です。</p>
-
-<br/>
-
-
-<p>Gravatarはメールアドレスをキーとしたアバター管理Webサービスです。
-自分のアバターをGravatarに登録すれば他のサイトでも汎用的に使えるんです。
-サイトごとにアバターをアップロードする手間がなくなるので結構便利です。
-例えばこのブログでもGravatarが使えるので、
-コメントの際にメールアドレスを入力すればGravatarで登録したアバターが表示されます。</p>
-
-<h2>公式サイト</h2>
-
-<p><a href="http://www.gravatar.com">http://www.gravatar.com</a></p>
-
-<p>一回登録し、アバターをアップロードしてください。
-複数のアバターをアップロードした場合はどのアバターを使うか選択できます。</p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/Gravatar.jpg" title="Gravatar" ></p>
-
-<p>良かったらGravatarに登録し、ここにコメントを入れてみてください。
-メールアドレスが同じであればGravatarに登録したアバターが表示されるはずです。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-17T00:00:00+09:00" pubdate data-updated="true">2009-12-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/webservice/'>webservice</a>
 
 
 </div>

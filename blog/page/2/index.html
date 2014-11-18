@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Can&#8217;t believe that I watched the 3.5 hours long keynote video of Google I/O 2013 developers.google.com/events/io/&mdash; kinopyoさん (@ &hellip;">
+	<meta name="description" content="Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,96 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/notes-on-fast-test-slow-test/">Notes on Fast Test, Slow Test</a></h1>
+	<div class="entry-content">
+		<p>Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work on a very large scale rails app. But it also introduces me to some very bad tests. Sometimes I found myself so difficult to add any spec, as it needs lots of extra efforts to make the fixture data, also one model got too many dependencies and collaborators, etc. I know it’s wrong, the code smells, just don’t know where to start.</p>
+
+<p>So when I watched this video “Fast Test, Slow Test” by <a href="https://twitter.com/garybernhardt">@garybernhardt</a>, who also runs <a href="https://www.destroyallsoftware.com/screencasts">DestroyAllSoftware screencast</a>, I found it very helpful and wanted to take some notes on it.</p>
+
+<div class="video-container">
+<iframe width="640" height="480" src="http://www.youtube.com/embed/RAxiiRPHS9k?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h1>Three Goals in Testing</h1>
+
+<ul>
+<li>Prevent Regression</li>
+<li>Prevent Fear</li>
+<li>Prevent Bad Design</li>
+</ul>
+
+
+<h1>How to Fail in Testing</h1>
+
+<ul>
+<li>Selenium as primary testing</li>
+<li>“Units Test” are too large</li>
+<li>Fine-grained tests around legacy code</li>
+</ul>
+
+
+<blockquote><p>What you’re saying here is that we acknowledge that this code sucks, so we’re going to go in and write tight tests around it that solidifies interface and just bake the badness forever. <strong>This is the worst way to do unit testing, go in your legacy system and write test around bad code.</strong></p></blockquote>
+
+<h1>Too many dependencies in test</h1>
+
+<blockquote><p>You end up with a test suite where it tends to either completely succeed or completely fail. It doesn’t give you any fine-grained feedback about what has actually gone wrong it just tells you you broke something. And you are left to dig these stack traces. <strong>In the ideal test suite you don’t have to dig through stack traces because ideally once test fails it will tell you exactly was broken (of course you never achieve that)</strong></p></blockquote>
+
+<h1>More than 8 lines for a model test</h1>
+
+<blockquote><p>I would ask myself why do I need to setup so much of the world to test this one small piece of behavior. That causes me to decompose it which causes better system design.</p></blockquote>
+
+<h1>10% System/Acceptance Test, 90% Unit Test</h1>
+
+<p>(in terms of test cases, not lines of code)</p>
+
+<blockquote><p>That applies to mostly object heavy system like web app, that have a lot of logic and not a lot of boundaries.</p></blockquote>
+
+<h1>Advice on models that very tied to database</h1>
+
+<h2>Question</h2>
+
+<blockquote><p>If you&#8217;re working with model objects that they&#8217;re very tied to the database specifically things like you have to save that one object before you can associate with the other object and that means hitting the database. What&#8217;s your advice in terms of writing fast unit test?</p></blockquote>
+
+<h2>Answer</h2>
+
+<blockquote><p>Take all of that behavior that&#8217;s on your model objects and pull out of their into service classes that are stateless, that interact with the model objects. So view calls a service, service contains the intelligence and the service manipulates the model objects.</p>
+
+<p>You can still have methods on your model objects do things like wrap specific queries in class methods, or wrap specific mutations when multiple fields are commonly manipulated together.</p>
+
+<p>It&#8217;s okay to have those on your model object and then have the service use those but if you pull the behavior of the system out into the service, and you control the boundary between the service in the model by those methods you&#8217;ve written on the model, then you can mock out more easily and safely.</p></blockquote>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-30T21:56:00+09:00" pubdate data-updated="true">2013-05-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/testing/'>Testing</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -573,49 +663,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 	<a class='category' href='/blog/categories/japanese/'>Japanese</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/%E3%83%93%E3%83%96%E3%83%AA%E3%82%A2%E5%8F%A4%E6%9B%B8%E5%A0%82%E3%81%AE%E4%BA%8B%E4%BB%B6%E6%89%8B%E5%B8%96%E3%81%AE%E6%BC%AB%E7%94%BB%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/">ビブリア古書堂の事件手帖の漫画を買った</a></h1>
-	<div class="entry-content">
-		<p><img src="http://cdn.kinopyo.com/images/biblia_bookstore.jpg" alt="ビブリア古書堂の事件手帖" /></p>
-
-<p>昨日本屋に行って表紙に惹かれつい買ってしまった。</p>
-
-<p>第一巻はもう読み終わって結構ハマっちゃったので引き続き第二巻も買う予定ですｗ</p>
-
-<p><img src="http://cdn.kinopyo.com/images/biblia_drama.jpg" alt="ビブリア古書堂の事件手帖 ドラマ化" /></p>
-
-<p>ちなみにドラマ化になったのはよしとして、この女優さんはあまりにも似てないじゃないですか？！！</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-12T23:40:00+09:00" pubdate data-updated="true">2013-02-12</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/book/'>Book</a>
 
 
 </div>

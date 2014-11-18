@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="いつも自分のサイトを作りたいけど、なかなか時間的余裕がないし、技術の面でもまだまだの感じで、躊躇ばかりしていて先に進めませんでした。 先日やっと決意しました、とりあえずドメインとサーバを申請して、ブログでも移行して好き放題いじればと。 ドメイン：kinopyoです。 &hellip;">
+	<meta name="description" content="移行手順 はてなダイアリーの「管理→ データの管理→ Movable Type形式」で記事をダウンロード そのままWordPressの「ツール→ インポート→ Movable Type and TypePad」にアップロード トラブル
+すると一部の記事の投稿時間が1970年になってしまったんです &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,77 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-import-issue-posttime-become-1970year">はてなからWordPressへ移行時、投稿時間が1970年に</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>移行手順</h4>
+<ul>
+    <li>はてなダイアリーの「管理→ データの管理→ Movable Type形式」で記事をダウンロード</li>
+    <li>そのままWordPressの「ツール→ インポート→ Movable Type and TypePad」にアップロード</li>
+</ul>
+<h4>トラブル</h4>
+すると一部の記事の投稿時間が1970年になってしまったんです。
+
+検索してみたらはてなより出力されたファイルを下記のように<span style="font-weight: bold;">「00:00:00」の「AM」を消せばいい</span>とのことです。
+
+    <li>修正前</li>
+
+`DATE: 11/19/2009 12:47:59 AM`
+
+    <li>修正後</li>
+
+`DATE: 11/19/2009 12:47:59`
+
+<br/>
+秀丸なのどエディタで一気に変更できるため、あんまり時間かからないはずです。
+が、それでも一つの記事が1970になってしまって、そのデータをよ～く見たら「0:xx:xx PM」の形になってました。
+ほかにもいろんなPMで始まる記事があるんですが、なぜかこれだけバグってます。
+試しに
+`DATE: 11/19/2009 00:47:59 PM`
+を
+`DATE: 11/19/2009 01:47:59 PM`
+に変更したら解決しました。やはり<span style="font-weight: bold;">0時のPMはうまく認識されないよう</span>です。
+<br/>
+</div>
+
+
+<h4>まとめ</h4>
+
+
+<p>「AM」をすべて消す
+「2009 00:」を検索し「2009 01:」のように00時以外の時間に置換する</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-01T00:00:00+09:00" pubdate data-updated="true">2009-12-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -721,126 +793,6 @@ iPhoneのブラウザ関連のアプリでは結構使われています。</p>
 
 
 	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/it-news-these-days">最近のIT業界動向</a></h1>
-	<div class="entry-content">
-		<div class="section">
-
-専門家ではないので記事のテーマがちょっとでかすぎるかもしれませんが、
-
-最近気になったニュースをベースにざっと述べようと思います。
-<h4>2010年注目の資格、一位が仮想化技術</h4>
-これは@ITの記事による結果です。
-
-仮想化といえばVMWareくらいは知ってますけど、
-
-Mac上でWindowsのアプリをたまたま実行する時に使ってました。
-
-「運用コスト削減のためのサーバ統合やクラウドの活用」などのことにどう繋いでいるのか全然イメージできません。。。
-
-少し興味はあるんで、後で勉強しとこう。
-
-関連の資格は以下のようです。
-<ul>
-    <li>ヴイエムウェアの「VCP」（VMware Certified Professional）</li>
-    <li>マイクロソフトの「Hyper-V仮想化検定」「MCP」（Microsoft Certification Program）</li>
-    <li>シトリックスの「CCEA」（Citrix XenServerのCitrix Certified Enterprise Administrator）</li>
-</ul>
-<h4>クラウド</h4>
-このキーワードもITユースから頻繁に出てきますが、
-
-どのようにプログラマのキャリアに影響するか、
-
-知りたいですね。
-<h4>JDK 7 Milestone 5 build</h4>
-Java7のニュースはずっと聞いてたんですが、
-
-なかなか使ってみる時間がないですね。
-
-今日雑誌でちらっと読んだのですが、
-
-モジュール化、多言語の対応などの機能が追加されたそうです。
-
-特にモジュールのサポートは「JAR HELL」(Jarの地獄)から救う有力な機能だそうです。これからクラスパスなど特に気にしなくてモジュール単位になりますと。
-
-またコレクション周りの使い方も強化されましたね。
-
-実は一番気に入ったのがswitch文がやっとString文字列をサポートしたことです。
-
-今までJavaのswtich文があんまり使えないなと何となく感じましたが、
-
-Java7になるとやっと文字列できましたね！
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;...&quot;</span><span class="o">;</span>
-</span><span class='line'><span class="k">switch</span> <span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'><span class="k">case</span> <span class="s">&quot;quux&quot;</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">processQuux</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-</span><span class='line'>  <span class="c1">// fall-through</span>
-</span><span class='line'><span class="k">case</span> <span class="s">&quot;foo&quot;</span><span class="o">:</span>
-</span><span class='line'><span class="k">case</span> <span class="s">&quot;bar&quot;</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">processFooOrBar</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-</span><span class='line'>  <span class="k">break</span><span class="o">;</span>
-</span><span class='line'><span class="k">case</span> <span class="s">&quot;baz&quot;</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">processBaz</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-</span><span class='line'>  <span class="c1">// fall-through</span>
-</span><span class='line'><span class="k">default</span><span class="o">:</span>
-</span><span class='line'>  <span class="n">processDefault</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-</span><span class='line'>  <span class="k">break</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-<h4>In the end..</h4>
-ということでIT業界どんどん進化していきます。
-
-Java7,,,やってみたいっす！
-
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-26T00:00:00+09:00" pubdate data-updated="true">2009-11-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
 
 
 </div>

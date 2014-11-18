@@ -7,10 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="この間Yahooアドパートナーを申請しました。
-Yahooアドパートナーとはあなたのサイトに広告を掲載し、
-閲覧もしくはクリックされたことで報酬がもらえるサービスです。
-GoogleのAdSenseに相当するものです(しかし広告の質はまだまだ)。 申請してから一度も使った事なかったのですが、 &hellip;">
+	<meta name="description" content="システムを作る時に、パスワードを2回入力してもらって、確認処理をおこなうことが多いですね。
+そんなめんどな仕事には、Railsはvalidates_confirmation_of メソッドを用意してくれました。
+それでは、使い方を見てみましょうか。 まず、モデルで以下のチェックを行います。 1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +91,65 @@ GoogleのAdSenseに相当するものです(しかし広告の質はまだまだ
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-use-of-validates-confirmation-of">Rails validates_confirmation_ofの使い方</a></h1>
+	<div class="entry-content">
+		<p>システムを作る時に、パスワードを2回入力してもらって、確認処理をおこなうことが多いですね。
+そんなめんどな仕事には、Railsはvalidates_confirmation_of メソッドを用意してくれました。
+それでは、使い方を見てみましょうか。</p>
+
+<p>まず、モデルで以下のチェックを行います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_confirmation_of</span> <span class="ss">:password</span>  <span class="c1">#カラム名</span>
+</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:password_confirmation</span> <span class="c1">#カラム名に_confirmation</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして、関連のビューで、以下の処理を書きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password</span>
+</span><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password_confirmation</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで、自動的に入力されたパスワードは同じかどういかを確認してくれます。</p>
+
+<p>※attr_accessorは、再入力フィールドの値を保存するための仮想カラムです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-23T00:00:00+09:00" pubdate data-updated="true">2010-01-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -800,52 +858,6 @@ block_given?を使って、ブロックがあるかどうかを確認できま�
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-disable-right-click">jQueryで右クリックを無効にする方法</a></h1>
-	<div class="entry-content">
-		<p>jQueryでマウス右クリックを無効にする方法です。
-&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
-それのハンドラでreturn falseすることで簡単に実現できます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;contextmenu&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-10-29T17:35:43+09:00</updated>
+  <updated>2014-11-18T22:33:34+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Book “Essentialism - The Disciplined Pursuit of Less”]]></title>
+    <link href="http://kinopyo.com/blog/book-essentialism-the-disciplined-pursuit-of-less/"/>
+    <updated>2014-11-18T20:53:00+09:00</updated>
+    <id>http://kinopyo.com/blog/book-essentialism-the-disciplined-pursuit-of-less</id>
+    <content type="html"><![CDATA[<p>“Have you ever found yourself stretched too thin? Have you ever felt both overworked and underutilized? Have you ever found yourself majoring in minor activities? Do you ever feel busy but not productive? “</p>
+
+<p>This book is about answers to these questions. The <strong>key messages and takeaways for me are</strong>:</p>
+
+<ul>
+<li>Life is a tradeoff. You can’t have it all, therefore you have to choose, choose what matters the most. Less, but better.</li>
+<li>You have to give yourself permission to say No to others, so you can say Yes to your goal and make highest contribution.</li>
+<li>It’s not about getting more things done, it’s about getting the right things done. Effective over productive. I love this so much.</li>
+</ul>
+
+
+<h2>If You Don’t Have Time to Read it…</h2>
+
+<p>Here is a great video reviewing this book, and actually I started reading it because of this video. To be honest I think it might be arguably <em>better</em> than the book itself. If you don’t have enough time, just check out the video, should take you less than 25 minutes.</p>
+
+<iframe width="560" height="315" src="http://kinopyo.com//www.youtube.com/embed/k-mciueg_K0" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Chapters I Would Like to Read Twice</h2>
+
+<p>Part I: Essence: What is the core mind-set of an Essentialist?</p>
+
+<ul>
+<li>CHOOSE: The Invincible Power of Choice</li>
+<li>DISCERN: The Unimportance of Practically Everything</li>
+<li>TRADE-OFF: Which Problems Do I want?</li>
+</ul>
+
+
+<p>Part II: Explore: How can we discern the trivial many from the vital few?</p>
+
+<ul>
+<li>SLEEP: Protect the Asset</li>
+<li>SELECT: The Power of Extreme Criteria</li>
+</ul>
+
+
+<p>Part III: Eliminate: How can we cut out the trial many?</p>
+
+<ul>
+<li>DARE: The Power of a Graceful “No”</li>
+</ul>
+
+
+<p>Part IV: Execute: How can we make doing the vital few things almost effortless?</p>
+
+<ul>
+<li>PROGRESS: The Power of Small Wins</li>
+</ul>
+
+
+<h2>Overview</h2>
+
+<p>The first part, the “What” part, is really great. All the problems introduced there are so real, I could map literary everything to my real life. Very inspirational.</p>
+
+<p>But sadly the following chapters, the “how” part, are less compelling to me. I agree with the general idea, it’s just the examples and evidences are not convincing enough.</p>
+
+<p>Overall it’s a good book, I’d rate it 4 out of 5. It does give me positive energies and courages to improve my life, makes me pause to think about the past, which choices were made by “default”(others) and which were made by “design”(me), makes me think twice before purchase any non-essential items, makes me observe my bad habits &amp; routines and fix them, makes me pursue less but better.</p>
+
+<p>p.s. I didn&#8217;t title this post as &#8220;Book Review&#8221;, as I realized the word &#8220;review&#8221; is too big for me, makes me want to cover every aspect of the book, pros and corns, scan every note and highlight I made during the reading, that is overwhelming and will simplify stops me from writing. “Done is better than perfect”, indeed, the essential thing for me is to write this post and share my findings!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use ActiveJob in Rails 4.1]]></title>
@@ -1115,23 +1183,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 <p>Even though I&#8217;ve lived in Japan for over 5 years, I still find myself rarely know any Japanese vocabularies related to cooking or food.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ビブリア古書堂の事件手帖の漫画を買った]]></title>
-    <link href="http://kinopyo.com/blog/%E3%83%93%E3%83%96%E3%83%AA%E3%82%A2%E5%8F%A4%E6%9B%B8%E5%A0%82%E3%81%AE%E4%BA%8B%E4%BB%B6%E6%89%8B%E5%B8%96%E3%81%AE%E6%BC%AB%E7%94%BB%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/"/>
-    <updated>2013-02-12T23:40:00+09:00</updated>
-    <id>http://kinopyo.com/blog/ビブリア古書堂の事件手帖の漫画を買った</id>
-    <content type="html"><![CDATA[<p><img src="http://cdn.kinopyo.com/images/biblia_bookstore.jpg" alt="ビブリア古書堂の事件手帖" /></p>
-
-<p>昨日本屋に行って表紙に惹かれつい買ってしまった。</p>
-
-<p>第一巻はもう読み終わって結構ハマっちゃったので引き続き第二巻も買う予定ですｗ</p>
-
-<p><img src="http://cdn.kinopyo.com/images/biblia_drama.jpg" alt="ビブリア古書堂の事件手帖 ドラマ化" /></p>
-
-<p>ちなみにドラマ化になったのはよしとして、この女優さんはあまりにも似てないじゃないですか？！！</p>
 ]]></content>
   </entry>
   

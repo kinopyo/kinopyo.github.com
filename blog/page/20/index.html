@@ -7,16 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="PHP側で 1
-echo $_GET[&#39;callback&#39;] . &#39;(&#39; . json_encode($object) . &#39;);&#39;; JS側で 1
-2
-3
-4
-5
-6
-7
-8
-$(function(){ $.getJSON(&#39;foo. &hellip;">
+	<meta name="description" content="$_GET、 $_POST そして $_COOKIE の内容をまとめた連想配列です。 もう少し説明を加えると、 In the beginning of execution, $_REQUEST is a clone of $_GET. $_POST is then merged into the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +89,50 @@ $(function(){ $.getJSON(&#39;foo. &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/what-is-the-difference-between-_request-_get-and-_post">PHP: $_REQUESTと$_GET、$_POSTはどこが違うか</a></h1>
+	<div class="entry-content">
+		<blockquote><p>$_GET、 $_POST そして $_COOKIE の内容をまとめた連想配列です。</p></blockquote>
+
+
+<p>もう少し説明を加えると、</p>
+
+<blockquote><p>In the beginning of execution, $_REQUEST is a clone of $_GET. $_POST is then merged into the array, overwriting keys if they exist in both $_GET and $_POST. Finally, $_COOKIE is merged into the array, again overwriting old values.</p></blockquote>
+
+
+<p>まずは$<em>GETのクローンでそこに$</em>POSTをマージする感じで、同じキーのものがあれば上書きされます。同じくその後$<em>COOKIEもマージします。
+なので本当にPOSTで受取るものは$</em>REQUESTに書き換えてはいけないと思いますね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-27T00:00:00+09:00" pubdate data-updated="true">2010-12-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1138,55 +1173,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/terminal-command-sudo">ターミナルコマンド：sudo</a></h1>
-	<div class="entry-content">
-		<p>環境構築の記事でよく目にすると思いますが
-このsudoコマンド。
-気になってて調べてみたんです。</p>
-
-<blockquote><p>sudo is a Terminal command used to execute a command as another user, by default, the root user.</p></blockquote>
-
-
-<p>あるコマンドを別のユーザとして実行する、デフォルトではルートユーザ、だそうです。</p>
-
-<p>例えばルートユーザとしてあるアプリを実行したい時は：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo open ....
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>
