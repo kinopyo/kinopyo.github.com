@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="現象 Railscastsで紹介したhttps://github.com/jezdez/textmate-missingdrawerProject Drawerのプラグインをインストールした後に、ターミナルやTextMateのGUIでフォルダを開くときに画面が真っ白になる。 &hellip;">
+	<meta name="description" content=" 仕事で使ったので簡単にサンプルコードをまとめました。 2011-06-08 php ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,44 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/pear-http_request-example">PEAR HTTP_Requestのサンプルコード</a></h1>
+	<div class="entry-content">
+		<p>仕事で使ったので簡単にサンプルコードをまとめました。</p>
+
+<script type="text/javascript" src="scripts/gist1014278.js"></script>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-08T00:00:00+09:00" pubdate data-updated="true">2011-06-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -679,102 +717,6 @@ Facebook Developer Relations
 
 
 	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-rails3-1-0-beta1-and-problem-undefined-method-context-for-sprockets">Rails3.1.0 beta1のインストールと、undefined method context for #Sprockets::Environment:のトラブル</a></h1>
-	<div class="entry-content">
-		<p>Rails3.1.0 beta1をインストールするときにあったトラブルです。</p>
-
-<h2>インストール</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// 3.1.0 betaに更新
-</span><span class='line'>sudo gem install rails --pre
-</span><span class='line'>
-</span><span class='line'>// バージョン確認
-</span><span class='line'>rails -v
-</span><span class='line'>
-</span><span class='line'>// ダミープロジェクト作成
-</span><span class='line'>rails new railsfoo
-</span><span class='line'>
-</span><span class='line'>// 必要なGemをインストール
-</span><span class='line'>cd railsfoo
-</span><span class='line'>bundle install
-</span><span class='line'>
-</span><span class='line'>// サーバ起動
-</span><span class='line'>rails s
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>トラブル</h2>
-
-<p>ここまで順調でしたが、http://127.0.0.1:3000にアクセスしたときにundefined method `context&#8217; for #&lt;Sprockets::Environment:>のトラブルに会いました。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.28.02.png" title="Sprockets trouble" ></p>
-
-<br/>
-
-
-<p>どうやらこのSprocketsというのがポイントのようです。
-ぐぐってみたらgithubでこのようなコメントがありました。</p>
-
-<blockquote><p>Just to save someone else the 2 minutes waiting for a bundle update sprockets that will fail, beta.2 is required by rails 3.1.0beta1. You want gem &#8216;sprockets&#8217;, &#8216;2.0.0.beta.2&#8217; in your Gemfile.</p><footer><strong>github</strong> <cite><a href='https://github.com/rails/rails/issues/453'>github.com/rails/rails/issues/&hellip;</a></cite></footer></blockquote>
-
-
-<p>のようでGemfileに下記を追記し再度bundle update。</p>
-
-<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;sprockets&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0.0.beta.2&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>解決〜</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/05/Screen-shot-2011-05-18-at-19.37.40.png" title="rails server running" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-19T00:00:00+09:00" pubdate data-updated="true">2011-05-19</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>
 
 
 </div>

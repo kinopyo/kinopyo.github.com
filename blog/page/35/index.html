@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="前記 恥ずかしいことに今仕事でjQueryでばりばりAjaxを使ってますが、 実際はただjQueryの便利なAPIを使っただけで Ajaxそのものの仕組みも分かっていません。 今更ですが、その辺の基礎知識を勉強しできるだけ誰にも分かるように 自分が理解したことをメモとして残したいです。 &hellip;">
+	<meta name="description" content="Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。
+しかしFlex Builder 3.0.2 Professional Plug-Inは Eclipse3.2.2、3.3、3.4しか対応していません。
+Eclipse3. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +91,64 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex3-in-eclipse3-5-windows7-ok-mac-osx-failure">Flex3 in Eclipse3.5( Windows7 OK, Mac OSX 失敗)</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。</p>
+<p>しかしFlex Builder 3.0.2 Professional Plug-Inは Eclipse3.2.2、3.3、3.4しか対応していません。</p>
+<p>Eclipse3.5に載せる場合はFlexのインストール完了後</p>
+<p>以下のように設定してください。</p>
+<br/>
+<ul>
+<li>Eclipseルートディレクトリ\linksフォルダにあるcom.adobe.flexbuilder.feature.core.linkファイルを開く</li>
+<li>path=&#60;Flex Builder 3 Plug-inのディレクトリ&#62;　に編集
+<ul>
+<li>デフォルトではpath=以降のディレクトリが書いてあるはずなので、&#8221;path=&#8221;だけを追加すればOK</li>
+</ul>
+</li>
+<li>Eclipseを再起動し、パースペクティブにはFlex開発を選択</li>
+</ul>
+<br/>
+<p>Windows7でOKでした。MacOS Xで同じやり方ではダメでした。</p>
+<p>ネットでもいろいろ検索しましたが、</p>
+<p>やはりMacではうまく動作してくれないみたいで、</p>
+<p>しょうがなくスタンドアロンをインストールしました。</p>
+<br/>
+<p>参考サイト：<a href="http://tpfields.xrea.jp/tips/develop-air-with-flex-builder-3-plugin-and-eclipse-35-galileo.html" target="_blank">  Flex Builder 3 Plug-in: &#8220;Eclipse 3.5 Galileo&#8221;でFlex開発 | t.p.fields - web+tech info</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1759,76 +1819,6 @@ IE6なんかもう早く下がってほしい。</p>
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/adjust-html-form-blank-with-margin">HTML Formの間隔(余白)をmarginで調整</a></h1>
-	<div class="entry-content">
-		<h2>目的</h2>
-
-<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224149.gif" alt="" /></p>
-
-<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224150.gif" alt="" /></p>
-
-<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224151.gif" alt="" /></p>
-
-<p>見たの通りform前後の余白を消しました。</p>
-
-
-<p>これはフォームがテーブルなどを跨がる場合に</p>
-
-
-<p>レイアウトを調整するのに非常に役に立ちます。</p>
-
-
-<h2>方法</h2>
-
-<p><strong>formのmarginを0px</strong>に設定します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">style=</span><span class="s">&quot;margin: 0px;&quot;</span><span class="nt">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>またmargin-topやmargin-bottomでなどで詳しく指定できます。</p>
-
-
-<p>マイナス値も入力でき、さらに間隔を縮むめることができます。</p>
-
-
-<p>参考となったサイト：<a href="http://www.1uphp.com/con1/form/form1style.html" target="_blank">http://www.1uphp.com/con1/form/form1style.html</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-03T00:00:00+09:00" pubdate data-updated="true">2009-11-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/html/'>HTML</a>
 
 
 </div>

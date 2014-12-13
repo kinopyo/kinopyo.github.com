@@ -7,7 +7,14 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="&#8220;Have you ever found yourself stretched too thin? Have you ever felt both overworked and underutilized? Have you ever found yourself majoring &hellip;">
+	<meta name="description" content="TL;DR 1
+2
+3
+4
+5
+# in config/initializers/delayed_job_config.rb
+Delayed::Worker.delay_jobs = true # in your spec
+Delayed::Worker.new.work_off Common &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -87,6 +94,138 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/run-delayedjob-manually-in-test-env/">Run DelayedJob Manually in Test Env</a></h1>
+	<div class="entry-content">
+		<h2>TL;DR</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/initializers/delayed_job_config.rb</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">delay_jobs</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in your spec</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">work_off</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Common Setup of DelayedJob</h2>
+
+<p>Assume you follow <a href="https://github.com/collectiveidea/delayed_job#gory-details">DelayedJob readme example</a> to configure it like this: <code>Delayed::Worker.delay_jobs = !Rails.env.test?</code>, what it does is in test env it doesn’t delay the job, meaning DelayedJob is being <em>transparent</em>, the job you put will be executed in “real time”. In most cases you don’t even need to worry about it, your test should be just fine, but recently it caught me…</p>
+
+<h2>It Fails When…</h2>
+
+<p>To give some background, I’m working on a API centric rails project. In order to authenticate with API we pass in access token for every request, and that’s done in the middleware layer. Since access token is stored in cookie, and in middleware we can’t access browser cookie directly, so another tool called <a href="https://github.com/steveklabnik/request_store">RequestStore</a> is used. If in the same request, what you stored in RequestStore you can access it later no matter the context, a unrealistic example would be you store a cookie value to RequestStore then use it in model later. Don’t do that :).</p>
+
+<p>The code below is a simplified version to illustrate the flow.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">before_action</span> <span class="ss">:set_api_access_token</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">set_api_access_token</span>
+</span><span class='line'>    <span class="no">RequestStore</span><span class="o">.</span><span class="n">store</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">.</span><span class="n">signed</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Authentication</span> <span class="o">&lt;</span> <span class="ss">Faraday</span><span class="p">:</span><span class="ss">:Middleware</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">env</span><span class="o">[</span><span class="ss">:request_headers</span><span class="o">][</span><span class="s1">&#39;Authorization&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">RequestStore</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span> <span class="k">if</span> <span class="no">RequestStore</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span>
+</span><span class='line'>    <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Every api request happened inside the rails <code>ApplicationController</code> stack should have the access token being set, but what would happen in a different context like rake task or DelayedJob where you need to send request to the API? The <code>before_action</code> is not gonna be executed there so <code>RequestStore[:access_token]</code> would be nil. This is an easy-to-spot issue <em>if</em> you try it once, but if you follow the TDD work flow and write test for it first, then it’ll fail you.</p>
+
+<p>With <code>Delayed::Worker.delay_jobs</code> set to <code>false</code> in test env, the job will be executed immediately in the same request, so the <code>RequestStore[:access_token]</code> still contains the value and will pass to the Authorization header in the middleware, spec passed but but in real world env it failed. Typical false positive result.</p>
+
+<h2>To Run It Manually</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/initializers/delayed_job_config.rb</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">delay_jobs</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in your spec</span>
+</span><span class='line'><span class="c1"># here is the code to enqueue a job to DelayedJob queue</span>
+</span><span class='line'><span class="n">visit</span> <span class="n">post_path</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># run it manually</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">work_off</span>
+</span><span class='line'><span class="c1"># expectation</span>
+</span><span class='line'><span class="n">expect</span><span class="p">(</span><span class="n">api_endpoint</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">have_been_requested</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Delayed::Worker.new.work_off</code> returns an Array like <code>[1, 0]</code> indicating succeeded job counts and failed job counts. I’ve also seen some people testing against that like <code>expect(Delayed::Worker.new.work_off).to eq([1, 0])</code>, personally I don’t think it’s necessary.</p>
+
+<ol>
+<li>You have your own expectation right after that and that should be the main concern of the spec. If the job failed, your spec should be failed too.</li>
+<li>What if multiple jobs are enqueued while you’re only focusing one of them in the spec? Update the value to <code>[2, 0]</code>? That’s just noise.</li>
+</ol>
+
+
+<p>I guess what I encountered is a rare case, but definitely an interesting case. I kinda prefer this way to mimic real world environment to prevent any possible regressions.</p>
+
+<p>Commercial time: If you’re about to build a API centric rails app, be sure to check out the awesome gem called <a href="https://github.com/balvig/spyke">spyke</a> made by <a href="https://twitter.com/balvig">@balvig</a>, the slogan is “Interact with remote REST services in an ActiveRecord-like manner.”</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-13T14:18:00+09:00" pubdate data-updated="true">2014-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails-test/'>Rails,Test</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1027,174 +1166,6 @@ I don’t think there is anything biologically or physiologically that you can p
 
 <time datetime="2013-06-21T21:45:00+09:00" pubdate data-updated="true">2013-06-21</time></div>
 	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/notes-on-lets-make-testing-fun-again/">Notes on Let&#8217;s Make Testing Fun Again</a></h1>
-	<div class="entry-content">
-		<h2>The talk</h2>
-
-<p><a href="http://lanyrd.com/2012/windycityrails/sxqbt/">Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd</a></p>
-
-<script async class="speakerdeck-embed" data-id="5048ea4bb8fe2d0002020475" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-
-
-<div class='video-container'>
-<iframe src="http://player.vimeo.com/video/49525644" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-</div>
-
-
-<h2>Communication</h2>
-
-<blockquote><p>Tests give you about the code. This happens over time, where you find that tests have become hard to write, the tests are becoming complicated and bogged down.</p>
-
-<p>Rather than use it as an opportunity to blame the test or to blame testing, <strong>you should use it as an opportunity to learn something about your code, that there is a dependency that could potentially be simplified, or something you could be doing better.</strong></p></blockquote>
-
-<h2>Keep relevant setup close</h2>
-
-<blockquote><p>This is something that &#8220;relative good&#8221;(in terms of &#8220;absolute good&#8221;). It&#8217;s generally good to keep the setup of your tests close to the tests where it is.</p>
-
-<p>What you want to avoid is the case where some sort of <code>before</code> setup way at the top of the file and you have stuff, and more stuff, and more stuff, and eventually in the end, what&#8217;s the <code>@user.name</code>? I don&#8217;t remember.</p></blockquote>
-
-<h3>An Example</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">before</span> <span class="k">do</span>
-</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># and more stuff</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># and more stuff</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;uses the user&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="vi">@user</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="c1"># i don&#39;t remember</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This is where you see sometimes people say &#8220;You should never have setup outside your original test&#8221;.</p>
-
-<h3>What to do about duplications and complicate shared setups</h3>
-
-<blockquote><p>I think a lot of times if you need a complicated setup to test code, that often means your code is too complicated you need to start working out to move your dependencies. <strong>I tend to have a higher tolerance for duplication in my tests</strong> than I do in my regular code, specifically because <strong>I&#8217;m more interested in having the communication close</strong>, and less interested in maybe being clever about extracting setups in my tests. Sometimes I do if there&#8217;s a piece of stuff that&#8217;s really tightly coupled, and I can give it a descriptive enough name that I still feel like I have the benefit of keeping the setup close in the actual test.</p></blockquote>
-
-<h2>Test Simple Values</h2>
-
-<p>By using literal in check, when the spec fails, the error message is much easier to understand.</p>
-
-<h2>Spy, don&#8217;t mock</h2>
-
-<p>A <a href="http://pivotal.github.io/jasmine/">jasmine</a>
- test example.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">cheeseburger</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">cheeses</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// Ajax call to cheese server</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spies on the cheese server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">spyOn</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">,</span> <span class="s1">&#39;cheeses&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">();</span>
-</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Readability advantage</li>
-<li>Easy to find where actually fails</li>
-</ul>
-
-
-<p>BTW, if in spec, we need write like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s1">&#39;spies on the cheese server&#39;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="c1"># in the reversed order</span>
-</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:cheeses</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">cheeses</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>More about Spy on Ruby and Rails</h3>
-
-<p><a href="https://github.com/thoughtbot/bourne">thoughtbot/bourne</a> gem can let you have the rspec-like test spies syntax.</p>
-
-<p><a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a>, good explanation on what is test spy the benefit of it.</p>
-
-<h2>What Do We Love?</h2>
-
-<p>These are quite frank and interesting questions.</p>
-
-<ol>
-<li>Do we still love writing tests?</li>
-<li>Or do we just love having written tests?</li>
-<li>Or do we just love saying that we&#8217;ve written tests?</li>
-</ol>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-01T15:18:00+09:00" pubdate data-updated="true">2013-06-01</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/testing/'>Testing</a>
-
 
 </div>
 	

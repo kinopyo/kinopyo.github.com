@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="私服よりスーツ 最初のうちはまだ本社で私服で出勤する同僚がうらやましかったのです。 私はお客さんに常駐し毎日スーツでした。 ある日、先輩の一言で突然目覚めた感じです。 「私服じゃ仕事する気がなくなっちゃう」ってね。 それに、スーツでもかっこいいスーツがあるし、 ファッションもできますよね。 &hellip;">
+	<meta name="description" content="目的 見たの通りform前後の余白を消しました。 これはフォームがテーブルなどを跨がる場合に レイアウトを調整するのに非常に役に立ちます。 方法 formのmarginを0pxに設定します。 1
+&lt;form style=&quot;margin: 0px;&quot;&gt; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,76 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/adjust-html-form-blank-with-margin">HTML Formの間隔(余白)をmarginで調整</a></h1>
+	<div class="entry-content">
+		<h2>目的</h2>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224149.gif" alt="" /></p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224150.gif" alt="" /></p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091103/20091103224151.gif" alt="" /></p>
+
+<p>見たの通りform前後の余白を消しました。</p>
+
+
+<p>これはフォームがテーブルなどを跨がる場合に</p>
+
+
+<p>レイアウトを調整するのに非常に役に立ちます。</p>
+
+
+<h2>方法</h2>
+
+<p><strong>formのmarginを0px</strong>に設定します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">style=</span><span class="s">&quot;margin: 0px;&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>またmargin-topやmargin-bottomでなどで詳しく指定できます。</p>
+
+
+<p>マイナス値も入力でき、さらに間隔を縮むめることができます。</p>
+
+
+<p>参考となったサイト：<a href="http://www.1uphp.com/con1/form/form1style.html" target="_blank">http://www.1uphp.com/con1/form/form1style.html</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-03T00:00:00+09:00" pubdate data-updated="true">2009-11-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/html/'>HTML</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1210,100 +1281,6 @@ shift() は array の最初の要素を削除します。</p>
 
 
 	<a class='category' href='/blog/categories/movie/'>movie</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-there-is-no-overload">JavaScriptにオーバーロードはない</a></h1>
-	<div class="entry-content">
-		<p>javaをやってからJavaScriptにかえると、
-なかなかなれませんね。</p>
-
-<br/>
-
-
-<p>例えばJavaではオーバーロードができるが、
-JavaScriptには通用しない。</p>
-
-<br/>
-
-
-<p>すごく簡単に言うと、オーバーロードは多重定義の意味で、
-同じメソッド名で違う型、数のパラメータがある時、それぞれ一つのメソッドとして認められる。
-一方、JavaScriptでは後勝ちです。
-先に定義したものが無効になります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="nx">func</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">func</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>同じfuncの名前で作られた関数で、一個目はparamというパラメータがついてる。
-二番目はパラメータがない。
-すると結果は： 1 1 になります。
-常に後で定義したものが勝ちます。</p>
-
-<br/>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">(){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="kd">function</span> <span class="nx">func</span><span class="p">(</span><span class="nx">param</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これは「test undefined」になります。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-24T00:00:00+09:00" pubdate data-updated="true">2009-10-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

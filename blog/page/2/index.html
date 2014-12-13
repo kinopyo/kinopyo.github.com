@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Recently I got lots of inspirations and thoughts on how to write good tests. Thanks to Cookpad, the company I’m working on, I get the chance to work &hellip;">
+	<meta name="description" content="The talk Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd Communication Tests give you about the code. This happens over time, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,174 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/notes-on-lets-make-testing-fun-again/">Notes on Let&#8217;s Make Testing Fun Again</a></h1>
+	<div class="entry-content">
+		<h2>The talk</h2>
+
+<p><a href="http://lanyrd.com/2012/windycityrails/sxqbt/">Let&#8217;s Make Testing Fun Again at WindyCityRails 2012 | Lanyrd</a></p>
+
+<script async class="speakerdeck-embed" data-id="5048ea4bb8fe2d0002020475" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<div class='video-container'>
+<iframe src="http://player.vimeo.com/video/49525644" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+
+
+<h2>Communication</h2>
+
+<blockquote><p>Tests give you about the code. This happens over time, where you find that tests have become hard to write, the tests are becoming complicated and bogged down.</p>
+
+<p>Rather than use it as an opportunity to blame the test or to blame testing, <strong>you should use it as an opportunity to learn something about your code, that there is a dependency that could potentially be simplified, or something you could be doing better.</strong></p></blockquote>
+
+<h2>Keep relevant setup close</h2>
+
+<blockquote><p>This is something that &#8220;relative good&#8221;(in terms of &#8220;absolute good&#8221;). It&#8217;s generally good to keep the setup of your tests close to the tests where it is.</p>
+
+<p>What you want to avoid is the case where some sort of <code>before</code> setup way at the top of the file and you have stuff, and more stuff, and more stuff, and eventually in the end, what&#8217;s the <code>@user.name</code>? I don&#8217;t remember.</p></blockquote>
+
+<h3>An Example</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># and more stuff</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">it</span> <span class="s2">&quot;uses the user&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@user</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="c1"># i don&#39;t remember</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is where you see sometimes people say &#8220;You should never have setup outside your original test&#8221;.</p>
+
+<h3>What to do about duplications and complicate shared setups</h3>
+
+<blockquote><p>I think a lot of times if you need a complicated setup to test code, that often means your code is too complicated you need to start working out to move your dependencies. <strong>I tend to have a higher tolerance for duplication in my tests</strong> than I do in my regular code, specifically because <strong>I&#8217;m more interested in having the communication close</strong>, and less interested in maybe being clever about extracting setups in my tests. Sometimes I do if there&#8217;s a piece of stuff that&#8217;s really tightly coupled, and I can give it a descriptive enough name that I still feel like I have the benefit of keeping the setup close in the actual test.</p></blockquote>
+
+<h2>Test Simple Values</h2>
+
+<p>By using literal in check, when the spec fails, the error message is much easier to understand.</p>
+
+<h2>Spy, don&#8217;t mock</h2>
+
+<p>A <a href="http://pivotal.github.io/jasmine/">jasmine</a>
+ test example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">cheeseburger</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">cheeses</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Ajax call to cheese server</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;spies on the cheese server&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">spyOn</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">,</span> <span class="s1">&#39;cheeses&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">cheeseburger</span><span class="p">.</span><span class="nx">cheeses</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Readability advantage</li>
+<li>Easy to find where actually fails</li>
+</ul>
+
+
+<p>BTW, if in spec, we need write like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s1">&#39;spies on the cheese server&#39;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># in the reversed order</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:cheeses</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cheeseburger</span><span class="o">.</span><span class="n">cheeses</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>More about Spy on Ruby and Rails</h3>
+
+<p><a href="https://github.com/thoughtbot/bourne">thoughtbot/bourne</a> gem can let you have the rspec-like test spies syntax.</p>
+
+<p><a href="http://robots.thoughtbot.com/post/159805295/spy-vs-spy">Spy vs spy</a>, good explanation on what is test spy the benefit of it.</p>
+
+<h2>What Do We Love?</h2>
+
+<p>These are quite frank and interesting questions.</p>
+
+<ol>
+<li>Do we still love writing tests?</li>
+<li>Or do we just love having written tests?</li>
+<li>Or do we just love saying that we&#8217;ve written tests?</li>
+</ol>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T15:18:00+09:00" pubdate data-updated="true">2013-06-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/testing/'>Testing</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -616,53 +784,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/learned-2-new-japanese-kanji%3A-%E7%82%99%E3%82%8A%2C-%E6%8C%BD%E8%82%89/">Learned 2 new Japanese Kanji: 炙り, 挽肉</a></h1>
-	<div class="entry-content">
-		<p>When my friends and I went out for lunch today, I was asked about these 2 Japanese kanji: &#8220;炙り&#8221;, &#8220;挽肉&#8221;, since I&#8217;m Chinese and I&#8217;m supposed to be the &#8220;Kanji Reader&#8221; in the Gaijin group.</p>
-
-<p>Hmm, but I let them down.. What I said was &#8220;I don&#8217;t know because we don&#8217;t have those kanji in Chinese&#8221;. But I was wrong! We do have &#8220;炙&#8221; and &#8220;挽&#8221; in Chinese, it&#8217;s just these kanji have highly fixed usages so I couldn&#8217;t recognise them in when they combined with Japanese Hiragana.</p>
-
-<p>Any here are the meanings:</p>
-
-<ul>
-<li>炙り(あぶり) - grill</li>
-<li>挽肉(ひきにく) - ground meat</li>
-</ul>
-
-
-<p>Even though I&#8217;ve lived in Japan for over 5 years, I still find myself rarely know any Japanese vocabularies related to cooking or food.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-14T13:24:00+09:00" pubdate data-updated="true">2013-02-14</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/japanese/'>Japanese</a>
 
 
 </div>

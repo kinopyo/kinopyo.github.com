@@ -1,0 +1,294 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Run DelayedJob Manually in Test Env - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="TL;DR 1
+2
+3
+4
+5
+# in config/initializers/delayed_job_config.rb
+Delayed::Worker.delay_jobs = true # in your spec
+Delayed::Worker.new.work_off Common &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Run DelayedJob Manually in Test Env</h1>
+	<div class="entry-content"><h2>TL;DR</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/initializers/delayed_job_config.rb</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">delay_jobs</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in your spec</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">work_off</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Common Setup of DelayedJob</h2>
+
+<p>Assume you follow <a href="https://github.com/collectiveidea/delayed_job#gory-details">DelayedJob readme example</a> to configure it like this: <code>Delayed::Worker.delay_jobs = !Rails.env.test?</code>, what it does is in test env it doesn’t delay the job, meaning DelayedJob is being <em>transparent</em>, the job you put will be executed in “real time”. In most cases you don’t even need to worry about it, your test should be just fine, but recently it caught me…</p>
+
+<h2>It Fails When…</h2>
+
+<p>To give some background, I’m working on a API centric rails project. In order to authenticate with API we pass in access token for every request, and that’s done in the middleware layer. Since access token is stored in cookie, and in middleware we can’t access browser cookie directly, so another tool called <a href="https://github.com/steveklabnik/request_store">RequestStore</a> is used. If in the same request, what you stored in RequestStore you can access it later no matter the context, a unrealistic example would be you store a cookie value to RequestStore then use it in model later. Don’t do that :).</p>
+
+<p>The code below is a simplified version to illustrate the flow.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">before_action</span> <span class="ss">:set_api_access_token</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">set_api_access_token</span>
+</span><span class='line'>    <span class="no">RequestStore</span><span class="o">.</span><span class="n">store</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">.</span><span class="n">signed</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Authentication</span> <span class="o">&lt;</span> <span class="ss">Faraday</span><span class="p">:</span><span class="ss">:Middleware</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">env</span><span class="o">[</span><span class="ss">:request_headers</span><span class="o">][</span><span class="s1">&#39;Authorization&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">RequestStore</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span> <span class="k">if</span> <span class="no">RequestStore</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span>
+</span><span class='line'>    <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Every api request happened inside the rails <code>ApplicationController</code> stack should have the access token being set, but what would happen in a different context like rake task or DelayedJob where you need to send request to the API? The <code>before_action</code> is not gonna be executed there so <code>RequestStore[:access_token]</code> would be nil. This is an easy-to-spot issue <em>if</em> you try it once, but if you follow the TDD work flow and write test for it first, then it’ll fail you.</p>
+
+<p>With <code>Delayed::Worker.delay_jobs</code> set to <code>false</code> in test env, the job will be executed immediately in the same request, so the <code>RequestStore[:access_token]</code> still contains the value and will pass to the Authorization header in the middleware, spec passed but but in real world env it failed. Typical false positive result.</p>
+
+<h2>To Run It Manually</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/initializers/delayed_job_config.rb</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">delay_jobs</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in your spec</span>
+</span><span class='line'><span class="c1"># here is the code to enqueue a job to DelayedJob queue</span>
+</span><span class='line'><span class="n">visit</span> <span class="n">post_path</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># run it manually</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">work_off</span>
+</span><span class='line'><span class="c1"># expectation</span>
+</span><span class='line'><span class="n">expect</span><span class="p">(</span><span class="n">api_endpoint</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">have_been_requested</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Delayed::Worker.new.work_off</code> returns an Array like <code>[1, 0]</code> indicating succeeded job counts and failed job counts. I’ve also seen some people testing against that like <code>expect(Delayed::Worker.new.work_off).to eq([1, 0])</code>, personally I don’t think it’s necessary.</p>
+
+<ol>
+<li>You have your own expectation right after that and that should be the main concern of the spec. If the job failed, your spec should be failed too.</li>
+<li>What if multiple jobs are enqueued while you’re only focusing one of them in the spec? Update the value to <code>[2, 0]</code>? That’s just noise.</li>
+</ol>
+
+
+<p>I guess what I encountered is a rare case, but definitely an interesting case. I kinda prefer this way to mimic real world environment to prevent any possible regressions.</p>
+
+<p>Commercial time: If you’re about to build a API centric rails app, be sure to check out the awesome gem called <a href="https://github.com/balvig/spyke">spyke</a> made by <a href="https://twitter.com/balvig">@balvig</a>, the slogan is “Interact with remote REST services in an ActiveRecord-like manner.”</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-13T14:18:00+09:00" pubdate data-updated="true">2014-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails-test/'>Rails,Test</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/run-delayedjob-manually-in-test-env/';
+        var disqus_url = 'http://kinopyo.com/blog/run-delayedjob-manually-in-test-env/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

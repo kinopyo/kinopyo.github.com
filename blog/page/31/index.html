@@ -7,24 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="テキストボックスの文字を選択された状態にする方法とその解除方法です。
-IEの場合selectボックスにselect()関数を使うとJavaScriptエラーになります。
-Firefoxは大丈夫です。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-function &hellip;">
+	<meta name="description" content="秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。 回避方法 関連付けを決断！
+- エクスプローラの「ツール→フォルダ オプション→ファイルの種類→拡張子」にJSPを捜し、「詳細設定」を開いてopenアクションを削除。
+- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -106,6 +91,52 @@ function &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ie-issue-when-open-jsp-file-promptdownload-dialog">IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る</a></h1>
+	<div class="entry-content">
+		<p>秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。</p>
+
+<h2>回避方法</h2>
+
+<p>関連付けを決断！
+- エクスプローラの「ツール→フォルダ オプション→ファイルの種類→拡張子」にJSPを捜し、「詳細設定」を開いてopenアクションを削除。
+- あるいはファイルの種類のタブの中の「削除」ボタンで削除</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/file_associate.JPG" title="JSPファイルの関連付け" ></p>
+
+<p>秀丸が悪いのか、何が悪いのかは調べてないです。
+とにかくこれで一応解決。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -640,64 +671,6 @@ http://example.com/?p=N
 <p>一方，Firefoxの場合はレスポンスのContent-Typeヘッダを見て判断しますので，ファイルの中身が何っぽいのかを気にする必要はありません。 </p>
 <cite><a href="http://gihyo.jp/dev/serial/01/web20sec/0001?page=2" target="_blank">http://gihyo.jp/dev/serial/01/web20sec/0001?page=2</a></cite></blockquote>
 <p>この観点からはIEのほうがセキュリティの面で高いと見られます。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-02T00:00:00+09:00" pubdate data-updated="true">2009-12-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/firebug-bug-failed-to-load-source-for-sourcefile-top-level">Firebugがバグる：「Failed to load source for sourceFile top-level&#8230;」</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<h4>現象</h4>
-<p>FirebugでJavaScriptをデバッグしようとするとこんなエラーになりました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Failed to load source for sourceFile top-level &lt;a href="http://sample.com/jquery.js" target="_blank">http://sample.com/jquery.js&lt;/a> script.tags( X| 1094 1095 ...</span></code></pre></td></tr></table></div></figure>
-
-<h4>環境</h4>
-<ul>
-<li>Firefox : 3.5.5</li>
-<li>firebug : 1.4.5</li>
-</ul>
-<h4>調査</h4>
-<p>ぐぐって見ましたが、いい回答が見つかりませんでした。</p>
-<p><a href="http://blog.livedoor.jp/mapserver2007/archives/50793386.html" target="_blank">同じバグにあった方のブログ</a>でのやり方で、</p>
-<p>firebugを1.3.0に戻してもダメでした。</p>
-<p>さらに1.3.3ではこの問題が解決されたと、firebugの公式サイトの回答がありました。</p>
-<br/>
-<h4>結局は..</h4>
-<p>エラーとなるプロジェクトを丸ごとTomcatサーバに置いたら、firebugで普通に見れました。</p>
-<p>なぜかははっきり分かりませんが、この同じプロジェクトをずっとローカルで開発してきて、</p>
-<p>firebugも全然問題なく使ったから、やたらおかしいです。</p>
 </div>
 
 

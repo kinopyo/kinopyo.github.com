@@ -7,10 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="まずGoogleが実際使っている画像ファイルを見てみましょう。 いろんな画像、アイコンが混じっていますね。
-そして実際使うときはCSSのbackground-positionで表示するモノを指定しているようです。
-例えば検索結果の星マークのCSSを見ると 1
-background- &hellip;">
+	<meta name="description" content="カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。 結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
+例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
+この&#8221;event&#8221;続いてドット &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +91,57 @@ background- &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex-do-not-use-event-as-a-package-name">Flex：カスタムイベントクラスのパッケージ名をeventにするのは避けましょう</a></h1>
+	<div class="entry-content">
+		<p>カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_package_event.jpg" title="flex_package_event" ></p>
+
+<p>結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
+例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
+この&#8221;event&#8221;続いてドット(.)を叩いて出たのは各eventパッケージしたのクラスになります。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_confused.jpg" title="flex_autocomplete_confused" ></p>
+
+<p>イベントハンドラの変数を&#8221;event&#8221;以外にすれば回避できますが、
+ハンドラの自動生成は結構便利なものなので
+やはりパッケージ名を&#8221;events&#8221;などに変えたほうがいいと思います。</p>
+
+<p>これで自動補完はちゃんと出ます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_correct.jpg" title="flex_autocomplete_correct" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-09T00:00:00+09:00" pubdate data-updated="true">2010-05-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -616,72 +666,6 @@ Javaは完全におちますね。。。</p>
 
 
 	<a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery1-3-2-memory-leak-when-bind-with-namespace-in-ie6">jQuery1.3.2 bind時にnamespaceを使うとIE6ではメモリリーク</a></h1>
-	<div class="entry-content">
-		<p>表題の通り、IE6 + jQuery1.3.2の状態でbindする時に
-jQueryのnamespaceを使うと確実にメモリリークが発生します。
-jQuery1.4.2では発生しないことを確認しました。</p>
-
-<h2>メモリリークが発生するコード</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change.abc&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記&#8221;change.abc&#8221;のabcがnamespaceです。
-それをなくすことでメモリリークは解消されます。
-イベントハンドラの中身とは関係ありません。</p>
-
-<h2>メモリリークは発生しない</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これはjQueryのbugとして上げられましたが、
-完全に修正できなかったみたいです。
-<a href="http://dev.jquery.com/ticket/4241">http://dev.jquery.com/ticket/4241</a>で
-当時の担当者のコメントを見ると</p>
-
-<blockquote><p>I had a really difficult time getting a reliable test case to verify this actually solves the memory leak. r6321 appears to have fixed this issue</p></blockquote>
-
-
-<p>「時間ないからちゃんとテストしてない、r6321の対応で解決できたように見える」と、
-ずいぶん適当な回答ですよね。。。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-04T00:00:00+09:00" pubdate data-updated="true">2010-04-04</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don&#8217;t Save, Cancel, Save&#8230;」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。 &hellip;">
+	<meta name="description" content="Overview rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます ソースコード &lt;html&gt;&lt;body&gt; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,54 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-custom-log-file">Railsでcustom log(file)の作り方</a></h1>
+	<div class="entry-content">
+		<h2>Overview</h2>
+
+<p>rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます</p>
+
+<h2>ソースコード</h2>
+
+<div><script src='https://gist.github.com/1278448.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1278448&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<h2>参考</h2>
+
+<p><a href="http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/">http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/</a>
+<a href="http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/">http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/log/'>log</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -514,94 +562,6 @@ rvmでの紹介を引用しますと：</p>
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ree/'>ree</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails3-1rc-please-install-the-mysql-adapter-error">Rails3.1rc(?)でPlease install the mysql adapterというエラー</a></h1>
-	<div class="entry-content">
-		<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解決策</h2>
-
-<ul>
-<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
-<li>Gemfileにmysql2を追加しbundle installを実行</li>
-</ul>
-
-
-<h2>参考</h2>
-
-<p><a href="http://stackoverflow.com/questions/6141276/rails-3-1-0-rc1-mysql-adapter-error">http://stackoverflow.com/questions/6141276/rails-3-1-0-rc1-mysql-adapter-error</a>
-<a href="http://stackoverflow.com/questions/3467054/problem-with-mysql2-and-rails3-bundler">http://stackoverflow.com/questions/3467054/problem-with-mysql2-and-rails3-bundler</a></p>
-
-<h1>中文</h1>
-
-<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解決策</h2>
-
-<ul>
-<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
-<li>Gemfileにmysql2を追加しbundle installを実行</li>
-</ul>
-
-
-<h2>参考</h2>
-
-<h1>English</h1>
-
-<p>確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the bundle. Add it to Gemfile.)</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>解決策</h2>
-
-<ul>
-<li>database.ymlでmysqlのadapterをmysqlより<strong>mysql2</strong>に変更</li>
-<li>Gemfileにmysql2を追加しbundle installを実行</li>
-</ul>
-
-
-<h2>参考</h2>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
 
 
 </div>

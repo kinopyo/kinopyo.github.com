@@ -7,9 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Gravatar とは、ブログに投稿したりコメントしたりした時に、
-どのサイトでもあなたの名前の横に表示される画像です。 Gravatarはメールアドレスをキーとしたアバター管理Webサービスです。
-自分のアバターをGravatarに登録すれば他のサイトでも汎用的に使えるんです。 &hellip;">
+	<meta name="description" content="そもそもIDというのは一つのページ内でユニークなはずですが、
+何らかの理由で同じIDを持つ形になったとしましょう。
+その場合普通のjQueryの#idセレクタでは一つの要素(順番的に最初に合致した要素)しか選択できません。
+そこで[id=xx]の形で属性フィルタで全ての選択することができます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +92,80 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-select-multy-element-with-same-id">jQuery #idでは一つし要素か選択できない、同じIDを持つ複数要素を選択するには</a></h1>
+	<div class="entry-content">
+		<p>そもそもIDというのは一つのページ内でユニークなはずですが、
+何らかの理由で同じIDを持つ形になったとしましょう。
+その場合普通のjQueryの#idセレクタでは一つの要素(順番的に最初に合致した要素)しか選択できません。
+そこで[id=xx]の形で属性フィルタで全ての選択することができます。
+以下サンプルコードです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;[id=bar]&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h2&gt;</span>use #id selector<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;Text1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;Text2&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;h2&gt;</span>use attribute selector *id=xx*<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text3&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text4&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text5&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jQuerySelectorByID.jpg" title="jQuerySelectorByID" ></p>
+
+<h2>Demo</h2>
+
+<p>以下のjsfiddleで実際実行してみてくださいー</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/kinopyo/T36Xt/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-20T00:00:00+09:00" pubdate data-updated="true">2009-12-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -668,52 +743,6 @@ jQuery 1.3.3ではliveにもdataを渡すことができるそうです。
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ie-issue-when-open-jsp-file-promptdownload-dialog">IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る</a></h1>
-	<div class="entry-content">
-		<p>秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。</p>
-
-<h2>回避方法</h2>
-
-<p>関連付けを決断！
-- エクスプローラの「ツール→フォルダ オプション→ファイルの種類→拡張子」にJSPを捜し、「詳細設定」を開いてopenアクションを削除。
-- あるいはファイルの種類のタブの中の「削除」ボタンで削除</p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/file_associate.JPG" title="JSPファイルの関連付け" ></p>
-
-<p>秀丸が悪いのか、何が悪いのかは調べてないです。
-とにかくこれで一応解決。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ie/'>IE</a>
 
 
 </div>

@@ -7,8 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="iPhoneでアプリケーションを購入して普通はそのままiTunesに同期できるはずですが、時々iTunesがやってくれないです。
-あるいはiPhoneで一杯アプリを購入したり削除したりして、パソコンのiTunesとの差分が紛らわしくなったこともあります。 &hellip;">
+	<meta name="description" content="Macではドット&#8221;.&#8221;で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
+Finderで表示する方法を紹介します。
+はるか昔のメモです。。 ターミナルを開く(アプリケーション/ユーティリティ) 下記コマンドを叩いてreturnキーを押して実行 1
+2
+3 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +93,110 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/view-hidden-files-on-mac">Viewing hidden files on a Mac</a></h1>
+	<div class="entry-content">
+		<p>Macではドット&#8221;.&#8221;で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
+Finderで表示する方法を紹介します。
+はるか昔のメモです。。</p>
+
+<ol>
+    <li>ターミナルを開く(アプリケーション/ユーティリティ)</li>
+    <li>下記コマンドを叩いてreturnキーを押して実行</li>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool true
+</span><span class='line'>
+</span><span class='line'>killall Finder
+</span></code></pre></td></tr></table></div></figure>
+    <li>ログアウト、あるいはkillall Finderで効果が見れます</li>
+
+</ol>
+
+
+<h2>隠しファイルを非表示にするには</h2>
+
+<p>上記と全く同じ手順で、コマンドを書き換えます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>English</h1>
+
+<p>Viewing hidden files on a Mac is useful for accessing the hidden UNIX directories or for recovering Music from an iPod. Additionally, by prefixing the name of a folder with a &#8216;.&#8217;, you can create a folder that is seemingly hidden from prying eyes.</p>
+
+<h2>To view hidden folders:</h2>
+
+<ol>
+<li>Open the Terminal (located in /Applications/Utilities/)</li>
+<li>At the command prompt type</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool true
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Press return to execute the command.</li>
+<li>For the changes to take effect, either log out then log back in again, or relaunch Finder (this can be done from the Force Quit Window or by typing &#8216;killall Finder&#8217; in a Terminal window).</li>
+</ol>
+
+
+<h2>To hide the hidden files again:</h2>
+
+<ol>
+<li>Open the Terminal</li>
+<li>At the command prompt type</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>then press return to execute the command.</li>
+<li>Log out then back in again, or relaunch Finder (explained above).</li>
+</ol>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-07T00:00:00+09:00" pubdate data-updated="true">2010-07-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>Mac</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -709,57 +816,6 @@ vs
 
 
 <time datetime="2010-05-14T00:00:00+09:00" pubdate data-updated="true">2010-05-14</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/flex/'>Flex</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/flex-do-not-use-event-as-a-package-name">Flex：カスタムイベントクラスのパッケージ名をeventにするのは避けましょう</a></h1>
-	<div class="entry-content">
-		<p>カスタムイベントのパッケージ名を&#8221;event&#8221;にしました。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_package_event.jpg" title="flex_package_event" ></p>
-
-<p>結果、CTRL+SPACEでの自動補完機能がうまく行かないです。
-例えば自動でイベントハンドラを生成してくれる場合のパラメータはeventになりますが、
-この&#8221;event&#8221;続いてドット(.)を叩いて出たのは各eventパッケージしたのクラスになります。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_confused.jpg" title="flex_autocomplete_confused" ></p>
-
-<p>イベントハンドラの変数を&#8221;event&#8221;以外にすれば回避できますが、
-ハンドラの自動生成は結構便利なものなので
-やはりパッケージ名を&#8221;events&#8221;などに変えたほうがいいと思います。</p>
-
-<p>これで自動補完はちゃんと出ます。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/05/flex_autocomplete_correct.jpg" title="flex_autocomplete_correct" ></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-09T00:00:00+09:00" pubdate data-updated="true">2010-05-09</time></div>
 	<div class="tags">
 
 

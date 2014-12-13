@@ -7,12 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="jQueryでマウス右クリックを無効にする方法です。
-&#8220;contextmenu&#8221;のイベントはjQueryのドキュメントには乗ってませんが、
-それのハンドラでreturn falseすることで簡単に実現できます。 1
-2
-3
-$(&quot;document&quot;). &hellip;">
+	<meta name="description" content="ブロックとは？ Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
+メソッドに渡された処理はブロックといいます。 ブロックを渡すには？ ブロックを渡すには、二つの方法があります。
++ ①メソッドの最後に｛｝で囲んだコードを渡す。 1
+test_block {puts &#39; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +92,202 @@ $(&quot;document&quot;). &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-block">Rubyブロック</a></h1>
+	<div class="entry-content">
+		<h2>ブロックとは？</h2>
+
+<p>Rubyでは、メソッドにデータを渡すだけではなく、処理も渡せます。
+メソッドに渡された処理はブロックといいます。</p>
+
+<h2>ブロックを渡すには？</h2>
+
+<p>ブロックを渡すには、二つの方法があります。
++ ①メソッドの最後に｛｝で囲んだコードを渡す。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>②メソッドの最後にdo..endで囲んだコードを渡す。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">test_block</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブロックの使い方？</h2>
+
+<p>ブロックは使ってもらわないと、意味がありません。
+使ってもらうということは、相手のメソッドが、ブロックの処理を実行することです。
+メソッドの中で、渡されたブロックの処理を実行するには、yieldを使います。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of method&#39;</span>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of method&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Start of method
+</span><span class='line'>In the block
+</span><span class='line'>End of method</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ブロックにはパラメータを渡す？</h2>
+
+<p>ブロックにはパラメータを渡せますか？もちろんです。
+パラメータの定義はブロックで、
+yieldでブロックを実行する際には、パラメータを渡します。
+ブロックは渡されたパラメータを受け取って、処理します。
+文字の説明だけで、わからないかもしれません。
+実はメソッドの定義とほとんど変わらないです。
+サンプルを見てみましょう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block_pramater</span>
+</span><span class='line'>  <span class="k">yield</span><span class="p">(</span><span class="s1">&#39;helloworld&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">call_block</span> <span class="p">{</span><span class="o">|</span><span class="n">str</span><span class="p">,</span> <span class="n">num</span><span class="o">|</span> <span class="nb">puts</span> <span class="s1">&#39;Ruby sample:&#39;</span><span class="o">+</span><span class="n">str</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※注意点：ブロックでは、||でパラメータを受け取っています。</p>
+
+<h2>渡されたブロックをさらに別のメソッドを渡すには？</h2>
+
+<p>渡されたブロックをさらに内部で使っているメソッドに渡すことができます。
+引数の最後に&amp;付きの引数を指定してブロックを受け取リます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of test_block&#39;</span>
+</span><span class='line'>  <span class="n">test_block_paramater</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of test_block&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">test_block_paramater</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of test_block_paramater&#39;</span>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>  <span class="nb">puts</span><span class="s1">&#39;End of test_block_paramater&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Start of test_block
+</span><span class='line'>Start of test_block_paramater
+</span><span class='line'>In the block
+</span><span class='line'>End of test_block_paramater
+</span><span class='line'>End of test_block</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※One Point：ブロック引数を渡す時、＆がつければ、引数名は何でも大丈夫です。</p>
+
+<h2>ブロックが渡されたか調べるには？</h2>
+
+<p>yieldを実行する時、ブロックが渡されるかどうかを確認することができます。
+block_given?を使って、ブロックがあるかどうかを確認できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">test_block</span>
+</span><span class='line'>  <span class="c1"># test_blockメソッドを定義する</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Start of method&#39;</span>
+</span><span class='line'>  <span class="k">yield</span> <span class="k">if</span> <span class="nb">block_given?</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;End of method&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">test_block</span> <span class="p">{</span><span class="nb">puts</span> <span class="s1">&#39;In the block&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-07T00:00:00+09:00" pubdate data-updated="true">2010-01-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -682,80 +876,6 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 
 
 <time datetime="2009-12-22T00:00:00+09:00" pubdate data-updated="true">2009-12-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-select-multy-element-with-same-id">jQuery #idでは一つし要素か選択できない、同じIDを持つ複数要素を選択するには</a></h1>
-	<div class="entry-content">
-		<p>そもそもIDというのは一つのページ内でユニークなはずですが、
-何らかの理由で同じIDを持つ形になったとしましょう。
-その場合普通のjQueryの#idセレクタでは一つの要素(順番的に最初に合致した要素)しか選択できません。
-そこで[id=xx]の形で属性フィルタで全ての選択することができます。
-以下サンプルコードです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;[id=bar]&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h2&gt;</span>use #id selector<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;Text1&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;Text2&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;h2&gt;</span>use attribute selector *id=xx*<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text3&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text4&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">value=</span><span class="s">&quot;Text5&quot;</span> <span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jQuerySelectorByID.jpg" title="jQuerySelectorByID" ></p>
-
-<h2>Demo</h2>
-
-<p>以下のjsfiddleで実際実行してみてくださいー</p>
-
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/kinopyo/T36Xt/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-20T00:00:00+09:00" pubdate data-updated="true">2009-12-20</time></div>
 	<div class="tags">
 
 

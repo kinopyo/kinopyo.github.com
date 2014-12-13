@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2014-11-19T10:01:45+09:00</updated>
+  <updated>2014-12-13T15:27:07+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,112 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Run DelayedJob Manually in Test Env]]></title>
+    <link href="http://kinopyo.com/blog/run-delayedjob-manually-in-test-env/"/>
+    <updated>2014-12-13T14:18:00+09:00</updated>
+    <id>http://kinopyo.com/blog/run-delayedjob-manually-in-test-env</id>
+    <content type="html"><![CDATA[<h2>TL;DR</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/initializers/delayed_job_config.rb</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">delay_jobs</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in your spec</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">work_off</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Common Setup of DelayedJob</h2>
+
+<p>Assume you follow <a href="https://github.com/collectiveidea/delayed_job#gory-details">DelayedJob readme example</a> to configure it like this: <code>Delayed::Worker.delay_jobs = !Rails.env.test?</code>, what it does is in test env it doesn’t delay the job, meaning DelayedJob is being <em>transparent</em>, the job you put will be executed in “real time”. In most cases you don’t even need to worry about it, your test should be just fine, but recently it caught me…</p>
+
+<h2>It Fails When…</h2>
+
+<p>To give some background, I’m working on a API centric rails project. In order to authenticate with API we pass in access token for every request, and that’s done in the middleware layer. Since access token is stored in cookie, and in middleware we can’t access browser cookie directly, so another tool called <a href="https://github.com/steveklabnik/request_store">RequestStore</a> is used. If in the same request, what you stored in RequestStore you can access it later no matter the context, a unrealistic example would be you store a cookie value to RequestStore then use it in model later. Don’t do that :).</p>
+
+<p>The code below is a simplified version to illustrate the flow.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">before_action</span> <span class="ss">:set_api_access_token</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">set_api_access_token</span>
+</span><span class='line'>    <span class="no">RequestStore</span><span class="o">.</span><span class="n">store</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">.</span><span class="n">signed</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Authentication</span> <span class="o">&lt;</span> <span class="ss">Faraday</span><span class="p">:</span><span class="ss">:Middleware</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">env</span><span class="o">[</span><span class="ss">:request_headers</span><span class="o">][</span><span class="s1">&#39;Authorization&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">RequestStore</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span> <span class="k">if</span> <span class="no">RequestStore</span><span class="o">[</span><span class="ss">:access_token</span><span class="o">]</span>
+</span><span class='line'>    <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Every api request happened inside the rails <code>ApplicationController</code> stack should have the access token being set, but what would happen in a different context like rake task or DelayedJob where you need to send request to the API? The <code>before_action</code> is not gonna be executed there so <code>RequestStore[:access_token]</code> would be nil. This is an easy-to-spot issue <em>if</em> you try it once, but if you follow the TDD work flow and write test for it first, then it’ll fail you.</p>
+
+<p>With <code>Delayed::Worker.delay_jobs</code> set to <code>false</code> in test env, the job will be executed immediately in the same request, so the <code>RequestStore[:access_token]</code> still contains the value and will pass to the Authorization header in the middleware, spec passed but but in real world env it failed. Typical false positive result.</p>
+
+<h2>To Run It Manually</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/initializers/delayed_job_config.rb</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">delay_jobs</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># in your spec</span>
+</span><span class='line'><span class="c1"># here is the code to enqueue a job to DelayedJob queue</span>
+</span><span class='line'><span class="n">visit</span> <span class="n">post_path</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># run it manually</span>
+</span><span class='line'><span class="ss">Delayed</span><span class="p">:</span><span class="ss">:Worker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">work_off</span>
+</span><span class='line'><span class="c1"># expectation</span>
+</span><span class='line'><span class="n">expect</span><span class="p">(</span><span class="n">api_endpoint</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">have_been_requested</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Delayed::Worker.new.work_off</code> returns an Array like <code>[1, 0]</code> indicating succeeded job counts and failed job counts. I’ve also seen some people testing against that like <code>expect(Delayed::Worker.new.work_off).to eq([1, 0])</code>, personally I don’t think it’s necessary.</p>
+
+<ol>
+<li>You have your own expectation right after that and that should be the main concern of the spec. If the job failed, your spec should be failed too.</li>
+<li>What if multiple jobs are enqueued while you’re only focusing one of them in the spec? Update the value to <code>[2, 0]</code>? That’s just noise.</li>
+</ol>
+
+
+<p>I guess what I encountered is a rare case, but definitely an interesting case. I kinda prefer this way to mimic real world environment to prevent any possible regressions.</p>
+
+<p>Commercial time: If you’re about to build a API centric rails app, be sure to check out the awesome gem called <a href="https://github.com/balvig/spyke">spyke</a> made by <a href="https://twitter.com/balvig">@balvig</a>, the slogan is “Interact with remote REST services in an ActiveRecord-like manner.”</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Book "Essentialism - The Disciplined Pursuit of Less"]]></title>
@@ -1164,27 +1270,6 @@ release cycles is 311 days so statistically there are still around 100 days left
   <iframe width="560" height="315" src="http://www.youtube.com/embed/JGL9a2PLxpk?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Learned 2 new Japanese Kanji: 炙り, 挽肉]]></title>
-    <link href="http://kinopyo.com/blog/learned-2-new-japanese-kanji%3A-%E7%82%99%E3%82%8A%2C-%E6%8C%BD%E8%82%89/"/>
-    <updated>2013-02-14T13:24:00+09:00</updated>
-    <id>http://kinopyo.com/blog/learned-2-new-japanese-kanji:-炙り,-挽肉</id>
-    <content type="html"><![CDATA[<p>When my friends and I went out for lunch today, I was asked about these 2 Japanese kanji: &#8220;炙り&#8221;, &#8220;挽肉&#8221;, since I&#8217;m Chinese and I&#8217;m supposed to be the &#8220;Kanji Reader&#8221; in the Gaijin group.</p>
-
-<p>Hmm, but I let them down.. What I said was &#8220;I don&#8217;t know because we don&#8217;t have those kanji in Chinese&#8221;. But I was wrong! We do have &#8220;炙&#8221; and &#8220;挽&#8221; in Chinese, it&#8217;s just these kanji have highly fixed usages so I couldn&#8217;t recognise them in when they combined with Japanese Hiragana.</p>
-
-<p>Any here are the meanings:</p>
-
-<ul>
-<li>炙り(あぶり) - grill</li>
-<li>挽肉(ひきにく) - ground meat</li>
-</ul>
-
-
-<p>Even though I&#8217;ve lived in Japan for over 5 years, I still find myself rarely know any Japanese vocabularies related to cooking or food.</p>
 ]]></content>
   </entry>
   

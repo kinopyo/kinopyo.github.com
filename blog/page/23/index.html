@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="kohanaというphpフレームワークを触り始めました。MVCパターンなのでいろんなところで結構Railsと似ていますが、コード量が明らかにRailsより多くてまだ慣れてません。さすがにRailsやってから他の言語やフレームワークを触るとキツイです。 &hellip;">
+	<meta name="description" content="To perform a simple redirect in version 3.x, all you have to do is: 1
+Request::instance()-&gt;redirect(&#39;/foo/bar/1&#39;); 日本語 kohanaバージョン3.xで、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,55 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/kohana-3-x-url-redirect">Kohana 3.x :: URL Redirect</a></h1>
+	<div class="entry-content">
+		<p>To perform a simple redirect in version 3.x, all you have to do is:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">Request::instance()-&gt;redirect(&#39;/foo/bar/1&#39;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>日本語</h1>
+
+<p>kohanaバージョン3.xで、リダイレクトするには</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">Request::instance()-&gt;redirect(&#39;/foo/bar/1&#39;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-14T00:00:00+09:00" pubdate data-updated="true">2010-09-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -921,110 +971,6 @@ sqlite db/development.sqlite3</p>
 
 
 	<a class='category' href='/blog/categories/sqlite/'>SQLite</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/view-hidden-files-on-mac">Viewing hidden files on a Mac</a></h1>
-	<div class="entry-content">
-		<p>Macではドット&#8221;.&#8221;で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
-Finderで表示する方法を紹介します。
-はるか昔のメモです。。</p>
-
-<ol>
-    <li>ターミナルを開く(アプリケーション/ユーティリティ)</li>
-    <li>下記コマンドを叩いてreturnキーを押して実行</li>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool true
-</span><span class='line'>
-</span><span class='line'>killall Finder
-</span></code></pre></td></tr></table></div></figure>
-    <li>ログアウト、あるいはkillall Finderで効果が見れます</li>
-
-</ol>
-
-
-<h2>隠しファイルを非表示にするには</h2>
-
-<p>上記と全く同じ手順で、コマンドを書き換えます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>English</h1>
-
-<p>Viewing hidden files on a Mac is useful for accessing the hidden UNIX directories or for recovering Music from an iPod. Additionally, by prefixing the name of a folder with a &#8216;.&#8217;, you can create a folder that is seemingly hidden from prying eyes.</p>
-
-<h2>To view hidden folders:</h2>
-
-<ol>
-<li>Open the Terminal (located in /Applications/Utilities/)</li>
-<li>At the command prompt type</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool true
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li>Press return to execute the command.</li>
-<li>For the changes to take effect, either log out then log back in again, or relaunch Finder (this can be done from the Force Quit Window or by typing &#8216;killall Finder&#8217; in a Terminal window).</li>
-</ol>
-
-
-<h2>To hide the hidden files again:</h2>
-
-<ol>
-<li>Open the Terminal</li>
-<li>At the command prompt type</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -bool false
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li>then press return to execute the command.</li>
-<li>Log out then back in again, or relaunch Finder (explained above).</li>
-</ol>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-07T00:00:00+09:00" pubdate data-updated="true">2010-07-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>
 
 
 </div>

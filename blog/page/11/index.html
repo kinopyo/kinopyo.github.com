@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="メリット マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。 実際はChromeではなく、Chromeが恩恵を受けているオープンソースプロジェクトのChromiumを使います。Chromeでもできるっちゃできるんですが、 &hellip;">
+	<meta name="description" content="前回の記事：gitの記号はでHEADを書いたのですが、zshでやるとこんなエラーに。。 1
+zsh: no matches found: HEAD^ 何かzshで*記号*は特別の意味があるらしいです。
+参考：http://stackoverflow.com/questions/6091827/ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +91,54 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/git-caret-does-not-work-in-zsh-no-matches-found">zshでgitの^caretは使えないっぽい: zsh: no matches found: HEAD^</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.kinopyo.com/blog/what-does-caret-character-mean-in-git">前回の記事：gitの<sup>記号は<em>で</em>HEAD<sup></em>を書いたのですが、<em>zsh</sup></sup></a>でやるとこんなエラーに。。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>zsh: no matches found: HEAD^</span></code></pre></td></tr></table></div></figure>
+
+
+<p>何かzshで*<sup>記号*は特別の意味があるらしいです。</sup>
+参考：<a href="http://stackoverflow.com/questions/6091827/git-show-head-doesnt-seem-to-be-working-is-this-normal">http://stackoverflow.com/questions/6091827/git-show-head-doesnt-seem-to-be-working-is-this-normal</a></p>
+
+<h2>回避方法</h2>
+
+<p>2つあります。一つは同じ効果の<em>HEAD~1</em>を使う、もう一つはエスケープする方法です。
++  <em>HEAD~1</em>
++  *HEAD/<sup>*</sup></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-26T00:00:00+09:00" pubdate data-updated="true">2011-10-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/zsh/'>zsh</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1365,54 +1415,6 @@ Below is a sample for Safari.</p>
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/textmate/'>TextMate</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/editor/'>editor</a>, <a class='category' href='/blog/categories/safari/'>safari</a>, <a class='category' href='/blog/categories/textmate/'>textmate</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-custom-log-file">Railsでcustom log(file)の作り方</a></h1>
-	<div class="entry-content">
-		<h2>Overview</h2>
-
-<p>rails serverで起動する時に盛りだくさんの情報がログに出力されるので、別ファイルで自分がデバッグしたい情報だけをそこに出力する方法です。この方法でtail -f log/custom.logで監視できます</p>
-
-<h2>ソースコード</h2>
-
-<div><script src='https://gist.github.com/1278448.js'></script>
-<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1278448&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
-
-
-<h2>参考</h2>
-
-<p><a href="http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/">http://robaldred.co.uk/2009/01/custom-log-files-for-your-ruby-on-rails-applications/</a>
-<a href="http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/">http://ianma.wordpress.com/2009/04/08/custom-logging-in-ruby-on-rails/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/log/'>log</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>

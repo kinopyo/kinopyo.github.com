@@ -7,10 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="If you are a Man, no matter you are lonely now, or married.
-You should watch this, trust me.
-It&#8217;s about freedom, wild, excited.
-I think &hellip;">
+	<meta name="description" content="前回の記事の続きとしてJSONPを勉強しました。 XMLHttpRequestはセキュリティ上の制限により、 クロスドメインの通信ができないです。 でもウェブサービスのようなどうしてもクロスドメインで通信したい場合があります。 その時の手段してあげられるのがこのScriptタグです。 ( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +89,136 @@ I think &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jsonp-pricipal-using-jsonp-with-jquery">JSONPの動作原理、jQueryでJSONPを利用</a></h1>
+	<div class="entry-content">
+		<p>前回の記事の続きとしてJSONPを勉強しました。</p>
+
+<p>XMLHttpRequestはセキュリティ上の制限により、</p>
+
+<p>クロスドメインの通信ができないです。</p>
+
+<p>でもウェブサービスのようなどうしてもクロスドメインで通信したい場合があります。</p>
+
+<p>その時の手段してあげられるのがこのScriptタグです。</p>
+
+<p>(他の手段としてiframeやflashとリバースプロキシがあるそうです)</p>
+
+<h2>JSONPとは</h2>
+
+<blockquote><p>JSON with paddingの略</p>
+
+<p>Javascriptの非同期通信でよく使われるXMLHttpRequestオブジェクトにはSame-Originポリシーが存在し、クロスドメインアクセスができない。</p>
+
+<p>一方，scriptタグを用いると，ドメインの異なるサーバに置いているスクリプトファイルを読み込むことができる。この仕組みを利用し、scriptタグのsrcに、データを取得できるAPIのURLを指定し，ドメインの異なるサーバからデータを取得する仕組みの総称として、JSOPという言葉が使われる。JSONP用のAPIでは、関数名＋取得データをjson形式で表記して引数とした形式(例.callbackFunc({id:1000,name:aaa}))のレスポンスが一般的で、APIから返されるコールバック関数と同じ名前の関数(callbackFunc(jsonData))をクライアント側で定義しておけば、データを読み込んだ際にそのコールバック関数が実行される。動的にscriptのDOMを生成することで、非同期でデータが取得できるようになる。</p>
+
+<p>ただし、Same-Originポリシーが存在しないため、機密情報をAPIに含める際には十分な注意が必要である。</p></blockquote>
+
+<h2>動作原理</h2>
+
+<p>やはりソースコードで読むほうが早いだと思います。</p>
+
+<p>以下gihyo.netからのサンプルコードです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script&gt;</span>
+</span><span class='line'>      <span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// コールバック関数を定義</span>
+</span><span class='line'>        <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://mail.example.com/json.dat&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>データ提供サーバ側が用意したJSON</h3>
+
+<p>json.datの中身</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">callback</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;Fukumori&quot;</span> <span class="p">}</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>簡単まとめ</h3>
+
+<p>要はクライアント側で先にデータを扱うコールバック関数を定義</p>
+
+<p>その名はデータの提供側とのコールバック関数名と一致する必要がある</p>
+
+<p>scriptタグでデータ提供サーバのデータをインポート</p>
+
+<p>すると先に用意したコールバック関数が走ってデータを処理する</p>
+
+<p>もっと詳しい動作原理とセキュリティはgihyoの特集を参照してください。
+とても分かりやすいです。おすすめ！</p>
+
+<p><a href="http://gihyo.jp/dev/serial/01/web20sec/0003?page=1">第3回　JSONPでのクロスドメインアクセス：ここが危ない！Web2.0のセキュリティ｜gihyo.jp … 技術評論社</a></p>
+
+<h2>jQueryでJSONPを使う</h2>
+
+<p>jQueryのAjaxメソッドには$.getJSONがあります。</p>
+
+<p>このメソッドはjQuery1.2からJSONPも対応したようです。</p>
+
+<blockquote><p>As of jQuery 1.2, you can load JSON data located on another domain if you specify a JSONP callback.</p></blockquote>
+
+<p>利用方法はurlの最後に”?”付きのコールバックパラメータを追加することです。</p>
+
+<p>例えば”example.com?callback=?”こんな感じです。</p>
+
+<p>callbackの値は指定しなくてもよいみたい、</p>
+
+<p>jQueryが自動で変換してくれます。</p>
+
+<p>ただしコールバックのパラメータ名はデータ提供側によって異なるかもしれません。</p>
+
+<p>例えばヤフーPipesは”_callback=?”を要求してるそうです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-21T00:00:00+09:00" pubdate data-updated="true">2009-11-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -860,64 +987,6 @@ I think &hellip;">
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/flex3-in-eclipse3-5-windows7-ok-mac-osx-failure">Flex3 in Eclipse3.5( Windows7 OK, Mac OSX 失敗)</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。</p>
-<p>しかしFlex Builder 3.0.2 Professional Plug-Inは Eclipse3.2.2、3.3、3.4しか対応していません。</p>
-<p>Eclipse3.5に載せる場合はFlexのインストール完了後</p>
-<p>以下のように設定してください。</p>
-<br/>
-<ul>
-<li>Eclipseルートディレクトリ\linksフォルダにあるcom.adobe.flexbuilder.feature.core.linkファイルを開く</li>
-<li>path=&#60;Flex Builder 3 Plug-inのディレクトリ&#62;　に編集
-<ul>
-<li>デフォルトではpath=以降のディレクトリが書いてあるはずなので、&#8221;path=&#8221;だけを追加すればOK</li>
-</ul>
-</li>
-<li>Eclipseを再起動し、パースペクティブにはFlex開発を選択</li>
-</ul>
-<br/>
-<p>Windows7でOKでした。MacOS Xで同じやり方ではダメでした。</p>
-<p>ネットでもいろいろ検索しましたが、</p>
-<p>やはりMacではうまく動作してくれないみたいで、</p>
-<p>しょうがなくスタンドアロンをインストールしました。</p>
-<br/>
-<p>参考サイト：<a href="http://tpfields.xrea.jp/tips/develop-air-with-flex-builder-3-plugin-and-eclipse-35-galileo.html" target="_blank">  Flex Builder 3 Plug-in: &#8220;Eclipse 3.5 Galileo&#8221;でFlex開発 | t.p.fields - web+tech info</a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-13T00:00:00+09:00" pubdate data-updated="true">2009-11-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/flex/'>Flex</a>
 
 
 </div>
