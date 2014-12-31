@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="EvernoteでPlainText（スタイルなし）として貼りつけたときの方法です。 Win: Edit-> Paste as Text (Ctrl+Shift+V)
-Mac: Edit -> Paste Without Formatting (Command + Shift + V) 中文 &hellip;">
+	<meta name="description" content="障害 http_build_queryを使ってurlのパラメータを作るときにパラメータがこうなりました。 1
+foo=bar&amp;amp;baz=boo&amp;amp;hoge=hoge 上記のように複数のパラメータがある時に;であるべきのところが&amp;となってしまいました。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,61 @@ Mac: Edit -> Paste Without Formatting (Command + Shift + V) 中文 &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/be-careful-when-using-http-build-query-in-php">http_build_queryを使うときの注意点：URLパラメータ区切りがエスケープされる(XAMPP要注意)</a></h1>
+	<div class="entry-content">
+		<h2>障害</h2>
+
+<p>http_build_queryを使ってurlのパラメータを作るときにパラメータがこうなりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>foo=bar&amp;amp;baz=boo&amp;amp;hoge=hoge
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記のように複数のパラメータがある時に<strong>;</strong>であるべきのところが<strong>&amp;</strong>となってしまいました。</p>
+
+<p>これはPHPの設定ファイル、php.iniのarg_separator.outputで制御されてて、XAMPPの場合インストールされたデフォルトでは、「&amp;」となるそうです。</p>
+
+<h2>解決方法</h2>
+
+<p>なので、php.iniの「arg_separator.output」の値を「&amp;」から「&amp;」に変更する</p>
+
+<h2>参考</h2>
+
+<p>http_build_queryを使うときの注意点(PHP)
+<a href="http://www.multiburst.net/sometime-php/2008/12/http_build_query/">http://www.multiburst.net/sometime-php/2008/12/http_build_query/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00+09:00" pubdate data-updated="true">2011-04-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -734,60 +789,6 @@ Cucumberでは自然言語で書けるため、実装から離れた視点でい
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>, <a class='category' href='/blog/categories/mind/'>mind</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/sense/'>sense</a>, <a class='category' href='/blog/categories/steak/'>steak</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields">CakePHP: $model->save()後、$model->id以外のフィールド情報は持ってない</a></h1>
-	<div class="entry-content">
-		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$this-&gt;Ingredient-&gt;save($newData);</span>
-</span><span class='line'><span class="x">$newIngredientId = $this-&gt;Ingredient-&gt;id;    // OK</span>
-</span><span class='line'><span class="x">// id以外のフィールドはダメ</span>
-</span><span class='line'><span class="x">$this-&gt;Ingredient-&gt;name;    // NG</span>
-</span><span class='line'><span class="x">$this-&gt;Ingredient-&gt;category;    // NG</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>登録/更新には関係なく。
-公式マニュアルでは：</p>
-
-<blockquote><p>一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。</p></blockquote>
-
-<p>と書いてありますが、id以外のフィールド情報は持ってないようです。
-欲しければ$this->dataから取れます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-03T00:00:00+09:00" pubdate data-updated="true">2011-02-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/model/'>model</a>, <a class='category' href='/blog/categories/orm/'>orm</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

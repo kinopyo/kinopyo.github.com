@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ブックマークレット(Bookmarklet)とは 簡単に言うとJavaScriptをブックマークしたものです。
-普通はURLをブックマークするに対し、JavaScriptをブックマークします。
-そしてこのブックマークを選ぶときは保存されたJavaScriptが実行されます。 &hellip;">
+	<meta name="description" content="toggle()の普通の使い方は多分皆さんご存知だと思います。
+該当要素をクリックするたびに表示/非表示を切り替えます。 今日紹介するのはこのswitchパラメータ付のtoggleです。
+swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +91,78 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-toggle-swtich-tips">jQueryのtoggle(switch)が大変便利、条件文5行のコードが1行に短縮！</a></h1>
+	<div class="entry-content">
+		<p>toggle()の普通の使い方は多分皆さんご存知だと思います。
+該当要素をクリックするたびに表示/非表示を切り替えます。</p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134759.gif" alt="" /></p>
+
+<p>今日紹介するのはこのswitchパラメータ付のtoggleです。
+<strong>swtich文を評価しtrueであれば要素を表示、falseであれば非表示です。</strong>
+これで下記のコードがこのswtich付きのtoggle文なら一行ですみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これがこうなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">).</span><span class="nx">toggle</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&quot;kinopyo&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうですか？すごくないですか？
+まさにjQueryの「The Write Less, Do More」ですよね。
+ただし判断の条件文が行の最後になるので、
+読みやすさは多少落ちると思います。</p>
+
+<br/>
+
+
+<p>ちなみに、Googleの単語とよく似ているので、ついついtoogleと書いちゃいますorz</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-27T00:00:00+09:00" pubdate data-updated="true">2009-11-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -912,118 +984,6 @@ Java7,,,やってみたいっす！
 
 
 <time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-focus-act-different-in-ie">jQuery focus()によるIEとFirefox動きの違い</a></h1>
-	<div class="entry-content">
-		<div class="section">
-
-jQueryのfocus()はデフォルトのフォーカス動作とそのエレメントにバインドされたイベントが実行されます。
-
-しかしIE8とFirefoxではこのfocus()の動作が多少違います。
-<h4>現象</h4>
-例えば複数のinput要素があって、それぞれfocusイベントとblurイベントがバインドされたとします。
-
-focus()を実行する前はelem1にフォーカスしていて、要素$(&#8216;elem2&#8217;).focus()を実行すると
-<ul>
-    <li>Firefox 3.5.5ではelem1のblurイベントが実行した後に、elem2のfocusイベントが実行する</li>
-    <li>IE8ではelem1のblurイベントは実行されますが、elem2には2回フォーカスするように動作します。つまり下記の動きです。
-<ol>
-    <li>elem1のblurイベント</li>
-    <li>elem2のfocusイベント</li>
-    <li><strong>elem2のblurイベント</strong></li>
-    <li><strong>elem2のfocusイベント</strong></li>
-</ol>
-</li>
-</ul>
-普通に考えたらFirefoxの動きが正しいはずですよね。
-上記の3と4は余計な処理になります。
-<h4>サンプルコード</h4>
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;form :input&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;focus&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="c1">// ログを出力</span>
-</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#result&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot; focus event triggered.&lt;br&gt;&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;blur&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="c1">// ログを出力</span>
-</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#result&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot; blur event triggered.&lt;br&gt;&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
-</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">focusBar</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
-</span><span class='line'><span class="kd">function</span> <span class="nx">focusBar</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;blur&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#bar&quot;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:html&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">Foo</span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="o">/&gt;</span>
-</span><span class='line'><span class="nx">Bar</span><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;result&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-先にfooテキストエリアにフォーカスしてくささい。
-
-3秒後にbarテキストエリアにfocus()メソッドでフォーカスします。
-
-その時の出力ログを見てください。
-<h4>回避策</h4>
-まだいい方法はつかんでません。
-
-Googleで検索すると似たようなものはありましたが、
-
-回避策はまだないようです。
-
-<a href="http://www.mail-archive.com/jquery-en@googlegroups.com/msg88436.html" target="_blank">[jQuery] Focus event firing twice in Internet Explorer</a></div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-22T00:00:00+09:00" pubdate data-updated="true">2009-11-22</time></div>
 	<div class="tags">
 
 

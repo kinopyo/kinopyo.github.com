@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Square brackets in zsh Square brackets in zsh have special meanings but in MOST circumstances maybe you just have to escape them by putting \( &hellip;">
+	<meta name="description" content="CAUTION It&#8217;s specific machinist 1.0-maintenance. Machinist is an alternative for Fixtures or FactoryGirl. make_unsaved If you want to generate &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,67 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/machinist-how-to-generate-an-object-without-saving-it-to-the-database/">Machinist 1.0: How to generate an object without saving it to the database</a></h1>
+	<div class="entry-content">
+		<p><strong>CAUTION</strong> It&#8217;s specific machinist 1.0-maintenance.</p>
+
+<p>Machinist is an alternative for Fixtures or FactoryGirl.</p>
+
+<h2>make_unsaved</h2>
+
+<blockquote><p>If you want to generate an object without saving it to the database, replace <code>make</code> with <code>make_unsaved</code></p></blockquote>
+
+<p><a href="https://github.com/notahat/machinist/tree/1.0-maintenance#blueprints---generating-objects">reference</a></p>
+
+<p>So remember to use <code>make_unsaved</code>.</p>
+
+<h3>More</h3>
+
+<p>If you&#8217;re interested, here is the source code.</p>
+
+<ul>
+<li><a href="https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist/active_record.rb#L61">https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist/active_record.rb#L61</a></li>
+<li><a href="https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist.rb#L107">https://github.com/notahat/machinist/blob/1.0-maintenance/lib/machinist.rb#L107</a></li>
+</ul>
+
+
+<h2>Under latest version</h2>
+
+<p>Well if you&#8217;re using latest machinist, which is 2.0 at this point, it&#8217;s much simpler and cleaner.</p>
+
+<p><code>make</code> for generating but not saving an object, <code>make!</code> for saving it to database.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-20T20:12:00+09:00" pubdate data-updated="true">2012-07-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/machinist/'>machinist</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/test/'>test</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -553,48 +614,6 @@ Chromeと同じようにタブにFaviconを表示する方法を紹介します�
 
 
 	<a class='category' href='/blog/categories/uncategorized/'>Uncategorized</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/factorygirl-how-to-define-a-value-based-on-an-already-defined-one">FactoryGirl: How to define a value based on an already defined one</a></h1>
-	<div class="entry-content">
-		<p>FactoryGirlで既に定義した値を使おうとする時の方法です。
-例えばLessonというクラスのstart_atとend_atの属性があり、start_atを定義した後はend_atをその2時間後に定義したい場合、ブロックでパラメータを渡せばそこでstart_atにアクセスできるようになります。</p>
-
-<div><script src='https://gist.github.com/1680766.js'></script>
-<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1680766&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-26T00:00:00+09:00" pubdate data-updated="true">2012-01-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/factory-girl/'>factory_girl</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/test/'>test</a>
 
 
 </div>

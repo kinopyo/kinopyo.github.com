@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" 仕事で使ったので簡単にサンプルコードをまとめました。 2011-06-08 php ">
+	<meta name="description" content="この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。 &lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,47 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/run-rails-31-rc-on-heroku">Rails3.1rcをHerokuで動かす</a></h1>
+	<div class="entry-content">
+		<p>この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。</p>
+
+<div><script src='https://gist.github.com/1014428.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1014428&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<p>上記snippetはgistで保管しJavaScriptで表示しています。RSSでご覧の方は見れないと思います。お手数ですが、直接アクセスしてください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-17T00:00:00+09:00" pubdate data-updated="true">2011-06-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -600,123 +641,6 @@ Macportでrubygemsをインストールすることで解決できるそうで�
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties">Facebookからのメール：you may be allowing authentication data to be passed to 3rd parties</a></h1>
-	<div class="entry-content">
-		<p>Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties.</p>
-
-<p>ここ最近Facebookから”認証情報をサードパーティに渡している可能性がある、48時間内に修正しろ”みたいなメールが届いた人が多いと思います。
-メール本文です：</p>
-
-<blockquote>
-Dear Developer of xxxxxx {your app name} xxxxx,
-
-Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties. Allowing user ids and access tokens to be passed to 3rd parties, even inadvertently, could allow these 3rd parties to access the data the user made available to your site. This violates our policies and undermines user trust in your site and Facebook Platform.
-
-In every case that we have examined, this information is passed via the HTTP Referer Header by the user’s browser. This can happen when using our legacy authentication system and including &lt;iframe&gt;, &lt;img&gt; or &lt;script&gt; content from 3rd parties in the page that receives authentication data from Facebook. Our legacy mechanism passes authentication information in the URL query string which, if handled incorrectly, can be passed to 3rd parties by the browser. Our current OAuth 2.0 authentication system, released over a year ago, passes this information in the URL fragment, which is not passed to 3rd parties by the browser.
-
-Please ensure that you are not allowing this data to be passed immediately. Accessing your site as a test user while running a HTTP proxy/monitor like Charles or Fiddler is the best way to determine if you are allowing this information to be passed. If you discover the issue, you can do one of two things:
-
-1. Migrate your site to use our OAuth 2.0 authentication system. We are requiring all apps and sites to update to this mechanism by Sept. 1, 2011. Migrating now will address this issue and ensure that you are one of the first to meet the deadline. For more details, please see our Authentication Guide.
-
-2. Create and use an interstitial page to remove the authentication data before redirecting to your page with 3rd party content. This approach is used by many of our largest developers today (although they are all migrating to OAuth 2.0 shortly). This is a simple and straightforwardchange that should have minimal impact on your site. For more details on this approach, see our Legacy Connect Auth doc.
-
-Because of the importance of ensuring user trust and privacy, we are asking you to complete one of the above steps in the next 48 hours. If you fail to do so, your site may be subject to one of the enforcement actions outlined in our policies.
-
-If you have any questions or believe you have received this message in error, please contact us.
-
-Facebook Developer Relations
-</blockquote>
-
-
-<p>多分認証システムが古い（OAuth 2.0を使ってない）かつ、該当のページに&lt;iframe&gt;などのタグがあるのを条件としてFacebook側が検知してたと思います、別にサードパーティにどうこうした訳ではなく。</p>
-
-<h2>ソースの確認</h2>
-
-<p>まずユーザ認証のところのソースを確認しましょう。
-古い認証システムを使う場合これに似てるはずです。
-ソースはFacebookの<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>より。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> $api_key = &quot;YOUR_API_KEY&quot;;</span>
-</span><span class='line'><span class="x"> $interstitial_page = &quot;YOUR_SECURE_URL&quot;; //URL with no 3rd party apps</span>
-</span><span class='line'>
-</span><span class='line'><span class="x"> $url=&#39;http://www.facebook.com/login.php?api_key=&#39; . $app_id</span>
-</span><span class='line'><span class="x">   . &#39;&amp;session_version=3&amp;next=&#39; . urlencode($interstitial_page)</span>
-</span><span class='line'><span class="x">   . &#39;&amp;v=1.0&amp;return_session=1&amp;fbconnect=1&#39;</span>
-</span><span class='line'><span class="x">   . &#39;&amp;cancel_url=&#39; . urlencode($interstitial_page);</span>
-</span><span class='line'>
-</span><span class='line'><span class="x"> echo &quot;Welcome to the Old Auth flow&quot;;</span>
-</span><span class='line'><span class="x"> echo &quot;&lt;p&gt;&quot;;</span>
-</span><span class='line'>
-</span><span class='line'><span class="x"> echo(&quot;&lt;a href=&#39;&quot; . $url . &quot;&#39;&gt;&quot;</span>
-</span><span class='line'><span class="x">   . &quot;&lt;img src=&#39;http://static.ak.facebook.com/images/&quot;</span>
-</span><span class='line'><span class="x">   . &quot;devsite/facebook_login.gif&#39;&gt;&lt;/a&gt;&quot;);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>この場合nextパラメータで指定したページに行く時、URLパラメータでuidとかaccess_tokenが渡されますので、危ないと。</p>
-
-<p><a href="http://developers.facebook.com/attachment/request_img.png"><img alt="" src="http://developers.facebook.com/attachment/request_img.png" title="古い認証システムでは情報をパラメータ文字列で返す" class="alignnone" width="480" height="100" /></a></p>
-
-<p>OAuth 2.0を使ったログインURLはこうです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_URL&scope=email,read_stream
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>改修</h2>
-
-<p>メールで書かれた通り一つはOAuth2.0に移行する、一つは「中間ページ」挟んでユーザ情報をセッションに保持して隠蔽する。</p>
-
-<p>OAuthについては<a href="https://developers.facebook.com/docs/authentication/">https://developers.facebook.com/docs/authentication/</a>で詳しく説明しています。</p>
-
-<p>後者の場合は<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>の最後でサンプルコードがあるので参考できます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-20T00:00:00+09:00" pubdate data-updated="true">2011-05-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>
 
 
 </div>

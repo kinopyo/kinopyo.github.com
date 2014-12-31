@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Flex3 builderにはスタンドアロンとEclipseのプラインの形があります。
-しかしFlex Builder 3.0.2 Professional Plug-Inは Eclipse3.2.2、3.3、3.4しか対応していません。
-Eclipse3. &hellip;">
+	<meta name="description" content="プログラマ、あるいはIT技術者の週末はどう過ごしていますか？ 技術の記事をメインとした私のブログは 週末になるとアクセス数が普段の60%しかありません。。。 多分平日はみんな仕事でいろいろと検索していると思います。 週末はやはり余裕を持ってリラックスしていますよね。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +89,66 @@ Eclipse3. &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/what-did-you-do-this-weekend">週末の過ごし方？</a></h1>
+	<div class="entry-content">
+		<p>プログラマ、あるいはIT技術者の週末はどう過ごしていますか？</p>
+
+
+<p>技術の記事をメインとした私のブログは</p>
+
+
+<p>週末になるとアクセス数が普段の60%しかありません。。。</p>
+
+
+<p>多分平日はみんな仕事でいろいろと検索していると思います。</p>
+
+
+<p>週末はやはり余裕を持ってリラックスしていますよね。</p>
+
+
+<br/>
+
+
+<p>やはり週末の直前はエンターテーメントの記事を書こうと思ってます。</p>
+
+
+<p>自分もリラックスが必要だし、</p>
+
+
+<p>それにあわせた気持ちを記事の形で残してもいいですよね。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-14T00:00:00+09:00" pubdate data-updated="true">2009-11-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1637,188 +1695,6 @@ IE6なんかもう早く下がってほしい。</p>
 
 
 	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-structure-of-plugin-validation">jQuery Validationプラグインの仕組み、概要</a></h1>
-	<div class="entry-content">
-		<p>マインドマップでまとめました。ごらんください。</p>
-
-
-<p>基本的な使い方はほかのサイトでもいっぱい書いてるため、</p>
-
-
-<p>省略します。</p>
-
-
-<p>大まかな仕組みだけをメモとして書きたいと思います。</p>
-
-
-<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091104/20091104014304.jpg" alt="" /></p>
-
-<br/>
-
-
-<p>最初に理解してほしいのはルールと検証メソッドです。</p>
-
-
-<p>これはペアとして使います。</p>
-
-
-<p>まずルールでは検証したい項目のname属性と適用するルール名を書きます。</p>
-
-
-<br/>
-
-
-<p>例えばこんな感じです。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">comment</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">minlength</span><span class="o">:</span> <span class="mi">5</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>これはname属性がcommentの要素に対してrequiredとminlengthのルールを適用する意味です。</p>
-
-
-<p>ルールの詳細はつまり検証メソッドに実装されています。</p>
-
-
-<p>required,minlengthなどはプラグインのbuilt-inルールです。</p>
-
-
-<p>ここでrequired(必須)は実際どう実装されたかをちらっと見てみましょう。</p>
-
-
-<p>(私も実は初めてです。。。)</p>
-
-
-<p>以下抜粋したコードです。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">required</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">element</span><span class="p">,</span> <span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// check if dependency is met</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">depend</span><span class="p">(</span><span class="nx">param</span><span class="p">,</span> <span class="nx">element</span><span class="p">))</span> <span class="k">return</span> <span class="s2">&quot;dependency-mismatch&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">switch</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;select&#39;</span><span class="o">:</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;option:selected&quot;</span><span class="p">,</span> <span class="nx">element</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">options</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&quot;select-multiple&quot;</span> <span class="o">||</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="nx">options</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attributes</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">].</span><span class="nx">specified</span><span class="p">)</span> <span class="o">?</span> <span class="nx">options</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span> <span class="o">:</span> <span class="nx">options</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;input&#39;</span><span class="o">:</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">checkable</span><span class="p">(</span><span class="nx">element</span><span class="p">))</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getLength</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">default</span><span class="o">:</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>一番デフォルトな行為はこれですね。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>単純にその項目のvauleをtrim(スペースを取り除く)して長さを確認してます。</p>
-
-
-<p>その前に要素がselectの場合や、inputの場合の判断がそれぞれ違います。</p>
-
-
-<p>最初にdependがあるのですが、これは簡単に言うとこの要素が必須項目となるのはある前提がある意味です。</p>
-
-
-<br/>
-
-
-<p>これが一番基本の仕組みとなってます。</p>
-
-
-<p>これ以外もメッセージの内容や位置、</p>
-
-
-<p>どのタイミングで検証するか、</p>
-
-
-<p>エラーがある場合のコールバックなどを各自でカスタマイズできるようになってます。</p>
-
-
-<br/>
-
-
-<p>参考となったサイト：</p>
-
-
-<ul>
-<li>公式サイト(英語)：<a href="http://docs.jquery.com/Plugins/Validation" target="_blank">Plugins/Validation - jQuery JavaScript Library</a></li></li>
-<li>簡単な使い方が書いてます(日本語):<a href="http://d.hatena.ne.jp/sugyan/20090312/1236815025" target="_blank">高機能ライブラリ「jQuery」とそのPlugin「Validation」 - すぎゃーんメモ</a></li></li>
-<li>カスタマイズに役に立つ情報があります(日本語):<a href="http://micelle.org/trash/jquery-validation-plugin" target="_blank">jQuery Validation Pluginメモ</a></li></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-04T00:00:00+09:00" pubdate data-updated="true">2009-11-04</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

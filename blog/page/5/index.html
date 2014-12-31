@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="About the video Original url It&#8217;s the video about a speech DHH presented 2010 at Stanford. It&#8217;s very inspring, good to know about the &hellip;">
+	<meta name="description" content="I&#8217;m not familiar with capistrano at all, I kind of use it in daily base but what I&#8217;m capable of is just the one major command: ca deploy &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,70 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/capistrano-callback-order-and-recipe-brief-explanations/">Capistrano Callback Order and Recipe Brief Explanations</a></h1>
+	<div class="entry-content">
+		<p>I&#8217;m not familiar with <code>capistrano</code> at all, I kind of use it in daily base  but what I&#8217;m capable of is just the one major command: <code>ca deploy</code>, heh that&#8217;s all I got.</p>
+
+<h2>Capistrano Callback Order</h2>
+
+<p>If you like me always get confused by the callback orders, image is really gonna help you out.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/Capistrano%20Execution%20Path.jpeg" alt="" /></p>
+
+<h2>Capistrano Task explanation</h2>
+
+<p><a href="http://capitate.rubyforge.org/recipes/deploy.html">Capistrano recipes: deploy</a> is brief explanations of each task, same in the source code I think, highly recommend you go through them once.</p>
+
+<p>Another good resource is <a href="https://github.com/capistrano/capistrano/blob/master/lib/capistrano/recipes/deploy.rb">capistrano recipes source code</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">task</span> <span class="ss">:update</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">transaction</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">update_code</span>
+</span><span class='line'>    <span class="n">create_symlink</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Like this <code>:update</code> task is easy to guess: run <code>update_code</code> and <code>create_symlink</code> in a transaction.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T00:50:00+09:00" pubdate data-updated="true">2012-10-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -687,90 +751,6 @@
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/amazon-kindle-press-conference-video-and-my-thoughts/">Amazon Kindle Press Conference(Video) and My Thoughts</a></h1>
-	<div class="entry-content">
-		<p>Here is the video of Amazon Kindle Press Conference, hold on September 6, 2012. This article does not intend to cover all the hardware details but just something worth for me to write down.</p>
-
-<div class="video-container">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/VYi1jZXz9Kg" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
-<h2>Why video?</h2>
-
-<p>I really don&#8217;t like just check the new hardware&#8217;s specs and see the numbers bumped up from this level to that level. I&#8217;d always like to watch the press videos, to enjoy the process, to feel the revolutionary stories behind this. Of course part of it kind of depends on how the CEO did the presentation.</p>
-
-<h2>KDP - Kindle Direct Publishing</h2>
-
-<p>During watching the viode I found something new, something amazed me. That is <a href="https://kdp.amazon.com/self-publishing/signin">KDP - Kindle Direct Publishing</a></p>
-
-<blockquote><p>With Kindle Direct Publishing (KDP) you can self-publish your books on the Amazon Kindle Store. It&#8217;s free, fast, and easy. Books self-published through KDP can participate in the 70% royalty program and are available for purchase on Kindle devices and Kindle apps for iPad, iPhone, iPod touch, PC, Mac, BlackBerry, and Android-based devices. With KDP, you can self-publish books in many languages and specify pricing in US Dollars, Pounds Sterling, and Euros.</p></blockquote>
-
-<p>I really think it&#8217;s a good job, good job Amazon. There is a also a video clip interviewing the authors who have published and succeeded through KDP. Jeff Bezos, the CEO of Amazon, also mentioned some numbers about this business, apparently it&#8217;s going well and actually helping people. To be honest, suddenly it occurs to me that maybe one day I can publish my own book, if it&#8217;s really just a matter of whether I can finish it, and no need to consider about the publisher.</p>
-
-<h2>Audio books</h2>
-
-<p>I bought Steven Job&#8217;s biography audio book last year, which is the first time I ever tried an audio book. Despite my English skill it was still a pretty good experience. I really encourage you to try at least once. If you keep saying, &#8220;Oh no I can never understand those English&#8221; and stop trying or improving yourself, you can never get that place. Just my opinion.</p>
-
-<h3>Narration</h3>
-
-<p>I never cared about who was narrating the book to me, until I heard this:</p>
-
-<blockquote><p>They&#8217;re getting people like Susan Sarandon, Colin Firth Anne Hathaway to narrate these books.</p></blockquote>
-
-<p>So what&#8217;s the big deal? I think it&#8217;s better to know it&#8217;s not someone who is cold heart just do his/her jobs to READ the book, but it&#8217;s someone you know like big movie stars, narrating the story, vividly. I want to know the details behind the scenes if I&#8217;m really into something. So it&#8217;s different for me.</p>
-
-<h3>Whispersync for Voice</h3>
-
-<p>Listen to your audio book on the way home, when you get home, pick up the &#8220;book&#8221; and start reading. Keep the place between the two media formats. I love this idea, and it becomes true.</p>
-
-<h2>Reading time</h2>
-
-<p>I almost forgot about this. Now kindle can show you how many times do you need to finish the current chapter, or the entire book. And it&#8217;s based on <strong>your</strong> speed. Isn&#8217;t that amazing!?</p>
-
-<h2>When We Make Money?</h2>
-
-<p>In the end, Jeff also mentioned about alignment of amazon.</p>
-
-<blockquote><p>We want to make money when people <strong>use</strong> our devices, not when they <strong>buy</strong> our devices.</p></blockquote>
-
-<p>I appreciate this. I&#8217;m sure we all know that it is the place where you are supposed to say something beautiful to the public. But I still love it, and I bought it.</p>
-
-<p>It let me look back the &#8220;common&#8221; flow of my daily work. There was a time when we were told like this: &#8220;We need to make xxx money by the end of xxx, so we have to release the product before xxx! So do it and do it harder!&#8221;. Ok I may extragerate too much but you got the point. I admit it&#8217;s neccessary to have a <strong>business plan</strong>, including numbers, to run a <strong>business</strong>. But it would be thankful if we and our managers and BOSS stop talking about how many money we&#8217;re gonna make or should make, and think about how much it&#8217;s gonna be helpful and valuable to our users. You don&#8217;t need to say it loud every single day, but at least consider about this in your heart.</p>
-
-<p>I want to make money when people use my products, although I&#8217;m just an employee now.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-08T14:12:00+09:00" pubdate data-updated="true">2012-09-08</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>Diary</a>, <a class='category' href='/blog/categories/news/'>News</a>
 
 
 </div>

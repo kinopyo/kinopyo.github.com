@@ -7,11 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Macではドット&#8221;.&#8221;で始まるファイルやフォルダは隠しフォルダ、ファイルになるようです。
-Finderで表示する方法を紹介します。
-はるか昔のメモです。。 ターミナルを開く(アプリケーション/ユーティリティ) 下記コマンドを叩いてreturnキーを押して実行 1
-2
-3 &hellip;">
+	<meta name="description" content="SQLiteの起動、データベースの選択/作成 sqlite DB_NAME DB_NAMEは実際のファイル名と同じです。例えば：
+sqlite db/development.sqlite3 テーブル一覧 .tables
+.ta テーブルスキーマを見る .schema TABLE_NAME ヘルプ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +91,95 @@ Finderで表示する方法を紹介します。
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sqlite-common-comman">SQLite common command</a></h1>
+	<div class="entry-content">
+		<h2>SQLiteの起動、データベースの選択/作成</h2>
+
+<p>sqlite DB_NAME</p>
+
+<p>DB_NAMEは実際のファイル名と同じです。例えば：
+sqlite db/development.sqlite3</p>
+
+<h2>テーブル一覧</h2>
+
+<p>.tables
+.ta</p>
+
+<h2>テーブルスキーマを見る</h2>
+
+<p>.schema TABLE_NAME</p>
+
+<h2>ヘルプ</h2>
+
+<p>.help</p>
+
+<h2>シェルモードを終了</h2>
+
+<p>.quit
+.exit</p>
+
+<p>詳しくは<a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>を参照してください。</p>
+
+<h1>English</h1>
+
+<h2>To start SQLite program, select/create a Database</h2>
+
+<p>sqlite DB_NAME</p>
+
+<p>DB_NAME is also the file name.For example:
+sqlite db/development.sqlite3</p>
+
+<h2>List names of tables</h2>
+
+<p>.tables
+.ta</p>
+
+<h2>Show the create statements</h2>
+
+<p>.schema TABLE_NAME</p>
+
+<h2>Help</h2>
+
+<p>.help</p>
+
+<h2>Exit SQLite program</h2>
+
+<p>.quit
+.exit</p>
+
+<p>For more information, visit <a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-19T00:00:00+09:00" pubdate data-updated="true">2010-07-19</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/sqlite/'>SQLite</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -776,50 +863,6 @@ vs
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/flex-bench-amf-json-xml-html">Flex AMFはJSON、XML、HTMLより遥かに速い</a></h1>
-	<div class="entry-content">
-		<p><a href="http://www.jamesward.com/2007/12/12/blazebench-why-you-want-amf-and-blazeds/">James Wardさんのブログ</a>から見たものです。</p>
-
-<p>結果から言うとAMF（リモートオブジェクト）での通信は
-ほかのJSONとか、XMLより遥かに速いです。
-下記がその結果のスクリーンショットです。</p>
-
-<p><img src="http://www.jamesward.org/wordpress/wp-content/uploads/2007/12/blazebench.jpg" alt="Benchmark AFM vs JSON vs HTML" width="490" height="385"/></p>
-
-<p>また<a href="http://www.jamesward.com/census/">各通信手段のParse time, Render time, Request timeなど見れるページ</a>も公開されましたので、
-使ってみてください。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-14T00:00:00+09:00" pubdate data-updated="true">2010-05-14</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/flex/'>Flex</a>
 
 
 </div>

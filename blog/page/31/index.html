@@ -7,9 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="秀丸でjspと関連付けたら、IEでJSPを開こうとするとダウンロードのプロンプトダイアログが出る。 回避方法 関連付けを決断！
-- エクスプローラの「ツール→フォルダ オプション→ファイルの種類→拡張子」にJSPを捜し、「詳細設定」を開いてopenアクションを削除。
-- &hellip;">
+	<meta name="description" content="今まで平気に$(expression)を使ってきましたが、
+この二番目のcontextパラメータでセレクタの範囲を決まることができます。
+この関数はjQueryのコア関数で幅広く使われ、
+もっとも一般的な使い方はcontextを省略したものでしょう。 1
+$(&quot;div&quot;) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +93,68 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-expr-context-parameter">jQueryの$(expr, context)、今まで気づいてなかったcontextパラメータ</a></h1>
+	<div class="entry-content">
+		<p>今まで平気に$(expression)を使ってきましたが、
+この二番目のcontextパラメータでセレクタの範囲を決まることができます。
+この関数はjQueryのコア関数で幅広く使われ、
+もっとも一般的な使い方はcontextを省略したものでしょう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>contextパラメータ</h2>
+
+<blockquote><p>contextが何も指定されなければ、$()関数は現在のHTMLのDOMエレメントを検索する。<br/>逆にDOMエレメントやjQueryオブジェクトなどのcontextが指定されれば、expressionはそのcontextに対して合致するものを捜します。</p></blockquote>
+
+
+<p>簡単にいうとfind()関数と似ています。
+実践でいうと以下の二つは同じ機能をしています。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div,body&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考サイト</h2>
+
+<p><a href="http://semooh.jp/jquery/api/core/jQuery/expression,+context/">jQuery(expression, context) - jQuery 1.3.2 日本語リファレンス</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -645,58 +709,6 @@ http://example.com/?p=N
 
 
 	<a class='category' href='/blog/categories/windows/'>Windows</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/is-extension-changed-js-still-run">拡張子が変更されたJavaScriptは実行されるか？IE,Firefoxでのセキュリティ</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p><a href="http://gihyo.jp/dev/serial/01/web20sec/0001?page=2" target="_blank">ここが危ない！Web2.0のセキュリティ：第1回　Ajaxとクロスサイトスクリプティング｜gihyo.jp … 技術評論社</a>の勉強メモ＆実験です。</p>
-<h4>実験</h4>
-<p>あるJavaScriptの拡張子をcsvに変更してSCRIPTタグでそれをインポートするHTMLを用意します。</p>
-<p>そのJavaScriptを実行しようとするとIEのデフォルトセキュリティオプションでは、</p>
-<p>ファイルのダウンロードダイアログが出ます。</p>
-<p>Firefoxは拡張子がcsvにもかかわらずちゃんとJavaScriptと認識してそれを実行します。</p>
-<h4>原理</h4>
-<p>CSVファイルは単にカンマで区切られたデータですので，スクリプトは実行されないはずです。</p>
-<p>Internet Explorerの仕様にセキュリティ設定に「内容によってファイルを開く」という設定ががあります（図2）。 </p>
-<p><img alt="" src="http://image.gihyo.co.jp/assets/images/dev/serial/01/web20sec/0001/thumb/TH300_fig02.png"></p>
-<blockquote title="http://gihyo.jp/dev/serial/01/web20sec/0001?page=2" cite="http://gihyo.jp/dev/serial/01/web20sec/0001?page=2">
-<p>これは，Internet Explorerがファイルの中身を見て，その中にHTMLっぽい文字列が含まれていればHTMLだと判断するということを意味しています。このため拡張子やレスポンスに含まれるContent-Typeヘッダとは関係なく，外部から参照可能なファイルにはクロスサイトスクリプティング対策が必要であるということになります。</p>
-<p>一方，Firefoxの場合はレスポンスのContent-Typeヘッダを見て判断しますので，ファイルの中身が何っぽいのかを気にする必要はありません。 </p>
-<cite><a href="http://gihyo.jp/dev/serial/01/web20sec/0001?page=2" target="_blank">http://gihyo.jp/dev/serial/01/web20sec/0001?page=2</a></cite></blockquote>
-<p>この観点からはIEのほうがセキュリティの面で高いと見られます。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-02T00:00:00+09:00" pubdate data-updated="true">2009-12-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

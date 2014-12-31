@@ -7,9 +7,13 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ターミナルの起動 ターミナルはApplication/Utilitiesフォルダにあります。
-CTRL+Spaceで直接Terminalを叩いても直接開けますので、
-とても便利でずっとこれを使ってます。 基本コマンド :ls:(Windowsのdirコマンドと同じ役割)list files &hellip;">
+	<meta name="description" content="Springのコンテキストファイルにjdbc:embedded-databaseタグで
+type=&#8221;H2&#8221;でbeanを登録します。 jdbc:scriptタグで初期化時に実行したいSQLファイルを指定できます。
+Sprintって、本当に便利ですね。 1
+2
+3
+4
+&lt &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +95,69 @@ CTRL+Spaceで直接Terminalを叩いても直接開けますので、
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/using-spring-with-h2-database">SpringでH2 Databaseを使う(HSQL、Derby)</a></h1>
+	<div class="entry-content">
+		<p>Springのコンテキストファイルにjdbc:embedded-databaseタグで
+type=&#8221;H2&#8221;でbeanを登録します。</p>
+
+<p>jdbc:scriptタグで初期化時に実行したいSQLファイルを指定できます。
+Sprintって、本当に便利ですね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;jdbc:embedded-database</span> <span class="na">id=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">type=</span><span class="s">&quot;H2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;jdbc:script</span> <span class="na">location=</span><span class="s">&quot;classpath:schema.sql&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;jdbc:script</span> <span class="na">location=</span><span class="s">&quot;classpath:test-data.sql&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/jdbc:embedded-database&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみにjdbcのnamespaceの登録も忘れずに。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>xmlns:jdbc=&quot;http://www.springframework.org/schema/jdbc&quot;
+</span><span class='line'>xsi:schemaLocation=&quot;http://www.springframework.org/schema/jdbc
+</span><span class='line'>      http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd&quot;&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>H2以外でもHSQL、Derbyがサポートされています。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/database/'>Database</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/spring/'>Spring</a>, <a class='category' href='/blog/categories/h2db/'>h2db</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -804,57 +871,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/new/'>new</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/set-vim-beep-alarm-off">Vimビープ音を消す</a></h1>
-	<div class="entry-content">
-		<p>ビープ音を消す。</p>
-
-<p>vi ~/.inputrc</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>set bell-style none</span></code></pre></td></tr></table></div></figure>
-
-
-<p>vi ~/.vimrc</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>set noerrorbells
-</span><span class='line'>set vb t_vb=</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-16T00:00:00+09:00" pubdate data-updated="true">2010-10-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ide/'>IDE</a>, <a class='category' href='/blog/categories/editor/'>editor</a>, <a class='category' href='/blog/categories/vim/'>vim</a>
 
 
 </div>

@@ -7,10 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="表題の通り、IE6 + jQuery1.3.2の状態でbindする時に
-jQueryのnamespaceを使うと確実にメモリリークが発生します。
-jQuery1.4.2では発生しないことを確認しました。 メモリリークが発生するコード 1
-$(&quot;#foo&quot;).bind(& &hellip;">
+	<meta name="description" content="ハマっちゃったException第二弾です。
+実際はハマったワケではありませんが、
+一応こんなExceptionがあると。 1
+2
+3
+String blank = &quot;&quot;; int i = Integer.parseInt(blank); &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +94,62 @@ $(&quot;#foo&quot;).bind(& &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-number-format-exception-when-parseint">Java：Integer.parseInt時のNumberFormatExceptionについて</a></h1>
+	<div class="entry-content">
+		<p>ハマっちゃったException第二弾です。
+実際はハマったワケではありませんが、
+一応こんなExceptionがあると。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">blank</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">blank</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで余裕に下記のExceptionが出ます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java.lang.NumberFormatException: For input string: ""</span></code></pre></td></tr></table></div></figure>
+
+
+<p>何も考えずにあるJavascriptの処理をJavaに書き換える作業で発生したんです。
+JavascriptはブランクをparseIntするとNaN(Not a Number)になるが、
+Javaは完全におちますね。。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T00:00:00+09:00" pubdate data-updated="true">2010-04-16</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -863,62 +921,6 @@ idに**が付いてますね。</p>
 
 
 	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/disable-chrome-featured-translate-bar">Chromeの内蔵翻訳ツールバーを無効にする方法</a></h1>
-	<div class="entry-content">
-		<p>すべての言語でAutomatic Translationを無効にしたい人のために。</p>
-
-<ul>
-<li>C:\Users\（ユーザ名）\AppData\Local\Google\Chrome\User Data\Defaultへアクセスします。
- -WinXPはC:\Documents and Settings\（ユーザ名）\Local Settings\Application Data\Google\Chrome\User Data\Default</li>
-<li><p>「Preferences」ってファイルがあります。</p></li>
-<li><p>「translate」で検索すると、最後あたりでこのような文字列があるはずです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/03/chrome_preference.jpg" title="chrome_preference" ></p></li>
-<li><p>translate_language_blacklistを、以下コードに書き換える。</p></li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"translate_language_blacklist": * "en", "de", "zh-TW", "it", "af", "sq", "ar", "be", "bg", "ca", "zh-CN", "hr", "cs", "da", "nl", "et", "tl", "fi", "fr", "gl", "el", "he", "hi", "hu", "is", "ja", "ko", "lv", "lt", "mk", "ms", "mt", "no", "fa", "pl", "pt", "ro", "ru", "sr", "sk", "sl", "es", "sw", "sv", "th", "tr", "uk", "vi", "cy", "yi" *,
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>修正完了
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/03/chrome_preference_modified.jpg" title="chrome_preference_modified" ></li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-02T00:00:00+09:00" pubdate data-updated="true">2010-03-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/chrome/'>Chrome</a>
 
 
 </div>

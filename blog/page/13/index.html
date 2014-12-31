@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="確定ではないですが、Rails3.1rcにアップしたらこんなエラーが出ました。 1
-Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysql is not part of the &hellip;">
+	<meta name="description" content="Rubyのエンタープライズ版のこと。Phusion Passengerと相性がよく、メモリ消費がだいぶ下がる利点があるそうです。
+rvmでの紹介を引用しますと： Ruby Enterprise Edition, MRI Ruby with several custompatches for &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,58 @@ Please install the mysql adapter: `gem install activerecord-mysql-adapter` (mysq
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ree-is-ruby-enterprise-edition">REEとはRuby Enterprise Edition</a></h1>
+	<div class="entry-content">
+		<p>Rubyのエンタープライズ版のこと。Phusion Passengerと相性がよく、メモリ消費がだいぶ下がる利点があるそうです。
+rvmでの紹介を引用しますと：</p>
+
+<blockquote><p>Ruby Enterprise Edition, MRI Ruby with several custom<br/>patches for performance, stability, and memory.</p></blockquote>
+
+
+<p><a href="http://www.rubyenterpriseedition.com/documentation.html">ガイドのドキュメント</a>
+<a href="http://www.rubyenterpriseedition.com/">公式サイト</a></p>
+
+<p>現在は1.8.7が最新のようでrvmでインストールする場合は：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm list known
+</span><span class='line'>rvm install ree</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://beginrescueend.com/interpreters/ree/">Install REE with RVM</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00+09:00" pubdate data-updated="true">2011-09-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/ree/'>ree</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -3064,52 +3116,6 @@ Please, don&#39;t. https://github.com/styleguide/templates/2.0
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/metaprogramming/'>metaprogramming</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/oracle-sqlplus-output-file-garbled-when-open-in-excel">Oracle SQL*Plusで出力したファイルをExcelで文字化けの解決策</a></h1>
-	<div class="entry-content">
-		<h2>現象</h2>
-
-<p>SQL# Plusで出力したcsvファイルなどをExcelで開いたら日本語の部分が全部文字化けになっちゃいました。</p>
-
-<h2>原因</h2>
-
-<p>出力ファイルはUTF8ですが、ExcelではShiftJisじゃないと文字化けするらしいです。</p>
-
-<h2>解決策</h2>
-
-<p>秀丸などのエディターで出力ファイルを開き、エンコードUTF8で名前をつけて保存。
-そうすればExcelで開くときに文字化けは治る。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-09T00:00:00+09:00" pubdate data-updated="true">2011-09-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/oracle/'>Oracle</a>, <a class='category' href='/blog/categories/excel/'>excel</a>, <a class='category' href='/blog/categories/oracle/'>oracle</a>, <a class='category' href='/blog/categories/sqlplus/'>sqlplus</a>, <a class='category' href='/blog/categories/文字化け/'>文字化け</a>
 
 
 </div>

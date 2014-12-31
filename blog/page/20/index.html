@@ -12,12 +12,10 @@
 3
 4
 5
-6
-7
-8
-9
-/## # 文字列を全て半角に # @param string $str 文字列 # @return string $str 半角の文字列 # /
-function toHankaku($str) { $str= mb_convert_kana($str,& &hellip;">
+$this-&gt;Ingredient-&gt;save($newData);
+$newIngredientId = $this-&gt;Ingredient-&gt;id; // OK
+// id以外のフィールドはダメ
+$this-&gt;Ingredient-&gt; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -99,6 +97,60 @@ function toHankaku($str) { $str= mb_convert_kana($str,& &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cakephp-after-model-save-you-can-only-get-id-from-the-model-rather-than-other-fields">CakePHP: $model->save()後、$model->id以外のフィールド情報は持ってない</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$this-&gt;Ingredient-&gt;save($newData);</span>
+</span><span class='line'><span class="x">$newIngredientId = $this-&gt;Ingredient-&gt;id;    // OK</span>
+</span><span class='line'><span class="x">// id以外のフィールドはダメ</span>
+</span><span class='line'><span class="x">$this-&gt;Ingredient-&gt;name;    // NG</span>
+</span><span class='line'><span class="x">$this-&gt;Ingredient-&gt;category;    // NG</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>登録/更新には関係なく。
+公式マニュアルでは：</p>
+
+<blockquote><p>一度保存が完了してしまうと、オブジェクトの ID をモデルオブジェクトの $id プロパティで取得することができます。特に新しいオブジェクトを生成した場合に便利です。</p></blockquote>
+
+<p>と書いてありますが、id以外のフィールド情報は持ってないようです。
+欲しければ$this->dataから取れます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-03T00:00:00+09:00" pubdate data-updated="true">2011-02-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/model/'>model</a>, <a class='category' href='/blog/categories/orm/'>orm</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1073,69 +1125,6 @@ function toHankaku($str) { $str= mb_convert_kana($str,& &hellip;">
 
 
 	<a class='category' href='/blog/categories/eclipse/'>Eclipse</a>, <a class='category' href='/blog/categories/効率/'>効率</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/using-spring-with-h2-database">SpringでH2 Databaseを使う(HSQL、Derby)</a></h1>
-	<div class="entry-content">
-		<p>Springのコンテキストファイルにjdbc:embedded-databaseタグで
-type=&#8221;H2&#8221;でbeanを登録します。</p>
-
-<p>jdbc:scriptタグで初期化時に実行したいSQLファイルを指定できます。
-Sprintって、本当に便利ですね。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;jdbc:embedded-database</span> <span class="na">id=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">type=</span><span class="s">&quot;H2&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;jdbc:script</span> <span class="na">location=</span><span class="s">&quot;classpath:schema.sql&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;jdbc:script</span> <span class="na">location=</span><span class="s">&quot;classpath:test-data.sql&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/jdbc:embedded-database&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ちなみにjdbcのnamespaceの登録も忘れずに。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'>xmlns:jdbc=&quot;http://www.springframework.org/schema/jdbc&quot;
-</span><span class='line'>xsi:schemaLocation=&quot;http://www.springframework.org/schema/jdbc
-</span><span class='line'>      http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd&quot;&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>H2以外でもHSQL、Derbyがサポートされています。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/database/'>Database</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/spring/'>Spring</a>, <a class='category' href='/blog/categories/h2db/'>h2db</a>
 
 
 </div>

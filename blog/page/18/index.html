@@ -7,24 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Rails3.1.0 beta1をインストールするときにあったトラブルです。 インストール 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-// 3.1.0 betaに更新
-sudo gem install rails --pre // バージョン確認
-rails -v &hellip;">
+	<meta name="description" content="Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties. ここ最近Facebookから” &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -106,6 +89,123 @@ rails -v &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mail-from-facebook-you-may-be-allowing-authentication-data-to-be-passed-to-3rd-parties">Facebookからのメール：you may be allowing authentication data to be passed to 3rd parties</a></h1>
+	<div class="entry-content">
+		<p>Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties.</p>
+
+<p>ここ最近Facebookから”認証情報をサードパーティに渡している可能性がある、48時間内に修正しろ”みたいなメールが届いた人が多いと思います。
+メール本文です：</p>
+
+<blockquote>
+Dear Developer of xxxxxx {your app name} xxxxx,
+
+Our automated systems have detected that you may be inadvertently allowing authentication data to be passed to 3rd parties. Allowing user ids and access tokens to be passed to 3rd parties, even inadvertently, could allow these 3rd parties to access the data the user made available to your site. This violates our policies and undermines user trust in your site and Facebook Platform.
+
+In every case that we have examined, this information is passed via the HTTP Referer Header by the user’s browser. This can happen when using our legacy authentication system and including &lt;iframe&gt;, &lt;img&gt; or &lt;script&gt; content from 3rd parties in the page that receives authentication data from Facebook. Our legacy mechanism passes authentication information in the URL query string which, if handled incorrectly, can be passed to 3rd parties by the browser. Our current OAuth 2.0 authentication system, released over a year ago, passes this information in the URL fragment, which is not passed to 3rd parties by the browser.
+
+Please ensure that you are not allowing this data to be passed immediately. Accessing your site as a test user while running a HTTP proxy/monitor like Charles or Fiddler is the best way to determine if you are allowing this information to be passed. If you discover the issue, you can do one of two things:
+
+1. Migrate your site to use our OAuth 2.0 authentication system. We are requiring all apps and sites to update to this mechanism by Sept. 1, 2011. Migrating now will address this issue and ensure that you are one of the first to meet the deadline. For more details, please see our Authentication Guide.
+
+2. Create and use an interstitial page to remove the authentication data before redirecting to your page with 3rd party content. This approach is used by many of our largest developers today (although they are all migrating to OAuth 2.0 shortly). This is a simple and straightforwardchange that should have minimal impact on your site. For more details on this approach, see our Legacy Connect Auth doc.
+
+Because of the importance of ensuring user trust and privacy, we are asking you to complete one of the above steps in the next 48 hours. If you fail to do so, your site may be subject to one of the enforcement actions outlined in our policies.
+
+If you have any questions or believe you have received this message in error, please contact us.
+
+Facebook Developer Relations
+</blockquote>
+
+
+<p>多分認証システムが古い（OAuth 2.0を使ってない）かつ、該当のページに&lt;iframe&gt;などのタグがあるのを条件としてFacebook側が検知してたと思います、別にサードパーティにどうこうした訳ではなく。</p>
+
+<h2>ソースの確認</h2>
+
+<p>まずユーザ認証のところのソースを確認しましょう。
+古い認証システムを使う場合これに似てるはずです。
+ソースはFacebookの<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>より。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> $api_key = &quot;YOUR_API_KEY&quot;;</span>
+</span><span class='line'><span class="x"> $interstitial_page = &quot;YOUR_SECURE_URL&quot;; //URL with no 3rd party apps</span>
+</span><span class='line'>
+</span><span class='line'><span class="x"> $url=&#39;http://www.facebook.com/login.php?api_key=&#39; . $app_id</span>
+</span><span class='line'><span class="x">   . &#39;&amp;session_version=3&amp;next=&#39; . urlencode($interstitial_page)</span>
+</span><span class='line'><span class="x">   . &#39;&amp;v=1.0&amp;return_session=1&amp;fbconnect=1&#39;</span>
+</span><span class='line'><span class="x">   . &#39;&amp;cancel_url=&#39; . urlencode($interstitial_page);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x"> echo &quot;Welcome to the Old Auth flow&quot;;</span>
+</span><span class='line'><span class="x"> echo &quot;&lt;p&gt;&quot;;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x"> echo(&quot;&lt;a href=&#39;&quot; . $url . &quot;&#39;&gt;&quot;</span>
+</span><span class='line'><span class="x">   . &quot;&lt;img src=&#39;http://static.ak.facebook.com/images/&quot;</span>
+</span><span class='line'><span class="x">   . &quot;devsite/facebook_login.gif&#39;&gt;&lt;/a&gt;&quot;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この場合nextパラメータで指定したページに行く時、URLパラメータでuidとかaccess_tokenが渡されますので、危ないと。</p>
+
+<p><a href="http://developers.facebook.com/attachment/request_img.png"><img alt="" src="http://developers.facebook.com/attachment/request_img.png" title="古い認証システムでは情報をパラメータ文字列で返す" class="alignnone" width="480" height="100" /></a></p>
+
+<p>OAuth 2.0を使ったログインURLはこうです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_URL&scope=email,read_stream
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>改修</h2>
+
+<p>メールで書かれた通り一つはOAuth2.0に移行する、一つは「中間ページ」挟んでユーザ情報をセッションに保持して隠蔽する。</p>
+
+<p>OAuthについては<a href="https://developers.facebook.com/docs/authentication/">https://developers.facebook.com/docs/authentication/</a>で詳しく説明しています。</p>
+
+<p>後者の場合は<a href="http://developers.facebook.com/docs/authentication/connect_auth/">http://developers.facebook.com/docs/authentication/connect_auth/</a>の最後でサンプルコードがあるので参考できます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-20T00:00:00+09:00" pubdate data-updated="true">2011-05-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/facebook/'>Facebook</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -696,61 +796,6 @@ sudo visudo</p>
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/sudo/'>sudo</a>, <a class='category' href='/blog/categories/unix/'>unix</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/be-careful-when-using-http-build-query-in-php">http_build_queryを使うときの注意点：URLパラメータ区切りがエスケープされる(XAMPP要注意)</a></h1>
-	<div class="entry-content">
-		<h2>障害</h2>
-
-<p>http_build_queryを使ってurlのパラメータを作るときにパラメータがこうなりました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>foo=bar&amp;amp;baz=boo&amp;amp;hoge=hoge
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記のように複数のパラメータがある時に<strong>;</strong>であるべきのところが<strong>&amp;</strong>となってしまいました。</p>
-
-<p>これはPHPの設定ファイル、php.iniのarg_separator.outputで制御されてて、XAMPPの場合インストールされたデフォルトでは、「&amp;」となるそうです。</p>
-
-<h2>解決方法</h2>
-
-<p>なので、php.iniの「arg_separator.output」の値を「&amp;」から「&amp;」に変更する</p>
-
-<h2>参考</h2>
-
-<p>http_build_queryを使うときの注意点(PHP)
-<a href="http://www.multiburst.net/sometime-php/2008/12/http_build_query/">http://www.multiburst.net/sometime-php/2008/12/http_build_query/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-15T00:00:00+09:00" pubdate data-updated="true">2011-04-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
 
 
 </div>
