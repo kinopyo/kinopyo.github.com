@@ -7,11 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" ビープ音を消す。 vi ~/.inputrc 1
-set bell-style none vi ~/.vimrc 1
-2
-set noerrorbells
-set vb t_vb= 2010-10-16 IDE, editor, vim ">
+	<meta name="description" content="終電検索 いつもYahooで終電を検索するんですが、それがアテにならないことが分かりました。
+終電検索で深夜1時とか出発でただ乗換が多かったのを見てとりあえず帰れるって安心したんですが、あとで見ると実は二日目の朝4～5時の電車となってしまいました。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +90,74 @@ set vb t_vb= 2010-10-16 IDE, editor, vim ">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/new-to-me-this-week-1018-1024">今週（10/18～10/24）新たに知ったもの</a></h1>
+	<div class="entry-content">
+		<h1>終電検索</h1>
+
+<p>いつもYahooで終電を検索するんですが、それがアテにならないことが分かりました。
+終電検索で深夜1時とか出発でただ乗換が多かったのを見てとりあえず帰れるって安心したんですが、あとで見ると実は二日目の朝4～5時の電車となってしまいました。時間を全部チェックしてなかったのが自分のミスでしたが、、、検索アルゴリズムを改善する必要があると思います。</p>
+
+<h1>ブレスト</h1>
+
+<p>ブレインストーミングのこと。</p>
+
+<blockquote><p>ブレインストーミング（Brainstorming）とはアレックス・F・オズボーンによって考案された会議方式のひとつ。集団思考とも訳される。集団発想法、ブレインストーミング法（BS法）、ブレスト、課題抽出ともいう。1941年に良いアイデアを生み出す状態の解析が行われた後、1953年に発行した著書「Applied Imagination」の中で会議方式の名称として使用された。</p></blockquote>
+
+
+<h1>rsync</h1>
+
+<blockquote><p>rsync is a file transfer program for Unix systems. rsync uses the &#8220;rsync algorithm&#8221; which provides a very fast method for bringing remote files into sync. It does this by sending just the differences in the files across the link, without requiring that both sets of files are present at one of the ends of the link beforehand.</p><p>Some features of rsync include</p><p>+  can update whole directory trees and filesystems<br/>+  optionally preserves symbolic links, hard links, file ownership, permissions, devices and times<br/>+  requires no special privileges to install<br/>+  internal pipelining reduces latency for multiple files<br/>+  can use rsh, ssh or direct sockets as the transport<br/>+  supports anonymous rsync which is ideal for mirroring</p></blockquote>
+
+
+<p><a href="http://www.samba.org/rsync/">http://www.samba.org/rsync/</a></p>
+
+<h1>cron</h1>
+
+<blockquote><p>Cron is a time-based job scheduler in Unix-like computer operating systems. The name cron comes from the word &#8220;chronos&#8221;, Greek for &#8220;time&#8221;. Cron enables users to schedule jobs (commands or shell scripts) to run periodically at certain times or dates. It is commonly used to automate system maintenance or administration, though its general-purpose nature means that it can be used for other purposes, such as connecting to the Internet and downloading email.*1*</p></blockquote>
+
+
+<p><a href="http://en.wikipedia.org/wiki/Cron">http://en.wikipedia.org/wiki/Cron</a></p>
+
+<h1>redcar</h1>
+
+<p>結構使えそう。</p>
+
+<blockquote><p>+  Cross platform: OS X, Linux, Windows.<br/>+  Syntax highlighting for many languages<br/>+  Snippets for many languages<br/>+  TextMate Theme support<br/>+  Split panes<br/>+  Block typing<br/>+  Soft tabs<br/>+  Optional line numbers<br/>+  Bracket and quote matching<br/>+  Automatic indentation for many languages<br/>+  Directory tree pane (not yet a full project view)<br/>+  Extend with Ruby<br/>+  My Plugin – example plugin to start playing with editing for yourself<br/>+  Bulk Rename files and directories<br/>+  Source Control integration for Subversion and Git<br/>+  Build System support via Runnables</p></blockquote>
+
+
+<p><a href="http://redcareditor.com/">http://redcareditor.com/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-25T00:00:00+09:00" pubdate data-updated="true">2010-10-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/new/'>new</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -878,166 +943,6 @@ string(5) &#8220;world&#8221;</p>
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-memcache-and-php-extension-in-mac-xampp">Mac XAMPP環境でmemcacheとPHP extensionのインストール</a></h1>
-	<div class="entry-content">
-		<h2>環境情報</h2>
-
-<ul>
-<li>Mac OSX Snow Leopard 10.6.4</li>
-<li>XAMPP 1.7.3</li>
-</ul>
-
-
-<h2>手順書</h2>
-
-<h3>1. Apple Developer Tools (Xcode)の最新版をインストール</h3>
-
-<h3>2. XAMPP Developer Packageをインストール</h3>
-
-<p><a href="http://www.apachefriends.org/en/xampp-macosx.html">http://www.apachefriends.org/en/xampp-macosx.html</a>より下記赤線のリンクをダウンロードします。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/xampp-developer-package-for-mac.jpg" title="xampp develop package for mac" >
-参考リンク：<a href="http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/">http://blog.m-schmidt.eu/2010/03/30/develop-memcached-web-apps-with-xampp-under-mac-os-x/</a>
-ダウンロードしたdmgファイルを開いてDevel-Package.mpkgをダブルクリックでインストールします。</p>
-
-<h3>3. ターミナルを開いて(/Applications/Utilities/Terminal)下記コマンドを実行</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /tmp
-</span><span class='line'>pecl download memcache
-</span><span class='line'>tar xzf memcache-2.2.5.tgz
-</span><span class='line'>cd memcache-2.2.5
-</span><span class='line'>/Applications/XAMPP/xamppfiles/bin/phpize-5.3.1
-</span><span class='line'>MACOSX_DEPLOYMENT_TARGET=10.6 CFLAGS='-O3 -fno-common -arch i386 -arch x86_64' LDFLAGS='-O3 -arch i386 -arch x86_64' CXXFLAGS='-O3 -fno-common -arch i386 -arch x86_64' ./configure --with-php-config=/Applications/XAMPP/xamppfiles/bin/php-config-5.3.1
-</span><span class='line'>make
-</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
-
-
-<p>成功したら/Applications/XAMPP/xamppfiles/lib/php/php-5.3.1/extensions/no-debug-non-zts-xxxxのフォルダ(xxは20090626みたいな日付)に<strong>memcache.so</strong>というファイルが生成されます。</p>
-
-<h3>4. php.iniファイルの編集</h3>
-
-<p>/Applications/XAMPP/xamppfiles/etc/php.iniファイルを開いて&#8221;Dynamic Extensions&#8221;のブロックを検索し、下記内容を追記します。私の環境では538行くらいでした。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>extension=memcache.so</span></code></pre></td></tr></table></div></figure>
-
-
-<p>こんあ感じです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/php-ini-memcache-extension.jpg" title="Add memcache extention to php.ini" ></p>
-
-<h3>5.memcacheを立ち上がる</h3>
-
-<p>ターミナルで下記コマンドを実行します。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>memcached -m 8 -l 127.0.0.1 -p 11211 -d</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これは自分の環境でmemcacheをIP:127.0.0.1、ポート:11211、8MBのRAMスペースで立ち上がる意味です。</p>
-
-<h3>6. phpで動作確認</h3>
-
-<p>下記ファイルを用意します。ファイル名は任意です(ここではmemcache.phpとしました)。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$memcache</span> <span class="o">=</span> <span class="nx">memcache_connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">11211</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nv">$memcache</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;str_key&quot;</span><span class="p">,</span> <span class="s2">&quot;String to store in memcached&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;num_key&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="k">StdClass</span><span class="p">;</span>
-</span><span class='line'>  <span class="nv">$object</span><span class="o">-&gt;</span><span class="na">attribute</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;obj_key&quot;</span><span class="p">,</span> <span class="nv">$object</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">$array</span> <span class="o">=</span> <span class="k">Array</span><span class="p">(</span><span class="s1">&#39;assoc&#39;</span><span class="o">=&gt;</span><span class="mi">123</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">567</span><span class="p">);</span>
-</span><span class='line'>  <span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;arr_key&quot;</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;str_key&#39;</span><span class="p">));</span>
-</span><span class='line'>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;num_key&#39;</span><span class="p">));</span>
-</span><span class='line'>  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$memcache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;obj_key&#39;</span><span class="p">));</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">echo</span> <span class="s2">&quot;Connection to memcached failed&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これを/Applications/XAMPP/xamppfiles/htdocsに置いて、ブラウザでhttp://localhost/memcache.php(あるいはhttp://127.0.0.1/memcache.php)を開きます。
-下記のようなページが表示されればOKです。
-<img src="http://www.kinopyo.com/wp-content/uploads/2010/09/memcache-test-in-php.jpg" title="memcache test in php" ></p>
-
-<p>ちなみにmemcacheを停止するコマンドは：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>killall memcached</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-24T00:00:00+09:00" pubdate data-updated="true">2010-09-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/memcache/'>memcache</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/21/" class="prev">Prev</a>
@@ -1047,7 +952,7 @@ string(5) &#8220;world&#8221;</p>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

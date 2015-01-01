@@ -7,9 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="jQueryのfocus()はデフォルトのフォーカス動作とそのエレメントにバインドされたイベントが実行されます。 しかしIE8とFirefoxではこのfocus()の動作が多少違います。
-現象
-例えば複数のinput要素があって、 &hellip;">
+	<meta name="description" content="@IT連載：jQuery逆引きリファレンスの第二回のテーマは属性＆コンテンツです。
+目次は以下になります。 * 属性値を取得するには？ * 属性値を設定するには？ * 複数の属性値をまとめて設定するには？ * 関数の結果によって動的に属性値を設定するには？ * 属性値を削除するには？ * &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +90,109 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-reverse-lookup-reference-attribute">jQuery逆引きレファレンス、属性＆コンテンツ編(@ITより)</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_00.html" target="_blank">@IT連載：jQuery逆引きリファレンスの第二回</a>のテーマは属性＆コンテンツです。</p>
+<p>目次は以下になります。</p>
+<blockquote>
+<p>    * 属性値を取得するには？</p>
+<p>    * 属性値を設定するには？</p>
+<p>    * 複数の属性値をまとめて設定するには？</p>
+<p>    * 関数の結果によって動的に属性値を設定するには？</p>
+<p>    * 属性値を削除するには？</p>
+<p>    * スタイル・クラスを追加／削除するには？</p>
+<p>    * スタイル・クラスが適用されているかを判定するには？</p>
+<p>    * スタイル・クラスの適用／解除を交互に行うには？</p>
+<p>    * 要素に適用されたスタイル情報を取得するには？</p>
+<p>    * 要素に特定のスタイルを適用するには？</p>
+<p>    * 複数のスタイル・プロパティをまとめて設定するには？</p>
+<p>    * 要素の表示位置を取得するには？</p>
+<p>    * ページのスクロール位置を取得／設定するには？</p>
+<p>    * 要素の高さや幅を取得するには？</p>
+<p>    * 要素の高さや幅を設定するには？</p>
+<p>    * 要素のテキストを取得するには？</p>
+<p>    * 要素のテキストを設定するには？</p>
+<p>    * フォーム要素の値を取得／設定するには？</p>
+</blockquote>
+<h4>勉強メモ</h4>
+<h5>text()とhtml()の違い</h5>
+<blockquote title="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html" cite="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html">
+<p>（1）取得する対象</p>
+<p>　要素セット（jQueryオブジェクト）が複数の要素を含んでいる場合、htmlメソッドは先頭要素の内容だけを取得しますが、textメソッドはすべての要素の内容を結合したものを取得します。</p>
+<p>（2）取得する内容</p>
+<p>　名前のとおり、htmlメソッドは要素の内容をHTML文字列として取得しますが、textメソッドは純粋なテキストだけを取得します。</p>
+<p>（3）対応する形式</p>
+<p>　textメソッドはHTML／XMLいずれの形式でも動作しますが、htmlメソッドはHTML（XHTMLを含む）形式でしか動作しません。このサンプルでは扱っていませんが、textメソッドをXML形式で利用する方法については、あらためてAjax編で紹介する予定です。</p>
+<cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html" target="_blank">http://www.atmarkit.co.jp/fdotnet/jqueryref/02attribute/attribute_16.html</a></cite></blockquote>
+<h5>height(val)、width(val)</h5>
+<p>引数valには数値、もしくは「em」や「%」などの単位付きの数値を指定できます（単なる数値の場合はピクセル値として認識します）。</p>
+<h5>要素の高さや幅を取得するには？</h5>
+<p>－ height()、width()、innerHeight()、innerWidth()、outerHeight()、outerWidth()</p>
+<table>
+<tr><td>関数</td><th>padding</th><th>border-width</th><th>margin</th></tr>
+<tr><td>height、width</td><td>x</td><td>x</td><td>x</td></tr>
+<tr><td>innerHeight、innerWidth</td><td>o</td><td>x</td><td>x</td></tr>
+<tr><td>outerHeight、outerWidth</td><td>o</td><td>o</td><td>x</td></tr>
+<tr><td>outerHeight、outerWidth（true</td><td>o</td><td>o</td><td>o</td></tr>
+</table>
+<br/>
+<h5>関数の結果によって動的に属性値を設定するには？</h5>
+<p>－ attr(name, fnc) －</p>
+<p>コールバック関数の戻り値を用いて設定。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;li &gt; img&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span>
+</span><span class='line'>          <span class="s1">&#39;src&#39;</span><span class="p">,</span>
+</span><span class='line'>          <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="k">return</span> <span class="s2">&quot;http://www.wings.msn.to/books/&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+</span><span class='line'>                      <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;_logo.jpg&quot;</span><span class="p">;</span>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+<br/>
+<p> </p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -923,130 +1025,6 @@ Googleで検索すると似たようなものはありましたが、
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-reverse-lookup-reference-of-selector">jQuery逆引きレファレンス、セレクタ編(@ITより)</a></h1>
-	<div class="entry-content">
-		<p>@IT新しい連載:jQuery逆引きリファレンスが始まりました。</p>
-
-
-<p>既に一ヶ月前になりますが、</p>
-
-
-<p>自己テスト用でもいいともいます。</p>
-
-
-<p>私は自信がない項目が結構ありました。</p>
-
-
-<br/>
-
-
-<p>jQueryで使ったシンタックス英単語は</p>
-
-
-<p>ほとんど簡単な単語で</p>
-
-
-<p>ぱっと見たら分かるような気がするけど、</p>
-
-
-<p>本気で使おうとしたらまたいろいろ調べないと</p>
-
-
-<p>と感じました。</p>
-
-
-<p>例えば:containのフィルタにはテキスト(case-sensitive)</p>
-
-
-<p>しか入りません。</p>
-
-
-<p>逆に:hasにはセレクタ分が使えるなど</p>
-
-
-<p>意味合い的には似てますが、</p>
-
-
-<p>使い方がまったく違うところが</p>
-
-
-<p>落とし穴だと思います。</p>
-
-
-<br/>
-
-
-<p>以下がセレクタ編のタイトルです。</p>
-
-
-<p>自信があるのは何項目ですか？</p>
-
-
-<blockquote title="指定されたページは存在しません" cite="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html">
-<p>    * id値で要素を特定するには？</p>
-<p>    * タグ名で要素を特定するには？</p>
-<p>    * スタイル・クラスで要素を特定するには？</p>
-<p>    * 複数のセレクタをまとめて指定するには？</p>
-<p>    * すべての要素を取得するには？</p>
-<p>    * ある要素の配下にある要素だけを取得するには？</p>
-<p>    * ある要素の直下にある要素だけを取得するには？</p>
-<p>    * 指定した要素の次要素を取得するには？</p>
-<p>    * 指定した要素以降の兄弟要素を取得するには？</p>
-<p>    * 先頭／末尾の要素だけを取得するには？</p>
-<p>    * 指定された親要素の先頭／末尾の子要素を取得するには？</p>
-<p>    * 偶数／奇数番目の要素だけを取得するには？</p>
-<p>    * 指定したインデックス番号（より大きい／未満）の要素を取得するには？</p>
-<p>    * 指定された要素直下から特定の子要素だけを取得するには？</p>
-<p>    * 指定したセレクタ以外の要素を取得するには？</p>
-<p>    * 配下に特定のテキストを含んだ要素を取得するには？</p>
-<p>    * 空要素だけを取得するには？</p>
-<p>    * 何らかの子要素を持つ要素を取得するには？</p>
-<p>    * 指定した子要素を持つ要素を取得するには？</p>
-<p>    * 子要素が1つだけである要素を取得するには？</p>
-<p>    * 属性の値によって取得要素を絞り込むには？</p>
-<p>    * 複数の属性フィルタを組み合わせるには？</p>
-<p>    * フォーム要素やヘッダ要素を取得するには？</p>
-<p>    * 特定の状態にある要素のみを取得するには？</p>
-<cite><a href="http://www.atmarkit.co.jp/fdotnet/jqueryref/01selector/selector_00.html" target="_blank">第1回 セレクタ編 － ＠IT</a></cite></blockquote>
-
-
-<p>これをきっかけに曖昧なところをいったん全部整理しようと思います。</p>
-
-
-<p>後の記事でまた詳しく書きます。</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-15T00:00:00+09:00" pubdate data-updated="true">2009-11-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/33/" class="prev">Prev</a>
@@ -1056,7 +1034,7 @@ Googleで検索すると似たようなものはありましたが、
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

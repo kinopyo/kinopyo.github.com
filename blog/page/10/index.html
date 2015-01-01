@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="自分のマウスがスクリーンのどこにあるかを知りたいときに役立つアプリです。
-ホットキーを押せば大きい緑色の圓でマウスポインタを示しので、すぐに分かります。 http://www.2point5fish.com/ さらに素晴らしいことはパソコンロック解除されたときに自動でアクティブになるんです！ &hellip;">
+	<meta name="description" content="ActionView/Helpers/AssetTagHelper、asset(画像、CSSなど)ホストのチューニングについての勉強メモです。 asset hostを指定 image_tag(&#8220;rails.png&#8221;)のhelper &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,157 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-using-asset-hosts">Rails asset hostsについて</a></h1>
+	<div class="entry-content">
+		<p><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html">ActionView/Helpers/AssetTagHelper</a>、asset(画像、CSSなど)ホストのチューニングについての勉強メモです。</p>
+
+<h2>asset hostを指定</h2>
+
+<p>image_tag(&#8220;rails.png&#8221;)のhelper methodで生成するリンクはデフォルトでは同じホストのpublicフォルダを指しています。それを変更したい場合は<code>config/environments/production.rb</code>の<code>ActionController::Base.asset_host</code>をいじります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="s2">&quot;assets.example.com&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">image_tag(&quot;rails.png&quot;)</span>
+</span><span class='line'><span class="x"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets.example.com/images/rails.png?1230601161&quot; /&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>asset hostを複数指定</h2>
+
+<p>ブラウザが一度に同一サーバには２つのコネクションしかできないそう（これは初めて知りました）で、asset同士のダウンロード完了するのを待たなければなりません。もし複数台のassetサーバがある場合は<code>assets%d.example.com</code>を使ってそれをコネクション数を増やせることができます。<code>%d</code>が指定されればRailsは0~3の４つの番号を付けて、並行して８つのコネクションができます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="s2">&quot;assets%d.example.com&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">image_tag(&quot;rails.png&quot;)</span>
+</span><span class='line'><span class="x"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets.example.com/images/rails.png?1230601161&quot; /&gt;</span>
+</span><span class='line'><span class="x">stylesheet_link_tag(&quot;application&quot;)</span>
+</span><span class='line'><span class="x"># =&gt; &lt;link href=&quot;http://assets2.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>カスタマイズ</h2>
+
+<p>もっと自分でカスタマイズしたい場合は<code>source</code>のprocパラメータを使えます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">source</span><span class="o">|</span>
+</span><span class='line'>  <span class="s2">&quot;http://assets</span><span class="si">#{</span><span class="ss">Digest</span><span class="p">:</span><span class="ss">:MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">.example.com&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;rails.png&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://assets1.example.com/images/rails.png?1230601161&quot; /&gt;</span>
+</span><span class='line'><span class="n">stylesheet_link_tag</span><span class="p">(</span><span class="s2">&quot;application&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; &lt;link href=&quot;http://assets2.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>特定のパスで始まるassetを特定のホストに指定する例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">source</span><span class="o">|</span>
+</span><span class='line'>   <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">starts_with?</span><span class="p">(</span><span class="s1">&#39;/images&#39;</span><span class="p">)</span>
+</span><span class='line'>     <span class="s2">&quot;http://images.example.com&quot;</span>
+</span><span class='line'>   <span class="k">else</span>
+</span><span class='line'>     <span class="s2">&quot;http://assets.example.com&quot;</span>
+</span><span class='line'>   <span class="k">end</span>
+</span><span class='line'> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">image_tag(&quot;rails.png&quot;)</span>
+</span><span class='line'><span class="x"># =&gt; &lt;img alt=&quot;Rails&quot; src=&quot;http://images.example.com/images/rails.png?1230601161&quot; /&gt;</span>
+</span><span class='line'><span class="x">stylesheet_link_tag(&quot;application&quot;)</span>
+</span><span class='line'><span class="x"># =&gt; &lt;link href=&quot;http://assets.example.com/stylesheets/application.css?1232285206&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>さらに<code>request</code>の第二パラメータもあります。これでHTTPSの動作も制御できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">source</span><span class="p">,</span> <span class="n">request</span><span class="o">|</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">ssl?</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">request</span><span class="o">.</span><span class="n">protocol</span><span class="si">}#{</span><span class="n">request</span><span class="o">.</span><span class="n">host_with_port</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">request</span><span class="o">.</span><span class="n">protocol</span><span class="si">}</span><span class="s2">assets.example.com&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Resources</h2>
+
+<p>http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-09T00:00:00+09:00" pubdate data-updated="true">2011-11-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/asset/'>asset</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -3070,52 +3220,6 @@ Please, don&#39;t. https://github.com/styleguide/templates/2.0
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/what-does-caret-character-mean-in-git">gitの^(caret)記号は</a></h1>
-	<div class="entry-content">
-		<h2>HEAD^</h2>
-
-<blockquote><p>If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit.</p><p>HEAD^, which means “the parent of HEAD”:</p></blockquote>
-
-
-<p>通常ケースで言うと*HEAD<sup><em>は一個前のコミット、</em>HEAD<sup>^<em>は2つ前のコミットってことですね。他の書き方は</em>HEAD~2<em>、</em>HEAD~5*があります。</sup></sup></p>
-
-<h2>HEAD<sup>1、HEAD<sup>2</sup></sup></h2>
-
-<p>これは上記と若干違ってmergeのコミットに対してのみ有効です。</p>
-
-<p>マージの場合はparentが2つあるので、HEAD<sup>1は今のブランチでのparent、HEAD\<sup>2は取得先のparentを差してます。</sup></sup></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T00:00:00+09:00" pubdate data-updated="true">2011-10-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/git/'>git</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/9/" class="prev">Prev</a>
@@ -3125,7 +3229,7 @@ Please, don&#39;t. https://github.com/styleguide/templates/2.0
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="SQLiteの起動、データベースの選択/作成 sqlite DB_NAME DB_NAMEは実際のファイル名と同じです。例えば：
-sqlite db/development.sqlite3 テーブル一覧 .tables
-.ta テーブルスキーマを見る .schema TABLE_NAME ヘルプ &hellip;">
+	<meta name="description" content="When using has_and_belongs_to_many, I ran into this error,
+ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError 1
+Primary key is not &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +91,63 @@ sqlite db/development.sqlite3 テーブル一覧 .tables
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-active-record-has-and-belongs-to-many-association-with-primary-keyerror">Rails HasAndBelongsToMany Association With Primary Key Error</a></h1>
+	<div class="entry-content">
+		<p>When using has_and_belongs_to_many, I ran into this error,
+<em>ActiveRecord::HasAndBelongsToManyAssociationWithPrimaryKeyError</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Primary key is not allowed in a has_and_belongs_to_many join table (articles_users).</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So check the linked-table , articles_users in my case, if there is a pk set by default.</p>
+
+<h2>Solution</h2>
+
+<p>Put the <em>:id => false</em> to the migration create_table SQL.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:articles_users</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:article_id</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:user_id</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-20T00:00:00+09:00" pubdate data-updated="true">2010-07-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -768,107 +825,6 @@ Top1のFacebookのPageviewはなんと第二位のYahooの8倍だそうです。
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-selector-performance-elem-vs-i">jQueryセレクタのパフォーマンス：elem vs id</a></h1>
-	<div class="entry-content">
-		<p>elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
-<strong>&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;</strong>
-vs
-<strong>&#8220;直接jQueryのidセレクタでとるやつ&#8221;。</strong></p>
-
-<br/>
-
-
-<p>コードで言うと
-<strong>$(document.getElementById(&#8220;foo&#8221;))</strong>
-vs
-<strong>$(&#8220;#foo&#8221;)</strong></p>
-
-<br/>
-
-
-<p>普通前者が勝だろうと思うだろう、
-どれくらいの差かを確認したくて。</p>
-
-<h2>結果</h2>
-
-<p>一万回ループでとった結果です。</p>
-
-<ul>
-<li>IE8: 187 vs 344</li>
-<li>IE6: 203 vs 453</li>
-<li>Firefox×(3.6.3):  21 vs 63</li>
-<li>Chrome(4.1.xx):  9 vs 39</li>
-</ul>
-
-
-<h2>サンプルコード</h2>
-
-<p><a href="http://www.kinopyo.com/demo/jquery/selector_performance.html" target="_blank" >デモページへ</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">t0</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">));</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;直接elementを渡す時間は：&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t1</span><span class="o">-</span><span class="nx">t0</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; , ID指定でとる時間は：&quot;</span><span class="o">+</span> <span class="p">(</span><span class="nx">t2</span><span class="o">-</span><span class="nx">t1</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-17T00:00:00+09:00" pubdate data-updated="true">2010-05-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/23/" class="prev">Prev</a>
@@ -878,7 +834,7 @@ vs
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

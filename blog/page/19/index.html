@@ -7,8 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="障害 http_build_queryを使ってurlのパラメータを作るときにパラメータがこうなりました。 1
-foo=bar&amp;amp;baz=boo&amp;amp;hoge=hoge 上記のように複数のパラメータがある時に;であるべきのところが&amp;となってしまいました。 &hellip;">
+	<meta name="description" content="ターミナルで
+sudo visudo そして次のラインを追加。(&#8220;kinopyo&#8221;は自分のユーザ名に変更してください) 1
+kinopyo ALL=(ALL) NOPASSWD: ALL 中文 先在Terminal输入
+sudo visudo 接着插入下面的代码。(&# &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +92,73 @@ foo=bar&amp;amp;baz=boo&amp;amp;hoge=hoge 上記のように複数のパラメ�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sudo%e3%81%a7%e3%83%91%e3%82%b9%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%aa%e3%81%84%e6%96%b9%e6%b3%95">Sudo without password on Ubuntu</a></h1>
+	<div class="entry-content">
+		<p>ターミナルで
+sudo visudo</p>
+
+<p>そして次のラインを追加。(&#8220;kinopyo&#8221;は自分のユーザ名に変更してください)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kinopyo ALL=(ALL) NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>中文</h1>
+
+<p>先在Terminal输入
+sudo visudo</p>
+
+<p>接着插入下面的代码。(&#8220;kinopyo&#8221;是你的用户名)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kinopyo ALL=(ALL) NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>English</h1>
+
+<p>Type this command first.
+sudo visudo</p>
+
+<p>Then add this line at the end (change “kinopyo” to your username):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kinopyo ALL=(ALL) NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00+09:00" pubdate data-updated="true">2011-04-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/sudo/'>sudo</a>, <a class='category' href='/blog/categories/unix/'>unix</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -749,52 +818,6 @@ php.iniを開いて<strong>error_reporting</strong>で検索します。
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/about-cucumber-delay-the-solution">Cucumberのいいところをこう語った：Delay The Solution </a></h1>
-	<div class="entry-content">
-		<p>全文：
-<a href="http://iain.nl/2011/01/cucumber-vs-steak">http://iain.nl/2011/01/cucumber-vs-steak</a></p>
-
-<blockquote><p>Also, the natural language is closer to your understanding of the problem you’re trying to solve. When I write in code, my programmer side becomes active. My programmer side is focussed on solutions. But I want to <strong>delay the solution </strong>as long as I can, until we have a decent understanding of the problem. So by not writing in code, you can focus more on the problem, rather than on the solution.</p></blockquote>
-
-
-<p>ここの「ソリューションをディレー」するところに共感しました。
-Cucumberでは自然言語で書けるため、実装から離れた視点でいろんな「Problem」にぶつかりやすい！というのが最もの魅力ですね。
-時には本当に実装から離れてプロデューサの目でやりたいことをを考えたいです。そうできないと、いつも「ソリューション」だけに力入れて考えて、もっと重要な「目的」を失うかもしれませんと思います。
-もしSteakのような実装の観点から書いたテストコードだとnullとかblankとか、書いてるうちに視野がどんどん狭くなりがちかなと。もちろんそういうテストも重要ですが、「そもそもこんな仕様で大丈夫？ここで何をすべきか？」のような問題にぶつかるためには、やはりCucumberのような自然言語が有利ですね。</p>
-
-<p>あ～いつRoRの仕事ができるかなー</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-04T00:00:00+09:00" pubdate data-updated="true">2011-02-04</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/cucumber/'>cucumber</a>, <a class='category' href='/blog/categories/mind/'>mind</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/sense/'>sense</a>, <a class='category' href='/blog/categories/steak/'>steak</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/18/" class="prev">Prev</a>
@@ -804,7 +827,7 @@ Cucumberでは自然言語で書けるため、実装から離れた視点でい
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="この前Herokuのドキュメントを見ましたが、まだRails3.0.7しか正式にサポートされているようです。でも実はRails 3.1rcもherokuで実行できますよ。 &lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https &hellip;">
+	<meta name="description" content="一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。 液晶が点灯しなかったものの、まだ生きてます。
+急いで電源を切りました。スワイプのジェスチャーがなかなか効かないので何回かやったんです。 そこでググってみてこんな措置をとりました。
++ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +91,65 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/iphone-dropped-in-water">iPhone水没記、液晶交換で復活</a></h1>
+	<div class="entry-content">
+		<p>一ヶ月前の話ですが、iPhoneをお風呂に落としてしまいました。。。2、3秒くらいですかね。</p>
+
+<p>液晶が点灯しなかったものの、まだ生きてます。
+急いで電源を切りました。スワイプのジェスチャーがなかなか効かないので何回かやったんです。</p>
+
+<p>そこでググってみてこんな措置をとりました。
++  本体は振ってはいけない
++  ドライヤーで乾かす
++  米に埋める(乾燥剤がなかった)
++  乾燥剤とiPhoneをジップロックに入れて待つ！
++  毎晩一回起動して様子を観察</p>
+
+<p>それで、ほぼ4-5日経って特に変わりがなかったです。
+(まだ液晶が点灯しない、バッテリとかその他は問題ない)
+画面が暗いまま1週間使い続けてもう待てないと思って
+ソフトバンクの店舗にいって正直に言いました。
+思ったとおり検査で水没のセンサは反応あり、
+修理はできず22,800¥で交換するしかないと言われました。</p>
+
+<p>そんな時にTwitter<a href="https://twitter.com/#!/spdshinjuku">スマートフォンドクター新宿店</a>から連絡がきましたので、
+お店にいって液晶だけ交換することにしました。
+その場でTwitterでつぶやけばツイッター割があります。
+合わせて8,800¥でした。ありがとうございました。</p>
+
+<p>今まで問題なく使いました。大事にしないと。。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-18T00:00:00+09:00" pubdate data-updated="true">2011-06-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -567,86 +628,6 @@ Disqusの管理画面で確認したらステータスが&#8221;Queued for impor
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mac-ruby-no-such-file-to-load-ubygems-loaderror">Macのrubyで、no such file to load &#8211; ubygems (LoadError)</a></h1>
-	<div class="entry-content">
-		<p><a href="http://www.sinatrarb.com/intro">Sinatra</a>を試したところこのようなエラーになりました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -rubygems myapp.rb
-</span><span class='line'>no such file to load -- ubygems (LoadError)
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ググッてみたらやはりPATHが間違ったっぽいです。
-Macportでrubygemsをインストールすることで解決できるそうです。
-その後はgemを再度インストールする必要があるらしいです。
-操作の流れ：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#パスの確認
-</span><span class='line'>which gem
-</span><span class='line'>/usr/bin/gem
-</span><span class='line'>
-</span><span class='line'>sudo port install rb-rubygems
-</span><span class='line'>...
-</span><span class='line'># Terminal再起動
-</span><span class='line'># パスの確認
-</span><span class='line'>which gem
-</span><span class='line'>/opt/local/bin/gem
-</span><span class='line'>
-</span><span class='line'>sudo gem install sinatra
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>一旦はこれで解決です。</p>
-
-<p>参考になったサイト：
-<a href="http://d.hatena.ne.jp/holypp/20110319/1300556202">http://d.hatena.ne.jp/holypp/20110319/1300556202</a>
-<a href="http://d.hatena.ne.jp/Kuna/20090315/1237121262">http://d.hatena.ne.jp/Kuna/20090315/1237121262</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-23T00:00:00+09:00" pubdate data-updated="true">2011-05-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/16/" class="prev">Prev</a>
@@ -656,7 +637,7 @@ Macportでrubygemsをインストールすることで解決できるそうで�
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

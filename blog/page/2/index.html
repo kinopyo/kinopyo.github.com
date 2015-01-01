@@ -7,12 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="TL;DR 早起きしたいと自ら望むこと
-やれば絶対誰でもできる（事実）
-柔軟に軌道修正 はじめに 5/22から早起きを頑張りました。
-&#8220;何時に起きてるの？&#8221;
-&#8220;8時です&#8221;
-&#8220;えー全然早くね～じゃん&#8221; &hellip;">
+	<meta name="description" content="TL;DR Heroku doesn’t provide HTTP caching by default
+Use CDN like Cloudflare or Amazon CloudFront Clouldflare has free plan, takes you less than 3 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +90,91 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/use-http-caching-in-heroku-with-cloudflare/">Use HTTP Caching in Heroku with Cloudflare</a></h1>
+	<div class="entry-content">
+		<h1>TL;DR</h1>
+
+<ul>
+<li>Heroku doesn’t provide HTTP caching by default</li>
+<li>Use CDN like <a href="http://www.cloudflare.com/">Cloudflare</a> or <a href="http://aws.amazon.com/cloudfront/">Amazon CloudFront</a>
+
+<ul>
+<li>Clouldflare has free plan, takes you less than 3 minutes to setup.</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>HTTP Caching</h1>
+
+<p>Just a quick example of HTTP caching.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/http_caching_example.jpg" alt="HTTP caching example" /></p>
+
+<p>You can really feel the difference after you enabled it. Since most of your static assets, like js, css and image files, are gonna use browser cache without hitting your rails application, the user experience is improved a lot.</p>
+
+<p>In my hobboy project <a href="http://quoty.me">quoty.me</a>, user had to download the black colored background image(22k) every time they visit a page, so there was a time lag to notice the background changed from white to black, which bothered me a lot. And that was why I noticed the HTTP caching is not enabled in Heroku.</p>
+
+<h1>Heroku&#8217;s HTTP Caching</h1>
+
+<blockquote><p>Heroku doesn’t provide HTTP caching by default. In order to take advantage of HTTP caching, you’ll need to configure your application to set the appropriate HTTP cache control headers and use a content delivery network (CDN) or other external caching service.</p></blockquote>
+
+<p>I&#8217;m using cedar stack in Heroku, but I have to use &#8220;external&#8221;(oppose to add-ons or solutions provided by Heroku) stuff to make HTTP caching work.</p>
+
+<p>I&#8217;ve also tried <a href="http://rtomayko.github.io/rack-cache/">Rack::Cache</a> with Memcache but somehow it didn&#8217;t work for me.</p>
+
+<h1>Setup Cloudflare</h1>
+
+<p>This time I decided to give Cloudflare a try. It&#8217;s free, easy to setup, and just work.</p>
+
+<p>I&#8217;ll cut off how to setup Cloudflare, as the tutorial in its website is realy excellent. Just go to <a href="https://www.cloudflare.com/">https://www.cloudflare.com/</a> and follow the instructions, within 3-4 steps you&#8217;re done.</p>
+
+<p>The other thing you have to do is to update your nameserver to the one provided by Cloundflare, like &#8220;IAN.NS.CLOUDFLARE.COM&#8221;. I&#8217;m using <a href="http://www.godaddy.com/">GoDaddy</a> for my quoty.me domain, the link to setup nameserver looks like this.</p>
+
+<p><img src="http://cdn.kinopyo.com/images/godaddy_nameserver.jpg" alt="GoDaddy Nameserver setup link" /></p>
+
+<h1>Further Reading</h1>
+
+<ul>
+<li><a href="https://devcenter.heroku.com/articles/http-caching">HTTP Caching | Heroku Dev Center</a>
+<a href="https://devcenter.heroku.com/articles/increasing-application-%20-performance-with-http-cache-headers">Increasing Application Performance with HTTP Cache Headers | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/http-caching-ruby-rails">HTTP Caching in Ruby with Rails | Heroku Dev Center</a></li>
+<li><a href="http://railscasts.com/episodes/321-http-caching">#321 HTTP Caching (pro) - RailsCasts</a></li>
+<li><a href="http://www.bestechvideos.com/2009/03/21/railslab-scaling-rails-episode-11--%20advanced-http-caching">RailsLab Scaling Rails: Episode #11 - Advanced HTTP Caching</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-14T08:51:00+09:00" pubdate data-updated="true">2013-07-14</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/cache/'>Cache</a>, <a class='category' href='/blog/categories/heroku-/'>Heroku,</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -839,51 +920,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/i-like-the-idea-of-amazon-verified-purchase-in-reviews-section/">I Like The Idea of Amazon Verified Purchase in Reviews Section</a></h1>
-	<div class="entry-content">
-		<p>If you browse amazon reviews chances are you already saw this <strong>Amazon Verified Purchase</strong> label. This is not a new feature, I think it&#8217;s been there for a while but I just want to point that out.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/amazon_verified_purchase.png" alt="Amazon Verified Purchase" /></p>
-
-<p>It&#8217;s easy to understand, it means the reviewer purchased that item at Amazon, could highly increase the credibility of the review.</p>
-
-<p>I think it&#8217;s easy to implement, the logic is simple but it&#8217;s a good indicator for users to decide if they should follow or trust the review.</p>
-
-<p>Also I tried it myself. When I click to write a review for the book I bought on Amazon, I get this option to choose if I&#8217;d like to label myself as purchased the item.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/amazon_write_review.png" alt="Amazon Write Review Options" /></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-17T12:02:00+09:00" pubdate data-updated="true">2013-02-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/details/'>Details</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/" class="prev">Prev</a>
@@ -893,7 +929,7 @@ release cycles is 311 days so statistically there are still around 100 days left
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 

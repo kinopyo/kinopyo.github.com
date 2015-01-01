@@ -7,9 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="James Wardさんのブログから見たものです。 結果から言うとAMF（リモートオブジェクト）での通信は
-ほかのJSONとか、XMLより遥かに速いです。
-下記がその結果のスクリーンショットです。 また各通信手段のParse time, Render time, Request &hellip;">
+	<meta name="description" content="elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
+&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;
+vs
+&#8220;直接jQueryのidセレクタでとるやつ&#8221;。 コードで言うと
+$( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +93,107 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-selector-performance-elem-vs-i">jQueryセレクタのパフォーマンス：elem vs id</a></h1>
+	<div class="entry-content">
+		<p>elem指定とID指定のjQueryセレクタパフォーマンス実験を行いました。
+<strong>&#8220;先にJavascriptでelementをとってそれをjQueryの$セレクタに囲むやつ&#8221;</strong>
+vs
+<strong>&#8220;直接jQueryのidセレクタでとるやつ&#8221;。</strong></p>
+
+<br/>
+
+
+<p>コードで言うと
+<strong>$(document.getElementById(&#8220;foo&#8221;))</strong>
+vs
+<strong>$(&#8220;#foo&#8221;)</strong></p>
+
+<br/>
+
+
+<p>普通前者が勝だろうと思うだろう、
+どれくらいの差かを確認したくて。</p>
+
+<h2>結果</h2>
+
+<p>一万回ループでとった結果です。</p>
+
+<ul>
+<li>IE8: 187 vs 344</li>
+<li>IE6: 203 vs 453</li>
+<li>Firefox×(3.6.3):  21 vs 63</li>
+<li>Chrome(4.1.xx):  9 vs 39</li>
+</ul>
+
+
+<h2>サンプルコード</h2>
+
+<p><a href="http://www.kinopyo.com/demo/jquery/selector_performance.html" target="_blank" >デモページへ</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">t0</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;直接elementを渡す時間は：&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t1</span><span class="o">-</span><span class="nx">t0</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; , ID指定でとる時間は：&quot;</span><span class="o">+</span> <span class="p">(</span><span class="nx">t2</span><span class="o">-</span><span class="nx">t1</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-17T00:00:00+09:00" pubdate data-updated="true">2010-05-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -584,82 +687,6 @@ javaでのIteratorのhasNext()関数みたいな動きをしていますね。</
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/java-unsupportedoperationexception-when-manipulate-java-list">Java：List操作時のUnsupportedOperationExceptionについて</a></h1>
-	<div class="entry-content">
-		<p>久々にJavaを書いたので、表題のExceptionにハマっちゃいました。
-こんなコードでした。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">**</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;a&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">,</span> <span class="s">&quot;c&quot;</span><span class="o">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;d&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ちょこっとググッてみたらasListで作ったListに
-add()で要素を追加すると上記のExceptionになるそうです。
-asListのJavadocでの記載は</p>
-
-<blockquote><p>指定された配列を基にする固定サイズのリストを返します。返されたリストへの変更は、そのまま配列に書き込まれます。(後は省略)</p></blockquote>
-
-
-<p>なるほど。。。
-とりあえず深く考えずに下記のように書き換えて回避しました。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">**</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;a&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">,</span> <span class="s">&quot;c&quot;</span><span class="o">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">array</span><span class="o">));</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;d&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-16T00:00:00+09:00" pubdate data-updated="true">2010-04-16</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/blog/page/24/" class="prev">Prev</a>
@@ -669,7 +696,7 @@ asListのJavadocでの記載は</p>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
     Qihuan Piao
 
