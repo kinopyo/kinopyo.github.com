@@ -7,8 +7,18 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="TL;DR Heroku doesn’t provide HTTP caching by default
-Use CDN like Cloudflare or Amazon CloudFront Clouldflare has free plan, takes you less than 3 &hellip;">
+	<meta name="description" content="Problem 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+$ rvm install 1.9.3 Searching for binary rubies, this might take some time.
+Found remote file https://rvm.io/binaries/ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +100,87 @@ Use CDN like Cloudflare or Amazon CloudFront Clouldflare has free plan, takes yo
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-ruby-1-dot-9-3-on-mavericks/">Install Ruby 1.9.3 on Mavericks</a></h1>
+	<div class="entry-content">
+		<h2>Problem</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvm install 1.9.3
+</span><span class='line'>
+</span><span class='line'>Searching for binary rubies, this might take some time.
+</span><span class='line'>Found remote file https://rvm.io/binaries/osx/10.9/x86_64/ruby-1.9.3-p448.tar.bz2
+</span><span class='line'>Checking requirements for osx.
+</span><span class='line'>Installing requirements for osx.
+</span><span class='line'>Updating system - using Zsh, can not show progress, be patient...
+</span><span class='line'>Error running 'requirements_osx_brew_update_system ruby-1.9.3-p448',
+</span><span class='line'>please read /Users/qihuan-piao/.rvm/log/1383014621_ruby-1.9.3-p448/update_system.log
+</span><span class='line'>Requirements installation failed with status: 1.</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Solution</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gcc -v
+</span><span class='line'>
+</span><span class='line'>Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+</span><span class='line'>Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
+</span><span class='line'>Target: x86_64-apple-darwin13.0.0
+</span><span class='line'>Thread model: posix
+</span><span class='line'>
+</span><span class='line'>rvm install 1.9.3 --with-gcc=clang</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Reference</h2>
+
+<p>http://stackoverflow.com/questions/8139138/how-can-i-install-ruby-1-9-3-in-mac-os-x-lion</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-29T11:00:00+09:00" pubdate data-updated="true">2013-10-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -855,65 +946,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 	<a class='category' href='/blog/categories/details/'>Details</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/%E3%81%AA%E3%81%9C%E9%9B%BB%E8%BB%8A%E3%81%AB%E4%B9%97%E3%82%8B%E3%81%A8%E7%9C%A0%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%8B/">なぜ電車に乗ると眠くなるのか</a></h1>
-	<div class="entry-content">
-		<p><img src="http://cdn.kinopyo.com/images/sleepy_on_the_train.jpg" alt="" /></p>
-
-<p>最近はよく8時間寝ても朝電車に乗るとまた眠くなっちゃうんですよ。なぜなのかな？自分の精神力が弱い？それとも科学的に説明できる一般的な現象？というのを少し調べたのでここで簡単にまとめたいと思います。</p>
-
-<h2>ゆりかご</h2>
-
-<p><img src="http://cdn.kinopyo.com/images/yurikago.jpg" alt="" /></p>
-
-<p>ネットでは結構な回答がありますが、やはり<strong>ゆりかご</strong>というのが原因らしいです。</p>
-
-<blockquote><p>単発の振動は脳には刺激を与えますが、周期的な振動は脳が慣れてしまうのでゆりかごに近い状態になるんですね</p></blockquote>
-
-<p>　</p>
-
-<blockquote><p>電車の中で眠くなる、というのは普通です。よく、赤ちゃんを寝かしつけるときなんかに背中を一定のリズムでトントン叩いてあげますね。あの「一定のリズムでくる刺激」というのは、人間だけでなく胎生哺乳類全般に眠りを呼び起こすもののようです（うちの猫も、眠そうにしてるときに背中をトントン叩くといっぺんに寝ちゃいます）。
-これはわたしの推測ですが、母親の胎内にいたときに聞いていた、母親の心臓の鼓動に似たリズムが安心感を呼び起こし、眠くなるんじゃないでしょうか。
-同じ意味で、むずがる赤ちゃんにＴＶの砂嵐の音を聞かせるといっぺんに静かになる、というのがあります（これは胎内で聞いていた母親の血流音と、砂嵐の音が似ているためだそうです）。</p></blockquote>
-
-<p>これが一番論理的な説明かな。</p>
-
-<blockquote><p>体は乗り物の振動に合わせて揺れ、それを追いかけるようにして内臓も揺れます。この二つの揺れ方の波が奇跡的に一致する振動が、電車のあのガタンゴトンなのだそうです。体と内臓は、コップとその中の水とお考えください。</p>
-
-<p>たとえば落下するジェットコースターだと、体だけ先に落ちてしまい内臓が取り残されて吐き気がしますし、悪路の自動車だと震度が小刻みすぎて、体と内臓が別々にシェイクされてしまい、不快になる。ところが電車だと、車両と体と内臓の三者が一体となって動くのだそうです。揺れているのに不快ではない、最高の揺りかごです。</p></blockquote>
-
-<p>本当にこれだけで人間は眠くなるものなのか。。？</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-21T21:05:00+09:00" pubdate data-updated="true">2013-02-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/naruhodo/'>naruhodo</a>
 
 
 </div>

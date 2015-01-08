@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1283896&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt; 日本語 &hellip;">
+	<meta name="description" content="よくつかうメソッドの nil? empty? blank? のまとめ。 nil? すべてのオブジェクトにある。nilのときにTrueを返す。
+empty? 文字の長さが0のとき、配列が空のときにTrueを返す。 blank? railsの拡張。nil, &#8220;&#8221;, &# &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,125 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/ruby-nil-empty-blank-none-check-0">ruby: nil? empty? blank? どれも0をチェックしない</a></h1>
+	<div class="entry-content">
+		<blockquote><p>よくつかうメソッドの nil? empty? blank? のまとめ。</p>
+
+<p>nil? すべてのオブジェクトにある。nilのときにTrueを返す。
+empty? 文字の長さが0のとき、配列が空のときにTrueを返す。</p>
+
+<p>blank? railsの拡張。nil, &#8220;&#8221;, &#8221; &#8220;, **, {} のいずれかでTrueを返す。</p></blockquote>
+
+<p>素晴らしいまとめですね！ootokageさんに感謝。</p>
+
+<p>PHP使うときは<em>empty(0)</em>でtrueになりますが、上記のメソッドどれも0をチェックしないですね。。.<em>zero?</em>というのメソッドは一応あるようですが。</p>
+
+<p>迷ったらここにいっぱいサンプルがあります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#= true</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="mi">0</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="mi">0</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="s2">&quot;&quot;</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="p">{}</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="p">{}</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">**.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="o">**.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="o">**.</span><span class="n">empty?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="o">**.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="o">**</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">nil</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="kp">nil</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">nil?</span> <span class="c1">#=&gt; false</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">zero?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">empty?</span> <span class="c1">#=&gt; NoMethodError</span>
+</span><span class='line'><span class="kp">false</span><span class="o">.</span><span class="n">blank?</span> <span class="c1">#=&gt; true</span>
+</span><span class='line'><span class="kp">false</span> <span class="o">==</span> <span class="kp">false</span> <span class="c1">#=&gt; true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-18T00:00:00+09:00" pubdate data-updated="true">2011-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -527,66 +647,6 @@ git mergetoolでビジュアルのDiffソフトで差分を見れたり修正し
 
 
 	<a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails31-image-do-not-show-in-production-while-http-status-code-is-200">Rails3.1 Production環境で画像が表示されない、HTTP Statusは200成功なのに</a></h1>
-	<div class="entry-content">
-		<h2>現象</h2>
-
-<p>Railsを-e productionで立ち上がるとき、或いはcapistrano本番サーバにデプロイしてアクセスする時に、HTTPのStatusは200なのに画像などが表示されない。JavascriptとCSSは問題ない。
-発生バージョンはRails 3.1。</p>
-
-<h2>解決策</h2>
-
-<p>app/tmp/cacheを削除し、rake assets:precompileをもう一回実行。
-ブラウザキャッシュを消してリロード。</p>
-
-<h2>調査経緯</h2>
-
-<p>assets周りの設定やfingerprint(MD5のハッシュ値)の比較など全部チェックしましたが、全然ダメでした。
-最後はgithubの<a href="https://gist.github.com/rails/rails/issues/2299" title="このスレ" target="_blank">このスレ</a>の方法で解決になりました。</p>
-
-<p>問題となったrails applicationはRails 3.1.rc1から作っていたもので、そのままrc4, rc5, stableに更新してきました。githubで議論されたのはrc4からrc5になったときにこのような現象があったようです。恐らくtmp/cacheが変な動きをして手動で削除しない限り古いバージョンのものがずっと残されたかもしれません。</p>
-
-<h2>おまけ</h2>
-
-<p>Asset Pipelineの周りの設定ファイルを一応貼っておきます。</p>
-
-<div><script src='https://gist.github.com/1239153.js'></script>
-<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/1239153&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
-
-
-<p>Githubでのスレ：<a href="https://gist.github.com/rails/rails/issues/2299">https://gist.github.com/rails/rails/issues/2299</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-24T00:00:00+09:00" pubdate data-updated="true">2011-09-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/asset-pipeline/'>Asset Pipeline</a>, <a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
 
 
 </div>

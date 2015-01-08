@@ -7,12 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="htmlにoptionが一つしかないselectboxがあるとします。
-このようなselectを非表示にし、そのテキストラベルで表示させたいのもありですね。 1
-2
-3
-&lt;select&gt; &lt;option&gt;1&lt;/option&gt;
-&lt;/select&gt; &hellip;">
+	<meta name="description" content="サイトの引越しなどであるURLから別のURLへ転送する場合の話です。例えば JavaScript を利用して転送したり、HTMLの機能で転送させたりするかもしれません。 しかしトップページでリダイレクトしてみても、別のページに直リンクしていた場合は旧ページが表示されることになります。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +89,51 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/apache-redirect-memo">ApacheサーバRedirectメモ、別のサイトに転送</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>サイトの引越しなどであるURLから別のURLへ転送する場合の話です。例えば JavaScript を利用して転送したり、HTMLの機能で転送させたりするかもしれません。</p>
+<br/>
+<p>しかしトップページでリダイレクトしてみても、別のページに直リンクしていた場合は旧ページが表示されることになります。そのような時に、Apache では httpd.conf に下記の１行を追加することで、別のＵＲＬへ転送させる事が可能です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Redirect / &lt;a href="http://www.yahoo.co.jp/" target="_blank">http://www.yahoo.co.jp/&lt;/a></span></code></pre></td></tr></table></div></figure>
+
+<p>この例では Yahoo Japan へリダイレクトされますが、例えば <a href="http://www.example.com/base/" target="_blank">http://www.example.com/base/</a> にアクセスした場合でも <a href="http://www.yahoo.co.jp/base/" target="_blank">http://www.yahoo.co.jp/base/</a> へのリダイレクトが行われます。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-29T00:00:00+09:00" pubdate data-updated="true">2009-11-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apache/'>Apache</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -874,131 +914,6 @@ Java7,,,やってみたいっす！
 
 
 	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-tips-live-not-support-all-event">jQuery Tips: live関数はすべてのイベントに有効じゃない、その他&#8230;</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>今までjQueryを使ってきたtipsをメモします。</p>
-<p>Tipsの定義とおり知っていればちょっと便利になるけど、</p>
-<p>知らなくても特に問題ないですね。</p>
-<p>ただしlive関数においてはすべてのイベントに有効じゃないのは</p>
-<p>知っておいてほしいです。</p>
-<h4>live関数</h4>
-<p>liveはすべてのイベントに対応していない。</p>
-<h5>サポート</h5>
-<p>click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout, keydown, keypress, keyup</p>
-<h5>非サポート</h5>
-<p>blur, focus, mouseenter, mouseleave, change, submit</p>
-<br/>
-<h4>ajax関数のurlパラメータ</h4>
-<p>AJAXのURLではセレクタも併用できる。セレクタによりあるページの一部だけを読み込むことができる。</p>
-<p>こんな形です：&#8221;url #some &#62; selector&#8221;</p>
-<p>デフォルトは&#8221;body&#62;*&#8221;のセレクタが適用されていますよ。</p>
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#links&quot;</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;/Main_Page #jq-p-Getting-Started li&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="err">：</span><span class="nx">has</span><span class="p">(</span><span class="nx">selector</span><span class="p">)</span><span class="err">フィルタ</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">：</span><span class="nx">has</span><span class="p">(</span><span class="nx">selector</span><span class="p">)</span><span class="err">は持ってるすべての子要素に対して動作してる</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">div</span><span class="err">い対して</span><span class="o">:</span><span class="nx">has</span><span class="err">フィルタを使うと、</span><span class="nx">p</span><span class="err">要素までフィルタが走る</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">codeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">span</span> <span class="p">...</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">p</span><span class="p">..</span> <span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="err">/span&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="err">属性フィルタの組み合わせ</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">filter</span><span class="p">][</span><span class="nx">filter</span><span class="p">]</span><span class="err">……のように複数を連続して記述することもできます。この場合、すべての属性フィルタに合致する要素だけが取り出されます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">html</span><span class="err">の組み立て</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h5</span><span class="o">&gt;</span><span class="err">ハードコードで書く</span><span class="o">&lt;</span><span class="err">/h5&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">select</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;option value=&#39;&quot;</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="s2">&quot;&#39;&gt;text&lt;/option&gt;&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h5</span><span class="o">&gt;</span><span class="nx">jQuery</span><span class="err">の関数を用いて書く</span><span class="o">&lt;</span><span class="err">/h5&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">select</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;option&gt;&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">({</span> <span class="nx">value</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">));</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endcodeblock</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="err">このほうが簡潔だと思いますが、、</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;:</span><span class="nx">nth</span><span class="o">-</span><span class="nx">child</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;:</span><span class="nx">nth</span><span class="o">-</span><span class="nx">child</span><span class="err">フィルタにより</span><span class="nx">n</span><span class="err">行おきに子要素を取得することができる</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">例えば、</span><span class="mi">2</span><span class="err">、</span><span class="mi">5</span><span class="err">、</span><span class="mi">8</span><span class="err">行目……のように</span><span class="mi">3</span><span class="err">行おきに（「</span><span class="mi">3</span><span class="err">で割ったときの余りが</span><span class="mi">2</span><span class="err">」番目の）要素を取得したい場合には、以下のように記述できます。</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;brush:javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ol &gt; li:nth-child(3n + 2)&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-<br/>
-<h4>validationプラグイン</h4>
-<p>jQueryのvalidationプラグイン:showErrorを定義するとhighlightとunhighlightとは実行しない</p>
-<p>そもそもshowErrorはエラーをどう表示するかを決めるための高レベルの関数なので、</p>
-<p>簡略化したhighlightとunhighlightは隠蔽されたっぽいの感じで、完全に実行しません。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-23T00:00:00+09:00" pubdate data-updated="true">2009-11-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

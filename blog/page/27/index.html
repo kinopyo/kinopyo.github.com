@@ -7,12 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="スクロールバーを最下部に移動するJavascriptです。 普通のJavascriptで書くと 1
+	<meta name="description" content="こんなHTMLがあるとします。
+idに**が付いてますね。 1
 2
 3
-4
-5
-function go_bottom(targetId){ var obj = document.getElementById(targetId); if(!obj) return &hellip;">
+&lt;input id=&quot;foo0&quot; type=&quot;text&quot; /&gt;
+&lt;input id=&quot;foo1&quot; type=&quot;text&quot; /& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +94,78 @@ function go_bottom(targetId){ var obj = document.getElementById(targetId); if(!o
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-select-id-with-square">jQuery IDに括弧がついたオブジェクトを取るには</a></h1>
+	<div class="entry-content">
+		<p>こんなHTMLがあるとします。
+idに**が付いてますね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo0&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo1&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo2&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こういうIDに括弧が付いたモノに対して
+普通の#付きのjQueryセレクタでは選択できません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo0&quot;</span><span class="p">);</span>    <span class="c1">// 取れません</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>属性フィルタ<em>attribute=value</em>でとるのが正解です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;id=&#39;foo[0]&#39;&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>0311更新：
+もし具体的なタグがわかってあれば、
+それを指定することでパフォーマンスを向上できます。
+上記の例で言うと</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;inputid=&#39;foo[0]&#39;&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このほうが速いです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-03T00:00:00+09:00" pubdate data-updated="true">2010-03-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -788,72 +860,6 @@ instance_of?は特定のクラスだけ、サブクラスを調べられない�
 
 
 	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/meta-tag-sequence-in-head-section">headには一番最初にMETAタグで文字コードを指定するのが望ましい</a></h1>
-	<div class="entry-content">
-		<p>HTMLのheadセクションにはタイトルといろんなMetaタグが記述されているが、
-その記述順番に気になったことはありますか?
-そしてそれがどのような影響があるかぐぐってみました。</p>
-
-<blockquote><p>headセクション内のタグの記述順に特に決まりはないが、&#8221;charset&#8221;で示す文字コード指定のタグは、titleタグやmeta description/keywordsタグよりも先に記述することが推奨される。の中身がまさに、文字で書かれ、文字コード判定が必要だからです。</p></blockquote>
-
-
-<p>そういえばWordpressを使ってからこの辺全然気にしてないので
-早速自分のサイトのheadセクションを確認しました。
-下記のようなものです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; dir=&quot;ltr&quot; lang=&quot;en-US&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>head profile=&quot;http://gmpg.org/xfn/11&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>Kinopyo<span class="ni">&amp;amp;</span>#039;s Blog<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なるほど、、metaタグでcharsetがUTF-8になってるから
-titleのところのシングルクォーテーションがUTF-8の#039になったわけですね。
-考えてみれば当たり前のことだけれど。。。</p>
-
-<h2>参考サイト</h2>
-
-<p><a href="http://www.google.com/support/forum/p/webmasters/thread?tid=43832eca33833101&amp;amp;hl=ja">MetaタグとTitleタグの位置関係について</a>
-<a href="http://web-tan.forum.impressrd.jp/e/2010/01/08/7139">ブラックなSEOで人生を失った悲惨な男の物語 など10記事（海外&amp;国内SEO情報）</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-27T00:00:00+09:00" pubdate data-updated="true">2010-01-27</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/seo/'>SEO</a>
 
 
 </div>

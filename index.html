@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="2014 has passed, this is the perfect season to write a personal review post. This one is organized in the perspective of family, relationship, &hellip;">
+	<meta name="description" content="I consider myself strict at spending money. I would choose a station in 20 minutes walk distance over a 3 minutes one just to save less than 200 JPY &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -87,6 +87,55 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/one-pitfall-about-saving/">One Pitfall About Saving Money</a></h1>
+	<div class="entry-content">
+		<p>I consider myself strict at spending money. I would choose a station in 20 minutes walk distance over a 3 minutes one just to save less than 200 JPY yen. I would  bypass a vending machine even though I’m thirsty but not buying a bottle of water. I would go into bathroom without turning on the light, and choose wearing more clothes rather than turning on underfloor heat to save electricity expense, the list goes on and on… (most of these habits are inherited from my parents, saving money is like a gene inside their body)</p>
+
+<p>Some time ago I randomly picked up a book in bookstore, one chapter was about saving money. Can’t remember the exact word, but the general idea is this:</p>
+
+<blockquote><p>People who have the habits of saving money, tend to buy more and/or expensive stuff than they need, have low resist to the temptation, because they don’t know the joy of spending money, they think they have been suffered enough that they so <em>deserve</em> to have that one item.</p></blockquote>
+
+<p>That rings a bell. I do remember I say something like that to myself in the past when struggling with buy or not buy situation.</p>
+
+<p>“Come on you’ve been working so hard, you definitely deserve this!”</p>
+
+<p>“Look at others, see how they’ve spent money on drinks, clothes, parties, no harm to indulge yourself a bit this time!”</p>
+
+<p>“It’s 50% off sale, you’ve got to buy something for yourself right?!”</p>
+
+<p>And things I’ve bought under that mindset usually turns out to be a total waste: either I don’t like it, not using it anymore(like clothes), or over spec that’s higher than my need(pc parts).</p>
+
+<p>Since I realized this pitfall, I’ve been really conscious about the conversations with myself. <strong>I stopped using the word “deserve”.</strong> Now it looks like this: “I choose to spend the money because of …, so that I could …, I’m 100% it’ll contribute to my …, I know it’s a clear YES, it’s a worthwhile investment, not because I deserve it, not because it’s on 30%, 50% or even 80% sale, not because I feel shy to say NO.”</p>
+
+<p>I could be spending <em>more</em> money overall on food, books, self investment now than before, but that’s my rational choice &amp; investment under conscious mind, with a purpose on health, learning, and self growth. <strong>Most importantly, I don’t feel the urge to indulge myself, the guilty when spending money anymore.</strong></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-02T09:29:00+09:00" pubdate data-updated="true">2015-01-02</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1001,87 +1050,6 @@ upgrade to Mavericks, then it’s probably gonna work as well.</p>
 
 
 	<a class='category' href='/blog/categories/capybara/'>Capybara</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-ruby-1-dot-9-3-on-mavericks/">Install Ruby 1.9.3 on Mavericks</a></h1>
-	<div class="entry-content">
-		<h2>Problem</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvm install 1.9.3
-</span><span class='line'>
-</span><span class='line'>Searching for binary rubies, this might take some time.
-</span><span class='line'>Found remote file https://rvm.io/binaries/osx/10.9/x86_64/ruby-1.9.3-p448.tar.bz2
-</span><span class='line'>Checking requirements for osx.
-</span><span class='line'>Installing requirements for osx.
-</span><span class='line'>Updating system - using Zsh, can not show progress, be patient...
-</span><span class='line'>Error running 'requirements_osx_brew_update_system ruby-1.9.3-p448',
-</span><span class='line'>please read /Users/qihuan-piao/.rvm/log/1383014621_ruby-1.9.3-p448/update_system.log
-</span><span class='line'>Requirements installation failed with status: 1.</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Solution</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gcc -v
-</span><span class='line'>
-</span><span class='line'>Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
-</span><span class='line'>Apple LLVM version 5.0 (clang-500.2.79) (based on LLVM 3.3svn)
-</span><span class='line'>Target: x86_64-apple-darwin13.0.0
-</span><span class='line'>Thread model: posix
-</span><span class='line'>
-</span><span class='line'>rvm install 1.9.3 --with-gcc=clang</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Reference</h2>
-
-<p>http://stackoverflow.com/questions/8139138/how-can-i-install-ruby-1-9-3-in-mac-os-x-lion</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-29T11:00:00+09:00" pubdate data-updated="true">2013-10-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>ruby</a>
 
 
 </div>

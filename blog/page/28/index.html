@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="RAILS_ENV 現在動作している環境。開発終わって、テスト環境でテストしたい場合、この変数を修正すればOKです。
-&#8216;development&#8217;,&#8217;test&#8217;または&#8217;production&#8217;があります。
-　 &hellip;">
+	<meta name="description" content="HTMLのheadセクションにはタイトルといろんなMetaタグが記述されているが、
+その記述順番に気になったことはありますか?
+そしてそれがどのような影響があるかぐぐってみました。 headセクション内のタグの記述順に特に決まりはないが、&#8221;charset&#8221; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +91,72 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/meta-tag-sequence-in-head-section">headには一番最初にMETAタグで文字コードを指定するのが望ましい</a></h1>
+	<div class="entry-content">
+		<p>HTMLのheadセクションにはタイトルといろんなMetaタグが記述されているが、
+その記述順番に気になったことはありますか?
+そしてそれがどのような影響があるかぐぐってみました。</p>
+
+<blockquote><p>headセクション内のタグの記述順に特に決まりはないが、&#8221;charset&#8221;で示す文字コード指定のタグは、titleタグやmeta description/keywordsタグよりも先に記述することが推奨される。の中身がまさに、文字で書かれ、文字コード判定が必要だからです。</p></blockquote>
+
+
+<p>そういえばWordpressを使ってからこの辺全然気にしてないので
+早速自分のサイトのheadセクションを確認しました。
+下記のようなものです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; dir=&quot;ltr&quot; lang=&quot;en-US&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>head profile=&quot;http://gmpg.org/xfn/11&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>Kinopyo<span class="ni">&amp;amp;</span>#039;s Blog<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なるほど、、metaタグでcharsetがUTF-8になってるから
+titleのところのシングルクォーテーションがUTF-8の#039になったわけですね。
+考えてみれば当たり前のことだけれど。。。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://www.google.com/support/forum/p/webmasters/thread?tid=43832eca33833101&amp;amp;hl=ja">MetaタグとTitleタグの位置関係について</a>
+<a href="http://web-tan.forum.impressrd.jp/e/2010/01/08/7139">ブラックなSEOで人生を失った悲惨な男の物語 など10記事（海外&amp;国内SEO情報）</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-27T00:00:00+09:00" pubdate data-updated="true">2010-01-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -766,65 +832,6 @@ jarファイルもサポートされているようです。</p>
 
 
 	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-be-careful-lf-inarray-function-return-value">jQuery $.inArray()関数の戻り値に注意を</a></h1>
-	<div class="entry-content">
-		<h2>$.inArray(value, array)</h2>
-
-<p>指定した値が配列中にあれば、そのインデックスを返します。
-配列に存在しなければ戻り値は&#8221;-1&#8221;になりますので注意してください。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="o">*</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="o">*</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// d is not in array</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>下記のコードは間違いですよ。。。
-<code>if ($.inArray("d", array)) {}</code></p>
-
-<h2>$.isArray(obj)</h2>
-
-<p>パラメータで渡された値が配列であるかどうかを判別します。
-戻り値はtrueかfalseです。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-15T00:00:00+09:00" pubdate data-updated="true">2010-01-15</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>
