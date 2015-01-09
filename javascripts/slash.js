@@ -1,4 +1,9 @@
 (function($){
+  $('#search_form').on('submit', function() {
+    var q = $(this).find('input[type=hidden]');
+    q.val(q.val() + ' ' + $(this).find('input[name=g]').val())
+  });
+
 	// Open external links in new window
 	var externalLinks = function(){
 		var host = location.host;
