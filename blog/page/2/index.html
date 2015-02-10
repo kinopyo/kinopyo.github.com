@@ -7,18 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Problem 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-$ rvm install 1.9.3 Searching for binary rubies, this might take some time.
-Found remote file https://rvm.io/binaries/ &hellip;">
+	<meta name="description" content="I got a brand new Mac Air recently, when I tried to install
+capybara-webkit I encountered some problems. The Error Got this error when bundle &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -100,6 +90,124 @@ Found remote file https://rvm.io/binaries/ &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-capybara-webkit-on-mavericks/">Install capybara-webkit on Mavericks</a></h1>
+	<div class="entry-content">
+		<p>I got a brand new Mac Air recently, when I tried to install
+capybara-webkit I encountered some problems.</p>
+
+<h2>The Error</h2>
+
+<p>Got this error when bundle install one rails app.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Installing capybara-webkit (0.12.1)
+</span><span class='line'>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+</span><span class='line'>
+</span><span class='line'>    /Users/qihuan-piao/.rvm/rubies/ruby-2.0.0-p247/bin/ruby extconf.rb
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1 for inspection.
+</span><span class='line'>Results logged to /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1/./gem_make.out
+</span><span class='line'>
+</span><span class='line'>An error occurred while installing capybara-webkit (0.12.1), and Bundler cannot continue.
+</span><span class='line'>Make sure that `gem install capybara-webkit -v '0.12.1'` succeeds before bundling.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Tried <code>brew install qt</code> didn’t get luck, raised this error:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install qt4 --build-from-source
+</span><span class='line'>==&gt; Downloading http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz
+</span><span class='line'>Already downloaded: /Library/Caches/Homebrew/qt-4.8.5.tar.gz
+</span><span class='line'>==&gt; ./configure -prefix /usr/local/Cellar/qt/4.8.5 -system-zlib -confirm-license -opensource -nomake demos -nomake examples -cocoa -fast -release -no-3dnow -L/opt/X11/lib -I/opt/X11/include -pl
+</span><span class='line'>==&gt; make
+</span><span class='line'>                                   ^
+</span><span class='line'>7 errors generated.
+</span><span class='line'>make[2]: *** [.obj/release-shared/qdrawhelper_ssse3.o] Error 1
+</span><span class='line'>make[1]: *** [release] Error 2
+</span><span class='line'>make: *** [sub-gui-make_default-ordered] Error 2
+</span><span class='line'>
+</span><span class='line'>READ THIS: https://github.com/mxcl/homebrew/wiki/troubleshooting
+</span><span class='line'>
+</span><span class='line'>These open issues may also help:
+</span><span class='line'>    https://github.com/mxcl/homebrew/pull/22283
+</span><span class='line'>    https://github.com/mxcl/homebrew/issues/23480</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Solution</h2>
+
+<p>Checked all those links and tried several things, eventually downloading
+qt installer from the qt-project website solved my problem.</p>
+
+<p><a href="http://qt-project.org/downloads"><img src="http://cdn.kinopyo.com/images/download_qt4.8_for_mac-3.png" alt="" /></a>
+<a href="http://qt-project.org/downloads">Download link</a></p>
+
+<p>Just install the debug libraries, qt libraries then bundle install
+again.</p>
+
+<h2>Note</h2>
+
+<p>If you already got qt installed and capybara-webkit worked before
+upgrade to Mavericks, then it’s probably gonna work as well.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-29T12:00:00+09:00" pubdate data-updated="true">2013-10-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/capybara/'>Capybara</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -885,72 +993,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 
 
 <time datetime="2013-03-14T21:45:00+09:00" pubdate data-updated="true">2013-03-14</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/details/'>Details</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/does-your-blog-header-in-top-page-and-post-page-look-the-same/">Does Your Blog Header In Top Page And Post Page Look The Same?</a></h1>
-	<div class="entry-content">
-		<p>As you see below, this was how my blog header looks like before I write this post. There was no differece between top page(or home page, landing page) and the post page. If put into rails term, these are the <code>#index</code> and <code>#show</code> page, they&#8217;re sharing the exactly same header partial.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/my_blog_header.png" alt="old blog header" class="image_with_border"></p>
-
-<h2>Thinking About My Target</h2>
-
-<p>Based on the data from Google Analytics, around 85% of the access are from search engines like Google or Yahoo, so for them the contents I provided should be most important.</p>
-
-<p>But for the direct access to the top page, they could be my friends, could be the headhunters, my future boss or colleague, or just some random strangers, anyway these people are my target who I really want to pay more attentions to, make them impressive, show a little  different things from the other audience.</p>
-
-<h2>A Good Example</h2>
-
-<p>Ryan Singer from 37signals, one day I happened to visit <a href="http://feltpresence.com/">his blog</a>, the moment I saw the page I knew this is one thing I also want to have in my blog!</p>
-
-<p>Let’s take a look.</p>
-
-<p><img class="image_with_border" src="http://cdn.kinopyo.com/images/ryan_singer_blog_index.png" alt="Rayn Singer’s blog, top page"></p>
-
-<p><img src="http://cdn.kinopyo.com/images/ryan_singer_blog_show.png" alt="Rayn Singer’s blog, post page" class="image_with_border"></p>
-
-<p>As you can see, the header in top page and every post page is different. Yes it’s low techy techy, easy to implement, not challenging at all, but it still matters.</p>
-
-<h2>Time for Action!</h2>
-
-<p>I’m sure every web developer understand this and every product they built must have a more beatiful and well designed landing page to catch people’s eyes. But do you apply the same principle to your own blog? You may use Wordpress or Octopress or any other blog generate tools to build your blog, and perhaps you even made a good <strong>About me</strong> page, but did you take one more step further to care about this detail? If you were aware of this and chose not to do it, it’s perfectly fine but to me, I don&#8217;t like to miss this detail.</p>
-
-<p>Anyway here is my new blog header, just a simple introduction, I may add some more info later.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/new_blog_header_for_top_page.png" alt="New blog header for top page" class="image_with_border"></p>
-
-<p>I guess this post may be nonsense to some of you. <strong>But if this is one thing that represent myself, at least I&#8217;d like to put more efforts to make it a little more “me”.</strong></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-23T14:25:00+09:00" pubdate data-updated="true">2013-02-23</time></div>
 	<div class="tags">
 
 

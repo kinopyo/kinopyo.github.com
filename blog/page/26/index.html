@@ -7,16 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="よく出来ていると思います。
-勉強になります。 1
-2
-3
-4
-5
-6
-siblings: function( elem ) { return jQuery.sibling( elem.parentNode.firstChild, elem );
-},
-children: function( &hellip;">
+	<meta name="description" content="下記のURLで試してみればすぐ分かりますが、
+表題の通りblockUIで制御したところは解除した後にマウスのカーソルがおかしいです。
+IE,FirefoxとChromeでテストした結果、Firefoxは無事のようです。 http://malsup.com/jquery/block/ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +91,61 @@ children: function( &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-blockui-plugin-bug-hourglass-cursor-stays-in-ie-and-chrome">jQuery blockUI Pluginのバグ：unblock時にマウスカーソルが砂時計のまま(IE, Chrome)</a></h1>
+	<div class="entry-content">
+		<p>下記のURLで試してみればすぐ分かりますが、
+表題の通りblockUIで制御したところは解除した後にマウスのカーソルがおかしいです。
+IE,FirefoxとChromeでテストした結果、Firefoxは無事のようです。</p>
+
+<p><a href="http://malsup.com/jquery/block/position.html">http://malsup.com/jquery/block/position.html</a></p>
+
+<h2>解決策</h2>
+
+<p>jquery.blockUI.jsを開いてreset()のfunctionのところに以下のコードを追加</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">data</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cursor</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第三者のソースに手を加えるのはあまりやりたくないけど。</p>
+
+<h2>参考サイト</h2>
+
+<p><a href="http://groups.google.com/group/jquery-en/browse_thread/thread/c86671033a86be25/ebd5e710cc78885a?lnk=gst&amp;q=cursor#">http://groups.google.com/group/jquery-en/browse_thread/thread/c86671033a86be25/ebd5e710cc78885a?lnk=gst&amp;q=cursor#</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-26T00:00:00+09:00" pubdate data-updated="true">2010-04-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -883,71 +931,6 @@ IEも正しくtrimしてlengthが0になるんです。。。</p>
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-delete-array-element-by-index">Javascript index指定で配列の要素を削除するには</a></h1>
-	<div class="entry-content">
-		<p>今まで全然気付かなかったんです、
-JavascriptのArrayにはdeleteみたいなAPIがないことに。
-配列の要素をindex指定で削除したい場合は代わりにsplice関数を使います。</p>
-
-<h2>splice関数</h2>
-
-<p>とほほからのレファレンスでは</p>
-
-<blockquote><p>array.splice(start, n, e1, e2, &#8230;) (N4)<br/>0 から数えて、start 番目から n 個の要素を削除し、その代わりに e1, e2, &#8230;を値とする要素を埋め込みます。戻り値は JavaScript のバージョンによって異なります。</p></blockquote>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">xx</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">xx</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">);</span>   <span class="c1">// &quot;C&quot;, &quot;D&quot;, &quot;E&quot; が小文字になります</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>indexで配列の要素を削除するには</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">myArray</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>indexは削除する要素のindex、1はこの一つだけを削除する意味で
-他のパラメータはいらないです。
-またsplice後は配列そのものが変更されます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-08T00:00:00+09:00" pubdate data-updated="true">2010-03-08</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="I consider myself strict at spending money. I would choose a station in 20 minutes walk distance over a 3 minutes one just to save less than 200 JPY &hellip;">
+	<meta name="description" content="&#8220;Sorry I failed to give you a complete family&#8221;. I heard it from both my mom and dad, from time to time. Every time I go back China, I&# &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -87,6 +87,50 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sorry-i-failed-to-give-you-a-complete-family/">Sorry I Failed to Give You A Complete Family</a></h1>
+	<div class="entry-content">
+		<p>&#8220;Sorry I failed to give you a complete family&#8221;. I heard it from both my mom and dad, from time to time.</p>
+
+<p>Every time I go back China, I&#8217;m actually scared in some level to spend nights with either of them. I could sense it, &#8220;Oh my god he/she is gonna bring that again&#8230;&#8221;, then we all drowned in the emotional flood.</p>
+
+<p>Although I do refer to them as a convenient &#8220;excuse&#8221;(joke) for my inappropriate behavior or inability of communication, in my heart I never ever blame them for anything. But as parents with good will and intention, I guess they may never forgive themselves, I don&#8217;t like to see that kind of face&#8230;</p>
+
+<p>Writing these because I had a dream this morning, for the 30 years in my life it is the first time to have such a dream seeing them being together, happy, smiling, doing things together, worrying about my marriage(this part is so real hah), I just can&#8217;t forget that warm feeling. If one day human technology is developed enough to make a machine that could control your dream, I might surrender to that.</p>
+
+<p>Phew, what an emotional morning! And I won&#8217;t surrender! I was just being weak for now. And no such thing as a &#8220;functional family&#8221; so take it easy :)</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-10T08:38:00+09:00" pubdate data-updated="true">2015-02-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -941,124 +985,6 @@ communications I really think remote work will work!</p>
 
 
 	<a class='category' href='/blog/categories/work/'>Work</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-capybara-webkit-on-mavericks/">Install capybara-webkit on Mavericks</a></h1>
-	<div class="entry-content">
-		<p>I got a brand new Mac Air recently, when I tried to install
-capybara-webkit I encountered some problems.</p>
-
-<h2>The Error</h2>
-
-<p>Got this error when bundle install one rails app.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Installing capybara-webkit (0.12.1)
-</span><span class='line'>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
-</span><span class='line'>
-</span><span class='line'>    /Users/qihuan-piao/.rvm/rubies/ruby-2.0.0-p247/bin/ruby extconf.rb
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>Gem files will remain installed in /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1 for inspection.
-</span><span class='line'>Results logged to /Users/qihuan-piao/.rvm/gems/ruby-2.0.0-p247/gems/capybara-webkit-0.12.1/./gem_make.out
-</span><span class='line'>
-</span><span class='line'>An error occurred while installing capybara-webkit (0.12.1), and Bundler cannot continue.
-</span><span class='line'>Make sure that `gem install capybara-webkit -v '0.12.1'` succeeds before bundling.
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Tried <code>brew install qt</code> didn’t get luck, raised this error:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install qt4 --build-from-source
-</span><span class='line'>==&gt; Downloading http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz
-</span><span class='line'>Already downloaded: /Library/Caches/Homebrew/qt-4.8.5.tar.gz
-</span><span class='line'>==&gt; ./configure -prefix /usr/local/Cellar/qt/4.8.5 -system-zlib -confirm-license -opensource -nomake demos -nomake examples -cocoa -fast -release -no-3dnow -L/opt/X11/lib -I/opt/X11/include -pl
-</span><span class='line'>==&gt; make
-</span><span class='line'>                                   ^
-</span><span class='line'>7 errors generated.
-</span><span class='line'>make[2]: *** [.obj/release-shared/qdrawhelper_ssse3.o] Error 1
-</span><span class='line'>make[1]: *** [release] Error 2
-</span><span class='line'>make: *** [sub-gui-make_default-ordered] Error 2
-</span><span class='line'>
-</span><span class='line'>READ THIS: https://github.com/mxcl/homebrew/wiki/troubleshooting
-</span><span class='line'>
-</span><span class='line'>These open issues may also help:
-</span><span class='line'>    https://github.com/mxcl/homebrew/pull/22283
-</span><span class='line'>    https://github.com/mxcl/homebrew/issues/23480</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Solution</h2>
-
-<p>Checked all those links and tried several things, eventually downloading
-qt installer from the qt-project website solved my problem.</p>
-
-<p><a href="http://qt-project.org/downloads"><img src="http://cdn.kinopyo.com/images/download_qt4.8_for_mac-3.png" alt="" /></a>
-<a href="http://qt-project.org/downloads">Download link</a></p>
-
-<p>Just install the debug libraries, qt libraries then bundle install
-again.</p>
-
-<h2>Note</h2>
-
-<p>If you already got qt installed and capybara-webkit worked before
-upgrade to Mavericks, then it’s probably gonna work as well.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-29T12:00:00+09:00" pubdate data-updated="true">2013-10-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/capybara/'>Capybara</a>
 
 
 </div>

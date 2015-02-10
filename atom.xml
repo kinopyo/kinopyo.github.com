@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2015-01-09T10:15:14+09:00</updated>
+  <updated>2015-02-10T09:01:48+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sorry I Failed to Give You A Complete Family]]></title>
+    <link href="http://kinopyo.com/blog/sorry-i-failed-to-give-you-a-complete-family/"/>
+    <updated>2015-02-10T08:38:00+09:00</updated>
+    <id>http://kinopyo.com/blog/sorry-i-failed-to-give-you-a-complete-family</id>
+    <content type="html"><![CDATA[<p>&#8220;Sorry I failed to give you a complete family&#8221;. I heard it from both my mom and dad, from time to time.</p>
+
+<p>Every time I go back China, I&#8217;m actually scared in some level to spend nights with either of them. I could sense it, &#8220;Oh my god he/she is gonna bring that again&#8230;&#8221;, then we all drowned in the emotional flood.</p>
+
+<p>Although I do refer to them as a convenient &#8220;excuse&#8221;(joke) for my inappropriate behavior or inability of communication, in my heart I never ever blame them for anything. But as parents with good will and intention, I guess they may never forgive themselves, I don&#8217;t like to see that kind of face&#8230;</p>
+
+<p>Writing these because I had a dream this morning, for the 30 years in my life it is the first time to have such a dream seeing them being together, happy, smiling, doing things together, worrying about my marriage(this part is so real hah), I just can&#8217;t forget that warm feeling. If one day human technology is developed enough to make a machine that could control your dream, I might surrender to that.</p>
+
+<p>Phew, what an emotional morning! And I won&#8217;t surrender! I was just being weak for now. And no such thing as a &#8220;functional family&#8221; so take it easy :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Pitfall About Saving Money]]></title>
@@ -1278,45 +1295,6 @@ release cycles is 311 days so statistically there are still around 100 days left
 <p><img src="http://cdn.kinopyo.com/images/google_calendar_working_hours_option.png" alt="Working hours options" /></p>
 
 <p>I guess this is more helpful for those who use a flex time for their work. I wonder what will the warning message look like.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Does Your Blog Header In Top Page And Post Page Look The Same?]]></title>
-    <link href="http://kinopyo.com/blog/does-your-blog-header-in-top-page-and-post-page-look-the-same/"/>
-    <updated>2013-02-23T14:25:00+09:00</updated>
-    <id>http://kinopyo.com/blog/does-your-blog-header-in-top-page-and-post-page-look-the-same</id>
-    <content type="html"><![CDATA[<p>As you see below, this was how my blog header looks like before I write this post. There was no differece between top page(or home page, landing page) and the post page. If put into rails term, these are the <code>#index</code> and <code>#show</code> page, they&#8217;re sharing the exactly same header partial.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/my_blog_header.png" alt="old blog header" class="image_with_border"></p>
-
-<h2>Thinking About My Target</h2>
-
-<p>Based on the data from Google Analytics, around 85% of the access are from search engines like Google or Yahoo, so for them the contents I provided should be most important.</p>
-
-<p>But for the direct access to the top page, they could be my friends, could be the headhunters, my future boss or colleague, or just some random strangers, anyway these people are my target who I really want to pay more attentions to, make them impressive, show a little  different things from the other audience.</p>
-
-<h2>A Good Example</h2>
-
-<p>Ryan Singer from 37signals, one day I happened to visit <a href="http://feltpresence.com/">his blog</a>, the moment I saw the page I knew this is one thing I also want to have in my blog!</p>
-
-<p>Let’s take a look.</p>
-
-<p><img class="image_with_border" src="http://cdn.kinopyo.com/images/ryan_singer_blog_index.png" alt="Rayn Singer’s blog, top page"></p>
-
-<p><img src="http://cdn.kinopyo.com/images/ryan_singer_blog_show.png" alt="Rayn Singer’s blog, post page" class="image_with_border"></p>
-
-<p>As you can see, the header in top page and every post page is different. Yes it’s low techy techy, easy to implement, not challenging at all, but it still matters.</p>
-
-<h2>Time for Action!</h2>
-
-<p>I’m sure every web developer understand this and every product they built must have a more beatiful and well designed landing page to catch people’s eyes. But do you apply the same principle to your own blog? You may use Wordpress or Octopress or any other blog generate tools to build your blog, and perhaps you even made a good <strong>About me</strong> page, but did you take one more step further to care about this detail? If you were aware of this and chose not to do it, it’s perfectly fine but to me, I don&#8217;t like to miss this detail.</p>
-
-<p>Anyway here is my new blog header, just a simple introduction, I may add some more info later.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/new_blog_header_for_top_page.png" alt="New blog header for top page" class="image_with_border"></p>
-
-<p>I guess this post may be nonsense to some of you. <strong>But if this is one thing that represent myself, at least I&#8217;d like to put more efforts to make it a little more “me”.</strong></p>
 ]]></content>
   </entry>
   

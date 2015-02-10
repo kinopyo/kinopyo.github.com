@@ -7,7 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="We use our phones every day. They have a modern name &#8220;Smart Phone&#8221;, as it can do much more tasks compared to the old one. I&#8217;ve &hellip;">
+	<meta name="description" content="If you find yourself typing these kind of similar codes very often, and want a snippet to save your time, this is it. 1
+2
+3
+@topic = Topic.find( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +92,112 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sublimetext2-rails-snippet-for-model-find-code/">SublimeText2 Rails Snippet for Model Find Code</a></h1>
+	<div class="entry-content">
+		<p>If you find yourself typing these kind of similar codes very often, and want a snippet to save your time, this is it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:topic_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="vi">@car_item</span> <span class="o">=</span> <span class="no">CarItem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:car_item_id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It maps the variable name to its model name by converting the first character or the character after a underscore to uppercase, which is a convention in Rails framework.</p>
+
+<h2>Demo Video</h2>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/jGbvBn801Ao" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>The Snippet</h2>
+
+<p>I put it and named as <code>SublimeText/Packages/User/Snippets/model_find.sublime-snippet</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
+</span><span class='line'><span class="cp">@${1} = ${1/^(.)|_(.)/\U\1\2/g}.find(params[:${2:${1}_}id])</span>
+</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;tabTrigger&gt;</span>mf<span class="nt">&lt;/tabTrigger&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;scope&gt;</span>meta.rails.controller<span class="nt">&lt;/scope&gt;</span>
+</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So now I just have to hit <code>mf</code> -> <code>tab</code> to trigger it.</p>
+
+<h2>SublimeText Document</h2>
+
+<p>Here I&#8217;m using the <a href="http://docs.sublimetext.info/en/latest/extensibility/snippets.html#substitutions">Substitutions</a> feature of SublimeText 2 snippet.</p>
+
+<p>The substitution syntax has the following syntaxes:</p>
+
+<blockquote><ul>
+<li><code>${var_name/regex/format_string/}</code></li>
+<li><code>${var_name/regex/format_string/options}</code></li>
+</ul>
+</blockquote>
+
+<p>e.g.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>Original: ${1:Hey, Joe!}
+</span><span class='line'>Transformation: ${1/./=/g}
+</span><span class='line'>
+</span><span class='line'># Output:
+</span><span class='line'>
+</span><span class='line'>      Original: Hey, Joe!
+</span><span class='line'>Transformation: =========
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-25T22:49:00+09:00" pubdate data-updated="true">2012-11-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -679,67 +788,6 @@
 
 
 <time datetime="2012-09-29T20:50:00+09:00" pubdate data-updated="true">2012-09-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/markdownediting-sublimetext-plugin-to-make-your-markdown-looks-like-ia-writer/">MarkdownEditing - SublimeText plugin to make your markdown looks like iA Writer</a></h1>
-	<div class="entry-content">
-		<p>If you&#8217;re using SublimeText and also a fan of <a href="http://www.iawriter.com/">iA Writer</a> , you may want to check this plugin called <a href="https://github.com/ttscoff/MarkdownEditing">MarkdownEditing</a>. It provides a iA Writer-like interface to your SublimeText.</p>
-
-<h2>How does it look like?</h2>
-
-<p>A picture is worth a thousand words:</p>
-
-<p><img src="http://kinopyo.com/wp-content/MarkdownEditing.png" alt="MarkdownEditing" /></p>
-
-<h2>Install</h2>
-
-<p>Use <code>cmd+shift+P</code> then Package <code>Control: Install Package</code>, type <code>MarkdownEditing</code> to install it, then any markdown file will get associated.</p>
-
-<h2>Other Features</h2>
-
-<p>Besides iA Writer-like UI it also has many other features like:</p>
-
-<ul>
-<li>Asterisks, underscores and parenthesis are auto paired and will wrap selected text</li>
-<li>⌘⌥V will paste the contents of the clipboard as an inline link on selected text</li>
-<li>⌘⌥K inserts a standard inline link, ⌘⇧K inserts an inline image</li>
-<li>⌘⌥B and ⌘⌥I are bound to bold and italics (Markdown).</li>
-<li>&#8230;</li>
-</ul>
-
-
-<p>So, how do you think?</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-22T15:35:00+09:00" pubdate data-updated="true">2012-09-22</time></div>
 	<div class="tags">
 
 

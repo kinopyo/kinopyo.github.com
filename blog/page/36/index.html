@@ -7,15 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="本気でFlex3を勉強しようと決めました。
-「何か勉強したなら資格の形で残したい」の方針で
-関連の資格をネットで調べました。
-その情報をいったん整理します。
-基本情報 試験番号 ： 9A0-082
-受験言語 ： 日本語、英語
-合格点 ： 67%以上
-問題数 ： 50
-試験時間 ： 85分 &hellip;">
+	<meta name="description" content="環境 IE6
+jQuery1.3.2 現象 IE7、IE8、Firefox上全部OKのアプリがなぜかIE6ではエラーが頻発しました。
+エラーの詳細もないので、原因がはっきりわかりません。 ソースは特に変な作り方をしてないと思うので、やはりIE6が主な原因と判断しググってみました。 調査結果 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -97,6 +91,114 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/issue-when-using-jquery-to-manipulate-option-to-selectbox-in-ie">IE6でjQueryを使う時のエラー：selectにoption生成の不具合</a></h1>
+	<div class="entry-content">
+		<h2>環境</h2>
+
+<ul>
+<li>IE6</li>
+<li>jQuery1.3.2</li>
+</ul>
+
+
+<h2>現象</h2>
+
+<p>IE7、IE8、Firefox上全部OKのアプリがなぜかIE6ではエラーが頻発しました。
+エラーの詳細もないので、原因がはっきりわかりません。</p>
+
+<br />
+
+
+<p>ソースは特に変な作り方をしてないと思うので、やはりIE6が主な原因と判断しググってみました。</p>
+
+<h2>調査結果</h2>
+
+<blockquote><p>IE6でselect boxに&lt;option&gt;を追加した直後、
+その追加した値を.valで設定しようとすると上記のエラーが発生します。
+（設定する値が追加した値以外の場合、正常に設定できます）</p></blockquote>
+
+<p>今回のアプリではselectボックスは静的にHTMLで書いて、
+jQueryでoptionをどんどんappendしてました。
+やはりこの辺が怪しかったですね。</p>
+
+<br/>
+
+
+<p>回避策としてあげられるのは<strong>.valを設定する前に.width()を一回実行すること</strong>です。
+信じられないぐらい、本当になおりました。
+setTimeout(function () {}, 0); も回避策の一つとの選択肢もあったのですが、
+なぜかこれは効きませんでした。</p>
+
+<h2>以下個人感想</h2>
+
+<p>IE6のばかばかしい動きが元凶なので、詳しく追求する気はないです。
+ほかにもjQueryを使うときに注意すべきものがいっぱいあるようです。
+まあ、またエラーなんか起きたらそのときまた検索すればって思います。</p>
+
+<br/>
+
+
+<p>ウェブアプリ開発者はIE6～IE8、Firefoxなどいろいろなブラウザにも注意しながら
+開発するしかないことがすごく嫌です。
+この前FirefoxがやっとIE6を市場シェアを抜けて一位になった記事がありました。
+(Firefox &#62; IE6 &#62; IE7 &#62; IE8の感じかな、トータルではもちろIE全体がまだトップ)
+IE6なんかもう早く下がってほしい。</p>
+
+<br/>
+
+
+<p>なので、ブラウザに気にしないFlex開発に興味を持ち、今勉強中です。
+そこら辺の感想はまた別途で記事書きます。</p>
+
+<br/>
+
+
+<p>ちなみに、Google分析で私のブログを見る平均時間は44秒です。
+内容的にこんなに駄目なんですか。。？
+44秒、、短すぎ、、</p>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091110/20091110011109.jpg" alt="" /></p>
+
+<h2>参考になったサイト</h2>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/x6x6/20080318/1205817536">jQueryでoption要素を追加した際の諸問題</a></li>
+<li><a href="http://tech.kayac.com/archive/jquery-checkpoints.html">jQueryを使うときに気をつけるべき8のポイント</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T00:00:00+09:00" pubdate data-updated="true">2009-11-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>, <a class='category' href='/blog/categories/javascript/'>Javascript</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1363,54 +1465,6 @@ shift() は array の最初の要素を削除します。</p>
 
 
 	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/record-manage-your-books">読書を記録、管理：読書メーター</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>今回紹介するのは<a target="_blank" href="http://book.akahoshitakuya.com/" title="読書メーター">読書メーター</a>です。<br/>簡単にいうと、読書を記録、管理するサイトです。<br/></p>
-<p><a href="http://f.hatena.ne.jp/kinopyo/20091026235301" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091026/20091026235301.jpg" alt="f:id:kinopyo:20091026235301j:image" title="f:id:kinopyo:20091026235301j:image" class="hatena-fotolife"></a></p>
-<p><br/><br/>FC2のブログアプリケーションにも似た感じの<a target="_blank" href="http://book.orfeon.jp/" title="読書カレンダー">読書カレンダー</a>がありますが、<br/>比較してみて、やはり<a target="_blank" href="http://book.akahoshitakuya.com/" title="読書メーター">読書メーター</a>のほうが機能も充実し、面白いと思います。<br/><br/>まずユーザ登録はFC2や、はてな、そしてmixiのIDでそのままログインできます。<br/>そして自分が読んだ本をどんどん登録すると、面白いグラフができてますよ。<br/><br/>本の追加は以下の4種類あり、自分が今までの「実績」がすぐわかります。<br/><br/></p>
-<p><ul>
-<li>読んだ本に追加</li>
-<li>読んでる本に追加</li>
-<li>積読本に追加 ※持っているけど読んでいない本など</li>
-<li>読みたい本に追加 ※持っていない読みたい本など</li>
-</ul></p>
-<p>コメントはもちろん入力でき、さらに本を読んでる、読んだ人の人数まで数えてくれます。<br/>本の追加、コメントする時は自動でTwitterにも投稿できます。<br/><br/>本はページ数まで把握して、グラフで自分がどれほどのページを読み終わったかも見れます。<br/>私はログインしてから一気に全部の本を追加しました。<br/><br/>ほかにも読友、相性、職本、お気に入り、コミュニティ、ブログパーツなどの<br/>機能が充実してます。<br/>相性や職本などのジャンルはなかなかアイディアのいい機能じゃないですか。<br/>ぜひ試してみてください。</p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-28T00:00:00+09:00" pubdate data-updated="true">2009-10-28</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/webservice/'>webservice</a>
 
 
 </div>

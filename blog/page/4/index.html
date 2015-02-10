@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" Just wanna share 2 youtube videos I watched today, so funny. Fruit Ninja in Real Life Cute Kittens Fly in Slow Motion 2012-12-27 Diary, Funny ">
+	<meta name="description" content=" Good bye 2012, happy new year. 2013-01-01 Diary, Japan ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,49 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/countdown-to-2013-at-zoujyouji-temple/">Countdown to 2013 at Zoujyouji Temple</a></h1>
+	<div class="entry-content">
+		<p><img src="http://cdn.kinopyo.com/images/2013_tokyotower.jpg" alt="Counter down to at Zoujyouji Temple" /></p>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/V5lG710fxbc" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>Good bye 2012, happy new year.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-01T12:28:00+09:00" pubdate data-updated="true">2013-01-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>, <a class='category' href='/blog/categories/japan/'>Japan</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -740,112 +783,6 @@
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/sublimetext2-rails-snippet-for-model-find-code/">SublimeText2 Rails Snippet for Model Find Code</a></h1>
-	<div class="entry-content">
-		<p>If you find yourself typing these kind of similar codes very often, and want a snippet to save your time, this is it.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:topic_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="vi">@car_item</span> <span class="o">=</span> <span class="no">CarItem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:car_item_id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It maps the variable name to its model name by converting the first character or the character after a underscore to uppercase, which is a convention in Rails framework.</p>
-
-<h2>Demo Video</h2>
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/jGbvBn801Ao" frameborder="0" allowfullscreen></iframe>
-
-
-<h2>The Snippet</h2>
-
-<p>I put it and named as <code>SublimeText/Packages/User/Snippets/model_find.sublime-snippet</code>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;snippet&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[</span>
-</span><span class='line'><span class="cp">@${1} = ${1/^(.)|_(.)/\U\1\2/g}.find(params[:${2:${1}_}id])</span>
-</span><span class='line'><span class="cp">]]&gt;</span><span class="nt">&lt;/content&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;tabTrigger&gt;</span>mf<span class="nt">&lt;/tabTrigger&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;scope&gt;</span>meta.rails.controller<span class="nt">&lt;/scope&gt;</span>
-</span><span class='line'><span class="nt">&lt;/snippet&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So now I just have to hit <code>mf</code> -> <code>tab</code> to trigger it.</p>
-
-<h2>SublimeText Document</h2>
-
-<p>Here I&#8217;m using the <a href="http://docs.sublimetext.info/en/latest/extensibility/snippets.html#substitutions">Substitutions</a> feature of SublimeText 2 snippet.</p>
-
-<p>The substitution syntax has the following syntaxes:</p>
-
-<blockquote><ul>
-<li><code>${var_name/regex/format_string/}</code></li>
-<li><code>${var_name/regex/format_string/options}</code></li>
-</ul>
-</blockquote>
-
-<p>e.g.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'>Original: ${1:Hey, Joe!}
-</span><span class='line'>Transformation: ${1/./=/g}
-</span><span class='line'>
-</span><span class='line'># Output:
-</span><span class='line'>
-</span><span class='line'>      Original: Hey, Joe!
-</span><span class='line'>Transformation: =========
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-25T22:49:00+09:00" pubdate data-updated="true">2012-11-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/sublimetext/'>SublimeText</a>
 
 
 </div>

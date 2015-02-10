@@ -7,8 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="よくつかうメソッドの nil? empty? blank? のまとめ。 nil? すべてのオブジェクトにある。nilのときにTrueを返す。
-empty? 文字の長さが0のとき、配列が空のときにTrueを返す。 blank? railsの拡張。nil, &#8220;&#8221;, &# &hellip;">
+	<meta name="description" content="この記事で紹介するのはGoogle Appsのアカウント（多くの場合は会社で使うGoogleアカウント：yourname@yourcompany.comのような）のカレンダーをiPhoneに同期する方法です。 手順 (英語の環境設定です)
++Settingsアプリの&#8221;Mail, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,66 @@ empty? 文字の長さが0のとき、配列が空のときにTrueを返す。 b
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/sync-google-calendar-to-iphone">GoogleカレンダーとiPhoneカレンダーの同期</a></h1>
+	<div class="entry-content">
+		<p>この記事で紹介するのはGoogle Appsのアカウント（多くの場合は会社で使うGoogleアカウント：yourname@yourcompany.comのような）のカレンダーをiPhoneに同期する方法です。</p>
+
+<h2>手順</h2>
+
+<p>(英語の環境設定です)
++Settingsアプリの&#8221;Mail, Contacts, Calendars&#8221;を開く
++Add Account&#8230;でOther、Add CalDAV Account
++アカウント情報を入力</p>
+
+<pre><code>-Server: google.com
+-Username: yourname@yourcompany.com (ここでフルのメアドを入力してください)
+-Password: 上記アカウントのパスワード
+-Description: 適当に
+</code></pre>
+
+<p>もし接続にSSLが必要であればダイアログが出るので、そのまま「OK」を押せばOKです。
+成功すれば&#8221;Mail, Contacts, Calendars&#8221;にDescriptionで入力したアイテムが表示され、灰色で「Calendars」と表記されるはずです。</p>
+
+<h2>普通のGoogleアカウント</h2>
+
+<p>普通のGoogleアカウントならカレンダーをiPhone、iPadに同期するのは比較的に簡単だと思います。iOSの&#8221;Mail, Contacts, Calendar&#8221;設定でGoogleのアカウントを追加し、CalendarsをONに設定すればできるんですね。</p>
+
+<h2>参考</h2>
+
+<p><a href="http://www.google.com/support/mobile/bin/answer.py?answer=151674">http://www.google.com/support/mobile/bin/answer.py?answer=151674</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-18T00:00:00+09:00" pubdate data-updated="true">2011-10-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/google-calendar/'>google calendar</a>, <a class='category' href='/blog/categories/ipad/'>iPad</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/ipad/'>ipad</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -608,54 +668,6 @@ git mergetoolでビジュアルのDiffソフトで差分を見れたり修正し
 
 
 	<a class='category' href='/blog/categories/css/'>CSS</a>, <a class='category' href='/blog/categories/checkbox/'>checkbox</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails31-got-no-such-file-or-directoryerror-when-deploy-with-capistrano-public-images-stylesheets-javascripts">Rails3.1 Capistranoでデプロイする時にpublic/images, stylesheets, javascriptsのNo such file or directoryエラー</a></h1>
-	<div class="entry-content">
-		<p>自分のログは無くしたので@yuum3のログを引用させて頂きます。</p>
-
-<blockquote><p>#  executing &#8220;find /home/rails_apps/todo31/releases/20110912141706/public/images /home/rails_apps/todo31/releases/20110912141706/public/stylesheets /home/rails_apps/todo31/releases/20110912141706/public/javascripts -exec touch -t 201109121417.06 {} &#8216;;&#8217;; true&#8221;<br/>    servers: *&#8221;176.32.95.168&#8221;*<br/>    *176.32.95.168* executing command<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/images&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/stylesheets&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*<br/>###  *err :: 176.32.95.168* find:<br/>###  *err :: 176.32.95.168* `/home/rails_apps/todo31/releases/20110912141706/public/javascripts&#8217;<br/>###  *err :: 176.32.95.168* : No such file or directory<br/>###  *err :: 176.32.95.168*</p></blockquote>
-
-
-<p><a href="https://github.com/capistrano/capistrano/issues/79#issuecomment-1767135" title="Githubにも載ってました。" target="_blank">Githubにも載ってました</a>エラーは無視しても大丈夫そうですが、下記の一行をdeploy.rbに追記すればエラー出なくなります。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in config/deploy.rb</span>
-</span><span class='line'><span class="n">set</span> <span class="ss">:normalize_asset_timestamps</span><span class="p">,</span> <span class="kp">false</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-25T00:00:00+09:00" pubdate data-updated="true">2011-09-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/capistrano/'>Capistrano</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails3-1/'>rails3.1</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
 
 
 </div>

@@ -7,8 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="http://b.hatena.ne.jp/guide/blogpartsにて自分のサイトの人気エントリーをブログパーツとして設置できます。
-手順にしたがってブログのURLを入力して簡単の設定を行ったあとは貼り付けるコードが生成されるため、それをブログにコピペすればOKです。 &hellip;">
+	<meta name="description" content="http://railscasts.com/episodes/211-validations-in-rails-3で学んだ技です。
+Rails 3.0 beta4を利用しています。 カスタムバリデーションメソッドを作成する方法を紹介します。
+こんなコードがあるとします。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +91,207 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-how-to-create-a-custom-validate-method">Rails: How to create a custom validate method</a></h1>
+	<div class="entry-content">
+		<p><a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>で学んだ技です。
+Rails 3.0 beta4を利用しています。</p>
+
+<p>カスタムバリデーションメソッドを作成する方法を紹介します。
+こんなコードがあるとします。Userモデルのemailに対して妥当性チェックは普通こう書きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span>  <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="sr">/\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここの:format => の部分を抽出してemail_validateというバリデーションメソッドを作ります。</p>
+
+<h2>方法</h2>
+
+<p>libフォルダにemail_format_validator.rbというファイルを新規作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/email_format_validator.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">EmailFormatValidator</span> <span class="o">&lt;</span> <span class="ss">ActiveModel</span><span class="p">:</span><span class="ss">:EachValidator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i</span>
+</span><span class='line'>      <span class="n">object</span><span class="o">.</span><span class="n">errors</span><span class="o">*</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">*</span> <span class="o">||</span> <span class="s2">&quot;is invalid&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてUser.rbのソースを下記のように修正します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#User.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:email_format</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>:email_formatは自動的にEmailFormatValidatorにマッピングします。</p>
+
+<h1>中文</h1>
+
+<p>从这里学到的东西：<a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>，算是作个笔记吧。
+我用的是Rails 3.0 beta4。
+假设你有一个User Model，要对期email属性尽兴验证。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span>  <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="sr">/\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里用:format =>的一窜代码显得很不美观，我们就把这段代码抽出来单独做成一个方法。</p>
+
+<h2>方法</h2>
+
+<p>在lib文件夹下创建email_format_validator.rb的文件。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/email_format_validator.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">EmailFormatValidator</span> <span class="o">&lt;</span> <span class="ss">ActiveModel</span><span class="p">:</span><span class="ss">:EachValidator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i</span>
+</span><span class='line'>      <span class="n">object</span><span class="o">.</span><span class="n">errors</span><span class="o">*</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">*</span> <span class="o">||</span> <span class="s2">&quot;is invalid&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后修改User.rb，使用我们新建的方法:email_format</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#User.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:email_format</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意这里的:email_format会自动去寻找EmailFormatValidator这个class。</p>
+
+<h1>English</h1>
+
+<p>I learned this from here: <a href="http://railscasts.com/episodes/211-validations-in-rails-3">http://railscasts.com/episodes/211-validations-in-rails-3</a>
+In this post, I&#8217;ll introduce how to make a custom validate methods.Actually it&#8217;s a kind of memo for me.
+BTW, I&#8217;m using Rails 3.0 beta4.</p>
+
+<p>Let&#8217;s say you have a User model that contains a email property to validate. In common case it maybe written like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span>  <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="sr">/\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So we will extract the :format => part to a custom validate method called email_validate.</p>
+
+<h2>Solution</h2>
+
+<p>Create a file in the lib folder, named email_format_validator.rb</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/email_format_validator.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">EmailFormatValidator</span> <span class="o">&lt;</span> <span class="ss">ActiveModel</span><span class="p">:</span><span class="ss">:EachValidator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/\A(*^@\s]+)@((?:[-a-z0-9]+\.)+[a-z*{2,})\Z/i</span>
+</span><span class='line'>      <span class="n">object</span><span class="o">.</span><span class="n">errors</span><span class="o">*</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">*</span> <span class="o">||</span> <span class="s2">&quot;is invalid&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And change User model like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#User.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:email_format</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the :email_format symbol is refer to EmailFormatValidator class automatically.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-25T00:00:00+09:00" pubdate data-updated="true">2010-07-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -755,58 +957,6 @@ I will post a memo about qTranslate after I master it.</p>
 
 
 	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/git-gui-for-mac-gitbox">Git GUI for Mac: Gitbox</a></h1>
-	<div class="entry-content">
-		<p><a href="http://gitbox.pierlis.com/">Gitbox</a>はGitバージョンコントロールのGUIトールです。
-表題の通りFor Macです。</p>
-
-<p><img src="http://d1oa71y4zxyi0a.cloudfront.net/1.6.2-screenshot1.jpg" alt="" /></p>
-
-<blockquote><p>Gitbox is a Mac OS X graphical interface for Git version control system. In a single window you see branches, history and working directory status.</p><p>Everyday operations are easy: stage and unstage changes with a checkbox. Commit, pull, merge and push with a single click. Double-click a change to show a diff with FileMerge.app.</p></blockquote>
-
-
-<p>ステージや、コミット、プール、マージなどの作業が
-簡単にできそうです。</p>
-
-<p>まだpreviewバージョンですが、使ってみる価値はあると思います。</p>
-
-<h2>使い方</h2>
-
-<p>File -> Open Repository(Command + O)で
-Githubで管理しているディレクトリを開けます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-20T00:00:00+09:00" pubdate data-updated="true">2010-06-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/git/'>Git</a>
 
 
 </div>

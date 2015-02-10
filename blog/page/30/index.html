@@ -7,10 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="映画アバターに関連するニュースやYoutube映像、ゲームなどの情報を一応リストアップしました。 映画館でアバターを見ました。最高です。
-ストリー、3Dの表現力、監督が創った世界：パンドラ。
-素晴らしかったとしか言えません。
-映画アバター公式サイト iPhone/iPodにもアバターゲームが登場 &hellip;">
+	<meta name="description" content="jQueryのAPIを一枚の紙にまとめたものです。
+ノートはPDFファイルで、ダウンロードすることができます。
+jQuery APIノート 作者はMattさんです。ありがとうございました。 他にもHTML、CSS、JavaScript、PHP、Mac、Windows、Photoshop、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +91,58 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery-handy-note-and-html-css-javascript-notes">jQuery APIを一枚の紙にまとめたノート。他にもHTML、CSS、JavaScriptノートが満載</a></h1>
+	<div class="entry-content">
+		<p>jQueryのAPIを一枚の紙にまとめたものです。
+ノートはPDFファイルで、ダウンロードすることができます。
+<a href="http://www.javascripttoolbox.com/jquery/cheatsheet/JQueryCheatSheet-1.3.2.pdf">jQuery APIノート</a></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/jQuery-api-note.jpg" title="jQuery-api-note" ></p>
+
+<br/>
+
+
+<p>作者はMattさんです。ありがとうございました。</p>
+
+<br/>
+
+
+<p>他にもHTML、CSS、JavaScript、PHP、Mac、Windows、Photoshop、Browserなどのノートが満載です。
+<a href="http://www.smashapps.org/2009/12/html-css-php-javascript-and-more-cheat.html">HTML, CSS, PHP, Javascript And More Cheat Sheets</a>
+興味のある方は直接作者のサイトを参照してください。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-27T00:00:00+09:00" pubdate data-updated="true">2009-12-27</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -731,73 +782,6 @@ jQueryが適用されてないhtmlにもfirebugのコンソールで直接jQuery
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-flexible-upload-plugin%e3%81%aewarning-call_user_func_array-function-call-user-func-array">WordPress Flexible upload pluginのWarning: call_user_func_array() [function.call-user-func-array]</a></h1>
-	<div class="entry-content">
-		<h2>エラー詳細</h2>
-
-<p>Flexible uploadのプラグインを使うときに出たエラー内容です。</p>
-
-<blockquote><p>|
-Warning: call_user_func_array() <em>function.call-user-func-array</em>: First argument is expected to be a valid callback, &#8216;feed_links_extra&#8217; was given in ### /### /wp-includes/plugin.php on line 339
-|&lt;</p></blockquote>
-
-<h2>回避方法</h2>
-
-<p>wp-content/plugins/flexible-upload/flexible-upload-wp25.phpに以下のコードを追加</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">function media_admin_css() {</span>
-</span><span class='line'><span class="x">  wp_admin_css(&#39;css/media&#39;);</span>
-</span><span class='line'><span class="x">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>バージョン情報</h2>
-
-<ul>
-<li>WordPress : 2.8.6</li>
-<li>Flexible upload: 1.1.3</li>
-</ul>
-
-
-<h2>参考サイト</h2>
-
-<p><a href="http://wb.corekuuma.com/archives/83">WordPress2.6のFlexible upload 1.13不具合解消</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-11T00:00:00+09:00" pubdate data-updated="true">2009-12-11</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>

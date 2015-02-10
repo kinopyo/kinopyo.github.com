@@ -7,12 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="大人になって、年をとってから気づいた昔の自分を失ったあなたに、
-幸せな恋と結婚を求めているあなたに、
-この映画をおすすめします、 映画は本当に良く出来てます。
-宣伝よりも優れたものです。
-幼なじみの二人が恋人になって、結婚して、年をとって、
-子ともができなくて悲しくなっても、お互い支えて生きて、 &hellip;">
+	<meta name="description" content="最初はわざと英語版を入れましたが、日本語に簡単に切り替えるかと思って検索してみたんです。こんなに簡単に変更できるんだ。さすがWordPressだ！
+日本語リソースのインストール WordPress | 日本語 &#187; 日本語リソースのインストールから ja.mo、continents- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -94,6 +90,60 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/change-language-of-wordpress">WordPress言語の変更</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p>最初はわざと英語版を入れましたが、日本語に簡単に切り替えるかと思って検索してみたんです。こんなに簡単に変更できるんだ。さすがWordPressだ！</p>
+<h4>日本語リソースのインストール</h4>
+<ol>
+<li><a href="http://ja.wordpress.org/install-ja/" target="_blank">WordPress | 日本語 &#187; 日本語リソースのインストール</a>から ja.mo、continents-cities-ja.mo をダウンロード</li>
+<li>サーバのWordPressフォルダのwp-content 以下に languages ディレクトリを作成</li>
+<li>ダウンロードした2つの .mo ファイルを languages ディレクトリにアップロード</li>
+<li>WordPress ルート直下の wp-config.php ファイルを開き、「WPLANG」の箇所を次のように設定</li>
+</ol>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>define ('WPLANG', 'ja');</span></code></pre></td></tr></table></div></figure>
+
+<p>他にインストールしたい言語があれば該当リソースをWPにインストールして、</p>
+<p>wp-config.phpを編集すればOKです。</p>
+<p>参考サイト：</p>
+<p><a href="http://www.wordpress-skin.com/wordpress/?p=7" target="_blank">WordPressの言語を切り替えてみよう（日本語・英語・中国語…）  -  wordpressのテンプレート wpskinのブログ</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-06T00:00:00+09:00" pubdate data-updated="true">2009-12-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -634,114 +684,6 @@
 
 
 	<a class='category' href='/blog/categories/encoding/'>encoding</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-apache2-2-in-mac-or-unix">Mac(UNIX)でApache2.2サーバをインストール</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>一番デフォルトでのインストール手順です。</p>
-<h4>インストール</h4>
-<p>1. <a href="http://httpd.apache.org/download.cgi" target="_blank">Download - The Apache HTTP Server Project</a>でUNIX Sourceをダウンロード</p>
-<p>2. 解凍し、ターミナルを開いてそのディレクトリに移動</p>
-<p>3. 次のコマンドを実行、&#8211;prefix=&#8221;インストール先&#8221;を指定。省略された場合は/usr/local/apache2になる。他にモジュールとかの設定も可能。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./configure --prefix=/users/kinopyo/develop/apache</span></code></pre></td></tr></table></div></figure>
-
-<p>4. ビルド、インストール</p>
-<p>次のコマンドを実行、それぞれ時間がすこしかかる</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make
-</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
-
-<p>これでインストールは完了です。</p>
-<h4>カスタマイズ：httpd.confを編集</h4>
-<p>ここからはプラットフォームとは関係なく単純なApacheの世界です。</p>
-<p>前回の記事を参照してください：</p>
-<p><a href="http://d.hatena.ne.jp/kinopyo/20091124/1259017666" target="_blank">PHP5とApache2.2をWindowsにインストール - kinopyoの日記 </a></p>
-<h5>補足</h5>
-<p>Windowsはインストールウィザードでインストール時</p>
-<p>ServerAdminとServerNameの編集ダイアログがあります。</p>
-<p>一方MacはGUIのインストールではないため、</p>
-<p>手動でhttpd.confに上記二つのプロパティを設定する必要があります。</p>
-<h4>テスト</h4>
-<p>サーバの起動：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ インストール先のディレクトリ/bin/apachectl -k start</span></code></pre></td></tr></table></div></figure>
-
-<p>サーバの停止：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ インストール先のディレクトリ/bin/apachectl -k stop</span></code></pre></td></tr></table></div></figure>
-
-<p>これでブラウザで<a href="http://localhost:80" target="_blank">http://localhost:80</a>にアクセスすればページが表示されるはずです。</p>
-<h5>トラブルにあった！</h5>
-<p>上記コマンドを打つディレクトリはApacheサーバがインストールされたディレクトリです。</p>
-<p>例えば/users/kinopyo/develop/apacheにインストールされたとして、</p>
-<ol>
-<li>まずはcd /users/kinopyo/develop/apacheに移動</li>
-<li>次に/bin/apachectl -k startで実行</li>
-</ol>
-<p>もし第一歩でbinディレクトリまで移動し、直接apachectl -k startを実行したら、</p>
-<p>下記のようなエラーメッセージが出て、起動失敗になります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>(13)Permission denied: make_sock: could not bind to address [::]:80
-</span><span class='line'>(13)Permission denied: make_sock: could not bind to address 0.0.0.0:80
-</span><span class='line'>no listening sockets available, shutting down
-</span><span class='line'>Unable to open logs</span></code></pre></td></tr></table></div></figure>
-
-<br/>
-<p>ちなみにこのメッセージが出るもう一つのパターンはポート番号が既に使われている場合です。</p>
-<p>その時は下記コマンドで検出するし、使っているアプリを停止するか</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>netstat -na | grep 8082</span></code></pre></td></tr></table></div></figure>
-
-<p>httpd.confのListenとServerNameのポート番号を新たに設定する必要があります。</p>
-<br/>
-<p>参考サイト：</p>
-<p><a href="http://httpd.apache.org/docs/2.2/install.html" target="_blank">Compiling and Installing - Apache HTTP Server</a></p>
-<p><a href="http://lists.freebsd.org/pipermail/freebsd-questions/2003-November/025576.html" target="_blank"> apache install problem   </a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-29T00:00:00+09:00" pubdate data-updated="true">2009-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
 
 
 </div>
