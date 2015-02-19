@@ -7,10 +7,12 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="window.open()で新規開いた小窓ウィンドウで親ウィンドウのdocumentを取得するには
-下記のプロパティを使います。 1
-window.opener.document これで親ウィンドウの値を取得するだけではなく、
-値を編集することもできます。 &hellip;">
+	<meta name="description" content="Rubyでは変数の型を宣言しないです。
+そのため、オブジェクトは実際に何型かがわからない時が多いです。
+オブジェクトのクラスを調べるには以下の三つの方法があります。 class オブジェクトのクラスを調べられます。
+返された結果はクラス名です。
+例： 1
+&quot;文字列です。&quot;. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +94,89 @@ window.opener.document これで親ウィンドウの値を取得するだけで
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/to-find-out-ruby-object-class">Ruby オブジェクトのクラスを調べるには？</a></h1>
+	<div class="entry-content">
+		<p>Rubyでは変数の型を宣言しないです。
+そのため、オブジェクトは実際に何型かがわからない時が多いです。
+オブジェクトのクラスを調べるには以下の三つの方法があります。</p>
+
+<h2>class</h2>
+
+<p>オブジェクトのクラスを調べられます。
+返された結果はクラス名です。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">class</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>出力結果：string</p>
+
+<h2>kind_of?</h2>
+
+<p>オブジェクトは特定のクラス又はそのサブクラスのインスタンスかどうかを調べられます。
+モジュールに関しても、調べられます。
+返された結果はtrue又はflaseです。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">kind_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>出力結果：true</p>
+
+<p>ちなみに、is_a？メソッドもあります。kind_of？の使い方と同じです。</p>
+
+<h2>instance_of?</h2>
+
+<p>オブジェクトは特定のクラスのインスタンスかどうかを調べられます。
+kind_of?との区別は、サブクラスを含まらないことです。
+つまり、kind_of?はサブクラスまで調べられますが、
+instance_of?は特定のクラスだけ、サブクラスを調べられないです。
+返された結果はtrue又はflaseです。
+例：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">instance_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>出力結果：true</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-03T00:00:00+09:00" pubdate data-updated="true">2010-02-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -785,51 +870,6 @@ vmの後に<strong>改行が必要</strong></p>
 
 
 	<a class='category' href='/blog/categories/eclipse/'>Eclipse</a>, <a class='category' href='/blog/categories/editor/'>Editor</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/java-decompiler-see-source-from-class-file">Javaの.classファイルからソースを見れるツール：Java Decompiler</a></h1>
-	<div class="entry-content">
-		<p>Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
-ずいぶん前一度使ったことがあります。
-スタンドアロンのJD-GUIツールと、
-Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
-スタンドアロンはJRE環境が必要とせずインストールだけで使えます。
-jarファイルもサポートされているようです。</p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/java-decompiler.png" title="java-decompiler" ></p>
-
-<p>公式サイト：<a href="http://java.decompiler.free.fr/">JD | Java Decompiler</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-18T00:00:00+09:00" pubdate data-updated="true">2010-01-18</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
 
 
 </div>

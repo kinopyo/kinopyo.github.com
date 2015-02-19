@@ -7,9 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="本文はWPテーマGlowing Amberに二番目のサイドバーを追加する方法を紹介します。 Glowing Amberは今現在このブログで使われているテーマです。
-見た目がいいデザインがいいのですぐインストールしましたが、
-簡単にカスタマイズするメニューがなくて少し不便を感じました。 &hellip;">
+	<meta name="description" content="Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
+ずいぶん前一度使ったことがあります。
+スタンドアロンのJD-GUIツールと、
+Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +92,51 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/java-decompiler-see-source-from-class-file">Javaの.classファイルからソースを見れるツール：Java Decompiler</a></h1>
+	<div class="entry-content">
+		<p>Javaの.classから逆コンパイラしてもともとのソースコードが見れるツールです。
+ずいぶん前一度使ったことがあります。
+スタンドアロンのJD-GUIツールと、
+Eclipseのプラグインとして使えるJD-Eclipseがあるらしいです。
+スタンドアロンはJRE環境が必要とせずインストールだけで使えます。
+jarファイルもサポートされているようです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/java-decompiler.png" title="java-decompiler" ></p>
+
+<p>公式サイト：<a href="http://java.decompiler.free.fr/">JD | Java Decompiler</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-18T00:00:00+09:00" pubdate data-updated="true">2010-01-18</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/tool/'>tool</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -768,103 +814,6 @@ block_given?を使って、ブロックがあるかどうかを確認できま�
 
 
 	<a class='category' href='/blog/categories/eclipse/'>Eclipse</a>, <a class='category' href='/blog/categories/editor/'>Editor</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/spring-improve-unit-test">Springによる単体テストの促進</a></h1>
-	<div class="entry-content">
-		<p><a href="http://www.atmarkit.co.jp/fjava/rensai3/springdi04/springdi04_3.html">なぜDIコンテナを使うのか</a>の勉強メモです。</p>
-
-<blockquote><p>SpringをはじめとするDIフレームワークでは、他クラスへの依存はインターフェイスを介したものになります。インターフェイスを介するため、呼び出す側はそのインターフェイスを実装しているクラスの完成を待つ必要がなくなります。DIコンテナを利用すればDIコンテナが設定ファイルの記述に従ってインターフェイスの実装クラスをセットします。そのため、設定ファイルの内容を切り替えることで単体テスト用のモックオブジェクト（ダミーオブジェクト）に切り替えることができます。</p></blockquote>
-
-
-<h2>サンプル</h2>
-
-<p>JuchuImplクラスはZaikoHikiateImplクラスに依存しています。
-そのためJuchuImpl単体のテストを行おうとしても、
-ZaikoHikiateImplクラスのhikiate()メソッドにバグがある場合テストができませんでした。</p>
-
-<h3>単体テストを行いにくいクラス</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">juchu</span><span class="o">(</span><span class="n">Integer</span> <span class="n">syohinCode</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">suryo</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">ZaikoHikiate</span> <span class="n">hikiate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ZaikoHikiateImpl</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">hikiate</span><span class="o">.</span><span class="na">hikiate</span><span class="o">(</span><span class="n">syohinCode</span><span class="o">,</span> <span class="n">suryo</span><span class="o">);</span>
-</span><span class='line'>        <span class="c1">// 受注を処理</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>DIにより依存を低めたクラス</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JuchuImpl</span> <span class="kd">implements</span> <span class="n">Juchu</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">ZaikoHikiate</span> <span class="n">hikiate</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHikiate</span><span class="o">(</span><span class="n">ZaikoHikiate</span> <span class="n">hikiate</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">hikiate</span> <span class="o">=</span> <span class="n">hikiate</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">juchu</span><span class="o">(</span><span class="n">Integer</span> <span class="n">syohinCode</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">suryo</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">hikiate</span><span class="o">.</span><span class="na">hikiate</span><span class="o">(</span><span class="n">syohinCode</span><span class="o">,</span> <span class="n">suryo</span><span class="o">);</span>
-</span><span class='line'>        <span class="c1">// 受注を処理</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>JuchuクラスはZaikoHikiateImplクラスが完成していなくても
-ZaikoHikiateインターフェイスを実装したモックオブジェクトを
-DIコンテナにセットしてJuchuImplの単体テストを実行できます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-28T00:00:00+09:00" pubdate data-updated="true">2009-12-28</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>Java</a>
 
 
 </div>

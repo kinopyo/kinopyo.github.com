@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の第2回：「Same-Originポリシーと迂回技術」の勉強メモです。
-定義
-他のドメインのサイトへはリクエストを送信できない制限のことをSame-Originポリシーと呼びます。同じドメインであってもポート番号やプロトコル（ &hellip;">
+	<meta name="description" content="現象 まず画像を見てみましょう。 最初の二つ白い背景のエリアに注目してください。 一番目は背景色を白い色(#FFFFFF)に設定したもので、 二番目が背景色をnullに設定したものです。 白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。 またIE8の開発ツール( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +89,124 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/css-issue-in-ie8-background-color">IE8でbackground-colorが白とその値がnullとの表示が微妙に違う</a></h1>
+	<div class="entry-content">
+		<h2>現象</h2>
+
+<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091124/20091124235949.jpg" alt="" /></p>
+
+<p>まず画像を見てみましょう。</p>
+
+
+<p>最初の二つ白い背景のエリアに注目してください。</p>
+
+
+<p>一番目は背景色を白い色(#FFFFFF)に設定したもので、</p>
+
+
+<p>二番目が背景色をnullに設定したものです。</p>
+
+
+<p>白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。</p>
+
+
+<br/>
+
+
+<p>またIE8の開発ツール(F12で呼ばれる、Firebugと似たデバッグツール)で見ても</p>
+
+
+<p>background-colorが#ffffffになってる以外に、何の余計なスタイルもありませんでした。</p>
+
+
+<p>なのでやはりbackground-colorが指定してないものと#ffffffに指定したものには差異が存在してます。</p>
+
+
+<br/>
+
+
+<h2>サンプルコード</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;hoge&quot;</span> <span class="na">class=</span><span class="s">&quot;gray&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;gray&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// 元の背景色を保持</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">original</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">original</span><span class="p">);</span>  <span class="c1">// output is &quot;ffffff&quot;</span>
+</span><span class='line'><span class="err">　</span><span class="c1">// 元の背景色を再設定、値は同じはず</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="nx">original</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// 他の背景色はこんな現象がないみたい</span>
+</span><span class='line'>  <span class="c1">// あるとしても発見しづらい</span>
+</span><span class='line'><span class="err">　</span><span class="kd">var</span> <span class="nx">hogeColor</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hoge&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">hogeColor</span><span class="p">);</span> <span class="c1">// output is &quot;gray&quot;</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hoge&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;background-color&quot;</span><span class="p">,</span><span class="nx">hogeColor</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ie/'>IE</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -947,114 +1063,6 @@ Googleで検索すると似たようなものはありましたが、
 
 
 	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/something-come-to-mind-when-writing-blog">ブログを書いて気づいた｢嫌い or 好き｣の方向性</a></h1>
-	<div class="entry-content">
-		<p><a href="http://d.hatena.ne.jp/gothedistance/20090928/1254140260" target="_blank">ブログをキャリアの礎にしようと思っている方へ - GoTheDistance</a>こういうすてきな記事を見つかりました。</p>
-
-
-<blockquote>
-<p>自分の興味関心をエントリにしていることで、輪郭を帯びてきて色んなことが可視化されていきます。それだけでも、大きな意味があります。｢ああ、オレはやっぱこういうの嫌い or 好き｣の方向性が見えてくるようになります。</p>
-</blockquote>
-
-
-<br/>
-
-
-<p>特にこの言葉に感じたことが多かったのです。</p>
-
-
-<p>最近仕事の関係で、よくIE6~IE8とFirefoxでのJavaScript、CSSの不具合を調査したり、悩んだりしました。</p>
-
-
-<p>特定のブラウザで画面が崩れるのは本当に嫌だなと</p>
-
-
-<p>痛感しました。</p>
-
-
-<p>これがウェブ開発の現状なんですかと？</p>
-
-
-<p>なぜ自分はもっと立派なプログラムの問題と戦うのではなく、</p>
-
-
-<p>ブラウザと戦わなきゃならないのか？</p>
-
-
-<p>なぜActiveXの無効を前提とするユーザがいるのか？</p>
-
-
-<p>なぜIEがアップグレードするたびに新たな不具合を招くのか？</p>
-
-
-<p>なぜマイクロソフトはもっと強制的にユーザにIEのバージョンをアップグレードさせないのか？</p>
-
-
-<p>もしChrome、Opera、Safariなどの市場シェアが大きくなったら、それらも対応するとの要求が出てくるのか？</p>
-
-
-<p>なぜお客さんは低いバージョンのIEを未だも使っているのか？Firefoxに切り替えるのはそんなに不現実の話なのか？</p>
-
-
-<br/>
-
-
-<p>こんなのは嫌です。</p>
-
-
-<p>そもそもFlexを勉強しよと思ったきっかけは</p>
-
-
-<p>会社の先輩のサイトを見て、</p>
-
-
-<p>デザインやアニメーションがすごいきれで聞いたら、</p>
-
-
-<p>「Flexならこんなの簡単に作れるよ、ブラウザと関係ないし」の言葉でした。</p>
-
-
-<p>自分の好きの方向性というのはこんなことでしょう。</p>
-
-
-<p>ブラウザのわがままを避けたい、</p>
-
-
-<p>純粋なプログラミングがしたいです。</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-17T00:00:00+09:00" pubdate data-updated="true">2009-11-17</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>Diary</a>
 
 
 </div>

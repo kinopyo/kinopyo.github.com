@@ -7,9 +7,15 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="今まで全然気付かなかったんです、
-JavascriptのArrayにはdeleteみたいなAPIがないことに。
-配列の要素をindex指定で削除したい場合は代わりにsplice関数を使います。 splice関数 とほほからのレファレンスでは array.splice(start, n, e1, &hellip;">
+	<meta name="description" content="jQuery 1.4.2ではこれは治ったようです。
+jQuery最新版をお使いの方は下記のようなバグはもう発生しません。 サンプル ※jQuery 1.3.2で発生する問題※ HTML 1
+2
+3
+4
+5
+6
+7
+&lt;select&gt; &lt;option id=&quot;foo& &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +97,103 @@ JavascriptのArrayにはdeleteみたいなAPIがないことに。
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/jquery1-3-2_bug_trim_nbsp">jQuery1.3.2のバグ?IEで&nbsp;を$.trimするとき変な結果に</a></h1>
+	<div class="entry-content">
+		<p>jQuery 1.4.2ではこれは治ったようです。
+jQuery最新版をお使いの方は下記のようなバグはもう発生しません。</p>
+
+<h2>サンプル</h2>
+
+<p>※jQuery 1.3.2で発生する問題※</p>
+
+<h3>HTML</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option</span> <span class="na">id=</span><span class="s">&quot;foo&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option&gt;</span>11<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option&gt;</span>22<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;tr</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/tr&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Javascript</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">optionText</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#foo&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// firefoxは0、IEは1</span>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;select optionタグの をtrimした後のlength: &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">optionText</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">trText</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#bar&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// firefoxは0、IEも0！</span>
+</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;trタグの をtrimした後のlength: &quot;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">trText</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>結果</h2>
+
+<p>selectのoptionタグのテキストにある<span>&#8220;&amp;nbsp;&#8221;</span>に
+$.trimをかけて見ると
+Firefoxはちゃんとtrimしてlengthが0になったが、
+IEはtrimできずlengthが1のままです。</p>
+
+<p>しかしtrタグのテキストにある&#8221;&amp;nbsp;&#8221;をtrimすると
+IEも正しくtrimしてlengthが0になるんです。。。</p>
+
+<h2>DEMO</h2>
+
+<p><a href="http://www.kinopyo.com/demo/jquery/jQuery1.3.2_trim_nbsp.html" target="_blank">jQuery最新版(1.4.2)を使うDEMO</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-10T00:00:00+09:00" pubdate data-updated="true">2010-03-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -788,89 +891,6 @@ varで宣言する位置、順番と関係ありません。</p>
 
 
 	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/to-find-out-ruby-object-class">Ruby オブジェクトのクラスを調べるには？</a></h1>
-	<div class="entry-content">
-		<p>Rubyでは変数の型を宣言しないです。
-そのため、オブジェクトは実際に何型かがわからない時が多いです。
-オブジェクトのクラスを調べるには以下の三つの方法があります。</p>
-
-<h2>class</h2>
-
-<p>オブジェクトのクラスを調べられます。
-返された結果はクラス名です。
-例：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">class</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>出力結果：string</p>
-
-<h2>kind_of?</h2>
-
-<p>オブジェクトは特定のクラス又はそのサブクラスのインスタンスかどうかを調べられます。
-モジュールに関しても、調べられます。
-返された結果はtrue又はflaseです。
-例：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">kind_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>出力結果：true</p>
-
-<p>ちなみに、is_a？メソッドもあります。kind_of？の使い方と同じです。</p>
-
-<h2>instance_of?</h2>
-
-<p>オブジェクトは特定のクラスのインスタンスかどうかを調べられます。
-kind_of?との区別は、サブクラスを含まらないことです。
-つまり、kind_of?はサブクラスまで調べられますが、
-instance_of?は特定のクラスだけ、サブクラスを調べられないです。
-返された結果はtrue又はflaseです。
-例：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;文字列です。&quot;</span><span class="o">.</span><span class="n">instance_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>出力結果：true</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-03T00:00:00+09:00" pubdate data-updated="true">2010-02-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>
