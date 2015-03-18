@@ -7,7 +7,21 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Googleが提供するGoogle Gadgets EditorでHello Worldを出力するgadgetを作ります。Gadgetについての基礎知識は飛ばします。http://code.google.com/apis/gadgets/docs/gs.htmlを参照してください。 ソースを用意 &hellip;">
+	<meta name="description" content="sudo gem install railsでこんなエラーが出ちゃいました。 1
+Error installing rails bundler requires RubyGems version &gt;= 1.3.6 解決策は 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +103,104 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/error-installing-rails-bundler-requires-rubygems-version-1-3-6">Error installing rails bundler requires RubyGems version >= 1.3.6</a></h1>
+	<div class="entry-content">
+		<p>sudo gem install railsでこんなエラーが出ちゃいました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Error installing rails bundler requires RubyGems version &gt;= 1.3.6
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>解決策は</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo gem update --system
+</span><span class='line'>
+</span><span class='line'>pdating RubyGems
+</span><span class='line'>Updating rubygems-update
+</span><span class='line'>Successfully installed rubygems-update-1.6.1
+</span><span class='line'>Updating RubyGems to 1.6.1
+</span><span class='line'>Installing RubyGems 1.6.1
+</span><span class='line'>RubyGems 1.6.1 installed
+</span><span class='line'>
+</span><span class='line'>=== 1.6.1 / 2011-03-03
+</span><span class='line'>
+</span><span class='line'>Bug Fixes:
+</span><span class='line'>
+</span><span class='line'>#  Installation no longer fails when a dependency from a version that won't be
+</span><span class='line'>  installed is unsatisfied.
+</span><span class='line'>#  README.rdoc now shows how to file tickets and get help.  Pull Request #40 by
+</span><span class='line'>  Aaron Patterson.
+</span><span class='line'>#  Gem files are cached correctly again.  Patch #29051 by Mamoru Tasaka.
+</span><span class='line'>#  Tests now pass with non-022 umask.  Patch #29050 by Mamoru Tasaka.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>------------------------------------------------------------------------------
+</span><span class='line'>
+</span><span class='line'>RubyGems installed the following executables:
+</span><span class='line'>  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/gem
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>を実行した後にsudo gem install railsでrailsをインストールすればOKです。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-07T00:00:00+09:00" pubdate data-updated="true">2011-03-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -612,63 +724,6 @@ Cucumberでは自然言語で書けるため、実装から離れた視点でい
 
 
 	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sqlite/'>sqlite</a>, <a class='category' href='/blog/categories/transaction/'>transaction</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mysql-execute-sql-from-text-file">MySQL: SQL文のテキストファイルを実行するには</a></h1>
-	<div class="entry-content">
-		<p>1000件くらいのinsert文を用意して、それをコピって一気にmysqlのコマンドラインに貼りつけたらうまく行かなかったんです。sql文に文法的間違いがなくてもエラーとなったり、表示が崩れたりしました。数件なら多分まだいいんですけど、さすが1000件だと(コマンドラインに貼り付けるやり方では)処理が追えない気がします。</p>
-
-<p>それらのsql文をファイルに保存し実行すれば問題なかったので、以下がそのコマンドです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">source</span> <span class="n">file_name</span>
-</span><span class='line'><span class="c1">--あるいは</span>
-</span><span class='line'><span class="n">mysql</span><span class="o">&gt;</span> <span class="err">\</span><span class="p">.</span> <span class="n">file_name</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>また下記文を書けば進捗情報が見れるとMySQLのレファレンスで書かれてますが、時間の関係上今回は試してませんでした。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="s1">&#39;&lt;info_to_display&gt;&#39;</span> <span class="k">AS</span> <span class="s1">&#39; &#39;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考：
-<a href="http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html">http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-07T00:00:00+09:00" pubdate data-updated="true">2010-12-07</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
 
 
 </div>

@@ -7,9 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="文字コードが何なのか、エンコードは何なのか、何で文字化けするかはっきり分かっていませんでした。月刊DBマガジンの2010/JANの徹底研究に文字コードの内容が載せていて、とても分かりやすく説明してくれたので、勉強メモを書きます。
-文字コードとは
-文字コードは「文字集合」と「エンコード方式」 &hellip;">
+	<meta name="description" content="自分でブログやサイトを運営する上には、よくこの問題で悩みました。このSEOって言葉にちょっと神経質になってしまった気がします。何もかもSEOに最適な方向で考えてるんです。 さて、本題に入りますとサブディレクトリが有効だそうです。
+このサイトを参考にしました。
+サブドメインとサブディレクトリ、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +91,63 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/seo-sub-domain-vs-sub-directory">SEO対策：サブドメイン vs サブディレクトリ</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<p><a href="http://f.hatena.ne.jp/kinopyo/20091128134914" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091128/20091128134914.gif" alt="f:id:kinopyo:20091128134914g:image:right" title="f:id:kinopyo:20091128134914g:image:right" class="hatena-fotolife hatena-image-right"></a></p>
+<p>自分でブログやサイトを運営する上には、よくこの問題で悩みました。このSEOって言葉にちょっと神経質になってしまった気がします。何もかもSEOに最適な方向で考えてるんです。</p>
+<br/>
+<p>さて、本題に入りますと<span style="color:#0000FF;">サブディレクトリが有効だそうです</span>。</p>
+<p>このサイトを参考にしました。</p>
+<p><a href="http://www.suzukikenichi.com/blog/which-are-stronger-subdomains-or-subdirectories/" target="_blank">サブドメインとサブディレクトリ、SEOに強いのはどっち? | 海外SEO情報ブログ・メルマガ</a></p>
+<p>自分が一番印象的なものは</p>
+<ul>
+<li>サブドメインはルートドメインの恩恵を必ず受けることとは限らない</li>
+<li>一方サブディレクトリのほうはルートドメインの恩恵を受ける</li>
+</ul>
+<p>ってことです。</p>
+<blockquote>
+<p>たとえば、自分のブログの記事がはてなやnewsingに引用されると、検索結果でオリジナルの自分のページよりも上に来ることが多々あります。これは、はてなやnewsingのドメインの評価が高いからです。</p>
+</blockquote>
+<br/>
+<p>私も前FC2のブログを使ったことがありますが、正直はてなダイアリーほど検索上位にならなかったんです。</p>
+<p>「同じ内容の記事なのになぜはてなはGoogle検索で上位になったか」の疑問をずっと抱いてました。</p>
+<p>この記事を読んで分かったんです。FC2はサブドメインの形でブログサービスを提供、はてなはサブディレクトリだからです。</p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-30T00:00:00+09:00" pubdate data-updated="true">2009-11-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -836,102 +893,6 @@ Java7,,,やってみたいっす！
 
 
 	<a class='category' href='/blog/categories/flash/'>Flash</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/install-php5-and-apache2-2-in-windows">PHP5とApache2.2をWindowsにインストール</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<h4>Apache</h4>
-<h5>ダウンロード＆インストール</h5>
-<ul>
-<li><a href="http://httpd.apache.org" target="_blank">Welcome! - The Apache HTTP Server Project</a>から最新版を入手</li>
-<li>インストールファイルを実行、下記2点注意すればOK</li>
-<li>[Network Domain]と[Server Name]のところはlocalhostと記入</li>
-<li>[Custom]インストールでインストール先が指定できる</li>
-</ul>
-<h5>設定</h5>
-<p>[Apache Home]\conf\httpd.confを開いて下記のパスを自分の環境にあわせて</p>
-<p>設定してください。このパスはサーバが立ち上がった際のrootとして使います。</p>
-<ul>
-<li>DocumentRoot &#8220;D:/www&#8221;</li>
-<li>&#60;Directory &#8220;D:/www&#8221;&#62;</li>
-</ul>
-<h4>PHP</h4>
-<ul>
-<li><a href="http://www.php.net/downloads.php" target="_blank">PHP: Downloads</a>から入手
-<ul>
-<li>Windows BinariesからPHP 5.2.11 zip packageをダウンロード</li>
-</ul>
-</li>
-</ul>
-<p>拡張子がMSIのinstaller版もあるが、マニュアルでのインストールがすすめられる</p>
-<ul>
-<li>zipファイルを適当な場所に解凍。今回はd:\phpに。</li>
-<li>Windowsの環境変数pathに設定</li>
-<li>コマンドプロンプトで下記コマンドでインストール成功かを確認</li>
-</ul>
-<blockquote>
-<p>php -v</p>
-</blockquote>
-<h4>php.ini</h4>
-<ul>
-<li>php.ini-recommendedをphp.iniにリネーム</li>
-<li>doc_rootを検索し内容を編集</li>
-</ul>
-<blockquote>
-<p>doc_root = d:\www</p>
-</blockquote>
-<p>Apacheサーバと同じルート(httpd.confの DocumentRoot)</p>
-<h4>ApacheサーバとPHPの連携</h4>
-<p>httpd.confの修正</p>
-<blockquote>
-<p>LoadModule php5_module d:/php/php5apache2_2.dll</p>
-<p>AddType application/x-httpd-php .php</p>
-<p>PHPIniDir &#8220;d:/php&#8221;</p>
-</blockquote>
-<p>ディレクトリは自分の環境に合わせて修正してください。</p>
-<br/>
-<h4>動作確認</h4>
-<p>d:/phpにtest.phpというファイルを作ります。内容は下記になります。</p>
-<p><?php phpinfo();?></p>
-<p>注意！！<? phpinfo();?>は動かない！</p>
-<p>Apacheサーバを再起動し、<a href="http://localhost/test.php" target="_blank">http://localhost/test.php</a>を叩いてPHPのページが表示されればOKです。</p>
-<h4>参考サイト</h4>
-<p><a href="http://blog.cheki.net/archives/250" target="_blank">  Apache2 + PHP5をWindowsXPにインストール</a></p>
-<p><a href="http://www.adminweb.jp/apache/php/index3.html" target="_blank">php.iniの配置場所の指定(PHPIniDir) - PHP利用のための設定 - Apache入門</a></p>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>
 
 
 </div>

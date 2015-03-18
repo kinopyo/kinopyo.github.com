@@ -7,7 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="現象 まず画像を見てみましょう。 最初の二つ白い背景のエリアに注目してください。 一番目は背景色を白い色(#FFFFFF)に設定したもので、 二番目が背景色をnullに設定したものです。 白い色に明確に設定したほうのborderの左と上の表示が少し違ってます。 またIE8の開発ツール( &hellip;">
+	<meta name="description" content="Apache
+ダウンロード＆インストール Welcome! - The Apache HTTP Server Projectから最新版を入手
+インストールファイルを実行、下記2点注意すればOK
+[Network Domain]と[Server Name]のところはlocalhostと記入
+[ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +93,102 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-php5-and-apache2-2-in-windows">PHP5とApache2.2をWindowsにインストール</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>Apache</h4>
+<h5>ダウンロード＆インストール</h5>
+<ul>
+<li><a href="http://httpd.apache.org" target="_blank">Welcome! - The Apache HTTP Server Project</a>から最新版を入手</li>
+<li>インストールファイルを実行、下記2点注意すればOK</li>
+<li>[Network Domain]と[Server Name]のところはlocalhostと記入</li>
+<li>[Custom]インストールでインストール先が指定できる</li>
+</ul>
+<h5>設定</h5>
+<p>[Apache Home]\conf\httpd.confを開いて下記のパスを自分の環境にあわせて</p>
+<p>設定してください。このパスはサーバが立ち上がった際のrootとして使います。</p>
+<ul>
+<li>DocumentRoot &#8220;D:/www&#8221;</li>
+<li>&#60;Directory &#8220;D:/www&#8221;&#62;</li>
+</ul>
+<h4>PHP</h4>
+<ul>
+<li><a href="http://www.php.net/downloads.php" target="_blank">PHP: Downloads</a>から入手
+<ul>
+<li>Windows BinariesからPHP 5.2.11 zip packageをダウンロード</li>
+</ul>
+</li>
+</ul>
+<p>拡張子がMSIのinstaller版もあるが、マニュアルでのインストールがすすめられる</p>
+<ul>
+<li>zipファイルを適当な場所に解凍。今回はd:\phpに。</li>
+<li>Windowsの環境変数pathに設定</li>
+<li>コマンドプロンプトで下記コマンドでインストール成功かを確認</li>
+</ul>
+<blockquote>
+<p>php -v</p>
+</blockquote>
+<h4>php.ini</h4>
+<ul>
+<li>php.ini-recommendedをphp.iniにリネーム</li>
+<li>doc_rootを検索し内容を編集</li>
+</ul>
+<blockquote>
+<p>doc_root = d:\www</p>
+</blockquote>
+<p>Apacheサーバと同じルート(httpd.confの DocumentRoot)</p>
+<h4>ApacheサーバとPHPの連携</h4>
+<p>httpd.confの修正</p>
+<blockquote>
+<p>LoadModule php5_module d:/php/php5apache2_2.dll</p>
+<p>AddType application/x-httpd-php .php</p>
+<p>PHPIniDir &#8220;d:/php&#8221;</p>
+</blockquote>
+<p>ディレクトリは自分の環境に合わせて修正してください。</p>
+<br/>
+<h4>動作確認</h4>
+<p>d:/phpにtest.phpというファイルを作ります。内容は下記になります。</p>
+<p><?php phpinfo();?></p>
+<p>注意！！<? phpinfo();?>は動かない！</p>
+<p>Apacheサーバを再起動し、<a href="http://localhost/test.php" target="_blank">http://localhost/test.php</a>を叩いてPHPのページが表示されればOKです。</p>
+<h4>参考サイト</h4>
+<p><a href="http://blog.cheki.net/archives/250" target="_blank">  Apache2 + PHP5をWindowsXPにインストール</a></p>
+<p><a href="http://www.adminweb.jp/apache/php/index3.html" target="_blank">php.iniの配置場所の指定(PHPIniDir) - PHP利用のための設定 - Apache入門</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/apache/'>Apache</a>, <a class='category' href='/blog/categories/php/'>PHP</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -976,93 +1076,6 @@ Googleで検索すると似たようなものはありましたが、
 
 
 	<a class='category' href='/blog/categories/ie/'>IE</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-argumentsis-array-like-object">JavaScript: argumentsは配列じゃない、配列のメソッドを使うには</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p>argumentsは配列じゃないため、配列のメソッドは</p>
-<p>使えません。ということは本を読んだとき当たり前だと思ったんですが、</p>
-<p>実際コードに落としたときは</p>
-<p>自然とargument.slice()を書いちゃいました。</p>
-<h4>argumentsで配列のメソッドを使うには</h4>
-<p>Array.prototype.<配列のメソッド>.call(arguments,<パラメータ>)</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>上記の意図としてはarguments.slice(2)の表現に近いです。</p>
-<h4>argumentsはarray-likeオブジェクト</h4>
-<p>ここでちょっとargumentsの基本知識を復習します。</p>
-<p>length属性もあるし、[]でindex指定のオブジェクトを参照できますけど、</p>
-<p>argumentsは配列に似ているオブジェクトだけです。</p>
-<h5>予約語</h5>
-<p>Technically, argumentsは予約語ではないですが、</p>
-<p>予約語として認識してよいです。</p>
-<p>つまりargumentsという変数は作成しないでってことです。</p>
-<br/>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">arguments</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  <span class="c1">//xの値が変更されちゃう</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// null が出力される</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<h5>callee Property</h5>
-<p>Refers to the function that is currently being executed.</p>
-<p>今実行中のファクションを参照しています。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">(</span><span class="nx">x</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-18T00:00:00+09:00" pubdate data-updated="true">2009-11-18</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

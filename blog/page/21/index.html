@@ -7,11 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="DataSource Beanを定義する際applicationContext.xmlの書き方と、Javaで呼び出すコードのメモです。ずいぶん昔のメモです。。 こんなjdbc.propertiesファイルがクラスパスにあるとします。 1
-2
-3
-4
-jdbc.driverClassName= &hellip;">
+	<meta name="description" content="1000件くらいのinsert文を用意して、それをコピって一気にmysqlのコマンドラインに貼りつけたらうまく行かなかったんです。sql文に文法的間違いがなくてもエラーとなったり、表示が崩れたりしました。数件なら多分まだいいんですけど、さすが1000件だと(コマンドラインに貼り付けるやり方では) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +89,63 @@ jdbc.driverClassName= &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mysql-execute-sql-from-text-file">MySQL: SQL文のテキストファイルを実行するには</a></h1>
+	<div class="entry-content">
+		<p>1000件くらいのinsert文を用意して、それをコピって一気にmysqlのコマンドラインに貼りつけたらうまく行かなかったんです。sql文に文法的間違いがなくてもエラーとなったり、表示が崩れたりしました。数件なら多分まだいいんですけど、さすが1000件だと(コマンドラインに貼り付けるやり方では)処理が追えない気がします。</p>
+
+<p>それらのsql文をファイルに保存し実行すれば問題なかったので、以下がそのコマンドです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">source</span> <span class="n">file_name</span>
+</span><span class='line'><span class="c1">--あるいは</span>
+</span><span class='line'><span class="n">mysql</span><span class="o">&gt;</span> <span class="err">\</span><span class="p">.</span> <span class="n">file_name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>また下記文を書けば進捗情報が見れるとMySQLのレファレンスで書かれてますが、時間の関係上今回は試してませんでした。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="s1">&#39;&lt;info_to_display&gt;&#39;</span> <span class="k">AS</span> <span class="s1">&#39; &#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考：
+<a href="http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html">http://dev.mysql.com/doc/refman/5.0/en/batch-commands.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-07T00:00:00+09:00" pubdate data-updated="true">2010-12-07</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mysql/'>MySQL</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1218,54 +1271,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/get-image-coordinate-with-photoshop">Photoshopで画像の座標を取得</a></h1>
-	<div class="entry-content">
-		<p>仕事の事情であるPSDファイルにある画像の座標の情報が必要になって調べました。詳しく説明すると例えば背景が100x100のサイズで、その上に張り付いた違うレイヤーの画像の座標のことです。</p>
-
-<p>ショットカットキーはCTRL+Tです。</p>
-
-<blockquote><p>メニューで「編集」->「自由変形」にすれば、レイヤーの４隅と中心座標の取得、数値入力による座標移動等ができます。</p></blockquote>
-
-
-<p>こんな感じです。メニューバーに表示してます。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/11/coordinate.jpg" title="coordinate" ></p>
-
-<p>参考サイト：
-<a href="http://questionbox.jp.msn.com/qa5718320.html">http://questionbox.jp.msn.com/qa5718320.html</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ui/'>UI</a>, <a class='category' href='/blog/categories/design/'>design</a>, <a class='category' href='/blog/categories/photoshop/'>photoshop</a>
 
 
 </div>

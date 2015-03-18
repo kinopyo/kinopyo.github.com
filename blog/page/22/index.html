@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" Webページの画像を右クリックで簡単にFlickrにアップロードできるChromeエクステンションです。
-もしタイトルやタグなども編集できればもっどいいですけどね。 Flickr Upload Extensionをダウンロード 2010-11-29 Chrome ">
+	<meta name="description" content="仕事の事情であるPSDファイルにある画像の座標の情報が必要になって調べました。詳しく説明すると例えば背景が100x100のサイズで、その上に張り付いた違うレイヤーの画像の座標のことです。 ショットカットキーはCTRL+Tです。 メニューで「編集」->「自由変形」にすれば、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,54 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/get-image-coordinate-with-photoshop">Photoshopで画像の座標を取得</a></h1>
+	<div class="entry-content">
+		<p>仕事の事情であるPSDファイルにある画像の座標の情報が必要になって調べました。詳しく説明すると例えば背景が100x100のサイズで、その上に張り付いた違うレイヤーの画像の座標のことです。</p>
+
+<p>ショットカットキーはCTRL+Tです。</p>
+
+<blockquote><p>メニューで「編集」->「自由変形」にすれば、レイヤーの４隅と中心座標の取得、数値入力による座標移動等ができます。</p></blockquote>
+
+
+<p>こんな感じです。メニューバーに表示してます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/11/coordinate.jpg" title="coordinate" ></p>
+
+<p>参考サイト：
+<a href="http://questionbox.jp.msn.com/qa5718320.html">http://questionbox.jp.msn.com/qa5718320.html</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ui/'>UI</a>, <a class='category' href='/blog/categories/design/'>design</a>, <a class='category' href='/blog/categories/photoshop/'>photoshop</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -714,133 +761,6 @@ alt+ctrl+back_space</p>
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/kohana3-smarty-sample">Kohana3にSmartyを利用するサンプル</a></h1>
-	<div class="entry-content">
-		<h2>Smarty templateの作成</h2>
-
-<p>application/viewsにhello.tplというファイルを作成します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;title&gt;</span>{$title}<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>  hello, {$name}
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Controllerの作成</h2>
-
-<p>hello.phpというControllerを作成します。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Controller_Hello</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">public</span> <span class="k">function</span> <span class="nf">action_index</span><span class="p">()</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>      <span class="nv">$view</span> <span class="o">=</span> <span class="nx">View</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s2">&quot;smarty:hello&quot;</span><span class="p">);</span>
-</span><span class='line'>      <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;kinopyo!&quot;</span><span class="p">;</span>
-</span><span class='line'>      <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s2">&quot;Smarty &amp; Kohana Sample&quot;</span><span class="p">;</span>
-</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">response</span> <span class="o">=</span> <span class="nv">$view</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>View::factoryに&#8221;smarty:&#8221;というプリフィックスを書くことでSmartyテンプレートとして認識してくれます。</p>
-
-<h2>動作確認</h2>
-
-<p><a href="http://127.0.0.1/myapp/hello">http://127.0.0.1/myapp/hello</a>にアクセスし、&#8221;hello, kinopyo!&#8221;が表示されれば成功です。</p>
-
-<h2>Controller_Templateの場合</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;SYSPATH&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;No direct script access.&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Controller_Hello</span> <span class="k">extends</span> <span class="nx">Controller_Template</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">public</span> <span class="nv">$template</span> <span class="o">=</span> <span class="s1">&#39;smarty:hello&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">public</span> <span class="k">function</span> <span class="nf">action_index</span><span class="p">()</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;kinopyo!&#39;</span><span class="p">;</span>
-</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="s2">&quot;Hello Title&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-25T00:00:00+09:00" pubdate data-updated="true">2010-09-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/smarty/'>Smarty</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>
