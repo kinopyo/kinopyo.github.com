@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="最近#textmateのTwitterタグでたまたまsublimetextを目にするんですが、Textmate2の代わりになれるかで議論されているようです。 一応入れてみたのですが、最初の印象というえば
-+ 速い。163MBのcsvファイルをたった数秒で開きました。 &hellip;">
+	<meta name="description" content="今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる インストール 20110920現在はWordpress管理画面で検索しても出てこなかったので、手動でpluginフォルダにアップしてインストールしました。 利用 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,56 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpress-plugin-social-metrics-for-japanese">WordpressにSocial Metrics for Japaneseを入れてみた、記事のTwitter、Facebook Like 、はてぶされた数を管理画面に一覧表示</a></h1>
+	<div class="entry-content">
+		<blockquote><p>今まで書いた記事のTwitterでのTweet数や、Facebookのいいね！他、Google+1などを管理画面で一覧表示してくれる</p></blockquote>
+
+
+<h2>インストール</h2>
+
+<p>20110920現在はWordpress管理画面で検索しても出てこなかったので、手動でpluginフォルダにアップしてインストールしました。</p>
+
+<h2>利用</h2>
+
+<p>インストールするとDashboardとPluginsのサイドバーに<strong>Social Metrics</strong>のリンクが表示され、記事がTwtter、いいね、はてブされた数が月別、カテゴリ別で見れます！
+ただしlinkedinはなぜか常に1になってます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/09/Social-Metrics-for-Japanese.jpg" title="Social Metrics for Japanese" ></p>
+
+<p>最後に。うちの小さいブログにとってはソーシャルなど意識すぎの課題があると思います。Google Analyticsで一ヶ月で各ソーシャルプラットフォーム（Facebook, Twitter, Google+1, はてな）からのアクセスは10も行かない場合があって、90%以上がGoogle検索でやってきています。この状況を踏まえて今まで導入したソーシャルボタンとか、効果対コストは極めて低い！と感じました。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-20T00:00:00+09:00" pubdate data-updated="true">2011-09-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>WordPress</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -3739,74 +3788,6 @@ Please, don&#39;t. https://github.com/styleguide/templates/2.0
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/textmate-gotofile-bundle-considered-file-path">TextMate ファイルパスが効くGoToFile Bundle</a></h1>
-	<div class="entry-content">
-		<h2>従来の⌘T(Command + T)Go to Fileの問題：パスが効かない</h2>
-
-<p>⌘TはTextMateで速やかにファイルを開ける機能ですが、例えばこんなファイルがあるとします。</p>
-
-<pre><code>-blogs/index.html.erb
--posts/index.html.erb
--categories/index.html.erb
--tags/index.html.erb
--users/index.html.erb
-</code></pre>
-
-<p>で⌘Tで&#8221;blogs/index&#8221;を叩くと何も表示されない、つまりパスが効かないのが一番の問題です。それを解消するのが<a href="https://github.com/stevenchanin/gotofile.tmbundle">gotofile.tmbundle</a></p>
-
-<h2>インストール</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/Library/Application\ Support/TextMate/Bundles/
-</span><span class='line'>git clone git://github.com/stevenchanin/gotofile.tmbundle.git GoToFile.tmbundle</span></code></pre></td></tr></table></div></figure>
-
-
-<p>で、textmateを再起動</p>
-
-<h2>使い方</h2>
-
-<p><strong>⇧⌘K ( Command + Shift + K )</strong>で新しいGo To Fileダイアログを開いて&#8221;ar/in&#8221;を叩くことでarticles/index.htmlが選択されます！
-<a href="http://www.kinopyo.com/wp-content/uploads/2011/08/Go-To-File-Textmate-Bundle.png"><img class="alignnone size-medium wp-image-2126" title="Go To File Textmate Bundle" src="http://www.kinopyo.com/wp-content/uploads/2011/08/Go-To-File-Textmate-Bundle-300x273.png" alt="" width="300" height="273" /></a></p>
-
-<p>他にもspaceキーでQuickLookモードでファイルを見たり、⌥(option)キーでデフォルトのアプリでファイルを開いたり、⇧(shift)キーでフォーカスに選択したファイルのパスを入力することができます。</p>
-
-<h2>参考</h2>
-
-<p><a href="http://how-i-work.com/workbenches/2-keyboard-based-no-mouse-rails-development-with-textmate">http://how-i-work.com/workbenches/2-keyboard-based-no-mouse-rails-development-with-textmate</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-19T00:00:00+09:00" pubdate data-updated="true">2011-08-19</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/textmate/'>TextMate</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/textmate/'>textmate</a>
 
 
 </div>

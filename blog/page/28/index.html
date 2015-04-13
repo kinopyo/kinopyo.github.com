@@ -7,10 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="JavaをやってからJavascriptを触ったので、
-Javascript変数にブロックレベルのスコープがないことにビックリしました。
-if文ブロックか、forループブロックか関係なく、
-function内に定義された変数は全て同じスコープ：functionのスコープになります。 例えば 1 &hellip;">
+	<meta name="description" content="Question If I have 3 websites, Is there a problem to cross link websites? Answer by Google Webmaster Central 要はサイト間の&#8221;関連性&#8221;が一番大事です。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +89,57 @@ function内に定義された変数は全て同じスコープ：functionのス�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/is-cross-linking-websites-bad">クロスサイトのリンクはいいか悪いか</a></h1>
+	<div class="entry-content">
+		<h2>Question</h2>
+
+<p>If I have 3 websites, Is there a problem to cross link websites?</p>
+
+<h2>Answer by Google Webmaster Central</h2>
+
+<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ufGw65-1je8&hl=ja_JP&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
+
+
+<p>要はサイト間の&#8221;関連性&#8221;が一番大事です。
+関連性があればOKで、なければ無意味って感じです。</p>
+
+<h3>「海外SEO情報ブログ」からの訳文</h3>
+
+<blockquote><p>サイト同士に何らかの関連性があるかが問題だね。</p><p>1つがドライクリーニングのサイト、もう1つが古美術のサイト、もう1つが携帯レビューのサイトだとしたら、ページの下にリンクがあるのは奇妙だ。<br/>漫画のサイトを見ていたのに、ページの最後に行ったら自動車保険やコーヒーテーブルのサイトへのリンクが突然出てくるのは、何にも関係がない。</p><p>「どのくらい関連性があるのか」をまず先に考えてほしい。</p><p>3つのサイトで相互リンクしてもたいした数じゃないから、大きな問題にはならないと思う。<br/>でも、30サイト、300サイトでクロスリンクしていたら、「何の関係があるんだろうか」と一般のユーザーも競合も不思議に思うだろう。</p><p>紳士洋服・婦人洋服・子供洋服がクロスリンクしあうのは、関連があるから完全に理由がある。<br/>同じ企業傘下にある会社同士も、正当な理由があるから問題があるとは思えない。<br/>少ない数だったらまだいいかもしれないけど、サイトの規模が大きくなるに連れてページの下に大量のリンクが出現するのは良くないね。</p></blockquote>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-15T00:00:00+09:00" pubdate data-updated="true">2010-02-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/seo/'>SEO</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -852,87 +900,6 @@ Yahooに申請するときは&#8221;wwwあり&#8221;のwww.kinopyo.comで申請�
 
 
 	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/other/'>other</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-actioncontroller-session-cookiestore-cookieoverflow-error">Ruby - ActionController::Session::CookieStore::CookieOverflowエラー</a></h1>
-	<div class="entry-content">
-		<p>セッションを使って、データを保存する時、
-以下のエラーが表示されました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Status: 500 Internal Server Error
-</span><span class='line'>ActionController::Session::CookieStore::CookieOverflow</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>原因：Railsのセッションに保存できるデータの長さは４KBしかないです。</h3>
-
-<p>保存するデータは4KBをオーバーした場合、CookieOverflowエラーが表示されてしまいます。</p>
-
-<h3>解決方法：</h3>
-
-<p>セッションデータをDBに保存します。</p>
-
-<ul>
-<li>セッションデータを保存用テーブルを作成します。
-以下のコマンドを実行します。</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="ss">sessions</span><span class="p">:</span><span class="n">create</span>
-</span><span class='line'><span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>config/environment.rbで以下の行をコメントアウトします。</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_controller</span><span class="o">.</span><span class="n">session_store</span> <span class="o">=</span> <span class="ss">:active_record_store</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>サーバーを再起動します。</li>
-</ul>
-
-
-<p>これで、解決です。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-21T00:00:00+09:00" pubdate data-updated="true">2010-01-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

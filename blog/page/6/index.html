@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Peepcode video by Lars Pind If you haven&#8217;t watched it yet, I highly recommend you do it. It&#8217;s totally worth 12$ at least for me. &hellip;">
+	<meta name="description" content="Short note rake assets:precompile
+config.serve_static_assets = true # on production.rb
+rails s -e production That&#8217;s all. config. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +91,59 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/run-rails-server-as-production/">Run rails server as production</a></h1>
+	<div class="entry-content">
+		<h2>Short note</h2>
+
+<ul>
+<li>rake assets:precompile</li>
+<li>config.serve_static_assets = true # on production.rb</li>
+<li>rails s -e production</li>
+</ul>
+
+
+<p>That&#8217;s all.</p>
+
+<h2>config.serve_static_assets</h2>
+
+<p>When you run <code>rake middleware</code> you&#8217;ll see <code>use ActionDispatch::Static</code> in the development mode but not in production mode.</p>
+
+<p>In normal case, you should not set that to <code>true</code> unless for trying production mode on local machine. As the comment on the source code suggested:</p>
+
+<blockquote><p>Disable Rails&#8217;s static asset server (Apache or nginx will already do this)</p></blockquote>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-09T15:21:00+09:00" pubdate data-updated="true">2012-10-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>Rails</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -699,55 +754,6 @@
 
 
 	<a class='category' href='/blog/categories/diary/'>diary</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body/">How to I get rid of &#8220;WARN Could not determine content-length of response body&#8221;</a></h1>
-	<div class="entry-content">
-		<p>If you get these warning messages in your rails log, just simply put <code>thin</code> to your Gemfile.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>WARN  Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;thin&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I found this from this stackoverflow <a href="http://stackoverflow.com/questions/7082364/what-does-warn-could-not-determine-content-length-of-response-body-mean-and-h">question</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-30T19:51:00+09:00" pubdate data-updated="true">2012-08-30</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>rails</a>
 
 
 </div>

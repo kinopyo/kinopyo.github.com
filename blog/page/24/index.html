@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="This is about how to customize the url to the form like &#8220;id + post.title&#8221;, which can be simply overriding the to_param method in your &hellip;">
+	<meta name="description" content="TextMate Bundler： http://github.com/handcrafted/handcrafted-haml-textmate-bundle NetBeans plugin: http://wiki.netbeans.org/FaqPluginInstall
+It&#8217 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,62 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/textmate-bundler-netbeans-plugin-for-haml">TextMate Bundler, NetBeans Plugin for HAML</a></h1>
+	<div class="entry-content">
+		<h2>TextMate Bundler：</h2>
+
+<p><a href="http://github.com/handcrafted/handcrafted-haml-textmate-bundle">http://github.com/handcrafted/handcrafted-haml-textmate-bundle</a></p>
+
+<h2>NetBeans plugin:</h2>
+
+<p><a href="http://wiki.netbeans.org/FaqPluginInstall">http://wiki.netbeans.org/FaqPluginInstall</a>
+It&#8217;s really a simple plugin just for highlight the syntax.
+No auto-complete,and you cannot see the see the reference of  ruby code in haml.</p>
+
+<h1>日本語</h1>
+
+<h2>TextMateのBundlerはこちら：</h2>
+
+<p><a href="http://github.com/handcrafted/handcrafted-haml-textmate-bundle">http://github.com/handcrafted/handcrafted-haml-textmate-bundle</a></p>
+
+<h2>NetBeansのプラグインはこちらでダウンロード：</h2>
+
+<p><a href="http://wiki.netbeans.org/FaqPluginInstall">http://wiki.netbeans.org/FaqPluginInstall</a>
+ほぼハイライト以外は何の機能もないです。
+HAMLでRubyコードを書いても入力補完も、リファレンスも出ませんでした。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-30T00:00:00+09:00" pubdate data-updated="true">2010-07-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/editor/'>Editor</a>, <a class='category' href='/blog/categories/textmate/'>Textmate</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -963,155 +1020,6 @@ Finderで表示する方法を紹介します。
 
 
 	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/ruby-basic-variables-and-constant">Ruby Variables and Constants</a></h1>
-	<div class="entry-content">
-		<h2>変数</h2>
-
-<h3>例1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Rubyの変数名</h3>
-
-<p>Rubyではキャメルケースより、アンダースコアが好みだそうです。
-例えば変数名page_transfer_managerはOKだけど、pageTransferManagerはNG。</p>
-
-<h3>予約語</h3>
-
-<blockquote><p><strong>FILE</strong>  def in  self
-<strong>LINE</strong>  defined?    module  super
-BEGIN do  next    then
-END   else    nil true
-alias elsif   not undef
-and   end or  unless
-begin ensure  redo    until
-break false   rescue  when
-case  for retry   while
-class if  return  yield</p></blockquote>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>整数を文字列に変換することに注意してください。
-ダブルクォーテーション内であれば任意の式を#{ }に入れることができます。</p>
-
-<h2>Constants</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>コンスタントは大文字でスタートします。
-これでRubyはコンスタントと認識してくれます。</p>
-
-<h1>English</h1>
-
-<h2>Variable</h2>
-
-<h3>Example1</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">temperature</span> <span class="o">=</span> <span class="mi">34</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">temperature</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Ruby convention</h3>
-
-<p>To use underscores rather than &#8220;camel case&#8221; for multiple-word names.</p>
-
-<p>page_transfer_manager is good, for example, but pageTransferManager is not.</p>
-
-<h3>Reserved words</h3>
-
-<blockquote><p><strong>FILE</strong>  def in  self
-<strong>LINE</strong>  defined?    module  super
-BEGIN do  next    then
-END   else    nil true
-alias elsif   not undef
-and   end or  unless
-begin ensure  redo    until
-break false   rescue  when
-case  for retry   while
-class if  return  yield</p></blockquote>
-
-<h3>Example2</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">99</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: &quot;</span> <span class="o">+</span> <span class="n">age</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;My age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Note that you need to convert the integer variable to string.
-You can place any expression inside #{ and } in a double-quoted string
-and have it interpolated into the text.</p>
-
-<h2>Constants</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">1415926535</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Constants in Ruby start with an uppercase letter—that’s how Ruby
-knows they are constants. In fact, the entire name of a constant is usually in uppercase. But it’s that first
-letter that is crucial—it must be uppercase so that Ruby knows that you intend to create a constant.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-23T00:00:00+09:00" pubdate data-updated="true">2010-06-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>Ruby</a>
 
 
 </div>

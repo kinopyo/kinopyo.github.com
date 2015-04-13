@@ -7,9 +7,16 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="http://ruzanow.ru/extensions/getflash.crx インストール後Flashがあるサイトに接続すると
-アドレスバーの一番右にFlashのアイコンが表示され、
-クリックするとサイト内のFlashの上にDownloadのリンクが表示されます。 &hellip;">
+	<meta name="description" content="&lt;&amp;!～&amp;>宣言部でメソッドを定義することができます。 1
+2
+3
+4
+5
+6
+&lt;%!
+private String myMethod (String str) { // some code return &quot;ok&quot;;
+}
+%&gt; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +98,60 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/define-method-in-js">jspにメソッドを定義するには</a></h1>
+	<div class="entry-content">
+		<p><strong>&lt;&amp;!～&amp;></strong>宣言部でメソッドを定義することができます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;%!</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="nf">myMethod</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// some code</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s">&quot;ok&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考サイトはこちら：
+<a href="http://www.site-cooler.com/java/j2ee/04_02.htm#3">http://www.site-cooler.com/java/j2ee/04_02.htm#3</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-06T00:00:00+09:00" pubdate data-updated="true">2010-05-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -694,217 +755,6 @@ $(li).attr(&#8230;).val(&#8230;).text(&#8230;)の方は読みやすいので結�
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/php-basic-variables-datatypes-operators-constant">PHP Basic - Variables, Datatypes, Operators and Constants</a></h1>
-	<div class="entry-content">
-		<h2>Declare a variable</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$my_variable;</span>
-</span><span class='line'><span class="x">$my_variable = 3;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Name it in your script, when PHP first sees a variable&#8217;s name in a script, it automatically creates the variable at that point.
-If you don&#8217;t initialize a variable in PHP, it&#8217;s given the default value of null.</p>
-
-<h2>Data Types</h2>
-
-<h3>Special Data Type</h3>
-
-<p>NULL : May only contain &#8216;null&#8217; as a value, meaning the variable explicitly does not contain any value
-Resource : Contains a reference to an external resource, such as a file or database</p>
-
-<p>Be careful, NULL is a data type.</p>
-
-<h3>Testing the Type of a Variable</h3>
-
-<ul>
-<li><p>gettype($x)
-It returns as a string.</p></li>
-<li><p>is_int( value )</p></li>
-<li>is_string( value )</li>
-<li>is_float( value )</li>
-<li>is_bool( value )</li>
-<li>is_array( value )</li>
-<li>is_object( value )</li>
-<li>is_resource( value )</li>
-<li>is_null( value )</li>
-</ul>
-
-
-<p>Returns true or false.</p>
-
-<h2>Changing a Variable&#8217;s Data Type</h2>
-
-<p>To use settype() , pass in the name of the variable you want to
-alter, followed by the type to change the variable to (in quotation marks).
-Assigning different values to the variable can also change the variable&#8217;s data type.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$test_var = 8.23;</span>
-</span><span class='line'><span class="x">settype( $test_var, &quot;string&quot; );</span>
-</span><span class='line'><span class="x">settype( $test_var, &quot;boolean&quot; );</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>after converting $test_var to a Boolean, it contains the value true
-(which PHP displays as 1 ). This is because PHP converts a non-zero number to the Boolean value true.</p>
-
-<h3>Changing Type by Casting</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$test_var</span> <span class="o">=</span> <span class="mf">8.23</span><span class="p">;</span>
-</span><span class='line'><span class="k">echo</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
-</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
-</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8&quot;</span>
-</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;8.23&quot;</span>
-</span><span class='line'><span class="k">echo</span> <span class="p">(</span><span class="nx">boolean</span><span class="p">)</span> <span class="nv">$test_var</span> <span class="o">.</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span> <span class="c1">// Displays &quot;1&quot;</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You can also cast a value to an integer,
-floating-point, or string value using three PHP functions:
-|# Functions|# Description|
-|intval( value )|Returns value cast to an integer|
-|floatval( value )|Returns value cast to a float|
-|strval( value )|Returns value cast to a string|</p>
-
-<p>intval() has another use: converting from a non?base-10 integer to a base-10 integer.
-For example, this code convert base-16 number &#8220;ff&#8221; to base-10 number.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo intval(&quot;ff&quot;, 16); // Displays &quot;255&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Operator</h2>
-
-<h3>Assignment Operators</h3>
-
-<p>For concatenation strings, using &#8220;.=&#8221; instead of &#8220;.+&#8221;.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$a = &quot;Start a sentence&quot;;</span>
-</span><span class='line'><span class="x">$b = &quot;and finish it.&quot;;</span>
-</span><span class='line'><span class="x">$a .= $b; // $a now contains &quot;Start a sentence and finish it.&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Bitwise Operators</h3>
-
-<p>passed&#8230;</p>
-
-<h3>Comparison Operators</h3>
-
-<ul>
-<li><p>=== (identical)
-true if $x equals $y and they are of the
-same type; false otherwise</p></li>
-<li><p>!== (not identical)
-true if $x does not equal $y or they are not
-of the same type; false otherwise</p></li>
-</ul>
-
-
-<h3>Logical Operators</h3>
-
-<p>PHP considers the following values to be false :
-+  The literal value false
-+  The integer zero ( 0 )
-+  The float zero ( 0.0 )
-+  An empty string ( &#8221; &#8221; )
-+  The string zero ( &#8220;0&#8221; )
-+  An array with zero elements
-+  The special type null (including any unset variables)
-+  A SimpleXML object that is created from an empty XML tag (more on SimpleXML in -Chapter 19 )
-All other values are considered true in a Boolean context.</p>
-
-<p>Addtion to the &#8220;traditional&#8221; logical operators such as &#8220;&amp;&amp;&#8221; and &#8220;||&#8221;,
-PHP also have &#8220;and&#8221;, &#8220;or&#8221; and &#8220;xor&#8221;.
-+  xor
-true if $x or $y (but not both) evaluates to true ; false
-otherwise</p>
-
-<h3>String Operators</h3>
-
-<p>There ’ s really only one string operator, and that ’ s the concatenation operator - .(dot).This operator simply
-takes two string values, and joins the right - hand string onto the left - hand one to make a longer string.</p>
-
-<h2>Operator Precedence</h2>
-
-<p>Almost the same except that the logical operator: &#8220;and&#8221; > &#8220;xor&#8221; > &#8220;or&#8221;
-has the lowest precedence.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$x = false || true; // $x is true</span>
-</span><span class='line'><span class="x">$x = false or true; // $x is false</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In the second line, the &#8220;=&#8221; has higher precedence than &#8220;or&#8221;.</p>
-
-<h2>Constants</h2>
-
-<p>Constants may only contain scalar values such as Boolean, integer, float, and string (not values such as arrays and objects).</p>
-
-<p>Constants do not start with the dollar sign</p>
-
-<p>To define a constant, use the define() function.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">define(&quot;MY_CONSTANT&quot;,&quot;19&quot;); // MY_CONSTANT always has the string value &quot;19&quot;</span>
-</span><span class='line'><span class="x">echo MY_CONSTANT; // Displays &quot;19&quot; (note this is a string, not an integer)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-24T00:00:00+09:00" pubdate data-updated="true">2010-03-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/php/'>PHP</a>
 
 
 </div>

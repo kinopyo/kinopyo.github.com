@@ -7,9 +7,11 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="自分でブログやサイトを運営する上には、よくこの問題で悩みました。このSEOって言葉にちょっと神経質になってしまった気がします。何もかもSEOに最適な方向で考えてるんです。 さて、本題に入りますとサブディレクトリが有効だそうです。
-このサイトを参考にしました。
-サブドメインとサブディレクトリ、 &hellip;">
+	<meta name="description" content="手法
+もう一つのWordPressフォルダをサーバにアップロードし、
+設定ファイルで作成するテーブル接頭辞を変えることで
+DBの衝突を避けるという手法です。
+詳細 もう一つのWordPressフォルダが必要(ダウンロードでもいいし、現行のものをコピーしてもOK) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +93,63 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/install-multy-wordpress-in-same-db">同じデータベースに複数のWordPressをインストールする方法</a></h1>
+	<div class="entry-content">
+		<div class="section">
+<h4>手法</h4>
+<p>もう一つのWordPressフォルダをサーバにアップロードし、</p>
+<p>設定ファイルで作成するテーブル接頭辞を変えることで</p>
+<p>DBの衝突を避けるという手法です。</p>
+<h4>詳細</h4>
+<ol>
+<li>もう一つのWordPressフォルダが必要(ダウンロードでもいいし、現行のものをコピーしてもOK)</li>
+<li>フォルダをリネームしサーバにアップロード</li>
+<li>該当フォルダのwp-config.phpの下記行の内容を編集：例えばwp_をwp_sub_にするとか、既存のWordPressと衝突しなければOK</li>
+<li>後は普通のインストールと同じように\wp-admin\installを実行</li>
+</ol>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$table_prefix = ‘wp_’;</span></code></pre></td></tr></table></div></figure>
+
+<br/>
+<br/>
+<h4>参考サイト</h4>
+<p><a href="http://musicmaniacs.net/archives/2009/03/12000242.php" target="_blank">レンタルサーバーに複数のWordPressを設置する方法 - HUBLOG</a></p>
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-01T00:00:00+09:00" pubdate data-updated="true">2009-12-01</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -809,90 +868,6 @@ Java7,,,やってみたいっす！
 
 
 	<a class='category' href='/blog/categories/diary/'>Diary</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/memo-of-flash-json-cross-domain">Flash，JSONでのクロスドメインアクセス勉強メモ</a></h1>
-	<div class="entry-content">
-		<p>gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の<a href="http://gihyo.jp/dev/serial/01/web20sec/0004" target="_blank">第4回：「Flash，JSONでのクロスドメインアクセス」の</a>勉強メモです。</p>
-
-<h2>Flashのクロスドメインアクセス</h2>
-
-<h3>動作原理</h3>
-
-<p>データ提供側で認証のファイルを設置するだけです。
-ファイル名は「crossdomain.xml」で、これが例なのかこう書かなければならないのかは明確に書いてません。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;cross-domain-policy&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;allow-access-from</span> <span class="na">domain=</span><span class="s">&quot;www.securesky-tech.com&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/cross-domain-policy&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>JSONでも実はクロスドメインアクセスが可能</h2>
-
-<h3>動作原理</h3>
-
-<p>eval()関数でデータを評価するだけで使用可能になる</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">responseText</span><span class="o">+</span><span class="s2">&quot;)&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>クロスドメインの実現</h3>
-
-<p>setterメソッドをサポートしているブラウザ（FirefoxやSafari 3等）では，setterメソッドを再定義することによって，JSONもSCRIPTタグで呼び出して使うことが可能になる。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script&gt;</span>
-</span><span class='line'>      <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__defineSetter__</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span><span class="nx">sendtoAttacker</span><span class="p">(</span><span class="nx">x</span><span class="p">);});</span>
-</span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://www.securesky-tech.com/object.dat&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-24T00:00:00+09:00" pubdate data-updated="true">2009-11-24</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/flash/'>Flash</a>
 
 
 </div>

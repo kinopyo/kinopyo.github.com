@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="2011/09/30更新 現時点の最新版(15.0.874.54 beta)のChromeに更新したらTrackpadでは2本指スワイプ、MagicMouseでは1本指スワイプでページのBack/Forward遷移できるようになりました！もうBetterTouchToolに頼らなくてもいいですよ &hellip;">
+	<meta name="description" content="Lionにはフルスクリーンという機能がありますね。Safari、MailとかPreviewといったMacネーティブなアプリではView->Enter Full Screenでフルスクリーンモードに入れます。 そのショットカットキーは control + shift + fですが、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,50 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/lion-fullscreen-shortcut-key-conflict-with-evernote-client">Lionのフルスクリーン機能はEvernoteクライアントの検索ショットカットキーとコンフリクト</a></h1>
+	<div class="entry-content">
+		<p>Lionにはフルスクリーンという機能がありますね。Safari、MailとかPreviewといったMacネーティブなアプリではView->Enter Full Screenでフルスクリーンモードに入れます。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Lion_Fullscreen.jpg" title="Lion_Fullscreen" ></p>
+
+<p>そのショットカットキーは control + shift + fですが、自分の環境だとこれはEvernoteクライアントの検索ショットカットキーと衝突します。正確にはEvernoteのほうが優先で占めて、Lionフルスクリーンが効かなくなります。</p>
+
+<p>解決方法はEvernoteクライアントの検索ショットカットキーを他に設定するか、キャンセルして<strong>Lionを再起動</strong>することです。再起動しないとショットカットキーの変更は有効にならないからです。</p>
+
+<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/07/Evernote_Preferences_shortcuts.jpg" title="Evernote_Preferences_shortcuts" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-25T00:00:00+09:00" pubdate data-updated="true">2011-07-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/lion/'>Lion</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/evernote/'>evernote</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1247,57 +1291,6 @@ Embed GitHub Gistはgistから内容を取得して本文に出力するためRS
 
 
 	<a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/wordpress/'>WordPress</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-selector-get-the-first-matched-element">jQueryでselectorと一致する最初のものを取る</a></h1>
-	<div class="entry-content">
-		<p>一年くらい使ってなかったので、ほぼ忘れてしまいました。そのためのメモという感じです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// idがwrapperの中の最初のdivを取る</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#wrapper&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;div:first&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>この:xxxがBasic Filter(基本フィルタ)と読んで、他にもいろいろあります。</p>
-
-<blockquote><p>:first 先頭の要素を選択する。<br/>:last 末尾の要素を選択する。<br/>:not(selector) 指定したセレクターを除外した要素を選択する。<br/>:even 偶数番の要素を選択する。<br/>:odd 奇数番の要素を選択する。<br/>:eq(index) インデックス指定した要素を選択する。<br/>:gt(index) 指定したインデックスより後の要素を選択する。<br/>:lt(index) 指定したインデックスより前の要素を選択する。<br/>:header h1,h2などのヘッダ要素を選択する。<br/>:animated アニメーション中の要素を選択する。</p></blockquote>
-
-
-<p><a href="http://api.jquery.com/category/selectors/basic-filter-selectors/">英語API</a>
-<a href="http://semooh.jp/jquery/api/selectors/">日本語API</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-02T00:00:00+09:00" pubdate data-updated="true">2011-07-02</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

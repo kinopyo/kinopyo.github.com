@@ -7,10 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Eclipse Tomcat Pluginダウンロードページでzipファイルをダウンロード
-現時点の最新版はtomcatPluginV321.zipです。
-your_Eclipse_Home/pluginsに解凍
-Eclipseを起動するとTomcatの三つのアイコンがツールバーに表示されるはず &hellip;">
+	<meta name="description" content="ダウンロード Tomcat公式サイトダウンロードページで上記ファイルをダウンロード インストール ただ適当な場所に解凍するだけです。 起動/終了 ターミナルを起動しTOMCAT/binに移動する
++ 起動 ./startup.shを実行
++ 終了 ./shutdown.sh
+&#8221 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +92,62 @@ Eclipseを起動するとTomcatの三つのアイコンがツールバーに表�
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/mac-tomcat-install">MacでTomcatをインストール</a></h1>
+	<div class="entry-content">
+		<h3>ダウンロード</h3>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/tomcat-download.jpg" title="tomcat-download" ></p>
+
+<p><a href="http://tomcat.apache.org/download-60.cgi">Tomcat公式サイトダウンロードページ</a>で上記ファイルをダウンロード</p>
+
+<h3>インストール</h3>
+
+<p>ただ適当な場所に解凍するだけです。</p>
+
+<h3>起動/終了</h3>
+
+<p>ターミナルを起動しTOMCAT/binに移動する
++  起動  ./startup.shを実行
++  終了  ./shutdown.sh
+<strong>&#8221;./&#8221;は必須です。</strong>
+ターミナルで使われるUNIXコマンドはイマイチなので、もっと便利な使い方はあると思います。</p>
+
+<h3>検証</h3>
+
+<p>http://localhost:8080</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-30T00:00:00+09:00" pubdate data-updated="true">2009-12-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/mac/'>mac</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -700,90 +756,6 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 
 
 
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpress-plugin-subscribe-to-comments-for-readers">記事にコメントが追加された際ブログの閲覧者にメールで通知するプラグイン</a></h1>
-	<div class="entry-content">
-		<p>閲覧者がコメントする際にチェックボックスにマークしておくことで、
-さらにコメントが追加された場合、メールで知らせてくれるプラグインです。
-閲覧者が自分のコメント以降に追加されたコメントを把握できるようになります。</p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/wordpress-plugin-subscribe-to-comments.jpg" title="wordpress-plugin-subscribe-to-comments" ></p>
-
-<h2>ダウンロード</h2>
-
-<p><a href="http://txfx.net/wordpress-plugins/subscribe-to-comments/">http://txfx.net/wordpress-plugins/subscribe-to-comments/</a>でダウンロードか、
-WordPress管理画面から「subscribe-to-comments」を検索してインストールする</p>
-
-<h2>カスタマイズ</h2>
-
-<p>初期設定ではメールの本文が英語となっています。</p>
-
-<p><img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_en.jpg"></p>
-
-<br/>
-
-
-<p>それを日本語にカスタマイズしてみました。
-管理画面でsubscribe-to-commentsプラグインを編集します。
-「There is a new comment on the post」で検索すれば一発で見つかります。
-そのあたりの英語を自分が好きな言葉に置換すればOKです。</p>
-
-<br/>
-
-
-<p>以下自分のサンプルです。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:There is a new comment on the post:新規のコメントが投稿されました。
-</span><span class='line'>:See all comments on this post here:すべてのコメントを確認するには下記のリンクをクリックしてください
-</span><span class='line'>:Author:お名前
-</span><span class='line'>:Comment:コメント
-</span><span class='line'>:To manage your subscriptions or to block all notifications from this site, click the link below:コメント閲覧を管理、このサイトからの通知をブロックするには下記のリンクをクリックしてください</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<br/>
-
-
-<p>修正後のメール本文はこんな風になりました。
-<img src="http://kinopyo.com/wp-content/uploads/2009/12/subscribe-to-comments_jp.jpg" title="" ></p>
 
 		
 		

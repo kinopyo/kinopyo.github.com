@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Just found out a theme called - SOLARIZED. And actually it supports a lot of Editors and terminals, just go to its website. Now my iTerm looks like &hellip;">
+	<meta name="description" content="If you get these warning messages in your rails log, just simply put thin to your Gemfile. 1
+WARN Could not determine content-length of response &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +90,55 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-i-get-rid-of-warn-could-not-determine-content-length-of-response-body/">How to I get rid of &#8220;WARN Could not determine content-length of response body&#8221;</a></h1>
+	<div class="entry-content">
+		<p>If you get these warning messages in your rails log, just simply put <code>thin</code> to your Gemfile.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>WARN  Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;thin&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I found this from this stackoverflow <a href="http://stackoverflow.com/questions/7082364/what-does-warn-could-not-determine-content-length-of-response-body-mean-and-h">question</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-30T19:51:00+09:00" pubdate data-updated="true">2012-08-30</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -660,65 +710,6 @@ Here is just an example:</p>
 
 
 	<a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/script/'>script</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/explicitly-specify-table-name-in-scope-definition/">Explicitly specify table name in scope definition</a></h1>
-	<div class="entry-content">
-		<p>I was wondering why people explicitly specify table name in such a scope definition&#8230;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Answer</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
-</span><span class='line'>  <span class="n">scope</span> <span class="ss">:recent</span><span class="p">,</span> <span class="n">order</span><span class="p">(</span><span class="s1">&#39;answers.created_at DESC&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Until I got this error today.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">Mysql2</span><span class="p">::</span><span class="n">Error</span><span class="p">:</span> <span class="k">Column</span> <span class="s1">&#39;created_at&#39;</span> <span class="k">in</span> <span class="k">order</span> <span class="n">clause</span> <span class="k">is</span> <span class="n">ambiguous</span><span class="p">:</span> <span class="k">SELECT</span>  <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span> <span class="k">AS</span> <span class="n">count_id</span><span class="p">,</span> <span class="n">question_id</span> <span class="k">AS</span> <span class="n">question_id</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="o">`</span><span class="n">questions</span><span class="o">`</span> <span class="k">ON</span> <span class="o">`</span><span class="n">questions</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="o">=</span> <span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">question_id</span><span class="o">`</span> <span class="k">WHERE</span> <span class="p">(</span><span class="o">`</span><span class="n">answers</span><span class="o">`</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="mi">87</span><span class="p">)</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">question_id</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">created_at</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">10</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I have a <code>recent</code> scope defined in both <code>Question</code> and <code>Answer</code> model. And when you chain those two models, rails don&#8217;t know the <code>recent</code> is associated to which one.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@answers</span> <span class="o">=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">answers</span><span class="o">.</span><span class="n">recent</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="ss">:question_id</span><span class="p">)</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:question</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T15:56:00+09:00" pubdate data-updated="true">2012-06-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>
