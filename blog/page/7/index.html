@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="If you get these warning messages in your rails log, just simply put thin to your Gemfile. 1
-WARN Could not determine content-length of response &hellip;">
+	<meta name="description" content="Finally migrated all my posts from Wordpress to Octopress. I think it&#8217;s quite popular among hackers and geeks these days, if you don&#8217;t &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,76 @@ WARN Could not determine content-length of response &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/my-new-blog-with-octopress/">My New Blog with Octopress</a></h1>
+	<div class="entry-content">
+		<p>Finally migrated all my posts from Wordpress to Octopress. I think it&#8217;s quite popular among hackers and geeks these days, if you don&#8217;t know it just google it, tons of results.</p>
+
+<p>There&#8217;re still a lot of works to do, like some posts with messy format or broken links, Disqus comments need to be migrated, categories are nonsense etc, but I&#8217;ll announce this anyway. Done is better than perfect right?</p>
+
+<p>I&#8217;m not gonna mention any migration details here, I&#8217;d like to look back and have a summary or something now.</p>
+
+<h1>Over 300 posts since 2009/10/07</h1>
+
+<p>I&#8217;m really surprised by myself. I was not aware of that I&#8217;ve done so many writings, and these&#8217;re only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related.</p>
+
+<p>It&#8217;s so easy now to &#8220;execute&#8221; an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential &#8220;things&#8221; here, as part of my life.</p>
+
+<h1>Japanese, English and Chinese</h1>
+
+<p>There was a time I was trying to write down every single post in these 3 languages. I believe the plugin I used in Wordpress is called <em>qTranslate</em>, which let you write with each language or all of them.</p>
+
+<p>After a while I noticed it was too hard for me. Translating same contents into a different language is boring and wasting of time, at least I tried and found out it doesn&#8217;t work for me. So this time, I want this blog to be an English mainly blog, with occasional different language posts. My plan is writing emotional feelings in Chinese, and social activities or something related to Japan in Japanese.</p>
+
+<p>I&#8217;m still keeping those language mixed posts here even though I think it&#8217;s not useful to my &#8220;readers&#8221;, not sure how many I got, I&#8217;d like to take those posts as old-days foot prints. &#8220;あの時がんばったな！ー&#8221; hehe.</p>
+
+<h1>About the priority or weight of each language</h1>
+
+<p>I want to be a top player in this programming field. In order to achieve that English is a MUST condition. I still remember when I first time read a programming book in English, it was so difficult that I hardly understood the meanings. But I keep trying and trying, now I&#8217;m very comfortable with it and believe it&#8217;s more natural than any other language in programming field.</p>
+
+<p>Besides the effort I put in English, I also want to start writing in my native language, Chinese. Although English is more friendly to me than before, it&#8217;s still difficult to describe my feelings and emotions precisely. I need more vocabularies. I need to look back to think about if there is a grammar mistake. So when I think about some topics such as meanings of life, or what I want to left to the world, am I making this world a little bit better, etc. In these cases I need to grab my most familiar weapon :)</p>
+
+<p>For Japanese, hmmm.. I&#8217;ll leave it for now :)</p>
+
+<h1>Google Adsense</h1>
+
+<p>If you&#8217;re an old readers of me, I hope you are, you may notice that there&#8217;s no ads anymore. Yeah I used to put those ads for experiment. With 500-600 daily PVs, it gave me around 4,000￥ every month. Not that much but it&#8217;s better than nothing, so I kept ads for a long time. But to be honest, as a personal blog it&#8217;s just annoying. I didn&#8217;t like it personally, and it&#8217;s for sure it gives people bad impression, I don&#8217;t like to miss a job opportunity if some head hunters open my blog and leave with a &#8220;WTF?!..&#8221;.</p>
+
+<p>Let&#8217;s just be simple and clean.</p>
+
+<p>That&#8217;s it~ see you next time.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-31T22:49:00+09:00" pubdate data-updated="true">2012-08-31</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -632,84 +701,6 @@ Here is just an example:</p>
 
 
 	<a class='category' href='/blog/categories/bootstrap/'>bootstrap</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/run-ruby-script-in-rails-environment/">Run Ruby Script in Rails Environment</a></h1>
-	<div class="entry-content">
-		<h2>Overview</h2>
-
-<p>If you wanna execute some ruby code in rails environment, say manipulate w/ model or something, you can always try <code>rake task</code> first. But there&#8217;re circumstances you don&#8217;t want to use it, maybe it&#8217;s just a one-time script that you don&#8217;t want to save it to git, or whatever.</p>
-
-<p>I&#8217;ve found out there&#8217;re two simple ways to accomplish it.</p>
-
-<h2>require config/environment.rb</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># test.rb</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;config/environment&quot;</span>
-</span><span class='line'><span class="nb">p</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># in terminal</span>
-</span><span class='line'><span class="n">ruby</span> <span class="nb">test</span><span class="o">.</span><span class="n">rb</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>use rails runner</h2>
-
-<p><a href="http://guides.rubyonrails.org/command_line.html#rails-runner">Rails Guides about rails runner</a></p>
-
-<blockquote><p>runner runs Ruby code in the context of Rails non-interactively. For instance:</p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="s2">&quot;p User.first&quot;</span>
-</span><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="n">some_ruby_script</span><span class="o">.</span><span class="n">rb</span>
-</span><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="o">-</span><span class="n">e</span> <span class="n">staging</span> <span class="s2">&quot;Model.long_running_method&quot;</span>
-</span><span class='line'><span class="n">rails</span> <span class="n">runner</span> <span class="o">-</span><span class="n">h</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>You can also use the alias “r” to invoke the runner: <code>rails r</code>.</p></blockquote>
-
-<p>I failed to call <code>rails r</code> on Rails 3.0.10, maybe it&#8217;s above 3.1+.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T18:04:00+09:00" pubdate data-updated="true">2012-06-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/script/'>script</a>
 
 
 </div>

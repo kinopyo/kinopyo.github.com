@@ -1,0 +1,255 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Reading Materials For OOCSS, BEM And SMACSS - Kinopyo Blog</title>
+	<meta name="author" content="Qihuan Piao">
+
+	
+	<meta name="description" content="After all these years of web development I still haven&#8217;t found a compelling way to organize and name css, once we all seemed to agree with the &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="http://feeds.feedburner.com/kinopyo" rel="alternate" title="Kinopyo Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Kinopyo Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/kinopyo">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kinopyo.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/fantasyday" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kinopyo" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="http://feeds.feedburner.com/kinopyo" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get" id="search_form">
+		<input class="alignright" type="text" name="g" results="0">
+		<input type="hidden" name="q" value="site:kinopyo.com">
+	</form>
+</nav>
+
+</header>
+  
+    <div id="quotes" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/quote.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#quotes').getQuoteFeed();
+	})(jQuery);
+</script>
+
+  
+
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Reading Materials For OOCSS, BEM And SMACSS</h1>
+  <div class="entry-content">
+    <p>After all these years of web development I still haven&#8217;t found a compelling way to organize and name css, once we all seemed to agree with the semantic naming methodology but as the project grows the magic aura disappears.</p>
+
+<p>Recently my team has started the transition to apply OOCSS, SMACSS and BEM techniques to current project. I tried it a while and really think this is the best way so far to cleanly organize your css(code and files), make it scalable and reusable, with simple intuitive naming methomelodgy.</p>
+
+<h2>Recommendations</h2>
+
+<p>Here are the reading materials I found pretty easy to follow:</p>
+
+<p><a href="https://mattstauffer.co/blog/organizing-css-oocss-smacss-and-bem">Organizing CSS: OOCSS, SMACSS, and BEM - MattStauffer.co</a></p>
+
+<p>High level introduction to each terms, with simple example. Read it and you&#8217;ll get the big picture.</p>
+
+<br>
+
+
+<p><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">MindBEMding – getting your head ’round BEM syntax – CSS Wizardry – CSS, OOCSS, front-end architecture, performance and more, by Harry Roberts</a></p>
+
+<p>Have an excellent guide on when to use BEM and not.</p>
+
+<br>
+
+
+<p><a href="http://blog.planetargon.com/entries/2014/1/7/the-pros-and-cons-of-modular-sass">The Pros and Cons of Modular Sass — Planet Argon Blog</a></p>
+
+<p>Great article on the idea behind modular css in general. And the argument over semantic class names convinced me.</p>
+
+<blockquote><p>Semantic markup is important in communicating the meaning of a webpage and is only becoming increasingly important; however, class names are for the developer. The exception to this relates to the use of microformats, in which case it is necessary to use specific semantic class names. It’s always important to consider names and what they communicate to you, your team, and future developers, but there is no dogmatic reason to avoid classes like “grid-1” or “pull-left” just because they describe presentation. People have conflated the use of semantic HTML (which relates to optimizing content for assistive technologies, browsers, the multitude of devices, and software that recontextualizes and reframes your content) with avoiding presentational class names for years, and I’m not quite sure why.</p></blockquote>
+
+<p><a href="http://mikefowler.me/2013/10/17/support-for-bem-modules-sass-3.3/">Support for BEM modules in Sass 3.3 | Mike Fowler</a></p>
+
+<p>How to write BEM in Sass.</p>
+
+<br>
+
+
+<p><a href="http://fullstackradio.com/episodes/1/">Full Stack Radio - 1: Matt Stauffer - CSS Semantics</a></p>
+
+<p>A podcast. You&#8217;ll get more out of it if you already some idea and experience about these terms, as in the podcast there&#8217;re deep discussions on the very details of daily development.</p>
+
+<br>
+
+
+<p>That&#8217;s it. Hope this could help you find your starting point.</p>
+
+    <div class="ads"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- kinopyo.com 336x280 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-8783572851383174"
+     data-ad-slot="1605435544"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- kinopyo.com 336x280 #2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-8783572851383174"
+     data-ad-slot="3082168745"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+  </div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-15T20:16:00+09:00" pubdate data-updated="true">2015-04-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>CSS</a>
+
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Qihuan Piao
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kinopyoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kinopyo.com/blog/reading-materials-for-oocss/';
+        var disqus_url = 'http://kinopyo.com/blog/reading-materials-for-oocss/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33226278-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

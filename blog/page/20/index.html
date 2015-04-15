@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="file_get_contentsとjson_decodeの組み合わせでAPIコールするサンプルコードです。 1
+	<meta name="description" content="MacportでPHPをインストールし、CakePHPを動かしたら「Strict Standards」エラーが出ました。
+当時のエラー本文は残ってませんので、Googleで検索したエラー本文を貼り付けます。パス以外は同じのはずです。 1
 2
 3
 4
@@ -16,15 +17,7 @@
 7
 8
 9
-10
-11
-12
-13
-14
-15
-16
-// APIコール
-$api_url = &#39;http://example.com/api/&#39 &hellip;">
+Strict &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -106,6 +99,76 @@ $api_url = &#39;http://example.com/api/&#39 &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cakephp-and-strict-standards">CakePHP, and Strict Standards</a></h1>
+	<div class="entry-content">
+		<p>MacportでPHPをインストールし、CakePHPを動かしたら「Strict Standards」エラーが出ました。
+当時のエラー本文は残ってませんので、Googleで検索したエラー本文を貼り付けます。パス以外は同じのはずです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/basics.php on line 279
+</span><span class='line'>Strict Standards: Redefining already defined constructor for class Object in /Applications/MAMP/htdocs/xxxx/cake/libs/object.php on line 65
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/object.php on line 92
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/inflector.php on line 65
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/configure.php on line 96
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/configure.php on line 154
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/cache.php on line 71
+</span><span class='line'>Strict Standards: Assigning the return value of new by reference is deprecated in /Applications/MAMP/htdocs/xxxx/cake/libs/cache.php on line 157
+</span><span class='line'>Strict Standards: Non-static method Configure::getInstance() should not be called statically in /Applications/MAMP/htdocs/xxxx/cake/bootstrap.php on li
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>解決方法</h2>
+
+<p>これはCakePHPの問題ではなく、PHPのerror_reportingの設定問題だそうです。
+php.iniを開いて<strong>error_reporting</strong>で検索します。
+値を<strong>E_ALL</strong>に変更すれば解決です。</p>
+
+<p>ちなみにMacportでPHPをインストールしたときのphp.iniパスは<strong>/opt/local/etc/php5/php.ini</strong>になります。</p>
+
+<h2>参考リンク</h2>
+
+<p><a href="http://oldblog.awpny.com/2007/12/mamp-php5-cakephp-and-strict-standards/">http://oldblog.awpny.com/2007/12/mamp-php5-cakephp-and-strict-standards/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-17T00:00:00+09:00" pubdate data-updated="true">2011-03-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/cakephp/'>cakephp</a>, <a class='category' href='/blog/categories/macport/'>macport</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -656,71 +719,6 @@ Cucumberでは自然言語で書けるため、実装から離れた視点でい
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/memo-php-return-json">メモ：PHPでJSONPを返すサンプルコード</a></h1>
-	<div class="entry-content">
-		<h2>PHP側で</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo $_GET[&#39;callback&#39;] . &#39;(&#39; . json_encode($object) . &#39;);&#39;;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>JS側で</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>   <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;foo.php?callback=?&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">{},</span>  <span class="c1">// No additional parameters sent</span>
-</span><span class='line'>    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="c1">// data is now JSON object instantiated from retrieved info</span>
-</span><span class='line'>       <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="o">*</span><span class="s1">&#39;key&#39;</span><span class="o">*</span><span class="p">);</span>
-</span><span class='line'>   <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考：
-<a href="http://www.carolinamantis.com/wordpress/?p=29">Mantis and Jessamine | Creating a JSONP Data Provider in PHP</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-21T00:00:00+09:00" pubdate data-updated="true">2010-12-21</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jsonp/'>JSONP</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
 
 
 </div>

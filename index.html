@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Get Yourself Back In The Busy World I tend to believe I know what I&#8217;m doing, where I&#8217;m going, I&#8217;m in the control of my life, but &hellip;">
+	<meta name="description" content="After all these years of web development I still haven&#8217;t found a compelling way to organize and name css, once we all seemed to agree with the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -87,6 +87,84 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/reading-materials-for-oocss/">Reading Materials For OOCSS, BEM And SMACSS</a></h1>
+	<div class="entry-content">
+		<p>After all these years of web development I still haven&#8217;t found a compelling way to organize and name css, once we all seemed to agree with the semantic naming methodology but as the project grows the magic aura disappears.</p>
+
+<p>Recently my team has started the transition to apply OOCSS, SMACSS and BEM techniques to current project. I tried it a while and really think this is the best way so far to cleanly organize your css(code and files), make it scalable and reusable, with simple intuitive naming methomelodgy.</p>
+
+<h2>Recommendations</h2>
+
+<p>Here are the reading materials I found pretty easy to follow:</p>
+
+<p><a href="https://mattstauffer.co/blog/organizing-css-oocss-smacss-and-bem">Organizing CSS: OOCSS, SMACSS, and BEM - MattStauffer.co</a></p>
+
+<p>High level introduction to each terms, with simple example. Read it and you&#8217;ll get the big picture.</p>
+
+<br>
+
+
+<p><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">MindBEMding – getting your head ’round BEM syntax – CSS Wizardry – CSS, OOCSS, front-end architecture, performance and more, by Harry Roberts</a></p>
+
+<p>Have an excellent guide on when to use BEM and not.</p>
+
+<br>
+
+
+<p><a href="http://blog.planetargon.com/entries/2014/1/7/the-pros-and-cons-of-modular-sass">The Pros and Cons of Modular Sass — Planet Argon Blog</a></p>
+
+<p>Great article on the idea behind modular css in general. And the argument over semantic class names convinced me.</p>
+
+<blockquote><p>Semantic markup is important in communicating the meaning of a webpage and is only becoming increasingly important; however, class names are for the developer. The exception to this relates to the use of microformats, in which case it is necessary to use specific semantic class names. It’s always important to consider names and what they communicate to you, your team, and future developers, but there is no dogmatic reason to avoid classes like “grid-1” or “pull-left” just because they describe presentation. People have conflated the use of semantic HTML (which relates to optimizing content for assistive technologies, browsers, the multitude of devices, and software that recontextualizes and reframes your content) with avoiding presentational class names for years, and I’m not quite sure why.</p></blockquote>
+
+<p><a href="http://mikefowler.me/2013/10/17/support-for-bem-modules-sass-3.3/">Support for BEM modules in Sass 3.3 | Mike Fowler</a></p>
+
+<p>How to write BEM in Sass.</p>
+
+<br>
+
+
+<p><a href="http://fullstackradio.com/episodes/1/">Full Stack Radio - 1: Matt Stauffer - CSS Semantics</a></p>
+
+<p>A podcast. You&#8217;ll get more out of it if you already some idea and experience about these terms, as in the podcast there&#8217;re deep discussions on the very details of daily development.</p>
+
+<br>
+
+
+<p>That&#8217;s it. Hope this could help you find your starting point.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-15T20:16:00+09:00" pubdate data-updated="true">2015-04-15</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>CSS</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -816,126 +894,6 @@
 
 
 	<a class='category' href='/blog/categories/book/'>Book</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/use-activejob-in-rails-4-1/">Use ActiveJob in Rails 4.1</a></h1>
-	<div class="entry-content">
-		<p>ActiveJob is <a href="http://weblog.rubyonrails.org/2014/8/20/Rails-4-2-beta1/">the headline feature in Rails 4.2</a>, the <a href="http://edgeguides.rubyonrails.org/active_job_basics.html">Active Job Basics on RailsGuides</a> explains the philosophy and usage very well, make sure you’ve checked that first. However there’re some gotchas if you want to use it right now in your Rails 4.1 app. Here I’m gonna show you how to install it in 4.1, and things you need to take extra care of.</p>
-
-<h2>Install ActiveJob in Rails 4.1</h2>
-
-<p>Add <code>activejob</code> to your <code>Gemfile</code> then <code>bundle install</code>.</p>
-
-<p>Create a <code>active_job.rb</code> file under <code>config/initializers</code> and paste code below.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;active_job&#39;</span>
-</span><span class='line'><span class="c1"># or any other supported backend such as :sidekiq or :delayed_job</span>
-</span><span class='line'><span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:inline</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now you should be abel to load ActiveJob in your rails app without error.</p>
-
-<p>Note that the one you installed is not <a href="https://github.com/rails/rails/tree/master/activejob">the one inside the rails repository</a>, that has a version of <a href="https://rubygems.org/gems/activejob/versions/4.2.0.beta2">4.2.0.beta2</a> same as Rails at the time of writing, the one you installed is <a href="https://rubygems.org/gems/activejob/versions/0">version 0</a>. You can find the archived source code from its <a href="https://github.com/rails/activejob">original repository</a>.</p>
-
-<h2>Creating a Job</h2>
-
-<p>To create a job, you have to manually create the <code>app/jobs</code> folder first, then follow the same naming convention to create your job class file like <code>app/jobs/guests_cleanup_job.rb</code>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">GuestsCleanupJob</span> <span class="o">&lt;</span> <span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span>
-</span><span class='line'><span class="err">  </span><span class="n">queue_as</span> <span class="ss">:default</span>
-</span><span class='line'>
-</span><span class='line'><span class="err">  </span><span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-</span><span class='line'><span class="err">    </span><span class="c1"># Do something later</span>
-</span><span class='line'><span class="err">  </span><span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Enqueuing the Job</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">GuestsCleanupJob</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-</span><span class='line'><span class="no">GuestsCleanupJob</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Differences between latest ActiveJob</h2>
-
-<ul>
-<li>no rails generator for jobs.</li>
-<li>no callback mechanism like <code>before_enqueue</code>, <code>before_perform</code> etc.</li>
-<li>doesn’t load itself to rails app by default, that’s why you need a initializer to load it manually.</li>
-<li>enqueue syntax is slightly different, in Rails 4.2.beta2 <code>enqueue</code> has changed to <code>perform_later</code>.</li>
-<li>internally it’s using <a href="https://github.com/rails/activemodel-globalid">activemodel-globalid</a> instead of <a href="https://github.com/rails/globalid">GlobalID</a>(GlobalID is renamed from activemodel-globalid).</li>
-<li>setting backend syntax is slightly different</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Rails 4.2.beta2</span>
-</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">active_job</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:delayed_job</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Rails 4.1</span>
-</span><span class='line'><span class="ss">ActiveJob</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:delayed_job</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>p.s. I haven’t checked ActionMailer. I’m currently using it with DelayedJob and so far so good.</p>
-
-<h2>Summary</h2>
-
-<p>ActiveJob is very convenient, it provides a unified interface for the job infrastructure that allows you to switch the backend easily.</p>
-
-<p>But as you can see there’re <strong>big diffs between the latest  developed version and the one now we’re able to install in Rails 4.1.</strong></p>
-
-<p>Is it worth it to make the effort to try it now, and push these small upcoming changes when you upgrade to Rails 4.2 to your mental stack? My suggestion is <strong>if you’re just right about to implement a queue system and willing to adapt to it, then it’s OK</strong>, otherwise maybe better just leave the current app running as is and wait for a more mature timing.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-22T18:16:00+09:00" pubdate data-updated="true">2014-10-22</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>

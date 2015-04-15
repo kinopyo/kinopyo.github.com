@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="If you ever need to restart your X session (your work will be lost if not previously saved. Press this keys
-alt+ctrl+back_space 日本語 alt+ctrl+ &hellip;">
+	<meta name="description" content="VMware Player/ WorkstationでゲストOS(ここではCentOS)をインストールした後、ホストOSとクリップボードを共有するためにはVMware Toolsをインストールする必要があります。 インストール VMware ToolsはゲストOS、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,53 @@ alt+ctrl+back_space 日本語 alt+ctrl+ &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/share-clipboard-in-guest-os-with-vmware">VMwareでゲストOSとクリップボードの共有</a></h1>
+	<div class="entry-content">
+		<p>VMware Player/ WorkstationでゲストOS(ここではCentOS)をインストールした後、ホストOSとクリップボードを共有するためにはVMware Toolsをインストールする必要があります。</p>
+
+<h2>インストール</h2>
+
+<p>VMware ToolsはゲストOS、つまり仮想マシン上のOSにインストールします。
+VMware Player/Workstationのメニューから VM-> VMware Toolsのインストールを選択します。
+出てくるダイアログに従ってファイルをダウンロード、解凍、インストールファイルの実行でやればいいです。インストールが成功すればクリップボードの共有は自動的に有効になるはずです。</p>
+
+<h2>おまけに</h2>
+
+<p>VMware Toolsをインストールするときディスプレイの解像度を設定できます。インストール後も自由に変更できるようになります。
+もう一つはVMwareのウィンドウから透明切り替えができるようになります。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-03T00:00:00+09:00" pubdate data-updated="true">2010-10-03</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/vmware/'>VMware</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -919,79 +965,6 @@ http://localhost/myapp/userguide/docs
 
 
 	<a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9">githubでの最も普通の開発プロセス</a></h1>
-	<div class="entry-content">
-		<p>プロジェクトに検索機能を追加しようとする。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout -b add-search
-</span><span class='line'>=&gt; ブランチ'add-search'を作成し、それに乗換
-</span><span class='line'>
-</span><span class='line'>// ファイル修正
-</span><span class='line'>
-</span><span class='line'>git add .
-</span><span class='line'>git commit -am "Done"
-</span><span class='line'>=&gt; 修正ファイルをコミット、コミットメッセージは"Done"
-</span><span class='line'>
-</span><span class='line'>git checkout master
-</span><span class='line'>=&gt; masterブランチに乗換
-</span><span class='line'>
-</span><span class='line'>git merge add-search
-</span><span class='line'>=&gt; add-searchでの修正内容をマージ
-</span><span class='line'>
-</span><span class='line'>git push
-</span><span class='line'>=&gt; サーバにpush
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-10T00:00:00+09:00" pubdate data-updated="true">2010-09-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/github/'>Github</a>
 
 
 </div>

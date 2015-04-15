@@ -7,9 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="閲覧者がコメントする際にチェックボックスにマークしておくことで、
-さらにコメントが追加された場合、メールで知らせてくれるプラグインです。
-閲覧者が自分のコメント以降に追加されたコメントを把握できるようになります。 ダウンロード http://txfx.net/wordpress-plugins/ &hellip;">
+	<meta name="description" content="WordPress記事にはてなブックマーク数を表示する方法です。
+プラグインのわざわざインストールする必要はなく、
+一行のコードで簡単に実現できるものです。 コード 1
+&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +92,69 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wordpressdisplay-hatena-bookmark-number-to-post">WordPress記事に、はてなブックマーク数を表示</a></h1>
+	<div class="entry-content">
+		<p>WordPress記事にはてなブックマーク数を表示する方法です。
+プラグインのわざわざインストールする必要はなく、
+一行のコードで簡単に実現できるものです。</p>
+
+<h2>コード</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo get_permalink(); ?&gt;"&gt;&lt;img src="http://b.hatena.ne.jp/entry/image/&lt;?php echo get_permalink(); ?&gt;" alt="" /&gt;&lt;/a&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>挿入箇所</h2>
+
+<p>Word Pressの管理画面内「表示 -> テーマエディタ」で下記ファイルを修正します。
++  ブログホームページのファイル（index.php）
++  アーカイブ、カテゴリ、タグなどのファイル（archive.php）
++  単一記事のファイル（single.php）</p>
+
+<h2>サンプル</h2>
+
+<p>例えば記事のタイトルの横にブックマーク数を表示させたい場合は「title」キーワードを検索して、
+&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;の中に上記コードを貼りつければOKです。
+こんな感じに修正します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo get_permalink(); ?&gt;"&gt;&lt;img src="http://b.hatena.ne.jp/entry/image/&lt;?php echo get_permalink(); ?&gt;" alt="" /&gt;&lt;/a&gt;&lt;/h2&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -673,60 +737,6 @@ Firefoxは大丈夫です。</p>
 
 
 	<a class='category' href='/blog/categories/javascript/'>Javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/hidemaru-convert-multiple-files-encode">秀丸で複数ファイルのエンコードを一括変換</a></h1>
-	<div class="entry-content">
-		<p>便利な秀丸マクロです。</p>
-
-<h2>ダウンロード</h2>
-
-<p><a href="http://hide.maruo.co.jp/lib/macro/encode_change.html">秀まるおのホームページ(サイトー企画)－ファイルエンコードバッチ変換</a></p>
-
-<h2>利用方法</h2>
-
-<p>秀丸のマクロに登録した後に実行すれば
-プロンプトのウィザードで手軽に操作できます。
-ただし変換元ファイルのエンコードは正しく入力しなければなりません。</p>
-
-<h2>特徴</h2>
-
-<ul>
-<li>サブフォルダにも効く</li>
-<li>ファイルパスと拡張子指定にワイルドカードが有効</li>
-</ul>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-10T00:00:00+09:00" pubdate data-updated="true">2009-12-10</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/tool/'>tool</a>
 
 
 </div>

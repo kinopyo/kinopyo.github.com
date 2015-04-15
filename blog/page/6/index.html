@@ -7,9 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Short note rake assets:precompile
-config.serve_static_assets = true # on production.rb
-rails s -e production That&#8217;s all. config. &hellip;">
+	<meta name="description" content="Sometimes it&#8217;s common that we tracked some files in the git repository first but later decided not to. For instance in rails application it &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +89,79 @@ rails s -e production That&#8217;s all. config. &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/git---ignore-changes-of-file-in-_gitignore-list/">Git - Ignore Changes of File in .gitignore List</a></h1>
+	<div class="entry-content">
+		<p>Sometimes it&#8217;s common that we tracked some files in the git repository first but later decided not to. For instance in rails application it could be <code>database.yml</code> file. So you added <code>database.yml</code> to <code>.gitignore</code> but when you changed something in that file, git will still show you.</p>
+
+<h2>Solution</h2>
+
+<ol>
+<li>First added files you don&#8217;t want to track to <code>.gitignore</code></li>
+<li>Then use either method 1 for single file, or method 2 for folders below.</li>
+</ol>
+
+
+<h3>method 1: git update-index &#8211;assume-unchanged</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git update-index --assume-unchanged config/database.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This works very well with single file, I&#8217;m not sure but maybe it doesn&#8217;t support folder.</p>
+
+<h3>Method 2: git rm -r &#8211;cached</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># This removes everything from the index</span>
+</span><span class='line'>git rm -r --cached .
+</span><span class='line'>
+</span><span class='line'><span class="c"># This will only add files not listed in the .gitignore</span>
+</span><span class='line'>git add .
+</span><span class='line'><span class="c"># then commit it</span>
+</span><span class='line'>git commit -m <span class="s2">&quot;.gitignore is now working&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://stackoverflow.com/questions/1139762/gitignore-file-not-ignoring">git - .gitignore file not ignoring - Stack Overflow</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-09T15:42:00+09:00" pubdate data-updated="true">2012-10-09</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/git/'>Git</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -684,76 +755,6 @@ rails s -e production That&#8217;s all. config. &hellip;">
 
 
 	<a class='category' href='/blog/categories/pow/'>Pow</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/my-new-blog-with-octopress/">My New Blog with Octopress</a></h1>
-	<div class="entry-content">
-		<p>Finally migrated all my posts from Wordpress to Octopress. I think it&#8217;s quite popular among hackers and geeks these days, if you don&#8217;t know it just google it, tons of results.</p>
-
-<p>There&#8217;re still a lot of works to do, like some posts with messy format or broken links, Disqus comments need to be migrated, categories are nonsense etc, but I&#8217;ll announce this anyway. Done is better than perfect right?</p>
-
-<p>I&#8217;m not gonna mention any migration details here, I&#8217;d like to look back and have a summary or something now.</p>
-
-<h1>Over 300 posts since 2009/10/07</h1>
-
-<p>I&#8217;m really surprised by myself. I was not aware of that I&#8217;ve done so many writings, and these&#8217;re only published ones(I have a lot of drafts). Even though many of them are just simple code gist and programming related.</p>
-
-<p>It&#8217;s so easy now to &#8220;execute&#8221; an action to a resource. Like a photo, favourite a tweet or even +1 a youtube movie. So our foot prints or activities are spread everywhere and some of them might be important or meaningful to you, that just a light-single-built-in action is not enough. I want to keep those non-physical, intangible but essential &#8220;things&#8221; here, as part of my life.</p>
-
-<h1>Japanese, English and Chinese</h1>
-
-<p>There was a time I was trying to write down every single post in these 3 languages. I believe the plugin I used in Wordpress is called <em>qTranslate</em>, which let you write with each language or all of them.</p>
-
-<p>After a while I noticed it was too hard for me. Translating same contents into a different language is boring and wasting of time, at least I tried and found out it doesn&#8217;t work for me. So this time, I want this blog to be an English mainly blog, with occasional different language posts. My plan is writing emotional feelings in Chinese, and social activities or something related to Japan in Japanese.</p>
-
-<p>I&#8217;m still keeping those language mixed posts here even though I think it&#8217;s not useful to my &#8220;readers&#8221;, not sure how many I got, I&#8217;d like to take those posts as old-days foot prints. &#8220;あの時がんばったな！ー&#8221; hehe.</p>
-
-<h1>About the priority or weight of each language</h1>
-
-<p>I want to be a top player in this programming field. In order to achieve that English is a MUST condition. I still remember when I first time read a programming book in English, it was so difficult that I hardly understood the meanings. But I keep trying and trying, now I&#8217;m very comfortable with it and believe it&#8217;s more natural than any other language in programming field.</p>
-
-<p>Besides the effort I put in English, I also want to start writing in my native language, Chinese. Although English is more friendly to me than before, it&#8217;s still difficult to describe my feelings and emotions precisely. I need more vocabularies. I need to look back to think about if there is a grammar mistake. So when I think about some topics such as meanings of life, or what I want to left to the world, am I making this world a little bit better, etc. In these cases I need to grab my most familiar weapon :)</p>
-
-<p>For Japanese, hmmm.. I&#8217;ll leave it for now :)</p>
-
-<h1>Google Adsense</h1>
-
-<p>If you&#8217;re an old readers of me, I hope you are, you may notice that there&#8217;s no ads anymore. Yeah I used to put those ads for experiment. With 500-600 daily PVs, it gave me around 4,000￥ every month. Not that much but it&#8217;s better than nothing, so I kept ads for a long time. But to be honest, as a personal blog it&#8217;s just annoying. I didn&#8217;t like it personally, and it&#8217;s for sure it gives people bad impression, I don&#8217;t like to miss a job opportunity if some head hunters open my blog and leave with a &#8220;WTF?!..&#8221;.</p>
-
-<p>Let&#8217;s just be simple and clean.</p>
-
-<p>That&#8217;s it~ see you next time.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-31T22:49:00+09:00" pubdate data-updated="true">2012-08-31</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/diary/'>diary</a>
 
 
 </div>

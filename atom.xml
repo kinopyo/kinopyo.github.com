@@ -4,7 +4,7 @@
   <title><![CDATA[Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2015-04-13T23:07:35+09:00</updated>
+  <updated>2015-04-15T20:49:53+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Reading Materials For OOCSS, BEM And SMACSS]]></title>
+    <link href="http://kinopyo.com/blog/reading-materials-for-oocss/"/>
+    <updated>2015-04-15T20:16:00+09:00</updated>
+    <id>http://kinopyo.com/blog/reading-materials-for-oocss</id>
+    <content type="html"><![CDATA[<p>After all these years of web development I still haven&#8217;t found a compelling way to organize and name css, once we all seemed to agree with the semantic naming methodology but as the project grows the magic aura disappears.</p>
+
+<p>Recently my team has started the transition to apply OOCSS, SMACSS and BEM techniques to current project. I tried it a while and really think this is the best way so far to cleanly organize your css(code and files), make it scalable and reusable, with simple intuitive naming methomelodgy.</p>
+
+<h2>Recommendations</h2>
+
+<p>Here are the reading materials I found pretty easy to follow:</p>
+
+<p><a href="https://mattstauffer.co/blog/organizing-css-oocss-smacss-and-bem">Organizing CSS: OOCSS, SMACSS, and BEM - MattStauffer.co</a></p>
+
+<p>High level introduction to each terms, with simple example. Read it and you&#8217;ll get the big picture.</p>
+
+<br>
+
+
+<p><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">MindBEMding – getting your head ’round BEM syntax – CSS Wizardry – CSS, OOCSS, front-end architecture, performance and more, by Harry Roberts</a></p>
+
+<p>Have an excellent guide on when to use BEM and not.</p>
+
+<br>
+
+
+<p><a href="http://blog.planetargon.com/entries/2014/1/7/the-pros-and-cons-of-modular-sass">The Pros and Cons of Modular Sass — Planet Argon Blog</a></p>
+
+<p>Great article on the idea behind modular css in general. And the argument over semantic class names convinced me.</p>
+
+<blockquote><p>Semantic markup is important in communicating the meaning of a webpage and is only becoming increasingly important; however, class names are for the developer. The exception to this relates to the use of microformats, in which case it is necessary to use specific semantic class names. It’s always important to consider names and what they communicate to you, your team, and future developers, but there is no dogmatic reason to avoid classes like “grid-1” or “pull-left” just because they describe presentation. People have conflated the use of semantic HTML (which relates to optimizing content for assistive technologies, browsers, the multitude of devices, and software that recontextualizes and reframes your content) with avoiding presentational class names for years, and I’m not quite sure why.</p></blockquote>
+
+<p><a href="http://mikefowler.me/2013/10/17/support-for-bem-modules-sass-3.3/">Support for BEM modules in Sass 3.3 | Mike Fowler</a></p>
+
+<p>How to write BEM in Sass.</p>
+
+<br>
+
+
+<p><a href="http://fullstackradio.com/episodes/1/">Full Stack Radio - 1: Matt Stauffer - CSS Semantics</a></p>
+
+<p>A podcast. You&#8217;ll get more out of it if you already some idea and experience about these terms, as in the podcast there&#8217;re deep discussions on the very details of daily development.</p>
+
+<br>
+
+
+<p>That&#8217;s it. Hope this could help you find your starting point.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My First Personal Quarterly Off-site]]></title>
@@ -1356,29 +1407,6 @@ I don’t think there is anything biologically or physiologically that you can p
 <p>You can still have methods on your model objects do things like wrap specific queries in class methods, or wrap specific mutations when multiple fields are commonly manipulated together.</p>
 
 <p>It&#8217;s okay to have those on your model object and then have the service use those but if you pull the behavior of the system out into the service, and you control the boundary between the service in the model by those methods you&#8217;ve written on the model, then you can mock out more easily and safely.</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My Take on Google I/O 2013 Keynote]]></title>
-    <link href="http://kinopyo.com/blog/my-take-on-google-io-2013-keynote/"/>
-    <updated>2013-05-19T07:52:00+09:00</updated>
-    <id>http://kinopyo.com/blog/my-take-on-google-io-2013-keynote</id>
-    <content type="html"><![CDATA[<div class='embed tweet'><blockquote class="twitter-tweet" lang="ja"><p>Can&#8217;t believe that I watched the 3.5 hours long keynote video of Google I/O 2013 <a href="https://t.co/mBj3E6pB4q" title="https://developers.google.com/events/io/">developers.google.com/events/io/</a></p>&mdash; kinopyoさん (@fantasyday) <a href="https://twitter.com/fantasyday/status/335721881887989760">2013年5月18日</a></blockquote>
-<script async src="http://kinopyo.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-
-
-<p>Yesterday I was trying to catch up with the Google I/O 2013 to see what’s new. After I read some wrap up articles like <a href="http://thenextweb.com/insider/2013/05/15/everything-announced-at-the-google-io-2013-keynote-in-one-handy-list/">Everything announced at the Google I/O 2013 keynote in one handy list - The Next Web</a>, I was very intrigued and ended up watching the whole 3.5 hours long keynote video.</p>
-
-<p>Given that I’m not an Android user or developer, I still felt the improvements on Android system quite impressive. But my biggest inspriation is not on any specific topic, it’s how Google thinks of solving problem in the terms of technolodgy, not just web or mobile, they always think in a big picture. Much bigger than I do.</p>
-
-<p>I’ve been a web developer for over 5 years and now I do feel I’ve got a handy toolkit to solve some problems. But I also feel I’ve constrained myself to this area, limited my imagination. Anything that can’t solve with the skills I’ve got is impossible. Web is bigger than I perceived, and yet it is just a part of technolodgy. We all know that it’s just a tool to solve problems, not the only way to do it.</p>
-
-<p>I need to think out of the box. It’s too comfortable to just sit there and see their innovations, instead of trying to be the guy on the stage to amaze people with your innovations. I’ve spent less and less time on predicting the future of the technolodgy, but more and more on reality issues, like where to live, when to get married or so. I guess that’s the inevitable trend as you getting old but at least I shouldn’t let what I’ve learned blind myself. Keep looking, don’t settle.</p>
-
-<p>I’d like to end this post with the quote of Steve Jobs.</p>
-
-<p><img src="http://cdn.kinopyo.com/images/stay_hungry_stay_foolish.jpg" alt="Stay hungry, stay foolish" /></p>
 ]]></content>
   </entry>
   

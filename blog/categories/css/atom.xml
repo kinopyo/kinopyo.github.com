@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CSS | Kinopyo Blog]]></title>
   <link href="http://kinopyo.com/blog/categories/css/atom.xml" rel="self"/>
   <link href="http://kinopyo.com/"/>
-  <updated>2015-04-13T23:07:35+09:00</updated>
+  <updated>2015-04-15T20:49:53+09:00</updated>
   <id>http://kinopyo.com/</id>
   <author>
     <name><![CDATA[Qihuan Piao]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Reading Materials For OOCSS, BEM And SMACSS]]></title>
+    <link href="http://kinopyo.com/blog/reading-materials-for-oocss/"/>
+    <updated>2015-04-15T20:16:00+09:00</updated>
+    <id>http://kinopyo.com/blog/reading-materials-for-oocss</id>
+    <content type="html"><![CDATA[<p>After all these years of web development I still haven't found a compelling way to organize and name css, once we all seemed to agree with the semantic naming methodology but as the project grows the magic aura disappears.</p>
+
+<p>Recently my team has started the transition to apply OOCSS, SMACSS and BEM techniques to current project. I tried it a while and really think this is the best way so far to cleanly organize your css(code and files), make it scalable and reusable, with simple intuitive naming methomelodgy.</p>
+
+<h2>Recommendations</h2>
+
+<p>Here are the reading materials I found pretty easy to follow:</p>
+
+<p><a href="https://mattstauffer.co/blog/organizing-css-oocss-smacss-and-bem">Organizing CSS: OOCSS, SMACSS, and BEM - MattStauffer.co</a></p>
+
+<p>High level introduction to each terms, with simple example. Read it and you'll get the big picture.</p>
+
+<br>
+
+
+<p><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">MindBEMding – getting your head ’round BEM syntax – CSS Wizardry – CSS, OOCSS, front-end architecture, performance and more, by Harry Roberts</a></p>
+
+<p>Have an excellent guide on when to use BEM and not.</p>
+
+<br>
+
+
+<p><a href="http://blog.planetargon.com/entries/2014/1/7/the-pros-and-cons-of-modular-sass">The Pros and Cons of Modular Sass — Planet Argon Blog</a></p>
+
+<p>Great article on the idea behind modular css in general. And the argument over semantic class names convinced me.</p>
+
+<blockquote><p>Semantic markup is important in communicating the meaning of a webpage and is only becoming increasingly important; however, class names are for the developer. The exception to this relates to the use of microformats, in which case it is necessary to use specific semantic class names. It’s always important to consider names and what they communicate to you, your team, and future developers, but there is no dogmatic reason to avoid classes like “grid-1” or “pull-left” just because they describe presentation. People have conflated the use of semantic HTML (which relates to optimizing content for assistive technologies, browsers, the multitude of devices, and software that recontextualizes and reframes your content) with avoiding presentational class names for years, and I’m not quite sure why.</p></blockquote>
+
+<p><a href="http://mikefowler.me/2013/10/17/support-for-bem-modules-sass-3.3/">Support for BEM modules in Sass 3.3 | Mike Fowler</a></p>
+
+<p>How to write BEM in Sass.</p>
+
+<br>
+
+
+<p><a href="http://fullstackradio.com/episodes/1/">Full Stack Radio - 1: Matt Stauffer - CSS Semantics</a></p>
+
+<p>A podcast. You'll get more out of it if you already some idea and experience about these terms, as in the podcast there're deep discussions on the very details of daily development.</p>
+
+<br>
+
+
+<p>That's it. Hope this could help you find your starting point.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[開発者ブログに便利なキーワードや言語シンタックスなどを強調するCSS]]></title>

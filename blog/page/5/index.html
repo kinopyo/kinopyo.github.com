@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="“小悲伤之xx篇”这个标题感觉比较可爱，呵呵不知道会不会真的写成一个系列。 关于便当盒，我有一个故事。 平时每天下班回家，做菜吃饭下来基本离睡觉只剩2-3个小时。总是感觉时间不够，却不知道为什么到了周末竟会感觉异常冗长。昨天也是这种情况。 上周公司给了每人3个很大的椎茸（しいたけ），也就是蘑菇。 &hellip;">
+	<meta name="description" content="I think I should be proud of myself to resist any alcohol in today&#8217;s party. It&#8217;s almost a month since I started this habit. I never &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,48 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/no-alcohol-i-survived-todays-party/">No Alcohol, I survived today&#8217;s party</a></h1>
+	<div class="entry-content">
+		<p><img src="http://cdn.kinopyo.com/images/no_beer.jpg" alt="" /></p>
+
+<p>I think I should be proud of myself to resist any alcohol in today&#8217;s party. It&#8217;s almost a month since I started this habit.</p>
+
+<p>I never consider myself as a alcoholic, even though in certain sences I do want a beer. Like when meeting with friends, when exausted from work, when in friends&#8217; welcome/farewell/whatever party, when feel weak and lonely during the middle of the night. I thought it would be quite easy for me to stop drinking, but the reality told me I was too naive. I did feel the threaten and temptation. Alcohol is a very foundamental thing for socialization, as an adualt sometimes it&#8217;s hard to say no. Especially like today, &#8220;All beers!&#8221;, &#8220;Sorry please give me tea&#8230;&#8221;.</p>
+
+<p>But I survived, for whatever the reason I started it, I don&#8217;t wanna give up, I&#8217;m gonna try my best to keep the records.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-20T00:39:00+09:00" pubdate data-updated="true">2012-12-20</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -744,79 +786,6 @@
 
 
 	<a class='category' href='/blog/categories/mac/'>Mac</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/git---ignore-changes-of-file-in-_gitignore-list/">Git - Ignore Changes of File in .gitignore List</a></h1>
-	<div class="entry-content">
-		<p>Sometimes it&#8217;s common that we tracked some files in the git repository first but later decided not to. For instance in rails application it could be <code>database.yml</code> file. So you added <code>database.yml</code> to <code>.gitignore</code> but when you changed something in that file, git will still show you.</p>
-
-<h2>Solution</h2>
-
-<ol>
-<li>First added files you don&#8217;t want to track to <code>.gitignore</code></li>
-<li>Then use either method 1 for single file, or method 2 for folders below.</li>
-</ol>
-
-
-<h3>method 1: git update-index &#8211;assume-unchanged</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git update-index --assume-unchanged config/database.yml</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This works very well with single file, I&#8217;m not sure but maybe it doesn&#8217;t support folder.</p>
-
-<h3>Method 2: git rm -r &#8211;cached</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># This removes everything from the index</span>
-</span><span class='line'>git rm -r --cached .
-</span><span class='line'>
-</span><span class='line'><span class="c"># This will only add files not listed in the .gitignore</span>
-</span><span class='line'>git add .
-</span><span class='line'><span class="c"># then commit it</span>
-</span><span class='line'>git commit -m <span class="s2">&quot;.gitignore is now working&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://stackoverflow.com/questions/1139762/gitignore-file-not-ignoring">git - .gitignore file not ignoring - Stack Overflow</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-09T15:42:00+09:00" pubdate data-updated="true">2012-10-09</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/git/'>Git</a>
 
 
 </div>

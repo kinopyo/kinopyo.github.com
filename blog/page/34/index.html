@@ -7,8 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="gihyoサイトの「ここが危ない！Web2.0のセキュリティ」連載の第4回：「Flash，JSONでのクロスドメインアクセス」の勉強メモです。 Flashのクロスドメインアクセス 動作原理 データ提供側で認証のファイルを設置するだけです。
-ファイル名は「crossdomain.xml」で、 &hellip;">
+	<meta name="description" content="@ITよりこんな意味深い記事を読みました。 自分にぴったりだと思うので、一部抜粋して引用させていただきます。 技術者は技術に専念。ただ、ビジネスにも興味は持て － ＠IT自分戦略研究所 所感 私もビジネスにあまり興味がなく、プログラミングが好きです。そして、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +89,70 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/cto-the-president-of-programmer">CTO：技術者にとっての社長</a></h1>
+	<div class="entry-content">
+		<p>@ITよりこんな意味深い記事を読みました。</p>
+
+
+<p>自分にぴったりだと思うので、一部抜粋して引用させていただきます。</p>
+
+
+<p><a href="http://jibun.atmarkit.co.jp/ljibun01/rensai/leader/41/01.html" target="_blank">技術者は技術に専念。ただ、ビジネスにも興味は持て － ＠IT自分戦略研究所</a></p>
+
+
+<h4>所感</h4>
+
+
+<p>私もビジネスにあまり興味がなく、プログラミングが好きです。そして、決してプログラミングの天才じゃないこともわかってます。そう、天才ではないけど、努力はできる、そのほうが自分に向いてると思います。</p>
+
+
+<br/>
+
+
+<p>CTOは格好いい、そして常に論理的に物事を考えそれを行動とコードに移す、一人前の魅力的な人類だと考えています。私は技術に特化していきます。</p>
+
+
+<blockquote>
+<h4>技術者にとっての社長</h4>
+<p>わたしは、CTOは「技術者にとっての社長」になるべきではないかと思っています。技術者とは、根本のところではビジネスに興味が持てない生き物だと思っています。わたし自身がそうですから。究極的には、ビジネスがどう、経営的にどうという部分よりも、問題があって、技術的にどう解決するか、という方が好きなんです。でも、社長はそうではいけない。社長はビジネスのことを24時間、考えている。そうなると、技術者は社長に、根本のところで付いていけなくなってしまう。上層部がみんなビジネスのことしか考えていなかったら、技術者は付いてきません。そういう意味で、CTOが「技術者にとっての社長」としての役割を果たすべきなのです。</p>
+<h4>特化</h4>
+<p>技術者は自分にとって最適な仕事を見つけるべきです。よく、プログラマからシステムエンジニアになって、そのあとプロジェクトマネージャになって……というキャリアパスが示されますが、わたしはそういう考え方は嫌いです。だって、プログラマとプロジェクトマネージャって、全然違う仕事ですよ。プログラマは機械相手、プロジェクトマネージャは人間相手で、そもそも向く方向すら違う。適性だって異なります。向いている方に専念した方がいい。これは私見ですが、プログラマとしての才能がある人がプロジェクトマネージャをやると、「プログラマの才能がマイナスに働く」ことすらあると思います。プロジェクトマネージャは大局からものを見なければいけないのだけれど、プログラマとしての才能にあふれている人は、細かい部分を見てしまいがちです。やはり、どちらかに特化した方がいい。</p>
+<p>　「餅は餅屋」です。プログラマなりプロジェクトマネージャなり、自分に向いている部分に特化した方がいい。ましてや、技術者にビジネスセンスを求めるなんて馬鹿げています。</p>
+</blockquote>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-25T00:00:00+09:00" pubdate data-updated="true">2009-11-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>Diary</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -976,124 +1039,6 @@ Googleで検索すると似たようなものはありましたが、
 
 
 	<a class='category' href='/blog/categories/movie/'>movie</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/javascript-message-of-access-denied-in-ie">IE JavaScript実行した際の「アクセスが拒否されました」メッセージ</a></h1>
-	<div class="entry-content">
-		<h2>経緯</h2>
-
-<p>iframeで動的に画面を読み込む際URL不正などによる通信エラーが起こした場合の</p>
-
-
-<p>エラーハンドラを追加したかったので判断するロジックが必要でした。</p>
-
-
-<p>わざと誤ったURLを渡して検証しましたが、以下のコードはだめでした。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// documentがnullかと思ってそれで判断しようとしたんです。</span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">)</span> <span class="p">{}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>現象</h2>
-
-<p>あるプロパティは存在しているのに、アクセスができない。コードで書くと</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// プロパティがオブジェクトに存在するかを判断</span>
-</span><span class='line'><span class="c1">// ここはアラーとが出した、つまり存在したってこと</span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="s2">&quot;aProperty&quot;</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;obj has aProperty&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="c1">// 次にそのオブジェクトにアクセスしようとすると</span>
-</span><span class='line'><span class="c1">// エラーになった</span>
-</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">aProperty</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>IE8の開発ツールで見たら「アクセスが拒否されました」と書いてある。</p>
-
-
-<p><img src="http://f.hatena.ne.jp/images/fotolife/k/kinopyo/20091119/20091119133655.jpg" alt="" /></p>
-
-<h2>エラーをcatch</h2>
-
-<p>判断のロジックをtry-catch文に書けばいいです。</p>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">try</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">number</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2147024891</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">//アクセスが拒否されました。</span>
-</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;別のメッセージ&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>参考サイト：<a href="http://sei.qee.jp/docs/freetalk/2009/02.html" target="_blank">http://sei.qee.jp/docs/freetalk/2009/02.html</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-19T00:00:00+09:00" pubdate data-updated="true">2009-11-19</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ie/'>IE</a>, <a class='category' href='/blog/categories/javascript/'>Javascript</a>
 
 
 </div>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/591837&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt; &hellip;">
+	<meta name="description" content="目的 OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい 方法 &lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/819806&quot;&gt; &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,58 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/rails-customize-redirect-url-after-sign-in-with-omniauth-twitter-provider">Rails OmniauthでTwitter認証ログイン後のcallback urlをカスタマイズ</a></h1>
+	<div class="entry-content">
+		<h2>目的</h2>
+
+<p>OmniauthでTwitterに認証ログイン後、ログイン前と同じページにリダイレクトしたい</p>
+
+<h2>方法</h2>
+
+<div><script src='https://gist.github.com/819806.js'></script>
+<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist/819806&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
+
+
+<p>libディレクトリのautoloadは<a href="http://www.kinopyo.com/blog/rails-autoload-lib-directory-file">Rails libディレクトリのファイルをautoload</a>を参考してください。</p>
+
+<h2>解説</h2>
+
+<p><em>redirect_to</em>パラメータ或いはrefererをログイン直前のリクエストから取ってセッションに保存するRack middwareの手法です。そしてsessions_controllerではセッション内に保存されたurlにリダイレクトし、セッションクリアしています。</p>
+
+<p>もちろんTwitter以外のproviderでの認証＆ログイン処理にも対応できます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-05T00:00:00+09:00" pubdate data-updated="true">2011-11-05</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/omniauth/'>omniauth</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/redirect/'>redirect</a>, <a class='category' href='/blog/categories/twitter/'>twitter</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -528,56 +580,6 @@
 
 
 	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/bookmark/'>bookmark</a>, <a class='category' href='/blog/categories/chromium/'>chromium</a>, <a class='category' href='/blog/categories/extension/'>extension</a>, <a class='category' href='/blog/categories/profiles/'>profiles</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/how-to-catch-return-keydown-event-of-iphone-safari">iPhone Safariキーボードの&#8221;Return&#8221;のkeydownイベントをキャッチ</a></h1>
-	<div class="entry-content">
-		<h2>Situation</h2>
-
-<p>iPhone Safariを使うときにあるInput boxで何か入力後&#8221;return&#8221;キーのkeydownイベントをキャッチして、何かしらのアクションを行いたい、のが目的です。よくあるのがreturnキーでformをsubmitしたり、ボタンクリックのアクションを行ったり、キーボードを隠したりするところですかね。</p>
-
-<h2>Keydown event</h2>
-
-<div><script src='https://gist.github.com/.js'></script>
-<noscript><pre><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;https://github.com/gist&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</code></pre></noscript></div>
-
-
-<p><em>13</em>という数字がreturnキーのkeydown時のコードです。実はJavascript経験がある方ならすぐ分かると思いますが、<em>13</em>は<em>Enterキー</em>のコードでもあります。</p>
-
-<p>もう一つのTipはキーボードを隠したいときはjQueryの<em>blur()</em>を使えばOKです。</p>
-
-<p>参考：<a href="http://stackoverflow.com/questions/5932317/how-to-capture-the-keyboard-return-event-on-iphone-browser">http://stackoverflow.com/questions/5932317/how-to-capture-the-keyboard-return-event-on-iphone-browser</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T00:00:00+09:00" pubdate data-updated="true">2011-10-25</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>, <a class='category' href='/blog/categories/keyboard/'>keyboard</a>, <a class='category' href='/blog/categories/keydown/'>keydown</a>, <a class='category' href='/blog/categories/safari/'>safari</a>
 
 
 </div>

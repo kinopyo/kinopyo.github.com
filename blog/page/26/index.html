@@ -7,16 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="&lt;&amp;!～&amp;>宣言部でメソッドを定義することができます。 1
-2
-3
-4
-5
-6
-&lt;%!
-private String myMethod (String str) { // some code return &quot;ok&quot;;
-}
-%&gt; &hellip;">
+	<meta name="description" content=" テキストをクリップボードにコピーするコードです。
+System.setClipboardの第一引数にテキストを渡せばOKです。 1
+System.setClipboard(text); ここにいいDEMOがあります。 2010-05-06 Flex ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +91,50 @@ private String myMethod (String str) { // some code return &quot;ok&quot;;
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/flex-copy-text-to-clipboar">Flexでシステムクリップボードに内容をコピーするには</a></h1>
+	<div class="entry-content">
+		<p>テキストをクリップボードにコピーするコードです。
+<em>System.setClipboard</em>の第一引数にテキストを渡せばOKです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">setClipboard</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://blog.flexexamples.com/2008/01/30/copying-text-to-the-operating-system-clipboard-in-flex/">ここにいいDEMOがあります。</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-06T00:00:00+09:00" pubdate data-updated="true">2010-05-06</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/flex/'>Flex</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -646,115 +683,6 @@ jQuery1.4.2では発生しないことを確認しました。</p>
 
 
 	<a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/jquery-performance-direct-dom-manipulatio">jQueryパフォーマンス：DOM操作について</a></h1>
-	<div class="entry-content">
-		<p>DOM操作を避けてjQueryのパフォーマンスを改善する掟です。
-こんなコードがあるとしましょう。</p>
-
-<h2>パフォーマンスの悪い例</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="o">*</span><span class="p">....</span><span class="o">*</span><span class="p">;</span>    <span class="c1">// 長さ100の配列とする</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="nx">li</span><span class="p">)</span>
-</span><span class='line'>       <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">)</span>
-</span><span class='line'>       <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">list</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>改善したコード</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="o">*</span><span class="p">....</span><span class="o">*</span><span class="p">;</span>    <span class="c1">// 長さ100の配列とする</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">li</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li id=&#39;li&quot;</span> <span class="o">+</span> <span class="nx">i</span> <span class="s2">&quot;&#39;&gt;&quot;</span> <span class="o">+</span> <span class="nx">list</span><span class="o">*</span><span class="nx">i</span><span class="o">*</span> <span class="o">+</span> <span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>まとめ</h2>
-
-<ul>
-<li>document.createElementの代わりにHTMLの文字列を作る</li>
-<li>jQueryオブジェクトに属性やテキストを設定するのではなく、直接HTML文字列に書く</li>
-<li>for文内毎回appendの代わりにhtml()を使う</li>
-</ul>
-
-
-<p>実際のプロジェクトでやってみたら10倍以上は速くなりました。
-とは言ってもこれはIE6でのパフォーマンスで、
-FirefoxやIE8だと悪い例のコードても遅いとは実感できないくらいでした。</p>
-
-<p>ちなみに
-$(li).attr(&#8230;).val(&#8230;).text(&#8230;)の方は読みやすいので結構気に入ったんですけど。。。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-26T00:00:00+09:00" pubdate data-updated="true">2010-03-26</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
 
 
 </div>

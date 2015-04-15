@@ -7,8 +7,26 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="TextMate Bundler： http://github.com/handcrafted/handcrafted-haml-textmate-bundle NetBeans plugin: http://wiki.netbeans.org/FaqPluginInstall
-It&#8217 &hellip;">
+	<meta name="description" content="プロジェクトに検索機能を追加しようとする。 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+git checkout -b add-search
+=&gt; ブランチ'add-search'を作成し、それに乗換 // ファイル修正 git add .
+git &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +108,79 @@ It&#8217 &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/github%e3%81%a7%e3%81%ae%e6%9c%80%e3%82%82%e6%99%ae%e9%80%9a%e3%81%ae%e9%96%8b%e7%99%ba%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9">githubでの最も普通の開発プロセス</a></h1>
+	<div class="entry-content">
+		<p>プロジェクトに検索機能を追加しようとする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout -b add-search
+</span><span class='line'>=&gt; ブランチ'add-search'を作成し、それに乗換
+</span><span class='line'>
+</span><span class='line'>// ファイル修正
+</span><span class='line'>
+</span><span class='line'>git add .
+</span><span class='line'>git commit -am "Done"
+</span><span class='line'>=&gt; 修正ファイルをコミット、コミットメッセージは"Done"
+</span><span class='line'>
+</span><span class='line'>git checkout master
+</span><span class='line'>=&gt; masterブランチに乗換
+</span><span class='line'>
+</span><span class='line'>git merge add-search
+</span><span class='line'>=&gt; add-searchでの修正内容をマージ
+</span><span class='line'>
+</span><span class='line'>git push
+</span><span class='line'>=&gt; サーバにpush
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-10T00:00:00+09:00" pubdate data-updated="true">2010-09-10</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/github/'>Github</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -962,60 +1053,6 @@ Finderで表示する方法を紹介します。
 
 
 <time datetime="2010-07-03T00:00:00+09:00" pubdate data-updated="true">2010-07-03</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/iphone/'>iPhone</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/save-iphone-notes-calendar-to-gmail-and-google-calenda">Save iPhone Notes to a Gmail Account</a></h1>
-	<div class="entry-content">
-		<p>iOS4をインストールできたら、メールアカウントの設定画面をチェックしてみてください。
-「メモ（Notes）」という項目が追加されているはずです。
-この項目を「オン」にすればOK。
-メモは、Gmail上で「Notes」というラベルがつけられています。
-ちなみにカレンダーもGoogleに同期できます。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes.png" title="iphone-notes" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-2.png" title="iphone-notes-2" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-4.png" title="iphone-notes-4" ></p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2010/06/iphone-notes-3.png" title="iphone-notes-3" ></p>
-
-<p><a href="http://www.lifehacker.jp/2010/06/100623iphonenotes_sync.html">http://www.lifehacker.jp/2010/06/100623iphonenotes_sync.html</a></p>
-
-<h1>English</h1>
-
-<p>Apple&#8217;s iOS 4 (iPhone OS 4) added an important missing feature: a way to save your notes online. If you add an IMAP mail account like Gmail or Yahoo Mail and enable the notes feature, you can create notes that are saved to your email account.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-24T00:00:00+09:00" pubdate data-updated="true">2010-06-24</time></div>
 	<div class="tags">
 
 

@@ -7,10 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="ダウンロード Tomcat公式サイトダウンロードページで上記ファイルをダウンロード インストール ただ適当な場所に解凍するだけです。 起動/終了 ターミナルを起動しTOMCAT/binに移動する
-+ 起動 ./startup.shを実行
-+ 終了 ./shutdown.sh
-&#8221 &hellip;">
+	<meta name="description" content="iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
+12月で1.68%でした。
+僅かな割合なんですが、それでもうれしいです。 WPTouch WPTouchはiPhone閲覧に最適にしてくれるWPプラグインです。
+インストールするだけでもうOKです。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +92,67 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/wp-plugin-iphone-theme-wptouch">iPhoneで閲覧に最適にしてくれるWPプラグイン - WPTouch</a></h1>
+	<div class="entry-content">
+		<p>iPhoneでうちのブログを見ている割合をGoogle Analyticsで確認しました。
+12月で1.68%でした。
+僅かな割合なんですが、それでもうれしいです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/Blog-Browsers-and-OS.jpg" title="Blog-Browsers-and-OS" ></p>
+
+<h2>WPTouch</h2>
+
+<p>WPTouchはiPhone閲覧に最適にしてくれるWPプラグインです。
+インストールするだけでもうOKです。
+設定メニューも簡単で、とても使い易いです。</p>
+
+<br/>
+
+
+<p>以下iPhoneでこのブログを見る際のスクリーンショットです。
+今のところFollow Meのプラグインがうまく表示されませんが、
+これはFlashがiPhoneではサポートされてないからです。</p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_lists.jpg" title="初期画面：記事一覧" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_preview.jpg" title="記事概要" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_detail.jpg" title="記事詳細" ></p>
+
+<p><img src="http://kinopyo.com/wp-content/uploads/2010/01/article_metadata.jpg" title="カテゴリ、タグ、コメント" ></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-02T00:00:00+09:00" pubdate data-updated="true">2010-01-02</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -717,69 +778,6 @@ FirefoxとIEの取り方が異なるため、その方法を紹介します。</
 
 
 	<a class='category' href='/blog/categories/webservice/'>webservice</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/wordpressdisplay-hatena-bookmark-number-to-post">WordPress記事に、はてなブックマーク数を表示</a></h1>
-	<div class="entry-content">
-		<p>WordPress記事にはてなブックマーク数を表示する方法です。
-プラグインのわざわざインストールする必要はなく、
-一行のコードで簡単に実現できるものです。</p>
-
-<h2>コード</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo get_permalink(); ?&gt;"&gt;&lt;img src="http://b.hatena.ne.jp/entry/image/&lt;?php echo get_permalink(); ?&gt;" alt="" /&gt;&lt;/a&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>挿入箇所</h2>
-
-<p>Word Pressの管理画面内「表示 -> テーマエディタ」で下記ファイルを修正します。
-+  ブログホームページのファイル（index.php）
-+  アーカイブ、カテゴリ、タグなどのファイル（archive.php）
-+  単一記事のファイル（single.php）</p>
-
-<h2>サンプル</h2>
-
-<p>例えば記事のタイトルの横にブックマーク数を表示させたい場合は「title」キーワードを検索して、
-&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;の中に上記コードを貼りつければOKです。
-こんな感じに修正します。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;a href="http://b.hatena.ne.jp/entry/&lt;?php echo get_permalink(); ?&gt;"&gt;&lt;img src="http://b.hatena.ne.jp/entry/image/&lt;?php echo get_permalink(); ?&gt;" alt="" /&gt;&lt;/a&gt;&lt;/h2&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-13T00:00:00+09:00" pubdate data-updated="true">2009-12-13</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
 
 
 </div>

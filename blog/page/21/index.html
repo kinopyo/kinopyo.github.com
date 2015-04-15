@@ -7,7 +7,8 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="autocommitの値を持ちましてMySQLでのトランザクションを制御できます。 1
+	<meta name="description" content="PHP側で 1
+echo $_GET[&#39;callback&#39;] . &#39;(&#39; . json_encode($object) . &#39;);&#39;; JS側で 1
 2
 3
 4
@@ -15,21 +16,7 @@
 6
 7
 8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
---暗黙(自動)コミットを無効に
-SET AUTOCOMMIT = 0;
---トランザクション開始
-BEGIN &hellip;">
+$(function(){ $.getJSON(&#39;foo. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -111,6 +98,71 @@ BEGIN &hellip;">
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/memo-php-return-json">メモ：PHPでJSONPを返すサンプルコード</a></h1>
+	<div class="entry-content">
+		<h2>PHP側で</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo $_GET[&#39;callback&#39;] . &#39;(&#39; . json_encode($object) . &#39;);&#39;;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>JS側で</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>   <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;foo.php?callback=?&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">{},</span>  <span class="c1">// No additional parameters sent</span>
+</span><span class='line'>    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="c1">// data is now JSON object instantiated from retrieved info</span>
+</span><span class='line'>       <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="o">*</span><span class="s1">&#39;key&#39;</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>   <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考：
+<a href="http://www.carolinamantis.com/wordpress/?p=29">Mantis and Jessamine | Creating a JSONP Data Provider in PHP</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-21T00:00:00+09:00" pubdate data-updated="true">2010-12-21</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/jsonp/'>JSONP</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php/'>php</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1144,143 +1196,6 @@ ps -axの一番目の列はプロセスのIDの列です。
 
 
 	<a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/setup-development-environment-for-ruby-on-rails-in-mac">[更新]MacでRuby on Rails開発：環境構築から </a></h1>
-	<div class="entry-content">
-		<p>MacにはデフォルトでRubyが入ってそうです。
-ターミナルを開いてrails -vを叩いたらバージョン情報が出てきました。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby 1.8.7 (2009-06-08 patchlevel 173) *universal-darwin10.0*
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>そしてRubyだけじゃなくRailsも入ってましてびっくりしました。
-すごいですねMacは。。。
-て、railsのバージョンもrails -vで確認できますが、
-デフォルトのバージョンは古いそうで下記のコマンドでアップグレードできます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo gem update rails
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>するとこんなログ情報が出ます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Updating installed gems
-</span><span class='line'>Updating rails
-</span><span class='line'>WARNING:  Installing to ~/.gem since /Library/Ruby/Gems/1.8 and
-</span><span class='line'>    /usr/bin aren't both writable.
-</span><span class='line'>WARNING:  You don't have /Users/zolo/.gem/ruby/1.8/bin in your PATH,
-</span><span class='line'>    gem executables will not run.
-</span><span class='line'>Successfully installed activesupport-2.3.8
-</span><span class='line'>Successfully installed activerecord-2.3.8
-</span><span class='line'>Successfully installed rack-1.1.0
-</span><span class='line'>Successfully installed actionpack-2.3.8
-</span><span class='line'>Successfully installed actionmailer-2.3.8
-</span><span class='line'>Successfully installed activeresource-2.3.8
-</span><span class='line'>Successfully installed rails-2.3.8
-</span><span class='line'>Gems updated: activesupport, activerecord, rack, actionpack, actionmailer, activeresource, rails
-</span><span class='line'>Installing ri documentation for activesupport-2.3.8...
-</span><span class='line'>Installing ri documentation for activerecord-2.3.8...
-</span><span class='line'>Installing ri documentation for rack-1.1.0...
-</span><span class='line'>Installing ri documentation for actionpack-2.3.8...
-</span><span class='line'>Installing ri documentation for actionmailer-2.3.8...
-</span><span class='line'>Installing ri documentation for activeresource-2.3.8...
-</span><span class='line'>Installing ri documentation for rails-2.3.8...
-</span><span class='line'>Installing RDoc documentation for activesupport-2.3.8...
-</span><span class='line'>Installing RDoc documentation for activerecord-2.3.8...
-</span><span class='line'>Installing RDoc documentation for rack-1.1.0...
-</span><span class='line'>Installing RDoc documentation for actionpack-2.3.8...
-</span><span class='line'>Installing RDoc documentation for actionmailer-2.3.8...
-</span><span class='line'>Installing RDoc documentation for activeresource-2.3.8...
-</span><span class='line'>Installing RDoc documentation for rails-2.3.8...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>多少時間がかかります。
-これでMacでのRuby開発の準備は完了です。</p>
-
-<h2>更新</h2>
-
-<p>gem update railsにsudoを付けないとこんなエラーが出るかも</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>WARNING:  Installing to ~/.gem since /Library/Ruby/Gems/1.8 and
-</span><span class='line'>    /usr/bin aren't both writable.
-</span><span class='line'>WARNING:  You don't have /Users/paku-k/.gem/ruby/1.8/bin in your PATH,
-</span><span class='line'>    gem executables will not run.
-</span><span class='line'>ERROR:  Error installing rails:
-</span><span class='line'>  bundler requires RubyGems version &gt;= 1.3.6
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-29T00:00:00+09:00" pubdate data-updated="true">2010-11-29</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/環境構築/'>環境構築</a>
 
 
 </div>
