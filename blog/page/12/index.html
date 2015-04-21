@@ -7,7 +7,7 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="Situation iPhone Safariを使うときにあるInput boxで何か入力後&#8221;return&#8221;キーのkeydownイベントをキャッチして、何かしらのアクションを行いたい、のが目的です。よくあるのがreturnキーでformをsubmitしたり、 &hellip;">
+	<meta name="description" content="メリット マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。 実際はChromeではなく、Chromeが恩恵を受けているオープンソースプロジェクトのChromiumを使います。Chromeでもできるっちゃできるんですが、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +89,58 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/how-to-enable-multiple-profiles-in-chome-chromium">Chrome（Chromium）でマルチプロファイルを使う</a></h1>
+	<div class="entry-content">
+		<h2>メリット</h2>
+
+<p>マルチプロファイルを有効することでそれぞれブックマーク、エクステンション、Themeとアプリを設定できるようになります。</p>
+
+<p>実際はChromeではなく、Chromeが恩恵を受けているオープンソースプロジェクトのChromiumを使います。Chromeでもできるっちゃできるんですが、手順が面倒くさいし使い勝手が悪いです。</p>
+
+<p><a href="http://blog.av-jyo.com/2011-09/usefully-chromium-setting-for-web-development.html">http://blog.av-jyo.com/2011-09/usefully-chromium-setting-for-web-development.html</a>を参考にしました。</p>
+
+<h2>手順</h2>
+
+<ul>
+<li><a href="http://mrgeckosmedia.com/applications/info/Chromatic">http://mrgeckosmedia.com/applications/info/Chromatic</a>でStableなChromiumをインストール</li>
+<li><em>about:flags</em>で<em>Multiple Profiles</em>をEnable</li>
+<li>再起動して右上に人の画像をクリックしてプロファイルを管理</li>
+<li>メインプロファイルに切り替え、ブックマーク、エクステンションなどの同期を行う</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00+09:00" pubdate data-updated="true">2011-10-25</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/bookmark/'>bookmark</a>, <a class='category' href='/blog/categories/chromium/'>chromium</a>, <a class='category' href='/blog/categories/extension/'>extension</a>, <a class='category' href='/blog/categories/profiles/'>profiles</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1370,54 +1422,6 @@ Below is a sample for Safari.</p>
 
 
 	<a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/log/'>log</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/mac-move-keyboard-focus-between-windows-and-dialogs">Mac Tabであらゆるダイアログのフォーカスを移動</a></h1>
-	<div class="entry-content">
-		<p>こんなシナリオを想像してみてください。Editorを終了しようとするときに「Don&#8217;t Save, Cancel, Save&#8230;」のダイアログが出るはずです、その時フォーカスはSaveにあり、Tabでは移動できないからしょうがなくマウスでクリックしてしまう。。これがTabで遷移して操作できたらいいなぁ〜を解決する方法です。</p>
-
-<p>System Preferences -> Keyboard -> Full Keyboard AccessのAll controlsを有効に設定します！</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Keyboard-All-controls.jpg" title="Keyboard All controls" ></p>
-
-<p>そこでの説明文の通り「In windows and dialogs, press Tab to move keyboard focus between All controls」、Tabであらゆるウィンドウやダイアログのキーボードフォーカスを移動することができます。</p>
-
-<p><img src="http://www.kinopyo.com/wp-content/uploads/2011/10/Control-using-tab-focus.jpg" title="Control using tab focus" ></p>
-
-<p>上記のようなダイアログが出るとしたら、Tab(Shift + Tab)で薄青色のフォーカスを移動して、スペースキーで該当の操作を実行できます。通常の青色はフォーカスの位置と関係なくreturnキーで操作を実行できます。</p>
-
-<p>これでマウスなしでらくらく。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-12T00:00:00+09:00" pubdate data-updated="true">2011-10-12</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/shortcut/'>shortcut</a>, <a class='category' href='/blog/categories/tab/'>tab</a>
 
 
 </div>

@@ -7,7 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="@ITよりこんな意味深い記事を読みました。 自分にぴったりだと思うので、一部抜粋して引用させていただきます。 技術者は技術に専念。ただ、ビジネスにも興味は持て － ＠IT自分戦略研究所 所感 私もビジネスにあまり興味がなく、プログラミングが好きです。そして、 &hellip;">
+	<meta name="description" content="専門家ではないので記事のテーマがちょっとでかすぎるかもしれませんが、 最近気になったニュースをベースにざっと述べようと思います。
+2010年注目の資格、一位が仮想化技術
+これは@ITの記事による結果です。 仮想化といえばVMWareくらいは知ってますけど、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +91,127 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/it-news-these-days">最近のIT業界動向</a></h1>
+	<div class="entry-content">
+		<div class="section">
+
+専門家ではないので記事のテーマがちょっとでかすぎるかもしれませんが、
+
+最近気になったニュースをベースにざっと述べようと思います。
+<h4>2010年注目の資格、一位が仮想化技術</h4>
+これは@ITの記事による結果です。
+
+仮想化といえばVMWareくらいは知ってますけど、
+
+Mac上でWindowsのアプリをたまたま実行する時に使ってました。
+
+「運用コスト削減のためのサーバ統合やクラウドの活用」などのことにどう繋いでいるのか全然イメージできません。。。
+
+少し興味はあるんで、後で勉強しとこう。
+
+関連の資格は以下のようです。
+<ul>
+    <li>ヴイエムウェアの「VCP」（VMware Certified Professional）</li>
+    <li>マイクロソフトの「Hyper-V仮想化検定」「MCP」（Microsoft Certification Program）</li>
+    <li>シトリックスの「CCEA」（Citrix XenServerのCitrix Certified Enterprise Administrator）</li>
+</ul>
+<h4>クラウド</h4>
+このキーワードもITユースから頻繁に出てきますが、
+
+どのようにプログラマのキャリアに影響するか、
+
+知りたいですね。
+<h4>JDK 7 Milestone 5 build</h4>
+Java7のニュースはずっと聞いてたんですが、
+
+なかなか使ってみる時間がないですね。
+
+今日雑誌でちらっと読んだのですが、
+
+モジュール化、多言語の対応などの機能が追加されたそうです。
+
+特にモジュールのサポートは「JAR HELL」(Jarの地獄)から救う有力な機能だそうです。これからクラスパスなど特に気にしなくてモジュール単位になりますと。
+
+またコレクション周りの使い方も強化されましたね。
+
+実は一番気に入ったのがswitch文がやっとString文字列をサポートしたことです。
+
+今までJavaのswtich文があんまり使えないなと何となく感じましたが、
+
+Java7になるとやっと文字列できましたね！
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;...&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="k">switch</span> <span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'><span class="k">case</span> <span class="s">&quot;quux&quot;</span><span class="o">:</span>
+</span><span class='line'>  <span class="n">processQuux</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span><span class='line'>  <span class="c1">// fall-through</span>
+</span><span class='line'><span class="k">case</span> <span class="s">&quot;foo&quot;</span><span class="o">:</span>
+</span><span class='line'><span class="k">case</span> <span class="s">&quot;bar&quot;</span><span class="o">:</span>
+</span><span class='line'>  <span class="n">processFooOrBar</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span><span class='line'>  <span class="k">break</span><span class="o">;</span>
+</span><span class='line'><span class="k">case</span> <span class="s">&quot;baz&quot;</span><span class="o">:</span>
+</span><span class='line'>  <span class="n">processBaz</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span><span class='line'>  <span class="c1">// fall-through</span>
+</span><span class='line'><span class="k">default</span><span class="o">:</span>
+</span><span class='line'>  <span class="n">processDefault</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span><span class='line'>  <span class="k">break</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+<h4>In the end..</h4>
+ということでIT業界どんどん進化していきます。
+
+Java7,,,やってみたいっす！
+
+</div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-26T00:00:00+09:00" pubdate data-updated="true">2009-11-26</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/diary/'>diary</a>, <a class='category' href='/blog/categories/nil/'>nil</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -977,68 +1100,6 @@ Googleで検索すると似たようなものはありましたが、
 
 
 	<a class='category' href='/blog/categories/nil/'>nil</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/man-watch-this-movie-hang-over">Man ! Watch this movie! [Hang Over]</a></h1>
-	<div class="entry-content">
-		<div class="section">
-<p><object width="425" height="336"><param name="movie" value="http://www.youtube.com/v/vhFVZsk3XEs"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/vhFVZsk3XEs" type="application/x-shockwave-flash" wmode="transparent" width="425" height="336" FlashVars="movie_url=http://d.hatena.ne.jp/video/youtube/vhFVZsk3XEs"></embed></object>
-<a href="http://d.hatena.ne.jp/video/youtube/vhFVZsk3XEs" alt="この動画を含む日記"><img src="/images/d_entry.gif" alt="D" border="0" style="vertical-align: bottom;" title="この動画を含む日記"></a></p>
-<p>If you are a Man, no matter you are lonely now, or married.</p>
-<p>You should watch this, trust me.</p>
-<p>It&#8217;s about freedom, wild, excited.</p>
-<p>I think English is more powerful than Japanese this moment,</p>
-<p>I really love it.</p>
-<p>You, should watch this, seriously.</p>
-<p>And if you like it, you should check the soundtrack CD below too.</p>
-<p>It&#8217;s really cool.</p>
-<div class="hatena-asin-detail">
-<a href="http://d.hatena.ne.jp/asin/B00274SIJW/fantasyday-22"><img src="http://ecx.images-amazon.com/images/I/51Ryt4%2B4WbL._SL160_.jpg" class="hatena-asin-detail-image" alt="The Hangover" title="The Hangover"></a>
-<div class="hatena-asin-detail-info">
-<p class="hatena-asin-detail-title"><a href="http://d.hatena.ne.jp/asin/B00274SIJW/fantasyday-22">The Hangover</a></p>
-<ul>
-<li><span class="hatena-asin-detail-label">アーティスト:</span> <a href="http://d.hatena.ne.jp/keyword/Original%20Soundtrack" class="keyword">Original Soundtrack</a></li>
-<li><span class="hatena-asin-detail-label">出版社/メーカー:</span> <a href="http://d.hatena.ne.jp/keyword/New%20Line" class="keyword">New Line</a></li>
-<li><span class="hatena-asin-detail-label">発売日:</span> 2009/06/23</li>
-<li><span class="hatena-asin-detail-label">メディア:</span> CD</li>
-<li><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00274SIJW/fantasyday-22/" target="_blank">Amazon.co.jpで詳細を見る</a></li>
-</ul>
-</div>
-<div class="hatena-asin-detail-foot"></div>
-</div>
-</div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-20T00:00:00+09:00" pubdate data-updated="true">2009-11-20</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/movie/'>movie</a>
 
 
 </div>

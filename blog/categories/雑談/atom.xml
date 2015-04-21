@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 雑談 | Kinopyo Blog]]></title>
+  <link href="http://kinopyo.com/blog/categories/雑談/atom.xml" rel="self"/>
+  <link href="http://kinopyo.com/"/>
+  <updated>2015-04-21T23:57:20+09:00</updated>
+  <id>http://kinopyo.com/</id>
+  <author>
+    <name><![CDATA[Qihuan Piao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ものづくりと発信力]]></title>
+    <link href="http://kinopyo.com/blog/craft-and-voice/"/>
+    <updated>2015-04-21T13:02:00+09:00</updated>
+    <id>http://kinopyo.com/blog/craft-and-voice</id>
+    <content type="html"><![CDATA[<h2 class="lead">舘鼻則孝さんの講演を聞いて</h2>
+
+
+<p>LADY GAGAの靴を作る若きデザイナーとして名を知られた舘鼻則孝さんが今日うちの会社で講演があった。
+「黙々とものづくりを一人で楽しむよりも、それを発信したい、共有したい」という気持ちを強く感じた。トークの内容自体はもちろん良い刺激になったが、外国人である自分にとってそれ以上に感じたのは舘鼻則孝さんの講演のナチュナルさとボキャブラリーの豊富さだった。</p>
+
+<p><img src="http://cdn.kinopyo.com/images/noritaka.jpg" alt="舘鼻則孝がデザインした靴" /></p>
+
+<p>日本に来て8年目、日本語がネイテイブレベルになっても全然おかしくないくらいの年月が経った。しかし本当に上達してたのは来日最初の2年くらいで、その後はずっと停滞状態。身の回りの日本語は基本ビジネスや仕事のコンテキストで、読書もプログラミングや理系寄りの本ばっかりで偏りが強かった。特にここ二年間は完全に英語の環境に置かれ（自分の意思で）、日本語で何かを深くディスカッション
+するようなチャンスはなかなかなかった。</p>
+
+<p>でも今日の講演を聞いた時はまるで自分のネイティブの言語で話された時となぜか同レベルでの親しみと共感があった。舘鼻則孝さんの本業はもちろん言語のマスターではないが、タイミングよくピックアップされた単語があまりにも正確すぎて、表現したい内容がとても伝わってきた。新鮮で斬新で的確、昔の文豪のようにパット理解しきれいないほどの言葉を並ばなくても、十分人の心に響くことができるんだ、と思った。</p>
+
+<p>鼻則孝さん本人は作品と裏付けてる文化をより多くの人に発信したいため、普段からコミュニケーションを重視しているそうだ。それに比べ僕は多くの場合人との会話を避けたがる癖があるし、いいものを作れば勝手に評価される、そうなるべきと心のどっかで思ってる。今は情報溢れの時代であり、凄腕を持ってる人は少なくない、このノイジーな世の中でいかに自分の思想なり作品なりを発信するかは、普段から意識してないとそこで成長は止まる。</p>
+
+<blockquote><p>I don't think writers are sacred, but words are. They deserve respect. If you get the right ones in the right order, you might nudge the world a little or make a poem that children will speak for you when you are dead.</p>
+
+<p>― Tom Stoppard, The Real Thing: A Play</p></blockquote>
+
+<p>この言葉が最近結構気に入ってて、「正しい単語を正しい順番に並べば世界をちょっとだけ変えたり、詩でも作ったら死後は子供が永遠にあなたの作品を詠みつづけるだろう」(あまりよく訳してないところはご理解していただきたい。。)</p>
+
+<p>自分の主張や考え方をうまく伝えず悔しい思いをしたことは今まで多々ある。コミュニケーションの重要さをあらためて認識させて本当に感謝。技術だけでなく、発信力の引き出しも増やさないと、と強く思った。</p>
+
+<p>下記完全に個人用のまとめ</p>
+
+<ul>
+<li>常に発信したい意欲を持つこと</li>
+<li>そのためには自分をできれば職場、職業と離れたコンテキストに置くこと</li>
+<li>肉ばっかり（理系の本）食べずに野菜（対して文系？）もちゃんと摂取すること</li>
+</ul>
+
+
+<p>各種リンク：</p>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E8%88%98%E9%BC%BB%E5%89%87%E5%AD%9D">舘鼻則孝 - Wikipedia</a></li>
+<li><a href="http://noritakatatehana.com/">NORITAKA TATEHANA</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A5%E3%82%BF%E3%82%A4%E3%83%8A%E3%83%BC%E6%95%99%E8%82%B2">シュタイナー教育 - Wikipedia</a></li>
+<li><a href="https://www.google.co.jp/search?q=%E8%88%98%E9%BC%BB%E5%89%87%E5%AD%9D&amp;es_sm=91&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ei=MVk2Ve6xJeXVmgWW94DACg&amp;ved=0CAcQ_AUoAQ&amp;biw=1366&amp;bih=669#tbm=isch&amp;q=%E8%88%98%E9%BC%BB%E5%89%87%E5%AD%9D+Lady+gaga">舘鼻則孝 Lady gaga - Google Search</a></li>
+</ul>
+
+
+<p>今まで聞いた講演や読んだ本の中で言葉遣いで一番共感を得たのは？ぜひコメントで教えてください！</p>
+]]></content>
+  </entry>
+  
+</feed>

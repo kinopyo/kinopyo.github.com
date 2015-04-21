@@ -7,9 +7,10 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content=" テキストをクリップボードにコピーするコードです。
-System.setClipboardの第一引数にテキストを渡せばOKです。 1
-System.setClipboard(text); ここにいいDEMOがあります。 2010-05-06 Flex ">
+	<meta name="description" content="まずGoogleが実際使っている画像ファイルを見てみましょう。 いろんな画像、アイコンが混じっていますね。
+そして実際使うときはCSSのbackground-positionで表示するモノを指定しているようです。
+例えば検索結果の星マークのCSSを見ると 1
+background- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,6 +92,63 @@ System.setClipboard(text); ここにいいDEMOがあります。 2010-05-06 Flex
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/merge-images-and-icons-into-one-file-and-use-background-positon-to-select">各画像を一つにまとめてbackground-positionで指定するのは？</a></h1>
+	<div class="entry-content">
+		<p>まずGoogleが実際使っている画像ファイルを見てみましょう。</p>
+
+<p><img src="http://www.google.co.jp/images/srpr/nav_logo13.png" alt="Googleの各アイコン" /></p>
+
+<p>いろんな画像、アイコンが混じっていますね。
+そして実際使うときはCSSのbackground-positionで表示するモノを指定しているようです。
+例えば検索結果の星マークのCSSを見ると</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>background-position: -117px -117px;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Webサーバとのコネクションが1回で済むので、
+それが狙いですね。</p>
+
+<p>background-positionに関しての説明は：
+<a href="http://www.htmq.com/style/background-position.shtml">http://www.htmq.com/style/background-position.shtml</a></p>
+
+<p>ちなみにこういることをやってくれるライブラリもあるようです。
+使ったことはまだないですけど。
+<a href="http://csssprites.org/">http://csssprites.org/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-08T00:00:00+09:00" pubdate data-updated="true">2010-05-08</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>CSS</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -633,56 +691,6 @@ jQuery1.4.2では発生しないことを確認しました。</p>
 
 
 	<a class='category' href='/blog/categories/jquery/'>jQuery</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/java-init-map-with-data">Java: Mapをnewした時に値を入れて初期化するコード</a></h1>
-	<div class="entry-content">
-		<p>表題の通り、Mapをnewしたときに値を入れて
-初期化するコード方法です。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>        <span class="n">put</span><span class="o">(</span><span class="s">&quot;one&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-31T00:00:00+09:00" pubdate data-updated="true">2010-03-31</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>Java</a>
 
 
 </div>

@@ -7,10 +7,9 @@
 	<meta name="author" content="Qihuan Piao">
 
 	
-	<meta name="description" content="マルチタッチがサポートされているマジックマウス、
-ついに購入しました。
-今のところはまだクリックとスクロールだけデフォルトで使えますが、
-そのうちフルパワーを発揮したいと思います。 マルチタッチ以外でBluetoothが使えるのも私にとって大きなポイントです。 &hellip;">
+	<meta name="description" content="基本 多分ほとんどの人は分かっていると思いますが、
+jspファイル内のコメントの記述は以下になります。 1
+&lt;%-- JSPのコメント --%&gt; そしてHTMLのコメントの記述は 1 &amp;lt;!-- HTMLのコメント --&gt; 問題 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,6 +91,106 @@
   
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/comment-in-jsp-should-use-jsp-expression">jsp内のコメントアウトはjsp式の記述で</a></h1>
+	<div class="entry-content">
+		<h2>基本</h2>
+
+<p>多分ほとんどの人は分かっていると思いますが、
+jspファイル内のコメントの記述は以下になります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%-- JSPのコメント --%&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてHTMLのコメントの記述は</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="ni">&amp;lt;</span>!-- HTMLのコメント --&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>問題</h2>
+
+<p>SP内でもHTMLのコメント記述が使えますが、
+コメントアウトした部分にJavaプログラムが埋め込んだ場合
+そのコードは実はコンパイルされてしまいます。
+例えば、</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!-- コメントアウト
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getNotExistMethod() %&gt;&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'> --&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここでは全く存在しないJavaのメソッドを書きました。
+このままだとJSPがコンパイルエラーになります。
+&#8220;The method getNotExistMethod() is undefined for the type HttpServletRequest&#8221;というメッセージです。</p>
+
+<h2>正しい方法</h2>
+
+<p>Javaプログラムが埋め込んだコードをコメントアウトするには
+JSPのコメント式を記述します。
+上記の例で言うとこうなります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%-- JSPコメントアウト
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getNotExistMethod() %&gt;&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  -%&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>補足</h2>
+
+<p>下記のようなコンパイルが通るJavaコードが書かれた場合は、
+もちろんエラーは出ないし、 HTMLの部分もコメントアウトされたため画面には何も表示されません。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!-- コメントアウト
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&lt;%= request.getContextPath() %&gt;&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  -&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-17T00:00:00+09:00" pubdate data-updated="true">2010-02-17</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -840,66 +939,6 @@ Wordpressの仕様は調べていないが、どうやらWordpressの設定に�
 
 
 	<a class='category' href='/blog/categories/seo/'>SEO</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/rails-use-of-validates-confirmation-of">Rails validates_confirmation_ofの使い方</a></h1>
-	<div class="entry-content">
-		<p>システムを作る時に、パスワードを2回入力してもらって、確認処理をおこなうことが多いですね。
-そんなめんどな仕事には、Railsはvalidates_confirmation_of メソッドを用意してくれました。
-それでは、使い方を見てみましょうか。</p>
-
-<p>まず、モデルで以下のチェックを行います。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">validates_confirmation_of</span> <span class="ss">:password</span>  <span class="c1">#カラム名</span>
-</span><span class='line'><span class="kp">attr_accessor</span> <span class="ss">:password_confirmation</span> <span class="c1">#カラム名に_confirmation</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>そして、関連のビューで、以下の処理を書きます。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password</span>
-</span><span class='line'><span class="o">=</span> <span class="n">password_field</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password_confirmation</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで、自動的に入力されたパスワードは同じかどういかを確認してくれます。</p>
-
-<p>※attr_accessorは、再入力フィールドの値を保存するための仮想カラムです。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-23T00:00:00+09:00" pubdate data-updated="true">2010-01-23</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rails/'>Rails</a>
 
 
 </div>
